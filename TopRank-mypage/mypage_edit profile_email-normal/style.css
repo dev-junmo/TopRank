@@ -1,0 +1,453 @@
+@charset "utf-8";
+
+
+/* 서브 페이지 background */
+.html-box {
+  background: #f7f7fc url('../images/img_bg_sub_title.png') no-repeat;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* Gmarket 폰트 스타일 */
+.num {
+  font-family: 'Gmarket Sans';
+  vertical-align: middle;
+}
+
+/* input number 화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* input 기본 달력 스타일 삭제 */
+input[type="date"]::-webkit-clear-button, input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  background: none;
+}
+input[type=date]::-webkit-datetime-edit-text { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-month-field{ -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-day-field { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; display: none; }
+
+/* 셀렉트 박스 스타일 */
+.selectbox {
+  float: right;
+  position: relative;
+}
+.selectbox .label {
+  width: 131px;
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: normal;
+  text-align: left;
+  color: #3e4259;
+  background: #fff url('../images/ic_unfold_black_24.png') 100px center no-repeat;
+  border-radius: 8px;
+  border: 1px solid #dcdee8;
+  padding-left: 16px;
+}
+.selectbox.active .label {
+  background: #fff url('../images/ic_fold_black_24.png') 100px center no-repeat;
+}
+.selectbox ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 39px;
+  width: 131px;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+  background: #fff;
+  z-index: 10;
+}
+.selectbox.active ul {
+  display: block;
+}
+.selectbox ul li {
+  width: 100%;
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: normal;
+  text-align: left;
+  color: #3e4259;
+  line-height: 40px;
+  padding-left: 16px;
+  cursor: pointer;
+}
+
+
+
+/* ===========================================*/
+/* =========================================== */
+/* user info */
+.card-dashboard {
+  display: flex;
+  width: 1240px;
+  height: 222px;
+  padding: 48px 72px;
+  margin: 24px 0 56px;
+  box-shadow: 0 10px 24px 0 rgba(36, 51, 179, 0.2);
+}
+.card-dashboard > div:not(:last-child) {
+  border-right: 1px solid #e0e2eb;
+  padding-right: 30px;
+}
+.card-dashboard > div:not(:first-child) {
+  /* padding-left: 30px; */
+}
+.card-dashboard .user-info {
+  width: 438px;
+}
+.card-dashboard .user-name {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: normal;
+  color: #3e4259;
+}
+.card-dashboard .user-name strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 38px;
+  color: #04021f;
+  margin-right: 6px;
+}
+.card-dashboard .account .email {
+  display: block;
+  font-size: 22px;
+  font-weight: bold;
+  color: #3e4259;
+  margin-top: 22px;
+  margin-bottom: 14px;
+}
+.card-dashboard .account .phone-certified-none {
+  font-size: 22px;
+  font-weight: bold;
+  color: #b8b6c4;
+}
+.card-dashboard .rating-info {
+  width: 376px;
+  text-align: center;
+  padding: 0 43px;
+}
+.card-dashboard .rating-info .rating-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 11px;
+}
+.card-dashboard .rating-info strong {
+  display: block;
+  font-size: 22px;
+  color: #3e4259;
+}
+.card-dashboard .rating-info img {
+  margin-right: 24px;
+}
+.card-dashboard .rating-info .next-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 152px;
+}
+.card-dashboard .rating-info .next-rating span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #b8b6c4;
+}
+.card-dashboard .rating-info .next-rating strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e4259;
+}
+.card-dashboard .rating-info .process-bar {
+  position: relative;
+  width: 152px;
+  height: 8px;
+  background: #dcdee8;
+  border-radius: 16px;
+  margin-top: 6px;
+}
+.card-dashboard .rating-info .process-bar span {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  background: #e6458e;
+  border-radius: 16px;
+}
+.card-dashboard .recommendation-code {
+  width: 288px;
+  text-align: center;
+}
+.card-dashboard .recommendation-code strong {
+  display: block;
+  font-size: 22px;
+  font-weight: bold;
+  color: #3e4259;
+  margin-bottom: 26px;
+}
+.card-dashboard .recommendation-content {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 0 26px 0 42px;
+}
+.card-dashboard .recommendation-content input {
+  width: 128px;
+  height: 48px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: normal;
+  color: #04021f;
+  text-align: center;
+  outline: 0;
+  border: 1px solid #dcdee8;
+  background: #fff;
+  border-radius: 16px;
+  /* padding: 0 24px; */
+  box-sizing: border-box;
+  margin-right: 8px;
+}
+.card-dashboard .recommendation-content img {
+  margin-right: 4px;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 중단 메뉴 */
+.gnb-wrap {
+  position: absolute;
+  width: 1240px;
+  height: 56px;
+  background: #f2f2fc url('../images/ic_unfold_32.png') 1175px 8px no-repeat;
+  border-radius: 16px;
+  padding: 0 89px;
+  overflow: hidden;
+  transition: height 0.5s;
+  box-sizing: border-box;
+  z-index: 100;
+}
+/* .gnb-wrap.active {
+  height: 208px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.2);
+} */
+.gnb-wrap:hover {
+  height: 208px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.2);
+  background: #f2f2fc url('../images/ic_fold_32.png') 1175px 8px no-repeat;
+}
+.gnb-wrap > ul {
+  display: flex;
+}
+.gnb-wrap > ul > li {
+  height: 56px;
+  line-height: 56px;
+}
+.gnb-wrap > ul > li > a {
+  color: #3e4259;
+}
+.gnb-wrap ul > li.active > a {
+  font-weight: bold;
+  color: #04021f;
+}
+.gnb-wrap ul li {
+  width: 354px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+}
+.gnb-wrap > ul > li ul li {
+  height: 48px;
+  line-height: 48px;
+
+}
+.gnb-wrap > ul > li ul li.on a {
+  color: #3f37c9;
+  font-weight: bold;
+}
+.gnb-wrap > ul > li ul li a {
+  color: #b8b6c4;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1240px;
+  margin-top: 172px;
+}
+.title-area .title {
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 30px;
+  color: #04021f;
+  padding-left: 48px;
+  background: url('../images/ic_setting_purple_40.png') left center no-repeat;
+  background-size: 40px;
+  line-height: 38px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 48px;
+  margin-top: 14px;
+  color: #3f37c9;
+}
+.title-area .location-history {
+  display: flex;
+  align-items: center;
+}
+.title-area .location-history li {
+  font-size: 18px;
+}
+.title-area .location-history li:not(:last-child) {
+  position: relative;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .location-history li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_arrow_right_gray_24.png') center no-repeat;
+}
+.title-area .location-history li a {
+  color: #b8b6c4;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 비밀번호 변경 폼 */
+.password-change-area {
+  width: 1240px;
+  padding: 56px 268px 0;
+}
+.password-change-area form > div {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  margin-bottom: 48px;
+}
+.password-change-area form > div:nth-child(5) {
+  margin-bottom: 56px;
+}
+/* .password-change-area form > div:nth-child(2) label {
+  margin-top: -29px;
+}
+.password-change-area form > div:nth-child(5) label {
+  margin-top: -29px;
+} */
+.password-change-area form label {
+  font-size: 18px;
+  font-weight: 500;
+  color: #3e4259;
+  padding-top: 18px;
+}
+.password-change-area form input {
+  width: 504px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  color: #3e4259;
+  outline: 0;
+  border: 1px solid #dcdee8;
+  background: #f2f3fa;
+  border-radius: 16px;
+  padding: 16px 24px;
+  box-sizing: border-box;
+  box-shadow: 0 6px 6px 0 rgba(36, 51, 179, 0.1);
+}
+.password-change-area form input::placeholder {
+  color: #b8b6c4;
+}
+.password-change-area form span {
+  display: block;
+  font-size: 14px;
+  color: #b8b6c4;
+  padding-left: 24px;
+  margin-top: 16px;
+}
+.password-change-area form .required label {
+  position: relative;
+}
+.password-change-area form .required label::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -18px;
+  top: 23px;
+  width: 8px;
+  height: 8px;
+  background: #e62e6b;
+  border-radius: 50%;
+}
+.password-change-area form .required input {
+  background: #fff;
+  border: 0;
+}
+.password-change-area form .required .password-look {
+  position: absolute;
+  right: 15px;
+  top: 11px;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_hide_gray_32.png') center no-repeat;
+}
+.password-change-area form .btn-wrap .cancel-btn {
+  width: 340px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  line-height: 54px;
+  border-radius: 16px;
+  background: #b8b6c4;
+}
+.password-change-area form .btn-wrap .modify-btn {
+  width: 340px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 16px;
+  background: #3f37c9;
+}

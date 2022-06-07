@@ -1,0 +1,66 @@
+@charset "utf-8";
+@import url("../common.css");
+
+/* wrap bg */
+#wrap {
+  width: 100%;
+  height: 100vh;
+  background: #f7f7fc url('../images/m_img_bg_main_title.png') top center no-repeat;
+  background-size: contain;
+}
+
+
+/* header */
+.mobile .navifation-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  background: #f7f8ffc4;
+  padding: 0 16px;
+  box-shadow: 0 1px 10px 0 rgba(36, 41, 179, 0.2);
+  box-sizing: border-box;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.mobile .navifation-bar .membership-btn {
+  float: left;
+  width: 74px;
+  height: 21px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  line-height: 21px;
+  border-radius: 16px;
+  background: #e6458e;
+}
+.mobile .navifation-bar .logo {
+  width: 80px;
+  height: 14px;
+}
+.mobile .navifation-bar .logo img {
+  width: 100%;
+}
+.mobile .navifation-bar .all-menu {
+  padding: 0;
+  background: none;
+}
+
+@media screen and (max-width: 361px) {}
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  #wrap {
+    background: #f7f7fc url('../images/m_img_bg_main_title@2x.png') top center no-repeat;
+    background-size: cover;
+  }
+}
+@media screen and (min-width: 768px) {
+	#wrap {
+		width: 750px;
+		margin: 0 auto;
+    background: #f7f7fc url('../images/m_img_bg_main_title@3x.png') top center no-repeat;
+    background-size: cover;
+	}
+}
