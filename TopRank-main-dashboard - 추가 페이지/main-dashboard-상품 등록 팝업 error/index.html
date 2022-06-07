@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="style.css">
+  <title>TopRank | Main Dashboard</title>
+</head>
+<body>
+  <!-- sidemenu -->
+  <section class="sidemenu">
+      <h3 class="logo">
+        <a href="#">
+          <img class="logo-img" src="../images/logo_purple_130.png" alt="TOP RANK">
+        </a>
+      </h3>
+      <button class="login-btn">
+        로그인
+      </button>
+    <div class="gnbWrap">
+      <nav class="gnb">
+        <ul>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_keyword_purple_32.png" alt="키워드 검색" />
+            키워드 검색
+          </a></li>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_ranking_purple_32.png" alt="상품순위 검색">
+            상품순위 검색
+          </a></li>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_subscription_purple_32.png" alt="이용 중인 상품"/>
+            이용 중인 상품
+          </a></li>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_trend_purple_32.png" alt="쇼핑트렌드"/>
+            쇼핑 트렌드
+          </a></li>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_popular_purple_32.png" alt="인기 검색어"/>
+            인기 검색어
+          </a></li>
+        </ul>
+        <div class="line"></div>
+
+          <!-- <ul>
+            <li class="gnb-item"><a href="#">
+              <img src="/images/ic_board_purple_32.png" alt="게시판" />
+              게시판
+            </a></li>
+          </ul> -->
+      </nav>
+
+    </div>
+  </section>
+  <!-- sidemenu end -->
+
+  <div class="html-box">
+
+      <!-- header -->
+      <header id="header">
+        <div class="header-wrap">
+          <h2 class="notice-title">공지사항</h2>
+          <a href="#" class="notice-sub">
+            스마트 브랜드몰 홈페이지 구축 안내 스마트 브랜드몰 홈페이지 구축 안내 스마트몰 브랜드몰
+          </a>
+        <button class="membership-btn">멤버십 소개</button>
+        </div>
+      </header>
+      <!-- header end -->
+
+      <section class="body">
+
+        <div class="contents">
+          <!-- user info start -->
+          <div class="card-dashboard box">
+            <div class="user-info">
+              <div class="user-name">
+                <strong>일이삼사오육칠팔</strong>님
+                <div class="setting"></div>
+              </div>
+              <div class="user-using">
+                <div class="using">
+                  <div class="using-product">
+                    <span>이용중인 상품</span>
+                    <span class="count num">10/100<span>개</span></span>
+                  </div>
+                  <div class="using-keyword">
+                    <span>이용중인 키워드</span>
+                    <span class="count num">57/100<span>개</span></span>
+                  </div>
+                </div>
+                <button class="product-registration">
+                  <img src="../images/ic_excel_white_32.png" alt="엑셀 아이콘">
+                  <span>상품 일괄등록</span>
+                </button>
+              </div>
+            </div>
+            <div class="rating-info">
+              <strong>회원 등급</strong>
+              <img src="../images/ic_user-rating_white_88.png" alt="회원 등급 일반">
+              <div class="next-rating">
+                <span>다음 등급까지</span>
+                <strong>1,600점</strong>
+              </div>
+              <div class="process-bar">
+                <span class="percent"></span>
+              </div>
+            </div>
+            <div class="point-info">
+              <div class="charging">
+                <span>충전 포인트</span>
+                <strong class="score">100,000,000<span>P</span></strong>
+              </div>
+              <div class="free">
+                <span>무료 포인트</span>
+                <strong class="score">400,000<span>P</span></strong>
+              </div>
+              <div class="reward">
+                <span>리워드 포인트</span>
+                <strong class="score">40,000<span>P</span></strong>
+              </div>
+              <div class="coupon">
+                <span>쿠폰</span>
+                <strong class="score">6<span>장</span></strong>
+              </div>
+            </div>
+          </div>
+          <!-- //user info end -->
+
+          <!-- 상품일괄 등록 팝업 start -->
+          <div class="registration-popup">
+            <div class="popup-box box">
+              <div class="popup-header">
+                <h3>엑셀 파일로 상품 일괄등록</h3>
+                <button class="close">
+                  <img src="../images/ic_close_black_40.png" alt="닫기 버튼">
+                </button>
+              </div>
+              <div class="popup-contents">
+                <div class="step">
+                  <b>STEP 1</b>
+                  <p>일괄등록을 위해 먼저 엑셀 양식을 내려받아 주세요.</p>
+                  <!-- 서버가 아닌 로컬에서 클릭하면 다운로드 X, 서버 환경에서 클릭해야 다운로드 O -->
+                  <a href="file/smaple.html" download class="excel-download">양식 다운로드</a>
+                </div>
+                <div class="step">
+                  <b>STEP 1</b>
+                  <p>일괄등록을 위해 먼저 엑셀 양식을 내려받아 주세요.</p>
+                  <div class="file-box">
+                    <input class="upload-name filname-normal" value="딸기 상품 등록_0524.xls" placeholder="선택된 파일이 없습니다." readonly>
+                    <label for="file">파일 선택</label>
+                    <input type="file" id="file">
+                    <div class="filname-detail-box">
+                      <input class="upload-name filname-detail failed" value="딸기 상품 등록_0524.xls" placeholder="선택된 파일이 없습니다." readonly>
+                      <span class="upload-success">결제 금액 <strong>20,000</strong>P</span>
+                      <span class="upload-failed">상품 기간이 누락되었습니다.</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="caution-wrap">
+                  <strong class="caution-title">엑셀 파일 작성 시 주의사항</strong>
+                  <ul>
+                    <li>양식 파일 내려받으신 후 양식에 맞게 입력하여 업로드 해주세요.</li>
+                    <li>파일은 한 파일씩만 업로드 가능합니다. 새로운 파일을 업로드하면 기존 파일은 삭제됩니다.</li>
+                    <li>양식 중 노란색으로 표시된 3번째 행까지는 유지하고 4번째 행부터 데이터를 입력해주세요.</li>
+                    <li>CSV 형식인 경우 반드시 UFT-8 형식으로 저장해야 합니다.</li>
+                    <li>내려받으신 파일 형식(XLS) 그대로 업로드하길 권장해 드리며, CSV 형식으로 업로드 하실 경우 HTML 및 특수문자(콤마 등) 사용 시 업로드 오류가 날 수 있습니다.</li>
+                  </ul>
+                </div>
+                <button class="purchase-btn">구매하기</button>
+              </div>
+            </div>
+          </div>
+          <!-- 상품일괄 등록 팝업 end -->
+
+          <!-- 이용 중인 상품 start -->
+          <div class="using-product">
+            <!-- 컨텐츠 타이틀 영역 start -->
+            <div class="title-area">
+              <div class="title-wrap">
+                <h2 class="title">이용 중인 상품</h2>
+              </div>
+              <a href="#" class="all-btn">전체보기</a>
+            </div>
+            <!-- //컨텐츠 타이틀 영역 end -->
+
+            <!-- 이용 중인 상품 슬라이드 start  -->
+            <div class="contents-wrap">
+              <div class="contents-slide">
+                <div class="slide-wrap">
+                  <div class="slide-item box active">
+                    <div class="item-header">
+                      <span>대표 키워드</span>
+                      <div class="keyword-pill">망고</div>
+                    </div>
+                    <div class="item-store">
+                      <img src="../images/thum_navershoping_56.png" alt="네이버 쇼핑">
+                      <div class="store-txt">
+                        <span>제주농부</span>
+                        <p>제주농부 산지직송 고당도 제주 미니 애플망고 1kg 2kg 3kg</p>
+                      </div>
+                    </div>
+                    <div class="sale-ranking">
+                      <span>판매 순위</span>
+                      <div class="ranking-num">
+                        <strong>23</strong>위
+                        <div class="pill up">6</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slide-item box">
+                    <div class="item-header">
+                      <span>대표 키워드</span>
+                      <div class="keyword-pill">한라봉</div>
+                    </div>
+                    <div class="item-store">
+                      <img src="../images/thum_navershoping_56.png" alt="네이버 쇼핑">
+                      <div class="store-txt">
+                        <span>제주농부</span>
+                        <p>제주농부 제주 산지직송 꿀당도 천혜향 카라향 한라봉 오렌지 귤</p>
+                      </div>
+                    </div>
+                    <div class="sale-ranking">
+                      <span>판매 순위</span>
+                      <div class="ranking-num">
+                        <strong>41</strong>위
+                        <div class="pill down">7</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slide-item box">
+                    <div class="item-header">
+                      <span>대표 키워드</span>
+                      <div class="keyword-pill">딸기</div>
+                    </div>
+                    <div class="item-store">
+                      <img src="../images/thum_navershoping_56.png" alt="네이버 쇼핑">
+                      <div class="store-txt">
+                        <span>달콤팜 딸기</span>
+                        <p>딸기 설향 산지직송 프리미엄 생딸기</p>
+                      </div>
+                    </div>
+                    <div class="sale-ranking">
+                      <span>판매 순위</span>
+                      <div class="ranking-num">
+                        <strong>7</strong>위
+                        <div class="pill up">11</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slide-item box">
+                    <div class="item-header">
+                      <span>대표 키워드</span>
+                      <div class="keyword-pill">딸기</div>
+                    </div>
+                    <div class="item-store">
+                      <img src="../images/thum_navershoping_56.png" alt="네이버 쇼핑">
+                      <div class="store-txt">
+                        <span>달콤팜 딸기</span>
+                        <p>딸기 설향 산지직송 프리미엄 생딸기</p>
+                      </div>
+                    </div>
+                    <div class="sale-ranking">
+                      <span>판매 순위</span>
+                      <div class="ranking-num">
+                        <strong>7</strong>위
+                        <div class="pill up">11</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="slide-item box">
+                    <div class="item-header">
+                      <span>대표 키워드</span>
+                      <div class="keyword-pill">딸기</div>
+                    </div>
+                    <div class="item-store">
+                      <img src="../images/thum_navershoping_56.png" alt="네이버 쇼핑">
+                      <div class="store-txt">
+                        <span>달콤팜 딸기</span>
+                        <p>딸기 설향 산지직송 프리미엄 생딸기</p>
+                      </div>
+                    </div>
+                    <div class="sale-ranking">
+                      <span>판매 순위</span>
+                      <div class="ranking-num">
+                        <strong>7</strong>위
+                        <div class="pill up">11</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="prev dis">prev</button>
+              <button class="next">next</button>
+            </div>
+            <!-- //이용 중인 상품 슬라이드 end  -->
+
+            <!-- 이용 중인 상품 디테일 start -->
+            <div class="product-detail">
+              <div class="detail-item box">
+                <div class="item-header">
+                  <div class="item-title">
+                    <span>판매 순위</span>
+                    <img src="../images/ic_help_32.png" alt="도움말">
+                  </div>
+                  <div class="pill up">6</div>
+                </div>
+                <div class="item-contents">
+                  <div class="keyword-pill">망고</div>
+                  <div class="ranking-num">
+                    <strong class="num">23</strong>위
+                    <div class="paging">
+                      <span class="num">4</span>페이지
+                      <span class="num">2</span>위
+                    </div>
+                  </div>
+                  <div class="all-count">/ <span class="num">689,689</span>개</div>
+                </div>
+                <button class="detail-view">자세히 보기 <img src="../images/ic_arrow_right_black_24.png" alt=""></button>
+              </div>
+              <div class="detail-item box">
+                <div class="item-header">
+                  <div class="item-title">
+                    <span>판매 순위 추적</span>
+                    <img src="../images/ic_help_32.png" alt="도움말">
+                  </div>
+                </div>
+                <div class="graph"></div>
+                <button class="detail-view">자세히 보기 <img src="../images/ic_arrow_right_black_24.png" alt=""></button>
+              </div>
+              <div class="detail-item box">
+                <div class="item-header">
+                  <div class="item-title">
+                    <span>키워드 추적</span>
+                    <img src="../images/ic_help_32.png" alt="도움말">
+                  </div>
+                  <div class="keyword-pill">망고</div>
+                </div>
+                <div class="graph"></div>
+                <button class="detail-view">자세히 보기 <img src="../images/ic_arrow_right_black_24.png" alt=""></button>
+              </div>
+              <div class="detail-item box">
+                <div class="item-header">
+                  <div class="item-title">
+                    <span>리뷰 수</span>
+                    <img src="../images/ic_help_32.png" alt="도움말">
+                  </div>
+                  <div class="pill up">50</div>
+                </div>
+                <div class="item-contents review">
+                  <div class="reivew-count">
+                    <strong class="num">1,024</strong>개
+                    <div class="score">
+                      <span class="num">4.5</span>점
+                    </div>
+                  </div>
+                  <div class="all-count">구매건수 <span class="num">5,481</span>건</div>
+                </div>
+                <button class="detail-view">자세히 보기 <img src="../images/ic_arrow_right_black_24.png" alt=""></button>
+              </div>
+              <div class="detail-item box">
+                <div class="item-header">
+                  <div class="item-title">
+                    <span>리뷰 추적</span>
+                    <img src="../images/ic_help_32.png" alt="도움말">
+                  </div>
+                </div>
+                <div class="graph"></div>
+                <button class="detail-view">자세히 보기 <img src="../images/ic_arrow_right_black_24.png" alt=""></button>
+              </div>
+              <div class="detail-item box">
+                <div class="item-header">
+                  <div class="item-title">
+                    <span>가격 추적</span>
+                    <img src="../images/ic_help_32.png" alt="도움말">
+                  </div>
+                </div>
+                <div class="graph"></div>
+                <button class="detail-view">자세히 보기 <img src="../images/ic_arrow_right_black_24.png" alt=""></button>
+              </div>
+              <div class="detail-item box">
+                <div class="item-header">
+                  <div class="item-title">
+                    <span>카테고리</span>
+                  </div>
+                </div>
+                <div class="item-contents">
+                  <div class="category">
+                    <ul>
+                      <li>식품</li>
+                      <li>농산물</li>
+                      <li>과일</li>
+                      <li>망고</li>
+                    </ul>
+                  </div>
+                  <div class="month-search">
+                    <span>한 달 검색 수</span>
+                    <div class="search-num">
+                      <strong class="num">139,300</strong>회
+                    </div>
+                  </div>
+                </div>
+                <button class="detail-view">자세히 보기 <img src="../images/ic_arrow_right_black_24.png" alt=""></button>
+              </div>
+              <div class="detail-item box">
+                <div class="item-header">
+                  <div class="item-title">
+                    <span>기기별 검색 비율</span>
+                  </div>
+                </div>
+                <div class="graph"></div>
+                <button class="detail-view">자세히 보기 <img src="../images/ic_arrow_right_black_24.png" alt=""></button>
+              </div>
+            </div>
+            <!-- //이용 중인 상품 디테일 end -->
+          </div>
+          <!-- //이용 중인 상품 end -->
+        </div>
+        
+      </section>
+
+      <!-- footer -->
+      <footer id="footer">
+        <div class="footer-wrap"> 
+          <div class="footer-nav">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">자주 묻는 질문</a>
+          </div>
+          <div class="company">
+            <img class="logo-img" src="../images/logo_gray_130.png" alt="TOP RANK" />
+            <div class="company-info">
+              <p>서울특별시 강서구 공항대로 227 마곡세트럴타워1차</p>
+              <span>|</span>
+              <p>대표이사 김태형</p>
+              <span>|</span>
+              <p>사업자등록번호 104-81-25980</p>
+              <span>|</span>
+              <p> 통신판매업신고번호 중구02802호</p>
+            </div>  
+            <p class="company-txt"> 서비스문의 help@crefe.co.kr</p>
+            <p class="company-txt"> Copyright@CREFE.ALL Rights Reserved</p>
+          </div>
+        </div>
+      </footer>
+      <!-- footer end -->
+
+  </div>
+
+  <script>
+    // 팝업
+    const popup = document.querySelector('.registration-popup');
+    const closeBtn = document.querySelectorAll('.registration-popup .close');
+    const productRegistration = document.querySelector('.product-registration');
+
+    Array.from(closeBtn).forEach((el) => {
+      el.addEventListener('click', () => {
+        el.parentNode.parentNode.parentNode.classList.remove('active');
+      });
+    });
+
+    productRegistration.addEventListener('click', () => {
+      popup.classList.add('active');
+    });
+
+
+    // 파일 업로드
+    const file = document.querySelector('#file');
+    const uploadName = document.querySelectorAll('.upload-name');
+    const filenameDetail = document.querySelector('.filname-detail');
+    const uploadSuccess = document.querySelector('.upload-success');
+    const uploadFailed = document.querySelector('.upload-failed');
+    const purchaseBtn = document.querySelector('.purchase-btn');
+
+    file.addEventListener('change', () => {
+      const fileRoute = file.value;
+      const fileName = fileRoute.split("\\");
+
+      uploadName.forEach((file) => {
+        file.value = fileName[2];
+        filenameDetail.classList.add('success');
+        if(filenameDetail.classList.contains('success')) {
+          uploadSuccess.style.display = 'block';
+          uploadFailed.style.display = 'none';
+          purchaseBtn.classList.add('active');
+        }else{
+          uploadSuccess.style.display = 'none';
+          uploadFailed.style.display = 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

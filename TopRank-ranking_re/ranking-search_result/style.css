@@ -1,0 +1,372 @@
+@charset "utf-8";
+
+
+/* 서브 페이지 background */
+.html-box {
+  background: #f7f7fc url('../images/img_bg_sub_title.png') no-repeat;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+
+
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1240px;
+  margin-top: 58px;
+}
+.title-area .title {
+  height: 40px;
+  font-size: 30px;
+  color: #04021f;
+  padding-left: 48px;
+  background: url('../images/ic_ranking_color_30@2x.png') left center no-repeat;
+  background-size: 40px;
+  line-height: 38px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 48px;
+  margin-top: 14px;
+  color: #3f37c9;
+}
+.title-area .breadcrumb {
+  display: flex;
+  align-items: center;
+}
+.title-area .breadcrumb li {
+  font-size: 18px;
+}
+.title-area .breadcrumb li:not(:last-child) {
+  position: relative;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .breadcrumb li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_arrow_right_gray_24.png') center no-repeat;
+  /* font-size: 21px;
+  font-weight: 300; */
+  /* color: #b8b6c4; */
+}
+.title-area .breadcrumb li a {
+  color: #b8b6c4;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 검색 박스 */
+.search-box {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  width: 1240px;
+  height: 364px;
+  border-radius: 48px;
+  margin: 50px 0 56px;
+  background: #f2f2fc;
+  padding: 32px 0 56px;
+}
+.search-box .search-tab ul {
+  display: flex;
+  margin-bottom: 49px;
+}
+.search-box .search-tab ul li {
+  font-size: 22px;
+  font-weight: bold;
+  color: #3e4259;
+  padding: 8px 0 9px;
+  margin-right: 48px;
+  cursor: pointer;
+}
+.search-box .search-tab ul li:last-child {
+  margin-right: 0;
+}
+.search-box .search-tab ul li.active {
+  color: #3f37c9;
+  border-bottom: 2px solid #3f37c9;
+}
+.search-box label {
+  display: none;
+}
+.search-box .search-input {
+  position: relative;
+  display: none;
+}
+.search-box .search-input.active {
+  display: block;
+}
+/* .search-box .search-input form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
+.search-box .checkbox-wrap label {
+  display: inline-block;
+  /* align-items: center; */
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+.search-box .checkbox-wrap label input {
+  display: none;
+}
+.search-box .checkbox-wrap .check {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_checkbox_off_32.png') center no-repeat;
+  margin-right: 10px;
+}
+.search-box .checkbox-wrap label input[type="checkbox"]:checked + span {
+  background: url('../images/ic_checkbox_on_32.png') center no-repeat;
+}
+.search-box .checkbox-wrap p {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: normal;
+  color: #3e4259;
+  vertical-align: top;
+  margin-top: 2px;
+}
+.search-box .search-input input {
+  width: 912px;
+  height: 64px;
+  border: 0;
+  outline: 0;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  background: #fff;
+  box-shadow: 0 6px 6px 0 rgba(36, 51, 179, 0.1);
+  border-radius: 16px;
+  padding: 18px 102px 18px 32px;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+}
+.search-box .search-input input::placeholder {
+  color: #b8b6c4;
+}
+.search-box .search-input button {
+  position: absolute;
+  right: 34px;
+  bottom: 16px;
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 검색 결과 */
+.search-result {
+  width: 1240px;
+  display: none;
+}
+.search-result.active {
+  display: block;
+}
+.result-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.result-box .result-info-1 {
+  width: 432px;
+}
+.result-box .result-info-2,
+.result-box .result-info-3 {
+  width: 239px;
+}
+.result-box .result-info:not(:nth-child(3)) {
+  position: relative;
+  margin-right: 65px;
+}
+.result-box .result-info:not(:nth-child(3))::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -32px;
+  top: 0;
+  width: 1px;
+  height: 184px;
+  background: #dcdee8;
+}
+.result-box .result-info .ad {
+  width: 46px;
+  height: 23px;
+}
+.result-box .result-info .ad span {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3f37c9;
+  text-align: center;
+  padding: 4px 0;
+  border: 1px solid #3f37c9;
+  border-radius: 10px;
+  background: #fff;
+}
+.result-box .result-info .category {
+  display: flex;
+  align-items: center;
+  padding-left: 80px;
+}
+.result-box .result-info .category li {
+  font-size: 18px;
+  font-weight: 500;
+}
+.result-box .result-info .category li:nth-child(2n) {
+  /* margin: 0 8px; */
+}
+.result-box .result-info .category li:nth-child(2n) img {
+  vertical-align: bottom;
+}
+.result-box .result-info .store {
+  /* background: url('../images/thum_navershoping_32@2x.png') left center no-repeat;
+  background-size: contain;
+  padding-left: 80px; */
+  display: flex;
+  margin-top: 16px;
+}
+.result-box .result-info .store img {
+  width: 56px;
+  height: 56px;
+  margin-right: 24px;
+}
+.result-box .result-info .store .store-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #b8b6c4;
+}
+.result-box .result-info .store p {
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+  margin-top: 8px;
+  line-height: 1.41;
+}
+.result-box .result-info .result-info-title {
+  height: 32px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #3e4259;
+  line-height: 1.41;
+  background: url('../images/ic_ranking_32.png') left center no-repeat;
+  padding-left: 48px;
+  margin-top: 20px;
+  margin-bottom: 32px;
+}
+.result-box .result-info-3 .result-info-title {
+  background: url('../images/ic_review_32.png') left center no-repeat;
+}
+.result-box .result-info .sale-num,
+.result-box .result-info .review-num {
+  font-family: 'Gmarket Sans';
+  font-size: 18px;
+  font-weight: 400;
+}
+.result-box .result-info .sale-num strong,
+.result-box .result-info .review-num strong {
+  font-size: 40px;
+  font-weight: bold;
+  color: #04021f;
+}
+.result-box .result-info .sale-num span,
+.result-box .result-info .review-num span {
+  font-size: 18px;
+  font-weight: 500;
+  color: #b8b6c4;
+  margin-left: 16px;
+}
+.result-box .result-info .sale-num span::before,
+.result-box .result-info .review-num span::before {
+  content: "/";
+}
+.result-box .result-info .pageing {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #3f37c9;
+  margin-top: 14px;
+}
+.result-box .result-info .review-num span {
+  color: #3f37c9;
+}
+.result-box .result-info .purchase-count {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #b8b6c4;
+  margin-top: 14px;
+}
+.result-box .result-info .purchase-count span {
+  font-family: 'Gmarket Sans';
+  font-weight: 400;
+  vertical-align: middle;
+}
+.result-box .ranking-tracking {
+  background: none;
+  border: 0;
+  outline: 0;
+  margin-left: 26px;
+}
+.result-box .ranking-tracking .tracking-img {
+  width: 94px;
+  height: 48px;
+  background: url('../images/ic_tracking_48.png') center no-repeat;
+}
+.result-box .ranking-tracking.off .tracking-img {
+  background: url('../images/ic_tracking_ing_48.png') center no-repeat;
+}
+.result-box .ranking-tracking span {
+  display: block;
+  width: 94px;
+  height: 36px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.31;
+  color: #fff;
+  background: #e6458e;
+  border-radius: 24px;
+  padding: 8px 0;
+}
+.result-box .ranking-tracking.off span {
+  background: #f2f3fa;
+  border: 1px solid #dcdee8;
+  color: #3e4259;
+}

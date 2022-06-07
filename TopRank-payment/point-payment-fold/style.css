@@ -1,0 +1,567 @@
+@charset "utf-8";
+
+
+/* 서브 페이지 background */
+.html-box {
+  background: #f7f7fc url('../images/img_bg_sub_title.png') no-repeat;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* Gmarket 폰트 스타일 */
+.num {
+  font-family: 'Gmarket Sans';
+  vertical-align: middle;
+}
+
+/* input number 화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1240px;
+  margin-top: 58px;
+}
+.title-area .title {
+  height: 40px;
+  font-size: 30px;
+  color: #04021f;
+  padding-left: 48px;
+  background: url('../images/ic_point_payment_color_40.png') left center no-repeat;
+  background-size: 40px;
+  line-height: 38px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 48px;
+  margin-top: 14px;
+  color: #3f37c9;
+}
+.title-area .breadcrumb {
+  display: flex;
+  align-items: center;
+}
+.title-area .breadcrumb li {
+  font-size: 18px;
+}
+.title-area .breadcrumb li:not(:last-child) {
+  position: relative;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .breadcrumb li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_arrow_right_gray_24.png') center no-repeat;
+  /* font-size: 21px;
+  font-weight: 300; */
+  /* color: #b8b6c4; */
+}
+.title-area .breadcrumb li a {
+  color: #b8b6c4;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 충전 금액 선택 */
+.charging-amount {
+  width: 1240px;
+  padding-top: 72px;
+}
+.payment-sub-title {
+  display: flex;
+  align-items: end;
+  margin-bottom: 25px;
+}
+.payment-sub-title h3 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #3e4259;
+  margin-right: 8px;
+  padding-left: 32px;
+  background: url('../images/ic_check_black_24.png') left center no-repeat;
+}
+.payment-sub-title .description {
+  font-size: 14px;
+  font-weight: normal;
+  color: #b8b6c4;
+}
+.charging-amount-box {
+  padding: 56px 32px;
+}
+.charging-amount-box .charging-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 74px;
+  padding: 20px 40px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 16px;
+  border: 1px solid transparent;
+}
+.charging-amount-box .charging-item.active {
+  border: 1px solid #3f37c9;
+}
+.charging-amount-box .charging-item > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.charging-amount-box .charging-item .right-item {
+  width: 577px;
+}
+.charging-amount-box .charging-item .check-circle {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_radio_off_32.png') center no-repeat;
+  margin-right: 104px;
+}
+.charging-amount-box .charging-item.active .check-circle {
+  background: url('../images/ic_radio_on_32.png') center no-repeat;
+}
+.charging-amount-box .charging-item .amount {
+  font-size: 22px;
+  font-weight: bold;
+  color: #04021f;
+}
+.charging-amount-box .charging-item .charge-point {
+  /* margin-right: 122px; */
+}
+.charging-amount-box .charging-item .free-point {
+  width: 236px;
+}
+.charging-amount-box .charging-item .charge-point span,
+.charging-amount-box .charging-item .free-point span {
+  font-size: 20px;
+  font-weight: 500;
+  color: #04021f;
+  padding-left: 32px;
+  background: url('../images/ic_payment-point_purple_24.png') left center no-repeat;
+  margin-right: 24px;
+}
+.charging-amount-box .charging-item .charge-point strong,
+.charging-amount-box .charging-item .free-point strong {
+  font-size: 22px;
+  font-weight: bold;
+  color: #04021f;
+}
+.charging-amount-box .charging-item .free-point span {
+  position: relative;
+  background: url('../images/ic_free-point_purple_24.png') left center no-repeat;
+}
+.charging-amount-box .charging-item .free-point span::before {
+  content: "+";
+  display: block;
+  position: absolute;
+  left: -28px;
+  top: 3px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: bold;
+  color: #04021f;
+}
+.charging-amount-box .charging-item input {
+  width: 281px;
+  height: 48px;
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 48px;
+  color: #04021f;
+  background: #fff;
+  outline: 0;
+  border: 1px solid #dcdee8;
+  border-radius: 16px;
+  padding: 0 32px;
+  box-sizing: border-box;
+}
+.charging-amount-box .charging-item input::placeholder {
+  color: #b8b6c4;
+}
+.charging-amount-box .charging-item:last-child .check-circle {
+  margin-right: 74px;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 상품 옵션 선택 */
+.pay-info {
+  width: 1240px;
+  margin-top: 104px;
+}
+.pay-info-list ul {
+  width: 100%;
+  border-top: 1px solid #3e4259;
+  padding: 48px;
+}
+.pay-info-list ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 500;
+  color: #04021f;
+  margin-bottom: 43px;
+}
+.pay-info-list ul li .pay-value > b {
+  margin: 0 16px;
+}
+.pay-info-list ul li:last-child {
+  margin-bottom: 0;
+}
+.pay-info-list ul .charge-point .pay-value {
+  color: #e6458e;
+}
+.pay-info-list .total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+  padding: 28px 48px;
+  border-top: 1px solid #dcdee8;
+}
+.pay-info-list .total .pay-txt .description {
+  font-size: 14px;
+  font-weight: normal;
+  color: #b8b6c4;
+}
+.pay-info-list .total .pay-value {
+  color: #e6458e;
+  font-weight: bold;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 결제 방법 */
+.pay-way-choice {
+  width: 1240px;
+  margin-top: 104px;
+}
+.pay-way-box {
+  width: 100%;
+  background: #f2f2fc;
+  border-radius: 24px;
+  padding: 64px 48px;
+  box-sizing: border-box;
+}
+.pay-way-box .selected-pay-header {
+
+}
+.pay-way-box .selected-pay-header .check-circle {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_radio_on_32.png') center no-repeat;
+  margin-left: 0;
+}
+.pay-way-box .selected-pay-header span {
+  font-size: 20px;
+  font-weight: 500;
+  color: #04021f;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.pay-way-box .selected-pay-contents {
+  padding-top: 32px;
+  padding-left: 40px;
+}
+.selected-pay-contents .selected-pay-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.selected-pay-contents .selected-pay-item > span {
+  font-size: 18px;
+  font-weight: normal;
+  color: #3e4259;
+  margin-top: 14px;
+}
+.selected-pay-contents .selected-pay-item .right-contents {
+  width: 890px;
+}
+.selected-pay-contents .selected-pay-item .right-contents input {
+  width: 214px;
+  height: 48px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: normal;
+  background: #fff;
+  outline: 0;
+  border: 1px solid #dcdee8;
+  border-radius: 16px;
+  padding-left: 24px;
+  box-sizing: border-box;
+}
+.selected-pay-contents .selected-pay-item .right-contents input::placeholder {
+  color: #b8b6c4;
+}
+.selected-pay-contents .selected-pay-item .right-contents .description {
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+  color: #e62e6b;
+  padding-left: 24px;
+  margin-top: 8px;
+}
+.selected-pay-contents .selected-pay-item,
+.selected-pay-contents .bank .selectbox {
+  position: relative;
+}
+.selected-pay-contents .bank .selectbox .label {
+  width: 545px;
+  height: 48px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: normal;
+  text-align: left;
+  color: #04021f;
+  background: #fff url('../images/ic_unfold_black_32.png') 500px center no-repeat;
+  border-radius: 16px;
+  border: 1px solid #dcdee8;
+  padding-left: 24px;
+}
+.selected-pay-contents .bank .selectbox.active .label {
+  background: #fff url('../images/ic_fold_black_32.png') 500px center no-repeat;
+}
+.selected-pay-contents .bank .selectbox ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 47px;
+  width: 545px;
+  border: 1px solid #dcdee8;
+  border-radius: 16px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+  background: #fff;
+}
+.selected-pay-contents .bank .selectbox.active ul {
+  display: block;
+}
+.selected-pay-contents .bank .selectbox ul li {
+  width: 100%;
+  height: 48px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: normal;
+  text-align: left;
+  color: #04021f;
+  line-height: 48px;
+  padding-left: 24px;
+  cursor: pointer;
+}
+.selected-pay-contents .bank .right-contents .description {
+  color: #3e4259;
+  font-size: 14px;
+}
+.selected-pay-contents .bank .right-contents .description strong {
+  color: #e62e6b;
+  font-weight: normal;
+}
+.selected-pay-contents .receipt > span {
+  margin-top: 6px;
+}
+.selected-pay-contents .receipt .receipt-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.selected-pay-contents .receipt .receipt-check label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 32px;
+}
+.selected-pay-contents .receipt .receipt-check label:nth-child(2) {
+  margin-right: 0;
+}
+.selected-pay-contents .receipt .receipt-check label input {
+  display: none;
+}
+.selected-pay-contents .receipt .receipt-check label span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_radio_small_off_32.png') center no-repeat;
+  margin-right: 8px;
+  cursor: pointer;
+}
+.selected-pay-contents .receipt .receipt-check label input:checked + span {
+  background: url('../images/ic_radio_small_on_32.png') center no-repeat;
+}
+.selected-pay-contents .receipt .receipt-check label p {
+  font-size: 20px;
+  font-weight: 500;
+  color: #04021f;
+}
+.selected-pay-contents .receipt .person-type {
+  display: flex;
+}
+.selected-pay-contents .receipt .selectbox {
+  position: relative;
+}
+.selected-pay-contents .receipt .selectbox .label {
+  width: 175px;
+  height: 48px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: normal;
+  text-align: left;
+  color: #04021f;
+  background: #fff url('../images/ic_unfold_black_32.png') 122px center no-repeat;
+  border-radius: 16px;
+  border: 1px solid #dcdee8;
+  padding-left: 24px;
+}
+.selected-pay-contents .receipt .selectbox.active .label {
+  background: #fff url('../images/ic_fold_black_32.png') 122px center no-repeat;
+}
+.selected-pay-contents .receipt .selectbox ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 47px;
+  width: 175px;
+  border: 1px solid #dcdee8;
+  border-radius: 16px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+  background: #fff;
+}
+.selected-pay-contents .receipt .selectbox.active ul {
+  display: block;
+}
+.selected-pay-contents .receipt .selectbox ul li {
+  width: 100%;
+  height: 48px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: normal;
+  text-align: left;
+  color: #04021f;
+  line-height: 48px;
+  padding-left: 24px;
+  cursor: pointer;
+}
+.selected-pay-contents .receipt .person-type input {
+  width: 553px;
+  height: 48px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: normal;
+  color: #04021f;
+  border: 1px solid #dcdee8;
+  border-radius: 16px;
+  background: #fff;
+  margin-left: 24px;
+  padding-left: 24px;
+}
+.selected-pay-contents .receipt .person-type input::placeholder {
+  color: #b8b6c4;
+}
+.pay-way-box .pay-way-selector {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-top: 1px solid #dcdee8;
+  padding-top: 48px;
+}
+.pay-way-box .pay-way-selector li {
+  height: 32px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: 500;
+  color: #b8b6c4;
+  line-height: 32px;
+  padding-left: 40px;
+  margin-right: 40px;
+  background: url('../images/ic_radio_disabled_32.png') left center no-repeat;
+  vertical-align: middle;
+}
+.pay-way-box .selector-description {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  color: #3e4259;
+  margin-top: 16px;
+}
+
+.agree-check {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+.agree-check label {
+  display: flex;
+  align-items: center;
+  margin-left: 32px;
+  cursor: pointer;
+}
+.agree-check label input {
+  display: none;
+}
+.agree-check label span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_checkbox_off_32.png') center no-repeat;
+  margin-right: 12px;
+  cursor: pointer;
+}
+.agree-check label input:checked + span {
+  background: url('../images/ic_checkbox_on_32.png') center no-repeat;
+}
+.agree-check label p {
+  font-size: 18px;
+  font-weight: normal;
+  color: #3e4259;
+}
+.purchase-btn {
+  display: block;
+  width: 280px;
+  height: 62px;
+  border-radius: 16px;
+  background: #e6458e;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 62px;
+  color: #fff;
+  margin: 80px auto 0;
+}
+

@@ -1,0 +1,177 @@
+@charset "utf-8";
+
+
+/* 서브 페이지 background */
+.html-box {
+  background: #f7f7fc url('../images/img_bg_sub_title.png') no-repeat;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* Gmarket 폰트 스타일 */
+.num {
+  font-family: 'Gmarket Sans';
+  vertical-align: middle;
+}
+
+/* input number 화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1240px;
+  margin-top: 58px;
+}
+.title-area .title {
+  height: 40px;
+  font-size: 30px;
+  color: #04021f;
+  padding-left: 48px;
+  background: url('../images/ic_point_payment_color_40.png') left center no-repeat;
+  background-size: 40px;
+  line-height: 38px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 48px;
+  margin-top: 14px;
+  color: #3f37c9;
+}
+.title-area .breadcrumb {
+  display: flex;
+  align-items: center;
+}
+.title-area .breadcrumb li {
+  font-size: 18px;
+}
+.title-area .breadcrumb li:not(:last-child) {
+  position: relative;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .breadcrumb li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_arrow_right_gray_24.png') center no-repeat;
+  /* font-size: 21px;
+  font-weight: 300; */
+  /* color: #b8b6c4; */
+}
+.title-area .breadcrumb li a {
+  color: #b8b6c4;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 구매 완료 */
+.purchase-complete {
+  width: 1240px;
+  padding-top: 136px;
+  text-align: center;
+}
+.purchase-complete strong {
+  display: block;
+  font-size: 22px;
+  font-weight: bold;
+  color: #04021f;
+  margin-top: 16px;
+}
+.purchase-complete p {
+  font-size: 22px;
+  font-weight: normal;
+  text-align: center;
+  color: #3e4259;
+  line-height: 1.45;
+  margin-top: 25px;
+}
+.purchase-complete p span {
+  font-weight: bold;
+  color: #e6458e;
+}
+.purchase-complete-box {
+  width: 912px;
+  background: #f2f2fc;
+  border-radius: 24px;
+  margin: 90px auto 112px;
+  padding: 35px 231px;
+}
+.purchase-complete-box ul li {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.purchase-complete-box ul li:last-child {
+  margin-bottom: 0;
+}
+.purchase-complete-box ul li span {
+  font-size: 18px;
+  font-weight: normal;
+  color: #3e4259;
+}
+.purchase-complete-box ul li span.value {
+  font-size: 20px;
+  color: #04021f;
+}
+.purchase-complete-box ul li button {
+  position: absolute;
+  right: -127px;
+  top: -2px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
+  font-weight: bold;
+  color: #e6458e;
+  background: none;
+  border-radius: 8px;
+  border: 1px solid #e6458e;
+  padding: 3px 16px;
+}
+.purchase-complete-box ul li button.copy-btn {
+  border: 0;
+  right: -52px;
+  top: -4px;
+}
+.purchase-complete .check-btn {
+  width: 270px;
+  height: 54px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  border-radius: 16px;
+  background: #e6458e;
+}

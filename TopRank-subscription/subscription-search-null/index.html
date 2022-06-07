@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="style.css">
+  <title>TopRank | Subscription-empty</title>
+</head>
+<body>
+  <!-- sidemenu -->
+  <section class="sidemenu">
+      <h3 class="logo">
+        <a href="#">
+          <img class="logo-img" src="../images/logo_purple_130.png" alt="TOP RANK">
+        </a>
+      </h3>
+      <button class="login-btn">
+        로그인
+      </button>
+    <div class="gnbWrap">
+      <nav class="gnb">
+        <ul>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_keyword_purple_32.png" alt="키워드 검색" />
+            키워드 검색
+          </a></li>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_ranking_purple_32.png" alt="상품순위 검색">
+            상품순위 검색
+          </a></li>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_subscription_purple_32.png" alt="이용 중인 상품"/>
+            이용 중인 상품
+          </a></li>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_trend_purple_32.png" alt="쇼핑트렌드"/>
+            쇼핑 트렌드
+          </a></li>
+          <li class="gnb-item"><a href="#">
+            <img src="../images/ic_popular_purple_32.png" alt="인기 검색어"/>
+            인기 검색어
+          </a></li>
+        </ul>
+        <div class="line"></div>
+
+          <!-- <ul>
+            <li class="gnb-item"><a href="#">
+              <img src="/images/ic_board_purple_32.png" alt="게시판" />
+              게시판
+            </a></li>
+          </ul> -->
+      </nav>
+
+    </div>
+  </section>
+  <!-- sidemenu end -->
+
+  <div class="html-box">
+
+      <!-- header -->
+      <header id="header">
+        <div class="header-wrap">
+          <h2 class="notice-title">공지사항</h2>
+          <a href="#" class="notice-sub">
+            스마트 브랜드몰 홈페이지 구축 안내 스마트 브랜드몰 홈페이지 구축 안내 스마트몰 브랜드몰
+          </a>
+        <button class="membership-btn">멤버십 소개</button>
+        </div>
+      </header>
+      <!-- header end -->
+
+      <section class="body">
+
+        <div class="contents">
+
+          <!-- 컨텐츠 타이틀 영역 start -->
+          <div class="title-area">
+            <div class="title-wrap">
+              <h2 class="title">이용 중인 상품</h2>
+            </div>
+            <nav>
+              <ol class="location-history">
+                <li><a href="#">HOME</a></li>
+                <li><a href="#">이용 중인 상품</a></li>
+              </ol>
+            </nav>
+          </div>
+          <!-- //컨텐츠 타이틀 영역 end -->
+          <!-- 컨텐츠 박스 start -->
+          <div class="subscription-box box">
+            <!-- 달력 및 검색 창 start -->
+            <div class="check-search">
+              <form>
+                <label for="start-date">시작일</label>
+                <input type="date" id="start-date" name="start-date" placeholder="시작일" value="시작일">
+                <span> - </span>
+                <label for="end-date">종료일</label>
+                <input type="date" id="end-date" name="end-date" placeholder="종료일">
+                <button type="submit" class="check-btn">조회</button>
+              </form>
+              <form>
+                <label for="search">검색</label>
+                <input type="search" name="search" id="search" placeholder="검색어를 입력하세요.">
+                <button class="search-btn">
+                  <img src="../images/ic_search_purple_40.png" alt="검색">
+                </button>
+              </form>
+            </div>
+            <div class="selectbox bottom-setting">
+              <div class="use-whether">
+                <span>사용 여부</span>
+                <button class="label">전체</button>
+                <ul>
+                  <li>전체</li>
+                  <li>사용</li>
+                  <li>미사용</li>
+                </ul>
+              </div>
+              <div class="auto-extension">
+                <span>자동 연장 여부</span>
+                <button class="label">전체</button>
+                <ul>
+                  <li>전체</li>
+                  <li>자동</li>
+                  <li>수동</li>
+                </ul>
+              </div>
+              <div class="seller">
+                <span>판매자 상품명</span>
+                <button class="label">전체</button>
+                <ul>
+                  <li>전체</li>
+                  <li>제주농부 제주 미니 꼬마 애플망공 2kg 3kg (가정구매)</li>
+                  <li>딸기 산향 산지직송 프리미엄 생딸기</li>
+                </ul>
+              </div>
+            </div>
+            <!-- //달력 및 검색 창 end -->
+
+            <!-- 선택 버튼 및 페이지 컨트롤러 start -->
+            <div class="top-controller">
+              <div class="btn-wrap">
+                <button class="choice-btn extension">선택 연장신청</button>
+                <button class="choice-btn">선택 초기화</button>
+                <button class="choice-btn">선택 삭제</button>
+                <span>기간 만료된 상품은 3일 뒤 자동으로 삭제됩니다.</span>
+              </div>
+              <div class="selectbox paging-wrap">
+                <button class="prev dis">prev</button>
+                <button class="next dis">next</button>
+                <div class="count">
+                  <button class="label">20개</button>
+                  <ul>
+                    <li>20개</li>
+                    <li>50개</li>
+                    <li>100개</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- //선택 버튼 및 페이지 컨트롤러 end -->
+
+            <!-- 테이블 영역 start -->
+            <div class="subscription-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                      <label for="check">
+                        <input type="checkbox" id="check" name="check" disabled>
+                        <span class="checkbox dis"></span>
+                      </label>
+                    </th>
+                    <th>상품 <br> 고유번호</th>
+                    <th>플랫폼</th>
+                    <th>
+                      판매자 상품명 <br>
+                      <img src="../images/ic_sort_black_24.png" alt="">
+                    </th>
+                    <th>순위 측정 키워드</th>
+                    <th>상품 <br> 종류</th>
+                    <th>
+                      순위 <br>
+                      <img src="../images/ic_sort_black_24.png" alt="">
+                    </th>
+                    <th>
+                      잔여일 <br>
+                      <img src="../images/ic_sort_black_24.png" alt="">
+                    </th>
+                    <th>가격 비교 MID <br> 컨텐츠 MID</th>
+                    <th>상세 <br> 분석 보기</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+              <div class="search-null">
+                <img src="../images/img_question_gray_64.png" alt="">
+                <p>
+                  해당 키워드의 검색 결과가 없습니다. <br>
+                  입력하신 검색어를 확인해 주세요.
+                </p>
+              </div>
+            </div>
+            <!-- 테이블 영역 end -->
+
+            <!-- 하단 페이징 영역 start -->
+            <div class="bottom-controller">
+              <div class="result">
+                결과
+                <span class="start-count">0</span>-<span class="end-count">0</span>
+                /
+                <span class="all-count">0</span>
+              </div>
+              <div class="paging-wrap">
+                <button class="prev-second dis"></button>
+                <button class="prev dis"></button>
+                <ol>
+                  <li class="active">1</li>
+                  <li class="disabled">2</li>
+                  <li class="disabled">3</li>
+                  <li class="disabled">4</li>
+                  <li class="disabled">5</li>
+                  <li class="disabled">6</li>
+                  <li class="disabled">7</li>
+                  <li class="disabled">8</li>
+                  <li class="disabled">9</li>
+                </ol>
+                <button class="next dis"></button>
+                <button class="next-second dis"></button>
+              </div>
+            </div>
+            <!-- 하단 페이징 영역 end -->
+          </div>
+          <!-- //컨텐츠 박스 end -->
+
+        </div>
+        
+      </section>
+
+      <!-- footer -->
+      <footer id="footer">
+        <div class="footer-wrap"> 
+          <div class="footer-nav">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">자주 묻는 질문</a>
+          </div>
+          <div class="company">
+            <img class="logo-img" src="../images/logo_gray_130.png" alt="TOP RANK" />
+            <div class="company-info">
+              <p>서울특별시 강서구 공항대로 227 마곡세트럴타워1차</p>
+              <span>|</span>
+              <p>대표이사 김태형</p>
+              <span>|</span>
+              <p>사업자등록번호 104-81-25980</p>
+              <span>|</span>
+              <p> 통신판매업신고번호 중구02802호</p>
+            </div>  
+            <p class="company-txt"> 서비스문의 help@crefe.co.kr</p>
+            <p class="company-txt"> Copyright@CREFE.ALL Rights Reserved</p>
+          </div>
+        </div>
+      </footer>
+      <!-- footer end -->
+
+  </div>
+
+
+  <script>
+    const selectLabel = document.querySelectorAll('.selectbox > div .label');
+    const selectBox = document.querySelectorAll('.selectbox > div ul');
+    const selectOption = document.querySelectorAll('.selectbox > div ul li');
+
+    Array.from(selectLabel).forEach((el) => {
+      el.addEventListener('click', () => {
+        if(el.parentNode.classList.contains('active')) {
+          el.parentNode.classList.remove('active');
+        } else {
+          el.parentNode.classList.add('active');
+        }
+      });
+    });
+
+    Array.from(selectOption).forEach((el) => {
+      el.addEventListener('click', () => {
+        el.parentNode.previousSibling.previousSibling.innerHTML = el.textContent;
+        el.parentNode.parentNode.classList.remove('active');
+      });
+    });
+  </script>
+</body>
+</html>
