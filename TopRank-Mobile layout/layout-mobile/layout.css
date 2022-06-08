@@ -1,0 +1,207 @@
+@charset "utf-8";
+@import url("../common.css");
+
+/* wrap bg */
+#wrap {
+  width: 100%;
+  /* height: 100vh; */
+  background: #f7f7fc url('../images/m_img_bg_main_title.png') top center no-repeat;
+  background-size: contain;
+}
+
+
+/* header */
+.mobile .navifation-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  background: #f7f8ffc4;
+  padding: 0 16px;
+  box-shadow: 0 1px 10px 0 rgba(36, 41, 179, 0.2);
+  box-sizing: border-box;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.mobile .navifation-bar .membership-btn {
+  float: left;
+  width: 4.625rem;
+  height: 1.313rem;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  line-height: 21px;
+  border-radius: 16px;
+  background: #e6458e;
+}
+.mobile .navifation-bar .logo {
+  width: 5.000rem;
+  height: 0.875rem;
+}
+.mobile .navifation-bar .logo img {
+  width: 100%;
+}
+.mobile .navifation-bar .all-menu {
+  padding: 0;
+  background: none;
+}
+
+@media screen and (max-width: 361px) {}
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  #wrap {
+    background: #f7f7fc url('../images/m_img_bg_main_title@2x.png') top center no-repeat;
+    background-size: contain;
+  }
+}
+@media screen and (min-width: 768px) {
+	#wrap {
+		width: 750px;
+		margin: 0 auto;
+    background: #f7f7fc url('../images/m_img_bg_main_title@3x.png') top center no-repeat;
+    background-size: contain;
+	}
+}
+
+/* contents */
+#contents {
+  width: 100%; 
+  height: 95vh;
+}
+
+
+/* footer */
+#footer {
+  width: 100%;
+  height: 534px;
+  background: #f7f7fc url('../images/m_img_bg_footer.png') bottom center no-repeat;
+  background-size: cover;
+}
+#footer .footer-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 160px;
+  background: url('../images/m_img_main_banner.png') center no-repeat;
+  padding: 0 3% 0 5%;
+}
+#footer .footer-banner .banner-txt {
+
+}
+#footer .footer-banner .banner-txt img {
+  width: 1.300rem;
+  height: 0.188rem;
+}
+#footer .footer-banner .banner-txt p {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.44;
+  margin-top: 5px;
+}
+#footer .footer-banner .banner-txt a {
+  display: block;
+  width: 6.500rem;
+  height: 1.563rem;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 0.750rem;
+  color: #fff;
+  line-height: 1.5rem;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 24px;
+  margin-top: 8px;
+}
+#footer .footer-banner > img {
+  width: 4.625rem;
+  height: 4.563rem;
+}
+#footer .pc-btn {
+  display: block;
+  width: 19.500rem;
+  height: 1.875rem;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 0.750rem;
+  color: #b8b6c4;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  margin: 0 auto;
+  margin-top: 3.500rem;
+  background: none;
+}
+#footer .footer-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.125rem;
+}
+#footer .footer-nav li {
+  font-size: 0.750rem;
+  font-family: 'Spoqa Han Sans Neo';
+}
+#footer .footer-nav li:nth-child(2n) {
+  margin: 0 1.000rem;
+  color: #3e4259;
+}
+#footer .footer-nav li a {
+  /* vertical-align: middle; */
+  color: #3e4259;
+}
+#footer .footer-logo {
+  width: 4.461rem;
+  height: 0.774rem;
+  margin: 24px auto 16px;
+}
+#footer .footer-logo img {
+  width: 100%;
+  height: 100%;
+}
+#footer .company-info {
+  text-align: center;
+}
+#footer .company-info address {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 0.750rem;
+  font-weight: normal;
+  color: #b8b6c4;
+  font-style: normal;
+  margin-bottom: 8px;
+}
+#footer .company-info ul {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+#footer .company-info ul li {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 0.750rem;
+  font-weight: normal;
+  color: #b8b6c4;
+}
+#footer .company-info ul li:nth-child(2) {
+  margin: 0 1.000rem;
+}
+#footer .company-info p {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 0.750rem;
+  font-weight: normal;
+  color: #b8b6c4;
+}
+#footer .service-inquire {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 0.750rem;
+  font-weight: normal;
+  color: #b8b6c4;
+  text-align: center;
+  margin-top: 24px;
+}
+#footer .copyright {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 0.750rem;
+  font-weight: normal;
+  color: #b8b6c4;
+  text-align: center;
+  margin-top: 16px;
+}
