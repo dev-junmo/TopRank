@@ -114,10 +114,10 @@
           <!-- 중단 메뉴 start -->
           <div class="gnb-wrap active">
             <ul class="my-page-gnb">
-              <li class="active">
+              <li>
                 <a href="#">포인트 활동</a>
                 <ul>
-                  <li class="on"><a href="#">포인트 조회</a></li>
+                  <li><a href="#">포인트 조회</a></li>
                   <li><a href="#">포인트 충전 내역</a></li>
                   <li><a href="#">포인트 사용 내역</a></li>
                 </ul>
@@ -129,10 +129,10 @@
                   <li><a href="#">쪽지 수신함</a></li>
                 </ul>
               </li>
-              <li>
+              <li class="active">
                 <a href="#">나의 정보</a>
                 <ul>
-                  <li><a href="#">회원 정보 수정</a></li>
+                  <li class="on"><a href="#">회원 정보 수정</a></li>
                 </ul>
               </li>
             </ul>
@@ -166,13 +166,13 @@
                 <div>
                   <input type="password" name="password-change" id="password-change" placeholder="비밀번호" required>
                   <span class="description">8~15자 영문, 숫자, 특수문자가 포함된 조합을 사용해주세요.</span>
-                  <button class="password-look"></button>
+                  <button type="button" class="password-look"></button>
                 </div>
               </div>
               <div class="required">
                 <label for="password-change-confirm">비밀번호 변경 확인</label>
                 <input type="password" name="password-change-confirm" id="password-change-confirm" placeholder="비밀번호 재입력" required>
-                <button class="password-look"></button>
+                <button type="button" class="password-look"></button>
               </div>
               <div class="email">
                 <label for="email">이메일</label>

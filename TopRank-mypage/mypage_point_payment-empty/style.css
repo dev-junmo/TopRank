@@ -272,6 +272,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 .gnb-wrap > ul > li {
   height: 56px;
   line-height: 56px;
+  padding-left: 115px;
 }
 .gnb-wrap > ul > li > a {
   color: #3e4259;
@@ -284,7 +285,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   width: 354px;
   font-size: 18px;
   font-weight: 500;
-  text-align: center;
+  /* text-align: center; */
 }
 .gnb-wrap > ul > li ul li {
   height: 48px;
@@ -305,6 +306,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 .title-area {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 1240px;
   margin-top: 172px;
 }
@@ -906,6 +908,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   width: 100%;
   height: 384px;
   background: #f7f8ff;
+  border-bottom: 1px solid #dcdee8;
 }
 .point-table .point-payment-empty p {
   font-size: 16px;
@@ -965,6 +968,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 }
 .point-payment-box .paging-wrap .prev {
   background: url('../images/ic_arrow_left_black_40.png') center no-repeat;
+  margin-right: 16px;
 }
 .point-payment-box .paging-wrap .next-second.dis {
   background: url('../images/ic_last_gray_40.png') center no-repeat;
@@ -977,6 +981,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 }
 .point-payment-box .paging-wrap .next {
   background: url('../images/ic_arrow_right_black_40.png') center no-repeat;
+  margin-left: 16px;
 }
 
 /* ------------------------------------------------------------------------- */

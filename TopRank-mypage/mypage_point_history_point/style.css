@@ -273,6 +273,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 .gnb-wrap > ul > li {
   height: 56px;
   line-height: 56px;
+  padding-left: 115px;
 }
 .gnb-wrap > ul > li > a {
   color: #3e4259;
@@ -285,12 +286,11 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   width: 354px;
   font-size: 18px;
   font-weight: 500;
-  text-align: center;
+  /* text-align: center; */
 }
 .gnb-wrap > ul > li ul li {
   height: 48px;
   line-height: 48px;
-
 }
 .gnb-wrap > ul > li ul li.on a {
   color: #3f37c9;
@@ -306,6 +306,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 .title-area {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 1240px;
   margin-top: 172px;
 }
@@ -400,6 +401,9 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   color: #e6458e;
   vertical-align: middle;
   text-align: center;
+}
+.point-box .reward-point .point-content span {
+  margin-left: -15px;
 }
 .point-box .point-content span strong {
   font-family: 'Gmarket Sans';
@@ -906,6 +910,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-top: 4px;
 }
 .point-table table td .keyword-product .keyword-description p .keyword {
   font-weight: 500;
@@ -1009,6 +1014,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 }
 .point-history-box .paging-wrap .prev {
   background: url('../images/ic_arrow_left_black_40.png') center no-repeat;
+  margin-right: 16px;
 }
 .point-history-box .paging-wrap .next-second.dis {
   background: url('../images/ic_last_gray_40.png') center no-repeat;
@@ -1021,6 +1027,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 }
 .point-history-box .paging-wrap .next {
   background: url('../images/ic_arrow_right_black_40.png') center no-repeat;
+  margin-left: 16px;
 }
 
 /* ------------------------------------------------------------------------- */

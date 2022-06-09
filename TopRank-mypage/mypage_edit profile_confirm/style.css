@@ -306,6 +306,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 .title-area {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 1240px;
   margin-top: 172px;
 }
@@ -419,4 +420,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   width: 32px;
   height: 32px;
   background: url('../images/ic_hide_gray_32.png') center no-repeat;
+}
+.password-confirm-area form .password-look.on {
+  background: url('../images/ic_view_gray_32.png') center no-repeat;
 }
