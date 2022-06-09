@@ -1,0 +1,545 @@
+@charset "utf-8";
+@import url("../common.css");
+
+/* 반응형을 위한 최상위 폰트 사이즈 변경 */
+html { font-size: 62.5%; }
+
+/* wrap bg */
+#wrap {
+  position: relative;
+  width: 100%;
+  /* height: 100vh; */
+  font-family: 'Spoqa Han Sans Neo';
+  background: #f7f7fc url('../images/m_img_bg_main_title.png') top center no-repeat;
+  background-size: contain;
+  overflow: hidden;
+}
+
+/* 버튼 및 input 태그 서체 적용 */
+button, input {
+  font-family: 'Spoqa Han Sans Neo';
+}
+
+/* ================================================================================================================ */
+/* ================================================================================================================ */
+/* header */
+.mobile .header-wrap {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-family: 'Spoqa Han Sans Neo';
+  overflow: hidden;
+}
+.mobile .navifation-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.8rem;
+  background: #f7f8ffc4;
+  padding: 0 27px 0 16px;
+  box-shadow: 0 1px 10px 0 rgba(36, 41, 179, 0.2);
+  box-sizing: border-box;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.mobile .header-wrap .membership-btn {
+  float: left;
+  width: 7.4rem;
+  height: 2.1rem;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+  text-align: center;
+  line-height: 2.1rem;
+  border-radius: 16px;
+  background: #e6458e;
+}
+.mobile .header-wrap .logo {
+  width: 7.99rem;
+  height: 1.39rem;
+}
+.mobile .header-wrap .logo img {
+  width: 100%;
+}
+.mobile .header-wrap .all-menu {
+  position: relative;
+  width: 1.8rem;
+  height: 1.4rem;
+  padding: 0;
+  background: none;
+  z-index: 10;
+}
+.mobile .header-wrap .all-menu .burger-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.8rem;
+  height: 2px;
+  border-radius: 2px;
+  background: #3f37c9;
+  transition: all 0.2s ease-out;
+}
+.mobile .header-wrap .all-menu .burger-item2 {
+  top: 6px;
+}
+.mobile .header-wrap .all-menu .burger-item3 {
+  top: 12px;
+}
+.mobile .header-wrap .all-menu.open .burger-line {
+  top: 8px;
+  background: #3f37c9;
+  transition: all 0.2s ease-out;
+}
+.mobile .header-wrap .all-menu.open .burger-item1 {
+  transform: rotate(45deg);
+}
+.mobile .header-wrap .all-menu.open .burger-item2 {
+  opacity: 0;
+}
+.mobile .header-wrap .all-menu.open .burger-item3 {
+  transform: rotate(135deg);
+}
+.mobile .header-wrap .circle {
+  position: absolute;
+  right: 36px;
+  top: 24px;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #f7f8ff;
+  transition: all 0.5s;
+}
+.mobile .header-wrap .circle.active {
+  width: 1900px;
+  height: 1900px;
+  top: -500px;
+  right: -565px;
+}
+
+/* 모바일 메뉴 */
+.mobile .m-menu {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #f7f8ff;
+  box-shadow: 0 1px 10px 0 rgba(36, 51, 179, 0.1);
+  opacity: 0;
+}
+.mobile .m-menu.active {
+  display: block;
+  animation: fade-in 0.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 0.3s;
+}
+.mobile .menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.mobile .m-menu .menu-header {
+  justify-content: start;
+}
+.mobile .menu-header .menu-close {
+  background: none;
+  border: 0;
+}
+.mobile .m-menu .logo {
+  margin-left: 70px;
+}
+.mobile .login-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+.mobile .login-area .login-state {
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: #b8b6c4;
+}
+.mobile .login-area .login-btn {
+  width: 6.4rem;
+  height: 2.7rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #3f37c9;
+  border: 1px solid #3f37c9;
+  border-radius: 8px;
+  background: none;
+}
+.mobile .m-gnb {
+  margin-top: 40px;
+  padding: 0 24px;
+}
+.mobile .m-gnb > ul {
+  padding-bottom: 2px;
+  border-bottom: 1px solid #dcdee8;
+}
+.mobile .m-gnb ul li {
+  margin-bottom: 28px;
+}
+.mobile .m-gnb ul li > img {
+  width: 24px;
+  height: 24px;
+  opacity: 0.4;
+  vertical-align: middle;
+}
+.mobile .m-gnb ul li a {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #3e4259;
+  margin-left: 16px;
+}
+.mobile .m-gnb .bottom-gnb {
+  padding-bottom: 0;
+  padding-top: 30px;
+  border-bottom: 0;
+}
+.mobile .m-gnb .bottom-gnb > li {
+  position: relative;
+}
+.mobile .m-gnb .bottom-gnb .fold-btn {
+  position: absolute;
+  right: 0;
+  top: -8px;
+  background: none;
+}
+.mobile .m-gnb .bottom-gnb ul {
+  padding-left: 28px;
+  margin-top: 24px;
+}
+.mobile .m-gnb .bottom-gnb ul li a {
+  color: #b8b6c4;
+}
+
+
+@media screen and (max-width: 361px) {}
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  html { font-size: 87.5%; }
+  #wrap {
+    background: #f7f7fc url('../images/m_img_bg_main_title@2x.png') top center no-repeat;
+    background-size: contain;
+  }
+}
+@media screen and (min-width: 768px) {
+  html { font-size: 87.5%; }
+	#wrap {
+		width: 750px;
+		margin: 0 auto;
+    background: #f7f7fc url('../images/m_img_bg_main_title@3x.png') top center no-repeat;
+    background-size: contain;
+	}
+  .mobile .header-wrap {
+    width: 750px;
+    left: 50%;
+    /* transform: translateX(-50%); */
+    margin-left: -375px;
+  }
+  .mobile .m-menu {
+    width: 750px;
+    left: 50%;
+    margin-left: -375px;
+  }
+}
+
+/* ================================================================================================================ */
+/* ================================================================================================================ */
+/* contents */
+#contents {
+  position: relative;
+  width: 100%; 
+  height: 95vh;
+  z-index: 10;
+}
+/* 상단 타이틀 문구 */
+.main-title-area {
+  /* padding-top: 14.0rem; */
+  padding-top: 39%;
+  text-align: center;
+}
+.main-title-area .main-small-title {
+  position: relative;
+  font-size: 2.0rem;
+  font-weight: 500;
+  color: #3f37c9;
+}
+.main-title-area .main-small-title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 8px;
+  top: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #3f37c9;
+}
+.main-title-area .main-small-title::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 90px;
+  top: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #3f37c9;
+}
+.main-title-area .main-title {
+  font-size: 4.8rem;
+  font-weight: bold;
+  color: #3f37c9;
+  margin-top: 10px;
+}
+
+/* 탭 메뉴 */
+.main-tab-area {
+  margin-top: 6.0rem;
+  padding: 0 2.4rem;
+}
+.main-tab-area .main-tab {
+  display: flex;
+}
+.main-tab-area .main-tab li {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #04021f;
+  text-align: center;
+  line-height: 3.3rem;
+  padding: 0 9px 0 5px;
+  background: #f2f5fc;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+.main-tab-area .main-tab li img {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: -3px;
+  margin-top: -5px;
+}
+.main-tab-area .main-tab li.active {
+  background: #fff;
+}
+
+/* 탭 컨텐츠 영역 */
+.main-contents-wrap {
+
+}
+.main-contents-wrap .main-contents {
+  display: none;
+}
+.main-contents-wrap .main-contents.active {
+  display: block;
+}
+.main-contents-wrap .keyword-search > form {
+  position: relative;
+}
+.main-contents-wrap .keyword-search > form input {
+  width: 100%;
+  height: 5.2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #04021f;
+  border-radius: 8px;
+  background: #fff;
+  padding: 0 6.4rem 0 1.6rem;
+  outline: 0;
+  border: 0;
+  border-top-left-radius: 0;
+  box-shadow: 0 6px 8px 0 rgba(36, 51, 179, 0.15);
+  box-sizing: border-box;
+}
+.main-contents-wrap .keyword-search > form button {
+  position: absolute;
+  right: 16px;
+  top: 10px;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: none;
+  padding: 0;
+}
+.main-contents-wrap .keyword-search > form button img {
+  width: 100%;
+}
+.keyword-search .trend-keyword {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.keyword-search .trend-keyword p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #3e4259;
+  margin-right: 24px;
+}
+.keyword-search .trend-keyword ul {
+  display: flex;
+}
+.keyword-search .trend-keyword ul li {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #3f37c9;
+  margin-right: 16px;
+}
+.keyword-search .trend-keyword ul li:last-child {
+  margin-right: 0;
+}
+
+
+/* ================================================================================================================ */
+/* ================================================================================================================ */
+/* footer */
+#footer {
+  width: 100%;
+  height: 534px;
+  background: #f7f7fc url('../images/m_img_bg_footer.png') bottom center no-repeat;
+  background-size: cover;
+}
+#footer .footer-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 160px;
+  background: url('../images/m_img_main_banner.png') center no-repeat;
+  padding: 0 3% 0 5%;
+}
+#footer .footer-banner .banner-txt {
+
+}
+#footer .footer-banner .banner-txt img {
+  width: 2.08rem;
+  height: 0.39rem;
+}
+#footer .footer-banner .banner-txt p {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.44;
+  margin-top: 5px;
+}
+#footer .footer-banner .banner-txt a {
+  display: block;
+  width: 10.4rem;
+  height: 2.5rem;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 2.3rem;
+  text-align: center;
+  border: 1px solid #fff;
+  border-radius: 24px;
+  margin-top: 8px;
+}
+#footer .footer-banner > img {
+  width: 7.4rem;
+  height: 7.3rem;
+}
+#footer .pc-btn {
+  display: block;
+  width: 31.2rem;
+  height: 3.0rem;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 1.2rem;
+  color: #b8b6c4;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  margin: 0 auto;
+  margin-top: 5.6rem;
+  background: none;
+}
+#footer .footer-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.8rem;
+}
+#footer .footer-nav li {
+  font-size: 1.2rem;
+  font-family: 'Spoqa Han Sans Neo';
+}
+#footer .footer-nav li:nth-child(2n) {
+  margin: 0 1.6rem;
+  color: #dcdee8;
+}
+#footer .footer-nav li a {
+  /* vertical-align: middle; */
+  color: #3e4259;
+}
+#footer .footer-logo {
+  width: 7.09rem;
+  height: 1.19rem;
+  margin: 24px auto 16px;
+}
+#footer .footer-logo img {
+  width: 100%;
+  height: 100%;
+}
+#footer .company-info {
+  text-align: center;
+}
+#footer .company-info address {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #b8b6c4;
+  font-style: normal;
+  margin-bottom: 8px;
+}
+#footer .company-info ul {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+#footer .company-info ul li {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #b8b6c4;
+}
+#footer .company-info ul li:nth-child(2) {
+  margin: 0 1.000rem;
+}
+#footer .company-info p {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #b8b6c4;
+}
+#footer .service-inquire {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #b8b6c4;
+  text-align: center;
+  margin-top: 24px;
+}
+#footer .copyright {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #b8b6c4;
+  text-align: center;
+  margin-top: 16px;
+}
