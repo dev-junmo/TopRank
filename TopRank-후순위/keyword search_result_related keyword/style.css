@@ -1,0 +1,468 @@
+@charset "utf-8";
+
+
+/* 서브 페이지 background */
+.html-box {
+  background: #f7f7fc url('../images/img_bg_sub_title.png') no-repeat;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  font-family: 'Spoqa Han Sans Neo';
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* input 기본 달력 스타일 삭제 */
+input[type="date"]::-webkit-clear-button, input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  background: none;
+}
+input[type=date]::-webkit-datetime-edit-text { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-month-field{ -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-day-field { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; display: none; }
+
+
+/* 팝업 스타일 */
+.cm-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.cm-popup.active {
+  display: flex;
+}
+.cm-popup .popup-box {
+  position: relative;
+  width: 576px;
+  height: 423px;
+  border-radius: 16px;
+}
+.cm-popup .popup-box .popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  border-bottom: 1px solid #dcdee8;
+}
+.cm-popup .popup-box .popup-header h3 {
+  font-family: 'Spoqa Han Sans Neo';
+  color: #3e4259;
+  font-size: 16px;
+  font-weight: 500;
+}
+.cm-popup .popup-box .popup-header button {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+}
+.cm-popup .popup-box .first-registration {
+  padding: 56px 0 16px 24px;
+  color: #3e4259;
+}
+.cm-popup .popup-box .first-registration .date {
+  margin-left: 16px;
+  margin-right: 8px;
+}
+.cm-popup .popup-box .popup-contents {
+  width: 100%;
+  height: 210px;
+  padding: 18px 24px 16px;
+  background: #f2f3fa;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents ul {
+  height: 174px;
+  overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents li {
+  color: #3e4259;
+  margin-bottom: 10px;
+}
+.cm-popup .popup-box .popup-contents li .date {
+  float: left;
+  margin-right: 24px;
+}
+.cm-popup .popup-box .popup-contents li .variance {
+  float: left;
+}
+.cm-popup .popup-box .popup-contents li .variance span {
+  margin: 0 6px;
+}
+.cm-popup .popup-box .popup-contents li .variance strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  color: #04021f;
+}
+.cm-popup .popup-box .popup-contents li .trend {
+  float: right;
+}
+.cm-popup .popup-box .popup-contents li .trend strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  color: #04021f;
+}
+.cm-popup .popup-box .popup-contents li .trend img {
+  vertical-align: middle;
+  margin-top: -3px;
+}
+.cm-popup .popup-box .popup-contents li::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.cm-popup .popup-box .copy-btn {
+  width: 61px;
+  height: 41px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.31;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  background: #3f37c9;
+  padding: 10px 0;
+  margin: 23px auto 0;
+  cursor: pointer;
+}
+.cm-popup .popup-box .popup-contents li .data-reset {
+  color: #3e4259;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1240px;
+  margin-top: 58px;
+}
+.title-area .title {
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 30px;
+  font-weight: bold;
+  color: #04021f;
+  padding-left: 48px;
+  background: url('../images/ic_keyword_color_30@2x.png') left center no-repeat;
+  background-size: 40px;
+  line-height: 38px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 48px;
+  margin-top: 14px;
+  color: #3f37c9;
+}
+.title-area .location-history {
+  display: flex;
+  align-items: center;
+  margin-top: 11px;
+}
+.title-area .location-history li {
+  font-size: 18px;
+}
+.title-area .location-history li:not(:last-child) {
+  position: relative;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .location-history li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_arrow_right_gray_24.png') center no-repeat;
+}
+.title-area .location-history li a {
+  color: #b8b6c4;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 키워드 검색 박스 */
+.search-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  width: 1240px;
+  height: 264px;
+  border-radius: 48px;
+  margin: 50px 0 56px;
+  background: #f2f2fc;
+  padding: 0 164px;
+}
+.search-box label {
+  display: none;
+}
+.search-box .search-input {
+  width: 912px;
+  height: 64px;
+  box-shadow: 0 6px 6px 0 rgba(36, 51, 179, 0.1);
+  border-radius: 16px;
+  background: #fff;
+  padding: 9px 32px;
+  box-sizing: border-box;
+}
+.search-box .search-input form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-box .search-input input {
+  width: 768px;
+  height: 28px;
+  border: 0;
+  outline: 0;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+.search-box .search-input input::placeholder {
+  font-weight: 800;
+  color: #b8b6c4;
+}
+.search-box .search-input button {
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  margin-top: -2px;
+}
+.search-box .realtime-trend {
+  display: flex;
+  align-items: center;
+  padding: 20px 0 0 32px;
+}
+.search-box .realtime-trend span {
+  font-weight: 500;
+  color: #3f37c9;
+  line-height: 1.44;
+  margin-right: 40px;
+  margin-top: 2px;
+}
+.search-box .realtime-trend ul {
+  display: flex;
+}
+.search-box .realtime-trend ul li:not(:last-child) {
+  margin-right: 32px;
+}
+.search-box .realtime-trend ul li a {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 키워드 검색어 컨텐츠 */
+.keyword-search-contents {
+  width: 1240px;
+  position: relative;
+}
+
+/* 탭메뉴 */
+.keyword-search-contents .searching-tab {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 56px;
+}
+.keyword-search-contents .searching-tab li {
+  width: 456px;
+  height: 44px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #3e4259;
+  text-align: center;
+}
+.keyword-search-contents .searching-tab li.active {
+  color: #5049ce;
+  border-bottom: 2px solid #5049ce;
+}
+
+/* 클립보드 */
+.clip-board-box {
+  padding: 31px 24px 65px;
+  margin-bottom: 40px;
+}
+.clip-board-box .box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.clip-board-box .btn-wrap button {
+  width: 102px;
+  height: 32px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 30px;
+  border-radius: 24px;
+  padding-left: 13px;
+}
+.clip-board-box .btn-wrap button img {
+  margin-top: -3px;
+}
+.clip-board-box .btn-wrap .all-copy {
+  background: #3f37c9;
+  margin-right: 20px;
+}
+.clip-board-box .btn-wrap .all-delete {
+  background: #de3c33;
+}
+.clip-board-box .clip-board-contents {
+  display: flex;
+}
+.clip-board-box .clip-board-contents .clip-board-description {
+  font-size: 18px;
+  font-weight: bold;
+  color: #b8b6c4;
+  border: 2px dashed #d9d8e1;
+  border-radius: 24px;
+  background: #f2f3fa;
+  padding: 8px 24px;
+}
+.clip-board-box .clip-board-contents button {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #5049ce;
+  border: 1px solid #3f37c9;
+  padding: 7px 16px 7px 24px;
+  background: #fafbff;
+  border-radius: 24px;
+  line-height: 1.3;
+  margin-left: 24px;
+}
+.clip-board-box .clip-board-contents button img {
+  vertical-align: top;
+}
+
+/* 연관검색어 */
+.related-search-wrap {
+
+}
+.related-search-wrap::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.related-search {
+  float: left;
+  width: 386px;
+  margin-right: 41px;
+  margin-bottom: 32px;
+  padding: 31px 24px 48px;
+}
+.related-search:nth-child(3n) {
+  margin-right: 0;
+}
+.related-search .box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.related-search .box-header .all-btn {
+  width: 76px;
+  height: 32px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
+  font-weight: bold;
+  color: #3f37c9;
+  line-height: 30px;
+  border: 1px solid #3f37c9;
+  background: #fafbff;
+  border-radius: 24px;
+  padding: 0;
+  padding-left: 7px;
+}
+.related-search .box-header .all-btn img {
+  margin-top: -3px;
+}
+.related-search .related-ranking {
+  padding: 0 16px;
+}
+.related-search .related-ranking ol {
+  counter-reset: number 0;
+}
+.related-search .related-ranking ol li {
+  position: relative;
+  padding: 17px 0;
+  border-bottom: 1px solid #dcdee8;
+}
+.related-search .related-ranking ol li .more-btn {
+  position: absolute;
+  right: 0;
+  top: 14px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #3f37c9;
+  background: #fafbff;
+  padding: 0;
+}
+.related-search .related-ranking ol li .more-btn img {
+  vertical-align: middle;
+}
+.related-search .related-ranking ol li:last-child {
+  border-bottom: 0;
+}
+.related-search .related-ranking ol li a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #04021f;
+}
+.related-search .related-ranking ol li::before {
+  counter-increment: number 1;
+  content: counter(number);
+  font-family: 'Gmarket Sans';
+  font-size: 20px;
+  font-weight: 500;
+  color: #3f37c9;
+  margin-right: 25px;
+}
+.related-search .related-ranking ol li:last-child::before {
+  margin-right: 18px;
+}
