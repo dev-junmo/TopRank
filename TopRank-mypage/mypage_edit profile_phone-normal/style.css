@@ -54,6 +54,12 @@ input[type=date]::-webkit-datetime-edit-month-field{ -webkit-appearance: none; d
 input[type=date]::-webkit-datetime-edit-day-field { -webkit-appearance: none; display: none; }
 input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; display: none; }
 
+/* input password 엣지 기본 눈모양 삭제 */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
 /* 셀렉트 박스 스타일 */
 .selectbox {
   float: right;
