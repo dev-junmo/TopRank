@@ -1,0 +1,330 @@
+@charset "utf-8";
+
+
+/* wrap bg */
+#wrap {
+  /* height: 100vh; */
+  background: #f2f2fc;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* email-join-wrap */
+.email-join-wrap {
+  padding: 0 1.6rem;
+}
+.email-join-header {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4.8rem;
+}
+.email-join-header .logo {
+  width: 10.34rem;
+  height: 1.78rem;
+  text-align: center;
+  margin: 0 auto;
+}
+.email-join-header .logo img {
+  width: 100%;
+  height: auto;
+}
+.email-join-header .back-btn {
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  background: #f2f2fc;
+  padding: 0;
+}
+.email-join-wrap .email-join-title {
+  font-size: 2.0rem;
+  font-weight: bold;
+  color: #3e4259;
+  text-align: center;
+  margin: 2.6rem 0 2.4rem;
+}
+.progress {
+  position: absolute;
+  left: 0;
+  top: 4.8rem;
+  width: 100%;
+  height: 2px;
+  background: #dcdee8;
+}
+.progress .proceeding {
+  width: 50%;
+  height: 100%;
+  background: #1cd9b9;
+}
+
+.email-join-wrap form > div {
+  position: relative;
+  margin-bottom: 2.4rem;
+}
+.email-join-wrap label {
+  display: flex;
+  align-items: flex-start;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #3e4259;
+  margin-bottom: 11px;
+  margin-left: 1.6rem;
+}
+.email-join-wrap label > span {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  background: #e62e6b;
+  border-radius: 50%;
+  margin-left: 4px;
+  margin-top: 2px;
+}
+.email-join-wrap .input-wrap {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+}
+.email-join-wrap input {
+  width: 100%;
+  height: 4.4rem;
+  border: 0;
+  outline: 0;
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: #04021f;
+  line-height: 4.4rem;
+  border: 1px solid #1cd9b9;
+  border-radius: 8px;
+  box-shadow: 0 3px 6px 0 rgba(36, 51, 179, 0.1);
+  padding: 0 1.6rem;
+  margin-right: 1.6rem;
+  box-sizing: border-box;
+}
+.email-join-wrap .using-btn input {
+  width: 76%;
+}
+.email-join-wrap input::placeholder {
+  color: #b8b6c4;
+}
+.email-join-wrap input.require:valid {
+  border: 1px solid #1cd9b9;
+}
+.email-join-wrap input.require:invalid {
+  border: 1px solid #de3c33;
+}
+.email-join-wrap .input-wrap button {
+  width: 7.1rem;
+  height: 4.4rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #b8b6c4;
+  line-height: 4.4rem;
+  background: #dcdee8;
+  border-radius: 8px;
+  padding: 0;
+  box-sizing: border-box;
+}
+.email-join-wrap .input-wrap button.active {
+  background: #3f37c9;
+  color: #fff;
+}
+.email-join-wrap .clear-btn {
+  /* display: none; */
+  position: absolute;
+  top: 3rem;
+  right: 8rem;
+  background: none;
+  border: 0;
+  outline: 0;
+}
+.email-join-wrap .clear-btn.long {
+  right: 10px;
+}
+.email-join-wrap .security-btn {
+  position: absolute;
+  right: 1.5rem;
+  top: 3.2rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: url('../images/ic_visible_off_gray_32.png') center no-repeat;
+}
+.email-join-wrap .security-btn.on {
+  background: url('../images/ic_visible_gray_32.png') center no-repeat;
+}
+.email-join-wrap .description {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #b8b6c4;
+  word-break: keep-all;
+  margin: 0.8rem 0 0px 1.6rem;
+}
+.email-join-wrap .check-matters {
+  margin-bottom: 8.3rem;
+}
+.email-join-wrap .check-matters label {
+  display: block;
+  font-weight: normal;
+  color: #3e4259;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 18px;
+  cursor: pointer;
+}
+.email-join-wrap .check-matters label::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.email-join-wrap label[for="token"] {
+  align-items: center;
+}
+.email-join-wrap label[for="token"] img {
+  width: 2.0rem;
+  height: 2.0rem;
+  margin-left: 2px;
+}
+.email-join-wrap .check-matters .check {
+  display: block;
+  float: left;
+  width: 2.0rem;
+  height: 2.0rem;
+  border-radius: 8px;
+  background: url('../images/ic_checkbox_off_32.png') center no-repeat;
+  background-size: 2.0rem;
+  margin-right: 12px;
+}
+.email-join-wrap .check-matters label p {
+  float: left;
+  font-size: 1.4rem;
+  line-height: 1.22;
+  font-weight: normal;
+  color: #3e4259;
+}
+.email-join-wrap .check-matters label[for="agreement-all"] {
+  position: relative;
+  padding-bottom: 3.8rem;
+  margin-top: 4.1rem;
+}
+.email-join-wrap .check-matters label[for="agreement-all"] p {
+  width: 88%;
+}
+.email-join-wrap .check-matters label[for="agreement-all"]::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 1.3rem;
+  width: 100%;
+  height: 1px;
+  background: #dcdee8;
+}
+.email-join-wrap .check-matters label p .necessary {
+  color: #e62e6b;
+}
+.email-join-wrap .check-matters label p .choice {
+  color: #b8b6c4;
+}
+.email-join-wrap .check-matters label input[type="checkbox"]:checked + span {
+  display: inline-block;
+  width: 2.0rem;
+  height: 2.0rem;
+  border-radius: 8px;
+  background: url('../images/ic_checkbox_on_32.png') center no-repeat;
+  background-size: 2.0rem;
+}
+.email-join-wrap .check-matters input[type="checkbox"] {
+  display: none;
+}
+.email-join-wrap .check-matters label .detail {
+  float: right;
+  width: 4.2rem;
+  height: 2.3rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3f37c9;
+  border: 1px solid #3f37c9;
+  border-radius: 8px;
+  background: #f2f2fc;
+  box-sizing: border-box;
+  margin-top: -2px;
+}
+.email-join-wrap .btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0;
+}
+.email-join-wrap .btn-wrap > button {
+  width: 15.6rem;
+  height: 4.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 8px;
+}
+.email-join-wrap .btn-wrap .cancel {
+  background: #b8b6c4;
+  margin-right: 24px;
+}
+.email-join-wrap .btn-wrap .join-up {
+  position: relative;
+  background: #dcdee8;
+  color: #b8b6c4;
+}
+.email-join-wrap .btn-wrap .join-up::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -13rem;
+  top: -3.7rem;
+  width: 28.1rem;
+  height: 3rem;
+  background: url('../images/img_join_bubble.png') center no-repeat;
+}
+.email-join-wrap .btn-wrap .join-up.active {
+  background: #3f37c9;
+  color: #fff;
+}
+.login-page {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #b8b6c4;
+  text-align: center;
+  margin-top: 3.2rem;
+  padding-bottom: 4.8rem;
+}
+
+.non-description .clear-btn {
+  top: 3.7rem;
+}
+
+/* 650px 이상 767px 이하 */
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  .email-join-wrap {
+    padding: 0 2.4rem;
+  }
+  .email-join-header .back-btn {
+    top: 1.1rem;
+  }
+  .email-join-wrap .security-btn {
+    top: 2.9rem;
+  }
+}
+
+/* 768px 이상 */
+@media screen and (min-width: 768px) {
+  .email-join-wrap {
+    padding: 0 3.6rem;
+  }
+  .email-join-header .back-btn {
+    top: 1.1rem;
+  }
+  .email-join-wrap .security-btn {
+    top: 2.9rem;
+  }
+}

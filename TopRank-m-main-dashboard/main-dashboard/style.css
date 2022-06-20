@@ -1,0 +1,241 @@
+@charset "utf-8";
+
+/* G마켓 폰트 */
+.g-num {
+  font-family: 'Gmarket Sans';
+}
+
+#wrap {
+  background: #f7f7fc url('../images/img_bg_main-dashboard_title-m.png') top center no-repeat;
+  background-size: contain;
+}
+#contents {
+  height: 100vh;
+  padding: 0 1.6rem; 
+}
+
+/* 유저 정보 카드 */
+.card-dashboard {
+  position: relative;
+  width: 100%;
+  background: #f7f7fc;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px 0 rgba(36, 51, 179, 0.2);
+  margin-top: 10.8rem;
+}
+.card-dashboard .user-info {
+  padding: 2.4rem;
+}
+.card-dashboard .user-info .name-ranking {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.card-dashboard .user-info .name-ranking .name-area {
+  display: flex;
+  align-items: flex-end;
+}
+.card-dashboard .user-info .name-ranking .name-area strong {
+  font-size: 2.0rem;
+  color: #04021f;
+}
+.card-dashboard .user-info .name-ranking .name-area span {
+  font-size: 2.0rem;
+  font-weight: normal;
+  color: #3e4259;
+}
+.card-dashboard .user-info .name-ranking .name-area .setting-btn {
+  display:  inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: #b8b6c4;
+  padding: 0;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+.card-dashboard .user-info .name-ranking .name-area .setting-btn img {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.card-dashboard .user-info .name-ranking .ranking-tier {
+  width: 4.0rem;
+  height: 4.0rem;
+}
+.card-dashboard .user-info .name-ranking .ranking-tier img {
+  width: 100%;
+  height: auto;
+}
+.card-dashboard .user-info .using-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 0.8rem; */
+}
+.card-dashboard .user-info .using-info > div {
+  width: 14.0rem;
+  text-align: center;
+}
+.card-dashboard .user-info .using-info .using-product {
+  border-right: 1px solid #b8b6c4;
+  padding-right: 1.5rem;
+}
+.card-dashboard .user-info .using-info .using-keyword {
+  padding-left: 1.5rem;
+}
+.card-dashboard .user-info .using-info > div strong {
+  font-size: 1.6rem;
+  color: #3e4259;
+}
+.card-dashboard .user-info .using-info > div p {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #e6458e;
+  margin-top: 10px;
+}
+.card-dashboard .user-info .using-info > div p b {
+  vertical-align: middle;
+}
+.card-dashboard .bottom-point-area {
+  background: #f2f2fc;
+  padding: 3.1rem 2.4rem 2.7rem;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+.card-dashboard .bottom-point-area ul li {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.0rem;
+  padding-left: 2.4rem;
+}
+.card-dashboard .bottom-point-area ul li:last-child {
+  margin-bottom: 0;
+}
+.card-dashboard .bottom-point-area ul li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 0;
+  width: 1.6rem;
+  height: 1.6rem;
+  background: url('../images/ic_payment-point_purple_24.png') left center no-repeat;
+  background-size: 1.6rem;
+}
+.card-dashboard .bottom-point-area ul li:nth-child(2)::before {
+  background: url('../images/ic_free-point_purple_24.png') left center no-repeat;
+  background-size: 1.6rem;
+}
+.card-dashboard .bottom-point-area ul li:nth-child(3)::before {
+  background: url('../images/ic_reward-point_purple_24.png') left center no-repeat;
+  background-size: 1.6rem;
+}
+.card-dashboard .bottom-point-area ul li:nth-child(4)::before {
+  background: url('../images/ic_coupon_purple_24.png') left center no-repeat;
+  background-size: 1.6rem;
+}
+.card-dashboard .bottom-point-area .point-num {
+  color: #e6458e;
+  vertical-align: middle;
+}
+.card-dashboard .bottom-point-area .point-num span {
+  vertical-align: middle;
+}
+.card-dashboard .unfold-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  bottom: -1.5rem;
+  border: 1px solid #dcdee8;
+  background: #fafbff;
+  border-radius: 50%;
+  margin-left: -1.75rem;
+  padding: 0;
+}
+.card-dashboard .unfold-btn::before {
+  content: "";
+  display: block;
+  width: 1.56rem;
+  height: 0.85rem;
+  background: url('../images/ic_fold_20.png') center no-repeat;
+  opacity: 0.5;
+}
+
+/* =================================================================================================================== */
+/* =================================================================================================================== */
+/* 이용 중인 상품 영역 start */
+.contents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  margin-top: 34px;
+}
+.contents-header .contents-title {
+  display: flex;
+  align-items: center;
+}
+.contents-header .contents-title img {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.contents-header .contents-title h2 {
+  font-size: 1.8rem;
+  color: #04021f;
+  padding-left: 5px;
+}
+.contents-header .all-view {
+  font-size: 1.4rem;
+  color: #3e4259;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #dcdee8;
+  background: #fafbff;
+  border-radius: 24px;
+}
+
+
+/* 반응형 브레이크 포인트 */
+@media screen and (max-width: 375px) {
+  .age-group-wrap .age-group:last-of-type {
+    margin-bottom: 0;
+    margin-right: 8px;
+  }
+}
+
+/* 650px 이상 767px 이하 */
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+
+/* 768px 이상 */
+@media screen and (min-width: 768px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+
