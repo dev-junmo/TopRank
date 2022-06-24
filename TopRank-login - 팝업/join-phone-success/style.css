@@ -1,0 +1,528 @@
+@import url("../common.css");
+@charset "utf-8";
+
+/* ===========================================*/
+/* =========================================== */
+/* header/body/html box*/
+.html-box {
+  background: #f7f7fc url('../images/img_bg_login.png') no-repeat;
+  position: relative;
+  min-width: 1620px;
+  font-family: 'Spoqa Han Sans Neo';
+  background-size: 100%;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* body */
+.contents {
+  width: 100%;
+  min-height: 1000px;
+  /* height: 100vh; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 35px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  font-family: 'Spoqa Han Sans Neo';
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 팝업 스타일 */
+.cm-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.cm-popup.active {
+  display: flex;
+}
+.cm-popup .popup-box {
+  position: relative;
+  width: 512px;
+  height: 294px;
+  border-radius: 16px;
+}
+.cm-popup .popup-box .popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 72px;
+}
+.cm-popup .popup-box .popup-header h3 {
+  font-family: 'Spoqa Han Sans Neo';
+  color: #3e4259;
+  font-size: 16px;
+  font-weight: 500;
+}
+.cm-popup .popup-box .popup-header .close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+}
+.cm-popup .popup-box .popup-contents {
+  width: 100%;
+  text-align: center;
+  margin-top: 70px;
+}
+.cm-popup .popup-box .popup-contents.lable {
+  margin-top: 40px;
+}
+.cm-popup .popup-box .popup-contents p {
+  font-size: 18px;
+  line-height: 1.31;
+}
+.cm-popup .popup-box .popup-contents.lable p {
+  margin-top: 26px;
+}
+.cm-popup .popup-box .popup-contents strong {
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+}
+.cm-popup .popup-box .confirm-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  background: #3f37c9;
+  margin: 65px auto 0;
+  cursor: pointer;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* login-box */
+.email-join-wrap {
+  /* width: 1240px; */
+  margin-top: 121px;
+}
+.email-join-wrap .logo {
+  width: 576px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.email-join-wrap .logo img {
+  width: 177px;
+  height: 30px;
+}
+.email-join-wrap .email-join-box {
+  width: 576px;
+  /* height: 771px; */
+  padding: 24px 36px 80px;
+  background: #f2f2fc;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+  box-sizing: border-box;
+}
+.email-join-box .progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+.email-join-box .progress .done {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #1cd9b9 url('../images/ic_check_white_10.png') center no-repeat;
+  margin-left: -7px;
+  box-sizing: border-box;
+}
+.email-join-box .progress .proceeding {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 2px solid #1cd9b9;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+.email-join-box .progress .proceeding::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -241px;
+  top: 3px;
+  width: 240px;
+  height: 4px;
+  background: #1cd9b9;
+}
+.email-join-box .progress .proceeding::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 12px;
+  top: 3px;
+  width: 239px;
+  height: 4px;
+  background: #dcdee8;
+}
+.email-join-box .progress .incomplete {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border: 2px solid #dcdee8;
+  border-radius: 50%;
+  margin-right: -7px;
+  box-sizing: border-box;
+}
+.email-join-box .email-join-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #3e4259;
+  text-align: center;
+  margin-bottom: 45px;
+}
+.email-join-box form > div {
+  position: relative;
+  margin-bottom: 32px;
+}
+.email-join-box label {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #3e4259;
+  margin-bottom: 11px;
+  margin-left: 24px;
+}
+.email-join-box label > span {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #e62e6b;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+.email-join-box .input-wrap {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+.email-join-box input {
+  width: 100%;
+  height: 54px;
+  border: 0;
+  outline: 0;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: normal;
+  color: #04021f;
+  border: 1px solid #1cd9b9;
+  border-radius: 16px;
+  box-shadow: 0 6px 6px 0 rgba(36, 51, 179, 0.1);
+  padding: 16px 24px;
+  box-sizing: border-box;
+}
+.email-join-box input::placeholder {
+  color: #b8b6c4;
+}
+.email-join-box .input-wrap input {
+  width: 378px;
+}
+/* .email-join-box form.was-validated input.require:valid {
+  border: 1px solid #1cd9b9;
+}
+.email-join-box form.was-validated input.require:invalid {
+  border: 1px solid #de3c33;
+} */
+/* .email-join-box input.require:valid {
+  border: 1px solid #1cd9b9;
+}
+.email-join-box input.require:invalid {
+  border: 1px solid #de3c33;
+} */
+.email-join-box .input-wrap button {
+  width: 102px;
+  height: 54px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  /* padding: 16px 0; */
+  line-height: 54px;
+  margin-left: 24px;
+  background: #3f37c9;
+  border-radius: 16px;
+  box-sizing: border-box;
+  font-family: 'Spoqa Han Sans Neo';
+}
+.email-join-box .security-btn {
+  position: absolute;
+  right: 15px;
+  top: 41px;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_hide_gray_32.png') center no-repeat;
+}
+.email-join-box .security-btn.on {
+  background: url('../images/ic_view_gray_32.png') center no-repeat;
+}
+.email-join-box .description {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: normal;
+  color: #de3c33;
+  margin: 16px 0 0px 24px;
+}
+.email-join-wrap .check-matters {
+  margin-bottom: 83px;
+  margin-top: 45px;
+}
+.email-join-wrap .check-matters label {
+  display: block;
+  align-items: center;
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: normal;
+  font-size: 18px;
+  color: #3e4259;
+  margin: 4px 0 36px 16px;
+  cursor: pointer;
+}
+.email-join-wrap .check-matters label:first-child {
+  margin-right: 16px;
+}
+.email-join-wrap .check-matters label::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.email-join-wrap .check-matters .check {
+  display: block;
+  float: left;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: url('../images/ic_checkbox_off_32.png') center no-repeat;
+  margin-right: 12px;
+}
+.email-join-wrap .check-matters label p {
+  width: 305px;
+  float: left;
+  font-size: 18px;
+  line-height: 1.22;
+  font-weight: normal;
+  color: #3e4259;
+}
+.email-join-wrap .check-matters label[for="agreement-all"] {
+  position: relative;
+  padding-bottom: 38px;
+}
+.email-join-wrap .check-matters label[for="agreement-all"]::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  width: 456px;
+  height: 1px;
+  background: #dcdee8;
+}
+.email-join-wrap .check-matters label[for="agreement-all"] p {
+  width: 416px;
+}
+.email-join-wrap .check-matters label p .necessary {
+  color: #e62e6b;
+}
+.email-join-wrap .check-matters label p .choice {
+  color: #b8b6c4;
+}
+.email-join-wrap .check-matters label input[type="checkbox"]:checked + span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: url('../images/ic_checkbox_on_32.png') center no-repeat;
+}
+.email-join-wrap .check-matters input[type="checkbox"] {
+  display: none;
+}
+.email-join-wrap .check-matters label .detail {
+  float: right;
+  width: 75px;
+  height: 23px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 12px;
+  font-weight: bold;
+  color: #3f37c9;
+  border: 1px solid #3f37c9;
+  border-radius: 8px;
+  background: #f2f2fc;
+  margin-right: 24px;
+  box-sizing: border-box;
+  margin-top: -1px;
+}
+.email-join-wrap .btn-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0;
+}
+.email-join-wrap .btn-wrap > button {
+  width: 240px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 16px;
+}
+.email-join-wrap .btn-wrap .cancel {
+  background: #b8b6c4;
+  margin-right: 24px;
+}
+.email-join-wrap .btn-wrap .join-up {
+  position: relative;
+  background: #3f37c9;
+}
+.email-join-wrap .btn-wrap .join-up::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -41px;
+  top: -40px;
+  width: 281px;
+  height: 30px;
+  background: url('../images/img_join_bubble.png') center no-repeat;
+}
+.email-join-wrap .info-find {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 576px;
+  margin: 24px 0 58px;
+}
+.email-join-wrap .info-find a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #b8b6c4;
+}
+.email-join-wrap .info-find a:not(:last-child) {
+  position: relative;
+  margin-right: 80px;
+}
+.email-join-wrap .info-find a:not(:last-child)::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -40px;
+  top: 2px;
+  width: 1px;
+  height: 14px;
+  background: #b8b6c4;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 이용 약관 */
+.terms-popup {
+
+}
+.terms-popup .popup-box {
+  width: 848px;
+  height: 852px;
+  padding: 0 48px;
+}
+.terms-popup .popup-box .popup-header {
+  border-bottom: 1px solid #dcdee8;
+  line-height: 72px;
+}
+.terms-popup .popup-box .popup-header h3 {
+  font-size: 20px;
+}
+.terms-popup .popup-box .popup-contents {
+  height: 602px;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: left;
+  color: #3e4259;
+  background: #f2f3fa;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  padding: 16px 24px;
+  margin-top: 105px;
+  overflow: hidden;
+}
+/* 스크롤바 없애기 */
+.terms-popup .popup-box .popup-contents-inner {
+  height: 567px;
+  overflow-y: scroll;
+  scrollbar-width: none;  /* Firefox */
+}
+.terms-popup .popup-box .popup-contents-inner::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+
+}
+.terms-popup .popup-box .popup-contents h4,
+.terms-popup .popup-box .popup-contents h5,
+.terms-popup .popup-box .popup-contents p,
+.terms-popup .popup-box .popup-contents p,
+.terms-popup .popup-box .popup-contents ol li {
+  font-weight: normal;
+  font-size: 16px;
+  margin-bottom: 24px;
+}
+.terms-popup .popup-box .popup-contents ol {
+  counter-reset: number 0;
+}
+.terms-popup .popup-box .popup-contents ol li {
+
+}
+.terms-popup .popup-box .popup-contents ol li::before {
+  counter-increment: number 1;
+  content: counter(number)".";
+  margin-right: 3px;
+}
+
+.terms-popup .popup-box .confirm-btn {
+  width: 272px;
+  height: 58px;
+  bottom: 56px;
+  font-size: 22px;
+  line-height: 58px;
+}

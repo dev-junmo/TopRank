@@ -1,0 +1,320 @@
+@import url("../common.css");
+@charset "utf-8";
+
+/* ===========================================*/
+/* =========================================== */
+/* header/body/html box*/
+.html-box {
+  background: #f7f7fc url('../images/img_bg_login.png') no-repeat;
+  position: relative;
+  min-width: 1620px;
+  font-family: 'Spoqa Han Sans Neo';
+  background-size: cover;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* body */
+.contents {
+  width: 100%;
+  /* min-height: 1000px; */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 35px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  font-family: 'Spoqa Han Sans Neo';
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 팝업 스타일 */
+.cm-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.cm-popup.active {
+  display: flex;
+}
+.cm-popup .popup-box {
+  position: relative;
+  width: 512px;
+  height: 294px;
+  border-radius: 16px;
+}
+.cm-popup .popup-box .popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 72px;
+}
+.cm-popup .popup-box .popup-header h3 {
+  font-family: 'Spoqa Han Sans Neo';
+  color: #3e4259;
+  font-size: 16px;
+  font-weight: 500;
+}
+.cm-popup .popup-box .popup-header .close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+}
+.cm-popup .popup-box .popup-contents {
+  width: 100%;
+  text-align: center;
+  margin-top: 70px;
+}
+.cm-popup .popup-box .popup-contents p {
+  font-size: 18px;
+  line-height: 1.31;
+}
+.cm-popup .popup-box .confirm-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  background: #3f37c9;
+  margin: 65px auto 0;
+  cursor: pointer;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* login-box */
+.login-wrap {
+  /* width: 1240px; */
+}
+.login-wrap .logo {
+  width: 510px;
+  text-align: center;
+  margin-bottom: 32px;
+}
+.login-wrap .logo img {
+  width: 177px;
+  height: 30px;
+}
+.login-wrap .login-box {
+  width: 510px;
+  height: 771px;
+  padding: 58px 36px 80px;
+  background: #f2f2fc;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+  box-sizing: border-box;
+}
+.login-wrap .login-box .login-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #3e4259;
+  text-align: center;
+  margin-bottom: 45px;
+}
+.login-wrap .login-box form > div {
+  position: relative;
+}
+.login-wrap .login-box label {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #3e4259;
+  margin-bottom: 11px;
+  margin-left: 24px;
+}
+.login-wrap .login-box input {
+  width: 100%;
+  height: 54px;
+  border: 0;
+  outline: 0;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: normal;
+  color: #04021f;
+  border-radius: 16px;
+  box-shadow: 0 6px 6px 0 rgba(36, 51, 179, 0.1);
+  padding: 16px 24px;
+  margin-bottom: 24px;
+  box-sizing: border-box;
+}
+.login-wrap .login-box input::placeholder {
+  color: #b8b6c4;
+}
+.login-wrap .login-box .clear-btn {
+  display: none;
+  position: absolute;
+  top: 39px;
+  right: 10px;
+  background: none;
+  border: 0;
+  outline: 0;
+}
+.login-wrap .login-box .security-btn {
+  position: absolute;
+  right: 15px;
+  top: 41px;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_hide_gray_32.png') center no-repeat;
+}
+.login-wrap .login-box .security-btn.on {
+  background: url('../images/ic_view_gray_32.png') center no-repeat;
+}
+.login-wrap .login-box .login-btn {
+  width: 100%;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  padding: 16px 0;
+  border-radius: 16px;
+  background: #3f37c9;
+}
+.login-wrap .login-box .info-find {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+}
+.login-wrap .login-box .info-find a {
+  font-size: 18px;
+  font-weight: bold;
+}
+.login-wrap .login-box .info-find a:first-child {
+  position: relative;
+  margin-right: 80px;
+}
+.login-wrap .login-box .info-find a:first-child::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -40px;
+  top: 2px;
+  width: 1px;
+  height: 14px;
+  background: #b8b6c4;
+}
+.login-wrap .login-box .join-wrap {
+  margin-top: 72px;
+}
+.login-wrap .login-box .join-wrap span {
+  display: flex;
+  align-items: center;
+  flex-basis: 100%;
+  /* width: 160px; */
+  font-size: 18px;
+  color: #b8b6c4;
+  text-align: center;
+  background: #f2f2fc;
+}
+.login-wrap .login-box .join-wrap span::before {
+  content: "";
+  flex-grow: 1;
+  margin: 0 24px;
+  height: 1px;
+  background: #b8b6c4;
+  font-size: 0;
+  line-height: 0;
+}
+.login-wrap .login-box .join-wrap span::after {
+  content: "";
+  flex-grow: 1;
+  margin: 0 24px;
+  height: 1px;
+  background: #b8b6c4;
+  font-size: 0;
+  line-height: 0;
+}
+.login-wrap .login-box .join-wrap .join-btn {
+  width: 100%;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #3f37c9;
+  line-height: 1.22;
+  margin-top: 24px;
+  padding: 16px 0;
+  border: 1px solid #3f37c9;
+  background: #fff;
+  border-radius: 16px;
+}
+.login-wrap .save {
+  display: flex;
+  align-items: center;
+}
+.login-wrap .save label {
+  display: flex;
+  align-items: center;
+  font-weight: normal;
+  font-size: 18px;
+  color: #3e4259;
+  margin: 4px 0 36px 28px;
+  cursor: pointer;
+}
+.login-wrap .save label:first-child {
+  margin-right: 16px;
+}
+.login-wrap .save span {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: url('../images/ic_checkbox_off_32.png') center no-repeat;
+  margin-right: 12px;
+}
+.login-wrap .save label input[type="checkbox"]:checked + span {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  background: url('../images/ic_checkbox_on_32.png') center no-repeat;
+}
+.login-wrap .save input[type="checkbox"] {
+  display: none;
+}

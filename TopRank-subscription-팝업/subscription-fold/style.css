@@ -1,0 +1,909 @@
+@charset "utf-8";
+
+
+/* 서브 페이지 background */
+.html-box {
+  background: #f7f7fc url('../images/img_bg_sub_title.png') no-repeat;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  font-family: 'Spoqa Han Sans Neo';
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* input 기본 달력 스타일 삭제 */
+input[type="date"]::-webkit-clear-button, input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  background: none;
+}
+input[type=date]::-webkit-datetime-edit-text { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-month-field{ -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-day-field { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; display: none; }
+
+
+/* 팝업 스타일 */
+.cm-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.cm-popup.active {
+  display: flex;
+}
+.cm-popup .popup-box {
+  position: relative;
+  width: 576px;
+  height: 423px;
+  border-radius: 16px;
+}
+.cm-popup .popup-box .popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  border-bottom: 1px solid #dcdee8;
+}
+.cm-popup .popup-box .popup-header h3 {
+  font-family: 'Spoqa Han Sans Neo';
+  color: #3e4259;
+  font-size: 16px;
+  font-weight: 500;
+}
+.cm-popup .popup-box .popup-header .close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+}
+.cm-popup .popup-box .first-registration {
+  padding: 56px 0 16px 24px;
+  color: #3e4259;
+}
+.cm-popup .popup-box .first-registration .date {
+  margin-left: 16px;
+  margin-right: 8px;
+}
+.cm-popup .popup-box .popup-contents {
+  width: 100%;
+  height: 210px;
+  padding: 18px 24px 16px;
+  background: #f2f3fa;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents ul {
+  height: 174px;
+  overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents li {
+  color: #3e4259;
+  margin-bottom: 10px;
+}
+.cm-popup .popup-box .popup-contents li .date {
+  float: left;
+  margin-right: 24px;
+}
+.cm-popup .popup-box .popup-contents li .variance {
+  float: left;
+}
+.cm-popup .popup-box .popup-contents li .variance span {
+  margin: 0 6px;
+}
+.cm-popup .popup-box .popup-contents li .variance strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  color: #04021f;
+}
+.cm-popup .popup-box .popup-contents li .trend {
+  float: right;
+}
+.cm-popup .popup-box .popup-contents li .trend strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  color: #04021f;
+}
+.cm-popup .popup-box .popup-contents li .trend img {
+  vertical-align: middle;
+  margin-top: -3px;
+}
+.cm-popup .popup-box .popup-contents li::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.cm-popup .popup-box .copy-btn {
+  width: 61px;
+  height: 41px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.31;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  background: #3f37c9;
+  padding: 10px 0;
+  margin: 23px auto 0;
+  cursor: pointer;
+}
+.cm-popup .popup-box .popup-contents li .data-reset {
+  color: #3e4259;
+}
+
+/* 레이어 팝업 스타일 */
+.layer-popup .popup-box {
+  width: 512px;
+  height: 244px;
+  padding: 32px 35px 65px;
+}
+.layer-popup .popup-box .popup-header {
+  border-bottom: 0;
+}
+.layer-popup .popup-box .popup-contents {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 41px;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.layer-popup .popup-box .popup-contents p {
+  font-size: 18px;
+  line-height: 1.31;
+}
+
+.layer-popup .popup-box .confirm-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  background: #3f37c9;
+  margin: 65px auto 0;
+  cursor: pointer;
+}
+.layer-popup.lable .popup-box {
+  height: 294px;
+}
+.layer-popup.lable .popup-box .popup-contents strong {
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+}
+.layer-popup.lable .popup-box .popup-contents p {
+  margin-top: 26px;
+}
+.layer-popup .popup-box .btn-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+.layer-popup .popup-box .btn-wrap > button {
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.layer-popup .popup-box .btn-wrap > button:first-child {
+  margin-right: 24px;
+}
+.layer-popup .popup-box .btn-wrap .cancel-btn {
+  background: #b8b6c4;
+}
+.layer-popup .popup-box .btn-wrap .success-btn {
+  background: #3f37c9;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1240px;
+  margin-top: 58px;
+}
+.title-area .title {
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 30px;
+  font-weight: bold;
+  color: #04021f;
+  padding-left: 48px;
+  background: url('../images/ic_subscription_color_40.png') left center no-repeat;
+  background-size: 40px;
+  line-height: 38px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 48px;
+  margin-top: 14px;
+  color: #3f37c9;
+}
+.title-area .location-history {
+  display: flex;
+  align-items: center;
+}
+.title-area .location-history li {
+  font-size: 18px;
+}
+.title-area .location-history li:not(:last-child) {
+  position: relative;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .location-history li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_arrow_right_gray_24.png') center no-repeat;
+}
+.title-area .location-history li a {
+  color: #b8b6c4;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 컨텐츠 박스 */
+.subscription-box {
+  width: 1240px;
+  padding: 48px 40px 88px;
+  margin-top: 40px;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 달력 및 검색 창 */
+.subscription-box .check-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.subscription-box .check-search form {
+  position: relative;
+}
+.subscription-box .check-search label {
+  display: none;
+}
+.subscription-box .check-search input[type="date"] {
+  position: relative;
+  width: 176px;
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  background: #fff;
+  padding: 4px 0 4px 14px;
+  box-sizing: border-box;
+  padding-left: 46px;
+}
+.subscription-box .check-search input[type="date"]::-webkit-calendar-picker-indicator { 
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_calendar_black_32.png') 6px center no-repeat;
+}
+.subscription-box .check-search input[type="date"]::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 20px;
+  background: #dcdee8;
+}
+.subscription-box .check-search input[type="date"]::after {
+  content: attr(placeholder);
+  position: absolute;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: 500;
+  color: #b8b6c4;
+  padding-left: 15px;
+}
+.subscription-box .check-search input[type="date"]:focus::before {
+  content: "";
+}
+.subscription-box .check-search span {
+  display: inline-block;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.44;
+  margin: 7px 16px;
+  vertical-align: top;
+}
+.subscription-box .check-search .check-btn {
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background: #3f37c9;
+  border-radius: 8px;
+  padding: 9px 16px 8px;
+  margin-left: 14px;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+.subscription-box .check-search input[type="search"] {
+  width: 491px;
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: normal;
+  border: 1px solid #dcdee8;
+  background: #fff;
+  border-radius: 8px;
+  margin-left: 56px;
+  padding: 10px 72px 10px 24px;
+  outline: none;
+}
+.subscription-box .check-search input[type="search"]::placeholder {
+  color: #b8b6c4;
+}
+.subscription-box .check-search .search-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+  height: 40px;
+  background: none;
+  padding: 0;
+  margin-right: 16px;
+}
+.subscription-box .check-search .search-btn img {
+  width: 100%;
+  height: 100%;
+}
+.subscription-box .bottom-setting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 24px;
+  padding-left: 39px;
+}
+.subscription-box .selectbox > div {
+  position: relative;
+}
+.subscription-box .selectbox .count .label {
+  margin-right: 0;
+}
+.subscription-box .selectbox > span {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: 500;
+  color: #3e4259;
+  margin-right: 16px;
+}
+.subscription-box .selectbox .label {
+  width: 131px;
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: normal;
+  color: #3e4259;
+  text-align: left;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  padding-left: 14px;
+  margin-left: 16px;
+  margin-right: 40px;
+  outline: none;
+  background: #fff url('../images/ic_unfold_black_24.png') 100px center no-repeat;
+  cursor: pointer;
+}
+.subscription-box .selectbox > div.active .label {
+  background: #fff url('../images/ic_fold_black_24.png') 100px center no-repeat;
+}
+.subscription-box .selectbox .seller .label {
+  width: 377px;
+  background-position: 343px center;
+}
+.subscription-box .selectbox .seller.active .label {
+  background-position: 343px center;
+}
+.subscription-box .selectbox ul {
+  display: none;
+  width: 131px;
+  position: absolute;
+  right: 40px;
+  top: 39px;
+  background: #fff;
+  border: 1px solid #dcdee8;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+  border-radius: 8px;
+  z-index: 100;
+}
+.subscription-box .bottom-setting .seller ul {
+  width: 377px;
+}
+.subscription-box .selectbox ul li {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  font-weight: normal;
+  color: #3e4259;
+  padding: 9px 0 9px 16px;
+  cursor: pointer;
+}
+.subscription-box .selectbox .seller ul li {
+  width: 355px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.subscription-box .selectbox > div.active ul {
+  display: block;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 달선택 버튼 및 페이지 컨트롤러 */
+.top-controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 56px;
+}
+.top-controller .btn-wrap {
+  display: flex;
+  align-items: center;
+}
+.top-controller .btn-wrap .choice-btn {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: bold;
+  font-size: 16px;
+  color: #de3c33;
+  border: 1px solid #de3c33;
+  padding: 6px 12px;
+  margin-right: 16px;
+  border-radius: 16px;
+  background: none;
+}
+.top-controller .btn-wrap .choice-btn.extension {
+  color: #e6458e;
+  border: 1px solid #e6458e;
+}
+.top-controller .btn-wrap span {
+  height: 24px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #b8b6c4;
+  line-height: 24px;
+  background: url('../images/ic_attention_gray_24.png') left center no-repeat;
+  padding-left: 28px;
+}
+.top-controller .paging-wrap {
+  display: flex;
+  align-items: center;
+}
+.top-controller .paging-wrap .prev {
+  width: 40px;
+  height: 40px;
+  background: url('../images/ic_arrow_left_black_40.png') center no-repeat;
+  text-indent: -9999px;
+}
+.top-controller .paging-wrap .prev.dis {
+  background: url('../images/ic_arrow_left_gray_40.png') center no-repeat;
+}
+.top-controller .paging-wrap .next {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: url('../images/ic_arrow_right_black_40.png') center no-repeat;
+  text-indent: -9999px;
+  margin-right: 8px;
+}
+.top-controller .paging-wrap .next::before {
+  content: "다음 페이지";
+  display: none;
+  position: absolute;
+  left: -32px;
+  top: 46px;
+  width: 100px;
+  height: 50px;
+  background: #3e4259;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
+  line-height: 50px;
+  text-indent: 0;
+  color: #fff;
+  border-radius: 16px;
+  opacity: 0.75;
+  z-index: 10;
+  cursor: auto;
+}
+.top-controller .paging-wrap .next:hover::before {
+  display: block;
+}
+.top-controller .paging-wrap .next.dis {
+  background: url('../images/ic_arrow_right_gray_40.png') center no-repeat;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 테이블 영역 */
+.subscription-table {
+  position: relative;
+  margin-top: 24px;
+}
+.subscription-table table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+.subscription-table table thead {
+  background: #f5f5fa;
+  /* border-bottom: 1px solid #dcdee8; */
+}
+.subscription-table table thead th {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: 500;
+  color: #3e4259;
+  line-height: 1.44;
+  padding: 16px 0;
+  vertical-align: middle;
+}
+.subscription-table table thead th:nth-child(1) {
+  width: 64px;
+}
+.subscription-table table thead th:nth-child(2) {
+  width: 80px;
+}
+.subscription-table table thead th:nth-child(3) {
+  width: 52px;
+}
+.subscription-table table thead th:nth-child(4) {
+  width: 360px;
+  padding: 22px 0 0;
+}
+.subscription-table table thead th:nth-child(5) {
+  width: 144px;
+}
+.subscription-table table thead th:nth-child(6) {
+  width: 64px;
+}
+.subscription-table table thead th:nth-child(7) {
+  width: 88px;
+  padding: 22px 0 0;
+}
+.subscription-table table thead th:nth-child(8) {
+  width: 90px;
+  padding: 22px 0 0;
+}
+.subscription-table table thead th:nth-child(9) {
+  width: 132px;
+}
+.subscription-table table thead th:nth-child(10) {
+  width: 86px;
+}
+.subscription-table table label input {
+  display: none;
+}
+.subscription-table table label span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_checkbox_off_32.png') center no-repeat;
+  cursor: pointer;
+}
+.subscription-table table label input:checked + span {
+  background: url('../images/ic_checkbox_on_32.png') center no-repeat;
+}
+.subscription-table table label span.dis {
+  background: url('../images/ic_checkbox_disabled_32.png') center no-repeat;
+  pointer-events: none;
+}
+.subscription-table table td {
+  position: relative;
+  font-size: 14px;
+  color: #3e4259;
+  font-weight: normal;
+  text-align: center;
+  line-height: 1.29;
+  word-break: break-all;
+  padding: 20px 10px;
+  vertical-align: middle;
+  background: #f7f8ff;
+}
+.subscription-table table td:nth-child(2) {
+  text-indent: 5px;
+  padding: 20px 13px;
+}
+.subscription-table table td:nth-child(3) {
+  padding: 24px 10px;
+}
+.subscription-table table td:nth-child(2),
+.subscription-table table td:nth-child(4) {
+  text-align: left;
+}
+.subscription-table table td:nth-child(6) {
+  padding: 24px 10px;
+}
+.subscription-table table td:nth-child(7) {
+  font-weight: bold;
+  padding: 23px 10px;
+  cursor: pointer;
+}
+.subscription-table table td:nth-child(8) {
+  font-weight: bold;
+  padding: 27px 10px;
+}
+.subscription-table table td:nth-child(8) span {
+  color: #3e4259;
+}
+.subscription-table table td:nth-child(8) span.expiration,
+.subscription-table table td:nth-child(8) span.not-approved {
+  color: #b8b6c4;
+}
+.subscription-table table td:nth-child(8) span.week {
+  color: #e6458e;
+}
+.subscription-table table td.uptrend .ic-ranking {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url('../images/ic_ascending_red_18.png') center 4px no-repeat;
+}
+.subscription-table table td.downtrend .ic-ranking {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url('../images/ic_decending_blue_18.png') center 4px no-repeat;
+}
+.subscription-table table tr {
+  border-bottom: 1px solid #dcdee8;
+}
+.subscription-table table td button {
+  background: none;
+}
+.subscription-table table td .kinds-description {
+  display: none;
+  position: absolute;
+  left: -62px;
+  top: 70px;
+  width: 192px;
+  height: 90px;
+  color: #fff;
+  text-align: left;
+  background: #3e4259bb;
+  padding: 16px;
+  border-radius: 16px;
+  z-index: 10;
+}
+.subscription-table table td .kinds-description span {
+  display: flex;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.29;
+  word-break: keep-all;
+}
+.subscription-table table td .kinds-description span strong {
+  margin-left: 8px;
+}
+.subscription-table table td .kinds-description::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 84px;
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #3e4259bb;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+.subscription-table table td.kinds img:hover + .kinds-description {
+  display: block;
+}
+.subscription-table table td .expiration-description,
+.subscription-table table td .week-description {
+  display: none;
+  position: absolute;
+  left: -7px;
+  top: 70px;
+  width: 102px;
+  height: 68px;
+  color: #fff;
+  text-align: center;
+  background: #3e4259bb;
+  padding: 16px;
+  border-radius: 16px;
+  z-index: 10;
+}
+.subscription-table table td .expiration-description span,
+.subscription-table table td .week-description span {
+  display: block;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.29;
+  word-break: keep-all;
+  color: #fff;
+}
+.subscription-table table td .expiration-description::before,
+.subscription-table table td .week-description::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 42px;
+  top: -10px;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid #3e4259bb;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+.subscription-table table td > span.expiration:hover + .expiration-description,
+.subscription-table table td > span.week:hover + .week-description {
+  display: block;
+}
+.subscription-table table td img {
+  vertical-align: bottom;
+}
+
+.subscription-table .product-empty {
+  width: 100%;
+  height: 288px;
+  text-align: center;
+  background: #f7f8ff;
+  padding: 46px 0;
+}
+.subscription-table .product-empty p {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.44;
+  color: #b8b6c4;
+  margin-top: 16px;
+  margin-bottom: 25px;
+}
+.subscription-table .product-empty a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #3f37c9;
+}
+.subscription-table .product-empty a img {
+  vertical-align: middle;
+  margin-top: -3px;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 하단 페이징 영역 */
+.bottom-controller {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 65px;
+}
+.bottom-controller .result {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  font-weight: normal;
+  color: #b8b6c4;
+}
+.bottom-controller .result .start-count {
+  margin-left: 8px;
+}
+.bottom-controller .paging-wrap {
+  display: flex;
+  align-items: center;
+}
+.bottom-controller .paging-wrap ol {
+  display: flex;
+  align-items: center;
+}
+.bottom-controller .paging-wrap ol li {
+  width: 43px;
+  height: 38px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #04021f;
+  line-height: 37px;
+  text-align: center;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+.bottom-controller .paging-wrap ol li.disabled {
+  color: #dcdee8;
+}
+.bottom-controller .paging-wrap ol li.active {
+  color: #3f37c9;
+  border: 1px solid #3f37c9;
+  border-radius: 24px;
+  background: #fafbff;
+}
+.bottom-controller .paging-wrap > button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+.bottom-controller .paging-wrap .prev-second.dis {
+  background: url('../images/ic_first_gray_40.png') center no-repeat;
+}
+.bottom-controller .paging-wrap .prev.dis {
+  background: url('../images/ic_arrow_left_gray_40.png') center no-repeat;
+}
+.bottom-controller .paging-wrap .prev-second {
+  background: url('../images/ic_first_gray_40.png') center no-repeat;
+}
+.bottom-controller .paging-wrap .prev {
+  background: url('../images/ic_arrow_left_black_40.png') center no-repeat;
+}
+.bottom-controller .paging-wrap .next-second.dis {
+  background: url('../images/ic_last_gray_40.png') center no-repeat;
+}
+.bottom-controller .paging-wrap .next.dis {
+  background: url('../images/ic_arrow_right_gray_40.png') center no-repeat;
+}
+.bottom-controller .paging-wrap .next-second {
+  background: url('../images/ic_last_black_40.png') center no-repeat;
+}
+.bottom-controller .paging-wrap .next {
+  background: url('../images/ic_arrow_right_black_40.png') center no-repeat;
+}
+
+

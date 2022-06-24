@@ -1,0 +1,765 @@
+@charset "utf-8";
+
+
+/* 서브 페이지 background */
+.html-box {
+  background: #f7f7fc url('../images/img_bg_sub_title.png') no-repeat;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  margin-bottom: 31px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* input 기본 달력 스타일 삭제 */
+input[type="date"]::-webkit-clear-button, input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  background: none;
+}
+input[type=date]::-webkit-datetime-edit-text { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-month-field{ -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-day-field { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; display: none; }
+
+/* Gmarket 폰트 */
+.num {
+  font-family: 'GmarketSans';
+  vertical-align: middle;
+}
+.num-strong {
+  font-family: 'GmarketSansBold';
+  vertical-align: middle;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1240px;
+  margin-top: 58px;
+}
+.title-area .title {
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 30px;
+  color: #04021f;
+  padding-left: 48px;
+  background: url('../images/ic_subscription_color_40.png') left center no-repeat;
+  background-size: 40px;
+  line-height: 38px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 48px;
+  margin-top: 14px;
+  color: #3f37c9;
+}
+.title-area .location-history {
+  display: flex;
+  align-items: center;
+}
+.title-area .location-history li {
+  font-size: 18px;
+}
+.title-area .location-history li:not(:last-child) {
+  position: relative;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .location-history li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_arrow_right_gray_24.png') center no-repeat;
+}
+.title-area .location-history li a {
+  color: #b8b6c4;
+}
+
+/* 팝업 스타일 */
+.cm-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.cm-popup.active {
+  display: flex;
+}
+.cm-popup .popup-box {
+  position: relative;
+  width: 576px;
+  height: 423px;
+  border-radius: 16px;
+}
+.cm-popup .popup-box .popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  border-bottom: 1px solid #dcdee8;
+}
+.cm-popup .popup-box .popup-header h3 {
+  font-family: 'Spoqa Han Sans Neo';
+  color: #3e4259;
+  font-size: 16px;
+  font-weight: 500;
+}
+.cm-popup .popup-box .popup-header .close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+}
+.cm-popup .popup-box .first-registration {
+  padding: 56px 0 16px 24px;
+  color: #3e4259;
+}
+.cm-popup .popup-box .first-registration .date {
+  margin-left: 16px;
+  margin-right: 8px;
+}
+.cm-popup .popup-box .popup-contents {
+  width: 100%;
+  height: 210px;
+  padding: 18px 24px 16px;
+  background: #f2f3fa;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents ul {
+  height: 174px;
+  overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents li {
+  color: #3e4259;
+  margin-bottom: 10px;
+}
+.cm-popup .popup-box .popup-contents li .date {
+  float: left;
+  margin-right: 24px;
+}
+.cm-popup .popup-box .popup-contents li .variance {
+  float: left;
+}
+.cm-popup .popup-box .popup-contents li .variance span {
+  margin: 0 6px;
+}
+.cm-popup .popup-box .popup-contents li .variance strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  color: #04021f;
+}
+.cm-popup .popup-box .popup-contents li .trend {
+  float: right;
+}
+.cm-popup .popup-box .popup-contents li .trend strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  color: #04021f;
+}
+.cm-popup .popup-box .popup-contents li .trend img {
+  vertical-align: middle;
+  margin-top: -3px;
+}
+.cm-popup .popup-box .popup-contents li::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.cm-popup .popup-box .copy-btn {
+  width: 61px;
+  height: 41px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.31;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  background: #3f37c9;
+  padding: 10px 0;
+  margin: 23px auto 0;
+  cursor: pointer;
+}
+.cm-popup .popup-box .popup-contents li .data-reset {
+  color: #3e4259;
+}
+
+/* 레이어 팝업 스타일 */
+.layer-popup .popup-box {
+  width: 512px;
+  height: 244px;
+  padding: 32px 35px 65px;
+}
+.layer-popup .popup-box .popup-header {
+  border-bottom: 0;
+}
+.layer-popup .popup-box .popup-contents {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 41px;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.layer-popup.use-on-popup .popup-box .popup-contents {
+  margin-top: 68px;
+}
+.layer-popup .popup-box .popup-contents p {
+  font-size: 18px;
+  line-height: 1.31;
+}
+.layer-popup .popup-box .confirm-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  background: #3f37c9;
+  margin: 65px auto 0;
+  cursor: pointer;
+}
+.layer-popup.lable .popup-box {
+  height: 294px;
+}
+.layer-popup.lable .popup-box .popup-contents strong {
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+}
+.layer-popup.lable .popup-box .popup-contents p {
+  margin-top: 26px;
+}
+.layer-popup .popup-box .btn-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+.layer-popup .popup-box .btn-wrap > button {
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.layer-popup .popup-box .btn-wrap > button:first-child {
+  margin-right: 24px;
+}
+.layer-popup .popup-box .btn-wrap .cancel-btn {
+  background: #b8b6c4;
+}
+.layer-popup .popup-box .btn-wrap .success-btn {
+  background: #3f37c9;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 상세 분석 */
+.detail-wrap {
+  width: 1240px;
+  height: 567px;
+  background: #f2f2fc;
+  border-radius: 24px;
+  margin-top: 39px;
+  padding: 45px 40px 40px;
+}
+.detail-wrap > ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+.detail-wrap > ul li:not(:last-child) {
+  margin-right: 40px;
+}
+.detail-wrap > ul li strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: 500;
+  color: #3e4259;
+  margin-right: 15px;
+}
+.detail-wrap > ul li span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #b8b6c4;
+}
+.detail-wrap .detail-box {
+  padding: 40px 56px 43px;
+}
+.detail-box .analysis-title {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: 500;
+  color: #3e4259;
+  margin-top: 5px;
+}
+.detail-box .top-section {
+  padding-bottom: 32px;
+  border-bottom: 1px solid #dcdee8;
+}
+.detail-box .top-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detail-box .top-section .product-name .shop {
+  display: flex;
+  align-items: center;
+  margin: 20px 0 32px;
+}
+.detail-box .top-section .product-name .shop img {
+  margin-right: 16px;
+}
+.detail-box .top-section .product-name .shop .shop-store span {
+  display: block;
+  width: 585px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+  line-height: 1.41;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.detail-box .top-section .product-name .ranking-keyword {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detail-box .top-section .product-name .ranking-keyword .btn-wrap button {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 24px;
+  border-radius: 24px;
+}
+.detail-box .top-section .product-name .ranking-keyword .btn-wrap .keyword {
+  background: #fafbff;
+  border: 1px solid #3f37c9;
+  color: #3f37c9;
+  margin-right: 24px;
+}
+.detail-box .top-section .product-name .ranking-keyword .btn-wrap .keyword-add {
+  background: #e6458e;
+  border: 1px solid #e6458e;
+  color: #fff;
+}
+.detail-box .top-section .sale-ranking {
+  margin-right: 91px;
+  margin-top: -26px;
+}
+.detail-box .top-section .sale-ranking .ranking-num {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+  margin: 44px 0 13px;
+}
+.detail-box .top-section .sale-ranking .ranking-num > strong {
+  font-size: 40px;
+  color: #04021f;
+  vertical-align: revert;
+}
+.detail-box .top-section .sale-ranking .ranking-num .paging {
+  color: #3f37c9;
+  line-height: 1.41;
+  margin-left: 16px;
+  vertical-align: middle;
+}
+.detail-box .top-section .sale-ranking .all-count {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+}
+.detail-box .top-section .sale-ranking .all-count strong {
+  /* font-family: 'SpoqaHanSansNeoMedium'; */
+  font-weight: 500;
+  color: #04021f;
+}
+.detail-box .bottom-section {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  margin-top: 27px;
+}
+.detail-box .bottom-section .product-kinds {
+  width: 657px;
+  margin-top: 5px;
+}
+.detail-box .bottom-section .kinds-wrap,
+.detail-box .bottom-section .deadline-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detail-box .bottom-section .kinds-wrap {
+  margin-bottom: 20px;
+}
+.detail-box .bottom-section .kinds-wrap .all-date {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+}
+.detail-box .bottom-section .deadline-wrap .deadline {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: 500;
+  color: #e6458e;
+}
+.detail-box .bottom-section .deadline-wrap .deadline p {
+  font-size: 14px;
+  font-weight: normal;
+  color: #b8b6c4;
+  text-align: right;
+  margin-top: 10px;
+}
+.detail-box .bottom-section .option {
+  width: 295px;
+}
+.detail-box .bottom-section .option > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.detail-box .bottom-section .option > div:last-child {
+  margin-bottom: 0;
+}
+.detail-box .bottom-section .option .use-whether .toggle-btn.active {
+  position: relative;
+  width: 48px;
+  height: 28px;
+  background: #5049ce;
+  border-radius: 20px;
+  padding: 4px;
+}
+.detail-box .bottom-section .option .use-whether .toggle-btn.active span {
+  display: block;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+}
+.detail-box .bottom-section .option .auto-extension ul {
+  display: flex;
+  background: #f2f3fa;
+  border-radius: 16px;
+}
+.detail-box .bottom-section .option .auto-extension ul li {
+  font-size: 16px;
+  font-weight: bold;
+  color: #b8b6c4;
+  padding: 10px;
+  border-radius: 16px;
+}
+.detail-box .bottom-section .option .auto-extension ul li.active {
+  background: #e6458e;
+  color: #fff;
+}
+.detail-box .bottom-section .option .auto-check span img {
+  vertical-align: middle;
+  margin-top: -5px;
+}
+.detail-box .bottom-section .option .auto-check label {
+  cursor: pointer;
+}
+.detail-box .bottom-section .option .auto-check label input {
+  display: none;
+}
+.detail-box .bottom-section .option .auto-check label .check {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_checkbox_off_32.png') center no-repeat;
+}
+.detail-box .bottom-section .option .auto-check input[type="checkbox"]:checked + span {
+  background: url('../images/ic_checkbox_on_32.png') center no-repeat;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 키워드 추적 비교 */
+.keyword-tracking-graph {
+  width: 1240px;
+  text-align: center;
+  margin-top: 72px;
+}
+.keyword-tracking-graph .contents-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+.keyword-tracking-graph .contents-title span {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: 500;
+}
+.keyword-tracking-graph .contents-title .time-tab {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.keyword-tracking-graph .contents-title .time-tab ul {
+  display: flex;
+  background: #f2f3fa;
+  border-radius: 16px;
+}
+.keyword-tracking-graph .contents-title .time-tab ul li {
+  font-size: 18px;
+  font-weight: bold;
+  color: #b8b6c4;
+  padding: 10px 16px;
+  background: #f2f3fa;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.keyword-tracking-graph .contents-title .time-tab ul li.active {
+  color: #3f37c9;
+  border: 1px solid #3f37c9;
+  background: #fff;
+}
+.keyword-tracking-graph .data-reset {
+  color: #b8b6c4;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+}
+.keyword-tracking-graph .graph {
+  height: 350px;
+}
+.keyword-tracking-graph .keyword-wrap {
+
+}
+.keyword-tracking-graph .keyword-wrap span {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #480ca8;
+  border: 1px solid #480ca8;
+  border-radius: 24px;
+  padding: 8px 24px 8px 44px;
+  box-sizing: border-box;
+}
+.keyword-tracking-graph .keyword-wrap span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 23px;
+  top: 13px;
+  width: 10px;
+  height: 10px;
+  background: #480ca8;
+  border-radius: 50%;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword {
+  margin-top: 24px;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:not(:last-child) {
+  margin-right: 24px;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:first-child {
+  color: #2dd6e0;
+  border: 1px solid #2dd6e0;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:first-child::before {
+  background: #2dd6e0;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(2) {
+  color: #b5179e;
+  border: 1px solid #b5179e;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(2)::before {
+  background: #b5179e;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(3) {
+  color: #f57701;
+  border: 1px solid #f57701;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(3)::before {
+  background: #f57701;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(4) {
+  color: #3e4259;
+  border: 1px solid #dcdee8;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(4)::before {
+  background: #dcdee8;
+}
+.keyword-tracking-graph .description {
+  display: inline-block;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: 500;
+  color: #b8b6c4;
+  margin: 31px 40px 0;
+}
+.keyword-tracking-graph .apply {
+  display: block;
+  width: 96px;
+  height: 38px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 24px;
+  background: #3f37c9;
+  /* padding: 8px 0; */
+  margin: 31px auto 0;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 하단 그래프 */
+.bottom-graph-wrap {
+  width: 1240px;
+  margin-top: 56px;
+}
+.bottom-graph-wrap > div {
+  float: left;
+  width: 600px;
+  height: 533px;
+  padding: 26px 24px 56px;
+  margin-right: 40px;
+  margin-bottom: 56px;
+}
+.bottom-graph-wrap > div:nth-child(2n) {
+  margin-right: 0;
+}
+.bottom-graph-wrap::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.bottom-graph-wrap .contents-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  margin-bottom: 4px;
+}
+.bottom-graph-wrap .contents-title span {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: 500;
+}
+.bottom-graph-wrap .contents-title .time-tab {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.bottom-graph-wrap .contents-title .time-tab ul {
+  display: flex;
+  background: #f2f3fa;
+  border-radius: 16px;
+}
+.bottom-graph-wrap .contents-title .time-tab ul li {
+  font-size: 18px;
+  font-weight: bold;
+  color: #b8b6c4;
+  padding: 10px 16px;
+  background: #f2f3fa;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.bottom-graph-wrap .contents-title .time-tab ul li.active {
+  color: #3f37c9;
+  border: 1px solid #3f37c9;
+  background: #fff;
+}
+.bottom-graph-wrap .contents-title .device-tab {
+  position: absolute;
+  right: 0;
+  top: 8px;
+}
+.bottom-graph-wrap .contents-title .device-tab ul {
+  display: flex;
+  align-content: center;
+}
+.bottom-graph-wrap .contents-title .device-tab li {
+  position: relative;
+  font-size: 16px;
+  font-weight: normal;
+  color: #04021f;
+  margin-right: 48px;
+}
+.bottom-graph-wrap .contents-title .device-tab li:nth-child(2) {
+  margin-right: 0;
+}
+.bottom-graph-wrap .contents-title .device-tab li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -21px;
+  top: 3px;
+  width: 10px;
+  height: 10px;
+  background: #4d77ff;
+  border-radius: 50%;
+}
+.bottom-graph-wrap .contents-title .device-tab li:nth-child(2)::before {
+  background: #fd5d5d;
+}

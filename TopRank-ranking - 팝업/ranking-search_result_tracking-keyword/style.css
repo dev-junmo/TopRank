@@ -1,0 +1,633 @@
+@charset "utf-8";
+
+
+/* 서브 페이지 background */
+.html-box {
+  background: #f7f7fc url('../images/img_bg_sub_title.png') no-repeat;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* 팝업 스타일 */
+.cm-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.cm-popup.active {
+  display: flex;
+}
+.cm-popup .popup-box {
+  position: relative;
+  width: 576px;
+  height: 423px;
+  border-radius: 16px;
+}
+.cm-popup .popup-box .popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  border-bottom: 1px solid #dcdee8;
+}
+.cm-popup .popup-box .popup-header h3 {
+  font-family: 'Spoqa Han Sans Neo';
+  color: #3e4259;
+  font-size: 16px;
+  font-weight: 500;
+}
+.cm-popup .popup-box .popup-header .close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+}
+.cm-popup .popup-box .first-registration {
+  padding: 56px 0 16px 24px;
+  color: #3e4259;
+}
+.cm-popup .popup-box .first-registration .date {
+  margin-left: 16px;
+  margin-right: 8px;
+}
+.cm-popup .popup-box .popup-contents {
+  width: 100%;
+  height: 210px;
+  padding: 18px 24px 16px;
+  background: #f2f3fa;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents ul {
+  height: 174px;
+  overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents li {
+  color: #3e4259;
+  margin-bottom: 10px;
+}
+.cm-popup .popup-box .popup-contents li .date {
+  float: left;
+  margin-right: 24px;
+}
+.cm-popup .popup-box .popup-contents li .variance {
+  float: left;
+}
+.cm-popup .popup-box .popup-contents li .variance span {
+  margin: 0 6px;
+}
+.cm-popup .popup-box .popup-contents li .variance strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  color: #04021f;
+}
+.cm-popup .popup-box .popup-contents li .trend {
+  float: right;
+}
+.cm-popup .popup-box .popup-contents li .trend strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-weight: 500;
+  color: #04021f;
+}
+.cm-popup .popup-box .popup-contents li .trend img {
+  vertical-align: middle;
+  margin-top: -3px;
+}
+.cm-popup .popup-box .popup-contents li::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.cm-popup .popup-box .copy-btn {
+  width: 61px;
+  height: 41px;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.31;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  background: #3f37c9;
+  padding: 10px 0;
+  margin: 23px auto 0;
+  cursor: pointer;
+}
+.cm-popup .popup-box .popup-contents li .data-reset {
+  color: #3e4259;
+}
+
+/* 레이어 팝업 스타일 */
+.layer-popup .popup-box {
+  width: 512px;
+  height: 244px;
+  padding: 32px 35px 65px;
+}
+.layer-popup .popup-box .popup-header {
+  border-bottom: 0;
+}
+.layer-popup .popup-box .popup-contents {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 41px;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.layer-popup .popup-box .popup-contents p {
+  font-size: 18px;
+  line-height: 1.31;
+}
+.layer-popup .popup-box .confirm-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  background: #3f37c9;
+  margin: 65px auto 0;
+  cursor: pointer;
+}
+.layer-popup.lable .popup-box {
+  height: 294px;
+}
+.layer-popup.lable .popup-box .popup-contents strong {
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+}
+.layer-popup.lable .popup-box .popup-contents p {
+  margin-top: 26px;
+}
+.layer-popup .popup-box .btn-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+.layer-popup .popup-box .btn-wrap > button {
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.layer-popup .popup-box .btn-wrap > button:first-child {
+  margin-right: 24px;
+}
+.layer-popup .popup-box .btn-wrap .cancel-btn {
+  background: #b8b6c4;
+}
+.layer-popup .popup-box .btn-wrap .success-btn {
+  background: #3f37c9;
+}
+
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1240px;
+  margin-top: 58px;
+}
+.title-area .title {
+  height: 40px;
+  font-size: 30px;
+  color: #04021f;
+  padding-left: 48px;
+  background: url('../images/ic_ranking_color_30@2x.png') left center no-repeat;
+  background-size: 40px;
+  line-height: 38px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 48px;
+  margin-top: 14px;
+  color: #3f37c9;
+}
+.title-area .breadcrumb {
+  display: flex;
+  align-items: center;
+}
+.title-area .breadcrumb li {
+  font-size: 18px;
+}
+.title-area .breadcrumb li:not(:last-child) {
+  position: relative;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .breadcrumb li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_arrow_right_gray_24.png') center no-repeat;
+  /* font-size: 21px;
+  font-weight: 300; */
+  /* color: #b8b6c4; */
+}
+.title-area .breadcrumb li a {
+  color: #b8b6c4;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 검색 결과 */
+.search-result {
+  width: 1240px;
+  padding-top: 72px;
+}
+.result-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+.result-box .result-info-1 {
+  width: 432px;
+}
+.result-box .result-info-2,
+.result-box .result-info-3 {
+  width: 239px;
+}
+.result-box .result-info:not(:nth-child(3)) {
+  position: relative;
+  margin-right: 65px;
+}
+.result-box .result-info:not(:nth-child(3))::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -32px;
+  top: 0;
+  width: 1px;
+  height: 184px;
+  background: #dcdee8;
+}
+.result-box .result-info .ad {
+  width: 46px;
+  height: 23px;
+}
+.result-box .result-info .ad span {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3f37c9;
+  text-align: center;
+  padding: 4px 0;
+  border: 1px solid #3f37c9;
+  border-radius: 10px;
+  background: #fff;
+}
+.result-box .result-info .category {
+  display: flex;
+  align-items: center;
+  padding-left: 80px;
+}
+.result-box .result-info .category li {
+  font-size: 18px;
+  font-weight: 500;
+}
+.result-box .result-info .category li:nth-child(2n) {
+  /* margin: 0 8px; */
+}
+.result-box .result-info .category li:nth-child(2n) img {
+  vertical-align: bottom;
+}
+.result-box .result-info .store {
+  /* background: url('../images/thum_navershoping_32@2x.png') left center no-repeat;
+  background-size: contain;
+  padding-left: 80px; */
+  display: flex;
+  margin-top: 16px;
+}
+.result-box .result-info .store img {
+  width: 56px;
+  height: 56px;
+  margin-right: 24px;
+}
+.result-box .result-info .store .store-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #b8b6c4;
+}
+.result-box .result-info .store p {
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+  margin-top: 8px;
+  line-height: 1.41;
+}
+.result-box .result-info .result-info-title {
+  height: 32px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #3e4259;
+  line-height: 1.41;
+  background: url('../images/ic_ranking_32.png') left center no-repeat;
+  padding-left: 48px;
+  margin-top: 20px;
+  margin-bottom: 32px;
+}
+.result-box .result-info-3 .result-info-title {
+  background: url('../images/ic_review_32.png') left center no-repeat;
+}
+.result-box .result-info .sale-num,
+.result-box .result-info .review-num {
+  font-family: 'Gmarket Sans';
+  font-size: 18px;
+  font-weight: 400;
+}
+.result-box .result-info .sale-num strong,
+.result-box .result-info .review-num strong {
+  font-size: 40px;
+  font-weight: bold;
+  color: #04021f;
+}
+.result-box .result-info .sale-num span,
+.result-box .result-info .review-num span {
+  font-size: 18px;
+  font-weight: 500;
+  color: #b8b6c4;
+  margin-left: 16px;
+}
+.result-box .result-info .sale-num span::before,
+.result-box .result-info .review-num span::before {
+  content: "/";
+}
+.result-box .result-info .pageing {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #3f37c9;
+  margin-top: 14px;
+}
+.result-box .result-info .review-num span {
+  color: #3f37c9;
+}
+.result-box .result-info .purchase-count {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #b8b6c4;
+  margin-top: 14px;
+}
+.result-box .result-info .purchase-count span {
+  font-family: 'Gmarket Sans';
+  font-weight: 400;
+  vertical-align: middle;
+}
+.result-box .ranking-tracking {
+  background: none;
+  border: 0;
+  outline: 0;
+  margin-left: 26px;
+}
+.result-box .ranking-tracking .tracking-img {
+  width: 94px;
+  height: 48px;
+  background: url('../images/ic_tracking_48.png') center no-repeat;
+}
+.result-box .ranking-tracking.off .tracking-img {
+  background: url('../images/ic_tracking_ing_48.png') center no-repeat;
+}
+.result-box .ranking-tracking span {
+  display: block;
+  width: 94px;
+  height: 36px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.31;
+  color: #fff;
+  background: #e6458e;
+  border-radius: 24px;
+  padding: 8px 0;
+}
+.result-box .ranking-tracking.off span {
+  background: #f2f3fa;
+  border: 1px solid #dcdee8;
+  color: #3e4259;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 추적 결과 */
+.tracking-teb {
+  width: 1240px;
+  margin: 72px 0 56px;
+}
+.tracking-teb ul {
+  display: flex;
+  align-items: center;
+}
+.tracking-teb ul li {
+  width: 413px;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  color: #3e4259;
+  padding: 8px 0;
+  cursor: pointer;
+}
+.tracking-teb ul li.active {
+  color: #3f37c9;
+  border-bottom: 2px solid #3f37c9;
+}
+.tracking-con {
+  display: none;
+}
+.tracking-con.active {
+  display: block;
+}
+.keyword-add {
+  width: 146px;
+  height: 38px;
+  padding: 8px 0;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.22;
+  color: #fff;
+  background: #e6458e;
+  border-radius: 24px;
+  margin-bottom: 32px;
+}
+.keyword-tracking-graph {
+  width: 1240px;
+  text-align: center;
+}
+.keyword-tracking-graph .contents-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+.keyword-tracking-graph .contents-title span {
+  font-size: 22px;
+  font-weight: 500;
+}
+.keyword-tracking-graph .contents-title .time-tab {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.keyword-tracking-graph .contents-title .time-tab ul {
+  display: flex;
+  background: #f2f3fa;
+  border-radius: 16px;
+}
+.keyword-tracking-graph .contents-title .time-tab ul li {
+  font-size: 18px;
+  font-weight: bold;
+  color: #b8b6c4;
+  padding: 10px 16px;
+  background: #f2f3fa;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.keyword-tracking-graph .contents-title .time-tab ul li.active {
+  color: #3f37c9;
+  border: 1px solid #3f37c9;
+  background: #fff;
+}
+.keyword-tracking-graph .data-reset {
+  color: #b8b6c4;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+}
+.keyword-tracking-graph .graph {
+  height: 350px;
+}
+.keyword-tracking-graph .keyword-wrap {
+
+}
+.keyword-tracking-graph .keyword-wrap span {
+  position: relative;
+  display: inline-block;
+  font-size: 18px;
+  font-weight: bold;
+  color: #480ca8;
+  border: 1px solid #480ca8;
+  border-radius: 24px;
+  padding: 8px 24px 8px 44px;
+  box-sizing: border-box;
+}
+.keyword-tracking-graph .keyword-wrap span::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 23px;
+  top: 13px;
+  width: 10px;
+  height: 10px;
+  background: #480ca8;
+  border-radius: 50%;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword {
+  margin-top: 24px;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:not(:last-child) {
+  margin-right: 24px;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:first-child {
+  color: #2dd6e0;
+  border: 1px solid #2dd6e0;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:first-child::before {
+  background: #2dd6e0;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(2) {
+  color: #b5179e;
+  border: 1px solid #b5179e;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(2)::before {
+  background: #b5179e;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(3) {
+  color: #f57701;
+  border: 1px solid #f57701;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(3)::before {
+  background: #f57701;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(4) {
+  color: #3e4259;
+  border: 1px solid #dcdee8;
+}
+.keyword-tracking-graph .keyword-wrap .other-keyword > span:nth-child(4)::before {
+  background: #dcdee8;
+}
+.keyword-tracking-graph .description {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #b8b6c4;
+  margin: 31px 40px 0;
+}
+.keyword-tracking-graph .apply {
+  display: block;
+  width: 96px;
+  height: 38px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 24px;
+  background: #3f37c9;
+  /* padding: 8px 0; */
+  margin: 31px auto 0;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>TopRank | Login</title>
+</head>
+<body>
+  <div class="html-box">
+    <section class="body">
+      <div class="contents">
+        <!-- 로그인 박스 start -->
+        <div class="login-wrap">
+          <h1 class="logo"><img src="../images/logo_purple_130@2x.png" alt="TOP RANK"></h1>
+          <div class="login-box">
+            <h2 class="login-title">로그인</h2>
+            <form>
+              <div>
+                <label for="email">아이디</label>
+                <input type="text" id="email" name="email" placeholder="핸드폰 번호 또는 이메일">
+                <button class="clear-btn">
+                  <img src="../images/ic_close_black_32.png" alt="X버튼">
+                </button>
+              </div>
+              <div>
+                <label for="password">비밀번호</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호">
+                <button type="button" class="security-btn"></button>
+              </div>
+              <div class="save">
+                <label for="auto-login">
+                  <input type="checkbox" id="auto-login" name="auto-login">
+                  <span></span>
+                  자동 로그인
+                </label>
+                <label for="email-save">
+                  <input type="checkbox" id="email-save" name="email-save">
+                  <span></span>
+                  아이디 저장
+                </label>
+              </div>
+              <button type="submit" class="login-btn">로그인</button>
+            </form>
+            <div class="info-find">
+              <a href="#">아이디 찾기</a>
+              <a href="#">비밀번호 찾기</a>
+            </div>
+            <div class="join-wrap">
+              <span class="first-join">처음 오셨나요?</span>
+              <button class="join-btn">회원가입</button>
+            </div>
+          </div>
+        </div>
+        <!-- //로그인 박스 end -->
+
+        <!-- 로그인 팝업 start -->
+        <div class="cm-popup invalid-popup active">
+          <div class="popup-box box">
+            <div class="popup-header">
+              <button class="close">
+                <img src="../images/ic_close_black_40.png" alt="닫기 버튼">
+              </button>
+            </div>
+            <div class="popup-contents">
+              <p>아이디(이메일 혹은 휴대폰 번호) 또는 비밀번호를 잘못<br> 입력했습니다.
+                입력하신 내용을 다시 확인해주세요.</p>
+            </div>
+            <div class="confirm-btn">확인</div>
+          </div>
+        </div>
+        <!-- 로그인 팝업 end -->
+      </div>
+    </section>
+  </div>
+
+  <script>
+    document.querySelectorAll("input").forEach(input => {
+      input.addEventListener("keyup", (e) => {
+        if(input.name === "email") {
+          if(input.value) {
+            document.querySelector('.clear-btn').style.display = "inline-block"
+          }else{
+            document.querySelector('.clear-btn').style.display = "none"
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

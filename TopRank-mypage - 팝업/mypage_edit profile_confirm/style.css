@@ -1,0 +1,695 @@
+@charset "utf-8";
+
+
+/* 서브 페이지 background */
+.html-box {
+  background: #f7f7fc url('../images/img_bg_sub_title.png') no-repeat;
+}
+
+/* 박스 스타일 */
+.box {
+  background: #fafbff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+/* Gmarket 폰트 스타일 */
+.num {
+  font-family: 'Gmarket Sans';
+  vertical-align: middle;
+}
+
+/* input number 화살표 없애기 */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* input 기본 달력 스타일 삭제 */
+input[type="date"]::-webkit-clear-button, input[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator { 
+  background: none;
+}
+input[type=date]::-webkit-datetime-edit-text { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-month-field{ -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-day-field { -webkit-appearance: none; display: none; }
+input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; display: none; }
+
+/* input password 엣지 기본 눈모양 삭제 */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+/* 셀렉트 박스 스타일 */
+.selectbox {
+  float: right;
+  position: relative;
+}
+.selectbox .label {
+  width: 131px;
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: normal;
+  text-align: left;
+  color: #3e4259;
+  background: #fff url('../images/ic_unfold_black_24.png') 100px center no-repeat;
+  border-radius: 8px;
+  border: 1px solid #dcdee8;
+  padding-left: 16px;
+}
+.selectbox.active .label {
+  background: #fff url('../images/ic_fold_black_24.png') 100px center no-repeat;
+}
+.selectbox ul {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 39px;
+  width: 131px;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+  background: #fff;
+  z-index: 10;
+}
+.selectbox.active ul {
+  display: block;
+}
+.selectbox ul li {
+  width: 100%;
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 16px;
+  font-weight: normal;
+  text-align: left;
+  color: #3e4259;
+  line-height: 40px;
+  padding-left: 16px;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 팝업 스타일 */
+.cm-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+.cm-popup.active {
+  display: flex;
+}
+.cm-popup .popup-box {
+  position: relative;
+  width: 848px;
+  height: 604px;
+  border-radius: 16px;
+}
+.cm-popup .popup-box .popup-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  border-bottom: 1px solid #dcdee8;
+}
+.cm-popup .popup-box .popup-header h3 {
+  font-family: 'Spoqa Han Sans Neo';
+  color: #3e4259;
+  font-size: 20px;
+  font-weight: 500;
+}
+.cm-popup .popup-box .popup-header .close {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  background: none;
+}
+.cm-popup .popup-box .first-registration {
+  padding: 56px 0 16px 24px;
+  color: #3e4259;
+}
+.cm-popup .popup-box .first-registration .date {
+  margin-left: 16px;
+  margin-right: 8px;
+}
+.cm-popup .popup-box .popup-contents {
+  width: 100%;
+  padding: 83px 8px 0;
+  margin-top: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents .point-exchange > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+.cm-popup .popup-box .popup-contents .point-exchange > div:last-child {
+  margin-bottom: 0;
+}
+.cm-popup .popup-box .popup-contents .reward-point-now span {
+  font-size: 18px;
+  font-weight: normal;
+  color: #3e4259;
+}
+.cm-popup .popup-box .popup-contents .reward-point-now strong {
+  width: 539px;
+  /* height: 28px; */
+  font-size: 20px;
+  font-weight: 500;
+  color: #04021f;
+  /* line-height: 28px; */
+}
+.cm-popup .popup-box .popup-contents .exchange-point span {
+  font-size: 18px;
+  font-weight: normal;
+  color: #3e4259;
+}
+.cm-popup .popup-box .popup-contents .input-area {
+  width: 574px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cm-popup .popup-box .popup-contents .input-area input {
+  width: 431px;
+  height: 60px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: normal;
+  line-height: 60px;
+  color: #04021f;
+  padding: 0 32px;
+  background: #fff;
+  outline: 0;
+  border: 1px solid #dcdee8;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+.cm-popup .popup-box .popup-contents .input-area input::placeholder {
+  color: #b8b6c4;
+}
+.cm-popup .popup-box .popup-contents .exchange-point .all-in-btn {
+  width: 100px;
+  height: 60px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 40px;
+  border-radius: 16px;
+  background: #e6458e;
+  box-sizing: border-box;
+}
+.cm-popup .popup-box .popup-contents .precautions {
+  margin-top: 72px;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li {
+  position: relative;
+  font-size: 18px;
+  font-weight: normal;
+  color: #3e4259;
+  word-break: keep-all;
+  line-height: 1.22;
+  margin-bottom: 20px;
+  padding-left: 22px;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li:last-child {
+  margin-bottom: 0;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li:nth-child(1) {
+  color: #e62e6b;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 5px;
+  top: 7px;
+  width: 4px;
+  height: 4px;
+  background: #3e4259;
+  border-radius: 50%;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li:nth-child(1)::before {
+  background: #e62e6b;
+}
+.cm-popup .popup-box .popup-contents .exchange-btn {
+  display: block;
+  width: 272px;
+  height: 58px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 22px;
+  font-weight: bold;
+  color: #b8b6c4;
+  border-radius: 16px;
+  background: #dcdee8;
+  margin: 50px auto 0;
+}
+.cm-popup .popup-box .popup-contents .exchange-btn.active {
+  background: #e6458e;
+  color: #fff;
+}
+/* 레이어 팝업 스타일 */
+.layer-popup .popup-box {
+  width: 512px;
+  height: 244px;
+  padding: 32px 35px 65px;
+}
+.layer-popup .popup-box .popup-header {
+  border-bottom: 0;
+}
+.layer-popup .popup-box .popup-contents {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 41px;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.layer-popup .popup-box .popup-contents p {
+  font-size: 18px;
+  line-height: 1.31;
+}
+.layer-popup .popup-box .confirm-btn {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  background: #3f37c9;
+  margin: 65px auto 0;
+  cursor: pointer;
+}
+.layer-popup.lable .popup-box {
+  height: 294px;
+}
+.layer-popup.lable .popup-box .popup-contents strong {
+  font-size: 22px;
+  font-weight: 500;
+  color: #04021f;
+}
+.layer-popup.lable .popup-box .popup-contents p {
+  margin-top: 26px;
+}
+.layer-popup .popup-box .btn-wrap {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 40px;
+  display: flex;
+  justify-content: center;
+}
+.layer-popup .popup-box .btn-wrap > button {
+  width: 220px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  line-height: 54px;
+  text-align: center;
+  border-radius: 16px;
+  cursor: pointer;
+}
+.layer-popup .popup-box .btn-wrap > button:first-child {
+  margin-right: 24px;
+}
+.layer-popup .popup-box .btn-wrap .cancel-btn {
+  background: #b8b6c4;
+}
+.layer-popup .popup-box .btn-wrap .success-btn {
+  background: #3f37c9;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* user info */
+.card-dashboard {
+  display: flex;
+  width: 1240px;
+  height: 270px;
+  padding: 48px 72px;
+  margin: 24px 0 56px;
+  box-shadow: 0 10px 24px 0 rgba(36, 51, 179, 0.2);
+}
+.card-dashboard > div:not(:last-child) {
+  border-right: 1px solid #e0e2eb;
+  padding-right: 30px;
+}
+.card-dashboard > div:not(:first-child) {
+  /* padding-left: 30px; */
+}
+.card-dashboard .user-info {
+  width: 438px;
+}
+.card-dashboard .user-name {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: normal;
+  color: #3e4259;
+}
+.card-dashboard .user-name strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 38px;
+  color: #04021f;
+  margin-right: 6px;
+}
+.card-dashboard .account .email {
+  display: block;
+  font-size: 22px;
+  font-weight: bold;
+  color: #3e4259;
+  margin-top: 58px;
+  margin-bottom: 14px;
+}
+.card-dashboard .account .phone-certified-none {
+  font-size: 22px;
+  font-weight: bold;
+  color: #b8b6c4;
+}
+.card-dashboard .rating-info {
+  width: 376px;
+  text-align: center;
+  padding: 0 43px;
+}
+.card-dashboard .rating-info .rating-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32px;
+}
+.card-dashboard .rating-info strong {
+  display: block;
+  font-size: 22px;
+  color: #3e4259;
+}
+.card-dashboard .rating-info img {
+  margin-right: 24px;
+}
+.card-dashboard .rating-info .next-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 152px;
+}
+.card-dashboard .rating-info .next-rating span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #b8b6c4;
+}
+.card-dashboard .rating-info .next-rating strong {
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 14px;
+  font-weight: 500;
+  color: #3e4259;
+}
+.card-dashboard .rating-info .process-bar {
+  position: relative;
+  width: 152px;
+  height: 8px;
+  background: #dcdee8;
+  border-radius: 16px;
+  margin-top: 6px;
+}
+.card-dashboard .rating-info .process-bar span {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 70%;
+  height: 100%;
+  background: #e6458e;
+  border-radius: 16px;
+}
+.card-dashboard .recommendation-code {
+  width: 288px;
+  text-align: center;
+}
+.card-dashboard .recommendation-code strong {
+  display: block;
+  font-size: 22px;
+  font-weight: bold;
+  color: #3e4259;
+  margin-bottom: 10px;
+}
+.card-dashboard .recommendation-content {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 0 26px 0 33px;
+  margin-bottom: 26px;
+}
+.card-dashboard .recommendation-code input {
+  width: 128px;
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 20px;
+  font-weight: normal;
+  color: #04021f;
+  text-align: center;
+  outline: 0;
+  border: 1px solid #dcdee8;
+  background: #fff;
+  border-radius: 16px;
+  /* padding: 0 24px; */
+  box-sizing: border-box;
+  margin-right: 8px;
+  padding: 0 23px;
+}
+.card-dashboard .recommendation-content img {
+  margin-right: 4px;
+}
+.card-dashboard .recommendation-code .token {
+  width: 220px;
+  height: 40px;
+  margin-left: 9px;
+  /* padding: 0 23px; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 중단 메뉴 */
+.gnb-wrap {
+  position: absolute;
+  width: 1240px;
+  height: 56px;
+  background: #f2f2fc url('../images/ic_unfold_32.png') 1175px 8px no-repeat;
+  border-radius: 16px;
+  padding: 0 89px;
+  overflow: hidden;
+  transition: height 0.5s;
+  box-sizing: border-box;
+  z-index: 100;
+}
+/* .gnb-wrap.active {
+  height: 208px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.2);
+} */
+.gnb-wrap:hover {
+  height: 208px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.2);
+  background: #f2f2fc url('../images/ic_fold_32.png') 1175px 8px no-repeat;
+}
+.gnb-wrap > ul {
+  display: flex;
+}
+.gnb-wrap > ul > li {
+  height: 56px;
+  line-height: 56px;
+  padding-left: 115px;
+}
+.gnb-wrap > ul > li > a {
+  font-weight: bold;
+  color: #3e4259;
+}
+.gnb-wrap ul > li.active > a {
+  color: #3f37c9;
+}
+.gnb-wrap ul li {
+  width: 354px;
+  font-size: 18px;
+  font-weight: 500;
+  /* text-align: center; */
+}
+.gnb-wrap > ul > li ul li {
+  height: 48px;
+  line-height: 48px;
+}
+.gnb-wrap > ul > li ul li.on a {
+  color: #3f37c9;
+}
+.gnb-wrap > ul > li ul li a {
+  color: #3e4259;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1240px;
+  margin-top: 172px;
+}
+.title-area .title {
+  height: 40px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 30px;
+  color: #04021f;
+  padding-left: 48px;
+  background: url('../images/ic_setting_purple_40.png') left center no-repeat;
+  background-size: 40px;
+  line-height: 38px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 48px;
+  margin-top: 14px;
+  color: #3f37c9;
+}
+.title-area .location-history {
+  display: flex;
+  align-items: center;
+}
+.title-area .location-history li {
+  font-size: 18px;
+}
+.title-area .location-history li:not(:last-child) {
+  position: relative;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .location-history li:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  right: -33px;
+  top: -3px;
+  width: 24px;
+  height: 24px;
+  background: url('../images/ic_arrow_right_gray_24.png') center no-repeat;
+}
+.title-area .location-history li a {
+  color: #b8b6c4;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 비밀번호 확인 */
+.password-confirm-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 1240px;
+  height: 435px;
+}
+.password-confirm-area .password-request {
+  font-size: 22px;
+  font-weight: 500;
+  color: #3f37c9;
+}
+.password-confirm-area .password-explanation {
+  font-size: 18px;
+  font-weight: normal;
+  color: #3e4259;
+  margin-top: 18px;
+  margin-bottom: 56px;
+}
+.password-confirm-area form {
+  position: relative;
+}
+.password-confirm-area form label {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #3e4259;
+  padding-left: 24px;
+  margin-bottom: 11px;
+}
+.password-confirm-area form input {
+  width: 438px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  border-radius: 16px;
+  box-shadow: 0 6px 6px 0 rgba(36, 51, 179, 0.1);
+  background: #fff;
+  outline: 0;
+  border: 0;
+  padding: 16px 64px 16px 24px;
+  box-sizing: border-box;
+}
+.password-confirm-area form input::placeholder {
+  color: #b8b6c4;
+}
+.password-confirm-area form button[type="submit"] {
+  display: block;
+  width: 438px;
+  height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 16px;
+  background: #3f37c9;
+  margin-top: 40px;
+}
+.password-confirm-area form .password-look {
+  position: absolute;
+  right: 16px;
+  top: 39px;
+  width: 32px;
+  height: 32px;
+  background: url('../images/ic_hide_gray_32.png') center no-repeat;
+}
+.password-confirm-area form .password-look.on {
+  background: url('../images/ic_view_gray_32.png') center no-repeat;
+}
