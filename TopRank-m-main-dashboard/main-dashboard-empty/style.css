@@ -295,86 +295,39 @@
   padding-left: 2.4rem;
   margin-top: 2.4rem;
 }
-.product-slide-wrap .product-slide {
-  width: 300%;
+.product-using-null {
+  text-align: center;
+  margin-bottom: 50px;
 }
-.product-slide-wrap .product-slide-item {
-  float: left;
-  width: 31.2rem;
-  height: 18.3rem;
-  background: #fafbff;
-  border-radius: 24px;
-  margin-right: 8px;
-  padding: 1.4rem 1.6rem 2.0rem;
+.product-using-null > img {
+  width: 6.5rem;
+  height: auto;
 }
-.product-slide-wrap .product-slide-item:last-child {
-  margin-right: 0;
-}
-.product-slide-wrap .product-slide::after {
-  content: "";
-  display: block;
-  clear: both;
-}
-.product-slide-wrap .product-slide-item .rep-keyword {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-}
-.product-slide-wrap .product-slide-item .rep-keyword span {
+.product-using-null p {
   font-size: 1.4rem;
   font-weight: 500;
-  color: #04021f;
+  color: #b8b6c4;
+  line-height: 1.36;
+  margin-top: 1.6rem;
+  margin-bottom: 1.4rem;
 }
-.product-slide-wrap .product-slide-item .rep-keyword .keyword-area {
-  height: 2.6rem;
+.product-using-null .product-analysis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #3f37c9;
-  background: #fafbff;
-  border: 1px solid #3f37c9;
-  line-height: 2.6rem;
-  padding: 0 1.2rem;
-  border-radius: 24px;
-  margin-left: 1.6rem;
 }
-.product-slide-wrap .product-slide-item .store-name {
-  display: flex;
-  align-items: center;
-}
-.product-slide-wrap .product-slide-item .store-name span {
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: #b8b6c4;
-  margin-left: 8px;
-}
-.product-slide-wrap .product-slide-item .store-product {
-  display: -webkit-box;
-  height: 4.6rem;
-  font-size: 1.6rem;
-  font-weight: 500;
-  color: #04021f;
-  line-height: 1.44;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: normal;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  margin-top: 7px;
-  margin-bottom: 17px;
-}
-.product-slide-wrap .product-slide-item .sales-ranking {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.product-slide-wrap .product-slide-item .sales-ranking .ranking-num {
-  display: flex;
-  align-items: center;
+.product-using-null .product-analysis img {
+  width: 2.0rem;
 }
 
 /* =================================================================================================================== */
 /* =================================================================================================================== */
 /* 대시보드 데이터 영역 */
 .dashboard-data-area {
+  position: relative;
   background: #f2f2fc;
 }
 .dashboard-data-area .dashboard-data {
@@ -510,6 +463,50 @@
   margin-top: 10px;
 }
 
+/* 데이터 없을 때 샘플 */
+.dashboard-data-mask {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* background: #f2f2fc; */
+  /* padding: 10.2rem 0; */
+  /* opacity: 0.7; */
+  z-index: 10;
+}
+.dashboard-data-mask::before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%; 
+  height: 100%;
+  background: #f2f2fc;
+    opacity: 0.7;
+}
+.dashboard-data-mask .sample-text {
+  position: relative;
+  display: inline-block;
+  height: 2.8rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #e6458e;
+  line-height: 2.8rem;
+  padding: 0 1.2rem;
+  background: #fafbff;
+  border: 1px solid #e6458e;
+  border-radius: 24px;
+  z-index: 11;
+  opacity: 0.7;
+}
+.dashboard-data-mask .sample-text:first-child {
+  margin-top: 10.2rem;
+}
+.dashboard-data-mask .sample-text:last-child {
+  margin-bottom: 10.2rem;
+}
 
 
 /* 반응형 브레이크 포인트 */
