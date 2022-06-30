@@ -294,6 +294,17 @@
 .product-slide-wrap {
   padding-left: 2.4rem;
   margin-top: 2.4rem;
+  transition: all 0.2s;
+  will-change: transform;
+  overflow-x: scroll;
+}
+/* 스크롤 스타일 없애기 */
+.product-slide-wrap {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.product-slide-wrap::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
 }
 .product-slide-wrap .product-slide {
   width: 300%;

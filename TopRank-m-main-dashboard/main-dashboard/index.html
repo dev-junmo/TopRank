@@ -435,6 +435,33 @@
       rankingTierDetail.classList.toggle('active');
     });
 
+    // 슬라이드 드래그
+    const productSlide = document.querySelector('.product-slide-wrap');
+    let isMouseDown = false;
+    let startX, scrollLeft;
+    productSlide.addEventListener('mousedown', (e) => {
+      isMouseDown = true;
+
+      startX = e.pageX - productSlide.offsetLeft;
+      scrollLeft = productSlide.scrollLeft;
+
+    });
+    productSlide.addEventListener('mouseleave', () => {
+      isMouseDown = false;
+    });
+    productSlide.addEventListener('mouseup', () => {
+      isMouseDown = false;
+    });
+    productSlide.addEventListener('mousemove', (e) => {
+      e.preventDefault();
+      
+      if(!isMouseDown) return;
+
+      const x = e.pageX - productSlide.offsetLeft;
+      const walk = (x - startX) * 1;
+      productSlide.scrollLeft = scrollLeft - walk;
+    });
+
   </script>
 </body>
 </html>

@@ -22,6 +22,7 @@
           <span class="burger-line burger-item3"></span>
         </button>
       </div>
+      <div class="circle"></div>
       <div class="m-menu">
         <div class="menu-header">
           <a href="#" class="membership-btn">멤버쉽 소개</a>
@@ -71,8 +72,6 @@
       </div>
     </header>
     <!-- //header end -->
-
-    <div class="circle"></div>
 
     <!-- contents start -->
     <div id="contents">
@@ -287,9 +286,12 @@
                     <strong>판매 순위</strong>
                   </div>
                   <div class="sales-ranking-num">
-                    <strong class="g-num">87</strong>위 <span class="all-count">/ <strong class="g-num">727,424</strong> 개</span>
+                    <strong class="g-num">87</strong><span>위</span>
+                    <span class="page-ranking"><b class="g-num">3</b>페이지 <b class="g-num">7</b>위</span>
                   </div>
-                  <span class="page-ranking"><b class="g-num">3</b>페이지 <b class="g-num">7</b>위</span>
+                  <span class="all-count">
+                    / <strong class="g-num">727,424</strong> 개
+                  </span>
                 </div>
                 <div class="review-count">
                   <div class="product-contents-title">
@@ -312,7 +314,7 @@
                   <span>제주농부</span>
                 </div>
                 <p class="product-name">
-                  제주농부 제주 미니 꼬마 애플망고 2kg 3kg (가정용, 실속형, 선물용)
+                  제주농부 제주 애플망고 2kg 3kg / 상품, 미니, 선물용, 가정용
                 </p>
                 <ul class="product-category">
                   <li>식품</li>
@@ -330,9 +332,12 @@
                     <strong>판매 순위</strong>
                   </div>
                   <div class="sales-ranking-num">
-                    <strong class="g-num">87</strong>위 <span class="all-count">/ <strong class="g-num">727,424</strong> 개</span>
+                    <strong class="g-num">224</strong><span>위</span>
+                    <span class="page-ranking"><b class="g-num">6</b>페이지 <b class="g-num">24</b>위</span>
                   </div>
-                  <span class="page-ranking"><b class="g-num">3</b>페이지 <b class="g-num">7</b>위</span>
+                  <span class="all-count">
+                    / <strong class="g-num">727,424</strong> 개
+                  </span>
                 </div>
                 <div class="review-count">
                   <div class="product-contents-title">
@@ -340,9 +345,9 @@
                     <strong>리뷰 수</strong>
                   </div>
                   <div class="review-count-num">
-                    <strong class="g-num">28</strong>개 <span class="review-grade">/ <strong class="g-num">4.7</strong> 점</span>
+                    <strong class="g-num">30</strong>개 <span class="review-grade">/ <strong class="g-num">4.9</strong> 점</span>
                   </div>
-                  <span class="purchases-num">구매 건수 <b class="g-num">92</b>건</span>
+                  <span class="purchases-num">구매 건수 <b class="g-num">13</b>건</span>
                 </div>
                 <button class="ranking-track">
                   <img src="../images/ic_tracking_white_32.png" alt="">
@@ -355,7 +360,7 @@
                   <span>제주농부</span>
                 </div>
                 <p class="product-name">
-                  제주농부 제주 미니 꼬마 애플망고 2kg 3kg (가정용, 실속형, 선물용)
+                  제주농부 고당도 제주 미니 애플망고 1.5kg 3kg 가정용 선물용
                 </p>
                 <ul class="product-category">
                   <li>식품</li>
@@ -373,9 +378,12 @@
                     <strong>판매 순위</strong>
                   </div>
                   <div class="sales-ranking-num">
-                    <strong class="g-num">87</strong>위 <span class="all-count">/ <strong class="g-num">727,424</strong> 개</span>
+                    <strong class="g-num">331</strong><span>위</span>
+                    <span class="page-ranking"><b class="g-num">9</b>페이지 <b class="g-num">31</b>위</span>
                   </div>
-                  <span class="page-ranking"><b class="g-num">3</b>페이지 <b class="g-num">7</b>위</span>
+                  <span class="all-count">
+                    / <strong class="g-num">727,426</strong> 개
+                  </span>
                 </div>
                 <div class="review-count">
                   <div class="product-contents-title">
@@ -383,9 +391,9 @@
                     <strong>리뷰 수</strong>
                   </div>
                   <div class="review-count-num">
-                    <strong class="g-num">28</strong>개 <span class="review-grade">/ <strong class="g-num">4.7</strong> 점</span>
+                    <strong class="g-num">4</strong>개 <span class="review-grade">/ <strong class="g-num">5.0</strong> 점</span>
                   </div>
-                  <span class="purchases-num">구매 건수 <b class="g-num">92</b>건</span>
+                  <span class="purchases-num">구매 건수 <b class="g-num">23</b>건</span>
                 </div>
                 <button class="ranking-track">
                   <img src="../images/ic_tracking_white_32.png" alt="">
@@ -414,7 +422,7 @@
             더 다양하고 강력한 <br>
             TOPRANK의 서비스와 함께하세요!
           </p>
-          <a href="#">멤버쉽 알아보기</a>
+          <a href="#">멤버십 알아보기</a>
         </div>
         <img src="../images/img_main_banner_source.png" alt="">
       </div>
@@ -445,20 +453,28 @@
   </div>
 
   <script>
-    // 모바일 메뉴 보기 
+    // 모바일 메뉴 보기
+    const headerWrap = document.querySelector('.header-wrap');
     const allMenu = document.querySelector('.all-menu');
     const circle = document.querySelector('.circle');
     const menu = document.querySelector('.m-menu');
 
+    let timer;
     allMenu.addEventListener('click', () => {
       if(allMenu.classList.contains('open')) {
         allMenu.classList.remove('open');
         circle.classList.remove('active');
         menu.classList.remove('active');
+        timer = setTimeout(() => {
+          headerWrap.classList.remove('active');
+        }, 400);
       }else{
+        clearTimeout(timer);
         allMenu.classList.add('open');
         circle.classList.add('active');
         menu.classList.add('active');
+        headerWrap.classList.add('active');
+
       }
     });
 

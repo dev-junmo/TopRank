@@ -14,6 +14,7 @@
   display: flex;
 }
 .main-tab-area .main-tab li {
+  position: relative;
   font-size: 1.2rem;
   font-weight: bold;
   color: #04021f;
@@ -23,6 +24,16 @@
   background: #f2f5fc;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+}
+.main-tab-area .main-tab li:nth-child(2)::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 7.0rem;
+  top: -2.7rem;
+  width: 8.0rem;
+  height: 3.2rem;
+  background: url('../images/m_img_main_bubble.png') center no-repeat;
 }
 .main-tab-area .main-tab li img {
   width: 24px;
@@ -207,10 +218,10 @@
   padding: 14px 8px;
   margin-bottom: 16px;
 }
-.age-group-wrap .age-group:last-of-type {
+/* .age-group-wrap .age-group:last-of-type {
   margin-bottom: 0;
   margin-right: 8px;
-}
+} */
 .age-group-wrap > span {
   font-size: 1.4rem;
   font-weight: normal;
@@ -272,8 +283,9 @@
   border: 0;
   background: #3f37c9;
 }
-.trend-change-box {
-  padding: 20px 22px 20px 9px;
+.trend-change-box,
+.click-weight {
+  padding: 20px 16px;
 }
 .trend-change-box .box-header,
 .click-weight .box-header,
@@ -300,7 +312,8 @@
   font-size: 1.2rem;
   font-weight: normal;
   color: #04021f;
-  margin-right: 36px;
+  margin-right: 1rem;
+  padding-left: 2rem;
 }
 .trend-change-box .color-guide span:last-child {
   margin-right: 0;
@@ -309,8 +322,8 @@
   content: "";
   display: block;
   position: absolute;
-  left: -13px;
-  top: 5px;
+  left: 0.5rem;
+  top: 0.5rem;
   width: 0.63rem;
   height: 0.63rem;
   border-radius: 50%;
@@ -541,22 +554,28 @@
   font-weight: bold;
   margin-right: 2px;
 }
-.sales-ranking .sales-ranking-num .all-count {
-  color: #b8b6c4;
+.sales-ranking .sales-ranking-num > span {
+  vertical-align: middle;
 }
-.sales-ranking .sales-ranking-num .all-count strong {
+.sales-ranking .all-count {
+  display: block;
+  font-size: 1.4rem;
+  color: #b8b6c4;
+  text-align: center;
+}
+.sales-ranking .all-count strong {
   font-weight: 500;
 }
 .sales-ranking .page-ranking {
-  display: block;
-  text-align: center;
-}
-.sales-ranking .page-ranking {
-  color: #3f37c9;
+  /* display: block; */
   font-weight: normal;
+  color: #3f37c9;
+  text-align: center;
+  vertical-align: bottom;
 }
 .sales-ranking .page-ranking b {
   font-weight: 500;
+  vertical-align: middle;
 }
 .review-count {
 
@@ -602,8 +621,48 @@
   border-radius: 24px;
   margin-top: 1.8rem;
 }
+.ranking-track img {
+  margin-right: 8px;
+}
 .ranking-track span {
   color: #fff;
   font-size: 1.4rem;
   font-weight: bold;
 }
+
+/* 반응형 브레이크 포인트 */
+@media screen and (max-width: 375px) {
+  .age-group-wrap .age-group:last-of-type {
+    margin-bottom: 0;
+    margin-right: 8px;
+  }
+}
+
+/* 650px 이상 767px 이하 */
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+
+/* 768px 이상 */
+@media screen and (min-width: 768px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+
