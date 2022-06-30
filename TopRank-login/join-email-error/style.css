@@ -130,6 +130,9 @@
   border-radius: 50%;
   margin-left: 8px;
 }
+.email-join-box .telegram .clear-btn {
+  top: 52px;
+}
 .email-join-box .input-wrap {
   display: flex;
   /* align-items: center; */
@@ -173,11 +176,11 @@
   height: 54px;
   font-size: 18px;
   font-weight: bold;
-  color: #fff;
+  color: #b8b6c4;
   /* padding: 16px 0; */
   line-height: 53px;
   margin-left: 24px;
-  background: #3f37c9;
+  background: #dcdee8;
   border-radius: 16px;
   box-sizing: border-box;
   font-family: 'Spoqa Han Sans Neo';
@@ -213,6 +216,7 @@
 }
 .email-join-wrap .check-matters {
   margin-bottom: 83px;
+  margin-top: 45px;
 }
 .email-join-wrap .check-matters label {
   display: block;
@@ -307,6 +311,7 @@
 .email-join-wrap .btn-wrap > button {
   width: 240px;
   height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
   font-size: 18px;
   font-weight: bold;
   color: #fff;
@@ -318,7 +323,8 @@
 }
 .email-join-wrap .btn-wrap .join-up {
   position: relative;
-  background: #3f37c9;
+  color: #b8b6c4;
+  background: #dcdee8;
 }
 .email-join-wrap .btn-wrap .join-up::before {
   content: "";

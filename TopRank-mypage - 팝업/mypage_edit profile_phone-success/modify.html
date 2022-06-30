@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <title>TopRank | Mypage_edit profile_phone-success</title>
 </head>
-<body>
+<body class="scroll-lock">
   <!-- sidemenu -->
   <section class="sidemenu">
       <h3 class="logo">
@@ -188,7 +188,7 @@
               </div>
               <div>
                 <label for="profile-name">프로필 명</label>
-                <input type="text" name="profile-name" id="profile-name" value="일이삼사오육칠팔">
+                <input type="text" name="profile-name" id="profile-name" value="일이삼사오육칠팔" readonly>
               </div>
               <div>
                 <label for="recommended-code">추천인 코드</label>
@@ -255,8 +255,22 @@
 
   </div>
 
-
+  
   <script>
+    const closeBtn = document.querySelector('.close');
+
+    closeBtn.addEventListener('click', () => {
+      closeBtn.parentNode.parentNode.parentNode.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
+    });
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('cm-popup')) {
+        document.querySelector('.cm-popup').classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      }
+
+    });
 
   </script>
 </body>

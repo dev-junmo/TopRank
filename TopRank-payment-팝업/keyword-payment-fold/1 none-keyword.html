@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <title>TopRank | Keyword-payment-fold</title>
 </head>
-<body>
+<body class="scroll-lock">
   <!-- sidemenu -->
   <section class="sidemenu">
       <h3 class="logo">
@@ -287,7 +287,7 @@
                 </button>
               </div>
               <div class="popup-contents">
-                <p>포인트를 충전해주세요.</p>
+                <p>추가하고 싶은 키워드를 입력해주세요.</p>
               </div>
               <div class="confirm-btn">확인</div>
             </div>
@@ -327,26 +327,21 @@
 
 
   <script>
-    const selectLabel = document.querySelectorAll('.selectbox .label');
-    const selectBox = document.querySelectorAll('.selectbox ul');
-    const selectOption = document.querySelectorAll('.selectbox ul li');
+    const closeBtn = document.querySelector('.close');
 
-    Array.from(selectLabel).forEach((el) => {
-      el.addEventListener('click', () => {
-        if(el.parentNode.classList.contains('active')) {
-          el.parentNode.classList.remove('active');
-        } else {
-          el.parentNode.classList.add('active');
-        }
-      });
+    closeBtn.addEventListener('click', () => {
+      closeBtn.parentNode.parentNode.parentNode.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
     });
 
-    Array.from(selectOption).forEach((el) => {
-      el.addEventListener('click', () => {
-        el.parentNode.previousSibling.previousSibling.innerHTML = el.innerHTML;
-        el.parentNode.parentNode.classList.remove('active');
-      });
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('cm-popup')) {
+        document.querySelector('.cm-popup').classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      }
+
     });
+
   </script>
 </body>
 </html>

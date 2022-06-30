@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <title>TopRank | main</title>
 </head>
-<body>
+<body class="scroll-lock">
   <!-- sidemenu -->
   <section class="sidemenu">
       <h3 class="logo">
@@ -124,29 +124,20 @@
 
 
   <script>
-    const tabList = document.querySelectorAll('.search-tab li');
-    const searchInput = document.querySelectorAll('.search-input');
-    const searchRecord = document.querySelectorAll('.search-record');
+    const closeBtn = document.querySelector('.close');
 
-    Array.from(tabList).forEach((el, idx) => {
-      el.addEventListener('click', () => {
-        Array.from(tabList).forEach((i) => {
-          i.classList.remove('active');
-        });
-
-        showContent(idx, searchInput);
-        showContent(idx, searchRecord);
-
-        el.classList.add('active');
-      });
+    closeBtn.addEventListener('click', () => {
+      closeBtn.parentNode.parentNode.parentNode.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
     });
 
-    function showContent(num, contents) {
-      Array.from(contents).forEach((i) => {
-        i.classList.remove('active');
-      });
-      Array.from(contents)[num].classList.add('active');
-    }
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('cm-popup')) {
+        document.querySelector('.cm-popup').classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      }
+
+    });
 
   </script>
 </body>

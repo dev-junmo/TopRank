@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <title>TopRank | Email-join</title>
 </head>
-<body>
+<body class="scroll-lock">
   <div class="html-box">
     <section class="body">
       <div class="contents">
@@ -115,14 +115,14 @@
         </div>
         <!-- //이메일 회원가입 박스 end -->
         <!-- 가입하기 팝업 start -->
-        <div class="cm-popup join-success-popup active">
+        <div class="cm-popup lable join-success-popup active">
           <div class="popup-box box">
             <div class="popup-header">
               <button class="close">
                 <img src="../images/ic_close_black_40.png" alt="닫기 버튼">
               </button>
             </div>
-            <div class="popup-contents lable">
+            <div class="popup-contents">
               <strong>회원가입이 완료되었습니다.</strong>
               <p>로그인 후 이용해주세요.</p>
             </div>
@@ -135,14 +135,21 @@
   </div>
 
   <script>
-    document.querySelectorAll("input").forEach(input => {
-      // input.addEventListener("invalid", () => {
-      //   document.forms[0].classList.add("was-validated");
-      // });
-      input.addEventListener("keydown", (e) => {
-        input.classList.add("require");
-      });
-    })
+    const closeBtn = document.querySelector('.close');
+
+    closeBtn.addEventListener('click', () => {
+      closeBtn.parentNode.parentNode.parentNode.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
+    });
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('cm-popup')) {
+        document.querySelector('.cm-popup').classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      }
+
+    });
+
   </script>
 </body>
 </html>

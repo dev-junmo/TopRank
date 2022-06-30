@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <title>TopRank | Subscription-fold</title>
 </head>
-<body>
+<body class="scroll-lock">
   <!-- sidemenu -->
   <section class="sidemenu">
       <h3 class="logo">
@@ -819,90 +819,6 @@
                 <a href="#">상품순위 분석 하러 가기 <img src="../images/ic_arrow_right_purple_24.png" alt=""></a>
               </div> -->
 
-              <!-- 순위 변동 팝업 start --> 
-              <div class="cm-popup ranking-popup">
-                <div class="popup-box box">
-                  <div class="popup-header">
-                    <h3>순위 변동 내역</h3>
-                    <button class="close">
-                      <img src="../images/ic_close_black_40.png" alt="닫기 버튼">
-                    </button>
-                  </div>
-                  <div class="first-registration">
-                    <span>최초 등록</span>
-                    <span class="date">[2022-02-01 12:59]</span>
-                    <strong>167위</strong>
-                  </div>
-                  <div class="popup-contents">
-                    <ul>
-                      <li>
-                        <div class="date">[2022-04-13 12:59]</div>
-                        <div class="variance">150위 <span>→</span> <strong>100위</strong></div>
-                        <div class="trend uptrend"><strong>50위 상승</strong><img src="../images/ic_ascending_red_18.png" alt=""></div>
-                      </li>
-                      <li>
-                        <div class="date">[2022-04-12 23:59]</div>
-                        <div class="variance">347위 <span>→</span> <strong>150위</strong></div>
-                        <div class="trend uptrend"><strong>197위 상승</strong><img src="../images/ic_ascending_red_18.png" alt=""></div>
-                      </li>
-                      <li>
-                        <div class="date">[2022-04-11 12:59]</div>
-                        <div class="variance">200위 <span>→</span> <strong>347위</strong></div>
-                        <div class="trend downtrend"><strong>147위 하락</strong><img src="../images/ic_decending_blue_18.png" alt=""></div>
-                      </li>
-                      <li>
-                        <div class="date">[2022-04-10 23:59]</div>
-                        <div class="variance">500위 <span>→</span> <strong>200위</strong></div>
-                        <div class="trend uptrend"><strong>300위 상승</strong><img src="../images/ic_ascending_red_18.png" alt=""></div>
-                      </li>
-                      <li>
-                        <div class="date">[2022-04-09 12:59]</div>
-                        <div class="variance">547위 <span>→</span> <strong>500위</strong></div>
-                        <div class="trend uptrend"><strong>47위 상승</strong><img src="../images/ic_ascending_red_18.png" alt=""></div>
-                      </li>
-                      <li>
-                        <div class="date">[2022-04-08 23:59]</div>
-                        <div class="variance">999위 <span>→</span> <strong>547위</strong></div>
-                        <div class="trend uptrend"><strong>452위 상승</strong><img src="../images/ic_ascending_red_18.png" alt=""></div>
-                      </li>
-                      <li>
-                        <div class="date">[2022-04-07 12:59]</div>
-                        <div class="variance">1050위 <span>→</span> <strong>999위</strong></div>
-                        <div class="trend uptrend"><strong>51위 상승</strong><img src="../images/ic_ascending_red_18.png" alt=""></div>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="copy-btn">복사</div>
-                </div>
-              </div>
-              <!-- //순위 변동 팝업 end --> 
-
-              <!-- 선택 초기화 팝업 start -->
-              <div class="cm-popup reset-popup">
-                <div class="popup-box box">
-                  <div class="popup-header">
-                    <h3>순위 변동 내역</h3>
-                    <button class="close">
-                      <img src="../images/ic_close_black_40.png" alt="닫기 버튼">
-                    </button>
-                  </div>
-                  <div class="first-registration">
-                    <span>최초 등록</span>
-                    <span class="date">[2022-02-01 12:59]</span>
-                    <strong>167위</strong>
-                  </div>
-                  <div class="popup-contents">
-                    <ul>
-                      <li>
-                        <div class="date">[2022-05-13 19:59]</div>
-                        <p class="data-reset">데이터가 초기화되었습니다.</p>
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="copy-btn">복사</div>
-                </div>
-              </div>
-              <!-- //선택 초기화 팝업 end -->
             </div>
             <!-- 테이블 영역 end -->
 
@@ -990,51 +906,21 @@
 
 
   <script>
-    const selectLabel = document.querySelectorAll('.selectbox > div .label');
-    const selectBox = document.querySelectorAll('.selectbox > div ul');
-    const selectOption = document.querySelectorAll('.selectbox > div ul li');
+    const closeBtn = document.querySelector('.close');
 
-    Array.from(selectLabel).forEach((el) => {
-      el.addEventListener('click', () => {
-        if(el.parentNode.classList.contains('active')) {
-          el.parentNode.classList.remove('active');
-        } else {
-          el.parentNode.classList.add('active');
-        }
-      });
+    closeBtn.addEventListener('click', () => {
+      closeBtn.parentNode.parentNode.parentNode.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
     });
 
-    Array.from(selectOption).forEach((el) => {
-      el.addEventListener('click', () => {
-        el.parentNode.previousSibling.previousSibling.innerHTML = el.textContent;
-        el.parentNode.parentNode.classList.remove('active');
-      });
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('cm-popup')) {
+        document.querySelector('.cm-popup').classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      }
+
     });
 
-
-    // 팝업
-    const popup = document.querySelector('.cm-popup');
-    const rankingPopup = document.querySelector('.ranking-popup');
-    const resetPopup = document.querySelector('.reset-popup');
-    const closeBtn = document.querySelectorAll('.cm-popup .close');
-    const trend = document.querySelectorAll('.subscription-table td.trend');
-    const resetBtn = document.querySelector('.reset-btn');
-
-    Array.from(closeBtn).forEach((el) => {
-      el.addEventListener('click', () => {
-        el.parentNode.parentNode.parentNode.classList.remove('active');
-      });
-    });
-
-    resetBtn.addEventListener('click', () => {
-      resetPopup.classList.add('active');
-    });
-
-    Array.from(trend).forEach((el) => {
-      el.addEventListener('click', () => {
-        rankingPopup.classList.add('active');
-      });
-    });
   </script>
 </body>
 </html>

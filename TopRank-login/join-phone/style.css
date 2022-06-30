@@ -181,11 +181,11 @@ input[type="number"]::-webkit-inner-spin-button {
   height: 54px;
   font-size: 18px;
   font-weight: bold;
-  color: #fff;
+  color: #b8b6c4;
   /* padding: 16px 0; */
   line-height: 53px;
   margin-left: 24px;
-  background: #3f37c9;
+  background: #dcdee8;
   border-radius: 16px;
   box-sizing: border-box;
   font-family: 'Spoqa Han Sans Neo';
@@ -210,6 +210,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 .email-join-wrap .check-matters {
   margin-bottom: 83px;
+  margin-top: 45px;
 }
 .email-join-wrap .check-matters label {
   display: block;
@@ -315,7 +316,8 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 .email-join-wrap .btn-wrap .join-up {
   position: relative;
-  background: #3f37c9;
+  color: #b8b6c4;
+  background: #dcdee8;
 }
 .email-join-wrap .btn-wrap .join-up::before {
   content: "";

@@ -877,8 +877,14 @@
               </div>
               <!-- //순위 변동 팝업 end --> 
 
+              <!-- copy-toast-popup start -->
+              <div class="copy-toast-popup">
+                복사되었습니다.
+              </div>
+              <!-- copy-toast-popup end -->
+
               <!-- 선택 초기화 팝업 start -->
-              <div class="cm-popup reset-popup">
+              <!-- <div class="cm-popup reset-popup">
                 <div class="popup-box box">
                   <div class="popup-header">
                     <h3>순위 변동 내역</h3>
@@ -901,7 +907,7 @@
                   </div>
                   <div class="copy-btn">복사</div>
                 </div>
-              </div>
+              </div> -->
               <!-- //선택 초기화 팝업 end -->
             </div>
             <!-- 테이블 영역 end -->
@@ -1014,6 +1020,29 @@
       el.addEventListener('click', () => {
         rankingPopup.classList.add('active');
       });
+    });
+
+    // 복사 토스트 팝업
+    const copyBtn = document.querySelector('.copy-btn');
+    const copyToastPop = document.querySelector('.copy-toast-popup');
+
+    let removeToast;
+    function toast(string) {
+      if(copyToastPop.classList.contains("active")) {
+        clearTimeout(removeToast);
+        removeToast = setTimeout(function() {
+          copyToastPop.classList.remove('active');
+        }, 1000);
+      }else{
+        removeToast = setTimeout(function() {
+          copyToastPop.classList.remove('active');
+        }, 1000);
+      }
+      copyToastPop.classList.add('active');
+    }
+
+    copyBtn.addEventListener('click', () => {
+      toast();
     });
   </script>
 </body>

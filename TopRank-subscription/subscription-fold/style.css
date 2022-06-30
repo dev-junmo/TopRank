@@ -163,6 +163,32 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   color: #3e4259;
 }
 
+/* 토스트 팝업 */
+.copy-toast-popup {
+  /* display: none; */
+  position: fixed;
+  left: 50%;
+  bottom: 80px;
+  transform: translate(-50%, 10px);
+  /* margin-left: -120px; */
+  color: #fff;
+  font-size: 18px;
+  background: #3e4259;
+  border-radius: 8px;
+  padding: 16px 60px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+  z-index: 999999;
+}
+.copy-toast-popup.active {
+  /* display: block; */
+  /* animation: toast-ani 1.7s 1 ease; */
+  opacity: 0.9;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
 
 /* ------------------------------------------------------------------------- */
 /* ------------------------------------------------------------------------- */
@@ -388,6 +414,9 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
   border-radius: 8px;
   z-index: 100;
+}
+.subscription-box .selectbox.paging-wrap ul {
+  right: 0;
 }
 .subscription-box .bottom-setting .seller ul {
   width: 377px;

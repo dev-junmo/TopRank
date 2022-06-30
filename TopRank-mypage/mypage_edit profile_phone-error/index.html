@@ -104,9 +104,11 @@
               <strong>내 추천인 코드</strong>
               <div class="recommendation-content">
                 <input type="text" value="SH4U8Q" readonly>
-                <img src="../images/ic_copy_gray_40.png" alt="복사">
-                <img src="../images/ic_share_gray_40.png" alt="공유">
+                <img class="copy-btn" src="../images/ic_copy_gray_40.png" alt="복사">
+                <img class="share-btn" src="../images/ic_share_gray_40.png" alt="공유">
               </div>
+              <strong>내 텔레그램 토큰값</strong>
+              <input type="text" class="token" value="5459972726 : Aalk" readonly>
             </div>
           </div>
           <!-- //user info end -->
@@ -182,17 +184,30 @@
                 <div>
                   <input type="email" name="email" id="email" placeholder="toprank@toprank.co.kr" required>
                   <span class="description">올바른 이메일 형식이 아닙니다.</span>
+                  <button class="clear-btn long">
+                    <img src="../images/ic_close_black_32.png" alt="X버튼">
+                  </button>
                 </div>
               </div>
               <div>
                 <label for="profile-name">프로필 명</label>
-                <input type="text" name="profile-name" id="profile-name" value="일이삼사오육칠팔">
+                <input type="text" name="profile-name" id="profile-name" value="일이삼사오육칠팔" readonly>
               </div>
               <div>
                 <label for="recommended-code">추천인 코드</label>
                 <div>
                   <input type="text" name="recommended-code" id="recommended-code" value="Q8U4HS" readonly>
                   <span class="description">추천인 코드 입력 및 변경은 관리자에게 문의해주세요.</span>
+                </div>
+              </div>
+              <div class="telegram">
+                <label for="profile-name">텔레그램 API 토큰값 <img src="../images/ic_help_32.png" alt="도움말"></label>
+                <div>
+                  <input type="text" name="profile-name" id="profile-name" value="5459972726 : AAFzCLK9YWIEC3b9f4rQm1ㄱㄱㄱ" placeholder="추텔레그램 봇 생성 완료 시 발행되는 API 토큰값">
+                  <span class="description">올바른 텔레그램 API 토큰값이 아닙니다.</span>
+                  <button class="clear-btn long">
+                    <img src="../images/ic_close_black_32.png" alt="X버튼">
+                  </button>
                 </div>
               </div>
               <div class="btn-wrap">

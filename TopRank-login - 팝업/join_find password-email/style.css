@@ -58,6 +58,11 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0;
 }
 
+/* 팝업시 스크롤 막기 */
+.scroll-lock {
+  overflow: hidden;
+}
+
 /* ===========================================*/
 /* =========================================== */
 /* 팝업 스타일 */
@@ -79,8 +84,12 @@ input[type="number"]::-webkit-inner-spin-button {
 .cm-popup .popup-box {
   position: relative;
   width: 512px;
-  height: 294px;
+  height: 244px;
   border-radius: 16px;
+  box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.2);
+}
+.cm-popup.lable .popup-box {
+  height: 294px;
 }
 .cm-popup .popup-box .popup-header {
   display: flex;
@@ -107,17 +116,14 @@ input[type="number"]::-webkit-inner-spin-button {
 .cm-popup .popup-box .popup-contents {
   width: 100%;
   text-align: center;
-  margin-top: 70px;
-}
-.cm-popup .popup-box .popup-contents.lable {
   margin-top: 40px;
 }
 .cm-popup .popup-box .popup-contents p {
   font-size: 18px;
   line-height: 1.31;
 }
-.cm-popup .popup-box .popup-contents.lable p {
-  margin-top: 26px;
+.cm-popup.lable .popup-box .popup-contents p {
+  margin-top: 24px;
 }
 .cm-popup .popup-box .popup-contents strong {
   font-size: 22px;

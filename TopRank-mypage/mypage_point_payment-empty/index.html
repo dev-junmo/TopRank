@@ -104,12 +104,56 @@
               <strong>내 추천인 코드</strong>
               <div class="recommendation-content">
                 <input type="text" value="SH4U8Q" readonly>
-                <img src="../images/ic_copy_gray_40.png" alt="복사">
-                <img src="../images/ic_share_gray_40.png" alt="공유">
+                <img class="copy-btn" src="../images/ic_copy_gray_40.png" alt="복사">
+                <img class="share-btn" src="../images/ic_share_gray_40.png" alt="공유">
               </div>
+              <strong>내 텔레그램 토큰값</strong>
+              <input type="text" class="token" value="5459972726 : Aalk" readonly>
             </div>
           </div>
           <!-- //user info end -->
+
+          <!-- 공유 팝업 start -->
+          <div class="cm-popup share-popup">
+            <div class="popup-box box">
+              <div class="popup-header">
+                <h3>공유</h3>
+                <button class="close">
+                  <img src="../images/ic_close_black_40.png" alt="닫기 버튼">
+                </button>
+              </div>
+              <div class="popup-contents">
+                <ul>
+                  <li>
+                    <img src="../images/thum_kakaotalk_72.png" alt="카카오톡">
+                    <p>카카오톡</p>
+                  </li>
+                  <li>
+                    <img src="../images/thum_line_72.png" alt="라인">
+                    <p>라인</p>
+                  </li>
+                  <li>
+                    <img src="../images/thum_twitter_72.png" alt="트위터">
+                    <p>트위터</p>
+                  </li>
+                  <li>
+                    <img src="../images/thum_facebook_72.png" alt="페이스북">
+                    <p>페이스북</p>
+                  </li>
+                  <li>
+                    <img src="../images/thum_telegram_72.png" alt="텔레그램">
+                    <p>텔레그램</p>
+                  </li>
+                  <li>
+                    <img src="../images/thum_whatsapp_72.png" alt="왓츠앱">
+                    <p>왓츠앱</p>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- //공유 팝업 end -->
 
           <!-- 중단 메뉴 start -->
           <div class="gnb-wrap active">
@@ -278,6 +322,22 @@
         el.parentNode.previousSibling.previousSibling.innerHTML = el.innerHTML;
         el.parentNode.parentNode.classList.remove('active');
       });
+    });
+
+    // 팝업
+    const popup = document.querySelector('.cm-popup');
+    const sharePopup = document.querySelector('.share-popup');
+    const closeBtn = document.querySelectorAll('.cm-popup .close');
+    const shareBtn = document.querySelector('.share-btn');
+
+    Array.from(closeBtn).forEach((el) => {
+      el.addEventListener('click', () => {
+        el.parentNode.parentNode.parentNode.classList.remove('active');
+      });
+    });
+
+    shareBtn.addEventListener('click', () => {
+      sharePopup.classList.add('active');
     });
 
   </script>

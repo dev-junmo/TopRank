@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <title>TopRank | keyword search_before searching</title>
 </head>
-<body>
+<body class="scroll-lock">
   <!-- sidemenu -->
   <section class="sidemenu">
       <h3 class="logo">
@@ -196,5 +196,23 @@
 
   </div>
 
+
+  <script>
+    const closeBtn = document.querySelector('.close');
+
+    closeBtn.addEventListener('click', () => {
+      closeBtn.parentNode.parentNode.parentNode.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
+    });
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('cm-popup')) {
+        document.querySelector('.cm-popup').classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      }
+
+    });
+
+  </script>
 </body>
 </html>

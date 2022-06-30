@@ -202,6 +202,7 @@
 }
 .email-join-wrap .check-matters {
   margin-bottom: 83px;
+  margin-top: 45px;
 }
 .email-join-wrap .check-matters label {
   display: block;
@@ -296,6 +297,7 @@
 .email-join-wrap .btn-wrap > button {
   width: 240px;
   height: 54px;
+  font-family: 'Spoqa Han Sans Neo';
   font-size: 18px;
   font-weight: bold;
   color: #fff;

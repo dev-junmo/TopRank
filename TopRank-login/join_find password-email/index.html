@@ -24,11 +24,29 @@
             <!-- //이메일, 번호 찾기 탭 메뉴 end -->
 
             <!-- 입력창 start -->
-            <form>
-              <label for="email-find">비밀번호를 찾으려는 아이디</label>
-              <input type="email" name="email-find" id="email-find" placeholder="이메일 주소를 입력해주세요.">
-              <button type="submit">임시 비밀번호 전송</button>
-            </form>
+            <div class="find-contents-wrap">
+              <div class="find-contents active">
+                <form>
+                  <label for="email-find">비밀번호를 찾으려는 아이디</label>
+                  <input type="email" name="email-find" id="email-find" placeholder="이메일 주소를 입력해주세요.">
+                  <button type="submit">임시 비밀번호 전송</button>
+                </form>
+              </div>
+              <div class="find-contents">
+                <form>
+                  <div class="procedure before-phone active">
+                    <label for="email-find">비밀번호를 찾으려는 아이디</label>
+                    <input type="number" name="email-find" id="email-find" placeholder="핸드폰 번호를 입력해주세요.">
+                    <button type="submit" class="find-next-btn">다음</button>
+                  </div>
+                  <div class="procedure after-phone">
+                    <label for="email-find">임시 비밀번호를 받을 수 있는 이메일 주소</label>
+                    <input type="email" name="email-find" id="email-find" placeholder="이메일 주소를 입력해주세요.">
+                    <button type="submit">임시 비밀번호 전송</button>
+                  </div>
+                </form>
+              </div>
+            </div>
             <!-- //입력창 end -->
           </div>
 
@@ -44,5 +62,37 @@
     </section>
   </div>
 
+  <script>
+    const tabList = document.querySelectorAll('.find-tab li');
+    const findContents = document.querySelectorAll('.find-contents-wrap .find-contents');
+    const nextBtn = document.querySelector('.find-next-btn');
+
+    Array.from(tabList).forEach((el, idx) => {
+      el.addEventListener('click', () => {
+        Array.from(tabList).forEach((i) => {
+          i.classList.remove('active');
+        });
+
+        showContent(idx, findContents);
+
+        el.classList.add('active');
+      });
+    });
+
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      nextBtn.parentNode.classList.remove('active');
+      nextBtn.parentNode.nextSibling.nextSibling.classList.add('active');
+    });
+
+    function showContent(num, contents) {
+      Array.from(contents).forEach((i) => {
+        i.classList.remove('active');
+      });
+      Array.from(contents)[num].classList.add('active');
+    }
+
+  </script>
 </body>
 </html>

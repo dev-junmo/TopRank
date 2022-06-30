@@ -389,6 +389,9 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   border-radius: 8px;
   z-index: 100;
 }
+.subscription-box .selectbox.paging-wrap ul {
+  right: 0;
+}
 .subscription-box .bottom-setting .seller ul {
   width: 377px;
 }

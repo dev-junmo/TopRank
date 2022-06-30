@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="style.css">
   <title>TopRank | Subscription-detail</title>
 </head>
-<body>
+<body class="scroll-lock">
   <!-- sidemenu -->
   <section class="sidemenu">
       <h3 class="logo">
@@ -327,26 +327,21 @@
 
 
   <script>
-    const selectLabel = document.querySelectorAll('.selectbox > div .label');
-    const selectBox = document.querySelectorAll('.selectbox > div ul');
-    const selectOption = document.querySelectorAll('.selectbox > div ul li');
+    const closeBtn = document.querySelector('.close');
 
-    Array.from(selectLabel).forEach((el) => {
-      el.addEventListener('click', () => {
-        if(el.parentNode.classList.contains('active')) {
-          el.parentNode.classList.remove('active');
-        } else {
-          el.parentNode.classList.add('active');
-        }
-      });
+    closeBtn.addEventListener('click', () => {
+      closeBtn.parentNode.parentNode.parentNode.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
     });
 
-    Array.from(selectOption).forEach((el) => {
-      el.addEventListener('click', () => {
-        el.parentNode.previousSibling.previousSibling.innerHTML = el.textContent;
-        el.parentNode.parentNode.classList.remove('active');
-      });
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('cm-popup')) {
+        document.querySelector('.cm-popup').classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      }
+
     });
+
   </script>
 </body>
 </html>

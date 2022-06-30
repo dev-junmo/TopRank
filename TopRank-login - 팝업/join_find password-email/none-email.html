@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css">
   <title>TopRank | Join</title>
 </head>
-<body>
+<body class="scroll-lock">
   <div class="html-box">
     <section class="body">
       <div class="contents">
@@ -78,35 +78,20 @@
   </div>
 
   <script>
-    const tabList = document.querySelectorAll('.find-tab li');
-    const findContents = document.querySelectorAll('.find-contents-wrap .find-contents');
-    const nextBtn = document.querySelector('.find-next-btn');
+    const closeBtn = document.querySelector('.close');
 
-    Array.from(tabList).forEach((el, idx) => {
-      el.addEventListener('click', () => {
-        Array.from(tabList).forEach((i) => {
-          i.classList.remove('active');
-        });
-
-        showContent(idx, findContents);
-
-        el.classList.add('active');
-      });
+    closeBtn.addEventListener('click', () => {
+      closeBtn.parentNode.parentNode.parentNode.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
     });
 
-    nextBtn.addEventListener('click', (e) => {
-      e.preventDefault();
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('cm-popup')) {
+        document.querySelector('.cm-popup').classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      }
 
-      nextBtn.parentNode.classList.remove('active');
-      nextBtn.parentNode.nextSibling.nextSibling.classList.add('active');
     });
-
-    function showContent(num, contents) {
-      Array.from(contents).forEach((i) => {
-        i.classList.remove('active');
-      });
-      Array.from(contents)[num].classList.add('active');
-    }
 
   </script>
 </body>

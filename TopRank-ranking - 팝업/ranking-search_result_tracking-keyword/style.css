@@ -29,6 +29,11 @@
   margin-top: -4px;
 }
 
+/* 팝업시 스크롤 막기 */
+.scroll-lock {
+  overflow: hidden;
+}
+
 /* 팝업 스타일 */
 .cm-popup {
   display: none;
@@ -50,6 +55,7 @@
   width: 576px;
   height: 423px;
   border-radius: 16px;
+  box-shadow: 0 3px 13px 0 rgba(0, 0, 0, 0.2);
 }
 .cm-popup .popup-box .popup-header {
   display: flex;
