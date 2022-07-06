@@ -161,7 +161,7 @@
                     <img src="../images/ic_product_b_d90_24.png" alt="B">
                     <span class="ranking-num up">999위 <img src="../images/ic_ascending_red_18.png" alt=""></span>
                   </div>
-                  <button><img src="../images/ic_log_gray_24.png" alt=""></button>
+                  <button class="product-rank-btn"><img src="../images/ic_log_gray_24.png" alt=""></button>
                 </div>
               </li>
               <li>
@@ -243,7 +243,7 @@
                     <img src="../images/ic_product_c_d90_24.png" alt="C">
                     <span class="ranking-num down">9위 <img src="../images/ic_decending_blue_18.png" alt=""></span>
                   </div>
-                  <button><img src="../images/ic_log_gray_24.png" alt=""></button>
+                  <button class="product-rank-btn"><img src="../images/ic_log_gray_24.png" alt=""></button>
                 </div>
               </li>
               <li>
@@ -284,7 +284,7 @@
                     <img src="../images/ic_product_b_d30_24.png" alt="B">
                     <span class="ranking-num down">99위 <img src="../images/ic_decending_blue_18.png" alt=""></span>
                   </div>
-                  <button><img src="../images/ic_log_gray_24.png" alt=""></button>
+                  <button class="product-rank-btn"><img src="../images/ic_log_gray_24.png" alt=""></button>
                 </div>
               </li>
               <li>
@@ -325,7 +325,7 @@
                     <img src="../images/ic_product_b_d15_24.png" alt="B">
                     <span class="ranking-num down">999위 <img src="../images/ic_ascending_red_18.png" alt=""></span>
                   </div>
-                  <button><img src="../images/ic_log_gray_24.png" alt=""></button>
+                  <button class="product-rank-btn"><img src="../images/ic_log_gray_24.png" alt=""></button>
                 </div>
               </li>
               <li>
@@ -369,9 +369,150 @@
             <input type="date" id="end-date" name="end-date" placeholder="종료일" value="2022.06.01">
           </div>
         </div>
+        <div class="sort-wrap">
+          <h3>정렬</h3>
+          <ul>
+            <li>
+              <label for="check1">
+                <input type="checkbox" id="check1" name="check" checked>
+                <span class="checkbox"></span>
+                <p>잔여일 만료 임박 순</p>
+              </label>
+            </li>
+            <li>
+              <label for="check2">
+                <input type="checkbox" id="check2" name="check">
+                <span class="checkbox"></span>
+                <p>키워드 가나다순</p>
+              </label>
+            </li>
+            <li>
+              <label for="check3">
+                <input type="checkbox" id="check3" name="check">
+                <span class="checkbox"></span>
+                <p>순위 상승 폭이 높은 순</p>
+              </label>
+            </li>
+            <li>
+              <label for="check4">
+                <input type="checkbox" id="check4" name="check">
+                <span class="checkbox"></span>
+                <p>순위 하락 폭이 높은 순</p>
+              </label>
+            </li>
+            <li>
+              <label for="check5">
+                <input type="checkbox" id="check5" name="check">
+                <span class="checkbox"></span>
+                <p>최신순</p>
+              </label>
+            </li>
+          </ul>
+        </div>
+        <div class="filter-btn-wrap">
+          <button class="filter-reset-btn">초기화</button>
+          <button class="filter-application-btn">적용</button>
+        </div>
       </div>
     </div>
     <!-- 필터 팝업 end -->
+
+    <!-- 순위 변동 팝업 start -->
+    <div class="m-popup change-rank-popup">
+      <div class="m-popup-box">
+        <div class="popup-header">
+          <h3>순위 변동 내역</h3>
+          <button class="close-btn">
+            <img src="../images/ic_close_bold_purple_40.png" alt="닫기 버튼">
+          </button>
+        </div>
+        <div class="init-registration">
+          <h3>최초 등록</h3>
+          <span class="rank-date">[2022-02-01 12:59]</span>
+          <b>167위</b>
+        </div>
+        <div class="registered-ranking">
+          <div class="registered-ranking-inner">
+            <ul>
+              <li>
+                <div class="ranking-info">
+                  <span class="rank-date">[2022-04-13 12:59]</span>
+                  <b>100위</b>
+                </div>
+                <div class="change-rank up">
+                  50위
+                </div>
+              </li>
+              <li>
+                <div class="ranking-info">
+                  <span class="rank-date">[2022-04-12 23:59]</span>
+                  <b>150위</b>
+                </div>
+                <div class="change-rank up">
+                  197위
+                </div>
+              </li>
+              <li>
+                <div class="ranking-info">
+                  <span class="rank-date">[2022-04-11 12:59]</span>
+                  <b>347위</b>
+                </div>
+                <div class="change-rank down">
+                  147위
+                </div>
+              </li>
+              <li>
+                <div class="ranking-info">
+                  <span class="rank-date">[2022-04-10 23:59]</span>
+                  <b>200위</b>
+                </div>
+                <div class="change-rank up">
+                  300위
+                </div>
+              </li>
+              <li>
+                <div class="ranking-info">
+                  <span class="rank-date">[2022-04-09 12:59]</span>
+                  <b>500위</b>
+                </div>
+                <div class="change-rank up">
+                  47위
+                </div>
+              </li>
+              <li>
+                <div class="ranking-info">
+                  <span class="rank-date">[2022-04-08 12:59]</span>
+                  <b>547위</b>
+                </div>
+                <div class="change-rank up">
+                  452위
+                </div>
+              </li>
+              <li>
+                <div class="ranking-info">
+                  <span class="rank-date">[2022-04-07 12:59]</span>
+                  <b>999위</b>
+                </div>
+                <div class="change-rank up">
+                  51위
+                </div>
+              </li>
+              <li>
+                <div class="ranking-info">
+                  <span class="rank-date">[2022-04-07 12:59]</span>
+                  <b>999위</b>
+                </div>
+                <div class="change-rank up">
+                  51위
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button class="rank-copy-btn">복사</button>
+      </div>
+    </div>
+    <!-- 순위 변동 팝업 end -->
 
     <!-- footer start -->
     <footer id="footer">
@@ -479,6 +620,39 @@
       const x = e.pageX - selectOption.offsetLeft;
       const walk = (x - startX) * 1;
       selectOption.scrollLeft = scrollLeft - walk;
+    });
+
+    // 필터 팝업, 순위 변동 팝업
+    const filterPopup = document.querySelector('.filter-popup');
+    const changeRankPopup = document.querySelector('.change-rank-popup');
+    const closeBtn = document.querySelectorAll('.close-btn');
+    const filterBtn = document.querySelector('.filter-btn');
+    const productRankBtn = document.querySelectorAll('.product-rank-btn');
+
+    // closeBtn.addEventListener('click', () => {
+    //   filterPopup.classList.remove('active');
+    // });
+    Array.from(closeBtn).forEach(c => {
+      c.addEventListener('click', () => {
+        filterPopup.classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      });
+      c.addEventListener('click', () => {
+        changeRankPopup.classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      });
+    });
+
+    filterBtn.addEventListener('click', () => {
+      filterPopup.classList.add('active');
+      document.querySelector('body').classList.add('scroll-lock');
+    });
+
+    Array.from(productRankBtn).forEach(b => {
+      b.addEventListener('click', () => {
+        changeRankPopup.classList.add('active');
+        document.querySelector('body').classList.add('scroll-lock');
+      });
     });
 
   </script>

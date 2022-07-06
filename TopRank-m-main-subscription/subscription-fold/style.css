@@ -55,6 +55,10 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   border-radius: 24px;
 }
 
+/* 팝업시 스크롤 막기 */
+.scroll-lock {
+  overflow: hidden;
+}
 
 #wrap {
   background: #f7f7fc url('../images/m_img_bg_sub_title.png') top center no-repeat;
@@ -389,11 +393,20 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   height: 100%;
   background: rgba(0, 0, 0, 0.2);
   z-index: 99999;
+  visibility: hidden;
 }
 .m-popup .m-popup-box {
   width: 100%;
-  height: 56.4rem;
+  /* height: 56.4rem; */
   background: #fff;
+  transform: translateY(-560px);
+  transition: all 0.3s;
+}
+.m-popup.active {
+  visibility: visible;
+}
+.m-popup.active .m-popup-box {
+  transform: translateY(0);
 }
 .m-popup .m-popup-box .popup-header {
   position: relative;
@@ -416,8 +429,12 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 }
 .m-popup .m-popup-box .filter-calendar-wrap {
   padding: 2.4rem 1.6rem;
+  border-bottom: 1px solid #dcdee8;
 }
 .m-popup .m-popup-box .filter-calendar-wrap h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #3e4259;
   margin-bottom: 1.6rem;
 }
 
@@ -468,6 +485,152 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   line-height: 1.44;
   margin: 7px 16px;
   vertical-align: top;
+}
+.sort-wrap {
+  padding: 2.4rem 1.6rem;
+  border-bottom: 1px solid #dcdee8;
+}
+.sort-wrap h3 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #3e4259;
+}
+.sort-wrap ul li {
+  display: flex;
+  align-items: center;
+  margin-top: 1.6rem;
+}
+.sort-wrap ul li:first-child {
+  margin-top: 2.4rem;
+}
+.sort-wrap ul li label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.sort-wrap ul li label input {
+  display: none;
+}
+.sort-wrap ul li label span {
+  display: inline-block;
+  width: 3.2rem;
+  height: 3.2rem;
+  background: url('../images/ic_radio_off_32.png') center no-repeat;
+  margin-right: 0.8rem;
+  cursor: pointer;
+}
+.sort-wrap ul li label input:checked + span {
+  background: url('../images/ic_radio_on_32.png') center no-repeat;
+}
+.sort-wrap ul li label p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #3e4259;
+}
+.filter-btn-wrap {
+  display: flex;
+  border-top: 1px solid #dcdee8;
+  margin-top: 2.0rem;
+}
+.filter-btn-wrap button {
+  height: 4.8rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background: none;
+}
+.filter-btn-wrap .filter-reset-btn {
+  width: 10.5rem;
+  color: #b8b6c4;
+  border-right: 1px solid #dcdee8;
+}
+.filter-btn-wrap .filter-application-btn {
+  width: 25.4rem;
+  color: #3f37c9;
+}
+
+/* 순위 변동 팝업 */
+.change-rank-popup .m-popup-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 2.4rem 1.6rem 3.2rem;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  transform: translateY(560px);
+}
+.change-rank-popup .m-popup-box .popup-header {
+  border: 0;
+  margin-bottom: 1.6rem;
+}
+.change-rank-popup .init-registration {
+  padding: 0 0.8rem;
+  margin-bottom: 1.6rem;
+}
+.change-rank-popup .init-registration h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #3e4259;
+  margin-bottom: 10px;
+}
+.change-rank-popup .rank-date {
+  font-size: 1.6rem;
+  color: #b8b6c4;
+  margin-right: 0.8rem;
+}
+.change-rank-popup b {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #04021f;
+}
+.change-rank-popup .registered-ranking {
+  height: 23.4rem;
+  padding: 1.8rem 0.8rem 1.6rem;
+  background: #f2f3fa;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.change-rank-popup .registered-ranking .registered-ranking-inner {
+  height: 20.0rem;
+  overflow-y: scroll;
+}
+/* 스크롤 스타일 없애기 */
+.change-rank-popup .registered-ranking .registered-ranking-inner {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.change-rank-popup .registered-ranking .registered-ranking-inner::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+.change-rank-popup .registered-ranking ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.55rem;
+}
+.change-rank-popup .change-rank {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #3e4259;
+  padding-right: 2.0rem;
+}
+.change-rank-popup .change-rank.up {
+  background: url('../images/ic_ascending_red_18.png') right center no-repeat;
+}
+.change-rank-popup .change-rank.down {
+  background: url('../images/ic_decending_blue_18.png') right center no-repeat;
+}
+.change-rank-popup .rank-copy-btn {
+  display: inline-block;
+  width: 100%;
+  height: 4.4rem;
+  line-height: 4.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 8px;
+  background: #3f37c9;
+  margin-top: 3.2rem;
 }
 
 
