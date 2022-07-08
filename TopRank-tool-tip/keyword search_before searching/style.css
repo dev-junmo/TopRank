@@ -1,0 +1,232 @@
+@charset "utf-8";
+
+
+/* 박스 스타일 */
+.box {
+  background: #fff;
+  padding: 32px 40px 65px;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+  display: flex;
+  margin-bottom: 31px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.41;
+}
+.box .box-header.box-icon {
+  padding-left: 48px;
+  background: url('../images/thum_navershoping_32.png') left center no-repeat;
+  background-size: 32px 32px;
+}
+.box .box-header.box-icon img {
+  vertical-align: middle;
+  margin-top: -4px;
+}
+
+
+
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+  display: flex;
+  justify-content: space-between;
+  width: 1240px;
+  margin-top: 58px;
+}
+.title-area .title {
+  font-size: 30px;
+  color: #04021f;
+  padding-left: 44px;
+  background: url('../images/ic_keyword_color_30.png') left center no-repeat;
+  background-size: 40px;
+}
+.title-area .sub-title {
+  display: block;
+  padding-left: 44px;
+  margin-top: 10px;
+  color: #3f37c9;
+}
+.title-area .breadcrumb {
+  display: flex;
+  align-items: center;
+}
+.title-area .breadcrumb li:first-child {
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 40px;
+}
+.title-area .breadcrumb li:first-child::before {
+  content: ">";
+  position: absolute;
+  right: -28px;
+  top: -2px;
+  font-size: 21px;
+  font-weight: 300;
+  color: #b8b6c4;
+}
+.title-area .breadcrumb li a {
+  color: #b8b6c4;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 키워드 검색 박스 */
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1240px;
+  height: 224px;
+  border-radius: 48px;
+  margin: 50px 0 56px;
+  background: #f2f2fc;
+}
+.search-box label {
+  display: none;
+}
+.search-box .search-input {
+  width: 912px;
+  height: 64px;
+  box-shadow: 0 6px 6px 0 rgba(36, 51, 179, 0.1);
+  border-radius: 16px;
+  background: #fff;
+  padding: 10px 32px;
+  box-sizing: border-box;
+}
+.search-box .search-input form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-box .search-input input {
+  width: 768px;
+  height: 28px;
+  border: 0;
+  outline: 0;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 1.4;
+}
+.search-box .search-input input::placeholder {
+  font-weight: 800;
+  color: #b8b6c4;
+}
+.search-box .search-input button {
+  width: 48px;
+  height: 48px;
+  background: none;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  margin-top: -2px;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 검색 기록 */
+.search-record {
+  width: 1240px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+.lately-search .table table {
+  border-collapse: collapse;
+}
+.search-record .lately-search .table th {
+  font-weight: 500;
+  color: #3e4259;
+  line-height: 1.44;
+  padding: 17px 0 16px;
+  border-bottom: 1px solid #dcdee8;
+  padding-left: 24px;
+}
+.search-record .lately-search .table th:nth-child(1),
+.search-record .lately-search .table th:nth-child(2) {
+  width: 214px;
+  text-align: left;
+}
+.search-record .lately-search .table th:nth-child(3) {
+  width: 154px;
+}
+.search-record .lately-search .table th:nth-child(4) {
+  width: 90px;
+}
+.search-record .lately-search .table td {
+  font-size: 18px;
+  line-height: 1.22;
+  color: #3e4259;
+  padding: 17px 0;
+  padding-left: 24px;
+}
+.search-record .lately-search .table td img {
+  width: 24px;
+  height: 24px;
+}
+.search-record .lately-search .table td:nth-child(1) {
+  font-weight: bold;
+  color: #3f37c9;
+}
+.search-record .lately-search .table td:nth-child(3),
+.search-record .lately-search .table td:nth-child(4) {
+  text-align: center;
+}
+.search-record .popular-ranking {
+  width: 368px;
+  margin-top: 31px;
+}
+.search-record .popular-ranking ol {
+  counter-reset: number 0;
+}
+.search-record .popular-ranking ol li {
+  padding: 17px 0;
+  border-bottom: 1px solid #dcdee8;
+}
+.popular-search .popular-ranking ol li:last-child {
+  border-bottom: 0;
+}
+.search-record .popular-ranking ol li a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #04021f;
+}
+.search-record .popular-ranking ol li::before {
+  counter-increment: number 1;
+  content: counter(number);
+  font-size: 20px;
+  font-weight: 500;
+  color: #3f37c9;
+  margin-right: 25px;
+}
+
+/* 도움말 툴팁 */
+.help-tool-tip {
+  position: relative;
+  width: 32px;
+  height: 32px;
+}
+.help-tool-tip::after {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 40px;
+  width: max-content;
+  padding: 16px;
+  background: #3e4259a9;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: left;
+  color: #fff;
+  line-height: 1.29;
+  white-space:pre;
+  transform: translateX(-46%);
+  border-radius: 16px;
+}
+.help-tool-tip:hover::after {
+  display: block;
+}
+.help-tool-tip.popular-search-tip::after {
+  content: "네이버쇼핑에서 많이 검색하고 상품을 많이 본\A 키워드 중 최근 급상승한 키워드를 뽑아서\A 나타낸 순위입니다.";
+}
