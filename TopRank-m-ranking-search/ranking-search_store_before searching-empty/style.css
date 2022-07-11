@@ -250,6 +250,16 @@
   background: none;
 }
 
+/* 검색 기록이 비어있을 때 */
+.search-history.null p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #b8b6c4;
+  line-height: 1.36;
+  margin: 4.4rem 0 3.2rem;
+  text-align: center;
+}
+
 .popular-search {
   padding: 2.0rem 1.6rem 3.5rem;
 }
