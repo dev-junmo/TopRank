@@ -576,10 +576,12 @@
   height: 19.5rem;
 }
 
-.age-click {
+.age-click,
+.gender-click {
   padding: 2.0rem 1.6rem;
 }
-.age-click .selected-date {
+.age-click .selected-date,
+.gender-click .selected-date {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -588,11 +590,16 @@
   color: #3e4259;
   margin-top: 1.5rem;
 }
-.age-click .selected-date span {
+.age-click .selected-date span,
+.gender-click .selected-date span {
   margin: 0 0.4rem;
   font-family: 'Gmarket Sans';
 }
 .age-click .graph {
+  height: 19.5rem;
+  margin-top: 2.2rem;
+}
+.gender-click .graph {
   height: 10.4rem;
   margin-top: 2.2rem;
 }

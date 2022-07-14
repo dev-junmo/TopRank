@@ -109,20 +109,24 @@
 /* =================================================================================================================== */
 /* =================================================================================================================== */
 /* 스토어 및 키워드 검색 */
-.store-keyword-search {
+.search-input {
+  display: none;
   padding: 0 1.6rem;
   margin-top: 3.2rem;
 }
-.store-keyword-search label {
+.search-input.active {
+  display: block;
+}
+.search-input label {
   display: flex;
   align-items: center;
   cursor: pointer;
   margin-bottom: 0.8rem;
 }
-.store-keyword-search label input {
+.search-input label input {
   display: none;
 }
-.store-keyword-search label span {
+.search-input label span {
   display: inline-block;
   width: 2.0rem;
   height: 2.0rem;
@@ -131,18 +135,18 @@
   margin-right: 0.8rem;
   cursor: pointer;
 }
-.store-keyword-search label input:checked + span {
+.search-input label input:checked + span {
   background: url('../images/ic_checkbox_on_32.png') center no-repeat;
   background-size: 2.0rem;
 }
-.store-keyword-search label p {
+.search-input label p {
   font-size: 1.4rem;
   color: #3e4259;
 }
-.store-keyword-search form {
+.search-input form {
   position: relative;
 }
-.store-keyword-search form input {
+.search-input form input {
   width: 100%;
   height: 4.8rem;
   font-size: 1.4rem;
@@ -156,10 +160,10 @@
   box-sizing: border-box;
   box-shadow: 0 6px 8px 0 rgba(36, 51, 179, 0.15);
 }
-.store-keyword-search form input::placeholder {
+.search-input form input::placeholder {
   color: #b8b6c4;
 }
-.store-keyword-search form .keyword-search-btn {
+.search-input form .keyword-search-btn {
   position: absolute;
   right: 16px;
   bottom: 8px;
@@ -215,6 +219,12 @@
 /* 검색한 결과 영역 */
 .search-result-area {
   padding: 0 2.4rem;
+}
+.search-result-wrap {
+  display: none;
+}
+.search-result-wrap.active {
+  display: block;
 }
 .search-result {
   padding: 1.0rem 2.0rem 2.4rem;

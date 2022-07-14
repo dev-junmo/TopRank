@@ -11,24 +11,19 @@
 <body>
   <div id="wrap" class="mobile">
     <!-- header start -->
-    <header id="header" class="header-wrap">
-      <div class="navifation-bar">
-        <a href="#" class="membership-btn">멤버쉽 소개</a>
-        <h1 class="logo"><img src="../images/logo_purple_130.png" alt="TopRank"></h1>
-        <!-- <button class="all-menu"><img src="../images/ic_menu_purple_40.png" alt="메뉴"></button> -->
-        <button class="all-menu">
-          <span class="burger-line burger-item1"></span>
-          <span class="burger-line burger-item2"></span>
-          <span class="burger-line burger-item3"></span>
-        </button>
-      </div>
-      <div class="circle"></div>
-      <div class="m-menu">
-        <div class="menu-header">
-          <a href="#" class="membership-btn">멤버쉽 소개</a>
+    <header id="header" class="header-wrap back-btn-exist">
+      <div class="header-inner">
+        <div class="navigation-bar">
+          <button class="back-btn"><img src="../images/ic_arrow_left_purple_40.png" alt="뒤로가기"></button>
           <h1 class="logo"><img src="../images/logo_purple_130.png" alt="TopRank"></h1>
-          <button class="menu-close"><img src="../images/ic_close_purple_40.png" alt="닫기"></button>
+          <button class="all-menu">
+            <span class="burger-line burger-item1"></span>
+            <span class="burger-line burger-item2"></span>
+            <span class="burger-line burger-item3"></span>
+          </button>
         </div>
+      </div>
+      <div class="m-menu">
         <div class="login-area">
           <div class="login-state">로그인이 필요합니다</div>
           <button class="login-btn">로그인</button>
@@ -60,7 +55,7 @@
             <li>
               <img src="../images/ic_board_purple_32.png" alt="">
               <a href="#">게시판</a>
-              <button class="fold-btn"><img src="../images/ic_fold_32.png" alt=""></button>
+              <button class="fold-btn"><img src="../images/ic_fold_bold_black_32.png" alt=""></button>
               <ul>
                 <li>
                   <a href="#">공지사항</a>
@@ -73,8 +68,17 @@
     </header>
     <!-- //header end -->
 
+    <div class="m-popup-mask"></div>
+
     <!-- contents start -->
     <div id="contents">
+      <!-- 탑/다운 버튼 start -->
+      <div class="flirting-btn-wrap">
+        <button class="flirting-btn up-btn">UP</button>
+        <button class="flirting-btn down-btn">DOWN</button>
+      </div>
+      <!-- 탑/다운 버튼 end -->
+
       <!-- 헤더 영역 start -->
       <div class="contents-header">
         <div class="contents-title">
@@ -348,6 +352,18 @@
             </div>
             <div class="graph"></div>
           </div>
+          <div class="gender-click box">
+            <div class="box-header help-center">
+              성별 클릭 비율
+              <img src="../images/ic_help_gray_24.png" alt="도움말">
+            </div>
+            <div class="selected-date">
+              <span>2022.02.01</span>
+              -
+              <span>2022.03.01</span>
+            </div>
+            <div class="graph"></div>
+          </div>
         </div>
         <!-- 날짜 선택 영역 end -->
       </div>
@@ -401,52 +417,59 @@
     // 모바일 메뉴 보기
     const headerWrap = document.querySelector('.header-wrap');
     const allMenu = document.querySelector('.all-menu');
-    const circle = document.querySelector('.circle');
     const menu = document.querySelector('.m-menu');
+    const popupMask = document.querySelector('.m-popup-mask');
 
-    let timer;
     allMenu.addEventListener('click', () => {
       if(allMenu.classList.contains('open')) {
         allMenu.classList.remove('open');
-        circle.classList.remove('active');
         menu.classList.remove('active');
-        timer = setTimeout(() => {
-          headerWrap.classList.remove('active');
-        }, 400);
+        headerWrap.classList.remove('active');
+        popupMask.classList.remove('active');
       }else{
-        clearTimeout(timer);
         allMenu.classList.add('open');
-        circle.classList.add('active');
         menu.classList.add('active');
         headerWrap.classList.add('active');
-
+        popupMask.classList.add('active');
       }
     });
 
-    // 메뉴 더 보기
-    const unfoldBtn = document.querySelector('.unfold-btn');
-    const bottomPointArea = document.querySelector('.top-product-info');
+    // 스크롤 이벤트
+    const flirtingBtnWrap = document.querySelector('.flirting-btn-wrap');
+    const upBtn = document.querySelector('.up-btn');
+    const downBtn = document.querySelector('.down-btn');
 
-    unfoldBtn.addEventListener('click', () => {
-      if(unfoldBtn.classList.contains('on')) {
-        unfoldBtn.classList.remove('on');
-        bottomPointArea.classList.remove('active');
+    window.addEventListener('scroll', (e) => {
+      if(window.scrollY > 80) {
+        flirtingBtnWrap.classList.add('active');
       }else{
-        unfoldBtn.classList.add('on');
-        bottomPointArea.classList.add('active');
+        flirtingBtnWrap.classList.remove('active');
       }
     });
 
-    // 자동 연장 여부 체크
-    const autoExtensionTab = document.querySelectorAll('.auto-extension li');
-
-    Array.from(autoExtensionTab).forEach(a => {
-      a.addEventListener('click', () => {
-        autoExtensionTab.forEach(u => {
-          u.classList.remove('on');
+    const moveBackToTop = () => {
+      if(window.pageYOffset > 0) {
+        window.scrollTo({
+          top: 0, behavior: 'smooth'
         });
-        a.classList.add('on');
-      });
+      }
+    }
+
+    const moveBackToBottom = () => {
+      if(window.pageYOffset < document.querySelector('html').offsetHeight) {
+        window.scrollTo({
+          top: document.querySelector('html').offsetHeight, behavior: 'smooth'
+        });
+      }
+    }
+
+    upBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      moveBackToTop();
+    });
+    downBtn.addEventListener('click', () => {
+      moveBackToBottom();
     });
 
   </script>

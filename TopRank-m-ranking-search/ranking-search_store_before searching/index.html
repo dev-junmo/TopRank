@@ -11,24 +11,19 @@
 <body>
   <div id="wrap" class="mobile">
     <!-- header start -->
-    <header id="header" class="header-wrap">
-      <div class="navifation-bar">
-        <a href="#" class="membership-btn">멤버쉽 소개</a>
-        <h1 class="logo"><img src="../images/logo_purple_130.png" alt="TopRank"></h1>
-        <!-- <button class="all-menu"><img src="../images/ic_menu_purple_40.png" alt="메뉴"></button> -->
-        <button class="all-menu">
-          <span class="burger-line burger-item1"></span>
-          <span class="burger-line burger-item2"></span>
-          <span class="burger-line burger-item3"></span>
-        </button>
-      </div>
-      <div class="circle"></div>
-      <div class="m-menu">
-        <div class="menu-header">
-          <a href="#" class="membership-btn">멤버쉽 소개</a>
+    <header id="header" class="header-wrap back-btn-exist">
+      <div class="header-inner">
+        <div class="navigation-bar">
+          <button class="back-btn"><img src="../images/ic_arrow_left_purple_40.png" alt="뒤로가기"></button>
           <h1 class="logo"><img src="../images/logo_purple_130.png" alt="TopRank"></h1>
-          <button class="menu-close"><img src="../images/ic_close_purple_40.png" alt="닫기"></button>
+          <button class="all-menu">
+            <span class="burger-line burger-item1"></span>
+            <span class="burger-line burger-item2"></span>
+            <span class="burger-line burger-item3"></span>
+          </button>
         </div>
+      </div>
+      <div class="m-menu">
         <div class="login-area">
           <div class="login-state">로그인이 필요합니다</div>
           <button class="login-btn">로그인</button>
@@ -60,7 +55,7 @@
             <li>
               <img src="../images/ic_board_purple_32.png" alt="">
               <a href="#">게시판</a>
-              <button class="fold-btn"><img src="../images/ic_fold_32.png" alt=""></button>
+              <button class="fold-btn"><img src="../images/ic_fold_bold_black_32.png" alt=""></button>
               <ul>
                 <li>
                   <a href="#">공지사항</a>
@@ -73,8 +68,17 @@
     </header>
     <!-- //header end -->
 
+    <div class="m-popup-mask"></div>
+
     <!-- contents start -->
     <div id="contents">
+      <!-- 탑/다운 버튼 start -->
+      <div class="flirting-btn-wrap">
+        <button class="flirting-btn up-btn">UP</button>
+        <button class="flirting-btn down-btn">DOWN</button>
+      </div>
+      <!-- 탑/다운 버튼 end -->
+
       <!-- 헤더 영역 start -->
       <div class="contents-header">
         <div class="contents-title">
@@ -93,110 +97,395 @@
       </ul>
       <!-- 탭 메뉴 end -->
 
-      <!-- 키워드 검색 창 start -->
-      <div class="store-keyword-search">
-        <label for="check">
-          <input type="checkbox" id="check" name="check" checked>
-          <span class="checkbox"></span>
-          <p>광고 및 가격 비교상품 포함하기</p>
-        </label>
-        <form>
-          <input type="text" placeholder="스토어명" class="store-search">
-          <input type="text" placeholder="키워드" class="keyword-search">
-          <button type="submit" class="keyword-search-btn">검색</button>
-        </form>
+      <div class="search-input-wrap">
+        <!-- 스토어 검색 창 start -->
+        <div class="search-input active">
+          <label for="check">
+            <input type="checkbox" id="check" name="check">
+            <span class="checkbox"></span>
+            <p>광고 및 가격 비교상품 포함하기</p>
+          </label>
+          <form>
+            <input type="text" placeholder="스토어명" class="store-search">
+            <input type="text" placeholder="키워드" class="keyword-search">
+            <button type="submit" class="keyword-search-btn">검색</button>
+          </form>
+        </div>
+        <!-- 스토어 검색 창 end -->
+        <!-- 주소검색 창 start -->
+        <div class="search-input">
+          <label for="check">
+            <input type="checkbox" id="check" name="check">
+            <span class="checkbox"></span>
+            <p>광고 및 가격 비교상품 포함하기</p>
+          </label>
+          <form>
+            <input type="text" placeholder="상품 주소" class="store-search">
+            <input type="text" placeholder="키워드" class="keyword-search">
+            <button type="submit" class="keyword-search-btn">검색</button>
+          </form>
+        </div>
+        <!-- 주소검색 창 end -->
+        <!-- 상품 검색 창 start -->
+        <div class="search-input">
+          <label for="check">
+            <input type="checkbox" id="check" name="check">
+            <span class="checkbox"></span>
+            <p>광고 및 가격 비교상품 포함하기</p>
+          </label>
+          <form>
+            <input type="text" placeholder="상품명" class="store-search">
+            <input type="text" placeholder="키워드" class="keyword-search">
+            <button type="submit" class="keyword-search-btn">검색</button>
+          </form>
+        </div>
+        <!-- 상품 검색 창 end -->
       </div>
-      <!-- 키워드 검색 창 end -->
 
       <div class="line"></div>
 
       <!-- 검색한 결과 영역 start -->
       <div class="search-history-area">
-        <div class="search-history box">
-          <div class="search-history-title">최근 검색 기록</div>
-          <ul>
-            <li>
-              <b class="searching-keyword">제주농부 <span>망고</span></b>
-              <p>
-                상품 수 <span>720,642</span>개
-              </p>
-              <button class="delete-btn">
-                <img src="../images/ic_delete_red_32.png" alt="삭제">
-              </button>
-            </li>
-            <li>
-              <b class="searching-keyword">제주농부 <span>망고(광고 포함)</span></b>
-              <p>
-                상품 수 <span>731,008</span>개
-              </p>
-              <button class="delete-btn">
-                <img src="../images/ic_delete_red_32.png" alt="삭제">
-              </button>
-            </li>
-            <li>
-              <b class="searching-keyword">제주농부 <span>한라봉</span></b>
-              <p>
-                상품 수 <span>58,565</span>개
-              </p>
-              <button class="delete-btn">
-                <img src="../images/ic_delete_red_32.png" alt="삭제">
-              </button>
-            </li>
-            <li>
-              <b class="searching-keyword">제주농부 <span>과일</span></b>
-              <p>
-                상품 수 <span>6,189,171</span>개
-              </p>
-              <button class="delete-btn">
-                <img src="../images/ic_delete_red_32.png" alt="삭제">
-              </button>
-            </li>
-            <li>
-              <b class="searching-keyword">달콤팜 딸기 <span>딸기</span></b>
-              <p>
-                상품 수 <span>1,106,352</span>개
-              </p>
-              <button class="delete-btn">
-                <img src="../images/ic_delete_red_32.png" alt="삭제">
-              </button>
-            </li>
-            <li>
-              <b class="searching-keyword">달콤팜 딸기 <span>딸기(광고 포함)</span></b>
-              <p>
-                상품 수 <span>1,148,391</span>개
-              </p>
-              <button class="delete-btn">
-                <img src="../images/ic_delete_red_32.png" alt="삭제">
-              </button>
-            </li>
-            <li>
-              <b class="searching-keyword">바른너츠 <span>땅콩(광고 포함)</span></b>
-              <p>
-                상품 수 <span>547,046</span>개
-              </p>
-              <button class="delete-btn">
-                <img src="../images/ic_delete_red_32.png" alt="삭제">
-              </button>
-            </li>
-            <li>
-              <b class="searching-keyword">딜라잇가든 <span>자두</span></b>
-              <p>
-                상품 수 <span>156,853</span>개
-              </p>
-              <button class="delete-btn">
-                <img src="../images/ic_delete_red_32.png" alt="삭제">
-              </button>
-            </li>
-            <li>
-              <b class="searching-keyword">딜라잇가든 <span>자두(광고 포함)</span></b>
-              <p>
-                상품 수 <span>156,853</span>개
-              </p>
-              <button class="delete-btn">
-                <img src="../images/ic_delete_red_32.png" alt="삭제">
-              </button>
-            </li>
-          </ul>
+        <div class="search-history-wrap">
+          <div class="search-history box active">
+            <div class="search-history-title">최근 검색 기록</div>
+            <ul>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">제주농부</span> 
+                  <span class="search-keyword">망고</span>
+                </b>
+                <p>
+                  상품 수 <span>720,642</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">제주농부</span> 
+                  <span class="search-keyword">망고(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>731,008</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">제주농부</span> 
+                  <span class="search-keyword">한라봉</span>
+                </b>
+                <p>
+                  상품 수 <span>58,565</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">제주농부</span> 
+                  <span class="search-keyword">과일</span>
+                </b>
+                <p>
+                  상품 수 <span>6,189,171</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">달콤팜 딸기</span> 
+                  <span class="search-keyword">딸기</span>
+                </b>
+                <p>
+                  상품 수 <span>1,106,352</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">달콤팜 딸기</span> 
+                  <span class="search-keyword">딸기(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>1,148,391</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">바른너츠</span> 
+                  <span class="search-keyword">땅콩(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>547,046</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">딜라잇가든</span> 
+                  <span class="search-keyword">자두</span>
+                </b>
+                <p>
+                  상품 수 <span>156,853</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">딜라잇가든</span> 
+                  <span class="search-keyword">자두(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>156,853</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="search-history box">
+            <div class="search-history-title">최근 검색 기록</div>
+            <ul>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">/4943439707</span> 
+                  <span class="search-keyword">망고</span>
+                </b>
+                <p>
+                  상품 수 <span>720,642</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">/4943439707</span> 
+                  <span class="search-keyword">망고(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>731,008</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">/3903133769</span> 
+                  <span class="search-keyword">한라봉</span>
+                </b>
+                <p>
+                  상품 수 <span>58,565</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">/8921173346</span> 
+                  <span class="search-keyword">과일</span>
+                </b>
+                <p>
+                  상품 수 <span>6,189,171</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">/1203630768</span> 
+                  <span class="search-keyword">딸기</span>
+                </b>
+                <p>
+                  상품 수 <span>1,106,352</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">/1203630768</span> 
+                  <span class="search-keyword">딸기(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>1,148,391</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">/6983063061</span> 
+                  <span class="search-keyword">땅콩(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>547,046</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">/1909173469</span> 
+                  <span class="search-keyword">자두</span>
+                </b>
+                <p>
+                  상품 수 <span>156,853</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product">/1909173469</span> 
+                  <span class="search-keyword">자두(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>156,853</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+            </ul>
+          </div>
+          <div class="search-history box">
+            <div class="search-history-title">최근 검색 기록</div>
+            <ul>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product ellipsis">제주농부 산지직송 alskdmalskdm</span> 
+                  <span class="search-keyword">망고</span>
+                </b>
+                <p>
+                  상품 수 <span>720,642</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product ellipsis">제주농부 산지직송 alskdmalskdm</span> 
+                  <span class="search-keyword">망고(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>731,008</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product ellipsis">제주농부 산지직송 alskdmalskdm</span> 
+                  <span class="search-keyword">한라봉</span>
+                </b>
+                <p>
+                  상품 수 <span>58,565</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product ellipsis">제주농부 산지직송 alskdmalskdm</span> 
+                  <span class="search-keyword">과일</span>
+                </b>
+                <p>
+                  상품 수 <span>6,189,171</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product ellipsis">딸기 설향 산지직송 alskdmalskdm</span> 
+                  <span class="search-keyword">딸기</span>
+                </b>
+                <p>
+                  상품 수 <span>1,106,352</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product ellipsis">딸기 설향 산지직송 alskdmalskdm</span> 
+                  <span class="search-keyword">딸기(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>1,148,391</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product ellipsis">바른너츠 땅콩 500 alskjdnalsidnais</span> 
+                  <span class="search-keyword">땅콩(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>547,046</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product ellipsis">딜라잇가든 냉동 자 alskdmalskdm</span> 
+                  <span class="search-keyword">자두</span>
+                </b>
+                <p>
+                  상품 수 <span>156,853</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+              <li>
+                <b class="searching-keyword">
+                  <span class="search-product ellipsis">딜라잇가든 냉동 자 alskdnlainlds</span> 
+                  <span class="search-keyword">자두(광고 포함)</span>
+                </b>
+                <p>
+                  상품 수 <span>156,853</span>개
+                </p>
+                <button class="delete-btn">
+                  <img src="../images/ic_delete_red_32.png" alt="삭제">
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
         <!-- 실시간 인기검색어 start -->
         <div class="popular-search box">
@@ -268,52 +557,84 @@
     // 모바일 메뉴 보기
     const headerWrap = document.querySelector('.header-wrap');
     const allMenu = document.querySelector('.all-menu');
-    const circle = document.querySelector('.circle');
     const menu = document.querySelector('.m-menu');
+    const popupMask = document.querySelector('.m-popup-mask');
 
-    let timer;
     allMenu.addEventListener('click', () => {
       if(allMenu.classList.contains('open')) {
         allMenu.classList.remove('open');
-        circle.classList.remove('active');
         menu.classList.remove('active');
-        timer = setTimeout(() => {
-          headerWrap.classList.remove('active');
-        }, 400);
+        headerWrap.classList.remove('active');
+        popupMask.classList.remove('active');
       }else{
-        clearTimeout(timer);
         allMenu.classList.add('open');
-        circle.classList.add('active');
         menu.classList.add('active');
         headerWrap.classList.add('active');
-
+        popupMask.classList.add('active');
       }
     });
 
-    // 메뉴 더 보기
-    const unfoldBtn = document.querySelector('.unfold-btn');
-    const bottomPointArea = document.querySelector('.top-product-info');
+    // 탭 메뉴
+    const tabList = document.querySelectorAll('.ranking-search-tab li');
+    const searchInput = document.querySelectorAll('.search-input');
+    const searchHistory = document.querySelectorAll('.search-history');
 
-    unfoldBtn.addEventListener('click', () => {
-      if(unfoldBtn.classList.contains('on')) {
-        unfoldBtn.classList.remove('on');
-        bottomPointArea.classList.remove('active');
-      }else{
-        unfoldBtn.classList.add('on');
-        bottomPointArea.classList.add('active');
-      }
-    });
-
-    // 자동 연장 여부 체크
-    const autoExtensionTab = document.querySelectorAll('.auto-extension li');
-
-    Array.from(autoExtensionTab).forEach(a => {
-      a.addEventListener('click', () => {
-        autoExtensionTab.forEach(u => {
-          u.classList.remove('on');
+    Array.from(tabList).forEach((el, idx) => {
+      el.addEventListener('click', () => {
+        Array.from(tabList).forEach((i) => {
+          i.classList.remove('active');
         });
-        a.classList.add('on');
+
+        showContent(idx, searchInput);
+        showContent(idx, searchHistory);
+
+        el.classList.add('active');
       });
+    });
+
+    function showContent(num, contents) {
+      Array.from(contents).forEach((i) => {
+        i.classList.remove('active');
+      });
+      Array.from(contents)[num].classList.add('active');
+    }
+
+    // 스크롤 이벤트
+    const flirtingBtnWrap = document.querySelector('.flirting-btn-wrap');
+    const upBtn = document.querySelector('.up-btn');
+    const downBtn = document.querySelector('.down-btn');
+
+    window.addEventListener('scroll', (e) => {
+      if(window.scrollY > 80) {
+        flirtingBtnWrap.classList.add('active');
+      }else{
+        flirtingBtnWrap.classList.remove('active');
+      }
+    });
+
+    const moveBackToTop = () => {
+      if(window.pageYOffset > 0) {
+        window.scrollTo({
+          top: 0, behavior: 'smooth'
+        });
+      }
+    }
+
+    const moveBackToBottom = () => {
+      if(window.pageYOffset < document.querySelector('html').offsetHeight) {
+        window.scrollTo({
+          top: document.querySelector('html').offsetHeight, behavior: 'smooth'
+        });
+      }
+    }
+
+    upBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      moveBackToTop();
+    });
+    downBtn.addEventListener('click', () => {
+      moveBackToBottom();
     });
 
   </script>

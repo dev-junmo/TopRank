@@ -183,6 +183,9 @@
   margin-bottom: 2.7rem;
 }
 .popular-search .popular-search-title span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #04021f;
   margin-left: 0.8rem;
   margin-right: 0.3rem;
 }

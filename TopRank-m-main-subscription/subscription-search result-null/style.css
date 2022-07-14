@@ -252,7 +252,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 /* =================================================================================================================== */
 /* 이용중인 상품 목록 */
 .using-product-list-wrap {
-  padding: 0 2.4rem 5.6rem;
+  padding: 0 2.4rem;
 }
 .using-product-list-wrap .product-all-count {
   font-size: 1.4rem;
@@ -264,8 +264,8 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   font-size: 1.4rem;
   font-weight: normal;
   color: #b8b6c4;
-  background: url('../images/ic_help_gray_24.png') left center no-repeat;
-  background-size: 1.6rem;
+  background: url('../images/ic_attention_gray_24.png') left center no-repeat;
+  background-size: 1.8rem;
   padding-left: 2.0rem;
   margin: 11px 0 25px;
 }
@@ -276,6 +276,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   background: #f2f2fc;
   text-align: center;
   padding: 4.1rem 0 4.3rem;
+  margin-bottom: 7.2rem;
 }
 .using-product-list.null > img {
   width: 6.4rem;
@@ -436,11 +437,13 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   width: 3.2rem;
   height: 3.2rem;
   background: url('../images/ic_radio_off_32.png') center no-repeat;
+  background-size: 2.8rem;
   margin-right: 0.8rem;
   cursor: pointer;
 }
 .sort-wrap ul li label input:checked + span {
   background: url('../images/ic_radio_on_32.png') center no-repeat;
+  background-size: 2.8rem;
 }
 .sort-wrap ul li label p {
   font-size: 1.4rem;
