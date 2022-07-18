@@ -1,0 +1,15 @@
+<svg id="ic_dot_red_22" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #e62e6b;
+      }
+    </style>
+  </defs>
+  <rect id="영역" class="cls-1" width="22" height="22"/>
+  <path id="패스_440" data-name="패스 440" class="cls-2" d="M2,0A2,2,0,1,1,0,2,2,2,0,0,1,2,0Z" transform="translate(9 9)"/>
+</svg>

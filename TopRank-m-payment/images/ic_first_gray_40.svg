@@ -1,0 +1,15 @@
+<svg id="ic_first_gray_40" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #dcdee8;
+      }
+    </style>
+  </defs>
+  <rect id="영역" class="cls-1" width="40" height="40"/>
+  <path id="패스_481" data-name="패스 481" class="cls-2" d="M-6162,254.07l7.071-7.071,1.415,1.415-5.657,5.657,5.657,5.657-1.415,1.413Zm-6,0,7.071-7.071,1.415,1.415-5.657,5.657,5.657,5.657-1.415,1.413Z" transform="translate(6180.757 -234.07)"/>
+</svg>
