@@ -33,7 +33,7 @@
   top: -2.7rem;
   width: 8.0rem;
   height: 3.2rem;
-  background: url('../images/m_img_main_bubble.png') center no-repeat;
+  background: url('../images/m_img_main_bubble.svg') center no-repeat;
 }
 .main-tab-area .main-tab li img {
   width: 24px;
@@ -125,7 +125,7 @@
   color: #04021f;
   padding-left: 28px;
   padding-top: 4px;
-  background: url('../images/ic_keyword_color_30.png') left center no-repeat;
+  background: url('../images/ic_keyword_color_30.svg') left center no-repeat;
   background-size: 24px;
 }
 .main-contents-title span {
@@ -469,7 +469,7 @@
   margin-bottom: 3.2rem;
 }
 .ranking-search-result .main-contents-title h3 {
-  background: url('../images/ic_ranking_color_30.png') left center no-repeat;
+  background: url('../images/ic_ranking_color_30.svg') left center no-repeat;
   background-size: 24px;
 }
 .product-ranking-box {

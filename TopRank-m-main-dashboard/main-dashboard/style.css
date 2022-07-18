@@ -18,11 +18,11 @@
   padding-top: 0.4rem;
 }
 .pill.rise {
-  background: #fc6075 url('../images/ic_up_white_24.png') 0.6rem 0.5rem no-repeat;
+  background: #fc6075 url('../images/ic_up_white_24.svg') 0.6rem 0.5rem no-repeat;
   background-size: 1.6rem;
 }
 .pill.fall {
-  background: #2fbaed url('../images/ic_down_white_24.png') 0.6rem 0.5rem no-repeat;
+  background: #2fbaed url('../images/ic_down_white_24.svg') 0.6rem 0.5rem no-repeat;
   background-size: 1.6rem;
 }
 
@@ -45,7 +45,7 @@
 
 
 #wrap {
-  background: #f7f7fc url('../images/img_bg_main-dashboard_title-m.png') top center no-repeat;
+  background: #f7f7fc url('../images/png/img_bg_main-dashboard_title-m.png') top center no-repeat;
   background-size: contain;
 }
 
@@ -182,7 +182,7 @@
   transition: all 0.5s;
 }
 .card-dashboard .bottom-point-area.active {
-  height: 20.3rem;
+  height: 18.3rem;
 }
 .card-dashboard .bottom-point-area ul li {
   position: relative;
@@ -190,7 +190,8 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.6rem;
-  margin-bottom: 2.5rem;
+  color: #3e4259;
+  margin-bottom: 1.8rem;
   padding-left: 2.4rem;
 }
 .card-dashboard .bottom-point-area ul li:last-child {
@@ -204,20 +205,26 @@
   left: 0;
   width: 1.6rem;
   height: 1.6rem;
-  background: url('../images/ic_payment-point_purple_24.png') left center no-repeat;
+  background: url('../images/ic_payment-point_purple_24.svg') left center no-repeat;
   background-size: 1.6rem;
 }
 .card-dashboard .bottom-point-area ul li:nth-child(2)::before {
-  background: url('../images/ic_free-point_purple_24.png') left center no-repeat;
+  background: url('../images/ic_free-point_purple_24.svg') left center no-repeat;
   background-size: 1.6rem;
 }
 .card-dashboard .bottom-point-area ul li:nth-child(3)::before {
-  background: url('../images/ic_reward-point_purple_24.png') left center no-repeat;
+  background: url('../images/ic_reward-point_purple_24.svg') left center no-repeat;
   background-size: 1.6rem;
 }
 .card-dashboard .bottom-point-area ul li:nth-child(4)::before {
-  background: url('../images/ic_coupon_purple_24.png') left center no-repeat;
+  background: url('../images/ic_coupon_purple_24.svg') left center no-repeat;
   background-size: 1.6rem;
+}
+.card-dashboard .bottom-point-area.active ul li:not(:first-child) {
+  display: flex;
+}
+.card-dashboard .bottom-point-area ul li:not(:first-child) {
+  display: none;
 }
 .card-dashboard .bottom-point-area .point-num {
   color: #e6458e;
@@ -237,24 +244,24 @@
   left: 50%;
   bottom: -1.5rem;
   /* border: 1px solid #dcdee8; */
-  background: url('../images/ic_circle_unfold_32.png') center no-repeat;
+  background: url('../images/ic_circle_unfold_32.svg') center no-repeat;
   border-radius: 50%;
   margin-left: -1.75rem;
   padding: 0;
 }
 .card-dashboard .unfold-btn.on {
-  background: url('../images/ic_circle_fold_32.png') center no-repeat;
+  background: url('../images/ic_circle_fold_32.svg') center no-repeat;
 }
 /* .card-dashboard .unfold-btn::before {
   content: "";
   display: block;
   width: 1.56rem;
   height: 0.85rem;
-  background: url('../images/ic_unfold_20.png') center no-repeat;
+  background: url('../images/ic_unfold_20.svg') center no-repeat;
   opacity: 0.5;
 }
 .card-dashboard .unfold-btn.on::before {
-  background: url('../images/ic_fold_20.png') center no-repeat;
+  background: url('../images/ic_fold_20.svg') center no-repeat;
 } */
 
 /* =================================================================================================================== */
@@ -320,7 +327,7 @@
   border-radius: 24px;
   margin-right: 8px;
   padding: 1.4rem 1.6rem 2.0rem;
-  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+  box-shadow: 0 3px 16px 0 rgba(36, 51, 179, 0.1);
 }
 .product-slide-wrap .product-slide-item:last-child {
   margin-right: 0;

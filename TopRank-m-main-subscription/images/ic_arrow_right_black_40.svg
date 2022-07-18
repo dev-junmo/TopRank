@@ -1,0 +1,15 @@
+<svg id="ic_arrow_right_black_40" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #3e4259;
+      }
+    </style>
+  </defs>
+  <rect id="영역" class="cls-1" width="40" height="40"/>
+  <path id="패스_480" data-name="패스 480" class="cls-2" d="M8,0V8H0v2H10V0Z" transform="translate(9.929 20) rotate(-45)"/>
+</svg>

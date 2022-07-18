@@ -18,11 +18,11 @@
   padding-top: 0.4rem;
 }
 .pill.rise {
-  background: #fc6075 url('../images/ic_fold_white_24.png') 2px center no-repeat;
+  background: #fc6075 url('../images/ic_fold_white_24.svg') 2px center no-repeat;
   /* background-size: 1.6rem; */
 }
 .pill.fall {
-  background: #2fbaed url('../images/ic_fold_white_24.png') left center no-repeat;
+  background: #2fbaed url('../images/ic_fold_white_24.svg') left center no-repeat;
   /* background-size: 1.6rem; */
 }
 
@@ -45,7 +45,7 @@
 
 
 #wrap {
-  background: #f7f7fc url('../images/img_bg_main-dashboard_title-m.png') top center no-repeat;
+  background: #f7f7fc url('../images/png/img_bg_main-dashboard_title-m.png') top center no-repeat;
   background-size: contain;
 }
 
@@ -204,19 +204,19 @@
   left: 0;
   width: 1.6rem;
   height: 1.6rem;
-  background: url('../images/ic_payment-point_purple_24.png') left center no-repeat;
+  background: url('../images/ic_payment-point_purple_24.svg') left center no-repeat;
   background-size: 1.6rem;
 }
 .card-dashboard .bottom-point-area ul li:nth-child(2)::before {
-  background: url('../images/ic_free-point_purple_24.png') left center no-repeat;
+  background: url('../images/ic_free-point_purple_24.svg') left center no-repeat;
   background-size: 1.6rem;
 }
 .card-dashboard .bottom-point-area ul li:nth-child(3)::before {
-  background: url('../images/ic_reward-point_purple_24.png') left center no-repeat;
+  background: url('../images/ic_reward-point_purple_24.svg') left center no-repeat;
   background-size: 1.6rem;
 }
 .card-dashboard .bottom-point-area ul li:nth-child(4)::before {
-  background: url('../images/ic_coupon_purple_24.png') left center no-repeat;
+  background: url('../images/ic_coupon_purple_24.svg') left center no-repeat;
   background-size: 1.6rem;
 }
 .card-dashboard .bottom-point-area .point-num {
@@ -237,13 +237,13 @@
   left: 50%;
   bottom: -1.5rem;
   /* border: 1px solid #dcdee8; */
-  background: url('../images/ic_circle_unfold_32.png') center no-repeat;
+  background: url('../images/ic_circle_unfold_32.svg') center no-repeat;
   border-radius: 50%;
   margin-left: -1.75rem;
   padding: 0;
 }
 .card-dashboard .unfold-btn.on {
-  background: url('../images/ic_circle_fold_32.png') center no-repeat;
+  background: url('../images/ic_circle_fold_32.svg') center no-repeat;
 }
 
 /* =================================================================================================================== */
@@ -291,6 +291,10 @@
 .product-slide-wrap {
   padding-left: 2.4rem;
   margin-top: 2.4rem;
+}
+.product-slide-wrap.null {
+  padding-left: 0;
+  margin-top: 3.5rem;
 }
 .product-using-null {
   text-align: center;
@@ -340,7 +344,10 @@
   border-radius: 24px;
   padding: 1.7rem 1.6rem 2.0rem 1.6rem;
   margin: 0 auto 0.8rem;
-  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+  box-shadow: 0 3px 16px 0 rgba(36, 51, 179, 0.1);
+}
+.dashboard-data-area.null .dashboard-data .data-box {
+  box-shadow: 0 3px 16px 0 rgba(36, 51, 179, 0.43);
 }
 .dashboard-data .data-box .data-box-header {
   display: flex;

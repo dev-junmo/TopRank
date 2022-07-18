@@ -86,10 +86,10 @@
   top: 3.7rem;
   width: 3.2rem;
   height: 3.2rem;
-  background: url('../images/ic_visible_off_gray_32.png') center no-repeat;
+  background: url('../images/ic_visible_off_gray_32.svg') center no-repeat;
 }
 .login-wrap .security-btn.on {
-  background: url('../images/ic_visible_gray_32.png') center no-repeat;
+  background: url('../images/ic_visible_gray_32.svg') center no-repeat;
 }
 .login-wrap .login-btn {
   width: 100%;
@@ -193,7 +193,7 @@
   width: 2.0rem;
   height: 2.0rem;
   border-radius: 8px;
-  background: url('../images/ic_checkbox_off_32.png') center no-repeat;
+  background: url('../images/ic_checkbox_off_32.svg') center no-repeat;
   background-size: 2.0rem;
   margin-right: 8px;
 }
@@ -203,7 +203,7 @@
   width: 2.0rem;
   height: 2.0rem;
   border-radius: 8px;
-  background: url('../images/ic_checkbox_on_32.png') center no-repeat;
+  background: url('../images/ic_checkbox_on_32.svg') center no-repeat;
   background-size: 2.0rem;
 }
 .login-wrap .save input[type="checkbox"] {

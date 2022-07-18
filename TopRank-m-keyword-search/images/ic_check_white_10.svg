@@ -1,0 +1,15 @@
+<svg id="ic_check_white_10" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect id="영역" class="cls-1" width="10" height="10"/>
+  <path id="패스_436" data-name="패스 436" class="cls-2" d="M10357.828-4827.343c-.014-.014-.027-.028-.04-.042l-2.082-2.08a1,1,0,0,1,0-1.415,1,1,0,0,1,1.415,0l1.414,1.415,2.827-2.827a1,1,0,0,1,1.415,0,1,1,0,0,1,0,1.415l-3.534,3.535a1,1,0,0,1-.709.292A.994.994,0,0,1,10357.828-4827.343Z" transform="translate(-10354.242 4834.818)"/>
+</svg>

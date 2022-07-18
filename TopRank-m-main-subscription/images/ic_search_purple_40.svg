@@ -1,0 +1,15 @@
+<svg id="ic_search_purple_40" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #5049ce;
+      }
+    </style>
+  </defs>
+  <rect id="배경" class="cls-1" width="40" height="40"/>
+  <path id="패스_476" data-name="패스 476" class="cls-2" d="M7318.464,21258.879l-4.994-4.994a10,10,0,1,1,1.414-1.414l4.995,4.994a1,1,0,1,1-1.414,1.414Zm-16.977-18.391a8,8,0,1,0,5.655-2.34A8,8,0,0,0,7301.487,21240.488Z" transform="translate(-7288.655 -21227.658)"/>
+</svg>

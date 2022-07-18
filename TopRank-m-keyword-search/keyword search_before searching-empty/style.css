@@ -18,11 +18,11 @@
   padding-top: 0.4rem;
 }
 .pill.rise {
-  background: #fc6075 url('../images/ic_fold_white_24.png') 2px center no-repeat;
+  background: #fc6075 url('../images/ic_fold_white_24.svg') 2px center no-repeat;
   /* background-size: 1.6rem; */
 }
 .pill.fall {
-  background: #2fbaed url('../images/ic_fold_white_24.png') left center no-repeat;
+  background: #2fbaed url('../images/ic_fold_white_24.svg') left center no-repeat;
   /* background-size: 1.6rem; */
 }
 
@@ -45,7 +45,7 @@
 
 
 #wrap {
-  background: #f7f7fc url('../images/m_img_bg_sub_title.png') top center no-repeat;
+  background: #f7f7fc url('../images/png/m_img_bg_sub_title.png') top center no-repeat;
   background-size: contain;
 }
 
@@ -113,7 +113,7 @@
   top: 0.7rem;
   width: 3.2rem;
   height: 3.2rem;
-  background: url('../images/ic_search_purple_48.png') center no-repeat;
+  background: url('../images/ic_search_purple_48.svg') center no-repeat;
   background-size: 3.2rem;
   text-indent: -9999em;
 }
@@ -132,8 +132,11 @@
 .search-result-area {
   padding: 0 2.4rem;
 }
-.search-history {
+.search-result-area.null .search-history {
   padding: 2.0rem 1.6rem 3.2rem;
+}
+.search-history {
+  padding: 2.0rem 1.6rem 0.8rem;
 }
 .search-history .search-history-title {
   font-size: 1.6rem;
@@ -173,9 +176,9 @@
   margin-top: 4.4rem;
   margin-bottom: 3.0rem;
 }
-
 .popular-search {
-  padding: 2.0rem 1.6rem 3.5rem;
+  padding: 2.0rem 1.6rem 0.2rem;
+  border-radius: 24px;
 }
 .popular-search .popular-search-title {
   display: flex;

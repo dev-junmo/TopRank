@@ -18,11 +18,11 @@
   padding-top: 0.4rem;
 }
 .pill.rise {
-  background: #fc6075 url('../images/ic_fold_white_24.png') 2px center no-repeat;
+  background: #fc6075 url('../images/ic_fold_white_24.svg') 2px center no-repeat;
   /* background-size: 1.6rem; */
 }
 .pill.fall {
-  background: #2fbaed url('../images/ic_fold_white_24.png') left center no-repeat;
+  background: #2fbaed url('../images/ic_fold_white_24.svg') left center no-repeat;
   /* background-size: 1.6rem; */
 }
 
@@ -61,7 +61,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 }
 
 #wrap {
-  background: #f7f7fc url('../images/m_img_bg_sub_title.png') top center no-repeat;
+  background: #f7f7fc url('../images/png/m_img_bg_sub_title.png') top center no-repeat;
   background-size: contain;
 }
 #contents {
@@ -269,7 +269,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   font-size: 1.4rem;
   font-weight: normal;
   color: #b8b6c4;
-  background: url('../images/ic_attention_gray_24.png') left center no-repeat;
+  background: url('../images/ic_attention_gray_24.svg') left center no-repeat;
   background-size: 1.8rem;
   padding-left: 2.0rem;
   margin: 11px 0 25px;
@@ -472,7 +472,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   top: 0;
   width: 2.4rem;
   height: 2.4rem;
-  background: url('../images/ic_calendar_black_32.png') 0.8rem 0.7rem no-repeat;
+  background: url('../images/ic_calendar_black_32.svg') 0.8rem 0.7rem no-repeat;
   background-size: 2.4rem;
 }
 .filter-calendar-wrap .filter-calendar input[type="date"]::after {
@@ -524,13 +524,13 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   display: inline-block;
   width: 3.2rem;
   height: 3.2rem;
-  background: url('../images/ic_radio_off_32.png') center no-repeat;
+  background: url('../images/ic_radio_off_32.svg') center no-repeat;
   background-size: 2.8rem;
   margin-right: 0.8rem;
   cursor: pointer;
 }
 .sort-wrap ul li label input:checked + span {
-  background: url('../images/ic_radio_on_32.png') center no-repeat;
+  background: url('../images/ic_radio_on_32.svg') center no-repeat;
   background-size: 2.8rem;
 }
 .sort-wrap ul li label p {
@@ -626,10 +626,10 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   padding-right: 2.0rem;
 }
 .change-rank-popup .change-rank.up {
-  background: url('../images/ic_ascending_red_18.png') right center no-repeat;
+  background: url('../images/ic_ascending_red_18.svg') right center no-repeat;
 }
 .change-rank-popup .change-rank.down {
-  background: url('../images/ic_decending_blue_18.png') right center no-repeat;
+  background: url('../images/ic_decending_blue_18.svg') right center no-repeat;
 }
 .change-rank-popup .rank-copy-btn {
   display: inline-block;
