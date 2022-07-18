@@ -1,0 +1,551 @@
+@charset "utf-8";
+
+/* G마켓 폰트 */
+.g-num {
+  font-family: 'Gmarket Sans';
+}
+
+/* 순위 관련 알약 모양 스타일 */
+.pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  border-radius: 24px;
+  color: #fff;
+  padding: 0.2rem 1.2rem 0 2.4rem;
+  margin-left: 8px;
+  padding-top: 0.4rem;
+}
+.pill.rise {
+  background: #fc6075 url('../images/ic_fold_white_24.svg') 2px center no-repeat;
+  background-size: 2.8rem;
+}
+.pill.fall {
+  background: #2fbaed url('../images/ic_fold_white_24.svg') left center no-repeat;
+  background-size: 2.8rem;
+}
+
+/* 검색한 키워드 스타일 */
+.searched-keyword {
+  display: flex;
+  justify-content: center;
+}
+.searched-keyword span {
+  display: inline-block;
+  height: 2.6rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #3f37c9;
+  line-height: 2.4rem;
+  padding: 0 1.2rem;
+  border: 1px solid #3f37c9;
+  border-radius: 24px;
+}
+
+
+#wrap {
+  background: #f7f7fc url('../images/png/m_img_bg_sub_title.png') top center no-repeat;
+  background-size: contain;
+}
+
+
+/* =================================================================================================================== */
+/* =================================================================================================================== */
+/* 이용 중인 상품 영역 */
+.contents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  /* margin-top: 34px; */
+  padding: 0 2.4rem;
+  margin-top: 8.8rem;
+  margin-bottom: 2.4rem;
+}
+.contents-header .contents-title {
+  display: flex;
+  align-items: center;
+}
+.contents-header .contents-title img {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.contents-header .contents-title h2 {
+  font-size: 1.8rem;
+  color: #04021f;
+  padding-left: 5px;
+}
+.contents-header p {
+  font-size: 1.2rem;
+  color: #3f37c9;
+  margin-top: 0.7rem;
+  margin-left: 0.5rem;
+}
+
+/* =================================================================================================================== */
+/* =================================================================================================================== */
+/* 검색한 결과 영역 */
+.search-result-area {
+  padding: 0 2.4rem;
+}
+.search-result-wrap {
+  display: none;
+}
+.search-result-wrap.active {
+  display: block;
+}
+.search-result {
+  padding: 1.0rem 2.0rem 2.4rem;
+  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.search-result .ad-area {
+  width: 100%;
+  height: 1.4rem;
+}
+.search-result .ad-area span {
+  float: right;
+  display: inline-block;
+  width: 3.4rem;
+  height: 100%;
+  font-size: 1.0rem;
+  font-weight: 500;
+  color: #3f37c9;
+  line-height: 1.2rem;
+  text-align: center;
+  border: 1px solid #3f37c9;
+  border-radius: 1.0rem;
+}
+.search-result .ad-area::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.search-result .store-name {
+  display: flex;
+  align-items: center;
+}
+.search-result .store-name span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #b8b6c4;
+  margin-left: 8px;
+}
+.search-result .store-product {
+  display: -webkit-box;
+  height: 4.6rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #04021f;
+  line-height: 1.44;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin-top: 7px;
+  margin-bottom: 17px;
+}
+.search-result .keyword-category {
+  display: flex;
+  align-items: center;
+}
+.search-result .keyword-category li {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-right: 0.8rem;
+  color: #3e4259;
+}
+.search-result .keyword-category li::after {
+  content: ">";
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #b8b6c4;
+  margin-left: 0.8rem;
+}
+.search-result .keyword-category li:last-child {
+  margin-right: 0;
+}
+.search-result .keyword-category li:last-child::after {
+  display: none;
+}
+.search-result .middle-line {
+  width: 100%;
+  height: 1px;
+  background: #dcdee8;
+  margin: 2.4rem 0 2.0rem;
+}
+.search-result .salse-header,
+.search-result .review-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.1rem;
+}
+.search-result .review-header {
+  margin-top: 1.1rem;
+}
+.search-result .salse-header img,
+.search-result .review-header img {
+  width: 2.0rem;
+  height: 2.0rem;
+  margin-right: 0.8rem;
+}
+.search-result .salse-header span,
+.search-result .review-header span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #3e4259;
+}
+.search-result .sales-ranking-num,
+.search-result .review-count-num {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #04021f;
+}
+.search-result .sales-ranking-num .g-num,
+.search-result .review-count-num .g-num {
+  vertical-align: middle;
+}
+.search-result .sales-ranking-num .page-ranking,
+.search-result .review-count-num .score {
+  color: #3f37c9;
+  font-weight: normal;
+  vertical-align: middle;
+}
+.search-result .sales-ranking-num .page-ranking b,
+.search-result .review-count-num .score b {
+  font-weight: 500;
+}
+.search-result .all-count,
+.search-result .purchases-number {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #b8b6c4;
+  text-align: center;
+  margin-top: 8px;
+}
+.search-result .all-count b,
+.search-result .purchases-number b {
+  font-weight: 500;
+  vertical-align: middle;
+}
+.search-result .track-ranking-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3.4rem;
+  background: #e6458e;
+  border-radius: 24px;
+  box-shadow: 0 3px 13px 0 rgba(230, 69, 142, 0.1);
+  margin-top: 1.6rem;
+  padding: 0;
+}
+.search-result .track-ranking-btn img {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+.search-result .track-ranking-btn span {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 0.8rem;
+}
+.search-result .track-ranking-btn.tracking {
+  background: #f2f3fa;
+  border: 1px solid #dcdee8;
+  box-shadow: none;
+}
+.search-result .track-ranking-btn.tracking span {
+  color: #3e4259;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: #dcdee8;
+  margin-top: 2.4rem;
+  margin-bottom: 3.2rem;
+}
+
+/* =================================================================================================================== */
+/* =================================================================================================================== */
+/* 탭 메뉴 */
+.tracking-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tracking-tab li {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #3e4259;
+  padding: 0.6rem 0.8rem;
+  margin-right: 2.8rem;
+}
+.tracking-tab li.active {
+  color: #3f37c9;
+  border-bottom: 2px solid #3f37c9;
+}
+.tracking-tab li:last-child {
+  margin-right: 0;
+}
+
+
+/* =================================================================================================================== */
+/* =================================================================================================================== */
+/* 추적 결과 영역 */
+.tracking-result {
+  display: none;
+  padding: 0 2.4rem;
+  margin-top: 2.4rem;
+}
+.tracking-result.active {
+  display: block;
+}
+.tracking-result-box {
+  text-align: center;
+  padding: 1.4rem 1.6rem 2.0rem;
+}
+.keyword-tracking-result {
+  padding: 0;
+  padding-left: 2.4rem;
+}
+.keyword-tracking-result .keyword-tracking {
+  text-align: center;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.data-title {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #04021f;
+}
+.data-title img {
+  width: 2.0rem;
+  height: 2.0rem;
+  margin-left: 2px;
+}
+.init-description {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #b8b6c4;
+  margin-top: 0.4rem;
+}
+.data-times {
+  display: inline-block;
+  background: #f2f3fa;
+  border-radius: 8px;
+  margin-top: 1.1rem;
+}
+.data-times li {
+  float: left;
+  width: 5.5rem;
+  height: 2.6rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #b8b6c4;
+  line-height: 2.6rem;
+  text-align: center;
+  background: #f2f3fa;
+}
+.data-times li:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+.data-times li:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.data-times li.active {
+  color: #3f37c9;
+  background-color: #fafbff;
+  border: 1px solid #3f37c9;
+  border-radius: 8px;
+}
+.data-times::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.graph-scroll-wrap {
+  position: relative;
+}
+.graph-scroll {
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  transition: all 0.2s;
+  will-change: transform;
+  margin-right: 1.6rem;
+}
+/* 스크롤 스타일 없애기 */
+.graph-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.graph-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+.graph {
+  height: 14.8rem;
+  border: 1px solid #3498DB;
+  margin: 2.4rem 0 1.6rem;
+  text-align: left;
+  line-height: 14.8rem;
+  color: #fff;
+}
+.keyword-tracking-result .keyword-tracking .graph {
+  width: 200%;
+  background: #3498DB;
+}
+.graph-scroll-wrap::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3.2rem;
+  height: 100%;
+  background: linear-gradient(to right, rgba(250, 251, 255, 0) 0%, #fafbff 50%, #fafbff 100%);
+  z-index: 1;
+}
+.keyword-tracking-result .keyword-tracking-inner {
+  width: 28.0rem;
+}
+.keyword-tracking-result .add-keyword {
+  width: 10.0rem;
+  height: 2.6rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 2.6rem;
+  text-align: center;
+  background: #e6458e;
+  border-radius: 24px;
+  margin-bottom: 1.6rem;
+}
+.keyword-tracking-result .keyword-tracking .registered-keywords span {
+  display: inline-block;
+  height: 2.8rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #480ca8;
+  padding: 0 1.2rem 0 1.3rem;
+  line-height: 2.7rem;
+  border: 1px solid #480ca8;
+  background: #fafbff;
+  border-radius: 24px;
+  margin-right: 0.8rem;
+}
+.keyword-tracking-result .keyword-tracking .registered-keywords span::before {
+  content: "";
+  display: inline-block;
+  width: 0.63rem;
+  height: 0.63rem;
+  border-radius: 50%;
+  background: #480ca8;
+  margin-right: 0.7rem;
+  margin-bottom: 0.2rem;
+}
+.keyword-tracking-result .keyword-tracking .keyword-description {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #b8b6c4;
+  line-height: 1.36;
+  margin-top: 2.8rem;
+  margin-bottom: 2.2rem;
+}
+.keyword-tracking-result .keyword-tracking .apply-btn {
+  width: 5.0rem;
+  height: 2.6rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  background: #3f37c9;
+  border-radius: 24px;
+  margin-top: 1.0rem;
+}
+.keyword-tracking-result .keyword-tracking .first-keyword {
+  margin-bottom: 1.6rem;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 2.7rem;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword span {
+  margin-bottom: 0.6rem;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword span:nth-child(1) {
+  color: #2dd6e0;
+  border: 1px solid #2dd6e0;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword span:nth-child(1)::before {
+  background: #2dd6e0;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword span:nth-child(2) {
+  color: #b5179e;
+  border: 1px solid #b5179e;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword span:nth-child(2)::before {
+  background: #b5179e;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword span:nth-child(3) {
+  color: #f57701;
+  border: 1px solid #f57701;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword span:nth-child(3)::before {
+  background: #f57701;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword span:nth-child(4) {
+  color: #3e4259;
+  border: 1px solid #dcdee8;
+}
+.keyword-tracking-result .keyword-tracking .added-keyword span:nth-child(4)::before {
+  display: none;
+}
+
+
+/* 반응형 브레이크 포인트 */
+@media screen and (max-width: 375px) {
+  .age-group-wrap .age-group:last-of-type {
+    margin-bottom: 0;
+    margin-right: 8px;
+  }
+}
+
+/* 650px 이상 767px 이하 */
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+
+/* 768px 이상 */
+@media screen and (min-width: 768px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+

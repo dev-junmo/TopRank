@@ -18,11 +18,11 @@
   padding-top: 0.4rem;
 }
 .pill.rise {
-  background: #fc6075 url('../images/ic_fold_white_24.png') 2px center no-repeat;
+  background: #fc6075 url('../images/ic_fold_white_24.svg') 2px center no-repeat;
   background-size: 2.8rem;
 }
 .pill.fall {
-  background: #2fbaed url('../images/ic_fold_white_24.png') left center no-repeat;
+  background: #2fbaed url('../images/ic_fold_white_24.svg') left center no-repeat;
   background-size: 2.8rem;
 }
 
@@ -45,7 +45,7 @@
 
 
 #wrap {
-  background: #f7f7fc url('../images/m_img_bg_sub_title.png') top center no-repeat;
+  background: #f7f7fc url('../images/png/m_img_bg_sub_title.png') top center no-repeat;
   background-size: contain;
 }
 
@@ -151,7 +151,10 @@
   align-items: center;
 }
 .search-result .keyword-category li {
+  font-size: 1.4rem;
+  font-weight: 500;
   margin-right: 0.8rem;
+  color: #3e4259;
 }
 .search-result .keyword-category li::after {
   content: ">";
@@ -197,7 +200,8 @@
 .search-result .sales-ranking-num,
 .search-result .review-count-num {
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  font-weight: 500;
   color: #04021f;
 }
 .search-result .sales-ranking-num .g-num,
@@ -207,6 +211,7 @@
 .search-result .sales-ranking-num .page-ranking,
 .search-result .review-count-num .score {
   color: #3f37c9;
+  font-weight: normal;
   vertical-align: middle;
 }
 .search-result .sales-ranking-num .page-ranking b,
@@ -215,6 +220,7 @@
 }
 .search-result .all-count,
 .search-result .purchases-number {
+  font-size: 1.4rem;
   font-weight: 500;
   color: #b8b6c4;
   text-align: center;
@@ -292,25 +298,25 @@
 /* =================================================================================================================== */
 /* 추적 결과 영역 */
 .tracking-result {
+  display: none;
   padding: 0 2.4rem;
   margin-top: 2.4rem;
 }
-.keyword-tracking-result {
-  transition: all 0.2s;
-  will-change: transform;
-  overflow-x: scroll;
+.tracking-result.active {
+  display: block;
 }
-/* 스크롤 스타일 없애기 */
-.keyword-tracking-result {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+.tracking-result-box {
+  text-align: center;
+  padding: 1.4rem 1.6rem 2.0rem;
 }
-.keyword-tracking-result::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera*/
+.keyword-tracking-result {
+  padding: 0;
+  padding-left: 2.4rem;
 }
 .keyword-tracking-result .keyword-tracking {
-  width: 200%;
   text-align: center;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .data-title {
   display: flex;
@@ -361,12 +367,50 @@
   display: block;
   clear: both;
 }
+.graph-scroll-wrap {
+  position: relative;
+}
+.graph-scroll {
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  transition: all 0.2s;
+  will-change: transform;
+  margin-right: 1.6rem;
+}
+/* 스크롤 스타일 없애기 */
+.graph-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.graph-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
 .graph {
   height: 14.8rem;
+  border: 1px solid #3498DB;
   margin: 2.4rem 0 1.6rem;
+  text-align: left;
+  line-height: 14.8rem;
+  color: #fff;
+}
+.keyword-tracking-result .keyword-tracking .graph {
+  width: 200%;
+  background: #3498DB;
+}
+.graph-scroll-wrap::before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3.2rem;
+  height: 100%;
+  background: linear-gradient(to right, rgba(250, 251, 255, 0) 0%, #fafbff 50%, #fafbff 100%);
+  z-index: 1;
 }
 .keyword-tracking-result .keyword-tracking-inner {
-  width: 31.2rem;
+  width: 28.0rem;
 }
 .keyword-tracking-result .add-keyword {
   width: 10.0rem;
@@ -402,7 +446,7 @@
   margin-right: 0.7rem;
   margin-bottom: 0.2rem;
 }
-.keyword-tracking-result .keyword-tracking p {
+.keyword-tracking-result .keyword-tracking .keyword-description {
   font-size: 1.4rem;
   font-weight: 500;
   color: #b8b6c4;

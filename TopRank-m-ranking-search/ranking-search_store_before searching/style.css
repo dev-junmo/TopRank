@@ -18,11 +18,11 @@
   padding-top: 0.4rem;
 }
 .pill.rise {
-  background: #fc6075 url('../images/ic_fold_white_24.png') 2px center no-repeat;
+  background: #fc6075 url('../images/ic_fold_white_24.svg') 2px center no-repeat;
   background-size: 2.8rem;
 }
 .pill.fall {
-  background: #2fbaed url('../images/ic_fold_white_24.png') left center no-repeat;
+  background: #2fbaed url('../images/ic_fold_white_24.svg') left center no-repeat;
   background-size: 2.8rem;
 }
 
@@ -45,7 +45,7 @@
 
 
 #wrap {
-  background: #f7f7fc url('../images/m_img_bg_sub_title.png') top center no-repeat;
+  background: #f7f7fc url('../images/png/m_img_bg_sub_title.png') top center no-repeat;
   background-size: contain;
 }
 
@@ -130,13 +130,13 @@
   display: inline-block;
   width: 2.0rem;
   height: 2.0rem;
-  background: url('../images/ic_checkbox_off_32.png') center no-repeat;
+  background: url('../images/ic_checkbox_off_32.svg') center no-repeat;
   background-size: 2.0rem;
   margin-right: 0.8rem;
   cursor: pointer;
 }
 .search-input label input:checked + span {
-  background: url('../images/ic_checkbox_on_32.png') center no-repeat;
+  background: url('../images/ic_checkbox_on_32.svg') center no-repeat;
   background-size: 2.0rem;
 }
 .search-input label p {
@@ -169,7 +169,7 @@
   bottom: 8px;
   width: 3.2rem;
   height: 3.2rem;
-  background: url('../images/ic_search_purple_48.png') center no-repeat;
+  background: url('../images/ic_search_purple_48.svg') center no-repeat;
   background-size: 3.2rem;
   text-indent: -99999em;
 }
@@ -201,7 +201,7 @@
   top: 0.7rem;
   width: 3.2rem;
   height: 3.2rem;
-  background: url('../images/ic_search_purple_48.png') center no-repeat;
+  background: url('../images/ic_search_purple_48.svg') center no-repeat;
   background-size: 3.2rem;
   text-indent: -9999em;
 }
@@ -222,7 +222,8 @@
 }
 .search-history {
   display: none;
-  padding: 2.0rem 1.6rem 3.2rem;
+  padding: 2.0rem 1.6rem 0.7rem;
+  border-radius: 24px;
 }
 .search-history.active {
   display: block;
@@ -267,7 +268,8 @@
 }
 
 .popular-search {
-  padding: 2.0rem 1.6rem 3.5rem;
+  padding: 2.0rem 1.6rem 0.2rem;
+  border-radius: 24px;
 }
 .popular-search .popular-search-title {
   display: flex;
