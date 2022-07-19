@@ -307,6 +307,9 @@
   justify-content: center;
   margin: 2.0rem 0 4.4rem;
 }
+.added-keywords-area.selected {
+  margin: 2.0rem 0;
+}
 .added-keywords-area .added-keywords-null {
   height: 2.8rem;
   font-size: 1.6rem;
@@ -317,6 +320,34 @@
   border: 1px dashed #b8b6c4;
   background: #f2f3fa;
   border-radius: 24px;
+}
+.added-keywords-area .added-keywords {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.8rem;
+  border: 1px solid #3f37c9;
+  border-radius: 24px;
+  background: #fafbff;
+  padding: 0 0.8rem 0 1.2rem;
+}
+.added-keywords-area .added-keywords span {
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 2.8rem;
+  color: #3f37c9;
+}
+.added-keywords-area .added-keywords button {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: none;
+  padding: 0;
+  outline: 0;
+  margin-left: 0.4rem;
+}
+.added-keywords-area .added-keywords button img {
+  width: 100%;
+  height: auto;
 }
 .add-keywords-box form .keyword-search {
   width: 100%;

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TopRank | Keyword payment_completed</title>
+  <link rel="stylesheet" type="text/css" href="layout.css" media="all">
+  <link rel="stylesheet" type="text/css" href="style.css" media="all">
+</head>
+<body>
+  <div id="wrap" class="mobile">
+    <!-- header start -->
+    <header id="header" class="header-wrap">
+      <div class="header-inner">
+        <div class="navigation-bar">
+          <a href="#" class="my-dashboard-btn">마이 대시보드</a>
+          <h1 class="logo"><img src="../images/logo_purple_130.svg" alt="TopRank"></h1>
+          <button class="all-menu">
+            <span class="burger-line burger-item1"></span>
+            <span class="burger-line burger-item2"></span>
+            <span class="burger-line burger-item3"></span>
+          </button>
+        </div>
+      </div>
+      <div class="m-menu">
+        <div class="login-area">
+          <div class="login-state">로그인이 필요합니다</div>
+          <button class="login-btn">로그인</button>
+        </div>
+        <nav class="m-gnb">
+          <ul>
+            <li>
+              <img src="../images/ic_keyword_purple_32.svg" alt="">
+              <a href="#">키워드 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_ranking_purple_32.svg" alt="">
+              <a href="#">상품순위 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_subscription_purple_32.svg" alt="">
+              <a href="#">이용 중인 상품</a>
+            </li>
+            <li>
+              <img src="../images/ic_trend_purple_32.svg" alt="">
+              <a href="#">쇼핑 트렌드</a>
+            </li>
+            <li>
+              <img src="../images/ic_popular_purple_32.svg" alt="">
+              <a href="#">인기 검색어</a>
+            </li>
+          </ul>
+          <ul class="bottom-gnb">
+            <li>
+              <img src="../images/ic_board_purple_32.svg" alt="">
+              <a href="#">게시판</a>
+              <button class="fold-btn"><img src="../images/ic_fold_bold_black_32.svg" alt=""></button>
+              <ul>
+                <li>
+                  <a href="#">공지사항</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- //header end -->
+
+    <div class="m-popup-mask"></div>
+
+    <!-- contents start -->
+    <div id="contents">
+      <!-- 헤더 영역 start -->
+      <div class="contents-header">
+        <div class="contents-title">
+          <img src="../images/ic_payment_keyword_color_40.svg" alt="">
+          <h2>키워드 구매하기</h2>
+        </div>
+      </div>
+      <!-- //헤더 영역 end -->
+
+      <!-- 키워드 구매 완료 start -->
+      <div class="keyword-purchase-completed-area">
+        <img src="../images/img_check_pink_64.svg" alt="">
+        <p class="completion-phrase">키워드 구매가 완료되었습니다.</p>
+
+        <div class="keyword-purchase-completed-info">
+          <div class="keyword-purchase-completed-box">
+            <ul>
+              <li>
+                <span>상품 종류</span>
+                <b>A (1일 1회 순위 확인권)</b>
+              </li>
+              <li>
+                <span>상품 기간</span>
+                <b>
+                  <span>7</span>일
+                </b>
+              </li>
+              <li>
+                <span>자동 연장 여부</span>
+                <b>자동 연장</b>
+              </li>
+              <li>
+                <span>총 결제 포인트</span>
+                <b>
+                  <span>70</span> P
+                </b>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="btn-wrap">
+          <button class="using-product-btn">이용 중인 상품 보기</button>
+          <button class="confirm-btn">확인</button>
+        </div>
+      </div>
+      <!-- //키워드 구매 완료 end -->
+
+    </div>
+    <!--// contents end -->
+
+    <!-- footer start -->
+    <footer id="footer">
+      <button class="pc-btn">PC버전</button>
+      <ul class="footer-nav">
+        <li><a href="#">이용약관</a></li>
+        <li>|</li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li>|</li>
+        <li><a href="#">자주 묻는 질문</a></li>
+      </ul>
+      <div class="footer-logo">
+        <img src="../images/logo_gray_130.svg" alt="TOPRANK">
+      </div>
+      <div class="company-info">
+        <address>서울특별시 강서구 공항대로 227 마곡센트럴타워1차</address>
+        <ul>
+          <li>대표이사 김태형</li>
+          <li>|</li>
+          <li>사업자등록번호 104-81-25980</li>
+        </ul>
+        <p>통신판매업신고번호 중구02802호</p>
+      </div>
+      <p class="service-inquire">서비스 문의 help@crefe.co.kr</p>
+      <p class="copyright">Copyright@CREFE. All Rights Reserved.</p>
+    </footer>
+    <!-- //footer end -->
+  </div>
+
+  <script>
+    // 모바일 메뉴 보기
+    const headerWrap = document.querySelector('.header-wrap');
+    const allMenu = document.querySelector('.all-menu');
+    const menu = document.querySelector('.m-menu');
+    const popupMask = document.querySelector('.m-popup-mask');
+
+    allMenu.addEventListener('click', () => {
+      if(allMenu.classList.contains('open')) {
+        allMenu.classList.remove('open');
+        menu.classList.remove('active');
+        headerWrap.classList.remove('active');
+        popupMask.classList.remove('active');
+      }else{
+        allMenu.classList.add('open');
+        menu.classList.add('active');
+        headerWrap.classList.add('active');
+        popupMask.classList.add('active');
+      }
+    });
+
+    // 셀렉트 박스
+    const selectLabel = document.querySelectorAll('.selectbox .label');
+    const selectBox = document.querySelectorAll('.selectbox ul');
+    const selectOption = document.querySelectorAll('.selectbox ul li');
+
+    Array.from(selectLabel).forEach((el) => {
+      el.addEventListener('click', () => {
+        if(el.parentNode.classList.contains('active')) {
+          el.parentNode.classList.remove('active');
+        } else {
+          el.parentNode.classList.add('active');
+        }
+      });
+    });
+
+    Array.from(selectOption).forEach((el) => {
+      el.addEventListener('click', () => {
+        el.parentNode.previousSibling.previousSibling.innerHTML = el.innerHTML;
+        el.parentNode.parentNode.classList.remove('active');
+      });
+    });
+
+  </script>
+</body>
+</html>

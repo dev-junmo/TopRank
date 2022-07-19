@@ -1,0 +1,179 @@
+@charset "utf-8";
+
+/* G마켓 폰트 */
+.g-num {
+  font-family: 'Gmarket Sans';
+}
+
+/* 순위 관련 알약 모양 스타일 */
+.pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  border-radius: 24px;
+  color: #fff;
+  padding: 0.2rem 1.2rem 0 2.4rem;
+  margin-left: 8px;
+  padding-top: 0.4rem;
+}
+.pill.rise {
+  background: #fc6075 url('../images/ic_fold_white_24.svg') 2px center no-repeat;
+  background-size: 2.8rem;
+}
+.pill.fall {
+  background: #2fbaed url('../images/ic_fold_white_24.svg') left center no-repeat;
+  background-size: 2.8rem;
+}
+
+#wrap {
+  background: #f7f7fc url('../images/png/m_img_bg_sub_title.png') top center no-repeat;
+  background-size: contain;
+}
+
+/* 마이 대시보드 버튼 스타일 */
+.my-dashboard-btn {
+  float: left;
+  height: 2.0rem;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  line-height: 1.9rem;
+  border-radius: 16px;
+  background: #4d77ff;
+  padding: 0 0.8rem;
+}
+
+/* =================================================================================================================== */
+/* =================================================================================================================== */
+/* 헤더 영역 영역 */
+.contents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 8px;
+  /* margin-top: 34px; */
+  padding: 0 2.4rem;
+  margin-top: 9.6rem;
+  margin-bottom: 3.2rem;
+}
+.contents-header .contents-title {
+  display: flex;
+  align-items: center;
+}
+.contents-header .contents-title img {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.contents-header .contents-title h2 {
+  font-size: 1.8rem;
+  color: #04021f;
+  padding-left: 5px;
+}
+.contents-header p {
+  font-size: 1.2rem;
+  color: #3f37c9;
+  margin-top: 0.7rem;
+  margin-left: 0.5rem;
+}
+
+/* 키워드 구매 완료 */
+.keyword-purchase-completed-area {
+  padding: 0 2.4rem;
+  margin-top: 5.6rem;
+  text-align: center;
+}
+.keyword-purchase-completed-area .completion-phrase {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #04021f;
+  margin-top: 0.4rem;
+}
+.keyword-purchase-completed-box {
+  background: #f2f2fc;
+  border-radius: 16px;
+  padding: 2.4rem 1.6rem;
+  margin: 3.2rem 0 4.0rem;
+}
+.keyword-purchase-completed-box ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin-bottom: 1.1rem;
+}
+.keyword-purchase-completed-box ul li:last-child {
+  margin-bottom: 0;
+}
+.keyword-purchase-completed-box ul li > span {
+  color: #3e4259;
+}
+.keyword-purchase-completed-box ul li > b {
+  color: #04021f;
+  font-weight: normal;
+}
+.keyword-purchase-completed-area .btn-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.keyword-purchase-completed-area .btn-wrap button {
+  width: 14.8rem;
+  height: 4.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 4.0rem;
+  text-align: center;
+  border-radius: 8px;
+}
+.keyword-purchase-completed-area .btn-wrap button.using-product-btn {
+  color: #e6458e;
+  background: #f7f7fc;
+  border: 1px solid #e6458e;
+}
+.keyword-purchase-completed-area .btn-wrap button.confirm-btn {
+  color: #fff;
+  background: #e6458e;
+}
+
+
+
+
+/* 반응형 브레이크 포인트 */
+@media screen and (max-width: 375px) {
+  .age-group-wrap .age-group:last-of-type {
+    margin-bottom: 0;
+    margin-right: 8px;
+  }
+}
+
+/* 650px 이상 767px 이하 */
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  .keyword-seller-product {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+
+/* 768px 이상 */
+@media screen and (min-width: 768px) {
+  .keyword-seller-product {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+

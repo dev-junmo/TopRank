@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TopRank | Keyword payment-fold</title>
+  <title>TopRank | Keyword payment-unfold</title>
   <link rel="stylesheet" type="text/css" href="layout.css" media="all">
   <link rel="stylesheet" type="text/css" href="style.css" media="all">
 </head>
@@ -140,13 +140,16 @@
           <span>선택된 키워드로 분석이 이뤄집니다.</span>
         </div>
         <div class="add-keywords-box">
-          <div class="added-keywords-area">
-            <div class="added-keywords-null">추가된 키워드가 없습니다.</div>
+          <div class="added-keywords-area selected">
+            <div class="added-keywords">
+              <span>달고시원한망고</span>
+              <button><img src="../images/ic_ic_delete_red_24.svg" alt="삭제"></button>
+            </div>
           </div>
-          <form>
+          <!-- <form>
             <input type="text" class="keyword-search" placeholder="추가하고 싶은 키워드를 입력해주세요.">
             <button type="submit">키워드 추가</button>
-          </form>
+          </form> -->
         </div>
       </div>
       <!-- //키워드 선택 end -->
@@ -191,7 +194,7 @@
           </div>
           <div class="auto-extend-check">
             <label for="check">
-              <input type="checkbox" id="check" name="check">
+              <input type="checkbox" id="check" name="check" checked>
               <span class="checkbox"></span>
               <p>자동 연장 상품을 여러 개 보유하고 있을 시, 자동 연장 우선순위로 지정합니다.</p>
             </label>
@@ -226,13 +229,13 @@
             <li>
               <span>키워드 개수</span>
               <b>
-                <span>0</span>개
+                <span>1</span>개
               </b>
             </li>
             <li>
               <span>총 결제 포인트</span>
               <b>
-                <span>0</span>
+                <span>70</span>
                 P
               </b>
             </li>
@@ -279,7 +282,7 @@
         </div>
         <div class="consent-check">
           <label for="check-consent">
-            <input type="checkbox" id="check-consent" name="check">
+            <input type="checkbox" id="check-consent" name="check" checked>
             <span class="checkbox"></span>
             <p>위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공 및 결제에 동의합니다.</p>
           </label>
