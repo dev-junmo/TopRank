@@ -357,6 +357,8 @@
 }
 .keyword-tracking-wrap .keyword-tracking {
   text-align: center;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 .data-title {
   display: flex;
