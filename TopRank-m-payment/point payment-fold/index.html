@@ -88,20 +88,227 @@
         </div>
         <div class="amount-selection-list">
           <ul>
-            <li>5만원</li>
-            <li>10만원</li>
-            <li>30만원</li>
-            <li>50만원</li>
-            <li>100만원</li>
+            <li class="active">
+              <span>5</span>만원
+            </li>
+            <li>
+              <span>10</span>만원
+            </li>
+            <li>
+              <span>30</span>만원
+            </li>
+            <li>
+              <span>50</span>만원
+            </li>
+            <li>
+              <span>100</span>만원
+            </li>
             <li>직접입력</li>
           </ul>
         </div>
-
+        <div class="direct-input">
+          <input type="text" placeholder="얼마를 충전할까요?">
+          <span>만원</span>
+        </div>
+        <div class="selected-point-area">
+          <ul>
+            <li>
+              <span>충전 포인트</span>
+              <b>
+                <img src="../images/ic_plus_purple_24.svg" alt="+">
+                <span class="charging-point-num">500</span> P
+              </b>
+            </li>
+            <li>
+              <span>무료 포인트</span>
+              <b>
+                <img src="../images/ic_plus_purple_24.svg" alt="+">
+                <span class="free-point-num">50</span> P
+              </b>
+            </li>
+          </ul>
+        </div>
       </div>
       <!-- //충전금액 선택 end -->
 
       <div class="line"></div>
 
+      <!-- 결제 정보 start -->
+      <div class="pay-info-area">
+        <div class="pay-contents-title">
+          <h3>결제 정보</h3>
+        </div>
+        <div class="pay-before-point pay-point">
+          <div class="point-fold">
+            <b>결제 전 보유 포인트</b>
+            <button class="point-fold-btn">
+              <!-- <img src="../images/ic_fold_black_20.svg" alt=""> -->
+            </button>
+          </div>
+          <ul>
+            <li>
+              <span>충전 포인트</span>
+              <b>
+                <span>100</span> P
+              </b>
+            </li>
+            <li>
+              <span>무료 포인트</span>
+              <b>
+                <span>50</span> P
+              </b>
+            </li>
+          </ul>
+        </div>
+        <div class="pay-after-point pay-point">
+          <div class="point-fold">
+            <b>결제 후 보유 포인트</b>
+            <button class="point-fold-btn">
+              <!-- <img src="../images/ic_fold_black_20.svg" alt=""> -->
+            </button>
+          </div>
+          <ul>
+            <li>
+              <span>충전 포인트</span>
+              <b>
+                <span>600</span> P
+              </b>
+            </li>
+            <li>
+              <span>무료 포인트</span>
+              <b>
+                <span>60</span> P
+              </b>
+            </li>
+          </ul>
+        </div>
+        <div class="final-pay-amount">
+          <span>최종 결제 금액</span>
+          <b>55,000원</b>
+        </div>
+        <div class="confirm-cheek-box">
+          <strong>
+            <img src="../images/ic_notice_gray_24.svg" alt="!">
+            <span>확인해주세요</span>
+          </strong>
+          <p>최종 결제 금액은 부가세 10% 포함된 금액입니다.</p>
+        </div>
+      </div>
+      <!-- //결제 정보 end -->
+
+      <!-- 결제 수단 선택 start -->
+      <div class="pay-method-choice">
+        <div class="pay-contents-title">
+          <h3>결제 수단 선택</h3>
+        </div>
+        <div class="pay-method-box">
+          <ul>
+            <li>
+              <div class="pay-choice-title">
+                <label for="check1">
+                  <input type="checkbox" id="check1" name="check1" checked>
+                  <span class="checkbox"></span>
+                  <p>무통장 입금</p>
+                </label>
+              </div>
+              <div class="deposit-method">
+                <div class="depositor-name">
+                  <span class="method-title">입금자명</span>
+                  <input type="text" placeholder="홍길동">
+                  <strong class="precautions">
+                    실제 입금자명이 위에 기재한 입금자명과 다르거나 기호, 특수문자가 포함된 경우 자동 입금 확인이 불가합니다.
+                    반드시 동일하게 입금해 주시기 바랍니다.
+                  </strong>
+                </div>
+                <div class="depositor-bank">
+                  <span class="method-title">입금 은행</span>
+                  <div class="selectbox">
+                    <button class="label">신한은행 110-11111-123456 (주…</button>
+                    <ul>
+                      <li>신한은행 110-11111-123456 (주)탑랭크</li>
+                    </ul>
+                  </div>
+                  <p class="announcement">
+                    <span>2022년 05월 06일</span>까지 미입금 시 자동 취소됩니다.
+                  </p>
+                </div>
+                <div class="cash-receipt">
+                  <span class="method-title">현금영수증 신청</span>
+                  <ul>
+                    <li class="active cash-receipt-con">현금영수증 신청</li>
+                    <li>신청 안 함</li>
+                  </ul>
+                  <div class="cash-receipt-contents-wrap active">
+                    <div class="cash-receipt-contents">
+                      <label for="entre">
+                        <input type="checkbox" id="entre" name="entre" checked>
+                        <span class="checkbox"></span>
+                        <p>사업자 지출증빙</p>
+                      </label>
+                      <label for="individual">
+                        <input type="checkbox" id="individual" name="individual">
+                        <span class="checkbox"></span>
+                        <p>개인소득공제</p>
+                      </label>
+                    </div>
+                    <div class="selectbox">
+                      <button class="label">사업자</button>
+                      <ul>
+                        <li>사업자</li>
+                      </ul>
+                    </div>
+                    <input type="text" placeholder="사업자등록번호" class="registration-number">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="pay-choice-title dis">
+                <label for="check2">
+                  <input type="checkbox" id="check2" name="check2" disabled>
+                  <span class="checkbox"></span>
+                  <p>신용카드</p>
+                </label>
+              </div>
+              <div></div>
+            </li>
+            <li>
+              <div class="pay-choice-title dis">
+                <label for="check3">
+                  <input type="checkbox" id="check3" name="check3" disabled>
+                  <span class="checkbox"></span>
+                  <p>계좌이체</p>
+                </label>
+              </div>
+              <div></div>
+            </li>
+            <li>
+              <div class="pay-choice-title dis">
+                <label for="check4">
+                  <input type="checkbox" id="check4" name="check4" disabled>
+                  <span class="checkbox"></span>
+                  <p>휴대폰</p>
+                </label>
+              </div>
+              <div></div>
+            </li>
+          </ul>
+        </div>
+        <div class="consent-check">
+          <label for="check-consent">
+            <input type="checkbox" id="check-consent" name="check">
+            <span class="checkbox"></span>
+            <p>위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공 및 결제에 동의합니다.</p>
+          </label>
+        </div>
+      </div>
+      <!-- //결제 수단 선택 end -->
+
+      <!-- 결제 버튼 start -->
+      <div class="purchase-area">
+        <button class="purchase-btn">결제하기</button>
+      </div>
+      <!-- 결제 버튼 end -->
     </div>
     <!--// contents end -->
 
@@ -175,6 +382,92 @@
         el.parentNode.parentNode.classList.remove('active');
       });
     });
+
+    // 충전금액 선택
+    const amountSelectionList = document.querySelectorAll('.amount-selection-list ul li');
+    const chargingPointNum = document.querySelector('.charging-point-num');
+    const freePointNum = document.querySelector('.free-point-num');
+    const directInput = document.querySelector('.direct-input');
+
+    Array.from(amountSelectionList).forEach((v) => {
+      v.addEventListener('click', () => {
+        Array.from(amountSelectionList).forEach((l) => {
+          l.classList.remove('active');
+        });
+        v.classList.add('active');
+
+        function amountNumber(num, text) {
+          if(v.childNodes[1]) {
+            directInput.classList.remove('on');
+            const amountNumber = Number(v.childNodes[1].textContent) * num;
+            const amountReault = amountNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            
+            text.textContent = amountReault;
+          }else{
+            directInput.classList.add('on');
+            chargingPointNum.textContent = 0;
+            freePointNum.textContent = 0;
+          }
+        }
+        amountNumber(100, chargingPointNum);
+        amountNumber(10, freePointNum);
+      });
+    });
+
+    directInput.addEventListener('input', (e) => {
+      function directNumber(num, text) {
+      const directNum = Number(e.target.value) * num;
+      const directReault = directNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+      text.textContent = directReault;
+    }
+
+      directNumber(100, chargingPointNum);
+      directNumber(10, freePointNum);
+    });
+
+    // 결제 포인트 fold 부분
+    const pointFoldBtn = document.querySelectorAll('.point-fold-btn');
+
+    Array.from(pointFoldBtn).forEach((p) => {
+      p.addEventListener('click', () => {
+        p.parentNode.classList.toggle('active');
+      });
+    });
+
+    // 현금영수증 체크
+    const cashReceiptContents = document.querySelectorAll('.cash-receipt-contents label');
+
+    Array.from(cashReceiptContents).forEach((c) => {
+      c.addEventListener('click', () => {
+        Array.from(cashReceiptContents).forEach((p) => {
+          p.childNodes[1].checked = false;
+        });
+
+        c.childNodes[1].checked = true;
+      });
+
+    });
+
+
+    // 현금영수증 탭 메뉴
+    const cashReceiptList = document.querySelectorAll('.cash-receipt ul li');
+    const cashReceiptContentsWrap = document.querySelector('.cash-receipt-contents-wrap');
+
+    Array.from(cashReceiptList).forEach((c) => {
+      c.addEventListener('click', () => {
+        Array.from(cashReceiptList).forEach((l) => {
+          l.classList.remove('active');
+        });
+        c.classList.add('active');
+        if(c.classList.contains('cash-receipt-con')) {
+          cashReceiptContentsWrap.classList.add('active');
+        }else{
+          cashReceiptContentsWrap.classList.remove('active');
+        }
+      });
+    });
+    
 
   </script>
 </body>
