@@ -381,7 +381,7 @@
   color: #04021f;
   text-align: left;
   line-height: 4.0rem;
-  background: #fff url('../images/ic_unfold_black_24.svg') 24.6rem center no-repeat;
+  background: #fff url('../images/ic_unfold_black_24.svg') 97.4% center no-repeat;
   border: 1px solid #dcdee8;
   outline: 0;
   border-radius: 8px;
@@ -389,7 +389,7 @@
   box-sizing: border-box;
 }
 .product-options-box .selectbox.active .label {
-  background: #fff url('../images/ic_fold_black_24.svg') 24.6rem center no-repeat;
+  background: #fff url('../images/ic_fold_black_24.svg') 97.4% center no-repeat;
 }
 .product-options-box .selectbox .label span {
   color: #b8b6c4;
@@ -607,7 +607,7 @@
   width: 28.3rem;
   font-size: 1.4rem;
   line-height: 1.29;
-  margin-left: 0.8rem;
+  margin-left: 0.7rem;
 }
 
 /* 구매하기 버튼 */

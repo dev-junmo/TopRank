@@ -348,13 +348,20 @@
   padding: 0 2.4rem;
 }
 .pay-method-box {
-  padding: 2.8rem 1.6rem 3.2rem 1.6rem;
+  padding: 0.8rem 1.6rem 3.2rem 1.6rem;
   background: #f2f2fc;
   border-radius: 16px;
 }
 .pay-method-box > ul > li {
   border-bottom: 1px solid #dcdee8;
   margin-top: 2.0rem;
+}
+.pay-method-box > p {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #3e4259;
+  text-align: center;
+  margin-top: 1.6rem;
 }
 .pay-choice-title {
   padding-bottom: 1.1rem;

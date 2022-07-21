@@ -1,0 +1,4 @@
+스토어 검색, 주소 검색, 상품 검색 별로 탭 메뉴로 통합 가능한 페이지는 모두 통합했고,
+
+before-searching-empty, before-searching, result 별로 나눴습니다!
+
