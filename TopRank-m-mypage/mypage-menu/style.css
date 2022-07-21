@@ -1,0 +1,427 @@
+@charset "utf-8";
+
+/* G마켓 폰트 */
+.g-num {
+  font-family: 'Gmarket Sans';
+}
+
+/* 순위 관련 알약 모양 스타일 */
+.pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  border-radius: 24px;
+  color: #fff;
+  padding: 0.2rem 1.2rem 0 2.4rem;
+  margin-left: 8px;
+  padding-top: 0.4rem;
+}
+.pill.rise {
+  background: #fc6075 url('../images/ic_up_white_24.svg') 0.6rem 0.5rem no-repeat;
+  background-size: 1.6rem;
+}
+.pill.fall {
+  background: #2fbaed url('../images/ic_down_white_24.svg') 0.6rem 0.5rem no-repeat;
+  background-size: 1.6rem;
+}
+
+/* 검색한 키워드 스타일 */
+.searched-keyword {
+  display: flex;
+  justify-content: center;
+}
+.searched-keyword span {
+  display: inline-block;
+  height: 2.6rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #3f37c9;
+  line-height: 2.4rem;
+  padding: 0 1.2rem;
+  border: 1px solid #3f37c9;
+  border-radius: 24px;
+}
+
+
+#wrap {
+  background: #f7f7fc url('../images/png/img_bg_main-dashboard_title-m.png') top center no-repeat;
+  background-size: contain;
+}
+
+/* 마이 대시보드 버튼 스타일 */
+.my-dashboard-btn {
+  float: left;
+  height: 2.0rem;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  line-height: 1.9rem;
+  border-radius: 16px;
+  background: #4d77ff;
+  padding: 0 0.8rem;
+}
+
+/* 유저 정보 카드 */
+.card-dashboard-wrap {
+  padding: 0 1.6rem;
+  margin-bottom: 6.5rem;
+}
+.card-dashboard {
+  position: relative;
+  width: 100%;
+  background: #f7f7fc;
+  border-radius: 16px;
+  box-shadow: 0 10px 24px 0 rgba(36, 51, 179, 0.2);
+  margin-top: 8.8rem;
+}
+.card-dashboard .user-info {
+  padding: 2.4rem;
+}
+.card-dashboard .user-info .name-ranking {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+.card-dashboard .user-info .name-ranking .name-area {
+  display: flex;
+  align-items: flex-end;
+}
+.card-dashboard .user-info .name-ranking .name-area strong {
+  font-size: 2.0rem;
+  color: #04021f;
+}
+.card-dashboard .user-info .name-ranking .name-area span {
+  font-size: 2.0rem;
+  font-weight: normal;
+  color: #3e4259;
+}
+.card-dashboard .user-info .name-ranking .name-area .setting-btn {
+  display:  inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: #b8b6c4;
+  padding: 0;
+  border-radius: 6px;
+  margin-left: 8px;
+}
+.card-dashboard .user-info .name-ranking .name-area .setting-btn img {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.card-dashboard .user-info .name-ranking .ranking-tier {
+  width: 4.0rem;
+  height: 4.0rem;
+}
+.card-dashboard .user-info .name-ranking .ranking-tier img {
+  width: 100%;
+  height: auto;
+}
+.user-email-info .user-email {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #3e4259;
+  margin-bottom: 0.8rem;
+}
+.user-email-info .phone-number {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+.user-email-info .phone-number.uncertified {
+  color: #b8b6c4;
+}
+/* 랭킹 자세히 보기 */
+.ranking-tier-detail {
+  display: none;
+  position: absolute;
+  right: -0.7rem;
+  top: 5.0rem;
+  padding: 12px 20px;
+  margin: 0;
+}
+.ranking-tier-detail.active {
+  display: block;
+}
+.ranking-tier-detail .next-ranking span {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #b8b6c4;
+}
+.ranking-tier-detail .next-ranking .next-ranking-num {
+  color: #3e4259;
+}
+.ranking-tier-detail .ranking-process {
+  position: relative;
+  width: 100%;
+  height: 0.2rem;
+  background: #dcdee8;
+  margin-top: 8px;
+}
+.ranking-tier-detail .ranking-process span {
+  position: absolute;
+  display: inline-block;
+  width: 50.2%;
+  height: 0.2rem;
+  background: #e6458e;
+}
+.card-dashboard .user-info .using-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-left: 0.8rem; */
+}
+.card-dashboard .user-info .using-info > div {
+  width: 14.0rem;
+  text-align: center;
+}
+.card-dashboard .user-info .using-info .using-product {
+  border-right: 1px solid #b8b6c4;
+  padding-right: 1.5rem;
+}
+.card-dashboard .user-info .using-info .using-keyword {
+  padding-left: 1.5rem;
+}
+.card-dashboard .user-info .using-info > div strong {
+  font-size: 1.6rem;
+  color: #3e4259;
+}
+.card-dashboard .user-info .using-info > div p {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #e6458e;
+  margin-top: 1.2rem;
+}
+.card-dashboard .user-info .using-info > div p b {
+  vertical-align: middle;
+}
+.card-dashboard .bottom-user-info-area {
+  height: 10.5rem;
+  background: #f2f2fc;
+  padding: 2.2rem 2.4rem 2.7rem;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+.card-dashboard .bottom-user-info-area.active {
+  height: 18.0rem;
+}
+.bottom-user-info-area .bottom-info-contents {
+  margin-top: 1.0rem;
+}
+.bottom-user-info-area .bottom-info-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #3e4259;
+}
+.recommender-code .bottom-info-contents {
+  display: flex;
+  align-items: center;
+}
+.bottom-user-info-area .bottom-info-contents input {
+  height: 3.2rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: #04021f;
+  line-height: 3.2rem;
+  background: #fff;
+  border: 1px solid #dcdee8;
+  border-radius: 8px;
+  padding: 0 1.6rem;
+  box-sizing: border-box;
+}
+.telegram-token {
+  display: none;
+  margin-top: 1.6rem;
+}
+.card-dashboard .bottom-user-info-area.active .telegram-token {
+  display: block;
+}
+.telegram-token .bottom-info-contents input {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bottom-user-info-area .bottom-info-contents button {
+  width: 3.2rem;
+  height: 3.2rem;
+  background: none;
+  padding: 0;
+}
+.bottom-user-info-area .bottom-info-contents button img {
+  width: 100%;
+  height: auto;
+}
+.bottom-user-info-area .bottom-info-contents .copy-btn {
+  margin: 0 1.6rem;
+}
+.card-dashboard .unfold-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  bottom: -1.5rem;
+  /* border: 1px solid #dcdee8; */
+  background: url('../images/ic_circle_unfold_32.svg') center no-repeat;
+  border-radius: 50%;
+  margin-left: -1.75rem;
+  padding: 0;
+}
+.card-dashboard .unfold-btn.on {
+  background: url('../images/ic_circle_fold_32.svg') center no-repeat;
+}
+
+/* 포인트 활동 */
+.point-activities {
+  position: relative;
+  padding: 0 2.4rem;
+}
+.point-activities .mypage-menu-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #3e4259;
+  margin-bottom: 1.6rem;
+}
+.point-activities-list {
+  border: 1px solid #dcdee8;
+  border-radius: 16px;
+}
+.point-activities-list ul {
+  display: flex;
+  align-items: center;
+}
+.point-activities-list ul li {
+  position: relative;
+  width: 33.33%;
+  text-align: center;
+  padding: 1.2rem 0;
+}
+.point-activities-list ul li::after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 3.4rem;
+  background: #dcdee8;
+}
+.point-activities-list ul li:last-child::after {
+  display: none;
+}
+.point-activities-list ul li p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #04021f;
+  text-align: center;
+}
+.point-activities-list ul li p span {
+  display: block;
+  color: #e6458e;
+}
+
+/* 나의 활동 */
+.my-activities {
+  padding: 0 2.4rem;
+  margin-top: 3.3rem;
+}
+.my-fold-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.8rem;
+}
+.my-fold-title span {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #3e4259;
+}
+.my-fold-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  background: url('../images/ic_fold_black_32.svg') center no-repeat;
+}
+.my-activities > ul,
+.my-info > ul {
+  border-bottom: 1px solid #dcdee8;
+}
+.my-activities > ul > li,
+.my-info > ul > li {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #04021f;
+  margin-bottom: 2.8rem;
+}
+
+/* 나의 정보 */
+.my-info {
+  margin-top: 2.8rem;
+  padding: 0 2.4rem;
+}
+
+/* 로그아웃 */
+.logout-btn-wrap {
+  padding: 0 2.4rem;
+}
+.logout-btn-wrap .mypage-logout-btn {
+  width: 100%;
+  height: 4.0rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #b8b6c4;
+  line-height: 4.0rem;
+  border-radius: 8px;
+  border: 1px solid #b8b6c4;
+  padding: 0;
+  background: none;
+  margin-top: 5.6rem;
+}
+
+
+/* 반응형 브레이크 포인트 */
+@media screen and (max-width: 375px) {
+  .age-group-wrap .age-group:last-of-type {
+    margin-bottom: 0;
+    margin-right: 8px;
+  }
+}
+
+/* 650px 이상 767px 이하 */
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+
+/* 768px 이상 */
+@media screen and (min-width: 768px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+
