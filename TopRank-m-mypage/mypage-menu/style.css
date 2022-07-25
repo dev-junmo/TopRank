@@ -26,6 +26,11 @@
   background-size: 1.6rem;
 }
 
+/* 팝업시 스크롤 막기 */
+.scroll-lock {
+  overflow: hidden;
+}
+
 /* 검색한 키워드 스타일 */
 .searched-keyword {
   display: flex;
@@ -84,7 +89,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 1.8rem;
 }
 .card-dashboard .user-info .name-ranking .name-area {
   display: flex;
@@ -142,11 +147,16 @@
   position: absolute;
   right: -0.7rem;
   top: 5.0rem;
+  width: 17.0rem;
   padding: 12px 20px;
   margin: 0;
 }
 .ranking-tier-detail.active {
   display: block;
+}
+.ranking-tier-detail .next-ranking {
+  display: flex;
+  justify-content: space-between;
 }
 .ranking-tier-detail .next-ranking span {
   font-size: 1.2rem;
@@ -166,7 +176,7 @@
 .ranking-tier-detail .ranking-process span {
   position: absolute;
   display: inline-block;
-  width: 50.2%;
+  width: 74%;
   height: 0.2rem;
   background: #e6458e;
 }
@@ -335,11 +345,21 @@
 .my-activities {
   padding: 0 2.4rem;
   margin-top: 3.3rem;
+  overflow: hidden;
+}
+.my-activities-inner {
+  border-bottom: 1px solid #dcdee8;
+  height: 6.0rem;
+  transition: all 0.5s;
+}
+.my-activities.active .my-activities-inner {
+  height: 14.9rem;
 }
 .my-fold-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0 0.8rem;
   margin-bottom: 2.8rem;
 }
 .my-fold-title span {
@@ -352,12 +372,15 @@
   height: 3.2rem;
   background: url('../images/ic_fold_black_32.svg') center no-repeat;
 }
-.my-activities > ul,
-.my-info > ul {
-  border-bottom: 1px solid #dcdee8;
+.my-fold-btn.on {
+  background: url('../images/ic_unfold_black_32.svg') center no-repeat;
 }
-.my-activities > ul > li,
-.my-info > ul > li {
+.my-activities ul,
+.my-info ul {
+
+}
+.my-activities ul li,
+.my-info ul li {
   font-size: 1.6rem;
   font-weight: bold;
   color: #04021f;
@@ -368,6 +391,15 @@
 .my-info {
   margin-top: 2.8rem;
   padding: 0 2.4rem;
+  overflow: hidden;
+}
+.my-info .my-info-inner {
+  height: 6.0rem;
+  border-bottom: 1px solid #dcdee8;
+  transition: all 0.5s;
+}
+.my-info.active .my-info-inner {
+  height: 11.2rem;
 }
 
 /* 로그아웃 */
@@ -386,6 +418,77 @@
   padding: 0;
   background: none;
   margin-top: 5.6rem;
+  margin-bottom: 6.4rem;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 공통 팝업 */
+.m-popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 99999;
+  display: none;
+}
+.m-popup .m-popup-box {
+  width: 100%;
+  background: #fff;
+}
+.m-popup.active {
+  display: block;
+}
+.m-popup .m-popup-box .popup-header {
+  position: relative;
+  width: 100%;
+  height: 4.8rem;
+  line-height: 4.8rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #3e4259;
+  text-align: center;
+}
+.m-popup .m-popup-box .popup-header .close-btn {
+  position: absolute;
+  right: 1.6rem;
+  top: 0.4rem;
+  width: 4.0rem;
+  height: 4.0rem;
+  background: none;
+}
+
+/* 공유 팝업 */
+.share-popup .m-popup-box {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 2.4rem 1.5rem 3.2rem;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
+.share-popup .share-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2.4rem;
+}
+.share-popup .share-list li {
+  width: 11.0rem;
+  text-align: center;
+  margin-bottom: 4.0rem;
+}
+.share-popup .share-list li img {
+  width: 5.6rem;
+  height: 5.6rem;
+}
+.share-popup .share-list li span {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: #3e4259;
+  margin-top: 0.8rem;
 }
 
 
