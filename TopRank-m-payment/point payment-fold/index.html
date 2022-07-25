@@ -107,7 +107,7 @@
           </ul>
         </div>
         <div class="direct-input">
-          <input type="text" placeholder="얼마를 충전할까요?">
+          <input type="number" placeholder="얼마를 충전할까요?">
           <span>만원</span>
         </div>
         <div class="selected-point-area">
@@ -251,13 +251,28 @@
                         <p>개인소득공제</p>
                       </label>
                     </div>
-                    <div class="selectbox">
-                      <button class="label">사업자</button>
-                      <ul>
-                        <li>사업자</li>
-                      </ul>
+                    <div class="receipt-selectbox-wrap">
+                      <div class="receipt-selectbox active">
+                        <div class="selectbox">
+                          <button class="label">사업자등록번호</button>
+                          <ul>
+                            <li>사업자등록번호</li>
+                            <li>현금영수증카드</li>
+                          </ul>
+                        </div>
+                        <input type="text" placeholder="(-없이)숫자만 입력해주세요." class="registration-number">
+                      </div>
+                      <div class="receipt-selectbox">
+                        <div class="selectbox">
+                          <button class="label">휴대폰번호</button>
+                          <ul>
+                            <li>휴대폰번호</li>
+                            <li>현금영수증카드</li>
+                          </ul>
+                        </div>
+                        <input type="text" placeholder="(-없이)숫자만 입력해주세요." class="registration-number">
+                      </div>
                     </div>
-                    <input type="text" placeholder="사업자등록번호" class="registration-number">
                   </div>
                 </div>
               </div>
@@ -381,6 +396,8 @@
       el.addEventListener('click', () => {
         el.parentNode.previousSibling.previousSibling.innerHTML = el.innerHTML;
         el.parentNode.parentNode.classList.remove('active');
+
+        console.log(el.parentNode.parentNode);
       });
     });
 
@@ -438,21 +455,25 @@
 
     // 현금영수증 체크
     const cashReceiptContents = document.querySelectorAll('.cash-receipt-contents label');
+    const receiptSelectbox = document.querySelectorAll('.receipt-selectbox');
+    // const receiptSelectboxList = document.querySelectorAll('.receipt-selectbox ul li');
 
-    Array.from(cashReceiptContents).forEach((c) => {
+    Array.from(cashReceiptContents).forEach((c, idx) => {
       c.addEventListener('click', () => {
         Array.from(cashReceiptContents).forEach((p) => {
           p.childNodes[1].checked = false;
         });
 
         c.childNodes[1].checked = true;
+
+        showContent(idx, receiptSelectbox);
       });
 
     });
 
 
     // 현금영수증 탭 메뉴
-    const cashReceiptList = document.querySelectorAll('.cash-receipt ul li');
+    const cashReceiptList = document.querySelectorAll('.cash-receipt > ul > li');
     const cashReceiptContentsWrap = document.querySelector('.cash-receipt-contents-wrap');
 
     Array.from(cashReceiptList).forEach((c) => {
@@ -468,6 +489,24 @@
         }
       });
     });
+    
+    // Array.from(receiptSelectboxList).forEach((li, idx) => {
+    //   li.addEventListener('click', () => {
+    //     Array.from(receiptSelectboxList).forEach((l) => {
+    //       l.classList.remove('active');
+    //     });
+
+    //     li.classList.add('active');
+    //     showContent(idx, receiptSelectbox);
+    //   });
+    // });
+
+    function showContent(num, contents) {
+      Array.from(contents).forEach((i) => {
+        i.classList.remove('active');
+      });
+      Array.from(contents)[num].classList.add('active');
+    }
     
 
   </script>

@@ -92,11 +92,13 @@
   justify-content: center;
 }
 .ranking-search-tab li {
+  width: 9.3rem;
+  height: 3.1rem;
   font-size: 1.6rem;
   font-weight: bold;
   color: #3e4259;
-  padding: 0.6rem 0.8rem;
-  margin-right: 1.6rem;
+  line-height: 2.8rem;
+  text-align: center;
 }
 .ranking-search-tab li.active {
   color: #3f37c9;

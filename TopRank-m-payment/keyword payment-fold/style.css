@@ -426,7 +426,10 @@
   display: flex;
   justify-content: center;
   margin-top: 0.8rem;
-  margin-bottom: 3.2rem;
+  /* margin-bottom: 3.2rem; */
+}
+.product-options-box .auto-extend-check.none {
+  display: none;
 }
 .product-options-box .auto-extend-check label,
 .consent-check label {
@@ -478,6 +481,7 @@
   line-height: 4.0rem;
   border-radius: 8px;
   background: #3f37c9;
+  margin-top: 3.2rem;
 }
 
 /* 최종 주문 정보  */

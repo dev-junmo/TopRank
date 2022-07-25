@@ -166,8 +166,8 @@
               <button class="label">A <span>(1일 1회 순위 확인권)</span></button>
               <ul>
                 <li>A <span>(1일 1회 순위 확인권)</span></li>
-                <li>B <span>(10분마다 순위 확인권)</span></li>
-                <li>C <span>(30분마다 순위 확인권)</span></li>
+                <li>B <span>(30분마다 순위 확인권)</span></li>
+                <li>C <span>(10~15분마다 순위 확인권)</span></li>
               </ul>
             </div>
           </div>
@@ -177,8 +177,9 @@
               <button class="label">7일</button>
               <ul>
                 <li>7일</li>
+                <li>15일</li>
                 <li>30일</li>
-                <li>60일</li>
+                <li>90일</li>
               </ul>
             </div>
           </div>
@@ -367,6 +368,20 @@
       el.addEventListener('click', () => {
         el.parentNode.previousSibling.previousSibling.innerHTML = el.innerHTML;
         el.parentNode.parentNode.classList.remove('active');
+      });
+    });
+
+    // 수동 연장
+    const autoExtendLi = document.querySelectorAll('.auto-extend .selectbox ul li');
+    const autoExtendCheck = document.querySelector('.auto-extend-check');
+
+    Array.from(autoExtendLi).forEach((li) => {
+      li.addEventListener('click', () => {
+        if(li.textContent === '수동 연장') {
+          autoExtendCheck.classList.add('none');
+        }else{
+          autoExtendCheck.classList.remove('none');
+        }
       });
     });
 

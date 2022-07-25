@@ -279,11 +279,15 @@
   justify-content: center;
 }
 .tracking-tab li {
+  width: 10.9rem;
+  height: 3.1rem;
   font-size: 1.6rem;
   font-weight: bold;
   color: #3e4259;
-  padding: 0.6rem 0.8rem;
-  margin-right: 2.8rem;
+  line-height: 2.8rem;
+  text-align: center;
+  /* padding: 0.6rem 0.8rem; */
+  /* margin-right: 2.8rem; */
 }
 .tracking-tab li.active {
   color: #3f37c9;
