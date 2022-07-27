@@ -621,8 +621,8 @@
             <div class="switch-point">
               <span class="point-change-title">인출할 포인트</span>
               <div class="point-input-area">
-                <input type="number" placeholder="포인트를 입력해주세요.">
-                <button class="clear-btn">
+                <input type="text" placeholder="포인트를 입력해주세요." value="100,000" readonly>
+                <button class="clear-btn on">
                   <img src="../images/ic_close_black_32.svg" alt="X">
                 </button>
                 <button class="total-amount-btn">전액</button>
@@ -640,8 +640,8 @@
             <div class="account-number">
               <span class="point-change-title">계좌번호</span>
               <div class="input-area">
-                <input type="number" placeholder="계좌번호를 입력해주세요.">
-                <button class="clear-btn">
+                <input type="number" placeholder="계좌번호를 입력해주세요." value="110111111111" readonly>
+                <button class="clear-btn on">
                   <img src="../images/ic_close_black_32.svg" alt="X">
                 </button>
               </div>
@@ -650,11 +650,11 @@
               <span class="point-change-title">예금주</span>
               <div class="input-area">
                 <div>
-                  <input type="text" placeholder="예금주를 입력해주세요.">
-                  <button class="clear-btn">
+                  <input type="text" placeholder="예금주를 입력해주세요." value="탑랭크" readonly>
+                  <button class="clear-btn on">
                     <img src="../images/ic_close_black_32.svg" alt="X">
                   </button>
-                  <p class="account-checking">실계좌가 확인되었습니다.</p>
+                  <p class="account-checking-need active">실계좌가 확인되었습니다.</p>
                 </div>
                 <button class="actual-account-btn">실계좌 확인</button>
               </div>
@@ -907,56 +907,52 @@
     });
 
     // 포인트 전환 입력창
-    const exchangePointDraw = document.querySelector('.point-withdraw .switch-point input');
-    const accountNumberInput = document.querySelector('.account-number input');
-    const accountHolderInput = document.querySelector('.account-holder input');
-    const actualAccountBtn = document.querySelector('.actual-account-btn');
-    const accountChecking = document.querySelector('.account-checking');
-    const withdrawSwitchBtn = document.querySelector('.point-withdraw-popup .switch-btn');
+    // const exchangePointDraw = document.querySelector('.point-withdraw .switch-point input');
+    // const accountNumberInput = document.querySelector('.account-number input');
+    // const accountHolderInput = document.querySelector('.account-holder input');
+    // const actualAccountBtn = document.querySelector('.actual-account-btn');
+    // const accountChecking = document.querySelector('.account-checking');
+    // const withdrawSwitchBtn = document.querySelector('.point-withdraw-popup .switch-btn');
 
-    accountHolderInput.addEventListener('keyup', () => {
-      if(exchangePointDraw.value && accountNumberInput.value && accountHolderInput.value) {
-        withdrawSwitchBtn.classList.add('active');
-        // accountChecking.classList.add('active');
-      }else{
-        withdrawSwitchBtn.classList.remove('active');
-        // accountChecking.classList.remove('active');
-      }
-    });
+    // accountHolderInput.addEventListener('keyup', () => {
+    //   if(exchangePointDraw.value && accountNumberInput.value && accountHolderInput.value) {
+    //     withdrawSwitchBtn.classList.add('active');
+    //     accountChecking.classList.add('active');
+    //   }else{
+    //     withdrawSwitchBtn.classList.remove('active');
+    //     accountChecking.classList.remove('active');
+    //   }
+    // });
 
-    actualAccountBtn.addEventListener('click', () => {
-      accountChecking.classList.add('active');
-    });
+    // clearBtnShow(exchangePointDraw);
+    // clearBtnShow(accountNumberInput);
+    // clearBtnShow(accountHolderInput);
 
-    clearBtnShow(exchangePointDraw);
-    clearBtnShow(accountNumberInput);
-    clearBtnShow(accountHolderInput);
+    // function clearBtnShow(input) {
+    //   input.addEventListener('keyup', () => {
+    //     if(input.value) {
+    //       input.nextSibling.nextSibling.classList.add('on');
+    //     }else{
+    //       input.nextSibling.nextSibling.classList.remove('on');
+    //     }
+    //   });
+    // }
 
-    function clearBtnShow(input) {
-      input.addEventListener('keyup', () => {
-        if(input.value) {
-          input.nextSibling.nextSibling.classList.add('on');
-        }else{
-          input.nextSibling.nextSibling.classList.remove('on');
-        }
-      });
-    }
-
-    const clearBtn = document.querySelectorAll('.clear-btn');
+    // const clearBtn = document.querySelectorAll('.clear-btn');
 
     // 입력한 값 지우기
-    Array.from(clearBtn).forEach((c) => {
-      c.addEventListener('click', () => {
-      c.previousSibling.previousSibling.value = "";
-      c.classList.remove('on');
+    // Array.from(clearBtn).forEach((c) => {
+    //   c.addEventListener('click', () => {
+    //   c.previousSibling.previousSibling.value = "";
+    //   c.classList.remove('on');
 
-      console.log(c.parentElement.parentElement.parentElement);
+    //   console.log(c.parentElement.parentElement.parentElement);
 
-      if(c.parentElement.parentElement.parentElement.classList.contains('account-holder')) {
-        accountChecking.classList.remove('active');
-      }
-    });
-    });
+    //   if(c.parentElement.parentElement.parentElement.classList.contains('account-holder')) {
+    //     accountChecking.classList.remove('active');
+    //   }
+    // });
+    // });
 
   </script>
 </body>

@@ -116,101 +116,35 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   border-radius: 24px;
 }
 
-.point-dashboard-wrap {
-  padding: 0 1.6rem;
-}
-.point-dashboard {
-  padding: 2.4rem 2.4rem 1.1rem;
-  margin-top: 2.4rem;
-}
-.point-dashboard ul li {
-  margin-bottom: 2.5rem;
-}
-.point-dashboard ul li .point-title {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #3e4259;
-  padding-left: 2.4rem;
-  background: url('../images/ic_payment-point_purple_24.svg') left center no-repeat;
-  background-size: 1.6rem;
-}
-.point-dashboard ul li .point-contents {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.1rem;
-}
-.point-dashboard ul li .point-contents > span {
-  font-size: 1.8rem;
-  color: #e6458e;
-}
-.point-dashboard ul li .point-contents > span strong {
-  font-weight: 500;
-  vertical-align: middle;
-}
-.point-dashboard ul li .point-contents button {
-  height: 2.6rem;
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;
-  line-height: 2.4rem;
-  border-radius: 8px;
-  padding: 0 1.6rem;
-}
-.point-dashboard ul li .point-contents button.charging-btn,
-.point-dashboard ul li .point-contents button.withdraw-btn {
-  background: #e6458e;
-}
-.point-dashboard ul li .point-contents button.change-btn {
-  background: #3f37c9;
-  margin-right: 0.6rem;
-}
-
 .line {
   width: 100%;
   height: 1px;
   background: #dcdee8;
-  margin-bottom: 3.2rem;
+  margin: 1.6rem 0 2.1rem;
 }
 
 /* ================================================================================================================ */
 /* ================================================================================================================ */
 /* 포인트 내역 스타일 */
-.point-history-wrap {
+.point-charging-history-wrap {
   padding: 0 2.4rem;
 }
-.point-history-contents {
-  display: none;
-}
-.point-history-contents.active {
-  display: block;
-}
-.point-history-tab {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.point-history-tab li {
-  width: 15.6rem;
-  height: 2.9rem;
-  font-size: 1.6rem;
-  font-weight: bold;
+.all-count {
+  font-size: 1.4rem;
+  font-weight: normal;
   color: #3e4259;
-  line-height: 2.7rem;
-  text-align: center;
+  margin-bottom: 2.4rem; 
 }
-.point-history-tab li.active {
-  color: #3f37c9;
-  border-bottom: 2px solid #3f37c9;
+.all-count span {
+  font-weight: 500;
 }
-
 .point-history-option {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1.6rem;
+  padding: 0 2.4rem;
+  margin-top: 2.4rem;
 }
-
 .point-history-option .selectbox {
   position: relative;
   /* margin-top: 1.0rem; */
@@ -280,14 +214,9 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   width: 100%;
   /* height: 14.4rem; */
   background: #fafbff;
-  padding: 1.3rem 1.6rem 2.0rem;
+  padding: 1.3rem 1.6rem 2.4rem;
   border-radius: 16px;
   box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
-}
-.point-history-card:nth-child(2) {
-  margin-top: 2.4rem;
-}
-.point-history-card:not(:nth-child(2)) {
   margin-top: 0.8rem;
 }
 .point-history-card .point-card-header {
@@ -302,99 +231,49 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   font-size: 1.4rem;
   font-weight: 500;
 }
-.point-history-card .point-card-header .card-date {
-  color: #3e4259;
+.point-history-card .point-card-header .waiting-deposit-btn {
+  background: none;
+  padding: 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #e6458e;
 }
-.point-history-card .point-card-header .point-type {
-  color: #04021f;
+.point-history-card .point-card-header .pay-done {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #b8b6c4;
+}
+
+.point-card-contents .space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .point-card-contents .point-card-title {
   font-size: 1.4rem;
   font-weight: 500;
   color: #04021f;
 }
-.point-card-contents .keyword-purchase {
-  display: flex;
-  justify-content: space-between;
+.point-card-contents .transition-point-list {
+  margin: 0.6rem 0 1.4rem;
 }
-.point-card-contents .keyword-purchase .keyword-product-wrap {
-  display: flex;
-}
-.point-card-contents .keyword-purchase .keyword-product-wrap > span {
-  margin-right: 1.2rem;
-}
-.point-card-contents .keyword-purchase .keyword-product-wrap .keyword-product {
+.point-card-contents .transition-point-list li {
   font-size: 1.4rem;
   font-weight: normal;
-}
-.point-card-contents .keyword-purchase .keyword-product-wrap .keyword-product span {
-  color: #3e4259;
-}
-.point-card-contents .keyword-purchase .keyword-product-wrap .keyword-product p {
-  width: 16.3rem;
   color: #b8b6c4;
-  font-weight: normal;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-top: 0.6rem;
+  margin-bottom: 0.6rem;
 }
-.point-card-contents .point-card-con-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.point-card-contents .transition-point-list li:last-child {
+  margin-bottom: 0;
 }
-.point-card-contents .point-card-con-list.rewards {
-  align-items: flex-start;
-}
-.point-card-contents .point-card-con-list p {
+.point-card-contents .point-number {
   font-size: 1.4rem;
   font-weight: normal;
   color: #3e4259;
 }
-.point-card-contents .keyword-purchase img {
-  width: 2.4rem;
-  height: 2.4rem;
-}
-.point-card-contents .point-card-con-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.8rem;
-}
-.point-card-contents .point-card-con-list > span {
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #04021f;
-}
-.point-card-contents .point-card-con-list strong {
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #2fbaed;
-}
-.point-card-contents .point-card-con-list strong.point-reduction {
-  color: #2fbaed;
-}
-.point-card-contents .point-card-con-list strong.point-increase {
-  color: #fc6075;
-}
-.point-card-contents .point-card-con-list .expiration-date {
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #b8b6c4;
-}
-
-.point-card-con-list .rewards-purchase {
-  text-align: right;
-}
-.point-card-con-list .rewards-purchase .user-id-info {
-  display: block;
-  font-size: 1.4rem;
+.point-card-contents .point-number strong {
   font-weight: normal;
-  color: #b8b6c4;
-  margin-bottom: 0.8rem;
 }
-
 .point-history-contents .point-more-btn {
   width: 100%;
   height: 4.0rem;
@@ -406,6 +285,25 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   border-radius: 12px;
   box-shadow: 0 3px 10px 0 rgba(36, 51, 179, 0.1);
   margin-top: 3.2rem;
+}
+
+/* 포인트 내역 없을 때 스타일 */
+.point-charging-history-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 23.6rem;
+  background: #f2f2fc;
+  border-radius: 16px;
+  margin-top: 2.4rem;
+}
+.point-charging-history-empty p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #b8b6c4;
+  margin-top: 0.8rem;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -575,272 +473,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   color: #3f37c9;
 }
 
-/* 포인트 전환하기 팝업 */
-.point-change-popup .m-popup-box,
-.point-withdraw-popup .m-popup-box {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  padding: 2.4rem 1.6rem 3.2rem;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-}
-.popup-contents .point-change-title {
-  display: block;
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #3e4259;
-  padding-left: 0.8rem;
-  margin-bottom: 1.0rem;
-}
-.popup-contents .rewards-point {
-  margin: 2.4rem 0;
-}
-.popup-contents .rewards-point > strong {
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #04021f;
-  padding-left: 2.4rem;
-}
-.popup-contents .switch-point .point-input-area {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-}
-.popup-contents .switch-point .point-input-area input {
-  width: 63%;
-  height: 4.0rem;
-  font-size: 1.6rem;
-  font-weight: normal;
-  line-height: 4.0rem;
-  color: #04021f;
-  padding: 0 1.6rem;
-  border-radius: 8px;
-  border: 1px solid #dcdee8;
-  background: #fff;
-  margin-left: 0.8rem;
-}
-.popup-contents .switch-point .point-input-area input::placeholder {
-  color: #b8b6c4;
-}
-.popup-contents .switch-point .point-input-area .total-amount-btn {
-  width: 6.4rem;
-  height: 4.0rem;
-  line-height: 4.0rem;
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  background: #e6458e;
-  padding: 0;
-  border-radius: 8px;
-  margin-left: 1.6rem;
-}
-.popup-contents .clear-btn {
-  display: none;
-  position: absolute;
-  right: 26.8%;
-  top: 0.5rem;
-  background: none;
-  padding: 0;
-}
-.popup-contents .clear-btn.on {
-  display: block;
-}
-.account-number .clear-btn {
-  right: 2.8%;
-}
-.account-holder .clear-btn {
-  right: 32.8%;
-}
-.popup-contents .confirmation-box {
-  padding: 1.6rem;
-  border-radius: 16px;
-  background: #f2f2fc;
-  margin-top: 2.9rem;
-}
-.popup-contents .confirmation-box .confirmation-title {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1.1rem;
-}
-.popup-contents .confirmation-box .confirmation-title > span {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #b8b6c4;
-  margin-left: 0.8rem;
-}
-.popup-contents .confirmation-box ul li {
-  position: relative;
-  font-size: 1.2rem;
-  font-weight: normal;
-  color: #3e4259;
-  line-height: 1.25;
-  word-break: keep-all;
-  padding-left: 1.4rem;
-  margin-bottom: 1.0rem;
-}
-.popup-contents .confirmation-box ul li:last-child {
-  margin-bottom: 0;
-}
-.popup-contents .confirmation-box ul li::before {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0.4rem;
-  top: 0.6rem;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: #3e4259;
-}
-.popup-contents .confirmation-box ul li.principle {
-  color: #e62e6b;
-}
-.popup-contents .confirmation-box ul li.principle::before {
-  background: #e62e6b;
-}
-.popup-contents .switch-btn {
-  width: 100%;
-  height: 4.4rem;
-  font-size: 1.6rem;
-  font-weight: bold;
-  color: #b8b6c4;
-  line-height: 4.4rem;
-  text-align: center;
-  background: #dcdee8;
-  border-radius: 8px;
-  padding: 0;
-  margin-top: 3.2rem;
-}
-.popup-contents .switch-btn.active {
-  background: #e6458e;
-  color: #fff;
-}
-.popup-contents .bank-name {
-  margin-top: 2.4rem;
-}
-.popup-contents .bank-name .selectbox {
-  position: relative;
-  /* padding-left: 0.8rem; */
-}
-.popup-contents .bank-name .selectbox .label {
-  width: 100%;
-  height: 4.0rem;
-  font-size: 1.6rem;
-  font-weight: normal;
-  color: #3e4259;
-  text-align: left;
-  line-height: 3.4rem;
-  border: 1px solid #dcdee8;
-  background: #fff url('../images/ic_unfold_black_24.svg') 97% center no-repeat;
-  border-radius: 8px;
-  padding-left: 1.6rem;
-  margin-left: 0.8rem;
-}
-.popup-contents .bank-name .selectbox.active .label {
-  background: #fff url('../images/ic_fold_black_24.svg') 97% center no-repeat;
-}
-.popup-contents .bank-name .selectbox ul {
-  display: none;
-  position: absolute;
-  left: 0;
-  top: 3.9rem;
-  width: 100%;
-  background: #fff;
-  border: 1px solid #dcdee8;
-  border-radius: 8px;
-  box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
-  z-index: 10;
-  margin-left: 0.8rem;
-}
-.popup-contents .bank-name .selectbox.active ul {
-  display: block;
-} 
-.popup-contents .bank-name .selectbox ul li {
-  width: 100%;
-  height: 4.0rem;
-  font-size: 1.6rem;
-  font-weight: normal;
-  color: #3e4259;
-  line-height: 4.0rem;
-  text-align: left;
-  padding-left: 1.6rem;
-  cursor: pointer;
-}
 
-.popup-contents .account-number {
-  padding-left: 0.8rem;
-  margin-top: 2.4rem;
-}
-.popup-contents .account-number .input-area {
-  position: relative;
-}
-.popup-contents .account-number input {
-  width: 100%;
-  height: 4.0rem;
-  font-size: 1.6rem;
-  font-weight: normal;
-  line-height: 4.0rem;
-  color: #04021f;
-  padding: 0 1.6rem;
-  border-radius: 8px;
-  border: 1px solid #dcdee8;
-  background: #fff;
-  box-sizing: border-box;
-}
-.popup-contents .account-number input::placeholder {
-  color: #b8b6c4;
-}
-
-.popup-contents .account-holder {
-  margin-top: 2.4rem;
-}
-.popup-contents .account-holder .input-area {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 0.8rem;
-}
-.popup-contents .account-holder input {
-  width: 108%;
-  height: 4.0rem;
-  font-size: 1.6rem;
-  font-weight: normal;
-  line-height: 4.0rem;
-  color: #04021f;
-  padding: 0 1.6rem;
-  border-radius: 8px;
-  border: 1px solid #dcdee8;
-  background: #fff;
-  box-sizing: border-box;
-}
-.popup-contents .account-holder input::placeholder {
-  color: #b8b6c4;
-}
-.popup-contents .account-holder .actual-account-btn {
-  height: 4.0rem;
-  line-height: 4.0rem;
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  background: #e6458e;
-  padding: 0 0.8rem;
-  border-radius: 8px;
-  /* margin-left: 1.6rem; */
-}
-.popup-contents .account-holder .account-checking {
-  display: none;
-  font-size: 1.2rem;
-  font-weight: normal;
-  color: #1cd9b9;
-  margin-left: 1.6rem;
-  margin-top: 0.8rem;
-}
-.popup-contents .account-holder .account-checking.active {
-  display: block;
-}
 
 
 /* 반응형 브레이크 포인트 */

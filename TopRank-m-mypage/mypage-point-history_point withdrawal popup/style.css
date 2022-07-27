@@ -842,6 +842,18 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   display: block;
 }
 
+.popup-contents .account-holder .account-checking-need {
+  display: none;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #de3c33;
+  margin-left: 1.6rem;
+  margin-top: 0.8rem;
+}
+.popup-contents .account-holder .account-checking-need.active {
+  display: block;
+}
+
 
 /* 반응형 브레이크 포인트 */
 @media screen and (max-width: 375px) {

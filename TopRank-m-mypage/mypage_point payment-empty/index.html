@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TopRank | Mypage_point payment-empty</title>
+  <link rel="stylesheet" type="text/css" href="layout.css" media="all">
+  <link rel="stylesheet" type="text/css" href="style.css" media="all">
+</head>
+<body>
+  <div id="wrap" class="mobile">
+    <!-- header start -->
+    <header id="header" class="header-wrap">
+      <div class="header-inner">
+        <div class="navigation-bar">
+          <a href="#" class="my-dashboard-btn">마이 대시보드</a>
+          <h1 class="logo"><img src="../images/logo_purple_130.svg" alt="TopRank"></h1>
+          <button class="all-menu">
+            <span class="burger-line burger-item1"></span>
+            <span class="burger-line burger-item2"></span>
+            <span class="burger-line burger-item3"></span>
+          </button>
+        </div>
+      </div>
+      <div class="m-menu">
+        <div class="login-area">
+          <div class="login-state">로그인이 필요합니다</div>
+          <button class="login-btn">로그인</button>
+        </div>
+        <nav class="m-gnb">
+          <ul>
+            <li>
+              <img src="../images/ic_keyword_purple_32.svg" alt="">
+              <a href="#">키워드 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_ranking_purple_32.svg" alt="">
+              <a href="#">상품순위 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_subscription_purple_32.svg" alt="">
+              <a href="#">이용 중인 상품</a>
+            </li>
+            <li>
+              <img src="../images/ic_trend_purple_32.svg" alt="">
+              <a href="#">쇼핑 트렌드</a>
+            </li>
+            <li>
+              <img src="../images/ic_popular_purple_32.svg" alt="">
+              <a href="#">인기 검색어</a>
+            </li>
+          </ul>
+          <ul class="bottom-gnb">
+            <li>
+              <img src="../images/ic_board_purple_32.svg" alt="">
+              <a href="#">게시판</a>
+              <button class="fold-btn"><img src="../images/ic_fold_bold_black_32.svg" alt=""></button>
+              <ul>
+                <li>
+                  <a href="#">공지사항</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- //header end -->
+
+    <div class="m-popup-mask"></div>
+
+    <!-- contents start -->
+    <div id="contents">
+      <!-- 탑/다운 버튼 start -->
+      <div class="flirting-btn-wrap">
+        <button class="flirting-btn up-btn">UP</button>
+        <button class="flirting-btn down-btn">DOWN</button>
+      </div>
+      <!-- 탑/다운 버튼 end -->
+
+      <!-- contents header start -->
+      <div class="contents-header">
+        <div class="contents-title">
+          <img src="../images/ic_point-payment_purple_24.svg" alt="">
+          <h2>포인트 충전 내역</h2>
+        </div>
+      </div>
+      <!-- //contents header end -->
+
+      <!-- 포인트 옵션 start -->
+      <div class="point-history-option">
+        <div class="selectbox">
+          <button class="label">전체</button>
+          <ul>
+            <li>전체</li>
+            <li>입금 대기</li>
+            <li>결제 완료</li>
+          </ul>
+        </div>
+        <button class="filter-btn">
+          <img src="../images/ic_sorting_purple_32.svg" alt="필터">
+        </button>
+      </div>
+      <!-- 포인트 옵션 end -->
+
+      <div class="line"></div>
+
+      <!-- 포인트 내역 start -->
+      <div class="point-charging-history-wrap">
+        <div class="all-count">
+          총 <span>0</span>개
+        </div>
+        <div class="point-history-contents">
+          <div class="point-charging-history-empty">
+            <img src="../images/img_attention_gray_64.svg" alt="!">
+            <p>포인트 충전 내역이 없습니다.</p>
+          </div>
+        </div>
+      </div>
+      <!-- 포인트 내역 end -->
+    </div>
+    <!--// contents end -->
+
+    <!-- 필터 팝업 start -->
+    <div class="m-popup filter-popup">
+      <div class="m-popup-box">
+        <div class="popup-header">
+          <h3>필터</h3>
+          <button class="close-btn">
+            <img src="../images/ic_close_bold_purple_40.svg" alt="닫기 버튼">
+          </button>
+        </div>
+        <div class="filter-calendar-wrap">
+          <h3>조회 기간</h3>
+          <ul class="date-tab">
+            <li class="active">전체</li>
+            <li>1주일</li>
+            <li>1개월</li>
+            <li>3개월</li>
+          </ul>
+          <div class="filter-calendar">
+            <label for="start-date">시작일</label>
+            <input type="date" id="start-date" name="start-date" data-placeholder="시작일">
+            <span> - </span>
+            <label for="end-date">종료일</label>
+            <input type="date" id="end-date" name="end-date" data-placeholder="종료일">
+          </div>
+        </div>
+        <div class="filter-btn-wrap">
+          <button class="filter-reset-btn">초기화</button>
+          <button class="filter-application-btn">적용</button>
+        </div>
+      </div>
+    </div>
+    <!-- //필터 팝업 end -->
+
+    <!-- footer start -->
+    <footer id="footer">
+      <button class="pc-btn">PC버전</button>
+      <ul class="footer-nav">
+        <li><a href="#">이용약관</a></li>
+        <li>|</li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li>|</li>
+        <li><a href="#">자주 묻는 질문</a></li>
+      </ul>
+      <div class="footer-logo">
+        <img src="../images/logo_gray_130.svg" alt="TOPRANK">
+      </div>
+      <div class="company-info">
+        <address>서울특별시 강서구 공항대로 227 마곡센트럴타워1차</address>
+        <ul>
+          <li>대표이사 김태형</li>
+          <li>|</li>
+          <li>사업자등록번호 104-81-25980</li>
+        </ul>
+        <p>통신판매업신고번호 중구02802호</p>
+      </div>
+      <p class="service-inquire">서비스 문의 help@crefe.co.kr</p>
+      <p class="copyright">Copyright@CREFE. All Rights Reserved.</p>
+    </footer>
+    <!-- //footer end -->
+  </div>
+
+  <script>
+    // 모바일 메뉴 보기
+    const headerWrap = document.querySelector('.header-wrap');
+    const allMenu = document.querySelector('.all-menu');
+    const menu = document.querySelector('.m-menu');
+    const popupMask = document.querySelector('.m-popup-mask');
+
+    allMenu.addEventListener('click', () => {
+      if(allMenu.classList.contains('open')) {
+        allMenu.classList.remove('open');
+        menu.classList.remove('active');
+        headerWrap.classList.remove('active');
+        popupMask.classList.remove('active');
+      }else{
+        allMenu.classList.add('open');
+        menu.classList.add('active');
+        headerWrap.classList.add('active');
+        popupMask.classList.add('active');
+      }
+    });
+
+    // 탭 메뉴
+    const tabList = document.querySelectorAll('.point-history-tab li');
+    const searchHistory = document.querySelectorAll('.point-history-contents');
+
+    Array.from(tabList).forEach((el, idx) => {
+      el.addEventListener('click', () => {
+        Array.from(tabList).forEach((i) => {
+          i.classList.remove('active');
+        });
+        el.classList.add('active');
+
+        showContent(idx, searchHistory);
+      });
+    });
+
+    function showContent(num, contents) {
+      Array.from(contents).forEach((i) => {
+        i.classList.remove('active');
+      });
+      Array.from(contents)[num].classList.add('active');
+    }
+
+    // 셀렉트 박스
+    const selectLabel = document.querySelectorAll('.selectbox .label');
+    const selectBox = document.querySelectorAll('.selectbox ul');
+    const selectOption = document.querySelectorAll('.selectbox ul li');
+
+    Array.from(selectLabel).forEach((el) => {
+      el.addEventListener('click', () => {
+        if(el.parentNode.classList.contains('active')) {
+          el.parentNode.classList.remove('active');
+        } else {
+          el.parentNode.classList.add('active');
+        }
+      });
+    });
+
+    Array.from(selectOption).forEach((el) => {
+      el.addEventListener('click', () => {
+        el.parentNode.previousSibling.previousSibling.innerHTML = el.innerHTML;
+        el.parentNode.parentNode.classList.remove('active');
+      });
+    });
+
+    
+    // 필터 팝업
+    const filterPopup = document.querySelector('.filter-popup');
+    const mobilePopup = document.querySelectorAll('.m-popup');
+    const closeBtn = document.querySelectorAll('.close-btn');
+    const filterBtn = document.querySelectorAll('.filter-btn');
+
+    Array.from(closeBtn).forEach(c => {
+      c.addEventListener('click', () => {
+        Array.from(mobilePopup).forEach((p) => {
+          p.classList.remove('active');
+        });
+        // filterPopup.classList.remove('active');
+        document.querySelector('body').classList.remove('scroll-lock');
+      });
+    });
+
+    Array.from(filterBtn).forEach((f) => {
+      f.addEventListener('click', () => {
+        filterPopup.classList.add('active');
+        document.querySelector('body').classList.add('scroll-lock');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('m-popup')) {
+        Array.from(document.querySelectorAll('.m-popup')).forEach(e => {
+          e.classList.remove('active');
+          document.querySelector('body').classList.remove('scroll-lock');
+        });
+      }
+    });
+
+    // 팝업들
+    const pointChangePopup = document.querySelector('.point-change-popup');
+    const pointWithdrawPopup = document.querySelector('.point-withdraw-popup');
+    const changeBtn = document.querySelector('.change-btn');
+    const withdrawBtn = document.querySelector('.withdraw-btn');
+
+    popupShow(changeBtn, pointChangePopup);
+    popupShow(withdrawBtn, pointWithdrawPopup);
+
+    function popupShow(btn, popup) {
+      btn.addEventListener('click', () => {
+        popup.classList.add('active');
+        document.querySelector('body').classList.add('scroll-lock');
+      });
+    }
+
+    // 스크롤 이벤트
+    const flirtingBtnWrap = document.querySelector('.flirting-btn-wrap');
+    const upBtn = document.querySelector('.up-btn');
+    const downBtn = document.querySelector('.down-btn');
+
+    window.addEventListener('scroll', (e) => {
+      if(window.scrollY > 80) {
+        flirtingBtnWrap.classList.add('active');
+      }else{
+        flirtingBtnWrap.classList.remove('active');
+      }
+    });
+
+    const moveBackToTop = () => {
+      if(window.pageYOffset > 0) {
+        window.scrollTo({
+          top: 0, behavior: 'smooth'
+        });
+      }
+    }
+
+    const moveBackToBottom = () => {
+      if(window.pageYOffset < document.querySelector('html').offsetHeight) {
+        window.scrollTo({
+          top: document.querySelector('html').offsetHeight, behavior: 'smooth'
+        });
+      }
+    }
+
+    upBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      moveBackToTop();
+    });
+    downBtn.addEventListener('click', () => {
+      moveBackToBottom();
+    });
+
+
+    // 포인트 전환 입력창
+    const switchPointInput = document.querySelector('.switch-point input');
+    const switchBtn = document.querySelector('.switch-btn');
+    const SwitchclearBtn = document.querySelector('.switch-point .clear-btn');
+
+    switchPointInput.addEventListener('keyup', () => {
+      if(switchPointInput.value) {
+        switchBtn.classList.add('active');
+        SwitchclearBtn.classList.add('on');
+      }else{
+        switchBtn.classList.remove('active');
+        SwitchclearBtn.classList.remove('on');
+      }
+    });
+
+    // 포인트 전환 입력창
+    const exchangePointDraw = document.querySelector('.point-withdraw .switch-point input');
+    const accountNumberInput = document.querySelector('.account-number input');
+    const accountHolderInput = document.querySelector('.account-holder input');
+    const actualAccountBtn = document.querySelector('.actual-account-btn');
+    const accountChecking = document.querySelector('.account-checking');
+    const withdrawSwitchBtn = document.querySelector('.point-withdraw-popup .switch-btn');
+
+    accountHolderInput.addEventListener('keyup', () => {
+      if(exchangePointDraw.value && accountNumberInput.value && accountHolderInput.value) {
+        withdrawSwitchBtn.classList.add('active');
+        // accountChecking.classList.add('active');
+      }else{
+        withdrawSwitchBtn.classList.remove('active');
+        // accountChecking.classList.remove('active');
+      }
+    });
+
+    actualAccountBtn.addEventListener('click', () => {
+      accountChecking.classList.add('active');
+    });
+
+    clearBtnShow(exchangePointDraw);
+    clearBtnShow(accountNumberInput);
+    clearBtnShow(accountHolderInput);
+
+    function clearBtnShow(input) {
+      input.addEventListener('keyup', () => {
+        if(input.value) {
+          input.nextSibling.nextSibling.classList.add('on');
+        }else{
+          input.nextSibling.nextSibling.classList.remove('on');
+        }
+      });
+    }
+
+    const clearBtn = document.querySelectorAll('.clear-btn');
+
+    // 입력한 값 지우기
+    Array.from(clearBtn).forEach((c) => {
+      c.addEventListener('click', () => {
+      c.previousSibling.previousSibling.value = "";
+      c.classList.remove('on');
+
+      console.log(c.parentElement.parentElement.parentElement);
+
+      if(c.parentElement.parentElement.parentElement.classList.contains('account-holder')) {
+        accountChecking.classList.remove('active');
+      }
+    });
+    });
+
+  </script>
+</body>
+</html>
