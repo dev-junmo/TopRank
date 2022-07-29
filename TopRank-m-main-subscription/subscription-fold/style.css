@@ -321,6 +321,8 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 }
 .using-product-list-wrap .using-product-box li p {
   width: 16.0rem;
+  font-size: 1.4rem;
+  color: #04021f;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -630,6 +632,9 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 }
 .change-rank-popup .change-rank.down {
   background: url('../images/ic_decending_blue_18.svg') right center no-repeat;
+}
+.change-rank-popup .change-rank.no-change {
+  background: url('../images/ic_nochange_gray_18.svg') right center no-repeat;
 }
 .change-rank-popup .rank-copy-btn {
   display: inline-block;

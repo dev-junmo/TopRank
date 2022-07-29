@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TopRank | Mypage_point usage-empty</title>
+  <title>TopRank | Mypage_edit profile_confirm</title>
   <link rel="stylesheet" type="text/css" href="layout.css" media="all">
   <link rel="stylesheet" type="text/css" href="style.css" media="all">
 </head>
 <body>
   <div id="wrap" class="mobile">
     <!-- header start -->
-    <header id="header" class="header-wrap">
+    <header id="header" class="header-wrap back-btn-exist">
       <div class="header-inner">
         <div class="navigation-bar">
-          <a href="#" class="my-dashboard-btn">마이 대시보드</a>
+          <button class="back-btn"><img src="../images/ic_arrow_left_purple_40.svg" alt="뒤로가기"></button>
           <h1 class="logo"><img src="../images/logo_purple_130.svg" alt="TopRank"></h1>
           <button class="all-menu">
             <span class="burger-line burger-item1"></span>
@@ -101,7 +101,8 @@
           <form>
             <label for="password-confirm">비밀번호</label>
             <input type="password" id="password-confirm" name="password-confirm" placeholder="비밀번호">
-            <button type="submit">확인</button>
+            <button type="button" class="security-btn"></button>
+            <button type="submit" class="confirm-btn">확인</button>
           </form>
         </div>
         <!-- //비밀번호 입력창 end -->

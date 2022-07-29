@@ -130,7 +130,7 @@
   /* display: none; */
   position: absolute;
   top: 3rem;
-  right: 9.3rem;
+  right: 28%;
   background: none;
   border: 0;
   outline: 0;
@@ -175,7 +175,7 @@
   clear: both;
 }
 .phone-join-wrap label[for="token"] {
-  top: 2.9rem;
+  align-items: center;
 }
 .phone-join-wrap label[for="token"] img {
   width: 2.0rem;
@@ -294,6 +294,10 @@
 
 .non-description .clear-btn {
   top: 3.7rem;
+}
+
+.phone-join-wrap.error input {
+  padding: 0 5.6rem 0 1.6rem;
 }
 
 /* 650px 이상 767px 이하 */

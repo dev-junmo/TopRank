@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TopRank | Main_dashboard</title>
+  <link rel="stylesheet" type="text/css" href="layout.css" media="all">
+  <link rel="stylesheet" type="text/css" href="style.css" media="all">
+</head>
+<body>
+  <div id="wrap" class="mobile">
+    <!-- header start -->
+    <header id="header" class="header-wrap">
+      <div class="header-inner">
+        <div class="navigation-bar">
+          <a href="#" class="membership-btn">멤버십 소개</a>
+          <h1 class="logo"><img src="../images/logo_purple_130.svg" alt="TopRank"></h1>
+          <button class="all-menu">
+            <span class="burger-line burger-item1"></span>
+            <span class="burger-line burger-item2"></span>
+            <span class="burger-line burger-item3"></span>
+          </button>
+        </div>
+      </div>
+      <div class="m-menu">
+        <div class="login-area">
+          <div class="login-state">로그인이 필요합니다</div>
+          <button class="login-btn">로그인</button>
+        </div>
+        <nav class="m-gnb">
+          <ul>
+            <li>
+              <img src="../images/ic_keyword_purple_32.svg" alt="">
+              <a href="#">키워드 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_ranking_purple_32.svg" alt="">
+              <a href="#">상품순위 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_subscription_purple_32.svg" alt="">
+              <a href="#">이용 중인 상품</a>
+            </li>
+            <li>
+              <img src="../images/ic_trend_purple_32.svg" alt="">
+              <a href="#">쇼핑 트렌드</a>
+            </li>
+            <li>
+              <img src="../images/ic_popular_purple_32.svg" alt="">
+              <a href="#">인기 검색어</a>
+            </li>
+          </ul>
+          <ul class="bottom-gnb">
+            <li>
+              <img src="../images/ic_board_purple_32.svg" alt="">
+              <a href="#">게시판</a>
+              <button class="fold-btn"><img src="../images/ic_fold_bold_black_32.svg" alt=""></button>
+              <ul>
+                <li>
+                  <a href="#">공지사항</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- //header end -->
+
+    <div class="m-popup-mask"></div>
+
+    <!-- contents start -->
+    <div id="contents">
+      <!-- 유저 정보 start -->
+      <div class="card-dashboard-wrap">
+        <div class="card-dashboard">
+          <div class="user-info">
+            <div class="name-ranking">
+              <div class="name-area">
+                <strong>일이삼사오육칠팔</strong>
+                <span>님</span>
+                <button class="setting-btn">
+                  <img src="../images/ic_setting_white_20.svg" alt="설정">
+                </button>
+              </div>
+              <div class="ranking-tier">
+                <img src="../images/ic_user-rating_white_88.svg" alt="화이트">
+              </div>
+              <div class="ranking-tier-detail box">
+                <div class="next-ranking">
+                  <span>다음 등급까지</span>
+                  <span class="next-ranking-num">1,600점</span>
+                </div>
+                <div class="ranking-process">
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            <div class="using-info">
+              <div class="using-product">
+                <strong>이용중인 상품</strong>
+                <p>
+                  <b class="g-num">10/100</b>
+                  <span>개</span>
+                </p>
+              </div>
+              <div class="using-keyword">
+                <strong>이용중인 키워드</strong>
+                <p>
+                  <b class="g-num">57/100</b>
+                  <span>개</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="bottom-point-area">
+            <ul>
+              <li>
+                <b>충전 포인트</b>
+                <div class="point-num">
+                  <span class="g-num">100,000,000</span>
+                  P
+                </div>
+              </li>
+              <li>
+                <b>무료 포인트</b>
+                <div class="point-num">
+                  <span class="g-num">400,000</span>
+                  P
+                </div>
+              </li>
+              <li>
+                <b>리워드 포인트</b>
+                <div class="point-num">
+                  <span class="g-num">40,000</span>
+                  P
+                </div>
+              </li>
+              <li>
+                <b>쿠폰</b>
+                <div class="point-num">
+                  <span class="g-num">6</span>
+                  장
+                </div>
+              </li>
+            </ul>
+          </div>
+          <button type="button" class="unfold-btn"></button>
+        </div>
+      </div>
+      <!-- //유저 정보 end -->
+      <!-- 이용 중인 상품 영역 start -->
+      <div class="contents-header">
+        <div class="contents-title">
+          <img src="../images/ic_subscription_color_40.svg" alt="">
+          <h2>이용 중인 상품</h2>
+        </div>
+        <a href="#" class="all-view">전체보기</a>
+      </div>
+      <!-- //이용 중인 상품 영역 end -->
+      <!-- 상품 슬라이드 start -->
+      <div class="product-slide-wrap">
+        <div class="product-slide">
+          <div class="product-slide-item product-slide-item01 box">
+            <div class="rep-keyword">
+              <span>대표 키워드</span>
+              <span class="keyword-area">망고</span>
+            </div>
+            <div class="store-name">
+              <img src="../images/thum_navershoping_24.svg" alt="네이버쇼핑">
+              <span>제주농부</span>
+            </div>
+            <p class="store-product">제주농부 산지직송 고당도 제주 미니 애플망고 1kg (8~15입)</p>
+            <div class="sales-ranking">
+              <span>판매 순위</span>
+              <div class="ranking-num">
+                <b class="g-num">23</b> <span>위</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-slide-item product-slide-item01 box">
+            <div class="rep-keyword">
+              <span>대표 키워드</span>
+              <span class="keyword-area">망고</span>
+            </div>
+            <div class="store-name">
+              <img src="../images/thum_navershoping_24.svg" alt="네이버쇼핑">
+              <span>제주농부</span>
+            </div>
+            <p class="store-product">제주농부 산지직송 고당도 제주 미니 애플망고 1kg (8~15입)</p>
+            <div class="sales-ranking">
+              <span>판매 순위</span>
+              <div class="ranking-num">
+                <b class="g-num">23</b> <span>위</span>
+              </div>
+            </div>
+          </div>
+          <div class="product-slide-item product-slide-item01 box">
+            <div class="rep-keyword">
+              <span>대표 키워드</span>
+              <span class="keyword-area">망고</span>
+            </div>
+            <div class="store-name">
+              <img src="../images/thum_navershoping_24.svg" alt="네이버쇼핑">
+              <span>제주농부</span>
+            </div>
+            <p class="store-product">제주농부 산지직송 고당도 제주 미니 애플망고 1kg (8~15입)</p>
+            <div class="sales-ranking">
+              <span>판매 순위</span>
+              <div class="ranking-num">
+                <b class="g-num">23</b> <span>위</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 상품 슬라이드 end -->
+      <!-- 대시보드 데이터 영역 start -->
+      <div class="dashboard-data-area">
+        <div class="dashboard-data">
+          <div class="data-box box">
+            <div class="data-box-header">
+              <h3>판매 순위 <img src="../images/ic_help_gray_24.svg" alt="도움말"></h3>
+            </div>
+            <div class="searched-keyword">
+              <span>망고</span>
+            </div>
+            <div class="sales-ranking-num">
+              <b class="g-num">23</b>위
+              <span class="page-ranking"><b class="g-num">4</b>페이지 <b class="g-num">2</b>위</span>
+            </div>
+            <div class="all-count">
+              / <b class="g-num">689,689</b>개
+            </div>
+            <a href="#" class="detail-btn">
+              자세히 보기
+              <img src="../images/ic_arrow_right_black_24.svg" alt="">
+            </a>
+          </div>
+          <div class="data-box box">
+            <div class="data-box-header">
+              <h3>판매 순위 추적 <img src="../images/ic_help_gray_24.svg" alt="도움말"></h3>
+              <div class="pill init">
+                <span>초기화</span>
+              </div>
+            </div>
+            <div class="graph"></div>
+            <a href="#" class="detail-btn">
+              자세히 보기
+              <img src="../images/ic_arrow_right_black_24.svg" alt="">
+            </a>
+          </div>
+          <div class="data-box box">
+            <div class="data-box-header">
+              <h3>키워드 추적 <img src="../images/ic_help_gray_24.svg" alt="도움말"></h3>
+              <div class="pill-wrap">
+                <div class="pill init">
+                  <span>초기화</span>
+                </div>
+                <div class="searched-keyword">
+                  <span>망고</span>
+                </div>
+              </div>
+            </div>
+            <div class="graph"></div>
+            <a href="#" class="detail-btn">
+              자세히 보기
+              <img src="../images/ic_arrow_right_black_24.svg" alt="">
+            </a>
+          </div>
+          <div class="data-box box">
+            <div class="data-box-header">
+              <h3>리뷰 수 <img src="../images/ic_help_gray_24.svg" alt="도움말"></h3>
+            </div>
+            <div class="review-count">
+              <b class="g-num">1,024</b>개
+              <span class="review-score"> / <b class="g-num">4.5</b> 점</span>
+            </div>
+            <div class="purchases-num">
+              구매 건수 <b class="g-num">5,481</b>건
+            </div>
+            <a href="#" class="detail-btn">
+              자세히 보기
+              <img src="../images/ic_arrow_right_black_24.svg" alt="">
+            </a>
+          </div>
+          <div class="data-box box">
+            <div class="data-box-header">
+              <h3>리뷰 추적 <img src="../images/ic_help_gray_24.svg" alt="도움말"></h3>
+              <div class="pill init">
+                <span>초기화</span>
+              </div>
+            </div>
+            <div class="graph"></div>
+            <a href="#" class="detail-btn">
+              자세히 보기
+              <img src="../images/ic_arrow_right_black_24.svg" alt="">
+            </a>
+          </div>
+          <div class="data-box box">
+            <div class="data-box-header">
+              <h3>가격 추적 <img src="../images/ic_help_gray_24.svg" alt="도움말"></h3>
+              <div class="pill init">
+                <span>초기화</span>
+              </div>
+            </div>
+            <div class="graph"></div>
+            <a href="#" class="detail-btn">
+              자세히 보기
+              <img src="../images/ic_arrow_right_black_24.svg" alt="">
+            </a>
+          </div>
+          <div class="data-box box">
+            <div class="data-box-header">
+              <h3>카테고리</h3>
+            </div>
+            <div class="searched-category">
+              <ul>
+                <li>식품</li>
+                <li>농산물</li>
+                <li>과일</li>
+                <li>망고</li>
+              </ul>
+            </div>
+            <div class="data-box-header">
+              <h3>한 달 검색 수</h3>
+              </div>
+            <div class="searches-count">
+              <b class="g-num">139,300</b> 회
+            </div>
+            <a href="#" class="detail-btn">
+              자세히 보기
+              <img src="../images/ic_arrow_right_black_24.svg" alt="">
+            </a>
+          </div>
+          <div class="data-box box">
+            <div class="data-box-header">
+              <h3>기기별 검색 비율</h3>
+            </div>
+            <div class="graph"></div>
+          </div>
+        </div>
+      </div>
+      <!-- 대시보드 데이터 영역 end -->
+    </div>
+    <!--// contents end -->
+
+    <!-- footer start -->
+    <footer id="footer">
+      <!-- <div class="footer-banner">
+        <div class="banner-txt">
+          <img src="../images/img_main_banner_source2.svg" alt="">
+          <p>
+            더 다양하고 강력한 <br>
+            TOPRANK의 서비스와 함께하세요!
+          </p>
+          <a href="#">멤버십 알아보기</a>
+        </div>
+        <img src="../images/img_main_banner_source.svg" alt="">
+      </div> -->
+      <button class="pc-btn">PC버전</button>
+      <ul class="footer-nav">
+        <li><a href="#">이용약관</a></li>
+        <li>|</li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li>|</li>
+        <li><a href="#">자주 묻는 질문</a></li>
+      </ul>
+      <div class="footer-logo">
+        <img src="../images/logo_gray_130.svg" alt="TOPRANK">
+      </div>
+      <div class="company-info">
+        <address>서울특별시 강서구 공항대로 227 마곡센트럴타워1차</address>
+        <ul>
+          <li>대표이사 김태형</li>
+          <li>|</li>
+          <li>사업자등록번호 104-81-25980</li>
+        </ul>
+        <p>통신판매업신고번호 중구02802호</p>
+      </div>
+      <p class="service-inquire">서비스 문의 help@crefe.co.kr</p>
+      <p class="copyright">Copyright@CREFE. All Rights Reserved.</p>
+    </footer>
+    <!-- //footer end -->
+  </div>
+
+  <script>
+    // 모바일 메뉴 보기
+    const headerWrap = document.querySelector('.header-wrap');
+    const allMenu = document.querySelector('.all-menu');
+    const menu = document.querySelector('.m-menu');
+    const popupMask = document.querySelector('.m-popup-mask');
+
+    allMenu.addEventListener('click', () => {
+      if(allMenu.classList.contains('open')) {
+        allMenu.classList.remove('open');
+        menu.classList.remove('active');
+        headerWrap.classList.remove('active');
+        popupMask.classList.remove('active');
+      }else{
+        allMenu.classList.add('open');
+        menu.classList.add('active');
+        headerWrap.classList.add('active');
+        popupMask.classList.add('active');
+      }
+    });
+
+    // 메뉴 더 보기
+    const unfoldBtn = document.querySelector('.unfold-btn');
+    const bottomPointArea = document.querySelector('.bottom-point-area');
+
+    unfoldBtn.addEventListener('click', () => {
+      if(unfoldBtn.classList.contains('on')) {
+        unfoldBtn.classList.remove('on');
+        bottomPointArea.classList.remove('active');
+      }else{
+        unfoldBtn.classList.add('on');
+        bottomPointArea.classList.add('active');
+      }
+    });
+
+    // 랭킹 디테일
+    const rankingTier = document.querySelector('.ranking-tier');
+    const rankingTierDetail = document.querySelector('.ranking-tier-detail');
+
+    rankingTier.addEventListener('click', () => {
+      rankingTierDetail.classList.toggle('active');
+    });
+
+    // 슬라이드 드래그
+    const productSlide = document.querySelector('.product-slide-wrap');
+    let isMouseDown = false;
+    let startX, scrollLeft;
+    productSlide.addEventListener('mousedown', (e) => {
+      isMouseDown = true;
+
+      startX = e.pageX - productSlide.offsetLeft;
+      scrollLeft = productSlide.scrollLeft;
+
+    });
+    productSlide.addEventListener('mouseleave', () => {
+      isMouseDown = false;
+    });
+    productSlide.addEventListener('mouseup', () => {
+      isMouseDown = false;
+    });
+    productSlide.addEventListener('mousemove', (e) => {
+      e.preventDefault();
+      
+      if(!isMouseDown) return;
+
+      const x = e.pageX - productSlide.offsetLeft;
+      const walk = (x - startX) * 1;
+      productSlide.scrollLeft = scrollLeft - walk;
+    });
+
+  </script>
+</body>
+</html>

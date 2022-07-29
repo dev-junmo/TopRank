@@ -305,13 +305,14 @@
       rankingTierDetail.classList.toggle('active');
     });
 
-    // 필터 팝업, 순위 변동 팝업
+    // 공유 팝업
     const sharePopup = document.querySelector('.share-popup');
     const closeBtn = document.querySelector('.close-btn');
     const shareBtn = document.querySelector('.share-btn');
 
     closeBtn.addEventListener('click', () => {
       sharePopup.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
     });
 
     shareBtn.addEventListener('click', () => {

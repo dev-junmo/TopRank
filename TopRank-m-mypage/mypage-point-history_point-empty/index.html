@@ -11,10 +11,10 @@
 <body>
   <div id="wrap" class="mobile">
     <!-- header start -->
-    <header id="header" class="header-wrap">
+    <header id="header" class="header-wrap back-btn-exist">
       <div class="header-inner">
         <div class="navigation-bar">
-          <a href="#" class="my-dashboard-btn">마이 대시보드</a>
+          <button class="back-btn"><img src="../images/ic_arrow_left_purple_40.svg" alt="뒤로가기"></button>
           <h1 class="logo"><img src="../images/logo_purple_130.svg" alt="TopRank"></h1>
           <button class="all-menu">
             <span class="burger-line burger-item1"></span>
@@ -578,6 +578,17 @@
         accountChecking.classList.remove('active');
       }
     });
+    });
+
+    // 팝업 스크롤 이벤트
+    const pointWithdrawBox = pointWithdrawPopup.querySelector('.m-popup-box');
+
+    pointWithdrawBox.addEventListener('scroll', (e) => {
+      if(pointWithdrawBox.scrollTop > 30) {
+        pointWithdrawBox.classList.add('active');
+      }else{
+        pointWithdrawBox.classList.remove('active');
+      }
     });
 
   </script>

@@ -581,9 +581,16 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   position: absolute;
   left: 0;
   bottom: 0;
+  height: 90%;
   padding: 2.4rem 1.6rem 3.2rem;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
+  overflow-y: scroll;
+  transition: all 0.3s;
+}
+.point-withdraw-popup .m-popup-box.active {
+  height: 100%;
+  border-radius: 0;
 }
 .popup-contents .point-change-title {
   display: block;

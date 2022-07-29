@@ -42,6 +42,20 @@
   padding-top: 6.0rem;
 }
 
+/* 마이 대시보드 버튼 스타일 */
+.my-dashboard-btn {
+  float: left;
+  height: 2.0rem;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  line-height: 1.9rem;
+  border-radius: 16px;
+  background: #4d77ff;
+  padding: 0 0.8rem;
+}
+
 /* 헤더 영역 */
 .contents-header {
   display: flex;
@@ -86,6 +100,55 @@
   line-height: 1.29;
   text-align: center;
   margin-bottom: 4.0rem;
+}
+
+/* 비밀번호 입력창 */
+.password-confirm-area {
+  position: relative;
+}
+.password-confirm-area label {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #3e4259;
+  padding-left: 1.6rem;
+}
+.password-confirm-area input {
+  width: 100%;
+  height: 4.4rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: #04021f;
+  line-height: 4.4rem;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 0 6.4rem 0 1.6rem;
+  box-shadow: 0 3px 6px 0 rgba(36, 51, 179, 0.1);
+  box-sizing: border-box;
+  margin-top: 1.0rem;
+}
+.password-confirm-area input::placeholder {
+  color: #b8b6c4;
+}
+.password-confirm-area .security-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  position: absolute;
+  right: 1.4rem;
+  top: 3.0rem;
+  background: url('../images/ic_visible_off_gray_32.svg') center no-repeat;
+}
+.password-confirm-area .confirm-btn {
+  width: 100%;
+  height: 4.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 4.4rem;
+  background: #3f37c9;
+  border-radius: 8px;
+  margin-top: 2.4rem;
 }
 
 

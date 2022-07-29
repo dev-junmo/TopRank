@@ -130,7 +130,7 @@
   /* display: none; */
   position: absolute;
   top: 3rem;
-  right: 9.3rem;
+  right: 28%;
   background: none;
   border: 0;
   outline: 0;
@@ -293,6 +293,10 @@
 
 .non-description .clear-btn {
   top: 3.7rem;
+}
+
+.email-join-wrap.error input {
+  padding: 0 5.6rem 0 1.6rem;
 }
 
 /* 650px 이상 767px 이하 */

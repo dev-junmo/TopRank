@@ -320,6 +320,8 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 }
 .using-product-list-wrap .using-product-box li p {
   width: 16.0rem;
+  font-size: 1.4rem;
+  color: #04021f;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

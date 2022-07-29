@@ -230,6 +230,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 .point-history-card .point-card-header span {
   font-size: 1.4rem;
   font-weight: 500;
+  color: #3e4259;
 }
 .point-history-card .point-card-header .waiting-deposit-btn {
   background: none;
@@ -436,7 +437,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   font-size: 18px;
   font-weight: 500;
   line-height: 1.44;
-  margin: 7px 16px;
+  margin: 0.7rem 0.8rem;
   vertical-align: top;
 }
 .filter-btn-wrap {
@@ -487,7 +488,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   font-size: 1.6rem;
   font-weight: normal;
   color: #3e4259;
-  line-height: 1.31;
+  line-height: 1.36;
   margin-bottom: 5.6rem;
 }
 .popup-contents .deposit-text span {

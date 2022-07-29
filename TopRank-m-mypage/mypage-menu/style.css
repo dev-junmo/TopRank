@@ -370,14 +370,14 @@
 .my-fold-btn {
   width: 3.2rem;
   height: 3.2rem;
-  background: url('../images/ic_fold_black_32.svg') center no-repeat;
+  background: url('../images/ic_unfold_black_32.svg') center no-repeat;
 }
 .my-fold-btn.on {
-  background: url('../images/ic_unfold_black_32.svg') center no-repeat;
+  background: url('../images/ic_fold_black_32.svg') center no-repeat;
 }
 .my-activities ul,
 .my-info ul {
-
+  padding-left: 0.8rem;
 }
 .my-activities ul li,
 .my-info ul li {

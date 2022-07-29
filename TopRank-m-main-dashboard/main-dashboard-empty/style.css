@@ -18,12 +18,16 @@
   padding-top: 0.4rem;
 }
 .pill.rise {
-  background: #fc6075 url('../images/ic_fold_white_24.svg') 2px center no-repeat;
-  /* background-size: 1.6rem; */
+  background: #fc6075 url('../images/ic_up_white_24.svg') 0.6rem 0.5rem no-repeat;
+  background-size: 1.6rem;
 }
 .pill.fall {
-  background: #2fbaed url('../images/ic_fold_white_24.svg') left center no-repeat;
-  /* background-size: 1.6rem; */
+  background: #2fbaed url('../images/ic_down_white_24.svg') 0.6rem 0.5rem no-repeat;
+  background-size: 1.6rem;
+}
+.pill.unchange {
+  background: #b8b6c4 url('../images/ic_nochange_white_24.svg') 0.6rem 0.5rem no-repeat;
+  background-size: 1.6rem;
 }
 
 /* 검색한 키워드 스타일 */

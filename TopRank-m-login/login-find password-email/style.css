@@ -98,11 +98,12 @@
   height: 4.4rem;
   font-size: 1.4rem;
   color: #3e4259;
+  line-height: 4.4rem;
   border: 0;
   outline: 0;
   border-radius: 8px;
   margin-top: 10px;
-  padding: 16px 24px;
+  padding: 0 1.6rem;
   box-shadow: 0 6px 6px 0 rgba(36, 51, 179, 0.1);
   box-sizing: border-box;
 }

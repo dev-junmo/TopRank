@@ -230,6 +230,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
 .point-history-card .point-card-header span {
   font-size: 1.4rem;
   font-weight: 500;
+  color: #3e4259;
 }
 .point-history-card .point-card-header .product-num {
   font-size: 1.4rem;
@@ -262,7 +263,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   color: #3e4259;
 }
 .point-card-contents .product-info .product-name img {
-  margin: 0 0.4rem;
+  margin: 0 0.8rem 0 0.4rem;
 }
 .point-card-contents .product-info .product-date {
   display: block;
@@ -452,7 +453,7 @@ input[type=date]::-webkit-datetime-edit-year-field { -webkit-appearance: none; d
   font-size: 18px;
   font-weight: 500;
   line-height: 1.44;
-  margin: 7px 16px;
+  margin: 0.7rem 0.8rem;
   vertical-align: top;
 }
 .filter-btn-wrap {
