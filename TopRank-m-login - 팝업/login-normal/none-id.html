@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TopRank | Login-normal</title>
+  <link rel="stylesheet" type="text/css" href="layout.css" media="all">
+  <link rel="stylesheet" type="text/css" href="style.css" media="all">
+</head>
+<body>
+  <div id="wrap" class="mobile">
+    <!-- contents start -->
+    <div id="contents">
+        <!-- 로그인 박스 start -->
+        <div class="login-wrap">
+          <div class="login-header">
+            <button class="back-btn"><img src="../images/ic_arrow_left_purple_40.svg" alt="뒤로가기"></button>
+            <h1 class="logo"><img src="../images/logo_purple_130.svg" alt="TOP RANK"></h1>
+          </div>
+          <h2 class="login-title">로그인</h2>
+          <form>
+            <div>
+              <label for="email">아이디</label>
+              <input type="text" id="email" name="email" placeholder="핸드폰 번호 또는 이메일">
+              <button class="clear-btn">
+                <img src="../images/ic_close_black_32.svg" alt="X버튼">
+              </button>
+            </div>
+            <div>
+              <label for="password">비밀번호</label>
+              <input type="password" id="password" name="password" placeholder="비밀번호">
+              <button type="button" class="security-btn"></button>
+            </div>
+            <div class="save">
+              <label for="auto-login">
+                <input type="checkbox" id="auto-login" name="auto-login">
+                <span></span>
+                자동 로그인
+              </label>
+              <label for="email-save">
+                <input type="checkbox" id="email-save" name="email-save">
+                <span></span>
+                아이디 저장
+              </label>
+            </div>
+            <button type="submit" class="login-btn">로그인</button>
+          </form>
+          <div class="info-find">
+            <a href="#">아이디 찾기</a>
+            <a href="#">비밀번호 찾기</a>
+          </div>
+          <div class="join-wrap">
+            <span class="first-join">처음 오셨나요?</span>
+            <button class="join-btn">회원가입</button>
+          </div>
+        </div>
+        <!-- //로그인 박스 end -->
+    </div>
+    <!--// contents end -->
+
+    <!-- 팝업 영역 start -->
+    <div class="m-popup layer-popup none-result-popup active">
+      <div class="popup-box box">
+        <div class="popup-header">
+          <button class="close-btn">
+            <img src="../images/ic_close_bold_black_40.svg" alt="닫기 버튼">
+          </button>
+        </div>
+        <div class="popup-contents">
+          <p>아이디를 입력해주세요.</p>
+        </div>
+        <div class="confirm-btn">확인</div>
+      </div>
+    </div>
+    <!-- //팝업 영역 end -->
+
+  </div>
+
+  <script>
+    document.querySelectorAll("input").forEach(input => {
+      input.addEventListener("keyup", (e) => {
+        if(input.name === "email") {
+          if(input.value) {
+            document.querySelector('.clear-btn').style.display = "inline-block"
+          }else{
+            document.querySelector('.clear-btn').style.display = "none"
+          }
+        }
+      });
+    });
+
+    // 비밀번호 암호 해제
+    const securityBtn = document.querySelector('.security-btn');
+    const inputPassword = document.querySelector('#password');
+
+    securityBtn.addEventListener('click', (e) => {
+      if(e.target.classList.contains('on')) {
+        e.target.classList.remove('on');
+        inputPassword.type = "password";
+      }else{
+        e.target.classList.add('on');
+        inputPassword.type = "text";
+      }
+      
+    });
+
+    // 팝업
+    const layerPopup = document.querySelector('.layer-popup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    closeBtn.addEventListener('click', () => {
+      layerPopup.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
+    });
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('m-popup')) {
+        Array.from(document.querySelectorAll('.m-popup')).forEach(e => {
+          e.classList.remove('active');
+          document.querySelector('body').classList.remove('scroll-lock');
+        });
+      }
+    });
+
+  </script>
+</body>
+</html>

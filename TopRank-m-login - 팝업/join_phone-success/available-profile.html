@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TopRank | Join phone-success</title>
+  <link rel="stylesheet" type="text/css" href="layout.css" media="all">
+  <link rel="stylesheet" type="text/css" href="style.css" media="all">
+</head>
+<body>
+  <div id="wrap" class="mobile">
+    <!-- contents start -->
+    <div id="contents">
+        <!-- 휴대폰 번호 회원가입 박스 start -->
+        <div class="phone-join-wrap">
+          <div class="phone-join-header">
+            <button class="back-btn"><img src="../images/ic_arrow_left_purple_40.svg" alt="뒤로가기"></button>
+            <h1 class="logo"><img src="../images/logo_purple_130.svg" alt="TOP RANK"></h1>
+          </div>
+          <div class="progress">
+            <div class="proceeding"></div>
+          </div>
+          <h2 class="phone-join-title">휴대폰 번호 회원가입</h2>
+          <form>
+            <div class="using-btn">
+              <label for="phone">아이디 <span></span></label>
+              <div class="input-wrap">
+                <input type="text" id="phone" name="phone" value="01012345678" placeholder="toprank@toprank.co.kr" required autocomplete='off'>
+                <button type="button" class="active">중복 확인</button>
+              </div>
+              <!-- <button class="clear-btn">
+                <img src="../images/ic_close_black_32.svg" alt="X버튼">
+              </button> -->
+              <!-- <span class="description">한 번 설정 시 수정 불가능합니다.</span> -->
+            </div>
+            <div>
+              <label for="password">비밀번호 <span></span></label>
+              <input type="password" id="password" name="password" value="1234" placeholder="비밀번호" required minlength="8" maxlength="15">
+              <button type="button" class="security-btn"></button>
+              <!-- <span class="description">8~15자 영문, 숫자, 특수문자가 포함된 조합을 사용해주세요.</span> -->
+            </div>
+            <div>
+              <label for="password">비밀번호 확인 <span></span></label>
+              <input type="password" id="password" name="password" value="123" placeholder="비밀번호 재입력" required minlength="8" maxlength="15">
+              <button type="button" class="security-btn"></button>
+            </div>
+            <div class="using-btn">
+              <label for="profile">프로필 명 <span></span></label>
+              <div class="input-wrap">
+                <input type="text" id="profile" name="profile" value="탑랭크마켓" placeholder="탑랭크마켓" required minlength="2" maxlength="10">
+                <button type="button" class="active">중복 확인</button>
+              </div>
+              <!-- <button class="clear-btn">
+                <img src="../images/ic_close_black_32.svg" alt="X버튼">
+              </button> -->
+              <!-- <span class="description">2~10자 한글, 영문, 숫자로 된 프로필 명을 입력해주세요. <br> 설정 시 수정 불가능합니다.</span> -->
+            </div>
+            <div>
+              <label for="email">이메일</label>
+              <input type="email" id="email" name="email" value="toprank@toprank.co.kr" placeholder="toprank@toprank.co.kr" required autocomplete='off'>
+              <!-- <button class="clear-btn long">
+                <img src="../images/ic_close_black_32.svg" alt="X버튼">
+              </button> -->
+            </div>
+            <div>
+              <label for="recommend">추천인 코드</label>
+              <input type="text" id="recommend" name="recommend" value="SH4U8Q" placeholder="추천인 코드" required>
+              <!-- <button class="clear-btn long">
+                <img src="../images/ic_close_black_32.svg" alt="X버튼">
+              </button> -->
+              <!-- <span class="description">추천인 코드 입력 시 무료 포인트가 지급됩니다.</span> -->
+            </div>
+            <div class="non-description">
+              <label for="token">텔레그램 API 토큰값 <img src="../images/ic_help_gray_24.svg" alt="도움말"></label>
+              <input type="text" id="token" name="token" value="AAFzCLK9YWIEC3b9f4rQm1bBy1_exWZdKX0" placeholder="텔레그램 봇 생성 완료 시 발행되는 API 토큰값" required autocomplete='off'>
+              <!-- <button class="clear-btn long">
+                <img src="../images/ic_close_black_32.svg" alt="X버튼">
+              </button> -->
+            </div>
+            <div class="check-matters">
+              <label for="agreement-all">
+                <input type="checkbox" id="agreement-all" name="agreement-all">
+                <span class="check"></span>
+                <p>회원 이용약관, 개인정보 수집 및 이용, 이벤트 및 광고 알림 메일 수신에 모두 동의합니다.</p>
+              </label>
+              <label for="agreement-terms">
+                <input type="checkbox" id="agreement-terms" name="agreement-terms">
+                <span class="check"></span>
+                <p>
+                  <span class="necessary">[필수]</span> 회원 이용약관 동의
+                </p>
+                <button class="detail">보기</button>
+              </label>
+              <label for="agreement-info">
+                <input type="checkbox" id="agreement-info" name="agreement-info">
+                <span class="check"></span>
+                <p>
+                  <span class="necessary">[필수]</span> 개인정보 수집 및 이용에 관한 동의
+                </p>
+                <button class="detail">보기</button>
+              </label>
+              <label for="agreement-age">
+                <input type="checkbox" id="agreement-age" name="agreement-age">
+                <span class="check"></span>
+                <p>
+                  <span class="necessary">[필수]</span> 만 14세 이상입니다.
+                </p>
+                <!-- <button class="detail">보기</button> -->
+              </label>
+              <label for="agreement-email">
+                <input type="checkbox" id="agreement-email" name="agreement-email">
+                <span class="check"></span>
+                <p>
+                  <span class="choice">[선택]</span> 이메일 정보 수신 여부에 대한 동의
+                </p>
+                <button class="detail">보기</button>
+              </label>
+            </div>
+            <div class="btn-wrap">
+              <button class="cancel">취소</button>
+              <button type="submit" class="join-up active">가입하기</button>
+            </div>
+          </form>
+        </div>
+        <a href="#" class="login-page">로그인</a>
+        <!-- //휴대폰 번호 회원가입 박스 end -->
+    </div>
+    <!--// contents end -->
+
+    <!-- 팝업 영역 start -->
+    <div class="m-popup layer-popup available-profile-popup active">
+      <div class="popup-box box">
+        <div class="popup-header">
+          <button class="close-btn">
+            <img src="../images/ic_close_bold_black_40.svg" alt="닫기 버튼">
+          </button>
+        </div>
+        <div class="popup-contents">
+          <p>사용 가능한 프로필 명입니다.</p>
+        </div>
+        <div class="confirm-btn">사용하기</div>
+      </div>
+    </div>
+    <!-- //팝업 영역 end -->
+  </div>
+
+  <script>
+    // 팝업
+    const layerPopup = document.querySelector('.layer-popup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    closeBtn.addEventListener('click', () => {
+      layerPopup.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
+    });
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('m-popup')) {
+        Array.from(document.querySelectorAll('.m-popup')).forEach(e => {
+          e.classList.remove('active');
+          document.querySelector('body').classList.remove('scroll-lock');
+        });
+      }
+    });
+  </script>
+</body>
+</html>

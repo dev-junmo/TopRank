@@ -1,0 +1,15 @@
+<svg id="img_main_banner_source2" xmlns="http://www.w3.org/2000/svg" width="75" height="15" viewBox="0 0 75 15">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect id="영역" class="cls-1" width="75" height="15"/>
+  <path id="패스_178" data-name="패스 178" class="cls-2" d="M997.374,383.754l-8.928,8.929,8.928,8.928-8.928,8.931,8.928,8.928-8.928,8.929,7.489,7.492-2.872,2.874L982.7,428.4l8.929-8.929-8.929-8.928,8.929-8.931-8.929-8.928,8.929-8.929-8.929-8.927,10.366-10.368,2.872,2.874-7.489,7.494Z" transform="translate(-364.111 997.375) rotate(-90)"/>
+</svg>
