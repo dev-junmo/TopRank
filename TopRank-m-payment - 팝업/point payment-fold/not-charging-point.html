@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TopRank | Point payment-fold</title>
+  <link rel="stylesheet" type="text/css" href="layout.css" media="all">
+  <link rel="stylesheet" type="text/css" href="style.css" media="all">
+</head>
+<body class="scroll-lock">
+  <div id="wrap" class="mobile">
+    <!-- header start -->
+    <header id="header" class="header-wrap back-btn-exist">
+      <div class="header-inner">
+        <div class="navigation-bar">
+          <button class="back-btn"><img src="../images/ic_arrow_left_purple_40.svg" alt="뒤로가기"></button>
+          <h1 class="logo"><img src="../images/logo_purple_130.svg" alt="TopRank"></h1>
+          <button class="all-menu">
+            <span class="burger-line burger-item1"></span>
+            <span class="burger-line burger-item2"></span>
+            <span class="burger-line burger-item3"></span>
+          </button>
+        </div>
+      </div>
+      <div class="m-menu">
+        <div class="login-area">
+          <div class="login-state">로그인이 필요합니다</div>
+          <button class="login-btn">로그인</button>
+        </div>
+        <nav class="m-gnb">
+          <ul>
+            <li>
+              <img src="../images/ic_keyword_purple_32.svg" alt="">
+              <a href="#">키워드 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_ranking_purple_32.svg" alt="">
+              <a href="#">상품순위 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_subscription_purple_32.svg" alt="">
+              <a href="#">이용 중인 상품</a>
+            </li>
+            <li>
+              <img src="../images/ic_trend_purple_32.svg" alt="">
+              <a href="#">쇼핑 트렌드</a>
+            </li>
+            <li>
+              <img src="../images/ic_popular_purple_32.svg" alt="">
+              <a href="#">인기 검색어</a>
+            </li>
+          </ul>
+          <ul class="bottom-gnb">
+            <li>
+              <img src="../images/ic_board_purple_32.svg" alt="">
+              <a href="#">게시판</a>
+              <button class="fold-btn"><img src="../images/ic_fold_bold_black_32.svg" alt=""></button>
+              <ul>
+                <li>
+                  <a href="#">공지사항</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- //header end -->
+
+    <div class="m-popup-mask"></div>
+
+    <!-- contents start -->
+    <div id="contents">
+      <!-- 헤더 영역 start -->
+      <div class="contents-header">
+        <div class="contents-title">
+          <img src="../images/ic_point_payment_color_40.svg" alt="">
+          <h2>포인트 충전하기</h2>
+        </div>
+      </div>
+      <!-- //헤더 영역 end -->
+
+      <!-- 충전금액 선택 start -->
+      <div class="amount-selection-area">
+        <div class="pay-contents-title">
+          <h3>충전금액 선택</h3>
+        </div>
+        <div class="amount-selection-list">
+          <ul>
+            <li class="active">
+              <span>5</span>만원
+            </li>
+            <li>
+              <span>10</span>만원
+            </li>
+            <li>
+              <span>30</span>만원
+            </li>
+            <li>
+              <span>50</span>만원
+            </li>
+            <li>
+              <span>100</span>만원
+            </li>
+            <li>직접입력</li>
+          </ul>
+        </div>
+        <div class="direct-input">
+          <input type="number" placeholder="얼마를 충전할까요?">
+          <span>만원</span>
+        </div>
+        <div class="selected-point-area">
+          <ul>
+            <li>
+              <span>충전 포인트</span>
+              <b>
+                <img src="../images/ic_plus_purple_24.svg" alt="+">
+                <span class="charging-point-num">500</span> P
+              </b>
+            </li>
+            <li>
+              <span>무료 포인트</span>
+              <b>
+                <img src="../images/ic_plus_purple_24.svg" alt="+">
+                <span class="free-point-num">50</span> P
+              </b>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- //충전금액 선택 end -->
+
+      <div class="line"></div>
+
+      <!-- 결제 정보 start -->
+      <div class="pay-info-area">
+        <div class="pay-contents-title">
+          <h3>결제 정보</h3>
+        </div>
+        <div class="pay-before-point pay-point">
+          <div class="point-fold">
+            <b>결제 전 보유 포인트</b>
+            <button class="point-fold-btn">
+              <!-- <img src="../images/ic_fold_black_20.svg" alt=""> -->
+            </button>
+          </div>
+          <ul>
+            <li>
+              <span>충전 포인트</span>
+              <b>
+                <span>100</span> P
+              </b>
+            </li>
+            <li>
+              <span>무료 포인트</span>
+              <b>
+                <span>50</span> P
+              </b>
+            </li>
+          </ul>
+        </div>
+        <div class="pay-after-point pay-point">
+          <div class="point-fold">
+            <b>결제 후 보유 포인트</b>
+            <button class="point-fold-btn">
+              <!-- <img src="../images/ic_fold_black_20.svg" alt=""> -->
+            </button>
+          </div>
+          <ul>
+            <li>
+              <span>충전 포인트</span>
+              <b>
+                <span>600</span> P
+              </b>
+            </li>
+            <li>
+              <span>무료 포인트</span>
+              <b>
+                <span>60</span> P
+              </b>
+            </li>
+          </ul>
+        </div>
+        <div class="final-pay-amount">
+          <span>최종 결제 금액</span>
+          <b>55,000원</b>
+        </div>
+        <div class="confirm-cheek-box">
+          <strong>
+            <img src="../images/ic_notice_gray_24.svg" alt="!">
+            <span>확인해주세요</span>
+          </strong>
+          <p>최종 결제 금액은 부가세 10% 포함된 금액입니다.</p>
+        </div>
+      </div>
+      <!-- //결제 정보 end -->
+
+      <!-- 결제 수단 선택 start -->
+      <div class="pay-method-choice">
+        <div class="pay-contents-title">
+          <h3>결제 수단 선택</h3>
+        </div>
+        <div class="pay-method-box">
+          <ul>
+            <li>
+              <div class="pay-choice-title">
+                <label for="check1">
+                  <input type="checkbox" id="check1" name="check1" checked>
+                  <span class="checkbox"></span>
+                  <p>무통장 입금</p>
+                </label>
+              </div>
+              <div class="deposit-method">
+                <div class="depositor-name">
+                  <span class="method-title">입금자명</span>
+                  <input type="text" placeholder="홍길동">
+                  <strong class="precautions">
+                    실제 입금자명이 위에 기재한 입금자명과 다르거나 기호, 특수문자가 포함된 경우 자동 입금 확인이 불가합니다.
+                    반드시 동일하게 입금해 주시기 바랍니다.
+                  </strong>
+                </div>
+                <div class="depositor-bank">
+                  <span class="method-title">입금 은행</span>
+                  <div class="selectbox">
+                    <button class="label">신한은행 110-11111-123456 (주…</button>
+                    <ul>
+                      <li>신한은행 110-11111-123456 (주)탑랭크</li>
+                    </ul>
+                  </div>
+                  <p class="announcement">
+                    <span>2022년 05월 06일</span>까지 미입금 시 자동 취소됩니다.
+                  </p>
+                </div>
+                <div class="cash-receipt">
+                  <span class="method-title">현금영수증 신청</span>
+                  <ul>
+                    <li class="active cash-receipt-con">현금영수증 신청</li>
+                    <li>신청 안 함</li>
+                  </ul>
+                  <div class="cash-receipt-contents-wrap active">
+                    <div class="cash-receipt-contents">
+                      <label for="entre">
+                        <input type="checkbox" id="entre" name="entre" checked>
+                        <span class="checkbox"></span>
+                        <p>사업자 지출증빙</p>
+                      </label>
+                      <label for="individual">
+                        <input type="checkbox" id="individual" name="individual">
+                        <span class="checkbox"></span>
+                        <p>개인소득공제</p>
+                      </label>
+                    </div>
+                    <div class="receipt-selectbox-wrap">
+                      <div class="receipt-selectbox active">
+                        <div class="selectbox">
+                          <button class="label">사업자등록번호</button>
+                          <ul>
+                            <li>사업자등록번호</li>
+                            <li>현금영수증카드</li>
+                          </ul>
+                        </div>
+                        <input type="text" placeholder="(-없이)숫자만 입력해주세요." class="registration-number">
+                      </div>
+                      <div class="receipt-selectbox">
+                        <div class="selectbox">
+                          <button class="label">휴대폰번호</button>
+                          <ul>
+                            <li>휴대폰번호</li>
+                            <li>현금영수증카드</li>
+                          </ul>
+                        </div>
+                        <input type="text" placeholder="(-없이)숫자만 입력해주세요." class="registration-number">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="pay-choice-title dis">
+                <label for="check2">
+                  <input type="checkbox" id="check2" name="check2" disabled>
+                  <span class="checkbox"></span>
+                  <p>신용카드</p>
+                </label>
+              </div>
+              <div></div>
+            </li>
+            <li>
+              <div class="pay-choice-title dis">
+                <label for="check3">
+                  <input type="checkbox" id="check3" name="check3" disabled>
+                  <span class="checkbox"></span>
+                  <p>계좌이체</p>
+                </label>
+              </div>
+              <div></div>
+            </li>
+            <li>
+              <div class="pay-choice-title dis">
+                <label for="check4">
+                  <input type="checkbox" id="check4" name="check4" disabled>
+                  <span class="checkbox"></span>
+                  <p>휴대폰</p>
+                </label>
+              </div>
+              <div></div>
+            </li>
+          </ul>
+          <p>다른 결제 수단들은 추후에 추가될 예정입니다.</p>
+        </div>
+        <div class="consent-check">
+          <label for="check-consent">
+            <input type="checkbox" id="check-consent" name="check">
+            <span class="checkbox"></span>
+            <p>위 주문 내용을 확인 하였으며, 회원 본인은 개인정보 이용 및 제공 및 결제에 동의합니다.</p>
+          </label>
+        </div>
+      </div>
+      <!-- //결제 수단 선택 end -->
+
+      <!-- 결제 버튼 start -->
+      <div class="purchase-area">
+        <button class="purchase-btn">결제하기</button>
+      </div>
+      <!-- 결제 버튼 end -->
+    </div>
+    <!--// contents end -->
+
+    <!-- 팝업 영역 start -->
+    <div class="m-popup layer-popup none-depositor-popup active">
+      <div class="popup-box box">
+        <div class="popup-header">
+          <button class="close-btn">
+            <img src="../images/ic_close_bold_black_40.svg" alt="닫기 버튼">
+          </button>
+        </div>
+        <div class="popup-contents">
+          <strong>
+            포인트 충전이 완료되지 않았습니다. <br>
+            페이지에서 나가시겠습니까?
+          </strong>
+          <p>입력하신 내용은 저장되지 않습니다.</p>
+        </div>
+        <div class="layer-btn-wrap">
+          <button class="go-back-btn">취소</button>
+          <button class="proceed-btn">나가기</button>
+        </div>
+      </div>
+    </div>
+    <!-- //팝업 영역 end -->
+
+    <!-- footer start -->
+    <footer id="footer">
+      <button class="pc-btn">PC버전</button>
+      <ul class="footer-nav">
+        <li><a href="#">이용약관</a></li>
+        <li>|</li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li>|</li>
+        <li><a href="#">자주 묻는 질문</a></li>
+      </ul>
+      <div class="footer-logo">
+        <img src="../images/logo_gray_130.svg" alt="TOPRANK">
+      </div>
+      <div class="company-info">
+        <address>서울특별시 강서구 공항대로 227 마곡센트럴타워1차</address>
+        <ul>
+          <li>대표이사 김태형</li>
+          <li>|</li>
+          <li>사업자등록번호 104-81-25980</li>
+        </ul>
+        <p>통신판매업신고번호 중구02802호</p>
+      </div>
+      <p class="service-inquire">서비스 문의 help@crefe.co.kr</p>
+      <p class="copyright">Copyright@CREFE. All Rights Reserved.</p>
+    </footer>
+    <!-- //footer end -->
+  </div>
+
+  <script>
+    // 모바일 메뉴 보기
+    const headerWrap = document.querySelector('.header-wrap');
+    const allMenu = document.querySelector('.all-menu');
+    const menu = document.querySelector('.m-menu');
+    const popupMask = document.querySelector('.m-popup-mask');
+
+    allMenu.addEventListener('click', () => {
+      if(allMenu.classList.contains('open')) {
+        allMenu.classList.remove('open');
+        menu.classList.remove('active');
+        headerWrap.classList.remove('active');
+        popupMask.classList.remove('active');
+      }else{
+        allMenu.classList.add('open');
+        menu.classList.add('active');
+        headerWrap.classList.add('active');
+        popupMask.classList.add('active');
+      }
+    });
+
+    // 셀렉트 박스
+    const selectLabel = document.querySelectorAll('.selectbox .label');
+    const selectBox = document.querySelectorAll('.selectbox ul');
+    const selectOption = document.querySelectorAll('.selectbox ul li');
+
+    Array.from(selectLabel).forEach((el) => {
+      el.addEventListener('click', () => {
+        if(el.parentNode.classList.contains('active')) {
+          el.parentNode.classList.remove('active');
+        } else {
+          el.parentNode.classList.add('active');
+        }
+      });
+    });
+
+    Array.from(selectOption).forEach((el) => {
+      el.addEventListener('click', () => {
+        el.parentNode.previousSibling.previousSibling.innerHTML = el.innerHTML;
+        el.parentNode.parentNode.classList.remove('active');
+
+        console.log(el.parentNode.parentNode);
+      });
+    });
+
+    // 충전금액 선택
+    const amountSelectionList = document.querySelectorAll('.amount-selection-list ul li');
+    const chargingPointNum = document.querySelector('.charging-point-num');
+    const freePointNum = document.querySelector('.free-point-num');
+    const directInput = document.querySelector('.direct-input');
+
+    Array.from(amountSelectionList).forEach((v) => {
+      v.addEventListener('click', () => {
+        Array.from(amountSelectionList).forEach((l) => {
+          l.classList.remove('active');
+        });
+        v.classList.add('active');
+
+        function amountNumber(num, text) {
+          if(v.childNodes[1]) {
+            directInput.classList.remove('on');
+            const amountNumber = Number(v.childNodes[1].textContent) * num;
+            const amountReault = amountNumber.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+            
+            text.textContent = amountReault;
+          }else{
+            directInput.classList.add('on');
+            chargingPointNum.textContent = 0;
+            freePointNum.textContent = 0;
+          }
+        }
+        amountNumber(100, chargingPointNum);
+        amountNumber(10, freePointNum);
+      });
+    });
+
+    directInput.addEventListener('input', (e) => {
+      function directNumber(num, text) {
+      const directNum = Number(e.target.value) * num;
+      const directReault = directNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+      text.textContent = directReault;
+    }
+
+      directNumber(100, chargingPointNum);
+      directNumber(10, freePointNum);
+    });
+
+    // 결제 포인트 fold 부분
+    const pointFoldBtn = document.querySelectorAll('.point-fold-btn');
+
+    Array.from(pointFoldBtn).forEach((p) => {
+      p.addEventListener('click', () => {
+        p.parentNode.classList.toggle('active');
+      });
+    });
+
+    // 현금영수증 체크
+    const cashReceiptContents = document.querySelectorAll('.cash-receipt-contents label');
+    const receiptSelectbox = document.querySelectorAll('.receipt-selectbox');
+    // const receiptSelectboxList = document.querySelectorAll('.receipt-selectbox ul li');
+
+    Array.from(cashReceiptContents).forEach((c, idx) => {
+      c.addEventListener('click', () => {
+        Array.from(cashReceiptContents).forEach((p) => {
+          p.childNodes[1].checked = false;
+        });
+
+        c.childNodes[1].checked = true;
+
+        showContent(idx, receiptSelectbox);
+      });
+
+    });
+
+
+    // 현금영수증 탭 메뉴
+    const cashReceiptList = document.querySelectorAll('.cash-receipt > ul > li');
+    const cashReceiptContentsWrap = document.querySelector('.cash-receipt-contents-wrap');
+
+    Array.from(cashReceiptList).forEach((c) => {
+      c.addEventListener('click', () => {
+        Array.from(cashReceiptList).forEach((l) => {
+          l.classList.remove('active');
+        });
+        c.classList.add('active');
+        if(c.classList.contains('cash-receipt-con')) {
+          cashReceiptContentsWrap.classList.add('active');
+        }else{
+          cashReceiptContentsWrap.classList.remove('active');
+        }
+      });
+    });
+    
+    // Array.from(receiptSelectboxList).forEach((li, idx) => {
+    //   li.addEventListener('click', () => {
+    //     Array.from(receiptSelectboxList).forEach((l) => {
+    //       l.classList.remove('active');
+    //     });
+
+    //     li.classList.add('active');
+    //     showContent(idx, receiptSelectbox);
+    //   });
+    // });
+
+    function showContent(num, contents) {
+      Array.from(contents).forEach((i) => {
+        i.classList.remove('active');
+      });
+      Array.from(contents)[num].classList.add('active');
+    }
+    
+
+    // 팝업
+    const layerPopup = document.querySelector('.layer-popup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    closeBtn.addEventListener('click', () => {
+      layerPopup.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
+    });
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('m-popup')) {
+        Array.from(document.querySelectorAll('.m-popup')).forEach(e => {
+          e.classList.remove('active');
+          document.querySelector('body').classList.remove('scroll-lock');
+        });
+      }
+    });
+
+  </script>
+</body>
+</html>

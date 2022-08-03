@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TopRank | Keyword search_before searching</title>
+  <link rel="stylesheet" type="text/css" href="layout.css" media="all">
+  <link rel="stylesheet" type="text/css" href="style.css" media="all">
+</head>
+<body class="scroll-lock">
+  <div id="wrap" class="mobile">
+    <!-- header start -->
+    <header id="header" class="header-wrap back-btn-exist">
+      <div class="header-inner">
+        <div class="navigation-bar">
+          <button class="back-btn"><img src="../images/ic_arrow_left_purple_40.svg" alt="뒤로가기"></button>
+          <h1 class="logo"><img src="../images/logo_purple_130.svg" alt="TopRank"></h1>
+          <button class="all-menu">
+            <span class="burger-line burger-item1"></span>
+            <span class="burger-line burger-item2"></span>
+            <span class="burger-line burger-item3"></span>
+          </button>
+        </div>
+      </div>
+      <div class="m-menu">
+        <div class="login-area">
+          <div class="login-state">로그인이 필요합니다</div>
+          <button class="login-btn">로그인</button>
+        </div>
+        <nav class="m-gnb">
+          <ul>
+            <li>
+              <img src="../images/ic_keyword_purple_32.svg" alt="">
+              <a href="#">키워드 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_ranking_purple_32.svg" alt="">
+              <a href="#">상품순위 검색</a>
+            </li>
+            <li>
+              <img src="../images/ic_subscription_purple_32.svg" alt="">
+              <a href="#">이용 중인 상품</a>
+            </li>
+            <li>
+              <img src="../images/ic_trend_purple_32.svg" alt="">
+              <a href="#">쇼핑 트렌드</a>
+            </li>
+            <li>
+              <img src="../images/ic_popular_purple_32.svg" alt="">
+              <a href="#">인기 검색어</a>
+            </li>
+          </ul>
+          <ul class="bottom-gnb">
+            <li>
+              <img src="../images/ic_board_purple_32.svg" alt="">
+              <a href="#">게시판</a>
+              <button class="fold-btn"><img src="../images/ic_fold_bold_black_32.svg" alt=""></button>
+              <ul>
+                <li>
+                  <a href="#">공지사항</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- //header end -->
+
+    <div class="m-popup-mask"></div>
+
+    <!-- contents start -->
+    <div id="contents">
+      <!-- 헤더 영역 start -->
+      <div class="contents-header">
+        <div class="contents-title">
+          <img src="../images/ic_ranking_color_30.svg" alt="">
+          <h2>상품순위 검색</h2>
+          <p>내가 궁금한 상품을 확인해보세요.</p>
+        </div>
+      </div>
+      <!-- //헤더 영역 end -->
+
+      <!-- 탭 메뉴 start -->
+      <ul class="ranking-search-tab">
+        <li class="active">스토어 검색</li>
+        <li>주소 검색</li>
+        <li>상품 검색</li>
+      </ul>
+      <!-- 탭 메뉴 end -->
+
+      <div class="search-input-wrap">
+        <!-- 스토어 검색 창 start -->
+        <div class="search-input active">
+          <label for="check">
+            <input type="checkbox" id="check" name="check" checked>
+            <span class="checkbox"></span>
+            <p>광고 및 가격 비교상품 포함하기</p>
+          </label>
+          <form>
+            <input type="text" placeholder="스토어명" class="store-search" value="제주농부">
+            <input type="text" placeholder="키워드" class="keyword-search" value="망고">
+            <button type="submit" class="keyword-search-btn">검색</button>
+          </form>
+        </div>
+        <!-- 스토어 검색 창 end -->
+        <!-- 주소검색 창 start -->
+        <div class="search-input">
+          <label for="check">
+            <input type="checkbox" id="check" name="check" checked>
+            <span class="checkbox"></span>
+            <p>광고 및 가격 비교상품 포함하기</p>
+          </label>
+          <form>
+            <input type="text" placeholder="상품 주소" class="store-search" value="https://smartstore.naver.com/jejufarmerlocky/products/4943439707?NaPm=ct%3Dl29yq91s%7Cci%3D0zy0000gbA9wRv5Z61p1%7Ctr%3Dpla%7Chk%3D31cb20da1826f3b5ecfc287ca620eaa30f4b4b1c">
+            <input type="text" placeholder="키워드" class="keyword-search" value="망고">
+            <button type="submit" class="keyword-search-btn">검색</button>
+          </form>
+        </div>
+        <!-- 주소검색 창 end -->
+        <!-- 상품 검색 창 start -->
+        <div class="search-input">
+          <label for="check">
+            <input type="checkbox" id="check" name="check" checked>
+            <span class="checkbox"></span>
+            <p>광고 및 가격 비교상품 포함하기</p>
+          </label>
+          <form>
+            <input type="text" placeholder="상품명" class="store-search" value="제주농부 산지직송 고당도 제주 미니 꼬마 애플망고 1kg 2kg 3kg">
+            <input type="text" placeholder="키워드" class="keyword-search" value="망고">
+            <button type="submit" class="keyword-search-btn">검색</button>
+          </form>
+        </div>
+        <!-- 상품 검색 창 end -->
+      </div>
+
+
+      <div class="line"></div>
+
+      <!-- 검색한 결과 영역 start -->
+      <div class="search-result-area">
+        <div class="search-result-wrap active">
+          <div class="search-result box">
+            <div class="ad-area">
+              <span>광고</span>
+            </div>
+            <div class="store-name">
+              <img src="../images/thum_navershoping_24.svg" alt="네이버쇼핑">
+              <span>제주농부</span>
+            </div>
+            <p class="store-product">제주농부 산지직송 고당도 제주 미니 꼬마 애플망고 1kg 2kg 3kg</p>
+            <ul class="keyword-category">
+              <li>식품</li>
+              <li>농산물</li>
+              <li>과일</li>
+              <li>망고</li>
+            </ul>
+            <div class="middle-line"></div>
+            <div class="sales-ranking">
+              <div class="salse-header">
+                <img src="../images/ic_ranking_32.svg" alt="">
+                <span>판매 순위</span>
+              </div>
+              <div class="sales-ranking-num">
+                <b class="g-num">23</b>위
+                <span class="page-ranking"><b class="g-num">2</b>페이지 <b class="g-num">5</b>위</span>
+              </div>
+              <div class="all-count">
+                / <b class="g-num">689,689</b>개
+              </div>
+            </div>
+            <div class="review-count">
+              <div class="review-header">
+                <img src="../images/ic_review_32.svg" alt="">
+                <span>리뷰 수</span>
+              </div>
+              <div class="review-count-num">
+                <b class="g-num">1,024</b>개
+                <span class="score"><b class="g-num">4.5</b>점</span>
+              </div>
+              <div class="purchases-number">
+                구매 건수 <b class="g-num">5,481</b>건
+              </div>
+            </div>
+            <button class="track-ranking-btn">
+              <img src="../images/ic_tracking_white_32.svg" alt="">
+              <span>랭킹 추적하기</span>
+            </button>
+          </div>
+          <div class="search-result box">
+            <div class="ad-area"></div>
+            <div class="store-name">
+              <img src="../images/thum_navershoping_24.svg" alt="네이버쇼핑">
+              <span>제주농부</span>
+            </div>
+            <p class="store-product">제주농부 산지직송 고당도 제주 미니 꼬마 애플망고 1kg 2kg 3kg</p>
+            <ul class="keyword-category">
+              <li>식품</li>
+              <li>농산물</li>
+              <li>과일</li>
+              <li>망고</li>
+            </ul>
+            <div class="middle-line"></div>
+            <div class="sales-ranking">
+              <div class="salse-header">
+                <img src="../images/ic_ranking_32.svg" alt="">
+                <span>판매 순위</span>
+              </div>
+              <div class="sales-ranking-num">
+                <b class="g-num">94</b>위
+                <span class="page-ranking"><b class="g-num">3</b>페이지 <b class="g-num">2</b>위</span>
+              </div>
+              <div class="all-count">
+                / <b class="g-num">721,277</b>개
+              </div>
+            </div>
+            <div class="review-count">
+              <div class="review-header">
+                <img src="../images/ic_review_32.svg" alt="">
+                <span>리뷰 수</span>
+              </div>
+              <div class="review-count-num">
+                <b class="g-num">30</b>개
+                <span class="score"><b class="g-num">4.7</b>점</span>
+              </div>
+              <div class="purchases-number">
+                구매 건수 <b class="g-num">7</b>건
+              </div>
+            </div>
+            <button class="track-ranking-btn tracking">
+              <img src="../images/ic_tracking_ing_48.svg" alt="">
+              <span>랭킹 추적중</span>
+            </button>
+          </div>
+          <div class="search-result box">
+            <div class="ad-area"></div>
+            <div class="store-name">
+              <img src="../images/thum_navershoping_24.svg" alt="네이버쇼핑">
+              <span>제주농부</span>
+            </div>
+            <p class="store-product">제주농부 제주 미니 꼬마 애플망고 2kg 3kg (가정용, 실속형, 선물용)</p>
+            <ul class="keyword-category">
+              <li>식품</li>
+              <li>농산물</li>
+              <li>과일</li>
+              <li>망고</li>
+            </ul>
+            <div class="middle-line"></div>
+            <div class="sales-ranking">
+              <div class="salse-header">
+                <img src="../images/ic_ranking_32.svg" alt="">
+                <span>판매 순위</span>
+              </div>
+              <div class="sales-ranking-num">
+                <b class="g-num">102</b>위
+                <span class="page-ranking"><b class="g-num">3</b>페이지 <b class="g-num">10</b>위</span>
+              </div>
+              <div class="all-count">
+                / <b class="g-num">723,552</b>개
+              </div>
+            </div>
+            <div class="review-count">
+              <div class="review-header">
+                <img src="../images/ic_review_32.svg" alt="">
+                <span>리뷰 수</span>
+              </div>
+              <div class="review-count-num">
+                <b class="g-num">28</b>개
+                <span class="score"><b class="g-num">4.0</b>점</span>
+              </div>
+              <div class="purchases-number">
+                구매 건수 <b class="g-num">92</b>건
+              </div>
+            </div>
+            <button class="track-ranking-btn">
+              <img src="../images/ic_tracking_white_32.svg" alt="">
+              <span>랭킹 추적하기</span>
+            </button>
+          </div>
+        </div>
+        <div class="search-result-wrap">
+          <div class="search-result box">
+            <div class="ad-area"></div>
+            <div class="store-name">
+              <img src="../images/thum_navershoping_24.svg" alt="네이버쇼핑">
+              <span>제주농부</span>
+            </div>
+            <p class="store-product">제주농부 산지직송 고당도 제주 미니 꼬마 애플망고 1kg 2kg 3kg</p>
+            <ul class="keyword-category">
+              <li>식품</li>
+              <li>농산물</li>
+              <li>과일</li>
+              <li>망고</li>
+            </ul>
+            <div class="middle-line"></div>
+            <div class="sales-ranking">
+              <div class="salse-header">
+                <img src="../images/ic_ranking_32.svg" alt="">
+                <span>판매 순위</span>
+              </div>
+              <div class="sales-ranking-num">
+                <b class="g-num">94</b>위
+                <span class="page-ranking"><b class="g-num">3</b>페이지 <b class="g-num">2</b>위</span>
+              </div>
+              <div class="all-count">
+                / <b class="g-num">721,277</b>개
+              </div>
+            </div>
+            <div class="review-count">
+              <div class="review-header">
+                <img src="../images/ic_review_32.svg" alt="">
+                <span>리뷰 수</span>
+              </div>
+              <div class="review-count-num">
+                <b class="g-num">30</b>개
+                <span class="score"><b class="g-num">4.7</b>점</span>
+              </div>
+              <div class="purchases-number">
+                구매 건수 <b class="g-num">7</b>건
+              </div>
+            </div>
+            <button class="track-ranking-btn tracking">
+              <img src="../images/ic_tracking_ing_48.svg" alt="">
+              <span>랭킹 추적중</span>
+            </button>
+          </div>
+        </div>
+        <div class="search-result-wrap">
+          <div class="search-result box">
+            <div class="ad-area"></div>
+            <div class="store-name">
+              <img src="../images/thum_navershoping_24.svg" alt="네이버쇼핑">
+              <span>제주농부</span>
+            </div>
+            <p class="store-product">제주농부 산지직송 고당도 제주 미니 꼬마 애플망고 1kg 2kg 3kg</p>
+            <ul class="keyword-category">
+              <li>식품</li>
+              <li>농산물</li>
+              <li>과일</li>
+              <li>망고</li>
+            </ul>
+            <div class="middle-line"></div>
+            <div class="sales-ranking">
+              <div class="salse-header">
+                <img src="../images/ic_ranking_32.svg" alt="">
+                <span>판매 순위</span>
+              </div>
+              <div class="sales-ranking-num">
+                <b class="g-num">94</b>위
+                <span class="page-ranking"><b class="g-num">3</b>페이지 <b class="g-num">2</b>위</span>
+              </div>
+              <div class="all-count">
+                / <b class="g-num">721,277</b>개
+              </div>
+            </div>
+            <div class="review-count">
+              <div class="review-header">
+                <img src="../images/ic_review_32.svg" alt="">
+                <span>리뷰 수</span>
+              </div>
+              <div class="review-count-num">
+                <b class="g-num">30</b>개
+                <span class="score"><b class="g-num">4.7</b>점</span>
+              </div>
+              <div class="purchases-number">
+                구매 건수 <b class="g-num">7</b>건
+              </div>
+            </div>
+            <button class="track-ranking-btn tracking">
+              <img src="../images/ic_tracking_ing_48.svg" alt="">
+              <span>랭킹 추적중</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- 검색한 결과 영역 end -->
+
+    </div>
+    <!--// contents end -->
+
+    <!-- 팝업 영역 start -->
+    <div class="m-popup layer-popup require-login-popup active">
+      <div class="popup-box box">
+        <div class="popup-header">
+          <button class="close-btn">
+            <img src="../images/ic_close_bold_black_40.svg" alt="닫기 버튼">
+          </button>
+        </div>
+        <div class="popup-contents">
+          <strong>보유하신 포인트가 부족합니다.</strong>
+          <p>포인트를 충전해주세요.</p>
+        </div>
+        <div class="layer-btn-wrap">
+          <button class="go-back-btn">취소</button>
+          <button class="proceed-btn">충전하기</button>
+        </div>
+      </div>
+    </div>
+    <!-- //팝업 영역 end -->
+
+    <!-- footer start -->
+    <footer id="footer">
+      <!-- <div class="footer-banner">
+        <div class="banner-txt">
+          <img src="../images/img_main_banner_source2.svg" alt="">
+          <p>
+            더 다양하고 강력한 <br>
+            TOPRANK의 서비스와 함께하세요!
+          </p>
+          <a href="#">멤버십 알아보기</a>
+        </div>
+        <img src="../images/img_main_banner_source.svg" alt="">
+      </div> -->
+      <button class="pc-btn">PC버전</button>
+      <ul class="footer-nav">
+        <li><a href="#">이용약관</a></li>
+        <li>|</li>
+        <li><a href="#">개인정보처리방침</a></li>
+        <li>|</li>
+        <li><a href="#">자주 묻는 질문</a></li>
+      </ul>
+      <div class="footer-logo">
+        <img src="../images/logo_gray_130.svg" alt="TOPRANK">
+      </div>
+      <div class="company-info">
+        <address>서울특별시 강서구 공항대로 227 마곡센트럴타워1차</address>
+        <ul>
+          <li>대표이사 김태형</li>
+          <li>|</li>
+          <li>사업자등록번호 104-81-25980</li>
+        </ul>
+        <p>통신판매업신고번호 중구02802호</p>
+      </div>
+      <p class="service-inquire">서비스 문의 help@crefe.co.kr</p>
+      <p class="copyright">Copyright@CREFE. All Rights Reserved.</p>
+    </footer>
+    <!-- //footer end -->
+  </div>
+
+  <script>
+    // 모바일 메뉴 보기
+    const headerWrap = document.querySelector('.header-wrap');
+    const allMenu = document.querySelector('.all-menu');
+    const menu = document.querySelector('.m-menu');
+    const popupMask = document.querySelector('.m-popup-mask');
+
+    allMenu.addEventListener('click', () => {
+      if(allMenu.classList.contains('open')) {
+        allMenu.classList.remove('open');
+        menu.classList.remove('active');
+        headerWrap.classList.remove('active');
+        popupMask.classList.remove('active');
+      }else{
+        allMenu.classList.add('open');
+        menu.classList.add('active');
+        headerWrap.classList.add('active');
+        popupMask.classList.add('active');
+      }
+    });
+
+    // 탭 메뉴
+    const tabList = document.querySelectorAll('.ranking-search-tab li');
+    const searchInput = document.querySelectorAll('.search-input');
+    const searchResult = document.querySelectorAll('.search-result-wrap');
+
+    Array.from(tabList).forEach((el, idx) => {
+      el.addEventListener('click', () => {
+        Array.from(tabList).forEach((i) => {
+          i.classList.remove('active');
+        });
+
+        showContent(idx, searchInput);
+        showContent(idx, searchResult);
+
+        el.classList.add('active');
+      });
+    });
+
+    function showContent(num, contents) {
+      Array.from(contents).forEach((i) => {
+        i.classList.remove('active');
+      });
+      Array.from(contents)[num].classList.add('active');
+    }
+
+  </script>
+</body>
+</html>

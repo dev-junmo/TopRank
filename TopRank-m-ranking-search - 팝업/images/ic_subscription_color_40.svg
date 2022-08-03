@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+    <defs>
+        <linearGradient id="uudqkkiqha" x1=".091" y1=".895" x2=".848" y2=".137" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#4db3ff"/>
+            <stop offset=".5" stop-color="#cc52c2"/>
+            <stop offset="1" stop-color="#f2557a"/>
+        </linearGradient>
+    </defs>
+    <path style="fill:none" d="M0 0h40v40H0z"/>
+    <path data-name="패스 247" d="M-336.148 900.395a14.793 14.793 0 0 1-15 14.557 15.428 15.428 0 0 1-4.666-.718c-.717.275-3 1.292-3.407 1.484a1.244 1.244 0 0 1-1.209-.084 1.167 1.167 0 0 1-.526-.886c0-.095-.025-.765-.036-1.484-.011-.743-.036-1.533-.036-1.927a14.354 14.354 0 0 1-5.119-10.943 14.792 14.792 0 0 1 15-14.557 14.792 14.792 0 0 1 14.999 14.558z" transform="translate(371.148 -880.838)" style="fill:url(#uudqkkiqha)"/>
+    <path data-name="패스 248" d="M-346.648 894.1v10.321a.9.9 0 0 1-.536.831.9.9 0 0 1-.385.088.921.921 0 0 1-.595-.223l-4.735-4.06-4.736 4.06a.92.92 0 0 1-.594.223.9.9 0 0 1-.386-.088.9.9 0 0 1-.533-.831V894.1a1.26 1.26 0 0 1 1.26-1.26h9.976a1.262 1.262 0 0 1 1.264 1.26z" transform="translate(372.898 -879.088)" style="fill:#fff"/>
+</svg>

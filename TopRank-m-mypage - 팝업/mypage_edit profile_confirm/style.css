@@ -1,0 +1,283 @@
+@charset "utf-8";
+
+/* G마켓 폰트 */
+.g-num {
+  font-family: 'Gmarket Sans';
+}
+
+/* 순위 관련 알약 모양 스타일 */
+.pill {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2.5rem;
+  border-radius: 24px;
+  color: #fff;
+  padding: 0.2rem 1.2rem 0 2.4rem;
+  margin-left: 8px;
+  padding-top: 0.4rem;
+}
+.pill.rise {
+  background: #fc6075 url('../images/ic_up_white_24.svg') 0.6rem 0.5rem no-repeat;
+  background-size: 1.6rem;
+}
+.pill.fall {
+  background: #2fbaed url('../images/ic_down_white_24.svg') 0.6rem 0.5rem no-repeat;
+  background-size: 1.6rem;
+}
+
+
+/* 팝업시 스크롤 막기 */
+.scroll-lock {
+  overflow: hidden;
+}
+
+
+#wrap {
+  background: #f7f7fc url('../images/png/m_img_bg_sub_title.png') top center no-repeat;
+  background-size: contain;
+}
+
+#contents {
+  padding-top: 6.0rem;
+}
+
+/* 마이 대시보드 버튼 스타일 */
+.my-dashboard-btn {
+  float: left;
+  height: 2.0rem;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: #fff;
+  text-align: center;
+  line-height: 1.9rem;
+  border-radius: 16px;
+  background: #4d77ff;
+  padding: 0 0.8rem;
+}
+
+/* 헤더 영역 */
+.contents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 0.8rem;
+  margin-top: 3.4rem;
+  padding: 0 2.4rem;
+}
+.contents-header .contents-title {
+  display: flex;
+  align-items: center;
+}
+.contents-header .contents-title img {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.contents-header .contents-title h2 {
+  font-size: 1.8rem;
+  color: #04021f;
+  padding-left: 5px;
+}
+
+/* =============================================================================================================== */
+/* =============================================================================================================== */
+/* 비밀번호 확인 */
+.password-confirm-wrap {
+  padding: 0 1.6rem;
+}
+.password-confirm-wrap .guide-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #3f37c9;
+  text-align: center;
+  margin-top: 5.0rem;
+  margin-bottom: 1.6rem;
+}
+.password-confirm-wrap .guide-text {
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: #b8b6c4;
+  line-height: 1.29;
+  text-align: center;
+  margin-bottom: 4.0rem;
+}
+
+/* 비밀번호 입력창 */
+.password-confirm-area {
+  position: relative;
+}
+.password-confirm-area label {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #3e4259;
+  padding-left: 1.6rem;
+}
+.password-confirm-area input {
+  width: 100%;
+  height: 4.4rem;
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: #04021f;
+  line-height: 4.4rem;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  padding: 0 6.4rem 0 1.6rem;
+  box-shadow: 0 3px 6px 0 rgba(36, 51, 179, 0.1);
+  box-sizing: border-box;
+  margin-top: 1.0rem;
+}
+.password-confirm-area input::placeholder {
+  color: #b8b6c4;
+}
+.password-confirm-area .security-btn {
+  width: 3.2rem;
+  height: 3.2rem;
+  position: absolute;
+  right: 1.4rem;
+  top: 3.0rem;
+  background: url('../images/ic_visible_off_gray_32.svg') center no-repeat;
+}
+.password-confirm-area .confirm-btn {
+  width: 100%;
+  height: 4.4rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 4.4rem;
+  background: #3f37c9;
+  border-radius: 8px;
+  margin-top: 2.4rem;
+}
+
+/* 팝업시 스크롤 막기 */
+.scroll-lock {
+  overflow: hidden;
+}
+
+/* 팝업 스타일 */
+.layer-popup {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 2.4rem;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 110;
+}
+.layer-popup.active {
+  display: flex;
+}
+.layer-popup .popup-box {
+  position: relative;
+  width: 100%;
+  padding: 0.8rem 0.8rem 2.4rem;
+  margin-bottom: 0;
+}
+.layer-popup .popup-box .popup-header {
+  position: relative;
+  height: 4.0rem;
+}
+.layer-popup .popup-box .close-btn {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: none;
+  padding: 0;
+}
+.layer-popup .popup-contents {
+  text-align: center;
+}
+.layer-popup .popup-contents strong {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #04021f;
+  margin-bottom: 0.8rem;
+}
+.layer-popup .popup-contents p {
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: #04021f;
+  margin-top: 0.8rem;
+  line-height: 1.29;
+}
+.layer-popup .confirm-btn {
+  width: 13.2rem;
+  height: 3.4rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 3.4rem;
+  text-align: center;
+  background: #3f37c9;
+  border-radius: 8px;
+  margin: 3.4rem auto 0;
+  padding: 0;
+}
+.layer-popup .layer-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.2rem;
+}
+.layer-popup .layer-btn-wrap > button {
+  width: 13.2rem;
+  height: 3.4rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  line-height: 3.4rem;
+  text-align: center;
+  border-radius: 8px;
+  padding: 0;
+}
+.layer-popup .layer-btn-wrap > button.go-back-btn {
+  background: #b8b6c4;
+  margin-right: 1.2rem;
+}
+.layer-popup .layer-btn-wrap > button.proceed-btn {
+  background: #3f37c9;
+}
+
+
+/* 반응형 브레이크 포인트 */
+@media screen and (max-width: 375px) {
+  .age-group-wrap .age-group:last-of-type {
+    margin-bottom: 0;
+    margin-right: 8px;
+  }
+}
+
+/* 650px 이상 767px 이하 */
+@media screen and (min-width: 650px) and (max-width: 767px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+
+/* 768px 이상 */
+@media screen and (min-width: 768px) {
+  .keyword-search-result {
+    margin-top: 15rem;
+  }
+  .main-tab-area {
+    margin-top: 10.0rem;
+  }
+  .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+  }
+}
+

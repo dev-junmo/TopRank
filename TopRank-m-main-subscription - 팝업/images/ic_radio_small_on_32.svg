@@ -1,0 +1,20 @@
+<svg id="ic_radio_small_on_32" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #3f37c9;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect id="영역" class="cls-1" width="32" height="32"/>
+  <path id="패스_467" data-name="패스 467" class="cls-2" d="M9,0A9,9,0,1,1,0,9,9,9,0,0,1,9,0Z" transform="translate(7 7)"/>
+  <path id="패스_468" data-name="패스 468" class="cls-3" d="M4,0A4,4,0,1,1,0,4,4,4,0,0,1,4,0Z" transform="translate(12 12)"/>
+</svg>
