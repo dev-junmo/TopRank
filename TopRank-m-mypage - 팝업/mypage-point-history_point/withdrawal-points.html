@@ -827,6 +827,8 @@
     const mobilePopup = document.querySelectorAll('.m-popup');
     const closeBtn = document.querySelectorAll('.close-btn');
     const filterBtn = document.querySelectorAll('.filter-btn');
+    const layerPopup = document.querySelector('.layer-popup');
+    const confirmBtn = document.querySelector('.confirm-btn');
 
     Array.from(closeBtn).forEach(c => {
       c.addEventListener('click', () => {
@@ -852,6 +854,11 @@
           document.querySelector('body').classList.remove('scroll-lock');
         });
       }
+    });
+
+    confirmBtn.addEventListener('click', () => {
+      layerPopup.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
     });
 
     // 팝업들

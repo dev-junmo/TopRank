@@ -484,6 +484,24 @@
       Array.from(contents)[num].classList.add('active');
     }
 
+    // 팝업
+    const layerPopup = document.querySelector('.layer-popup');
+    const closeBtn = document.querySelector('.close-btn');
+
+    closeBtn.addEventListener('click', () => {
+      layerPopup.classList.remove('active');
+      document.querySelector('body').classList.remove('scroll-lock');
+    });
+
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('m-popup')) {
+        Array.from(document.querySelectorAll('.m-popup')).forEach(e => {
+          e.classList.remove('active');
+          document.querySelector('body').classList.remove('scroll-lock');
+        });
+      }
+    });
+
   </script>
 </body>
 </html>
