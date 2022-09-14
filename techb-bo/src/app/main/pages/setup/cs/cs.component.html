@@ -1,0 +1,95 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="'고객센터 정보'">
+    <!-- <bo-page-button-config id = "id-board-create-btn-"
+        [title] = "'저장하기'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "onSubmit()">
+    </bo-page-button-config> -->
+    <bo-page-button-config id = "id-board-content-list-btn-userview"
+    [title] = "'저장 후 리스트'"
+    [styleType] = "'square-m-white-btn'"
+    (click) = "submitAndBack()">
+    </bo-page-button-config>
+    <bo-page-button-config id = "id-board-content-list-btn-userview"
+        [title] = "'저장 후 화면유지'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config>
+</bo-page-header>
+<form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+    <div class="section">
+        <div class="content-wrap two-line-content">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'고객센터 운영 정보'"
+                [description]="'고객센터 운영의 기본정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <!-- <div class="sub-title-bar">
+                <img src="/assets/img/03-3-order.svg" />
+                    고객센터 운영 정보
+                <div class="pop-over-wrap">
+                <img class="pop-over" src="/assets/img/group-7.svg" />
+
+                <div class="pop-over-box">
+                    <img src="assets/img/black-arrow.svg" />
+                    쇼핑몰의 기본적인 정보를 입력하세요.
+                </div>
+            </div>
+            </div> -->
+            <div class="content-box">
+                <div class="content-title">
+                    <img src="/assets/img/group-6.svg"/> 상담 전화번호:
+                </div>
+                <div class="content">
+                    <!-- <input type="text" class="form-control search-input medium-input" name="csPhone" formControlName="csPhone" /> -->
+                    <bs-input [name]="'csPhone'" [formGroup]="bsForm" ></bs-input>
+
+                    <!-- <div class="content warn-box">
+                        **상담 전화번호
+                    </div> -->
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="content-title">
+                    <img src="/assets/img/group-6.svg"/> 팩스번호:
+                </div>
+                <div class="content">
+                    <bs-input [name]="'csFax'" [formGroup]="bsForm" ></bs-input>
+
+                </div>
+            </div>
+            <div class="content-box">
+                    <div class="content-title">
+                        <img src="/assets/img/group-6.svg"/> 이메일 주소:
+                    </div>
+                        <!-- <input type="text" class="form-control search-input medium-input" name="csEmail[0]" formControlName="csEmail[0]" /> @
+                        <input type="text" class="form-control search-input medium-input" name="csEmail[1]" formControlName="csEmail[1]" /> -->
+
+                    <div class="content" >
+                        <bs-group-input [name]="'csEmail'" [separator]="'@'" [formGroup]="bsForm" [style]="'medium-input'">
+                            <bs-input-config [required]="true"></bs-input-config>
+                            <bs-input-config [required]="true"></bs-input-config>
+                        </bs-group-input>
+                    </div>
+            </div>
+            <div class="content-box">
+                <div class="content">
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="content-title">
+                    <img src="/assets/img/group-6.svg" style="padding-top:4px;vertical-align: top;"/> 운영시간:
+                </div>
+                <div class="content">
+                    <textarea type="text" class="form-control search-input medium-input" name="csOperation" formControlName="csOperation"
+                    style="width: 100%;margin:0" >
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrap">
+            <bo-submit-button-form></bo-submit-button-form>
+        </div>
+  </div>
+
+
+</form>

@@ -1,0 +1,459 @@
+.mobile .search-bar {
+    background-color: white;
+	padding: 0 1.625rem 0.35rem; 
+}
+.mobile .search-bar .search label {
+	display: none;
+}
+.mobile .search-bar .search {
+	position: relative;
+	height: 36px;
+	padding-left: 17px;
+	border: solid 1px #888; 
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+.mobile .search-bar .search input {
+	position: absolute;
+	top: 10px;
+	width: calc(100% - 67px);
+	height: 18px;
+    font-family: 'TVING';
+	font-weight: 400;
+    font-size: 0.75rem;	
+	color: #1e1e1e;
+	line-height: 16px; 
+	border: none;
+	outline: transparent;	
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+	border-radius: 0;
+	-webkit-appearance: none; 
+	-moz-appearance: none; 
+	-ms-appearance: none; 
+	-o-appearance: none; 
+	appearance: none;
+	background-color: transparent;
+}
+.mobile .search-bar .search button {
+	position: absolute; 
+	top: 0px; 
+	right: 0; 
+	width: 50px; 
+	height: 34px; 
+	text-indent: -9999px; 
+	background: url('assets/temp_image/icon_search.png') center center no-repeat;
+	background-size: 19px 19px;
+}
+.mobile .search-bar .search input::-webkit-input-placeholder {
+	color: #1e1e1e;
+	opacity: 0.3;
+} 
+.mobile .search-bar .search input:-ms-input-placeholder {
+	color: #1e1e1e;
+	opacity: 0.3;
+} 
+.mobile .search-bar .search input::placeholder {
+	color: #1e1e1e;
+	opacity: 0.3;
+}
+
+/*
+
+///////////////////////////////////////////////////////////
+
+*/
+
+.search-wrapper{
+    position: absolute;
+    left: 0;
+    z-index: 3;
+    width: 100%;
+    background: white;
+}
+.search-wrapper .close-btn {
+    text-align: right;
+    height: 1.5rem;
+    margin-right: 1rem;
+}
+.input-wrapper{
+    padding: 13px 15px;
+    position: relative;
+    border-bottom: 1px solid rgb(238,238,238);
+}
+.input-wrapper input{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #000;
+    padding: 11px 33px;
+    font-size: 17px;
+}
+.search-img{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 22px;
+    left: 21px;
+}
+.search-img img{
+    width:100%;
+}
+.tab{
+    font-size: 0;
+}
+.tab div{
+    width: 50%;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    padding: 14px 0;
+    padding: 14px 0;
+    background-color: rgb(247,247,247);
+    border-bottom: 1px solid rgb(238,238,238);
+}
+.tab .left{
+    border-right: 1px solid rgb(238,238,238);
+    width: calc(50% - 1px);
+}
+.tab .right{
+
+}
+.tab div.active{
+    background-color: #fff;
+    color: black;
+    font-weight: 700;
+}
+.list{
+    padding: 0 21px;
+}
+.list ul{
+    padding: 0;
+    margin: 0;
+}
+.list li{
+    height: 43px;
+    line-height: 43px;
+    border-bottom: 1px solid rgb(238,238,238);
+    font-size: 16px;
+}
+.list li.font-color{
+    color:rgb(102,102,102);
+    /* overflow: hidden;
+    max-height: 45px;
+    white-space: nowrap;
+    text-overflow: ellipsis; */
+}
+.list li .left{
+    width: calc(100% - 18px);
+    display: inline-block;
+    /* overflow: hidden;
+    max-height: 29px;
+    white-space: nowrap;
+    text-overflow: ellipsis; */
+}
+.list li .left img{
+    width: 44px;
+}
+.list li .right{
+    width: 14px;
+    display: inline-block;
+    padding: 0 4px;
+    vertical-align: super;
+}
+.list.recent li .right{
+    padding: 1px;
+}
+.list li .right img{
+    width: 100%
+}
+.sp{
+    padding-right: 9px;
+}
+.all-clear-btn{
+    padding: 14px 0;
+}
+.all-clear-btn button{
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid rgb(238,238,238);
+    background-color: #fff;
+    height: 43px;
+    line-height: 25px;
+}
+.list .empty-box{
+    height: 450px;
+    padding: 165px 0;
+}
+.list .img-box{
+    text-align: center;
+}
+.list .txt-box{
+    text-align: center;
+    color:rgb(102,102,102);
+    padding-top: 10px;
+}
+.popular-searches.showword{
+    padding: 7px 15px 30px;
+    min-height: 504px;
+}
+.popular-searches.showword ul{
+    padding: 0;
+    margin: 0;
+}
+.popular-searches.showword li{
+    font-size: 0;
+    padding: 7px 0;
+}
+.popular-searches.showword li .word{
+    display: inline-block;
+    width: calc(100% - 60px);
+    font-size: 16px;
+
+    /* ...으로 넘치는 글자 줄이기 - 현재 적용은 되는데 ...안보임 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    height: 1.3em;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    white-space: nowrap;
+
+}
+.popular-searches.showword li .conut{
+    width: 60px;
+    display: inline-block;
+    font-size: 16px;
+    text-align: right;
+    color: rgb(153,153,153);
+}
+
+@media screen and (max-width: 1767px) {
+    .popular-searches.showword{
+        min-height: 270px;
+    }
+    .list li.font-color{
+        _color:rgb(102,102,102);
+        color: #333;
+        overflow: hidden;
+        max-height: 53px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 400;
+    }
+    .list li .left{
+        width: calc(100% - 18px);
+        display: inline-block;
+        overflow: hidden;
+        max-height: 35px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+
+
+.search-wrapper{
+    /* padding-top: 55px; */
+}
+.input-wrapper{
+    padding: 13px 15px;
+    position: relative;
+    border-bottom: 1px solid rgb(238,238,238);
+}
+.input-wrapper input{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #000;
+    padding: 11px 33px;
+    font-size: 17px;
+}
+.search-img{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 22px;
+    left: 21px;
+}
+.search-img img{
+    width:100%;
+}
+.tab{
+    font-size: 0;
+}
+.tab div{
+    width: 50%;
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+    padding: 14px 0;
+    padding: 14px 0;
+    background-color: rgb(247,247,247);
+    border-bottom: 1px solid rgb(238,238,238);
+}
+.tab .left{
+    border-right: 1px solid rgb(238,238,238);
+    width: calc(50% - 1px);
+}
+.tab .right{
+
+}
+.tab div.active{
+    background-color: #fff;
+    color: black;
+    font-weight: 700;
+}
+.list{
+    padding: 0 21px;
+}
+.list ul{
+    padding: 0;
+    margin: 0;
+}
+.list li{
+    height: 43px;
+    line-height: 43px;
+    border-bottom: 1px solid rgb(238,238,238);
+    font-size: 16px;
+}
+.list li.font-color{
+    color:rgb(102,102,102);
+    /* overflow: hidden;
+    max-height: 45px;
+    white-space: nowrap;
+    text-overflow: ellipsis; */
+}
+.list li .left{
+    width: calc(100% - 18px);
+    display: inline-block;
+    /* overflow: hidden;
+    max-height: 29px;
+    white-space: nowrap;
+    text-overflow: ellipsis; */
+}
+.list li .left img{
+    width: 44px;
+}
+.list li .right{
+    width: 14px;
+    display: inline-block;
+    padding: 0 4px;
+    vertical-align: super;
+}
+.list.recent li .right{
+    padding: 1px;
+}
+.list li .right img{
+    width: 100%
+}
+.sp{
+    padding-right: 9px;
+}
+.all-clear-btn{
+    padding: 14px 0;
+}
+.all-clear-btn button{
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid rgb(238,238,238);
+    background-color: #fff;
+    height: 43px;
+    line-height: 25px;
+}
+.list .empty-box{
+    height: 450px;
+    padding: 165px 0;
+}
+.list .img-box{
+    text-align: center;
+}
+.list .txt-box{
+    text-align: center;
+    color:rgb(102,102,102);
+    padding-top: 10px;
+}
+.popular-searches.showword{
+    padding: 7px 15px 30px;
+    min-height: 504px;
+}
+.popular-searches.showword ul{
+    padding: 0;
+    margin: 0;
+}
+.popular-searches.showword li{
+    font-size: 0;
+    padding: 7px 0;
+}
+.popular-searches.showword li .word{
+    display: inline-block;
+    width: calc(100% - 60px);
+    font-size: 16px;
+}
+.popular-searches.showword li .conut{
+    width: 60px;
+    display: inline-block;
+    font-size: 16px;
+    text-align: right;
+    color: rgb(153,153,153);
+}
+
+@media screen and (max-width: 1767px) {
+    .popular-searches.showword{
+        min-height: 270px;
+    }
+    .list li.font-color{
+        _color:rgb(102,102,102);
+        color: #333;
+        overflow: hidden;
+        max-height: 53px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 400;
+    }
+    .list li .left{
+        width: calc(100% - 18px);
+        display: inline-block;
+        overflow: hidden;
+        max-height: 35px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+
+}
+
+/* #tablet */
+@media screen and (min-width: 1080px) {
+
+    .search-wrapper {
+        top: 60px;
+        left: -702px;
+        width: 1080px
+    }
+
+    .mobile .search-bar {
+        padding: 0 0 0 0;
+    }
+}

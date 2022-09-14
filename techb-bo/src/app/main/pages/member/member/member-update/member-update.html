@@ -1,0 +1,96 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="'회원 수정'">
+    <bo-page-button-config
+        [title] = "'회원 리스트'"
+        [styleType] = "'square-m-black-btn'"
+        (click) = "gotoListPage()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="!isUpdateMode" id = "id-board-create-btn-"
+        [title] = "'저장하기'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "onSubmit()">
+    </bo-page-button-config>
+    <!-- <bo-page-button-config *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+    [title] = "'저장 후 리스트'"
+    [styleType] = "'square-m-white-btn'"
+    (click) = "submitAndBack()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+        [title] = "'저장 후 화면유지'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config> -->
+</bo-page-header>
+<form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+    <div class="section">
+      <div class="content-wrap">
+          <bs-title-label-ctrl
+              [title]="'회원'"
+              [description]="'회원의 기본적인 정보를 입력하세요'">
+          </bs-title-label-ctrl>
+          <!-- <bs-tooltip text=""></bs-tooltip> -->
+          <div class="content-block">
+            <div class="content-box">
+                <div class="content-title">
+                    회원아이디
+                </div>
+                <div class="content">
+                   {{_data.userid}}
+                    <!-- <bs-input
+                        [name]="'icon_name'"
+                        [formGroup]="bsForm"
+                        [placeholder]="'아이콘 이름을 입력하세요.'"
+                        [style]="'big-input'"
+                        [required]="true">
+                    </bs-input> -->
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="content-title">
+                    회원 등급
+                </div>
+                <div class="content">
+                    <bs-select 
+                        [name]="'group_seq'"
+                        [formGroup]="bsForm"
+                        [allowUnselected]="false"
+                        [optionApiUrl]="'admin/member/member_group'"
+                        [optionLabelField]="'group_name'"
+                        [optionValueField]="'group_seq'">
+                    </bs-select>
+                </div>
+            </div>
+            <!-- <div class="content-box">
+
+                <div class="content-title">
+                    아이콘 코드
+                </div>
+                <div class="content" *ngIf="!id">
+                    아이콘 등록시 자동 생성됩니다.
+                </div>
+                <div class="content" *ngIf="id">
+                    {{id}}
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="content-title">
+                    사용상태<img class="required-img" src="assets/img/must_txt.png"/>
+                </div>
+                <div class="content">
+                    <input type="radio" name="use_status" formControlName="use_status" id="use" value="use"  />
+                    <label for="use" class="table-check-label passive">사용함</label>
+                    <input type="radio" name="use_status" formControlName="use_status" id="unuse" value="unuse" />
+                    <label for="unuse" class="table-check-label passive">사용안함</label>
+                </div>
+            </div> -->
+          </div>
+      </div>
+
+      <div class="content-wrap-none">
+        <bo-submit-button-form
+            [hasCancelBtn]="true"
+            (clickCancel)="gotoListPage()">
+        </bo-submit-button-form>
+      </div>
+    </div>
+
+</form>

@@ -1,0 +1,449 @@
+button{
+    padding: 0px 10px;
+    height: 38px;
+    font-size: 12px;
+    border-radius: 4px;
+    line-height: initial;
+    outline: none;
+}
+button.l-navy {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#788691), to(#4d5d68));
+    background-image: linear-gradient(to bottom, #788691, #4d5d68);
+    border: solid 1px #46505d;
+    color: #fff;
+    min-width: 280px;
+}
+button.m-darkgrey{
+    background-color: #3b3b3b;
+    border: none;
+    color: #fff;
+    min-width: 150px;
+}
+button.m-navy{
+    background-image: linear-gradient(to bottom, #788691, #4d5d68);
+    border: solid 1px #46505d;
+    color: #fff;
+    min-width: 130px;
+    height: 30px;
+    line-height: 30px;
+}
+button.m-white{
+    background-color: #ffffff;
+    border: solid 1px #979797;
+    min-width: 150px;
+    height: 40px;
+    line-height: 40px;
+}
+button.mh-darkgrey{
+    background-color: #3b3b3b;
+    border: none;
+    color: #fff;
+    min-width: 120px;
+    height: 30px;
+    line-height: 30px;
+}
+button.m-lightgrey-border{
+    background-color: #f6f6f6;
+    border: solid 1px #979797;
+    color: #000000;
+    min-width: 115px;
+    height: 24px;
+    line-height: 24px;
+}
+button.m-grey-border{
+    background-color: #dbdbdb;
+    border: solid 1px #979797;
+    color: #000000;
+    min-width: 115px;
+    height: 24px;
+    line-height: 24px;
+}
+button.round-s-grey{
+    background-color: #6e6e6e;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    min-width: 52px;
+    height: 22px;
+    line-height: 22px;
+}
+button.round-m-grey{
+    background-color: #6e6e6e;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    min-width: 52px;
+    height: 26px;
+    line-height: 26px;
+}
+button.round-s-white{
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    color: #444;
+    min-width: 52px;
+    height: 22px;
+    line-height: 22px;
+}
+button.round-m-darkgrey{
+    background-color: #393939;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    min-width: 98px;
+    height: 26px;
+    line-height: 26px;
+}
+button.round-m-white{
+    background-color: #ffffff;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.36);
+    border: none;
+    border-radius: 10px;
+    color: #000;
+    min-width: 98px;
+    height: 26px;
+    line-height: 26px;
+}
+button.round-m-white-red{
+    border-radius: 10px;
+    background-color: #ffffff;
+    border: none;
+    color: #820000;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.50);
+    font-weight: 600;
+    min-width: 120px;
+    height: 26px;
+    line-height: 26px;
+}
+
+button.round-m-white-border{
+    background-color: #ffffff;
+    border: solid 1px #bebebe;
+    border-radius: 10px;
+    color: #535353;
+    min-width: 120px;
+    height: 26px;
+    line-height: 26px;
+}
+button.s-darkblue {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#365f80), to(#2a516c));
+    background-image: linear-gradient(to bottom, #365f80, #2a516c);
+    border: none;
+    color: #ffffff;
+    min-width: 80px;
+    height: 24px;
+    line-height: 24px;
+}
+button.xs-darkblue {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#365f80), to(#2a516c));
+    background-image: linear-gradient(to bottom, #365f80, #2a516c);
+    border: none;
+    color: #ffffff;
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+button.s-lightgrey{
+    background-color: #dddddd;
+    border: none;
+    color: #ffffff;
+    min-width: 80px;
+    height: 24px;
+    line-height: 24px;
+}
+button.s-lightnavy{
+    background-image: linear-gradient(to bottom, #7c878f, #636d74);
+    border: none;
+    color: #fff;
+    min-width: 86px;
+    height: 24px;
+    line-height: 24px;
+}
+button.s-grey{
+    background-image: linear-gradient(to bottom, #b1b1b1, #a0a0a0);
+    border: none;
+    color: #fff;
+    min-width: 65px;
+    height: 24px;
+    line-height: 24px;
+}
+button.m-darkblue{
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#365f80), to(#2a516c));
+    background-image: linear-gradient(to bottom, #365f80, #2a516c);
+    border: none;
+    color: #fff;
+    min-width: 125px;
+    line-height: 18px;
+}
+button.m-black{
+    background-image: linear-gradient(to bottom, #393939, #000000);
+    border: none;
+    color: #fff;
+    min-width: 125px;
+    height: 34px;
+    line-height: 34px;
+}
+button.sh-grey{
+    background-image: linear-gradient(to bottom, #b1b1b1, #a0a0a0);
+    border: none;
+    color: #fff;
+    min-width: 70px;
+    height: 34px;
+    line-height: 34px;
+}
+button.square-ss-white{
+    background-color: #ffffff;
+    border: solid 1px #979797;
+    border-radius: 2px;
+    color: #000000;
+    min-width: 44px;
+    height: 16px;
+    font-size: 10px;
+    padding: 0;
+    line-height: 10px;
+    margin-bottom: 5px;
+}
+button.square-ss-grey{
+    background-color: #dddddd;
+    border: solid 1px #979797;
+    border-radius: 2px;
+    color: #000000;
+    min-width: 44px;
+    height: 16px;
+    font-size: 10px;
+    padding: 0;
+    line-height: 10px;
+}
+button.s-white {
+    background-color: #fff;
+    border: 1px solid #979797;
+    color: #000;
+    min-width: 46px;
+    height: 24px;
+    line-height: 22px;
+}
+button.s-darkgrey{
+    background-color: #393939;
+    border: none;
+    color: #fff;
+    min-width: 46px;
+    height: 24px;
+    line-height: 24px;
+}
+button.s-whitegray{
+    min-width: 40px;
+    height: 20px;
+    line-height: 20px;
+    border: none;
+    color: rgb(255,255,255);
+    background-color: #939393;
+}
+button.s-red {
+    background-color: #762a2a;
+    border: none;
+    color: #fff;
+    min-width: 46px;
+    height: 24px;
+    line-height: 24px;
+}
+button.white-s-btn {
+    width: 135px;
+    height: 35px;
+    line-height: 32px;
+    border: solid 1px rgb(153,153,153);
+    color: rgb(33,33,33);
+    background-color: #ffffff;
+    border-radius: 0;
+}
+button.square-s-red{
+    background-color: #901b1b;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    min-width: 40px;
+    height: 24px;
+    line-height: 24px;
+    margin-bottom: 10px;
+}
+button.square-m-darknavy1{
+    background-image: linear-gradient(to bottom, #3a464d, #1c242b);
+    border: solid 1px #3d3d3d;
+    border-radius: 2px;
+    color: #fff;
+    min-width: 175px;
+    height: 36px;
+    line-height: 36px;
+}
+button.square-m-darknavy2{
+    background-image: linear-gradient(to bottom, #122931, #000000);
+    border: solid 1px #2e2e2e;
+    border-radius: 2px;
+    color: #fff;
+    min-width: 175px;
+    height: 36px;
+    line-height: 36px;
+}
+button.s-greyborder{
+    background-color: #dddddd;
+    border: 1px solid #979797;
+    border-radius: 2px;
+    color: #000;
+    min-width: 29px;
+   height: 25px;
+   line-height: 25px;
+}
+button[disabled]{
+    /* background: #ccc;
+    border: none;
+    color: #fff;
+    box-shadow: none; */
+    border: solid 1px rgb(221,221,221);
+    background-color: rgb(255,255,255);
+    box-shadow: none;
+    color: #888 !important;
+}
+button span img{
+    margin-right: 5px;
+    _vertical-align: text-bottom;
+}
+button.black-border-btn {
+    width: 135px;
+    height: 35px;
+    line-height: 32px;
+    border: solid 1px rgb(33,33,33);
+    color: rgb(33,33,33);
+    background-color: #ffffff;
+    border-radius: 0;
+}
+button.black-back-btn {
+    width: 135px;
+    height: 35px;
+    line-height: 32px;
+    border: solid 1px rgb(33,33,33);
+    color: rgb(255,255,255);
+    background-color: rgb(33,33,33);
+    border-radius: 0;
+}
+
+button.new-all {
+    width: 55px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: unset;
+    background: #fff;
+    border: none;
+    border: 1px solid rgb(221, 221, 221);
+}
+button.new-square-white-border {
+    background-color: #ffffff;
+    border: solid 1px rgb(221, 221, 221);
+    border-radius: unset;
+    min-width: 120px;
+    /* min-width: 120px;
+    height: 90px;
+    line-height: 90px; */
+
+}
+
+/* button.black-border-btn -> back */
+button.square-m-white-btn {
+    min-width: 120px;
+    height: 30px;
+    line-height: 29px;
+    border: solid 1px rgb(33,33,33);
+    color: rgb(33,33,33);
+    background-color: #ffffff;
+    border-radius: 0;
+}
+
+button.square-m-red-btn{
+    min-width: 120px;
+    height: 30px;
+    line-height: 29px;
+    border: solid 1px;
+    color: rgb(255,255,255);
+    background-color: #EA003D;
+    border-radius: 0;
+}
+
+button.square-m-grey-btn {
+    min-width: 120px;
+    height: 30px;
+    line-height: 29px;
+    border: solid 1px;
+    color: rgb(255,255,255);
+    background-color: #8A91A3;
+    border-radius: 0;
+}
+
+/* button.black-back-btn - > border */
+button.square-m-black-btn {
+    min-width: 120px;
+    height: 30px;
+    line-height: 29px;
+    border: solid 1px rgb(33,33,33);
+    color: rgb(255,255,255);
+    background-color: rgb(33,33,33);
+    border-radius: 0;
+}
+
+/* button.black-border-s-btn */
+button.square-s-white-btn {
+    min-width: 80px;
+    height: 35px;
+    line-height: 32px;
+    border: solid 1px rgb(33,33,33);
+    color: rgb(33,33,33);
+    background-color: #ffffff;
+    border-radius: 0;
+}
+
+button.square-s-grey-btn {
+    min-width: 80px;
+    height: 35px;
+    line-height: 32px;
+    border: solid 1px;
+    color: rgb(255,255,255);
+    background-color: #8A91A3;
+    border-radius: 0;
+}
+/* button.black-back-s-btn  */
+button.square-s-black-btn {
+    min-width: 80px;
+    height: 30px;
+    line-height: 30px;
+    border: solid 1px rgb(33,33,33);
+    color: rgb(255,255,255);
+    background-color: rgb(33,33,33);
+    border-radius: 0;
+}
+
+
+
+button.square-s-greyborder-btn {
+    min-width: 70px;
+    height: 30px;
+    line-height: 30px;
+    border: solid 1px rgb(221,221,221);
+    background-color: rgb(255,255,255);
+    color: rgb(33,33,33);
+    border-radius: 0;
+}
+button.square-s-navy-btn {
+    min-width: 70px;
+    height: 30px;
+    line-height: 30px;
+    border: solid 1px rgb(76,79,91);
+    background-color: rgb(76,79,91);
+    color: rgb(255,255,255);
+    border-radius: 0;
+}
+button.square-s-red-btn {
+    min-width: 70px;
+    height: 30px;
+    line-height: 30px;
+    border: solid 1px rgb(234,0,61);
+    background-color: rgb(234,0,61);
+    color: rgb(255,255,255);
+    border-radius: 0;
+}

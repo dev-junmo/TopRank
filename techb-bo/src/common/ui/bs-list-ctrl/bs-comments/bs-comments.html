@@ -1,0 +1,21 @@
+<div class="comments__title">새 댓글</div>
+<div class="comments__add-comment-section">
+    <div class="comments__add-comment-box">
+
+    <textarea [(ngModel)]="comment"></textarea>
+    <!-- <ngc-editor [editMode]="true"
+                [showControls]= "false"></ngc-editor> -->
+    </div>
+    <button (click)="addNewComment()" class="button" >등록</button>
+</div>
+
+<div *ngIf="comments?.length > 0">
+    <div class="comments__title">댓글</div>
+    <ul class="comments__list">
+        <li *ngFor="let item of comments">
+            <bs-comment [comment]="item" [time]="item.insert_date"
+                        [user]="item.creator_name" (commentEdited)="onCommentEdited(item, $event)">
+            </bs-comment>
+        </li>
+    </ul>
+</div>

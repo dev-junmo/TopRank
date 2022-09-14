@@ -1,0 +1,20 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "API",
+			"type": "node",
+			"request": "launch",
+			"runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
+			"args": ["bin/api.ts"],
+			"env": {
+				"NODE_ENV": "local",
+				"CDN_URL": "https://d2fyfcu71lqkyj.cloudfront.net"
+			},
+			"sourceMaps": true,
+			"cwd": "${workspaceRoot}",
+			"protocol": "inspector",
+			"outputCapture": "std"
+		}
+    ]
+}

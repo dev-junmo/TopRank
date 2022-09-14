@@ -1,0 +1,20 @@
+:host-context(sale-list2-page){
+    display: inline-block;
+    width: calc(100% - 225px);
+}
+
+.content-table td{
+    border: 1px solid #dfdfdf;
+}
+
+.content-table tr th{
+    border: 1px solid #dfdfdf;
+}
+
+/* .text-ellipsis{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-height: 20px;
+} */
+

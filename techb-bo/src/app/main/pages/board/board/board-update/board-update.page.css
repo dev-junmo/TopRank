@@ -1,0 +1,28 @@
+
+:host-context(board-update){
+    width: 100%;
+}
+input[type="radio"]:checked + label:after{
+    content: '';
+    position: absolute;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    background: rgb(234,0,61);
+    border-radius: 100%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+input[type="radio"]:checked[disabled] + label:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    background: #999;
+    border-radius: 100%;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}

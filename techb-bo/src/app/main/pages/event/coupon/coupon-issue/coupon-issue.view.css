@@ -1,0 +1,8 @@
+
+
+:host-context(app-provider-delivery-create){
+    width: 100%;
+}
+.content {
+    max-width: calc(100% - 170px) !important ;
+}

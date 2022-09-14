@@ -1,0 +1,322 @@
+/* bootstrap override: */
+/* :host ::ng-deep table{
+    max-width: 1440px;
+} */
+:host ::ng-deep .data-table{
+    box-shadow: none !important;
+    border: 1px solid rgb(221,221,221) !important;
+    table-layout: auto !important;
+}
+:host ::ng-deep .data-table.table > tbody+tbody {
+    border-top: none;
+}
+:host ::ng-deep .data-table.table td {
+    vertical-align: middle;
+    text-align: center;
+}
+:host ::ng-deep .data-table.table td.left {
+    text-align: left;
+}
+
+:host ::ng-deep .data-table > thead > tr > th,
+:host ::ng-deep .data-table > tbody > tr > td {
+    overflow: hidden;
+    border: none;
+}
+:host ::ng-deep .data-table > thead,
+:host ::ng-deep .data-table > tbody {
+    overflow: hidden;
+    /* border: 1px solid rgb(221,221,221) !important; */
+    /*todo : */
+    text-align: left;
+    color: #5a5a5a;
+    border-left: none !important;
+    border-right: none !important;
+}
+
+
+
+.data-table:host ::ng-deep .substitute-rows:host ::ng-deep > tr:host ::ng-deep :hover, :host ::ng-deep .data-table .data-table-row:hover{
+     background-color: transparent !important;
+}
+
+/* I can't use the bootstrap striped table, because of the expandable rows */
+:host ::ng-deep .row-odd {
+    /* background-color: #F6F6F6; */
+}
+:host ::ng-deep .row-even{
+}
+
+:host ::ng-deep .row-sub {
+    background-color: #F6F6F6;
+}
+
+.data-table .substitute-rows > tr:hover,
+:host ::ng-deep .data-table .data-table-row:hover {
+    background-color: #fff;
+}
+
+/* table itself: */
+
+.data-table {
+    box-shadow: 0 0 15px rgb(236, 236, 236);
+    table-layout: fixed;
+}
+
+.table{
+    max-width: none;
+    margin-top: 16px;
+    /* background-color: yellow; */
+}
+
+/* header cells: */
+
+.column-header {
+    position: relative;
+}
+.expand-column-header {
+	width: 50px;
+}
+.select-column-header {
+    width: 50px;
+	text-align: center;
+}
+.index-column-header {
+	width: 40px;
+}
+.column-header.sortable {
+    cursor: pointer;
+}
+
+.column-header .column-sort-icon {
+	/* float: right; */
+}
+
+/* .column-header.resizable::before{
+    content: '';
+    border-right: 1px solid rgb(221,221,221) ;
+    position: relative;
+    height: 50%;
+    left: 61%;
+} */
+.column-header.resizable .column-sort-icon {
+    margin-right: 8px;
+}
+.column-header .column-sort-icon .column-sortable-icon {
+    color: #000;
+}
+.column-header .column-resize-handle.thresizebar {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    height: 50%;
+    border-right: 2px solid rgb(221,221,221) ;
+    cursor: col-resize;
+}
+
+/* cover: */
+
+.data-table-box {
+    position: relative;
+    font-size: 13px;
+    /* min-width: 1280px; */
+
+}
+/* .modal-body .data-table-box {
+    min-width: 100%;
+} */
+
+.has-scrollbar-x {
+    overflow-x: scroll;
+}
+.has-scrollbar-y {
+    overflow-x: scroll;
+    max-height: 413px;
+    overflow-y: scroll;
+}
+
+.loading-cover {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(255, 255, 255, 0.3);
+   top: 0;
+}
+.table>thead:first-child>tr:last-child>th{
+    border-left: none;
+    height: 56px;
+    /* background-color: red; */
+    /* border-top: 1px solid #979797; */
+}
+.table>thead:first-child>tr:first-child>th:last-child{
+    border-right: none;
+}
+.table-bordered td, .table-bordered th{
+    background: rgb(244,244,244);
+    /* border: 1px solid #979797; */
+    text-align: center;
+    height: 35px;
+    /* line-height: 36px; */
+     /* hyeon 글자 간 여백 제거 */
+    /* padding: 3px; */
+    color: rgb(33,33,33);
+    font-weight: 500;
+    font-size: 16px;
+    /* border-left: none;
+    border-right: none; */
+}
+.table-bordered th {
+    height: 35px;
+    /* line-height: 40px; */
+    /* hyeon 글자 간 여백 제거 */
+}
+.data-table.table td input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    border: none;
+    background: #fff;
+}
+.table-bordered .has-sub-title, .table-bordered .sub-title {
+    line-height: 16px;
+}
+
+.table>thead:first-child>tr:last-child>th input{
+    vertical-align: text-bottom;
+}
+.checkbox{
+    -webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 9px;
+	border-radius: 3px;
+	display: inline-block;
+	position: relative;
+}
+
+
+
+:host ::ng-deep .data-table-row {
+    cursor: default;
+    /* -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; */
+    background: #fff;
+    overflow: hidden;
+    border: 1px solid #ddd!important;
+    text-align: left;
+    color: #5a5a5a;
+    border-left: none!important;
+    border-right: none!important;
+}
+
+:host ::ng-deep .glyphicon-sort:before {
+    font-size: 9px;
+}
+/* 
+:host ::ng-deep .glyphicon-sort:before, :host ::ng-deep .glyphicon-triangle-top:before, :host ::ng-deep .glyphicon-triangle-bottom:before
+.glyphicon-sort:before, .glyphicon-triangle-top:before, .glyphicon-triangle-bottom:before{
+    font-size: 9px;
+    margin-right: 5px;
+    content: "\25BC";
+    vertical-align: top;
+} */
+
+
+
+.checks {position: relative;} .checks input[type="checkbox"] {
+    position: absolute;
+    width: 1px;
+    height:1px; padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip:rect(0,0,0,0);
+    border: 0;
+}
+.checks input[type="checkbox"] + label {
+    display: inline-block;
+        position: relative;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+}
+.checks input[type="checkbox"] + label:before {
+        /* // 가짜 체크박스 */
+        content: ' ';
+        display: inline-block;
+        width: 24px; /* 체크박스의 너비를 지정 */
+        height: 24px; /* 체크박스의 높이를 지정 */
+        line-height: 15px; /* 세로정렬을 위해 높이값과 일치 */
+        margin: -0 8px 0 35px;
+        text-align: center;
+        /* vertical-align: middle; */
+        background: #fafafa;
+        border: 1px solid #cacece;
+        border-radius : 3px;
+        box-shadow: 0px 1px 2px rgba(0,0,0,0.05),
+        inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+}
+.checks input[type="checkbox"] + label:active:before, .checks input[type="checkbox"]:checked + label:active:before {
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+.checks input[type="checkbox"]:checked + label:before {
+    /*체크박스를 체크했을때  */
+    /* content: '\2714'; */
+    background: url(/assets/img/bo_checkbox_checked.png) no-repeat;
+    background-position: 50% 50%;
+    border-radius: 3px;
+    color: #99a1a7;
+    background-color: #fff;
+    text-shadow: 1px 1px #fff;
+    /* background: #e9ecee;  */
+    border-color: #adb8c0;
+    box-shadow: 0px 1px 2px rgbargba(85, 32, 32, 0.05)set 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+}
+.checks input[type="checkbox"]:checked:disabled + label:before {
+    opacity: 0.5;
+}
+.checks input[type="checkbox"]:disabled + label:before {
+
+}
+
+/* :host ::ng-deep .row .selected {
+    background-color: rgb(128, 123, 123);
+} */
+
+:host ::ng-deep .tbdisplay {
+    /* max-height: 413px;
+    overflow-y: auto !important; */
+    display: block;
+}
+
+:host ::ng-deep .thdisplay{
+    display: block;
+    border: 1px solid rgb(221,221,221) !important; 
+}
+:host ::ng-deep .headerfixed{
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    display: block;
+}
+/* :host ::ng-deep tbody{
+    height: 100px;
+    overflow-y: auto !important;
+    display: block;
+} */
+
+.table-margin{
+    margin-bottom: 0;
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+} 

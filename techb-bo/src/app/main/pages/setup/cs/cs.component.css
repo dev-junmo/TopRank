@@ -1,0 +1,183 @@
+.title-bar{
+    width: 100%;
+    height: 23px;
+    background: url('/assets/img/title-bar-back.svg') 50%;
+    line-height: 23px;
+    margin: 15px 0;
+    position: relative;
+}
+.title-bar .title{
+    height: 50px;
+    margin-left: 25px;
+    background-color: #fff;
+    font-size: 34px;
+    width: fit-content;
+    position: absolute;
+    top: -5px;
+    padding-right: 5px;
+}
+.title-bar .title img{    
+    margin: 10px 10px 18px;
+}
+.section{
+    padding: 36px 0 20px;
+}
+.section .content-wrap{
+    padding-bottom: 50px;
+    padding-left: 35px;
+}
+.section .content-wrap.two-line-content .content-box{
+    width: 49.5%;
+    display: inline-block;
+}
+.section .content-wrap .sub-title-bar{
+    font-size: 22px;
+    padding-bottom: 25px;
+}
+.section .content-wrap .sub-title-bar img{
+    padding: 0 0 5px 0px;
+}
+.section .content-wrap .sub-title-bar .pop-over-wrap .pop-over{
+    padding: 0 0 5px 5px;
+}
+.section .content-wrap .pop-over-wrap{
+    display: inline-block;
+    position: absolute;
+}
+.section .content-wrap .pop-over-wrap .pop-over-box{
+    background: #3f3f3f;
+    color: #fff;
+    font-size: 11px;
+    border-radius: 4px;
+    position: relative;
+    padding: 6px 13px;
+    top: -40px;
+    left: 35px;
+    line-height: 18px;
+}
+.section .content-wrap .pop-over-wrap .pop-over-box img{
+    position: absolute;
+    top: 15px;
+    left: -5px;
+}
+.section .content-wrap .content-box .content{
+    padding: 5px 0;
+}
+.section .content-wrap .content-box .content.warn-box{
+    color: #ff0000;
+    font-size: 13px;
+    padding: 0 0 12px 170px;
+}
+.section .content-wrap .content-box .content img{
+    padding-right: 7px;
+}
+.section .content-wrap .content-box .content span{
+    min-width: 150px;
+    padding-right: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    display: inline-block;
+}
+.section .content-wrap .content-box .content .board-type{
+    display: inline-block;
+    padding-right: 50px;
+}
+.section .content-wrap .content-box .content .board-type img{
+    display: block;
+}
+/* table */
+.content-table{
+    margin-left: -35px;
+    padding: 5px 0;
+}
+.content-table table{
+    width: 100%;
+    border-bottom: 2px solid #979797;
+    color: #000;
+}
+.content-table tr th{
+    background: #f0f0f0;
+}
+.content-table th, .content-table td{
+    font-size: 13px;
+    text-align: center;
+    border: 1px solid #979797;
+    border-collapse: collapse;
+}
+.content-table th{
+    padding: 9px 0;
+    font-weight: normal;
+}
+.content-table td{
+    padding: 17px 0;
+}
+.content-table th:first-child, .content-table td:first-child{
+    border-left: none;
+    font-weight: bold;
+}
+.content-table th:last-child, .content-table td:last-child{
+    border-right: none;
+}
+.content-table .align-left{
+    text-align: left;
+    padding-left: 40px;
+}
+label{
+    font-weight: normal;
+    font-size: 13px;
+}
+.content-table .table-check-label{
+    margin-right: 15px;
+}
+.content-table .content-table-caption{
+    font-size: 13px;
+    color: #595959;
+    line-height: 40px;
+    padding-top: 15px;
+}
+.section .content-wrap .content-box .content-table .content-table-caption span{
+    width: auto;
+    padding-left: 30px;
+    font-size: 13px;
+    color: #595959;
+    line-height: 40px;
+}
+.content-table .inner-two-line-table{
+    font-size: 0;
+    border-right: double;
+}
+.inner-two-line-content{
+    width: 50%;
+    display: inline-block;
+    font-size: 13px;
+}
+.table-radio input[type="radio"] + label:before{
+    left: 15px;
+    top: -7px;
+}
+.table-radio input[type="radio"]:checked + label:after{
+    top: -2px;
+    left: 20px;
+}
+.content-inline{
+    display: inline-block;
+}
+.section .content-wrap .content-box .content .textarea-wrap{
+    background-color: #f0f0f0;
+    margin-left: -35px;
+}
+.section .content-wrap .content-box .content textarea{
+    width: -webkit-fill-available;
+    height: 250px;
+    margin: 0px 5px;
+    /* border: 1px solid #979797; */
+}
+.section .content-wrap .content-box .content .input-detail{
+    color: #595959;
+    font-weight: normal;
+    width: auto;
+    padding-left: 10px;
+}
+.btn-sec{
+    text-align: center;
+}

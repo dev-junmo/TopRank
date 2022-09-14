@@ -1,0 +1,467 @@
+.box {
+    padding: 48px 40px 65px;
+}
+
+/* 테이블 스타일 */
+.point-table {
+    margin-top: 24px;
+}
+.point-table table {
+    border-collapse: collapse;
+}
+.point-table .table-td {
+    position: relative;
+    height: 82px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #3e4259;
+    text-align: center;
+    line-height: 82px;
+    vertical-align: middle;
+    /* border-bottom: 1px solid #dcdee8; */
+    background: #f7f8ff;
+}
+
+.point-table .table-td .keyword-product {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    line-height: normal;
+    padding-left: 24px;
+    margin-left: 24px;
+}
+
+.table-td.keyword-contents {
+    display: flex;
+}
+
+.point-table .table-td .keyword-product.keyword-buy {
+    padding-left: 0;
+}
+.point-table .table-td .keyword-product .keyword-description {
+    margin-left: 16px;
+}
+.point-table .table-td .keyword-product .keyword-description p {
+    width: 514px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 4px;
+}
+.point-table .table-td .keyword-product .keyword-description p .keyword {
+    font-weight: 500;
+    margin-right: 6px;
+}
+.point-table .table-td .down {
+    font-size: 16px;
+    font-weight: 500;
+    color: #2fbaed;
+}
+.point-table .table-td .up {
+    font-size: 16px;
+    font-weight: 500;
+    color: #fc6075;
+}
+
+.point-table .table-td .period-description {
+    display: none;
+    position: absolute;
+    left: -13px;
+    top: 68px;
+    width: 118px;
+    height: 50px;
+    text-align: center;
+    background: #3e4259bb;
+    padding: 15px 14px;
+    border-radius: 16px;
+    z-index: 10;
+}
+.point-table .table-td .period-description span {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    word-break: keep-all;
+    color: #fff;
+    line-height: normal;
+}
+.point-table .table-td .period-description::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 51px;
+    top: -10px;
+    width: 0;
+    height: 0;
+    border-bottom: 10px solid #3e4259bb;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+}
+.point-table .table-td .period:hover + .period-description {
+    display: block;
+}
+.point-table  .table-td .buy-reward {
+    text-align: left;
+    margin-left: 32px;
+}
+.point-table  .table-td .buy-reward .reward {
+    font-weight: 500;
+}
+
+
+/* 포인트 내역 비어있을 때 */
+.point-table .point-history-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 328px;
+    background: #f7f8ff;
+    border-bottom: 1px solid #dcdee8;
+}
+.point-table .point-history-empty p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #b8b6c4;
+    margin-top: 10px;
+}
+
+/* ===================================================================== */
+/* ===================================================================== */
+/* Mobile css */
+
+.mobile .point-dashboard-wrap {
+    padding: 0 1.6rem;
+}
+.mobile .point-dashboard {
+    padding: 2.4rem 2.4rem 1.1rem;
+    margin-top: 2.4rem;
+}
+
+/* 포인트 내역 스타일 */
+.mobile .point-history-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.6rem;
+}
+.mobile .point-history-option .selectbox {
+    position: relative;
+    /* margin-top: 1.0rem; */
+}
+.mobile .point-history-option .selectbox .label {
+    width: 12.0rem;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #3e4259;
+    text-align: left;
+    line-height: 4.0rem;
+    background: #fff url('assets/images/svg/ic_unfold_black_24.svg') 92.4% center no-repeat;
+    border: 1px solid #dcdee8;
+    outline: 0;
+    border-radius: 8px;
+    padding: 0 1.2rem;
+    box-sizing: border-box;
+}
+.mobile .point-history-option .selectbox.active .label {
+    background: #fff url('assets/images/svg/ic_fold_black_24.svg') 92.4% center no-repeat;
+}
+.mobile .point-history-option .selectbox .label span {
+    color: #b8b6c4;
+}
+.mobile .point-history-option .filter-btn {
+    width: 4.0rem;
+    height: 4.0rem;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    padding: 0;
+}
+.mobile .point-history-option .filter-btn img {
+    vertical-align: middle;
+}
+
+/* 포인트 내역 없을 때 스타일 */
+.point-history-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 23.6rem;
+    background: #f2f2fc;
+    border-radius: 16px;
+    margin-top: 2.4rem;
+}
+.point-history-empty p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #b8b6c4;
+    margin-top: 0.8rem;
+}
+
+/* 포인트 내역 있을 때 */
+.mobile .point-history-card {
+    width: 100%;
+    /* height: 14.4rem; */
+    background: #fafbff;
+    padding: 1.3rem 1.6rem 2.0rem;
+    border-radius: 16px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.mobile .point-history-card:first-child {
+    margin-top: 2.4rem;
+}
+.mobile .point-history-card:not(:first-child) {
+    margin-top: 0.8rem;
+}
+.mobile .point-history-card .point-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.0rem;
+    border-bottom: 1px solid #dcdee8;
+    margin-bottom: 1.6rem;
+}
+.mobile .point-history-card .point-card-header span {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.mobile .point-history-card .point-card-header .card-date {
+    color: #3e4259;
+}
+.mobile .point-history-card .point-card-header .point-type {
+    color: #04021f;
+}
+.mobile .point-card-contents .point-card-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+}
+.mobile .point-card-contents .keyword-purchase {
+    display: flex;
+    justify-content: space-between;
+}
+.mobile .point-card-contents .keyword-purchase .keyword-product-wrap {
+    display: flex;
+}
+.mobile .point-card-contents .keyword-purchase .keyword-product-wrap > span {
+    margin-right: 1.2rem;
+}
+.mobile .point-card-contents .keyword-purchase .keyword-product-wrap .keyword-product {
+    font-size: 1.4rem;
+    font-weight: normal;
+}
+.mobile .point-card-contents .keyword-purchase .keyword-product-wrap .keyword-product span {
+    color: #3e4259;
+}
+.mobile .point-card-contents .keyword-purchase .keyword-product-wrap .keyword-product p {
+    width: 16.3rem;
+    color: #b8b6c4;
+    font-weight: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 0.6rem;
+}
+.mobile .point-card-contents .point-card-con-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.mobile .point-card-contents .point-card-con-list.rewards {
+    align-items: flex-start;
+}
+.mobile .point-card-contents .point-card-con-list p {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #3e4259;
+}
+.mobile .point-card-contents .keyword-purchase img {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+.mobile .point-card-contents .point-card-con-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.8rem;
+}
+.mobile .point-card-contents .point-card-con-list > span {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+}
+.mobile .point-card-contents .point-card-con-list strong {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #2fbaed;
+}
+.mobile .point-card-contents .point-card-con-list strong.point-reduction {
+    color: #2fbaed;
+}
+.mobile .point-card-contents .point-card-con-list strong.point-increase {
+    color: #fc6075;
+}
+.mobile .point-card-contents .point-card-con-list .expiration-date {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #b8b6c4;
+}
+.mobile .point-card-con-list .rewards-purchase {
+    text-align: right;
+}
+.mobile .point-card-con-list .rewards-purchase .user-id-info {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #b8b6c4;
+    margin-bottom: 0.8rem;
+}
+.mobile .point-history-contents .point-more-btn {
+    width: 100%;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #04021f;
+    line-height: 4.0rem;
+    background: #fafbff;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px 0 rgba(36, 51, 179, 0.1);
+    margin-top: 3.2rem;
+}
+
+
+/* ------------------------------------------------------------------------- */
+h3 {
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+/* 필터 팝업 */
+.filter-popup .m-popup-box .popup-header {
+    color: #3f37c9;
+    border-bottom: 1px solid #dcdee8;
+}
+.filter-popup .m-popup-box .filter-calendar-wrap {
+    padding: 2.4rem 1.6rem;
+    border-bottom: 1px solid #dcdee8;
+}
+.filter-popup .m-popup-box .filter-calendar-wrap h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #3e4259;
+    margin-bottom: 1.6rem;
+}
+.filter-calendar-wrap .date-tab {
+    display: flex;
+    align-items: center;
+    /* border: 1px solid #dcdee8; */
+    margin-bottom: 1.6rem;
+    border-radius: 8px;
+}
+.filter-calendar-wrap .date-tab li {
+    width: 8.3rem;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #b8b6c4;
+    text-align: center;
+    line-height: 4.0rem;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    /* border-right: 1px solid #dcdee8; */
+}
+.filter-calendar-wrap .date-tab li:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.filter-calendar-wrap .date-tab li:last-child {
+    /* border-right: 0; */
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.filter-calendar-wrap .date-tab li.active {
+    color: #fff;
+    border: 1px solid #5049ce;
+    background: #5049ce;
+}
+.filter-calendar-wrap .date-tab li:not(:first-child) {
+    border-left: 0;
+}
+
+.filter-calendar-wrap .filter-calendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter-calendar-wrap .filter-calendar label {
+    display: none;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"] {
+    position: relative;
+    width: 15.3rem;
+    height: 4.0rem;
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    background: #fff;
+    padding: 0.8rem 0;
+    box-sizing: border-box;
+    padding-left: 4.4rem;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"]::-webkit-calendar-picker-indicator { 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: url('assets/images/svg/ic_calendar_black_32.svg') 0.8rem 0.7rem no-repeat;
+    background-size: 2.4rem;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"]::after {
+    content: attr(value);
+    position: absolute;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #3e4259;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"]::before {
+    content: attr(data-placeholder);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #b8b6c4;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"]:focus::before {
+    content: "";
+}
+.filter-calendar-wrap .filter-calendar span {
+    display: inline-block;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.44;
+    margin: 7px 16px;
+    vertical-align: top;
+}
+.filter-btn-wrap {
+    display: flex;
+    border-top: 1px solid #dcdee8;
+    margin-top: 2.0rem;
+}
+.filter-btn-wrap button {
+    height: 4.8rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: none;
+}
+.filter-btn-wrap .filter-reset-btn {
+    width: 10.5rem;
+    color: #b8b6c4;
+    border-right: 1px solid #dcdee8;
+}
+.filter-btn-wrap .filter-application-btn {
+    width: 25.4rem;
+    color: #3f37c9;
+}

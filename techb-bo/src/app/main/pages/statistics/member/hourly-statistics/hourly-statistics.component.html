@@ -1,0 +1,59 @@
+<bo-page-header [title]="'고객통계-시간별'">
+  <bo-page-button-config id = "id-statics-excel-download"
+    [title] = "'엑셀 다운로드'"
+    [styleType] = "'square-m-white-btn'"
+    [imgUrl]="'assets/img/excel-icon.svg'"
+    (click) = "onClickDownloadExcel(query)">
+  </bo-page-button-config>
+</bo-page-header>
+<div class="list-section section">
+  <div class="outlet-section">
+    <!-- 쿼리 -->
+    <visit-statistics-query-form 
+      [initialQuery]="true" [setQuery]="query" 
+      [hasDataType]="false" [hasPeriodType]="false" 
+      [dateType]="'dayofweek'"
+      (query)="reloadWithQuery($event)">
+    </visit-statistics-query-form>
+    <bo-page-padding></bo-page-padding>
+    <div class="list-wrap">
+      <!-- graph -->
+      <div class="graph">
+        <div class="graph-title">시간별 통계</div>
+        <div class="graph-content">
+          <div class="inline-chart-wrap">
+            <bs-chart #chart [datasets]="data.dataset" [labels]="data.labels" [chartType]="chartType" 
+              [width]="width" [height]="height">
+            </bs-chart>
+          </div>
+        </div>
+      </div>
+
+      <bo-page-padding></bo-page-padding>
+      <bo-page-padding></bo-page-padding>
+
+      <div class="graph-table">
+        <table class="statistics-table">
+          <colgroup>
+            <col width="10%">
+            <col *ngFor="let item of data.dataset" width="10%">
+          </colgroup>
+          <tr>
+            <th>기간</th>
+            <th *ngFor="let item of data.dataset">{{item.label}}</th>
+          </tr>
+          <!-- total -->
+          <tr *ngIf="data.total">
+            <td style="color:orange">{{data.total.label}}</td>
+            <td *ngFor="let data of data.total.data">{{data | number}}</td>
+          </tr>
+          <tr *ngFor="let label of data.labels;let row=index">
+            <td>{{label}}</td>
+            <td *ngFor="let colume of data.dataset">{{colume.data[row] | number}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <bo-page-padding></bo-page-padding>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+
+.list-header{
+    font-size: 0;
+    text-align: center;
+    background: #f0f0f0;
+}
+.list-header > div{
+    font-size: 15px;
+    display: inline-block;
+    border: 1px solid #979797;
+    border-right: none;
+    border-collapse: separate;
+    padding: 3px 0;
+    width: 6.5%;
+    height: 35px;
+    line-height: 28px;
+    vertical-align: text-bottom;
+}
+.list-header > div.wide-header{
+    width: 31%;
+}
+.list-header > div.medium-header{
+    width: 15%;
+}
+.list-header select{
+    background-color: #ffffff;
+    border: solid 1px #929292;
+    width: 90%;
+    height: 90%;
+    outline: none;
+}

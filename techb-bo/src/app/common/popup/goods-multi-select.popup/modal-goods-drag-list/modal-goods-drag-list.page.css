@@ -1,0 +1,13 @@
+
+:host-context(goods-list-page){
+    width: 100%;
+}
+.margin-class bo-page-button button{
+    margin-bottom: 10px;
+}
+.fc-skyblue{
+    color:#12a7df;
+}
+.fc-red{
+    color:#ff0000;
+}

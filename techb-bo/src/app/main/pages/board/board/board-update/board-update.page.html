@@ -1,0 +1,419 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="pageTitle">
+    <bo-page-button-config
+        [hidden]="!boardConfig?.ui.userBoardItem"
+        [title] = "'화면보기'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "onClickGoToFrontBoardView()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="!isUpdateMode" id = "id-board-create-btn-"
+    [title] = "'저장하기'"
+    [styleType] = "'square-m-white-btn'"
+    (click) = "onSubmit()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+    [title] = "'저장 후 리스트'"
+    [styleType] = "'square-m-white-btn'"
+    (click) = "submitAndBack()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+        [title] = "'저장 후 화면유지'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config>
+</bo-page-header>
+<form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+<div class="section">
+    <div class="content-wrap">
+        <bs-title-label-ctrl
+            [title]="'게시글 정보'"
+            [description]="">
+        </bs-title-label-ctrl>
+        <div class="content-block">
+
+            <div *ngIf="isUpdateMode" class="content-box">
+                <div class="content-title">
+                    작성자
+                </div>
+                <div class="content content-top-line">
+                {{_data?.name}}
+                </div>
+            </div>
+
+            <div *ngIf="isUpdateMode" class="content-box">
+                <div class="content-title">
+                    등록일시
+                </div>
+                <div class="content content-top-line">
+                    <div>{{_data?.regist_date | date: 'yyyy-MM-dd'}}</div>
+                </div>
+            </div>
+
+            <div class="content-box" *ngIf = "boardConfig?.use.category">
+                <div class="content-item" style="width: 310px; display: inline-block">
+                    <div class="content-title">분류</div>
+                    <div class="content">
+                        <bs-select *ngIf="!isRecontentsMode" [name]="'category'"
+                            [formGroup]="bsForm"
+                            [data]="boardData?.category"
+                            [optionRoot]="'category'">
+                        </bs-select>
+                        <span *ngIf="isRecontentsMode">
+                            {{_data?.category? _data?.category : '분류 없음'}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-box" *ngIf="boardConfig?.use.hidden">
+                <div class="content-item" style="display: inline-block; width: 395px;">
+                    <div class="content-title">노출 여부</div>
+                    <div class="content">
+                        <div class="content-inline">
+                            <input type="radio" id="hidden1" [value]="0" name="hidden" formControlName="hidden" />
+                            <label for="hidden1" class="check-label">노출</label>
+                        </div>
+                        <div class="content-inline">
+                            <input type="radio" id="hidden2" [value]="1" name="hidden" formControlName="hidden" />
+                            <label for="hidden2" class="check-label">미노출</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-box" *ngIf="boardConfig?.use.notice && !appConfig.isProvider">
+                <div class="content-title">
+                    필독
+                </div>
+                <div class="content" *ngIf="!isRecontentsMode">
+                    <bs-checkbox [formGroup]="bsForm"
+                        [name]="'onlynotice'"
+                        [label]="'중요'"
+
+                        [value]="1">
+                    </bs-checkbox>
+                    <span style="font-size: 12px; color: #777;">체크시 ‘중요’아이콘 추가되어 리스트 상단에 고정됩니다</span>
+                </div>
+                <div class="content" *ngIf="isRecontentsMode">
+                    <span>{{_data?.onlynotice==1?'중요글입니다.':'일반글입니다.'}} </span>
+                </div>
+            </div>
+
+            <div class="content-box" *ngIf="boardConfig?.use.popup && !appConfig.isProvider">
+                <div class="content-title">
+                    팝업여부
+                </div>
+                <div class="content" *ngIf="!isRecontentsMode" style="padding-top: 5px;">
+                    <div class="check square-checkbox ">
+                        <input type="checkbox"
+                            name="'isOpenPopup'"
+                            id="isOpenPopup"
+                            [(ngModel)]="isOpenPopup"
+                            [ngModelOptions]="{standalone: true}"
+                            (change)="onChangeIsOpenPopup($event.target.value)"/>
+                        <label for="isOpenPopup">팝업</label>
+                        <span style="font-size: 12px; color: #777;">(입점사 관리자페이지: 팝업 띄우기)</span>
+                    </div>
+                    <br/>
+                    <input type="radio" name="popupOpenType" id="popupOpenType_0"
+                        [(ngModel)]="popupOpenType"
+                        [ngModelOptions]="{standalone: true}"
+                        value="always" [attr.disabled]="!isOpenPopup? '' : null"/>
+                    <label for="popupOpenType_0" class="table-check-label passive">팝업 띄우기
+                    </label><br/>
+
+                    <input type="radio" name="popupOpenType" id="popupOpenType_1"
+                        [(ngModel)]="popupOpenType"
+                        [ngModelOptions]="{standalone: true}"
+                        value="date" [attr.disabled]="!isOpenPopup? '' : null"/>
+                    <label for="popupOpenType_1" class="table-check-label passive">특정기간동안만 팝업 띄우기</label>
+                    <bo-date-time-input
+                        [formGroup]="bsForm"
+                        [name] = "'onlypopup_sdate'"
+                        [isTime] = "true"
+                        [disabled]="!isOpenPopup">
+                    </bo-date-time-input>
+                    ~
+                    <bo-date-time-input
+                        [formGroup]="bsForm"
+                        [name] = "'onlypopup_edate'"
+                        [isTime] = "true"
+                        [disabled]="!isOpenPopup">
+                    </bo-date-time-input>
+                </div>
+            </div>
+
+            <div class="content-box" *ngIf="boardConfig?.use.secret && !isRecontentsMode">
+                <div class="content-title">
+                    비밀글
+                </div>
+                <div class="content">
+                    <bs-checkbox [formGroup]="bsForm"
+                        [name]="'secret'"
+                        [label]="'비밀글'"
+
+                        [value]="'1'">
+                    </bs-checkbox>
+                </div>
+            </div>
+
+            <div class="content-box" *ngIf="isUpdateMode">
+                <div class="content-title">
+                    답변상태
+                </div>
+                <div class="content content-top-line">
+                    <div *ngIf="_data?.re_date">답변</div>
+                    <div *ngIf="!_data?.re_date">미답변</div>
+
+                </div>
+            </div>
+
+            <div class="content-box" *ngIf="boardConfig?.use.goods">
+                <div class="content-title">
+                    상품정보
+                </div>
+                <div class="content content-top-line">
+                    <div class="product">
+                        <a target="_blank" href="{{clientURL+'/goods/view/' + _data?.goods?.goods_seq}}">
+                            <img style="display: inline-block;" class="thumb-image-box" [src]="_data?.goods?.image"/>
+                        </a>
+                        <div class="item-info" style="display: inline-block;">
+                        <div>{{_data?.goods?.goods_name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <div class="content-box">
+                <div class="content-title">
+                    상품
+                </div>
+                <div class="content content-top-line">
+                    <a href="{{clientURL+'/goods/view/'+ _data?.goods_seq}}">
+                        <div class="content-top-line">
+                            <img *ngIf="_data?.image" class="thumb-image-box" [src]="_data?.image"/>
+                            <div class="item-horizontal">{{_data?.goods_name}}</div>
+                        </div>
+                    </a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- 글 내용 -->
+    <div class="content-wrap">
+        <bs-title-label-ctrl
+            [title]="boardConfig?.use.recontents?'문의 내용':'게시글 내용'"
+            [description]="''">
+        </bs-title-label-ctrl>
+        <div class="content-block">
+
+            <!-- 제목 -->
+            <div class="content-box" *ngIf="!isRecontentsMode && (boardId !== 'goods_qna' && boardId !== 'mbqna')">
+                <div class="content-title">
+                    제목<img class="required-img" src="assets/img/must_txt.png"/>
+                </div>
+                <div class="content">
+                    <bs-input [name]="'subject'" [formGroup]="bsForm" [placeholder]="''"
+                        [required]="true"
+                        [style]="'big-input'">
+                    </bs-input>
+                </div>
+            </div>
+            <div class="content-box" *ngIf="isRecontentsMode && (boardId == 'goods_qna' || boardId == 'mbqna' || boardId == 'gs_seller_qna')">
+                <div class="content-title">
+                    제목
+                </div>
+                <div class="content">
+                    {{_data?.subject}}
+                </div>
+            </div>
+
+            <!-- 내용 -->
+            <div class="content-box" *ngIf="boardId == 'goods_qna' || boardId == 'mbqna' || boardId == 'gs_seller_qna'">
+                <div class="content-title">
+                    내용
+                </div>
+                <div *ngIf="!isRecontentsMode && !isUpdateMode" class="content">
+                    <bo-editor
+                        [name]="'contents'"
+                        [formGroup]="bsForm"
+                        [width]="'100%'"
+                        [height]="700"
+                        [disabled]="isRecontentsMode">
+                    </bo-editor>
+                </div>
+                <!-- <div *ngIf="!isRecontentsMode && isUpdateMode" class="content">
+                    <textarea class="re-textarea-box" formControlName="contents" disabled></textarea>
+                </div> -->
+
+                <!-- 답변 등록 -->
+                <div *ngIf="isRecontentsMode || isUpdateMode" class="content" [innerHTML]="_data?.contents">
+
+                </div>
+            </div>
+
+            <div class="content-box" *ngIf="boardId != 'goods_qna' && boardId != 'mbqna' && boardId != 'gs_seller_qna'">
+                <div class="content-title">
+                    내용
+                </div>
+                <div *ngIf="!isRecontentsMode" class="content">
+                    <bo-editor
+                        [name]="'contents'"
+                        [formGroup]="bsForm"
+                        [width]="'100%'"
+                        [height]="700"
+                        [disabled]="isRecontentsMode">
+                    </bo-editor>
+                </div>
+
+                <div *ngIf="isRecontentsMode" class="content" [innerHTML]="_data?.contents">
+
+                </div>
+            </div>
+
+            <!-- 파일 첨부 -->
+            <div class="content-box" *ngIf="boardConfig?.use.file">
+                <div class="content-title">
+                    파일첨부
+                </div >
+                <div class="content">
+                    <div *ngIf="!isRecontentsMode" formArrayName="upload2">
+                        <div *ngFor="let item of this.bsForm.get('upload2').controls;let i = index" [formGroupName]='i'>
+                            <bo-file-input
+                                [formGroup]="getUploadFileFormGroup('upload2', i)"
+                                [name] = "'file'"
+                                [fileName]="item.value.fileName"
+                                [uploadUrl]="'media/file'"
+                                [folderName]="boardId"
+                                (onFileUploaded)="onFileUploaded($event, item)"
+                               >
+                            </bo-file-input>
+                        </div>
+                    </div>
+                    <!-- readonly -->
+                    <div *ngIf="isRecontentsMode">
+                        <div *ngFor="let item of _data?.file_name; let idx=index;" style="padding-bottom: 3px;">
+                            <span *ngIf="_data?.file_name && _data?.file_name.length>0 && item">{{item}}</span>
+                            <bo-page-button *ngIf="_data?.file_name && _data?.file_name.length>0 && item"
+                                [type]="'s-darkgrey'" [title]="'다운로드'" (click) = "onFileDownload(_data?.upload[idx])" style="margin-left: 10px;"></bo-page-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 답변 -->
+    <div class="content-wrap" *ngIf="isRecontentsMode">
+        <bs-title-label-ctrl
+            [title]="'답변'"
+            [description]="''">
+        </bs-title-label-ctrl>
+        <div class="content-block">
+            <div class="content-box">
+                <div class="content-title">
+                    답변 작성자
+                </div>
+                <div class="content content-top-line">
+                    {{_data?.re_name}}
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="content-title">
+                    답변 제목
+                </div>
+                <div class="content">
+                    <bs-input [name]="'re_subject'" [formGroup]="bsForm" [placeholder]="'답변제목을 입력하세요.'"
+                        [style]="'big-input'" [required]="true"></bs-input>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="content-title">
+                    답변 내용
+                </div>
+                <div class="content">
+                    <bo-editor
+                        [name]="'re_contents'"
+                        [formGroup]="bsForm"
+                        [width]="'100%'"
+                        [height]="700">
+                    </bo-editor>
+                </div>
+            </div>
+
+            <div class="content-sec-sub-header" *ngIf="_boardItem?.upload && _boardItem?.upload.length > 0">
+                <div class="item-horizontal"><span class="text-light-grey" style="vertical-align: top;">파일명 :</span>
+                    <div style="display: inline-block;">
+                        <div *ngFor="let item of _boardItem?.file_name; let idx=index;" style="padding-bottom: 3px;">
+                            <span *ngIf="_boardItem?.file_name && _boardItem?.file_name.length>0 && item">{{item}}</span>
+                            <bo-page-button *ngIf="_boardItem?.file_name && _boardItem?.file_name.length>0 && item"
+                                [type]="'s-darkgrey'" [title]="'다운로드'" (click) = "onFileDownload(_boardItem?.upload[idx])" style="margin-left: 10px;"></bo-page-button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+
+            <!-- 파일 첨부 -->
+            <div class="content-box" *ngIf="boardConfig?.use.file && isRecontentsMode">
+                <div class="content-title">
+                    파일첨부
+                </div >
+                <!-- <div class="content">
+                    <bo-file-input  *ngFor=" let item of _data?.re_file_name; let idx = index;"
+                        [formGroup]="bsForm"
+                        [name] = "'re_upload'"
+                        [fileName]= "item"
+                        >
+                        {{item}}
+                    </bo-file-input>
+                </div> -->
+                <div class="content">
+                    <div formArrayName="re_upload2">
+                        <div style="height: 5px;"></div>
+                        <div style="height: 25px;" *ngIf="boardId == 'goods_qna' || boardId == 'mbqna'">* 사용자 화면에 이미지만 노출 됩니다. 이미지만 첨부 바랍니다.</div>
+                        <div *ngFor="let item of this.bsForm.get('re_upload2').controls;let i = index" [formGroupName]='i'>
+                            <!-- <bo-file-input
+                                [formGroup]="getUploadFileFormGroup('re_upload2', i)"
+                                [name] = "'file'"
+                                [fileName]="item.value.fileName"
+                                (onFileUploaded)="onFileUploaded($event, item)"
+                               >
+                            </bo-file-input> -->
+                            <div style="height: 5px;"></div>
+                            <bo-image-input
+                                [formGroup]="getUploadFileFormGroup('re_upload2', i)"
+                                [type] ="'small'"
+                                [onlyImageFile] = "false"                               
+                                [name] = "'file'"
+                                [folderName]="boardId"
+                                [fileName]="item.value.fileName"
+                               >
+                            </bo-image-input>
+                            <div style="height: 5px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <bo-submit-button-form  [hasCancelBtn]="true" (clickCancel)="gotoListPage()"></bo-submit-button-form>
+    <!-- <div class="content-wrap">
+        <bo-submit-button-form  [hasCancelBtn]="true" (clickCancel)="gotoListPage()"></bo-submit-button-form>
+    </div> -->
+
+
+</div>
+</form>
+
+
+
+                 <!-- <div [hidden]="!pcImage">
+                            <div class="image-box" [style.background-image]="'url('+pcImage+')'" ></div>
+                            <div class="check square-checkbox display-checkbox">
+                                <input type="checkbox" id="pcdel" name="pcdel"  /><label for="pcdel">삭제</label>
+                            </div>
+                            </div> -->

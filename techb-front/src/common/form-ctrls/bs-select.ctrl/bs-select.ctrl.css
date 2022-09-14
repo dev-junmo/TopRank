@@ -1,0 +1,78 @@
+/* .alert-danger {
+    color: #ff0000;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    max-width: 425px;
+    margin: 5px 0 0 0;
+    position: relative;
+    left: 175px;
+    padding: 10px;
+} */
+/*
+input[name="editable-select"]:disabled {
+    background-color: #ffffff;
+  }
+
+  .dropdown-menu:hover {
+    cursor: pointer;
+  }
+
+  .dropdown-menu li {
+    padding-left: 10px;
+  }
+
+  .dropdown-menu li:hover {
+    background-color: #eeeeee;
+  }
+   */
+
+.input-group-btn>.btn{
+    line-height: 5px;
+    position: absolute;
+    bottom: 0;
+    border: none;
+    padding: 0;
+    width: 19px;
+    background-color: #D8D8D8;
+}
+
+.input-group-btn{
+    float: right;
+}
+
+.dropdown-menu{
+    padding-top: 0px;
+    border-radius: 0;
+    box-shadow: none;
+    border: 1px solid #ddd;
+    overflow-y: scroll;
+    height: 180px;
+    width: 200px;
+    margin: 0;
+}
+.dropdown-menu li{
+    font-size: 12px;
+    padding: 4px 3px 4px 10px;
+}
+.dropdown-menu li:hover{
+    cursor: pointer;
+    background: #ddd;
+}
+
+.content-inline .form-selectbox {
+    height: 40px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 16px;
+    font-weight: normal;
+    color: #3e4259;
+    text-align: left;
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    padding-left: 14px;
+    margin-left: 16px;
+    /* margin-right: 40px; */
+    outline: none;
+    background: #fff url('assets/images/subscription/ic_unfold_black_24.png') center no-repeat;
+    cursor: pointer;
+}
+

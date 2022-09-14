@@ -1,0 +1,27 @@
+<div class="pagination-cover rb-regular">
+    <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="onClickPage(1)">
+              <img src="assets/img/first-btn.png">
+          </a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === 1}">
+          <a (click)="onClickPage(pager.currentPage - 1)">
+            <img src="assets/img/prev-btn.png">
+          </a>
+      </li>
+      <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+          <a (click)="onClickPage(page)">{{page}}</a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="onClickPage(pager.currentPage + 1)">
+            <img src="assets/img/next-btn.png">
+          </a>
+      </li>
+      <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+          <a (click)="onClickPage(pager.totalPages)">
+            <img src="assets/img/last-btn.png">
+          </a>
+      </li>
+    </ul>
+</div>

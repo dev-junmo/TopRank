@@ -1,0 +1,157 @@
+
+/* 박스 스타일 */
+.web.box {
+    background: #fafbff;
+    padding: 32px 40px 48px;
+    border-radius: 24px;
+    height: 710px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.box .box-header {
+    margin-bottom: 39px;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1.41;
+}
+
+.box .box-header.box-icon img {
+    vertical-align: middle;
+    margin-top: -4px;
+}
+
+/* 도움말 툴팁 */
+.help-tool-tip.popular-search-tip::after {
+    content: "네이버쇼핑에서 많이 검색하고 상품을 많이 본\A 키워드 중 최근 급상승한 키워드를 뽑아서\A 나타낸 순위입니다.";
+} 
+
+/* 실시간 인기 검색 */
+.popular-ranking {
+    width: 368px;
+    margin-top: 31px;
+}
+
+.popular-ranking ol {
+    counter-reset: number 0;
+}
+
+.popular-ranking ol li {
+    padding: 17px 0 16px;
+    border-bottom: 1px solid #dcdee8;
+}
+
+.popular-search .popular-ranking ol li:last-child {
+    border-bottom: 0;
+    margin-left: -3px;
+}
+.popular-ranking ol li a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #04021f;
+}
+.popular-ranking ol li::before {
+    counter-increment: number 1;
+    content: counter(number);
+    font-size: 20px;
+    font-family: 'GmarketSans';
+    color: #3f37c9;
+    margin-right: 25px;
+}
+/* =========================================================================== */
+/* Mobile CSS */
+/* 툴팁 스타일 */
+.mobile .help-tool-tip {
+    position: relative;
+    width: 2.0rem;
+    height: 2.0rem;
+}
+.mobile .help-tool-tip::before {
+    content: "";
+    display: none;
+    position: absolute;
+    left: -13.1rem;
+    top: 2.7rem;
+    width: 0px;
+    height: 0px;
+    border-bottom: 0.8rem solid #3e4259d5;
+    border-left: 0.7rem solid transparent;
+    border-right: 0.7rem solid transparent;
+}
+.mobile .help-tool-tip::after {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 3.5rem;
+    width: max-content;
+    padding: 1.0rem 1.6rem;
+    background: #3e4259d5;
+    font-size: 1.2rem;
+    text-align: left;
+    font-weight: normal;
+    color: #fff;
+    line-height: 1.29;
+    white-space:pre;
+    transform: translateX(-69%);
+    border-radius: 12px;
+    z-index: 10;
+}
+.mobile .help-tool-tip:hover::before,
+.mobile .help-tool-tip:hover::after {
+    display: block;
+}
+.mobile .help-tool-tip.popular-search-tip::after {
+    content: "네이버쇼핑에서 많이 검색하고 \A 상품을 많이 본 키워드 중 최근 급상승한 \A 키워드를 뽑아서 나타낸 순위입니다.";
+}
+/* ================================ */
+.popular-ranking-area {
+    padding: 0 2.4rem;
+}
+.mobile .popular-search {
+    border-radius: 24px;
+    padding: 2.0rem 1.6rem 0.2rem;
+}
+.mobile .popular-search .popular-search-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.7rem;
+}
+.mobile .popular-search .popular-search-title span {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #04021f;
+    margin-left: 0.8rem;
+    margin-right: 0.3rem;
+}
+.mobile .popular-search .popular-search-title .help-img {
+    width: 2.0rem;
+    height: 2.0rem;
+}
+.mobile .popular-search ol {
+    counter-reset: number 0;
+}
+.mobile .popular-search ol li {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #04021f;
+    margin-left: 1.6rem;
+    margin-bottom: 3.0rem;
+}
+.mobile .popular-search ol li a {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #04021f;
+}
+.mobile .popular-search ol li::before {
+    counter-increment: number 1;
+    content: counter(number);
+    font-family: 'GmarketSans';
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #3f37c9;
+    margin-right: 2.0rem;
+}
+.mobile .popular-search ol li:last-child {
+    margin-left: 1.4rem;
+}
+.mobile .popular-search ol li:last-child::before {
+    margin-right: 1.4rem;
+}

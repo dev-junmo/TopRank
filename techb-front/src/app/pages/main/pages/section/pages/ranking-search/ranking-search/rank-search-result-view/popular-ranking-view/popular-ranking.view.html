@@ -1,0 +1,33 @@
+<div class="web popular-search box" *ifDesktop>
+    <div class="box-header box-icon">
+        <span>실시간 인기 검색어</span>
+        <div class="help-tool-tip popular-search-tip">
+            <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">
+        </div>
+    </div>
+    <div class="popular-ranking">
+        <ol>
+            <li *ngFor="let pop_ranking of popularKeyword">
+                <a [href]="pop_ranking.popular_url" target="_blank">{{pop_ranking.popular_word}}</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- 실시간 인기검색어 start -->
+<div class="mobile popular-ranking-area"  *ifMobile>
+    <div class="popular-search box">
+        <div class="popular-search-title">
+            <img src="assets/images/svg/thum_navershoping_24.svg" alt="네이버 쇼핑">
+            <span>실시간 인기검색어</span>
+            <div class="help-tool-tip popular-search-tip">
+                <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말" class="help-img">
+            </div>
+        </div>
+        <ol>
+            <li *ngFor="let pop_ranking of popularKeyword">
+                <a [href]="pop_ranking.popular_url" target="_blank">{{pop_ranking.popular_word}}</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<!-- 실시간 인기검색어 end -->

@@ -1,0 +1,60 @@
+:host {
+    width: 100%;
+}
+.bo-header{
+    height: 66px;
+    padding: 0 17px 0 0;
+    margin: auto 0;
+    line-height: 63px;
+    width: 100%;
+    background-color: #062033 !important;
+}
+.header-icon{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 17px;
+}
+.header-title{
+    display: inline-block;
+    font-size: 31px;
+    color: #525252;
+}
+.crm-header-btn{
+    float: right;
+    height: 66px;
+    line-height: 54px;
+    margin-left: 20px;
+}
+.crm-logo {
+    width: 212px;
+    height: 66px;
+    background-color: #000;
+    text-align: center;
+    display: inline-block;
+}
+.crm-logo span {
+    color: #fff;
+    font-size: 23px;
+    font-weight: bold;
+}
+.crm-bottom-line {
+    position: relative;
+    bottom: 5px;
+    height: 5px;
+    background-color: #ffee76;
+}
+.crm-search-input {
+    width: 278px;
+}
+.crm-header-btn .crm-btn {
+    background: none;
+    border: none;
+}
+.crm-header-btn .header-selectbox {
+    width: 100px;
+    height: 34px;
+    padding: 5px 34px 5px 5px;
+    border-right: none;
+    position: relative;
+    top: 17px;
+}

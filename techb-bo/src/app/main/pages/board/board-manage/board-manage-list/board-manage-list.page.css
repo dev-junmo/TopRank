@@ -1,0 +1,11 @@
+:host() {
+    width: 100%;
+}
+/* board-list{
+    width: calc( 100% - 212px);
+} */
+    
+board-query-form, data-table-demo-1 {
+    /* width: calc( 100% - 212px);
+    display: inline-block; */
+}

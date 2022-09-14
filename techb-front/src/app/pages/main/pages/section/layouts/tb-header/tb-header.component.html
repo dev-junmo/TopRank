@@ -1,0 +1,12 @@
+<!-- header -->
+<header id="header">
+    <div class="header-wrap">
+        <h2 routerLink="/main/section/board/notice" class="notice-title">공지사항</h2>
+        <a href="" routerLink="/main/section/board/notice" class="notice-sub">
+            {{data.notice}}
+        </a>
+        <!-- <button class="membership-btn" *ngIf="!isLogined" >멤버십 소개</button> -->
+        <button class="mydashboard-btn" *ngIf="isLogined" routerLink="/main/section/dashboard">마이 대시보드</button>
+    </div>
+</header>
+<!-- header end -->

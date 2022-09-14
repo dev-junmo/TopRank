@@ -1,0 +1,155 @@
+
+<div class="section">
+        <div class="outlet-section">
+                <div class="query-wrap">
+
+                    <!-- formGroup : bsForm -->
+                    <form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+                            <!-- <bs-checkbox [formGroup]="bsForm" [name]="'test'" [label]="'sample'" [value]="'yes'" ></bs-checkbox> -->
+                        <div class="form-block" style="padding: 0 0 0 20px;">
+
+                            <!-- 인증일 -->
+                            <div class="form-box" *ngIf="type=='offline_coupon'">
+                                <div class="form-item">
+                                    <div class="form-title">인증일</div>
+                                    <bo-period-query [formGroup]="bsForm" [name]="'period'">
+                                        <bo-period-query-option-config [value]="'regist_date'" [label]="'인증일'">
+                                        </bo-period-query-option-config>
+                                    </bo-period-query>
+                                </div>
+                            </div>
+
+                            <!-- <div class="form-box" *ngIf="type=='offline_coupon'">
+                                <div class="form-item">
+                                    <div class="form-title">인증번호</div>
+                                    <input type="text" class="form-control search-input big-input item-horizontal" formControlName="offline_input_serialnumber" >
+                                </div>
+                            </div> -->
+
+                            <!-- 발행일 -->
+                            <div class="form-box" *ngIf="type!='offline_coupon'">
+                                <div class="form-item">
+                                    <div class="form-title">발행일</div>
+                                    <bo-period-query [formGroup]="bsForm" [name]="'period'">
+                                        <bo-period-query-option-config [value]="'regist_date'" [label]="'발행일'">
+                                        </bo-period-query-option-config>
+                                    </bo-period-query>
+                                </div>
+                            </div>
+
+
+                            <!-- 검색어 -->
+                            <div class="form-box">
+                                <div class="form-item">
+                                    <div class="form-title">검색어</div>
+                                    <input type="text" class="form-control search-input big-input item-horizontal" formControlName="search_text" >
+                                </div>
+                            </div>
+
+                            <!-- 사용여부 -->
+                            <div class="form-box">
+                                <div class="form-item">
+                                    <div class="form-title">쿠폰사용</div>
+                                    <bo-group-checkbox [formGroup]="bsForm" [name]="'use_status'">
+                                        <bo-checkbox-config [title]="'사용'" [value]="'used'"></bo-checkbox-config>
+                                        <bo-checkbox-config [title]="'미사용'" [value]="'unused'"></bo-checkbox-config>
+                                    </bo-group-checkbox>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 검색 버튼 -->
+                        <bo-search-button-form></bo-search-button-form>
+                    </form>
+                </div>
+        </div>
+</div>
+
+
+<!--    <div class="form-block">
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">검색어 :</div>
+                        <input type="text" class="form-control search-input big-input item-horizontal" formControlName="search_text" placeholder="쿠폰명">
+                    </div>
+                </div>
+
+                <div class="form-box">
+                        <div class="form-item">
+                            <div class="form-title">온라인 쿠폰:</div>
+                            <bo-group-checkbox [formGroup]="bsForm" [name]="'type'">
+                                <bo-checkbox-config [title]="'상품'" [value]="'download'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'생일'" [value]="'birthday'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'배송비'" [value]="'shipping'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'등급조정'" [value]="'memberGroup_shipping'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'등급조정(배송비)'" [value]="'memberGroup_shipping'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'신규가입'" [value]="'member'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'신규가입(배송비)'" [value]="'member_shipping'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'컴백회원'" [value]="'memberlogin_shipping'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'컴백회원(배송비)'" [value]="'memberlogin_shipping'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'이달의 등급'" [value]="'membermonths_shipping'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'이달의 등급(배송비)'" [value]="'membermonths_shipping'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'첫구매'" [value]="'order'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'직접발급'" [value]="'admin'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'직접발급(배송비)'" [value]="'admin_shipping'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'포인트(전환)'" [value]="'point'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'포인트(전환)'" [value]="'point'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'포인트(전환)'" [value]="'point'"></bo-checkbox-config>
+                            </bo-group-checkbox>
+                        </div>
+                    </div>
+
+                    <div class="form-box">
+                        <div class="form-item">
+                            <div class="form-title">인쇄쿠폰:</div>
+                            <bo-group-checkbox [formGroup]="bsForm" [name]="'type'">
+                                <bo-checkbox-config [title]="'상품(인증번호)'" [value]="'offline_coupon'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'마일리지(인증번호)'" [value]="'offline_emoney'"></bo-checkbox-config>
+                            </bo-group-checkbox>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-title">발급여부:</div>
+                            <bo-group-checkbox [formGroup]="bsForm" [name]="'issue_stop'">
+                                <bo-checkbox-config [title]="'발급'" [value]="'1'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'중지'" [value]="'2'"></bo-checkbox-config>
+                            </bo-group-checkbox>
+                        </div>
+                    </div>
+
+                    <div class="form-box">
+                        <div class="form-item">
+                            <div class="form-title">사용 제한:</div>
+                            <div class="content-inline">
+                                <input type="radio" id="write_admin_type_T" value="TXT" name="coupon_same_time" formControlName="coupon_same_time" />
+                                <label for="write_admin_type_T" class="check-label">단독</label>
+                                <input type="text" class="form-control search-input small-input" name="limit_goods_price" formControlName="limit_goods_price" />KRW 이상
+                            </div>
+
+                            <bs-checkbox [formGroup]="bsForm"
+                            [name]="'sale_agent'"
+                            [label]="'모바일/태블릿'"
+                            [value]="'m'">
+                            </bs-checkbox>
+
+                            <bs-checkbox [formGroup]="bsForm"
+                            [name]="'sale_payment'"
+                            [label]="'무통장'"
+                            [value]="'b'">
+                            </bs-checkbox>
+
+                            <bs-checkbox [formGroup]="bsForm"
+                            [name]="'sale_referer'"
+                            [label]="'유입'"
+                            [value]="'y'">
+                            </bs-checkbox>
+
+                        </div>
+                        <div class="form-item">
+                            <div class="form-title">사용처:</div>
+                            <bo-group-checkbox [formGroup]="bsForm" [name]="'use_type'">
+                                <bo-checkbox-config [title]="'온라인'" [value]="'online'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'매장'" [value]="'offline'"></bo-checkbox-config>
+                            </bo-group-checkbox>
+                        </div>
+                    </div>
+                </div>-->

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+    <defs>
+        <linearGradient id="nnkhquxkaa" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ff9800"/>
+            <stop offset="1" stop-color="#f44336"/>
+        </linearGradient>
+        <linearGradient id="dtr9wr812b" x1=".5" y1="1" x2=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#ff9d08"/>
+            <stop offset="1" stop-color="#fff176"/>
+        </linearGradient>
+    </defs>
+    <path style="fill:none" d="M0 0h30v30H0z"/>
+    <path data-name="패스 132" d="M-180.635 828.519c-.538-.448-1.931-1.44-2.058-1.536a4.724 4.724 0 0 1-1.647-5.408 1.2 1.2 0 0 0-.886-1.44 1.148 1.148 0 0 0-.792.1 9.551 9.551 0 0 0-5.162 9.536 5.255 5.255 0 0 1-.855-2.56 1.184 1.184 0 0 0-1.3-1.088 1.254 1.254 0 0 0-.887.544c-1.963 3.072-2.6 4.9-2.6 7.84a9.537 9.537 0 0 0 9.5 9.6 9.538 9.538 0 0 0 9.5-9.6 7.434 7.434 0 0 0-2.819-5.984z" transform="translate(202.316 -817.104)" style="fill:url(#nnkhquxkaa)"/>
+    <path data-name="패스 133" d="M-183.836 833.987c-.281-.234-1.006-.75-1.072-.8a2.461 2.461 0 0 1-.858-2.817.627.627 0 0 0-.462-.75.6.6 0 0 0-.412.05 4.976 4.976 0 0 0-2.689 4.967 2.739 2.739 0 0 1-.445-1.334.616.616 0 0 0-.676-.566.65.65 0 0 0-.462.283 6.647 6.647 0 0 0-1.352 4.083 4.967 4.967 0 0 0 4.948 5 4.967 4.967 0 0 0 4.947-5 3.87 3.87 0 0 0-1.467-3.116z" transform="translate(202.316 -817.104)" style="fill:url(#dtr9wr812b)"/>
+</svg>

@@ -1,0 +1,104 @@
+<div class="outlet-section">
+        <!-- <div class="query-title">검색</div> -->
+
+            <form [formGroup]="bsForm" (ngSubmit)="onSubmit()" class="form-area">
+                <div class="query-wrap">
+                    <div class="form-block">
+                        <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">정산기간</div>
+                                <select class="form-selectbox default small-input" name="account_s_y" formControlName="account_s_y" >
+                                    <option *ngFor="let item of years" [value]="item.value">{{item.title}}</option>
+                                </select>
+                                <select class="form-selectbox default small-input" name="account_s_m" formControlName="account_s_m" >
+                                    <option *ngFor="let item of month" [value]="item.value">{{item.title}}</option>
+                                </select>
+                                <div class="dash-bar" style="margin-right: 10px;">-</div>
+                                <select class="form-selectbox default small-input"  name="account_e_y" formControlName="account_e_y" >
+                                    <option *ngFor="let item of years" [value]="item.value">{{item.title}}</option>
+                                </select>
+                                <select class="form-selectbox default small-input" name="account_e_m" formControlName="account_e_m" >
+                                    <option *ngFor="let item of month" [value]="item.value">{{item.title}}</option>
+                                </select>
+                                <div class="date-button-area" style="padding-left: 0;">
+                                    <button class="btn btn-sm btn-light" type="button" (click)="onClickAll()" style="border: 1px solid rgb(225,225,225);">전체</button>
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                <div class="form-title">정산 상태</div>
+                                <bo-group-checkbox [formGroup]="bsForm" [name]="'account_status'">
+                                    <bo-checkbox-config [title]="'정산완료'" [value]="'complete'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'정산대기'" [value]="'incomplete'"></bo-checkbox-config>
+                                </bo-group-checkbox>
+                            </div>
+                        </div>
+                        <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">주문유형</div>
+                                <bo-group-checkbox [formGroup]="bsForm" [name]="'order_type'">
+                                    <bo-checkbox-config [title]="'일반'" [value]="'order'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'교환주문'" [value]="'exchange_order'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'교환반품'" [value]="'exchange_return'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'환불'" [value]="'refund'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'취소주문'" [value]="'cancel_order'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'취소환불'" [value]="'cancel_refund'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'수정정산'" [value]="'modification'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'배송비(개별)'" [value]="'shipping_price'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'배송비환불'" [value]="'shipping_refund'"></bo-checkbox-config>
+                                </bo-group-checkbox>
+                            </div>
+                        </div>
+                        <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">검색조건</div>
+                                <div style="margin-right: 10px; display: inline-block;">
+                                    <bs-select [name]="'search_type'"
+                                        [formGroup]="bsForm">
+                                        <bs-option-config [value]= "''" [label] = "'전체'"></bs-option-config>
+                                        <bs-option-config [value]= "'order_seq'" [label] = "'주문번호'"></bs-option-config>
+                                        <bs-option-config [value]= "'order_goods_code'" [label] = "'옵션별상세코드'"></bs-option-config>
+                                        <bs-option-config [value]= "'goods_name'" [label] = "'상품명'"></bs-option-config>
+                                        <bs-option-config [value]= "'order_name'" [label] = "'주문자명'"></bs-option-config>
+                                        <bs-option-config [value]= "'recipient_name'" [label] = "'수령인명'"></bs-option-config>
+                                        <bs-option-config [value]= "'order_id'" [label] = "'고객아이디'"></bs-option-config>
+                                        <bs-option-config [value]= "'export_code'" [label] = "'출고번호'"></bs-option-config>
+                                        <!-- <bs-option-config [value]= "'order_type'" [label] = "'일반'"></bs-option-config>
+                                        <bs-option-config [value]= "'exchange_order'" [label] = "'교환주문'"></bs-option-config>
+                                        <bs-option-config [value]= "'exchange_return'" [label] = "'교환반품'"></bs-option-config>
+                                        <bs-option-config [value]= "'refund'" [label] = "'환불'"></bs-option-config>
+                                        <bs-option-config [value]= "'cancel_order'" [label] = "'취소주문'"></bs-option-config>
+                                        <bs-option-config [value]= "'cancel_refund'" [label] = "'취소환불'"></bs-option-config>
+                                        <bs-option-config [value]= "'modification'" [label] = "'수정정산'"></bs-option-config> -->
+
+                                    </bs-select>
+                                </div>
+                                <bs-input [name]="'search_text'" [formGroup]="bsForm"
+                                [placeholder]="'주문번호,옵션별상세코드,상품명,주문자명,수령인명,고객아이디,출고번호'" [style]="'search-input'"></bs-input>
+                            </div>
+                        </div>
+                        <div class="form-box" *ngIf="!appConfig.isProvider"  style="min-height: 50px; height: auto; padding-top: 5px;">
+                            <div class="form-item" style="height: auto; line-height: 25px;">
+                                <div class="form-title">입점사</div>
+                                <bo-provider-query-view [formGroup]="bsForm"></bo-provider-query-view>
+                            </div>
+                        </div>
+                        <div class="form-box" *ngIf="!appConfig.isProvider">
+                            <div class="form-item">
+                                <div class="form-title">매출구분</div>
+                                <bo-group-checkbox [formGroup]="bsForm" [name]="'channel'">
+                                    <bo-checkbox-config [title]="'TopRank'" [value]="'TopRank'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'사은품'" [value]="'사은품'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'B2B'" [value]="'B2B'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'내부거래'" [value]="'내부거래'"></bo-checkbox-config>
+                                </bo-group-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-area">
+                    <button type="submit" class="btn new-search-btn">
+                        검색
+                    </button>
+                </div>
+             </form>
+    </div>

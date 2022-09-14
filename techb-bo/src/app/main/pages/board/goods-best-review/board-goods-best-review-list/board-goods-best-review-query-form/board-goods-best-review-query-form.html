@@ -1,0 +1,74 @@
+<div class="outlet-section">
+    <!-- <div class="query-title">검색</div> -->
+
+
+       <!-- formGroup : bsForm -->
+       <form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+            <div class="query-wrap">
+
+                <div class="form-block">
+
+                    <!-- 노출 -->
+                    <!-- <bo-showhide-form [formGroup]="bsForm"></bo-showhide-form> -->
+
+                    <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">사용</div>
+                                <bo-group-checkbox [formGroup]="bsForm" [name]="'use_status'">
+                                    <bo-checkbox-config [title]="'사용'" [value]="'use'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'미사용'" [value]="'unuse'"></bo-checkbox-config>
+                                </bo-group-checkbox>
+                            </div>
+                        </div>
+                    <!-- 기간 -->
+                    <!-- <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">기간조회 :</div>
+                                <bo-period-query [formGroup]="bsForm" [name]="'period'" [defaultValue]="'regist_date'">
+                                    <bo-period-query-option-config [value]="'regist_date'" [label]="'등록일'">
+                                    </bo-period-query-option-config>
+                                    <bo-period-query-option-config [value]="'update_date'" [label]="'수정일'">
+                                    </bo-period-query-option-config>
+                                </bo-period-query>
+                            </div>
+                        </div> -->
+                    <!-- <bo-period-form [formGroup]="bsForm"></bo-period-form> -->
+                    <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">등록일</div>
+                                <bo-period-query [formGroup]="bsForm" [name]="'period'">
+                                    <bo-period-query-option-config [value]="'regist_date'" [label]="'등록일'">
+                                    </bo-period-query-option-config>
+
+                                </bo-period-query>
+                            </div>
+                        </div>
+                    <!-- <div class="form-box">
+                        <div class="form-item">
+                            <div class="form-title">등록일자 :</div>
+                            <bo-period-query [formGroup]="bsForm" [name]="'r_date'">
+                            </bo-period-query>
+                        </div>
+                    </div> -->
+
+                    <!-- 검색어 -->
+                        <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">검색어</div>
+                                <input type="text" class="form-control search-input item-horizontal" formControlName="keyword" >
+                            </div>
+                        </div>
+                    <!-- <bo-searchkeyword-form [formGroup]="bsForm"></bo-searchkeyword-form> -->
+                </div>
+            </div>
+       <!-- 검색 버튼 -->
+       <!-- <div class="button-area">
+           <button type="submit" class="btn search-btn">
+               <img src="../assets/img/board/board-search-icon.svg"/>
+               검색
+           </button>
+       </div> -->
+
+       <bo-search-button-form></bo-search-button-form>
+       </form>
+</div>

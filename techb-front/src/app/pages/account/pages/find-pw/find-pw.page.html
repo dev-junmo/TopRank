@@ -1,0 +1,108 @@
+<div class="login-box" *ifDesktop>
+    <div class="contents">
+        <!-- 비밀번호 찾기 박스 start -->
+        <div class="find-wrap">
+            <h1 class="logo" routerLink="/main"><img src="assets/images/login/logo_purple_130@2x.png" alt="TOP RANK"></h1>
+            <div class="find-box">
+            <h2 class="find-title">비밀번호 찾기</h2>
+            <!-- 이메일, 번호 찾기 탭 메뉴 start -->
+            <ul class="find-tab">
+                <li [ngClass]="{active:selectedFindTabName == 'email'}"
+                    (click)="onClickSelectedTab('email')"
+                >이메일 주소로 찾기</li>
+                <li [ngClass]="{active:selectedFindTabName == 'phone'}"
+                    (click)="onClickSelectedTab('phone')"
+                >휴대폰 번호로 찾기</li>
+            </ul>
+            <!-- //이메일, 번호 찾기 탭 메뉴 end -->
+            <!-- 입력창 start -->
+            <div class="find-contents-wrap">
+                <div class="find-contents">
+                    <form [formGroup]="findIdForm" (submit)="onSubmitId()">
+                        
+                        <div class="find-contents-input" [ngClass]="{active:selectedFindTabName == 'email'}">
+                            <label for="email_find">비밀번호를 찾으려는 아이디</label>
+                            <input type="email" formControlName="userIdWithEmail" id="email_find" placeholder="이메일 주소를 입력해주세요.">
+                            <input type="hidden" formControlName="email"> 
+                            <button type="submit">임시 비밀번호 전송</button>
+                        </div>
+
+                        <div class="find-contents-input" [ngClass]="{active:selectedFindTabName == 'phone'}">
+                            <div class="procedure before-phone" [ngClass]="{active:step == 'findId'}">
+                                <label for="phone_find">비밀번호를 찾으려는 휴대폰 번호</label>
+                                <input type="text" formControlName="userIdWithPhone" id="phone_find" placeholder="01012345678">
+                                <button type="button" class="find-next-btn" (click)="onClickNext()">다음</button>
+                            </div>
+                            <div class="procedure after-phone" [ngClass]="{active:step == 'email'}">
+                                <label for="email_find">임시 비밀번호를 받을 수 있는 이메일 주소</label>
+                                <input type="email" formControlName="email" id="email_find" placeholder="이메일 주소를 입력해주세요.">
+                                <button type="submit">임시 비밀번호 전송</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <!-- //입력창 end -->
+            </div>
+
+            <!-- 로그인, 회원가입 페이지로 돌아가기 start -->
+            <div class="return-wrap">
+                <a href="" routerLink="/account/login">로그인</a>
+                <a href="" routerLink="/account/signup">회원가입</a>
+            </div>
+            <!-- 로그인, 회원가입 페이지로 돌아가기 end -->
+        </div>
+        <!-- //비밀번호 찾기 end -->
+    </div>
+</div>
+
+<!-- 모바일 비밀번호  -->
+<div class="mobile" id="wrap" *ifMobile>
+    <div id="contents">
+        <!-- 비밀번호 찾기 박스 start -->
+        <div class="find-wrap">
+            <h2 class="find-title">비밀번호 찾기</h2>
+
+            <!-- 이메일, 번호 찾기 탭 메뉴 start -->
+            <ul class="find-tab">
+                <li [ngClass]="{active:selectedFindTabName == 'email'}"
+                    (click)="onClickSelectedTab('email')">이메일 주소로 찾기</li>
+                <li [ngClass]="{active:selectedFindTabName == 'phone'}"
+                    (click)="onClickSelectedTab('phone')">핸드폰 번호로 찾기</li>
+            </ul>
+            <!-- //이메일, 번호 찾기 탭 메뉴 end -->
+            <div class="find-contents-wrap">
+                <form [formGroup]="findIdForm" (submit)="onSubmitId()">
+                    <div class="find-contents" [ngClass]="{active:selectedFindTabName == 'email'}">
+                        <!-- 입력창 start -->
+                            <label for="email-find">비밀번호를 찾으려는 아이디</label>
+                            <input type="email" formControlName="userIdWithEmail" id="email-find" placeholder="이메일 주소를 입력해주세요.">
+                            <button type="submit">임시 비밀번호 전송</button>
+                        <!-- //입력창 end -->
+                    </div>
+                    <div class="find-contents" [ngClass]="{active:selectedFindTabName == 'phone'}">
+                        <div class="procedure before-phone" [ngClass]="{active:step == 'findId'}">
+                            <label for="phone_find">비밀번호를 찾으려는 아이디</label>
+                            <input type="text" formControlName="userIdWithPhone" id="phone_find" placeholder="핸드폰 번호를 입력해주세요.">
+                            <button type="button" class="find-next-btn" (click)="onClickNext()">다음</button>
+                        </div>
+                        <div class="procedure after-phone" [ngClass]="{active:step == 'email'}">
+                            <label for="email-find">임시 비밀번호를 받을 수 있는 이메일 주소</label>
+                            <input type="email" formControlName="email" id="email-find" placeholder="이메일 주소를 입력해주세요.">
+                            <button type="submit">임시 비밀번호 전송</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- 로그인, 회원가입 페이지로 돌아가기 start -->
+            <div class="return-wrap">
+                <a href="" class="login-page"  routerLink="/account/login">로그인</a>
+                <a href="" class="join-page" routerLink="/account/signup">회원가입</a>
+            </div>
+            <!-- 로그인, 회원가입 페이지로 돌아가기 end -->
+        </div>
+         <!-- //비밀번호 찾기 end -->
+    </div>
+    <!--// contents end -->
+</div>

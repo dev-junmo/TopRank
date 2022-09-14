@@ -1,0 +1,98 @@
+<div class="web" *ifDesktop>
+    <div class="contents">
+        <!-- 로그인 박스 start -->
+        <div class="login-wrap">
+            <h1 class="logo" routerLink="/main"><img src="assets/images/login/logo_purple_130@2x.png" alt="TOP RANK"></h1>
+            <div class="login-box">
+                <h2 class="login-title">로그인</h2>
+                <form [formGroup]="loginForm" (submit)="onSubmit()">
+                    <div>
+                        <label for="userid">아이디</label>
+                        <input type="text" id="userid" formControlName="userid" placeholder='휴대폰 번호 또는 이메일'>
+                        <button class="clear-btn">
+                            <img src="assets/images/login/ic_close_black_32.png" alt="X버튼">
+                        </button>
+                    </div>
+                    <div>
+                        <label for="password">비밀번호</label>
+                        <input [type]="isShowPassword ? 'text' : 'password'" id="password" formControlName="password" placeholder="비밀번호">
+                        <button type="button" class="security-btn" (click)="onClickShowPassword()" [ngClass]="{on:isShowPassword}"></button>
+                    </div>
+                    <div class="save">
+                        <!-- <label for="auto-login">
+                            <input type="checkbox" id="auto-login" name="auto-login" formControlName="autoLogin">
+                            <span></span>
+                            자동 로그인
+                        </label> -->
+                        <label for="save-id">
+                        <input type="checkbox" id="save-id" name="save-id"  formControlName="saveId">
+                        <span></span>
+                        아이디 저장
+                        </label>
+                    </div>
+                    <button type="submit" class="login-btn">로그인</button>
+                </form>
+                <div class="info-find">
+                    <p (click)="onClickFindId()">아이디 찾기</p>
+                    <a href="" routerLink="/account/find-pw">비밀번호 찾기</a>
+                </div>
+                <div class="join-wrap">
+                    <span class="first-join">처음 오셨나요?</span>
+                    <button class="join-btn" routerLink="/account/signup">회원가입</button>
+                </div>
+            </div>
+        </div>
+        <!-- //로그인 박스 end -->
+    </div>
+</div>
+
+<div class="mobile" id="wrap" *ifMobile>
+    <!-- contents start -->
+    <div id="contents">
+        <!-- 로그인 박스 start -->
+        <div class="login-wrap">
+            <div class="login-header">
+                <!-- <button class="back-btn"><img src="../images/ic_arrow_left_purple_40.png" alt="뒤로가기"></button> -->
+                <!-- <h1 class="logo"><img src="../images/logo_purple_130@2x.png" alt="TOP RANK"></h1> -->
+            </div>
+            <h2 class="login-title">로그인</h2>
+            <form [formGroup]="loginForm" (submit)="onSubmit()">
+                <div>
+                    <label for="userid">아이디</label>
+                    <input type="text" id="userid" formControlName="userid" placeholder="핸드폰 번호 또는 이메일">
+                    <button class="clear-btn">
+                        <img src="assets/images/svg/ic_close_black_32.svg" alt="X버튼">
+                    </button>
+                </div>
+                <div>
+                    <label for="password">비밀번호</label>
+                    <input [type]="isShowPassword ? 'text' : 'password'" id="password" formControlName="password" placeholder="비밀번호">
+                    <button type="button" class="security-btn"  (click)="onClickShowPassword()" [ngClass]="{on:isShowPassword}"></button>
+                </div>
+                <div class="save">
+                    <!-- <label for="auto-login">
+                        <input type="checkbox" id="auto-login" name="auto-login">
+                        <span></span>
+                        자동 로그인
+                    </label> -->
+                    <label for="email-save">
+                        <input type="checkbox" formControlName="saveId" id="email-save" name="email-save">
+                        <span></span>
+                        아이디 저장
+                    </label>
+                </div>
+                <button type="submit" class="login-btn">로그인</button>
+            </form>
+            <div class="info-find">
+                <p (click)="onClickFindId()">아이디 찾기</p>
+                <a href="" routerLink="/account/find-pw">비밀번호 찾기</a>
+            </div>
+            <div class="join-wrap">
+                <span class="first-join">처음 오셨나요?</span>
+                <button class="join-btn" routerLink="/account/signup">회원가입</button>
+            </div>
+        </div>
+        <!-- //로그인 박스 end -->
+    </div>
+    <!--// contents end -->
+</div>

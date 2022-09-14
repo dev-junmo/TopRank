@@ -1,0 +1,5 @@
+:host-context(calculate-list2-page){
+    display: inline-block;
+    width: calc(100% - 225px);
+}
+

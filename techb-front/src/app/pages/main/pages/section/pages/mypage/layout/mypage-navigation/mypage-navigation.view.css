@@ -1,0 +1,837 @@
+.box {
+    padding: 32px 40px 48px;
+}
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 팝업 스타일 */
+.cm-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+.cm-popup .popup-box {
+    position: relative;
+    width: 848px;
+    height: 604px;
+    border-radius: 16px;
+}
+.cm-popup .popup-box .popup-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 72px;
+    border-bottom: 1px solid #dcdee8;
+}
+.cm-popup .popup-box .popup-header h3 {
+    font-family: 'Spoqa Han Sans Neo';
+    color: #3e4259;
+    font-size: 20px;
+    font-weight: 500;
+}
+.cm-popup .popup-box .popup-header button {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    background: none;
+}
+.cm-popup .popup-box .first-registration {
+    padding: 56px 0 16px 24px;
+    color: #3e4259;
+}
+.cm-popup .popup-box .first-registration .date {
+    margin-left: 16px;
+    margin-right: 8px;
+}
+.cm-popup .popup-box .popup-contents {
+    width: 100%;
+    padding: 83px 8px 0;
+    margin-top: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents .point-exchange > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+.cm-popup .popup-box .popup-contents .point-exchange > div:last-child {
+    margin-bottom: 0;
+}
+.cm-popup .popup-box .popup-contents .reward-point-now span {
+    font-size: 18px;
+    font-weight: normal;
+    color: #3e4259;
+}
+.cm-popup .popup-box .popup-contents .reward-point-now strong {
+    width: 539px;
+    /* height: 28px; */
+    font-size: 20px;
+    font-weight: 500;
+    color: #04021f;
+    /* line-height: 28px; */
+}
+.cm-popup .popup-box .popup-contents .exchange-point span {
+    font-size: 18px;
+    font-weight: normal;
+    color: #3e4259;
+}
+.cm-popup .popup-box .popup-contents .input-area {
+    width: 574px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cm-popup .popup-box .popup-contents .input-area input {
+    width: 431px;
+    height: 60px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 60px;
+    color: #04021f;
+    padding: 0 32px;
+    background: #fff;
+    outline: 0;
+    border: 1px solid #dcdee8;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+.cm-popup .popup-box .popup-contents .input-area input::placeholder {
+    color: #b8b6c4;
+}
+.cm-popup .popup-box .popup-contents .exchange-point .all-in-btn {
+    width: 100px;
+    height: 60px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 40px;
+    border-radius: 16px;
+    background: #e6458e;
+    box-sizing: border-box;
+}
+.cm-popup .popup-box .popup-contents .precautions {
+    margin-top: 72px;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li {
+    position: relative;
+    font-size: 18px;
+    font-weight: normal;
+    color: #3e4259;
+    word-break: keep-all;
+    line-height: 1.22;
+    margin-bottom: 20px;
+    padding-left: 22px;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li:last-child {
+    margin-bottom: 0;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li:nth-child(1) {
+    color: #e62e6b;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 5px;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    background: #3e4259;
+    border-radius: 50%;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li:nth-child(1)::before {
+    background: #e62e6b;
+}
+.cm-popup .popup-box .popup-contents .exchange-btn {
+    display: block;
+    width: 272px;
+    height: 58px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 22px;
+    font-weight: bold;
+    color: #b8b6c4;
+    border-radius: 16px;
+    background: #dcdee8;
+    margin: 50px auto 0;
+}
+.cm-popup .popup-box .popup-contents .exchange-btn.active {
+    background: #e6458e;
+    color: #fff;
+}
+/* ===========================================*/
+/* =========================================== */
+/* user info */
+.web .card-dashboard {
+    display: flex;
+    width: 1240px;
+    height: 270px;
+    padding: 48px 72px;
+    margin: 24px 0 56px;
+    box-shadow: 0 10px 24px 0 rgba(36, 51, 179, 0.2);
+}
+.web .card-dashboard > div:not(:last-child) {
+    border-right: 1px solid #e0e2eb;
+    padding-right: 30px;
+}
+.web .card-dashboard > div:not(:first-child) {
+    /* padding-left: 30px; */
+}
+.web .card-dashboard .user-info {
+    width: 438px;
+}
+.web .card-dashboard .user-name {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: normal;
+    color: #3e4259;
+}
+.web .card-dashboard .user-name strong {
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 38px;
+    color: #04021f;
+    margin-right: 6px;
+}
+.web .card-dashboard .account .email {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #3e4259;
+    margin-top: 58px;
+    margin-bottom: 14px;
+}
+.web .card-dashboard .account .phone-certified {
+    font-size: 22px;
+    font-weight: bold;
+    color: #3e4259;
+}
+.web .card-dashboard .account .phone-certified-none {
+    font-size: 22px;
+    font-weight: bold;
+    color: #b8b6c4;
+}
+.web .card-dashboard .rating-info {
+    width: 376px;
+    text-align: center;
+    padding: 0 43px;
+}
+.web .card-dashboard .rating-info .rating-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 32px;
+}
+.web .card-dashboard .rating-info strong {
+    display: block;
+    font-size: 22px;
+    color: #3e4259;
+}
+.web .card-dashboard .rating-info img {
+    margin-right: 24px;
+}
+.web .card-dashboard .rating-info .next-rating {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 160px;
+}
+.web .card-dashboard .rating-info .next-rating span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #b8b6c4;
+}
+.web .card-dashboard .rating-info .next-rating strong {
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 14px;
+    font-weight: 500;
+    color: #3e4259;
+}
+.web .card-dashboard .rating-info .process-bar {
+    position: relative;
+    width: 160px;
+    height: 8px;
+    background: #dcdee8;
+    border-radius: 16px;
+    margin-top: 6px;
+}
+.web .card-dashboard .rating-info .process-bar span {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 70%;
+    height: 100%;
+    background: #e6458e;
+    border-radius: 16px;
+}
+.web .card-dashboard .recommendation-code {
+    width: 288px;
+    text-align: center;
+}
+.web .card-dashboard .recommendation-code strong {
+    display: block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #3e4259;
+    margin-bottom: 10px;
+}
+.web .card-dashboard .recommendation-content {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding: 0 26px 0 33px;
+    margin-bottom: 26px;
+}
+.web .card-dashboard .recommendation-code input {
+    width: 128px;
+    height: 40px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 20px;
+    font-weight: normal;
+    color: #04021f;
+    text-align: center;
+    outline: 0;
+    border: 1px solid #dcdee8;
+    background: #fff;
+    border-radius: 16px;
+    /* padding: 0 24px; */
+    box-sizing: border-box;
+    margin-right: 8px;
+    padding: 0 23px;
+}
+.web .card-dashboard .recommendation-content img {
+    margin-right: 4px;
+    cursor: pointer;
+}
+.web .card-dashboard .recommendation-code .token {
+    width: 220px;
+    height: 40px;
+    margin-left: 9px;
+    /* padding: 0 23px; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.web .card-dashboard .recommendation-code .token.null {
+    background: #f2f3fa;
+    border: 1px solid #dcdee8;
+    text-align: left;
+    color: #b8b6c4;
+}
+/* ===========================================*/
+/* =========================================== */
+/* 중단 메뉴 */
+.gnb-wrap {
+    position: absolute;
+    width: 1240px;
+    height: 56px;
+    background: #f2f2fc url('assets/images/mypage/ic_unfold_32.png') 1175px 8px no-repeat;
+    border-radius: 16px;
+    padding: 0 89px;
+    overflow: hidden;
+    transition: height 0.5s;
+    box-sizing: border-box;
+    z-index: 100;
+}
+/* .gnb-wrap.active {
+    height: 208px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.2);
+} */
+.gnb-wrap:hover {
+    height: 208px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.2);
+    background: #f2f2fc url('assets/images/mypage/ic_fold_32.png') 1175px 8px no-repeat;
+}
+.gnb-wrap > ul {
+    display: flex;
+}
+.gnb-wrap > ul > li {
+    height: 56px;
+    line-height: 56px;
+    padding-left: 115px;
+}
+.gnb-wrap > ul > li > p {
+    color: #04021f;
+    font-weight: bold;
+}
+.gnb-wrap ul > li.active > p {
+    color: #3f37c9;
+}
+.gnb-wrap ul li {
+    width: 354px;
+    font-size: 18px;
+    /* text-align: center; */
+}
+.gnb-wrap > ul > li ul li {
+    height: 48px;
+    line-height: 48px;
+}
+.gnb-wrap > ul > li ul li.on a {
+    color: #3f37c9;
+    font-weight: 500;
+}
+.gnb-wrap > ul > li ul li a {
+    color: #3e4259;
+}
+
+/* 공유 팝업 */
+.web .share-popup {
+
+}
+.web .share-popup .popup-box {
+width: 576px;
+height: 340px;
+padding: 0;
+}
+.web .share-popup .popup-box .popup-contents {
+padding: 14px 92px 28px 92px;
+margin-top: 76px;
+}
+.web .share-popup ul {
+
+}
+.web .share-popup ul::after {
+content: "";
+display: block;
+clear: both;
+}
+.web .share-popup ul li {
+float: left;
+text-align: center;
+margin-right: 88px;
+margin-bottom: 22px;
+}
+.web .share-popup ul li:nth-child(3n) {
+margin-right: 0;
+}
+.web .share-popup ul li p {
+font-size: 14px;
+color: #3e4259;
+margin-top: 12px;
+}
+
+/* ========================================================================================== */
+/* ========================================================================================== */
+/* 부트스트랩 스타일 제거 */
+h3 {
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+/* .mobile {
+    background: #f7f7fc url('assets/images/dashboard/img_bg_main-dashboard_title-m.png') top center no-repeat;
+    background-size: contain;
+} */
+/* 공유 팝업 */
+.mobile .share-popup .m-popup-box {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 2.4rem 1.5rem 3.2rem;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+.mobile .share-popup .share-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 2.4rem;
+}
+.mobile .share-popup .share-list li {
+    width: 11.0rem;
+    text-align: center;
+    margin-bottom: 4.0rem;
+}
+.mobile .share-popup .share-list li img {
+    width: 5.6rem;
+    height: 5.6rem;
+}
+.mobile .share-popup .share-list li span {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: #3e4259;
+    margin-top: 0.8rem;
+}
+
+/* 마이 대시보드 버튼 스타일 */
+.mobile .my-dashboard-btn {
+    float: left;
+    height: 2.0rem;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #fff;
+    text-align: center;
+    line-height: 1.9rem;
+    border-radius: 16px;
+    background: #4d77ff;
+    padding: 0 0.8rem;
+}
+
+/* 유저 정보 카드 */
+.mobile .card-dashboard-wrap {
+    padding: 0 1.6rem;
+    margin-bottom: 6.5rem;
+}
+.mobile .card-dashboard {
+    position: relative;
+    width: 100%;
+    background: #f7f7fc;
+    border-radius: 16px;
+    box-shadow: 0 10px 24px 0 rgba(36, 51, 179, 0.2);
+    margin-top: 8.8rem;
+}
+.mobile .card-dashboard .user-info {
+    padding: 2.4rem;
+}
+.mobile .card-dashboard .user-info .name-ranking {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.8rem;
+}
+.mobile .card-dashboard .user-info .name-ranking .name-area {
+    display: flex;
+    align-items: flex-end;
+}
+.mobile .card-dashboard .user-info .name-ranking .name-area strong {
+    font-size: 2.0rem;
+    color: #04021f;
+}
+.mobile .card-dashboard .user-info .name-ranking .name-area span {
+    font-size: 2.0rem;
+    font-weight: normal;
+    color: #3e4259;
+}
+.mobile .card-dashboard .user-info .name-ranking .name-area .setting-btn {
+    display:  inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    background: #b8b6c4;
+    padding: 0;
+    border-radius: 6px;
+    margin-left: 8px;
+}
+.mobile .card-dashboard .user-info .name-ranking .name-area .setting-btn img {
+    width: 1.6rem;
+    height: 1.6rem;
+}
+.mobile .card-dashboard .user-info .name-ranking .ranking-tier {
+    width: 4.0rem;
+    height: 4.0rem;
+}
+.mobile .card-dashboard .user-info .name-ranking .ranking-tier img {
+    width: 100%;
+    height: auto;
+}
+.mobile .user-email-info .user-email {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #3e4259;
+    margin-bottom: 0.8rem;
+}
+.mobile .user-email-info .phone-number {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.mobile .user-email-info .phone-number.uncertified {
+    color: #b8b6c4;
+}
+
+/* 랭킹 자세히 보기 */
+.mobile .ranking-tier-detail {
+    display: none;
+    position: absolute;
+    right: -0.7rem;
+    top: 5.0rem;
+    /* width: 17.0rem; */
+    padding: 12px 20px;
+    margin: 0;
+}
+.mobile .ranking-tier-detail.active {
+    display: block;
+}
+.mobile .ranking-tier-detail .next-ranking {
+    display: flex;
+    justify-content: space-between;
+}
+.mobile .ranking-tier-detail .next-ranking span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #b8b6c4;
+}
+.mobile .ranking-tier-detail .next-ranking .next-ranking-num {
+    color: #3e4259;
+}
+.mobile .ranking-tier-detail .ranking-process {
+    position: relative;
+    width: 100%;
+    height: 0.2rem;
+    background: #dcdee8;
+    margin-top: 8px;
+}
+.mobile .ranking-tier-detail .ranking-process span {
+    position: absolute;
+    display: inline-block;
+    width: 74%;
+    height: 0.2rem;
+    background: #e6458e;
+}
+.mobile .card-dashboard .user-info .using-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* margin-left: 0.8rem; */
+}
+.mobile .card-dashboard .user-info .using-info > div {
+    width: 14.0rem;
+    text-align: center;
+}
+.mobile .card-dashboard .user-info .using-info .using-product {
+    border-right: 1px solid #b8b6c4;
+    padding-right: 1.5rem;
+}
+.mobile .card-dashboard .user-info .using-info .using-keyword {
+    padding-left: 1.5rem;
+}
+.mobile .card-dashboard .user-info .using-info > div strong {
+    font-size: 1.6rem;
+    color: #3e4259;
+}
+.mobile .card-dashboard .user-info .using-info > div p {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #e6458e;
+    margin-top: 1.2rem;
+}
+.mobile .card-dashboard .user-info .using-info > div p b {
+    vertical-align: middle;
+}
+.mobile .card-dashboard .bottom-user-info-area {
+    height: 10.5rem;
+    background: #f2f2fc;
+    padding: 2.2rem 2.4rem 2.7rem;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    overflow: hidden;
+    transition: all 0.5s;
+}
+.mobile .card-dashboard .bottom-user-info-area.active {
+    height: 18.0rem;
+}
+.mobile .bottom-user-info-area .bottom-info-contents {
+    margin-top: 1.0rem;
+}
+.mobile .bottom-user-info-area .bottom-info-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #3e4259;
+}
+.mobile .recommender-code .bottom-info-contents {
+    display: flex;
+    align-items: center;
+}
+.mobile .bottom-user-info-area .bottom-info-contents input {
+    height: 3.2rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #04021f;
+    line-height: 3.2rem;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    padding: 0 1.6rem;
+    box-sizing: border-box;
+}
+.mobile .telegram-token {
+    display: none;
+    margin-top: 1.6rem;
+}
+.mobile .card-dashboard .bottom-user-info-area.active .telegram-token {
+    display: block;
+}
+.mobile .telegram-token .bottom-info-contents input {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mobile .bottom-user-info-area .bottom-info-contents button {
+    width: 3.2rem;
+    height: 3.2rem;
+    background: none;
+    padding: 0;
+}
+.mobile .bottom-user-info-area .bottom-info-contents button img {
+    width: 100%;
+    height: auto;
+}
+.mobile .bottom-user-info-area .bottom-info-contents .copy-btn {
+    margin: 0 1.6rem;
+}
+.mobile .card-dashboard .unfold-btn {
+    width: 3.2rem;
+    height: 3.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    bottom: -1.5rem;
+    /* border: 1px solid #dcdee8; */
+    background: url('assets/images/svg/ic_circle_unfold_32.svg') center no-repeat;
+    border-radius: 50%;
+    margin-left: -1.75rem;
+    padding: 0;
+}
+.mobile .card-dashboard .unfold-btn.on {
+    background: url('assets/images/svg/ic_circle_fold_32.svg') center no-repeat;
+}
+
+/* 포인트 활동 */
+.mobile .point-activities {
+    position: relative;
+    padding: 0 2.4rem;
+}
+.mobile .point-activities .mypage-menu-title {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #3e4259;
+    margin-bottom: 1.6rem;
+}
+.mobile .point-activities-list {
+    border: 1px solid #dcdee8;
+    border-radius: 16px;
+}
+.mobile .point-activities-list ul {
+    display: flex;
+    align-items: center;
+}
+.mobile .point-activities-list ul li {
+    position: relative;
+    width: 33.33%;
+    text-align: center;
+    padding: 1.2rem 0;
+}
+.mobile .point-activities-list ul li::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 3.4rem;
+    background: #dcdee8;
+}
+.mobile .point-activities-list ul li:last-child::after {
+    display: none;
+}
+.mobile .point-activities-list ul li p {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #04021f;
+    text-align: center;
+}
+.mobile .point-activities-list ul li p span {
+    display: block;
+    color: #e6458e;
+}
+
+/* 나의 활동 */
+.mobile .my-activities {
+    padding: 0 2.4rem;
+    margin-top: 3.3rem;
+    overflow: hidden;
+}
+.mobile .my-activities-inner {
+    border-bottom: 1px solid #dcdee8;
+    height: 6.0rem;
+    transition: all 0.5s;
+}
+.mobile .my-activities.active .my-activities-inner {
+    height: 14.9rem;
+}
+.mobile .my-fold-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.8rem;
+    margin-bottom: 2.8rem;
+}
+.mobile .my-fold-title span {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #3e4259;
+}
+.mobile .my-fold-btn {
+    width: 3.2rem;
+    height: 3.2rem;
+    background: url('assets/images/svg/ic_unfold_black_32.svg') center no-repeat;
+}
+.mobile .my-fold-btn.on {
+    background: url('assets/images/svg/ic_fold_black_32.svg') center no-repeat;
+}
+.my-activities ul,
+.my-info ul {
+    padding-left: 0.8rem;
+}
+.my-activities ul li,
+.my-info ul li {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #04021f;
+    margin-bottom: 2.8rem;
+}
+
+/* 나의 정보 */
+.mobile .my-info {
+    margin-top: 2.8rem;
+    padding: 0 2.4rem;
+    overflow: hidden;
+}
+.mobile .my-info .my-info-inner {
+    height: 6.0rem;
+    border-bottom: 1px solid #dcdee8;
+    transition: all 0.5s;
+}
+.mobile .my-info.active .my-info-inner {
+    height: 11.2rem;
+}
+
+/* 로그아웃 */
+.mobile .logout-btn-wrap {
+    padding: 0 2.4rem;
+}
+.mobile .logout-btn-wrap .mypage-logout-btn {
+    width: 100%;
+    height: 4.0rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #b8b6c4;
+    line-height: 4.0rem;
+    border-radius: 8px;
+    border: 1px solid #b8b6c4;
+    padding: 0;
+    background: none;
+    margin-top: 5.6rem;
+    margin-bottom: 6.4rem;
+}

@@ -1,0 +1,60 @@
+<div class="outlet-section">
+        <!-- formGroup : bsForm -->
+    <!-- <div class="query-title">검색</div> -->
+
+
+        <form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+                <div class="query-wrap">
+
+            <!-- <bs-checkbox [formGroup]="bsForm" [name]="'test'" [label]="'sample'" [value]="'yes'" ></bs-checkbox> -->
+                    <div class="form-block">
+                        <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">노출</div>
+                                <bo-group-checkbox [formGroup]="bsForm" [name]="'hidden'">
+                                    <bo-checkbox-config [title]="'노출'" [value]="'0'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'미노출'" [value]="'1'"></bo-checkbox-config>
+                                </bo-group-checkbox>
+                            </div>
+                        </div>
+                        <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">진행</div>
+                                <bo-group-checkbox [formGroup]="bsForm" [name]="'finish'">
+                                    <bo-checkbox-config [title]="'진행중'" [value]="'ing'"></bo-checkbox-config>
+                                    <bo-checkbox-config [title]="'종료'" [value]="'finish'"></bo-checkbox-config>
+                                </bo-group-checkbox>
+                            </div>
+                        </div>
+
+                        <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">기간</div>
+                                <bo-period-query [formGroup]="bsForm" [name]="'period'">
+
+                                    <bo-period-query-option-config [value]="'m_date'" [label]="'이벤트시작일'">
+                                    </bo-period-query-option-config>
+                                    <bo-period-query-option-config [value]="'d_date'" [label]="'이벤트종료일'">
+                                    </bo-period-query-option-config>
+                                    <bo-period-query-option-config [value]="'ext_date'" [label]="'당첨발표시'">
+                                    </bo-period-query-option-config>
+                                    <bo-period-query-option-config [value]="'regist_date'" [label]="'등록일'">
+                                    </bo-period-query-option-config>
+                                </bo-period-query>
+                            </div>
+                        </div>
+
+                        <!-- 검색어 -->
+                        <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">검색어</div>
+                                <input type="text" class="form-control search-input big-input item-horizontal" formControlName="search_text" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- 검색 버튼 -->
+            <bo-search-button-form></bo-search-button-form>
+        </form>
+</div>
+

@@ -1,0 +1,285 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="'기본설정'" [requireText]="true">
+    <bo-page-button-config id = "id-board-content-list-btn-create"
+        [title]="'저장하기'"
+        [styleType] = "'square-m-black-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config>
+    <!-- <bo-page-button-config id = "id-board-content-list-btn-userview"
+    [title] = "'저장 후 리스트'"
+    [styleType] = "'square-m-white-btn'"
+    (click) = "submitAndBack()">
+    </bo-page-button-config>
+    <bo-page-button-config id = "id-board-content-list-btn-userview"
+        [title] = "'저장 후 화면유지'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config> -->
+</bo-page-header>
+<form [formGroup]="bsForm" (ngSubmit)="submitOnly()"  class="form-area" >
+    <div class="section">
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'기본정보'"
+                [description]="'쇼핑몰의 기본적인 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+
+            
+            <div class="content-block">
+
+            <!-- <bs-tooltip text="dddddddddddddddddd<br>ddddddddd"></bs-tooltip> -->
+                <div class="content-box">
+                    <div class="content-title content-title-s">
+                        서비스 도메인 <img class="required-img" src="assets/img/must_txt.png">
+                    </div>
+                    <div class="content">
+                        <!-- http:// <input type="text" class="form-control search-input big-input" name="domain" formControlName="domain" /> -->
+                        http:// &nbsp; <bs-input [name]="'domain'" [formGroup]="bsForm"
+                            [placeholder]="'쇼핑몰 도메인을 입력하세요.'" [style]="'search-input'" [required]="true"></bs-input>
+                    </div>
+                </div>
+                <div class="content-box content-no-border">
+                    <div class="content-title content-title-s">
+                        서비스 이름 <img class="required-img" src="assets/img/must_txt.png">
+                    </div>
+                    <div class="content">
+                        <!-- <input type="text" class="form-control search-input big-input" name="shopName" formControlName="shopName"  /> -->
+                        <bs-input [name]="'shopName'" [formGroup]="bsForm" [style]="'large-input'" [required]="true"></bs-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrap two-line-content">
+            <!-- <div class="sub-title-bar">
+                <img src="/assets/img/03-3-order.svg" />
+                    사업자 정보
+            </div> -->
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'사업자정보'"
+                [description]="'사업자정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                    <div class="content-box">
+                        <div class="content-title">
+                            상호(회사명)
+                        </div>
+                        <div class="content">
+                            <!-- <input type="text" class="form-control search-input big-input" name="companyName" formControlName="companyName" />-->
+                            <bs-input [name]="'company_name'" [formGroup]="bsForm"  [style]="'big-input'"></bs-input>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            업태/종목
+                            <!-- <input type="text" class="form-control search-input medium-input" name="businessConditions" formControlName="businessConditions" /> -
+                            <input type="text" class="form-control search-input medium-input" name="businessLine" formControlName="businessLine"  /> -->
+                        </div>
+                        <div class="content">
+                            <bs-input [name]="'businessConditions'" [formGroup]="bsForm" [style]="'medium-input'" ></bs-input>
+                            <div class="dash-bar">-</div>
+                            <bs-input [name]="'businessLine'" [formGroup]="bsForm" [style]="'medium-input'" ></bs-input>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            사업자 번호
+                        </div>
+                        <div class="content">
+                            <bs-group-input [name]="'business_license'" [formGroup]="bsForm" [style]="'medium-input'">
+                                <bs-input-config [required]="true" [number]="true"></bs-input-config>
+                                <bs-input-config [required]="true" [number]="true"></bs-input-config>
+                                <bs-input-config [required]="true" [number]="true"></bs-input-config>
+                            </bs-group-input>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <div class="content-title">
+                            대표 이메일
+                        </div>
+                        <div class="content">
+                            <bs-group-input [name]="'companyEmail'" [formGroup]="bsForm" [separator]="'@'" [style]="'email-input'">
+                                <bs-input-config ></bs-input-config>
+                                <bs-input-config ></bs-input-config>
+                            </bs-group-input>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                        <div class="content-title">
+                            대표자
+                        </div>
+                        <div class="content">
+                            <!-- <input type="text" class="form-control search-input medium-input" name="ceo" formControlName="ceo" /> -->
+                            <bs-input [name]="'ceo'" [formGroup]="bsForm" [style]="'medium-input'" ></bs-input>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            연락처
+                        </div>
+                        <div class="content">
+                            <!-- <input type="text" class="form-control search-input big-input" name="companyPhone" formControlName="companyPhone" /> -->
+                            <bs-input [name]="'company_phone'" [formGroup]="bsForm"  [style]="'medium-input'"></bs-input>
+                        </div>
+                    </div>
+                    <!-- <div class="content-box">
+                        <div class="content-title">
+                        통신판매업 신고번호
+                        </div>
+                        <div class="content" style="max-width: calc(100% - 200px);">
+                        <bs-input [name]="'mailsellingLicense'" [formGroup]="bsForm" [style]="'big-input'"></bs-input>
+                        </div>
+                    </div> -->
+                <!-- <div class="content-box">
+                    <div class="content-title">
+                        팩스번호
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'companyFax'" [formGroup]="bsForm" [style]="'big-input'"></bs-input>
+                    </div>
+                </div> -->
+                <!-- <div class="content-box">
+                        <div class="content-title">
+                            입점문의 이메일
+                        </div>
+                        <div class="content">
+                        <bs-group-input [name]="'partnershipEmail'" [formGroup]="bsForm" [separator]="'@'" [style]="'email-input'">
+                            <bs-input-config ></bs-input-config>
+                            <bs-input-config ></bs-input-config>
+                        </bs-group-input>
+                    </div>
+                </div> -->
+                <div class="content-box">
+                        <div class="content-title">
+                            카피라이트
+                        </div>
+                        <div class="content">
+                            <bs-input [name]="'copyright'" [formGroup]="bsForm"  [style]="'medium-input'"></bs-input>
+                        </div>
+                </div>
+                <div class="content-box inline-content-none">
+                    <div class="content-title">
+                        사업장 주소
+                    </div>
+                    <div class="content content-address">
+                        <!--
+                            주소록 control 만드실때 address-margin class 클래스 추가해주세요
+                        -->
+                        <bs-input [name]="'companyZipcode'" [formGroup]="bsForm" [style]="'small-input no-margin'"></bs-input>
+                        <!-- <bo-page-button [type]="'square-s-red'" [title]="'주소검색'"></bo-page-button> -->
+                        <btn-daum-address (result)=" onChangeAddress($event)" [options]="daumAddressOptions"></btn-daum-address>
+                        <div class="item-horizontal">
+                            <bs-input [name]="'companyAddress'" [formGroup]="bsForm" [style]="'big-input big-input-right'"></bs-input>
+                            <bs-input [name]="'companyAddressDetail'" [formGroup]="bsForm" [style]="'big-input big-input-top'"></bs-input>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-box">
+                        <div class="content-title">
+                            운영 이메일
+                        </div>
+                        <div class="content content-large">
+                            <bs-group-input [name]="'op_shop_email'" [formGroup]="bsForm" [separator]="'@'" [style]="'email-input'">
+                                <bs-input-config ></bs-input-config>
+                                <bs-input-config ></bs-input-config>
+                            </bs-group-input>
+                        </div>
+                </div>
+                <!-- <div class="content-box">
+                    <div class="content-title">
+                        책임고지 문구
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'sales_notice'" [formGroup]="bsForm" [style]="'big-input'"></bs-input>
+                    </div>
+                </div> -->
+
+                <div class="content-box content-no-border">
+                    <div class="content-title">
+                        고객센터 운영 시간
+                    </div>
+                    <div class="content content-large">
+                        <bs-input [name]="'op_day'" [formGroup]="bsForm" [style]="'medium-input'"></bs-input>
+                        <!-- <bs-input [name]="'op_min_time'" [formGroup]="bsForm" [style]="'medium-input'"></bs-input> -->
+                        <div class="dash-bar">-</div>
+                        <bs-input [name]="'op_max_time'" [formGroup]="bsForm" [style]="'medium-input'"></bs-input>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        <!-- <div class="content-wrap two-line-content">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'개인정보 보호책임자 정보'"
+                [description]="'개인정보 보호책임자 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+
+                <div class="content-box">
+                    <div class="content-title">
+                        책임자 성명
+                    </div>
+                    <div class="content">
+                    <bs-input [name]="'member_info_manager'" [formGroup]="bsForm" [style]="'big-input'"></bs-input>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        담당부서
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'member_info_part'" [formGroup]="bsForm"  [style]="'big-input'"></bs-input>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        직급
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'member_info_rank'" [formGroup]="bsForm" [style]="'big-input'"></bs-input>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        연락처
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'member_info_tel'" [formGroup]="bsForm" [style]="'big-input'"></bs-input>
+                    </div>
+                </div>
+                <div class="content-box content-no-border">
+                        <div class="content-title">
+                        이메일
+                        </div>
+                        <div class="content">
+                            <bs-group-input [name]="'member_info_email'" [formGroup]="bsForm" [separator]="'@'" [style]="'email-input'">
+                                <bs-input-config ></bs-input-config>
+                                <bs-input-config ></bs-input-config>
+                            </bs-group-input>
+                        </div>
+                </div>
+            </div>
+        </div> -->
+
+
+        <!-- <div class="content-wrap">
+                <bs-title-label-ctrl
+                    [title]="'이용약관'"
+                    [description]="'이용약관 정보를 입력하세요'">
+                </bs-title-label-ctrl>
+
+                <div class="content-box" >
+                        <div class="content content-newline">
+                            <textarea name="mall_terms" formControlName="mall_terms"></textarea>
+                        </div>
+                </div>
+
+        </div> -->
+
+        <div class="btn-area">
+            <bo-submit-button-form></bo-submit-button-form>
+        </div>
+  </div>
+</form>

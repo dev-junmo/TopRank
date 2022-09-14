@@ -1,0 +1,162 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/03-5-board-2.svg'" 
+    [title]="'베스트 후기관리'"
+    [description]="'홈페이지 리뷰영역, 리뷰섹션 상단에 최대 30개까지 노출됩니다.'" 
+    >
+
+     <!-- 게시글등록 버튼-->
+    <!-- <bo-page-button-config id = "id-board-content-list-btn-create"
+        [title]="'게시글등록'"
+        [styleType] = "'round-m-darkgrey'"
+        (click) = "createItem($event)">
+    </bo-page-button-config>    -->
+    <!-- 사용자화면 버튼-->
+    <bo-page-button-config id = "id-board-content-list-btn-userview"
+        [title] = "'사용자화면'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "onClickClientView()">
+    </bo-page-button-config>
+</bo-page-header>
+
+<div class="list-section">
+
+    <!-- query form -->
+    <board-goods-best-review-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></board-goods-best-review-query-form>
+
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap-se">
+        <!-- list -->
+        <div style="margin: auto; max-width: 100%; margin-bottom: 50px;">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="true"
+                [selectColumn]="false"
+                (reload)="reloadItems($event)"
+                [sortBy] = "'bestreview_seq'"
+                [sortAsc] = "false">
+
+                <!-- <bs-header-button-config id = "id-board-list-selected-btn"
+                    [title] = "'선택삭제'"
+                    [styleType] = "'s-darkblue'"
+                    (click) = "deleteSelectedItem($event , 'bestreview_seq')">
+                </bs-header-button-config> -->
+
+                <!-- <data-table-column
+                    [property]="'favorite_chk'"
+                    [header]="'베스트'"
+                    [sortable]="true"
+                    [width]="66">
+                    <ng-template #dataTableHeader let-item="item">
+                            베스트
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.goods.favorite_chk == 'none'"><img src="/assets/img/btn_star-01.png" /></span>
+                        <span *ngIf="item.goods.favorite_chk == 'checked'"><img src="/assets/img/btn_star-02.png" /></span>
+                    </ng-template>
+                </data-table-column> -->
+                <!-- <data-table-column
+                    [property]="'bestreview_seq'"
+                    [header]="'번호'"
+                    [sortable]="true"
+                    [width]="80">
+                </data-table-column> -->
+
+                <data-table-column
+                    [property]="'review_seq'"
+                    [header]="'후기ID'"
+                    [sortable]="true"
+                    [width]="80">
+                </data-table-column>
+
+                <data-table-column
+                    property="name"
+                    header="작성자"
+                    [width]="100">
+                    <ng-template #dataTableCell let-item="item" >
+                        <span >{{item?.goodsreview?.name}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'goods_image'"
+                    [header]="'이미지'"
+                    [width]="80">
+                    <ng-template #dataTableCell let-item="item" >
+                        <a target="_blank" href="{{clientURL+'/goods/view/'+item.goodsreview?.goods_seq}}">
+                            <img [src] = "item?.goodsreview?.goods?.image"  style="width: 44px; height: 44px;">
+                        </a>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'goods_name'"
+                    [header]="'상품명'"
+                    [sortable]="true"
+                    [align]="'left'"
+                    [clickable]="true">
+                    <!-- <ng-template #dataTableCell let-item="item" >
+                        <div (click)="onClickViewItem(item , template)">
+                            <span>{{item?.goodsreview?.goods?.goods_name}}</span>
+                        </div>
+                    </ng-template> -->
+
+                    <ng-template #dataTableCell let-item="item" >
+                        <span (click)="updateItem(item.bestreview_seq)">{{item?.goodsreview?.goods?.goods_name}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'regist_date'"
+                    [header]="'등록일'"
+                    [width]="100"
+                    [sortable]="true">
+                    <ng-template #dataTableCell let-item="item" >
+                        <span>{{item.regist_date | date: 'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'score'"
+                    [header]="'평점'"
+                    [width]="120"
+                    [sortable]="true">
+                    <ng-template #dataTableCell let-item="item" >
+                        <bs-rating #small [values]="item?.goodsreview?.score" [max]="max" [isReadonly]="isReadonly" [style]="'star2'"></bs-rating>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'use_status'"
+                    [header]="'사용'"
+                    [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                            <ui-switch (change)="onClickChangeHiddenStatus($event , item)" [checked]="item.use_status == 'use'" size="small" color="#e7e7e7" switchColor="rgb(234,0,61)" switchOffColor="rgb(150,150,150)" defaultBgColor="#dadada" defaultBoColor="#dadada"></ui-switch>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    header="manage"
+                    [width]="200">
+                    <ng-template #dataTableHeader let-item="item">
+                        관리
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <bo-button-collection class="margin-class" [id]="'edit'" (click)="updateItem(item.bestreview_seq)" ></bo-button-collection>
+                        <!-- <bo-button-collection [id]="'copy'" (click)="onClickCopy(item.boardid , item.bestreview_seq)"></bo-button-collection> -->
+                        <bo-button-collection class="margin-class" [id]="'delete'" (click)="onClickBestItem(item.review_seq , 'none' , item)"></bo-button-collection>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+</div>
+
+<!-- <ng-template #template>
+    <board-view [boardItem]="selectedItem" [boardConfig]="boardConfig" [boardId]="'goods_review'"
+        (onClickButton)="onClickButton($event)">
+    </board-view>
+</ng-template> -->

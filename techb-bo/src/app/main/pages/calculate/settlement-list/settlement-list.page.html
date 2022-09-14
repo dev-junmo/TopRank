@@ -1,0 +1,329 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/member-list.svg'" [title]="'정산확정 (요약)'">
+    <bo-page-button-config id = "id-board-create-btn-"
+        [title] = "'엑셀 다운로드'"
+        [styleType] = "'square-m-white-btn'"
+        [imgUrl]="'assets/img/excel-icon.svg'"
+        (click) = "onClickDownloadExcel(query)">
+    </bo-page-button-config>
+</bo-page-header>
+
+<div class="list-section" style="min-height: none;">
+
+    <!-- query form -->
+    <settlement-query-form [setQuery]="query"(query)="reloadWithQuery($event)" [initialQuery]="true"></settlement-query-form>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap-se">
+        <div style="overflow: hidden;">
+            <data-table #bsDatatable2
+                headerTitle="datatable"
+                [header]="true"
+                [initialLoad]="false"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="true"
+                [hasScrollBarX]="true"
+                [tableWidth]="'300px'"
+                [pagination]="false"
+                [initialLoad]= "false"
+                [sortBy] = "'deposit_date'"
+                [sortAsc] = "false"
+
+                [hasScrollBarY]="true"
+                [freezeTableHeader]="true"
+                [tableHeaderPosition]="true"
+
+                [hideScrollbar]="true"
+                [tableHeader]= "false"
+                [appendTableHeader]="true"
+                (reload)="reloadItems($event)"
+
+                class="table2">
+
+                <!-- 선택저장 버튼-->
+                <bs-header-button-config id = "id-board-list-selected-btn"
+                    [title] = "'선택저장'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    (click) = "onClickSaveSelectedItem($event)">
+                </bs-header-button-config>            
+
+                <ng-template #appendTableHeaderTemplate >
+                    <th class="sub-header-box settle settle-height header-border select-column-header" style="width:43px;height:93px">
+                        <div class="checks">
+                            <input type="checkbox" [(ngModel)]="dataTable2.selectAllCheckbox" class="checkmark"/>
+                        </div>
+                    </th>
+                    <th class="sub-header-box settle settle-height header-border" style="width:73px">
+                        <span>보류 확인 <br/> [마감:24일]</span>
+                        <select *ngIf="appConfig.isProvider" class="small-input" [(ngModel)]="allStatus.request_status_temp"
+                            (change)="onChangedAllRequestStatus(allStatus, allStatus.request_status_temp)">
+                            <option value="standby">대기</option>
+                            <option value="carried">이월</option>
+                        </select>
+                    </th>
+                    <th class="sub-header-box settle settle-height header-border"style="width:80px;">
+                        정산구분<br/>&nbsp;<br/>
+                        <select *ngIf="!appConfig.isProvider" class="small-input" [(ngModel)]="allStatus.account_status_temp"
+                            (change)="onChangedAllAccountStatus(allStatus, allStatus.account_status_temp)">
+                            <option value="standby">대기</option>
+                            <option value="complete">완료</option>
+                        </select>
+                    </th>
+                    <th class="sub-header-box settle settle-height header-border"style="width:102px">
+                        <bo-page-button [type]="'square-s-navy-btn'" (click)="onClickInputAllSettlement($event, allStatus)" [title]="'일괄적용'"></bo-page-button>
+                    </th>               
+                   
+                </ng-template>
+
+                <data-table-column
+                    [property]="'account_ym'"
+                    [header]="'보류확인'"
+                    [width]="100"
+                    [height] = "50"
+                    [styleClass]="'settle-height'">
+                    <!-- <ng-template #dataTableHeader>
+                        <span>보류 확인 <br/> [마감:24일]</span>
+                        <select *ngIf="appConfig.isProvider" class="small-input" [(ngModel)]="allStatus.request_status_temp"
+                            (change)="onChangedAllRequestStatus(allStatus, allStatus.request_status_temp)">
+                            <option value="standby">대기</option>
+                            <option value="carried">이월</option>
+                        </select>
+                    </ng-template> -->
+                    <ng-template #dataTableCell let-item="item">
+                        <select *ngIf="appConfig.isProvider && item.account_status != 'complete'"
+                        class="small-input stock-input"
+                        [(ngModel)]="item.request_status">
+                            <option value="standby">대기</option>
+                            <option value="carried">이월</option>
+                        </select>
+                        <span *ngIf="!appConfig.isProvider || item.account_status == 'complete'">
+                            <span *ngIf="item.request_status == 'standby' && item.account_status != 'complete'">대기</span>
+                            <span *ngIf="item.request_status == 'carried'">이월</span>
+                            <span *ngIf="item.request_status == 'standby' && item.account_status == 'complete'">완료</span>
+                        </span>
+
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'provider_seq'"
+                    [header]="'정산구분'"
+                    [width]="100"
+                    [styleClass]="'settle-height'">
+                    <!-- <ng-template #dataTableHeader>
+                        정산구분<br/>&nbsp;<br/>
+                        <select *ngIf="!appConfig.isProvider" class="small-input" [(ngModel)]="allStatus.account_status_temp"
+                            (change)="onChangedAllAccountStatus(allStatus, allStatus.account_status_temp)">
+                            <option value="standby">대기</option>
+                            <option value="complete">완료</option>
+                        </select>
+                    </ng-template> -->
+                    <ng-template #dataTableCell let-item="item">
+                        <select *ngIf="!appConfig.isProvider"
+                        class="small-input stock-input"
+                        [(ngModel)]="item.account_status"
+                        [disabled]="item.account_status != 'standby'">
+                            <option value="standby">대기</option>
+                            <option value="complete">완료</option>
+                        </select>
+                        <span *ngIf="appConfig.isProvider">
+                            <span *ngIf="item.account_status == 'standby'">대기</span>
+                            <span *ngIf="item.account_status == 'complete'">완료</span>
+                        </span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'provider_seq'"
+                    [width]="100"
+                    [styleClass]="'settle-height'">
+                    <!-- <ng-template #dataTableHeader>
+                        <bo-page-button [type]="'square-s-navy-btn'" (click)="onClickInputAllSettlement($event, allStatus)" [title]="'일괄적용'"></bo-page-button>
+                    </ng-template> -->
+                    <ng-template #dataTableCell let-item="item">
+                        <bo-page-button [type]="'square-s-navy-btn'" (click)="onClickSaveSettlement(item)" [title]="'저장'"></bo-page-button>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+
+
+
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [initialLoad]="false"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="false"
+
+                [hasScrollBarX]="true"
+                [hasScrollBarY]="true"
+                [freezeTableHeader]="true"
+                [tableHeaderPosition]="true"
+
+                [tableWidth]="'1600px'"
+                [pagination]="false"
+                [tableHeader]= "false"
+                [initialLoad]= "false"
+                [textEllipsis]="true"
+                (reload)="reloadItems($event)"
+                [sortBy] = "'deposit_date'"
+                [sortAsc] = "false"
+                [appendTableHeader]="true"
+                class="table1">
+
+                <ng-template #appendTableHeaderTemplate >
+                    <tr>
+                        <!-- <th class="sub-header-box settle" rowspan="2" style="width:43px">
+                            <div class="checks">
+                                <input type="checkbox" [(ngModel)]="dataTable.selectAllCheckbox" class="checkmark"/>
+                            </div>
+                        </th> -->
+                        <th class="sub-header-box settle" rowspan="2" style="width: 65px;">정산월</th>
+                        <th class="sub-header-box settle" rowspan="2" style="width: 165px;">기간</th>
+                        <th class="sub-header-box settle" rowspan="2" style="width: 150px;">판매자</th>
+                        <th class="settle" colspan="3" >판매</th>
+                        <th class="settle" colspan="3" >할인공제</th>
+                        <th class="sub-header-box settle" rowspan="2" style="width: 120px;">취급고</th>
+                        <th class="sub-header-box settle" rowspan="2" style="width: 120px;">입점수수료</th>
+                        <th class="sub-header-box settle" rowspan="2" style="width: 120px;">정산금액</th>
+                        <th class="sub-header-box settle" rowspan="2" style="width: 120px;">배송비</th>
+                    </tr>
+                    <tr style="height: 35px;">
+                        <td class="sub-header-box" style="width: 120px;">상품금액</td>
+                        <td class="sub-header-box" style="width: 120px;">수수료</td>
+                        <td class="sub-header-box" style="width: 120px;">판매입점사</td>
+                        <td class="sub-header-box" style="width: 120px;">공제금액</td>
+                        <td class="sub-header-box" style="width: 120px;">TopRank할인공제</td>
+                        <td class="sub-header-box" style="width: 120px;">판매자할인</td>
+                    </tr>
+                </ng-template>
+
+                <data-table-column
+                    [property]="'account_ym'"
+                    [header]="'정산월'"
+                    [width]="65"
+                    [height] = "50"
+                    [styleClass]="'settle-list'">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.account_ym}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'account_ym'"
+                    [header]="'기간'"
+                    [width]="165">
+                    <ng-template #dataTableCell let-item="item">
+                        <a (click)="onClickCalculate(item)">
+                            <span>{{item?.account_start_date  | date:'yyyy-MM-dd'}}</span>~
+                            <span>{{item?.account_end_date  | date:'yyyy-MM-dd'}}</span>
+                        </a>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_name'"
+                    [header]="'판매자'"
+                    [width]="150">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.provider_name}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'total_price'"
+                    [header]="'상품금액'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.total_price | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'commission'"
+                    [header]="'수수료'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.commission | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_commission'"
+                    [header]="'판매 입점사'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.provider_commission | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'total_discount'"
+                    [header]="'공제금액'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.total_discount | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'discount'"
+                    [header]="'TopRank 할인 공제'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.discount | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_discount'"
+                    [header]="'판매자 할인'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.provider_discount | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'sales'"
+                    [header]="'취급고'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.sales | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_commission_sales'"
+                    [header]="'입점 수수료'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.provider_commission_sales | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'account_amount'"
+                    [header]="'정산금액'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.account_amount | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'shipping_cost'"
+                    [header]="'배송비'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.shipping_cost | number }}</span>
+                    </ng-template>
+                </data-table-column>              
+            </data-table>            
+        </div>
+    </div>
+
+
+</div>

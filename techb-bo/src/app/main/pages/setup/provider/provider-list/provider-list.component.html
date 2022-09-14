@@ -1,0 +1,224 @@
+<bo-page-header [imgUrl]="'assets/img/03-5-board-2 (1).svg'" [title]="'입점사 리스트'">
+    <bo-page-button-config id = "id-board-create-btn-"
+        [title] = "'입점사 등록'"
+        [styleType] = "'square-m-white-btn'"
+        (click)="createItem()"
+        >
+    </bo-page-button-config>
+</bo-page-header>
+
+<div class="list-section">
+
+    <provider-list-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></provider-list-query-form>
+
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap-se">
+
+        <div style="margin: auto; max-width: 100%; margin-bottom: 50px;">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="true"
+                [selectColumn]="true"
+                (reload)="reloadItems($event)"
+                [sortBy] = "'provider_seq'"
+                [sortAsc] = "false"
+                [freezeTableHeader]="true"
+                [tableHeaderPosition]="true">
+
+                <bs-header-button-config
+                    id = "id-btn-2"
+                    [title] = "'선택 다운로드'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    [enabled]="false"
+                    (click) = "onClickSelectDownloadExcel($event)">
+                </bs-header-button-config>
+
+                <bs-header-button-config
+                    id = "id-btn-3"
+                    [title] = "'검색 다운로드'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    [enabled]="true"
+                    (click) = "onClickSearchDownloadExcel()">
+                </bs-header-button-config>
+
+
+                <data-table-column
+                    [property]="'provider_seq'"
+                    [header]="'번호'"
+                    [sortable]="true"
+                    [align]="'left'"
+                    [width]="65">
+                </data-table-column>
+                <data-table-column
+                    [property]="'provider_id'"
+                    [header]="'입점사ID'"
+                    [align]="'left'"
+                    [width]="110">
+                </data-table-column>
+                <data-table-column
+                    property="provider_status"
+                    [align]="'left'"
+                    [width]="90">
+                        <ng-template #dataTableHeader let-item="item">
+                            상태
+                        </ng-template>
+                        <ng-template #dataTableCell let-item="item">
+                            <span *ngIf="item.provider_status == 'N'">종료</span>
+                            <span *ngIf="item.provider_status == 'Y'">정상</span>
+                        </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'regdate'"
+                    [sortable]="true"
+                    [width]="180">
+                    <ng-template #dataTableHeader let-item="item">
+                            입점일시
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.regdate | date:'yyyy-MM-dd HH:mm'}}</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'provider_gb'"
+                    [width]="85"
+                   >
+                    <ng-template #dataTableHeader let-item="item">
+                        구분
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.provider_gb != 'provider'">입점(본사)</span>
+                        <span *ngIf="item.provider_gb != 'company'">입점(업체)</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'provider_name'"
+                    [header]="'업체명'"
+                    [sortable]="true"
+                    [align]="'left'"
+                    [width]="202"
+                   >
+                </data-table-column>
+                <data-table-column
+                    [property]="'info_type'"
+                    [header]="'사업자'"
+                    [width]="60"
+                   >
+                </data-table-column>
+                <data-table-column
+                    [property]="'name'"
+                    [width]="145"
+                   >
+                    <ng-template #dataTableHeader let-item="item">
+                        사업자/계좌사본
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.info_file?.length > 0">Y</span>
+                        <span *ngIf="!item.info_file || item.info_file?.length == 0">N</span>
+                        /
+                        <span *ngIf="item.calcu_file?.length > 0">Y</span>
+                        <span *ngIf="!item.calcu_file || item.calcu_file?.length == 0">N</span>
+                    </ng-template>
+                </data-table-column>
+                <!-- <data-table-column
+                    [property]="'pgroup_seq'"
+                    [header]="'판매등급'"
+                    [sortable]="true"
+                   >
+                </data-table-column> -->
+
+                <data-table-column
+                    [property]="'commission_type'"
+                    [width]="140"
+                   >
+                    <ng-template #dataTableHeader let-item="item">
+                        정산기준
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        수수료: 판매가 X {{item?.provider_charge?.charge}}%
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'calcu_count'"
+                    [header]="'정산주기'"
+                    [width]="70"
+                   >
+                    <ng-template #dataTableHeader let-item="item">
+                            정산주기
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        월{{item.calcu_count}}회
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'deli_group'"
+                    [header]="'배송그룹'"
+                    [width]="80"
+                   >
+                    <ng-template #dataTableHeader let-item="item">
+                            배송그룹
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.deli_group == 'provider'">입점사 배송</span>
+                        <span *ngIf="item.deli_group == 'company'">본사 배송</span>
+                    </ng-template>
+                </data-table-column>
+                <!-- <data-table-column
+                    [property]="'r_date'"
+                    [header]="'등록일시'"
+                    [width]="250">
+                    <ng-template #dataTableHeader let-item="item">
+                        등록일시
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.m_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column> -->
+
+                <data-table-column
+                    [property]="'mshop_cnt'"
+                    [header]="'단골'"
+                    [width]="60">
+                    <ng-template #dataTableHeader let-item="item">
+                    단골
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                    {{item.mshop_cnt}}명
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [width]="60"
+                    [property]="'minishop_use_status'">
+                    <ng-template #dataTableHeader let-item="item">
+                    미니샵
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                    <span *ngIf="item.minishop_use_status == 'unuse'">미사용</span>
+                    <a target="_blank" href="{{appConfig?.clientURL+'/goods/minishop/view/' +item.provider_seq }}">
+                        <span *ngIf="item.minishop_use_status != 'unuse'">
+                            <bo-page-button [type]="'square-ss-grey'" [title]="'바로가기'"></bo-page-button>
+                        </span>
+                    </a>
+                </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    header="manage"
+                    [width]="180">
+                    <ng-template #dataTableHeader let-item="item">
+                        관리
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <bo-button-collection class="margin-class" [id]="'edit'" (click)="updateItem(item.provider_seq)" ></bo-button-collection>
+                        <bo-button-collection class="margin-class" [id]="'delete'" (click)="deleteItem(item.provider_seq)"></bo-button-collection>
+                    </ng-template>
+                </data-table-column>
+
+            </data-table>
+        </div>
+    </div>
+</div>

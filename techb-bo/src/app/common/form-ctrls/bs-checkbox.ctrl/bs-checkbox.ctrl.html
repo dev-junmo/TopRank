@@ -1,0 +1,11 @@
+<div  [formGroup]="subForm" class="content-checkbox">
+    <label>
+        <div class="{{style}} first-checkbox">
+            <input type="checkbox" id="{{name}}-{{seq}}"
+                name="{{name}}" formControlName="{{name}}"
+                (change)="onChange($event)"
+                [attr.disabled]="disabled ? '' : null"/>
+            <label for="{{name}}-{{seq}}" class="background-checkbox" ></label>
+        </div>
+    </label>{{label}}
+</div>

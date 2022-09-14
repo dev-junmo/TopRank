@@ -1,0 +1,211 @@
+<!-- 상품 정보 박스: 오른쪽에 랭킹추적 버튼 있는 경우 -->
+<div class="search-result-wrap" *ngIf="alignTackingBtn == 'right'">
+    <!-- 스토어 검색 결과 start -->
+    <div *ifDesktop class="web search-result">
+        <div class="result-box box" [ngClass]="{pointer: data?.is_subscribe == 'Y'}" (click)="onClickGoodsInfoBox()">
+            <div class="result-info result-info-1">
+                <div class="ad" *ngIf="data?.is_ad == 'Y'">
+                    <span>광고</span>
+                </div>
+                <ul class="category" [ngClass]="{'padding': !data?.categories || data?.categories.length == 0}">
+                    <li *ngFor="let category of data?.categories; let idx = index" >
+                        <img *ngIf="idx != 0"
+                            src="assets/images/ranking-search/ic_arrow_right_gray_24.png" alt="">
+                        {{category}}
+                    </li>
+                </ul>
+                <div class="store">
+                    <img src="assets/images/home/thum_navershoping_56.png" alt="">
+                    <div class="store-txt">
+                        <strong class="store-title">{{data?.store_name}}</strong>
+                        <p>{{data?.goods_name}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="result-info result-info-2">
+                <h3 class="result-info-title">판매 순위</h3>
+                <div class="sale-num">
+                    <strong>{{data?.sales_rank?.current_rank}}</strong>위
+                    <span>{{data?.sales_rank?.total_rank | number}}</span><p>개</p>
+                </div>
+                <span class="pageing"><span>{{data?.sales_rank?.page_count}}</span>페이지 <span>{{data?.sales_rank?.page_rank}}</span>위</span>
+            </div>
+            <div class="result-info result-info-3">
+                <h3 class="result-info-title">리뷰 수</h3>
+                <div class="review-num">
+                    <strong>{{data?.reviews?.review_total | number}}</strong>개
+                    <span>{{data?.reviews?.avg_score}}</span><p>점</p>
+                </div>
+                <div class="purchase-count">구매 건수 <span>{{data?.reviews?.sales_total | number}}</span>건</div>
+            </div>
+            <button class="ranking-tracking" *ngIf="isShowTrackingBtn && data?.is_subscribe == 'N'" 
+                routerLink="/main/section/ranking-tracking-detail/{{data?.goods_seq}}" 
+                [queryParams]="{keyword: keyword}">
+                <div class="tracking-img"></div>
+                <span>랭킹 추적</span>
+            </button>
+            <button class="ranking-tracking off" *ngIf="isShowTrackingBtn && data?.is_subscribe == 'Y'" disabled>
+                <div class="tracking-img"></div>
+                <span>랭킹 추적중</span>
+            </button>
+        </div>
+    </div>
+    <!-- mobile 스토어 검색 결과 start-->
+    <div class="mobile search-result-area" *ifMobile>
+        <div class="search-result-wrap">
+            <div class="search-result box"  (click)="onClickGoodsInfoBox()">
+                <div class="ad-area">
+                    <span *ngIf="data?.is_ad == 'Y'">광고</span>
+                </div>
+                <div class="store-name">
+                    <img src="assets/images/svg/thum_navershoping_24.svg" alt="네이버쇼핑">
+                    <span>{{data?.store_name}}</span>
+                </div>
+                <p class="store-product">{{data?.goods_name}}</p>
+                <ul class="keyword-category">
+                    <li *ngFor="let category of data?.categories; let idx = index"> {{category}}</li>
+                </ul>
+                <div class="middle-line"></div>
+                <div class="sales-ranking">
+                    <div class="salse-header">
+                        <img src="assets/images/svg/ic_ranking_32.svg" alt="">
+                        <span>판매 순위</span>
+                    </div>
+                    <div class="sales-ranking-num">
+                        <b class="g-num">{{data?.sales_rank?.current_rank}}</b>위
+                        <span class="page-ranking"><b class="g-num">{{data?.sales_rank?.page_count}}</b>페이지 <b class="g-num">{{data?.sales_rank?.page_rank}}</b>위</span>
+                    </div>
+                    <div class="all-count">
+                        / <b class="g-num">{{data?.sales_rank?.total_rank | number}}</b>개
+                    </div>
+                </div>
+                <div class="review-count">
+                    <div class="review-header">
+                        <img src="assets/images/svg/ic_review_32.svg" alt="">
+                        <span>리뷰 수</span>
+                    </div>
+                    <div class="review-count-num">
+                        <b class="g-num">{{data?.reviews?.review_total | number}}</b>개
+                        <span class="score"><b class="g-num">{{data?.reviews?.avg_score}}</b>점</span>
+                    </div>
+                    <div class="purchases-number">
+                        구매 건수 <b class="g-num">{{data?.reviews?.sales_total | number}}</b>건
+                    </div>
+                </div>
+                <button class="track-ranking-btn" *ngIf="isShowTrackingBtn && data?.is_subscribe == 'N'"
+                    routerLink="/main/section/ranking-tracking-detail/{{data?.goods_seq}}" 
+                    [queryParams]="{keyword: keyword}">
+                    <img src="assets/images/svg/ic_tracking_white_32.svg" alt="">
+                    <span>랭킹 추적하기</span>
+                </button>     
+                <button class="track-ranking-btn tracking" *ngIf="isShowTrackingBtn && data?.is_subscribe == 'Y'" disabled>
+                    <img src="assets/images/svg/ic_tracking_ing_48.svg" alt="">
+                    <span>랭킹 추적중</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!-- mobile 스토어 검색 결과 end-->
+</div>
+
+<!-- 상품 정보 박스: 하단에 랭킹추적 버튼 있는 경우 -->
+<ng-container *ngIf="alignTackingBtn == 'bottom'">
+    <div *ifDesktop class="ranking-wrap">
+        <div class="home-ranking-result-box result-box box">
+            <div class="result-info result-info-1">
+                <div class="ad">
+                    <span *ngIf="data?.is_ad">광고</span>
+                </div>
+                <ul class="category" [ngClass]="{'top-margin': data?.categories.length == 0}">
+                    <li *ngFor="let category of data?.categories; let idx = index" >
+                        <img  *ngIf="idx != 0"
+                            src="assets/images/ranking-search/ic_arrow_right_gray_24.png" alt="">
+                        {{category}}
+                    </li>
+                </ul>
+                <div class="store">
+                    <img src="assets/images/home/thum_navershoping_56.png" alt="">
+                    <div class="store-txt">
+                        <strong class="store-title">{{data?.store_name}}</strong>
+                        <p>{{data?.goods_name}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="result-info result-info-2">
+                <h3 class="result-info-title">판매 순위</h3>
+                <div class="sale-num">
+                    <strong>{{data?.sales_rank?.current_rank}}</strong>위
+                    <span>{{data?.sales_rank?.total_rank | number}}</span><p>개</p>
+                </div>
+                <span class="pageing"><span>{{data?.sales_rank?.page_count}}</span>페이지 <span>{{data?.sales_rank?.page_rank}}</span>위</span>
+            </div>
+            <div class="result-info result-info-3">
+                <h3 class="result-info-title">리뷰 수</h3>
+                <div class="review-num">
+                    <strong>{{data?.reviews?.review_total | number}}</strong>개
+                    <span>{{data?.reviews?.avg_score}}</span><p>점</p>
+                </div>
+                <div class="purchase-count">구매 건수 <span>{{data?.reviews?.sales_total | number}}</span>건</div>
+            </div>
+        </div>
+        <button class="rank-tracking-btn tb-box" 
+            routerLink="/main/section/ranking-tracking-detail/{{data?.goods_seq}}" 
+            [queryParams]="{keyword: keyword}"
+            *ngIf="isShowTrackingBtn">
+            랭킹 추적하기 >
+        </button>
+    </div>
+
+    <!-- mobile 스토어 검색 결과 start-->
+
+    <div *ifMobile class="product-ranking-box box">
+        <div class="product-title">
+            <img src="assets/images/home/thum_navershoping_32.png" alt="네이버쇼핑">
+            <span>{{data?.store_name}}</span>
+        </div>
+        <p class="product-name">
+            {{data?.goods_name}}
+        </p>
+        <ul class="product-category">
+            <li *ngFor="let category of data?.categories; let idx = index" >
+                <span *ngIf="idx != 0"
+                    src="assets/images/ranking-search/ic_arrow_right_gray_24.png" alt="">
+                ></span>
+                {{category}}
+            </li>
+        </ul>
+        <div class="boundary-line"></div>
+        <div class="sales-ranking">
+            <div class="product-contents-title">
+                <img src="assets/images/svg/ic_ranking_32.svg" alt="">
+                <strong>판매 순위</strong>
+            </div>
+            <div class="sales-ranking-num">
+                <strong class="g-num">{{data?.sales_rank?.current_rank}}</strong><span>위</span>
+                <span class="page-ranking"><b class="g-num">{{data?.sales_rank?.page_count}}</b>페이지 <b class="g-num">{{data?.sales_rank?.page_rank}}</b>위</span>
+            </div>
+            <span class="all-count">
+                / <strong class="g-num">{{data?.sales_rank?.total_rank | number}}</strong> 개
+            </span>
+        </div>
+        <div class="review-count">
+            <div class="product-contents-title">
+                <img src="assets/images/svg/ic_review_32.svg" alt="">
+                <strong>리뷰 수</strong>
+            </div>
+            <div class="review-count-num">
+                <strong class="g-num">{{data?.reviews?.review_total | number}}</strong>개 <span class="review-grade">/ <strong class="g-num">{{data?.reviews?.avg_score}}</strong> 점</span>
+            </div>
+            <span class="purchases-num">구매 건수 <b class="g-num">{{data?.reviews?.sales_total | number}}</b>건</span>
+        </div>
+        <button class="ranking-track" 
+            routerLink="/main/section/ranking-tracking-detail/{{data?.goods_seq}}" 
+            [queryParams]="{keyword: keyword}"
+            *ngIf="isShowTrackingBtn">
+            <img src="assets/images/svg/ic_tracking_white_32.svg" alt="">
+            <span>랭킹 추적하기</span>
+        </button>
+    </div>
+    <!-- mobile 스토어 검색 결과 end-->
+</ng-container>

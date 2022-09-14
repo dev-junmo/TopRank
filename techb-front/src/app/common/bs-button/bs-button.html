@@ -1,0 +1,12 @@
+<button *ngIf="!isImageButton"
+    type="button"
+    [disabled]="disabled"
+    [ngClass]="addButtonClass()"
+    (click)="onClick()">
+    <span *ngIf="imgUrl"><img src="{{imgUrl}}" style="margin-right: 5px;"></span>{{title}}
+</button>
+
+<img [hidden]="!isImageButton || disabled" src="{{imgUrl}}" style="margin-right: 5px; cursor: pointer;" >
+<img [hidden]="!isImageButton || !disabled" src="{{imgUrlDisabled}}" style="margin-right: 5px;">
+
+

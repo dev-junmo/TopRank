@@ -1,0 +1,973 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="pageTItle">
+    <bo-page-button-config
+        [title] = "'쿠폰 리스트'"
+        [styleType] = "'square-m-black-btn'"
+        (click) = "gotoListPage()">
+    </bo-page-button-config>
+
+    <bo-page-button-config *ngIf="!isUpdateMode" id = "id-board-content-list-btn-userview"
+        [title] = "'저장하기'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submitAndBack()">
+    </bo-page-button-config>
+
+    <bo-page-button-config *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+    [title] = "'저장 후 리스트'"
+    [styleType] = "'square-m-white-btn'"
+    (click) = "submitAndBack()">
+    </bo-page-button-config>
+
+    <bo-page-button-config *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+        [title] = "'저장 후 화면유지'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config>
+
+  </bo-page-header>
+  <form [formGroup]="bsForm" (ngSubmit)="submitAndBack()"  class="form-area" >
+    <div class="section">
+        <!-- <div class="content-wrap two-line-content">
+            <bs-title-label-ctrl
+                [title]="'쿠폰 사용처'"
+                [description]="'쿠폰 사용처의 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+
+            <div class="content-box">
+                <div class="content-title">
+                    작성자 :
+                </div>
+                <div class="content">
+                    <input type="radio" id="autowrite_use_auto" value="AUTO" name="use_type" formControlName="use_type" />
+                    <label for="autowrite_use_auto" class="check-label">온라인에서 쿠폰 다운로드 후 온라인에서 판매되는 상품(실물, 쿠폰)에 사용하여 쿠폰 혜택을 받음</label>
+                </div>
+            </div>
+            <div class="content-box">
+                <div class="content">
+                    <input type="radio" id="autowrite_use_auto" value="AUTO" name="use_type" formControlName="use_type"type" />
+                    <label for="autowrite_use_auto" class="check-label">온라인에서 쿠폰 다운로드 후 실제 매장(가게)에서 직원에게 쿠폰을 보여주고 쿠폰 헤택을 받음</label>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- 쿠폰 사용처 -->
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'쿠폰 사용처'"
+                [description]="''">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box" *ngIf="!isPrintCoupon">
+                    <div class="content-title">
+                        사용처
+                    </div>
+                    <div class="content content-top-line">
+                        <div>
+                            <input type="radio" id="use_type_online" value="online" name="use_type" formControlName="use_type" [(ngModel)]="use_type"/>
+                            <label for="use_type_online" class="check-label"><strong>온라인 사용</strong> -  온라인에서 쿠폰 다운로드 후 온라인에서 판매되는 상품(실물, 쿠폰)에 사용하여 쿠폰 혜택을 받음</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="use_type_offline" value="offline" name="use_type" formControlName="use_type" [(ngModel)]="use_type"
+                                (change)="onChangeCouponType('offline')"/>
+                            <label for="use_type_offline" class="check-label"><strong>오프라인 매장 사용</strong> - 온라인에서 쿠폰 다운로드 후 실제 매장(가게)에서 직원에게 쿠폰을 보여주고 쿠폰 혜택을 받음</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--쿠폰 종류-->
+        <div class="content-wrap" *ngIf="!isPrintCoupon">
+            <bs-title-label-ctrl [title]="'쿠폰 종류'">
+            </bs-title-label-ctrl>
+
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title">
+                        쿠폰 종류<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content" *ngIf='!isUpdateMode'>
+                        <bs-select [name]="'type'" (change)="onChangeCouponType($event)" [formGroup]="bsForm"
+                            [allowUnselected]="false" [disabled]="use_type=='offline'">
+                            <bs-option-config [value]= "'download'" [label] = "'상품'" ></bs-option-config>
+                            <bs-option-config [value]= "'shipping'" [label] = "'배송비'" ></bs-option-config>
+                            <bs-option-config [value]= "'admin'" [label] = "'직접발급 상품'" ></bs-option-config>
+                            <bs-option-config [value]= "'admin_shipping'" [label] = "'직접발급 배송비'" ></bs-option-config>
+                            <bs-option-config [value]= "'member'" [label] = "'신규가입 쿠폰'" ></bs-option-config>
+                            <bs-option-config [value]= "'member_shipping'" [label] = "'신규가입 쿠폰 (배송비)'" ></bs-option-config>
+
+                        </bs-select>
+                    </div>
+
+                    <div class="content" [hidden]='!isUpdateMode'>
+                        <span *ngIf="couponType=='download'">상품 쿠폰</span>
+                        <span *ngIf="couponType=='shipping'">배송비 쿠폰</span>
+                        <span *ngIf="couponType=='admin'">직접발급 상품 쿠폰</span>
+                        <span *ngIf="couponType=='admin_shipping'">직접발급 배송비 쿠폰</span>
+                        <span *ngIf="couponType=='member'">신규가입 쿠폰</span>
+                        <span *ngIf="couponType=='member_shipping'">신규가입 쿠폰 (배송비)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'쿠폰 제공'"
+                [description]="'쿠폰 다운로드 제한'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+
+                <div class="content-box" *ngIf="!isPrintCoupon && couponType!='member' && couponType!='member_shipping'">
+                    <div class="content-title">
+                        수량 제한<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content">
+                        <bs-select [name]="'download_limit'"
+                            [formGroup]="bsForm"
+                            [allowUnselected]="false"
+                            (change)=onChangeLimit()>
+                            <bs-option-config [value]= "'unlimit'" [label] = "'제한없음'"></bs-option-config>
+                            <bs-option-config [value]= "'limit'" [label] = "'누적제한'"></bs-option-config>
+                            <bs-option-config [value]= "'limit_per_member'" [label] = "'회원별누적제한'"></bs-option-config>
+                        </bs-select>
+                        <div class="item-horizontal ">
+                            <bs-input [name]="'download_limit_ea'"
+                                [formGroup]="bsForm"
+                                [placeholder]="''"
+                                [style]="'small-input'"
+                                [required]="true">
+                            </bs-input>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 회원 가입 쿠포 -->
+                <div class="content-box" *ngIf="couponType=='member' || couponType=='member_shipping'">
+                    <div class="content-title">
+                        발급대상
+                    </div>
+                    <div class="content">
+                        신규가입 회원
+                    </div>
+                </div>
+
+
+                <div class="content-box" *ngIf="isPrintCoupon && couponType!='member' && couponType!='member_shipping'">
+                    <div class="content-title">
+                        인증 회수 제한
+                    </div>
+                    <div class="content content-large">
+                        동일 회차의 쿠폰을 여러 장 받았을 경우
+                        <bs-input [name]="'download_limit_ea'"
+                            [formGroup]="bsForm"
+                            [placeholder]="''"
+                            [style]="'small-input'"
+                            [required]="true">
+                        </bs-input>
+                        회만 인증 허용합니다.
+                    </div>
+                </div>
+
+                <div class="content-box" [hidden]="couponType == 'admin' || couponType == 'admin_shipping'
+                    || couponType == 'member' || couponType == 'member_shipping'
+                    || isPrintCoupon">
+                    <div class="content-title">
+                        등급제한
+                    </div>
+                    <div class="content">
+                        <div class="square-checkbox content-checkbox" *ngFor="let group of member_group_list; let i=index">
+                            <input type= "checkbox"
+                                [formGroup]="bsForm"
+                                name= "group_{{i}}"
+                                id= "member_{{i}}"
+                                [checked]="group.checked==true && (i==0? true: !member_status)"
+                                [value] ="group.value"
+                                [attr.disabled]="member_status && i!=0 ? '':disabled"
+                                (change)="member_group_toggle(i)"
+                                />
+                            <label for= "member_{{i}}" class="background-checkbox">
+                                {{group.label}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box" *ngIf="!isPrintCoupon && couponType !='admin' && couponType !='admin_shipping'
+                    && couponType !='member' && couponType !='member_shipping'">
+                    <div class="content-title">
+                        다운로드 가능기간
+                    </div>
+                    <div class="content content-large">
+                        <div>
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'download_startdate'"
+                                [isTime] = "true"
+                                [isTimeFormatHHSS] = "true"
+                                [value]="download_startdate">
+                            </bo-date-time-input>
+                            ~
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'download_enddate'"
+                                [isTime] = "true"
+                                [isTimeFormatHHSS] = "true"
+                                [value]="download_enddate">
+                            </bo-date-time-input> 기간동안 다운로드가 가능합니다.
+                        </div>
+                        <br>
+                        <div>
+                            매일
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'download_starttime'"
+                                [isDate] = "false"
+                                [value]="download_starttime">
+                            </bo-date-time-input>
+                            ~
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'download_endtime'"
+                                [isDate] = "false"
+                                [value]="download_endtime">
+                            </bo-date-time-input> 시간에만 다운로드가 가능합니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box" *ngIf="isPrintCoupon">
+                    <div class="content-title">
+                        인증 기간 제한
+                    </div>
+                    <div class="content content-large" >
+                        <div>
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'download_startdate'"
+                                [isTime] = "false"
+                                [value]="download_startdate">
+                            </bo-date-time-input>
+                            ~
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'download_enddate'"
+                                [isTime] = "false"
+                                [value]="download_enddate">
+                            </bo-date-time-input> 기간동안 인증이 가능합니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box" *ngIf="!isPrintCoupon">
+                    <div class="content-title">
+                        발급여부
+                    </div>
+                    <div class="content content-top-line">
+                        <div>
+                            <input type="radio" id="issue_stop_1" [value]="0" name="issue_stop" formControlName="issue_stop"/>
+                            <label for="issue_stop_1" class="check-label">발급합니다.</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="issue_stop_2" [value]="1" name="issue_stop" formControlName="issue_stop"/>
+                            <label for="issue_stop_2" class="check-label">발급하지 않습니다.</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box" *ngIf="isPrintCoupon">
+                    <div class="content-title">
+                        인증여부
+                    </div>
+                    <div class="content content-top-line">
+                        <div>
+                            <input type="radio" id="issue_stop_1" [value]="0" name="issue_stop" formControlName="issue_stop"/>
+                            <label for="issue_stop_1" class="check-label">인증합니다.</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="issue_stop_2" [value]="1" name="issue_stop" formControlName="issue_stop"/>
+                            <label for="issue_stop_2" class="check-label">인증하지 않습니다.</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'쿠폰 제공'"
+                [description]="'제공할 쿠폰을 입력하세요'">
+            </bs-title-label-ctrl>
+
+            <div class="content-box">
+                <div class="content-title">
+                    기간제한 :
+                </div>
+                <div class="content">
+                    <bo-period-input [formGroup]="bsForm" [name]="'download_startdate'" [defaultValue]="'download_startdate'">
+                        <bs-period-option-config [value]="'download_startdate'" [label]="'기간제한 시작'">
+                        </bs-period-option-config>
+                        <bs-period-option-config [value]="'download_enddate'" [label]="'기간제한 종료'">
+                        </bs-period-option-config>
+                    </bo-period-input>
+                </div>
+            </div>
+        </div>
+        -->
+
+        <!-- 쿠폰 할인 금액 부담 -->
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'쿠폰 판매자 설정'"
+                [description]="''">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title">
+                        입점 판매자
+                    </div>
+                    <div class="content" *ngIf="couponType !== 'member' && couponType !== 'member_shipping'">
+                        선정 :
+                        <bs-select [name]="'provider_seq'"
+                            [formGroup]="bsForm"
+                            [data]="providerList"
+                            [optionLabelField]="'provider_name'"
+                            [optionValueField]="'provider_seq'"
+                            (valueChanged)="onClickProvider($event.target.value, $event.target.options)">
+                        </bs-select>
+                        <span class="red">※ 미선정시 <strong>본사 및 전체 입점사</strong>로 적용</span>
+                        <br><br>
+                        <span><strong>선정된 입점 판매자 : </strong></span>
+                        <div *ngFor="let provder of providers" style="padding: 5px;">
+                            {{provder.label}}
+                            <span (click)="onClickDeleteProvider(provder.seq)">
+                                <bo-page-button [type]="'s-darkgrey'" [title]="'삭제'"></bo-page-button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="content" *ngIf="couponType == 'member' || couponType == 'member_shipping'">
+                        본사 및 입점사
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="content-title">
+                        할인적용상품
+                    </div>
+                    <div class="content">
+                        <span *ngIf="!providers || providers.length == 0">
+                            <strong>본사 및 입점사</strong> 상품
+                        </span>
+                        <span *ngIf="providers && providers.length > 0">
+                            선정된 입점판매자의 상품
+                        </span>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="content-title">
+                        할인금액 부담율
+                    </div>
+                    <div class="content content-top-line">
+                        본사 : <bs-input [name]="'salescost_admin'" [formGroup]="bsForm" [placeholder]="''" [style]="'small-input'" [required]="true" (change)="onChangeSalesCost('admin')"></bs-input>%&nbsp;&nbsp;
+                        입점판매자 : <bs-input [name]="'salescost_provider'" [formGroup]="bsForm" [placeholder]="''" [style]="'small-input'" [required]="true" (change)="onChangeSalesCost('provider')"></bs-input>%
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'쿠폰정보'"
+                [description]="'쿠폰정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box" *ngIf="isUpdateMode">
+                        <div class="content-title">
+                            생성일
+                        </div>
+                        <div class="content">
+                            {{data?.regist_date | date: 'yyyy-MM-dd HH:mm:ss'}}
+                            <!-- <bo-period-input [formGroup]="bsForm" [name]="'update_date'" [defaultValue]="'update_date'">
+                                <bs-period-option-config [value]="'update_date'" [label]="'수정일'">
+                                </bs-period-option-config>
+                            </bo-period-input> -->
+
+                        </div>
+                </div>
+                <div class="content-box" *ngIf="isUpdateMode">
+                        <div class="content-title">
+                            수정일
+                        </div>
+                        <div *ngIf="data?.update_date" class="content">
+                            {{data?.update_date | date: 'yyyy-MM-dd HH:mm:ss'}}
+                        </div>
+                        <div *ngIf="!data?.update_date" class="content">
+                            수정 없음
+                        </div>
+                </div>
+                <div class="content-box">
+                        <div class="content-title">
+                            쿠폰명<img class="required-img" src="assets/img/must_txt.png"/>
+                        </div>
+                        <div class="content">
+                            <bs-input [name]="'coupon_name'"
+                                [formGroup]="bsForm"
+                                [placeholder]="' 쿠폰명을 입력하세요.'"
+                                [style]="'big-input'"
+                                [required]="true">
+                            </bs-input>
+
+                        </div>
+                </div>
+                <div class="content-box">
+                        <div class="content-title">
+                            쿠폰설명
+                        </div>
+                        <div class="content">
+                            <bs-input [name]="'coupon_desc'" [formGroup]="bsForm" [placeholder]="' 쿠폰설명을 입력하세요.'" [style]="'big-input'"></bs-input>
+
+                        </div>
+                </div>
+                <!-- <div class="content-box">
+                        <div class="content-title">
+                            혜택 :
+                        </div>
+
+                        <div class="content">
+                                <input type="radio" id="benefits0" value="0" name="benefits[0].target_sale"  (change)="onClickBenefitRadio($event)" formControlName="benefits[0].target_sale"  [checked]="checkOthersSelected === 0"/>
+                                <label for="benefits0" class="check-label">
+                                    <div class="label-to-radio">
+                                        상품 할인가 (판매가) x 수량 1개의
+                                        <bs-input [name]="'benefits[0].event_sale'" [formGroup]="bsForm" [placeholder]="'　'" [style]="'small-input'"   [disabled]="checkOthersSelected != 0"></bs-input>
+                                        % 할인, 최대
+                                    </div>
+                                </label>
+                        </div>
+                </div> -->
+
+                <!-- <div class="content-box">
+                <input type="radio" id="benefits1" value="1" name="benefits[0].target_sale"(change)="onClickBenefitRadio($event)" formControlName="benefits[0].target_sale"  />
+                <label for="benefits1" class="check-label">
+                    <div class="label-to-radio">
+                        상품 정가  수량을 기준으로
+                        <bs-input [name]="'benefits[0].event_sale'" [formGroup]="bsForm" [placeholder]="'　'" [style]="'small-input'"   [disabled]="checkOthersSelected != 1"></bs-input>
+                        % 할인
+                    </div>
+                </label>
+            </div> -->
+            </div>
+        </div>
+
+        <!-- 쿠폰 인증번호 -->
+        <div class="content-wrap" *ngIf="isPrintCoupon">
+            <bs-title-label-ctrl
+                [title]="'쿠폰 인증번호'"
+                [description]="'쿠폰 인증번호에 대한 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+
+            <!-- 생성일 때 -->
+            <div class="content-block" *ngIf="!isUpdateMode">
+                <div class="content-box">
+                    <div class="content-title content-title-large">
+                        자동생성<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content content-large content-top-line">
+                        <div>
+                            <input type="radio" id="offline_type_free" value="random" name="offline_type" (change)="onChangeOfflineType($event)" formControlName="offline_type" />
+                            <label for="offline_type_free" class="check-label">랜덤한 인증번호</label>
+                            <bs-input [name]="'offline_random_num'" [formGroup]="bsForm"  [style]="'small-input'"
+                                [disabled]="offlineType != 'random'">
+                            </bs-input>
+                            개 자동생성(최대 1만개까지 가능)
+                        </div>
+                        <div>
+                            <input type="radio" id="offline_type_one" value="one" name="offline_type" (change)="onChangeOfflineType($event)" formControlName="offline_type" />
+                            <label for="offline_type_one" class="check-label">동일 인증번호 1개를 자동생성하여 (인증기간 동안)</label>
+                            <bs-select [name]="'offline_limit'" [formGroup]="bsForm"
+                                [allowUnselected]="false"
+                                [disabled]="offlineType != 'one'">
+                                <bs-option-config [value]= "'unlimit'" [label] = "'제한없이'"></bs-option-config>
+                                <bs-option-config [value]= "'limit'" [label] = "'선착순'"></bs-option-config>
+                            </bs-select>
+                            <span *ngIf="bsForm.value.offline_limit == 'unlimit'" >
+                                 쿠폰 인증 허용
+                            </span>
+                            <span *ngIf="bsForm.value.offline_limit == 'limit'" >
+                                <bs-input [name]="'offline_limit_ea'" [formGroup]="bsForm" [placeholder]="''"
+                                    [style]="'small-input'" [required]="true"
+                                    [disabled]="offlineType != 'one' || bsForm.value.offline_limit != 'limit'">
+                                </bs-input>
+                                번까지 쿠폰 인증 허용
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="content-box">
+                    <div class="content-title content-title-large">
+                            수동생성(권장안함)<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content content-large">
+                        <div>
+                            <input type="radio" id="offline_type_file" value="file" name="offline_type" (change)="onClickOfflineType($event)" formControlName="offline_type" />
+                            <label for="offline_type_file" class="check-label">인증번호 수동 등록</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="offline_type_input" value="input" name="offline_type" (change)="onClickOfflineType($event)" formControlName="offline_type"/>
+                            <label for="offline_type_input" class="check-label">동일 인증번호
+                                <bs-input [name]="'offline_input_serialnumber'" [formGroup]="bsForm" [placeholder]="'　'" [style]="'small-input'" [disabled]="offlineType != 'input'" ></bs-input>
+                                로 (인증기간동안)
+
+                                <bs-select [name]="'offline_limit'" [formGroup]="bsForm" [defaultValue]="''" (change)="clickChange2($event)" [disabled]="offlineType != 'input'">
+                                    <bs-option-config [value]= "'unlimit'" [label] = "'제한없이'"></bs-option-config>
+                                        <bs-option-config [value]= "'limit'" [label] = "'선착순'"></bs-option-config>
+                                </bs-select>
+                                쿠폰 인증 허용
+                                <div [hidden]="offlineLimit != 'limit' && offlineType != 'input'">
+                                        <bs-input [name]="'offline_limit_ea'" [formGroup]="bsForm" [placeholder]="''" [style]="'small-input'" [required]="true"  [disabled]="offlineLimit != 'limit'"></bs-input>
+                                    번까지 쿠폰 인증 허용
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- 수정일 때 -->
+            <div class="content-block" *ngIf="isUpdateMode">
+                <div class="content-box">
+                    <div class="content-title content-title-large">
+                        자동생성<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content content-large content-top-line">
+                        <div *ngIf="data.offline_type == 'random'">
+                            랜덤 인증번호 {{data.offline_random_num}}개 자동 생성
+                            <bo-page-button [title]="'인증번호 보기'" [type]="'s-darkgrey'" (click)="onClickViewPrintCouponList(templateCouponCodeList)" ></bo-page-button>
+                            <bo-page-button [title]="'인증번호 엑셀다운로드'" [type]="'s-darkgrey'" (click)="onClickDownPrintCouponList()"></bo-page-button>
+
+                        </div>
+                        <div *ngIf="data.offline_type == 'one'">
+                            동일 인증번호 1개를 자동 생성 <strong>{{data.offline_input_serialnumber}}</strong>하여 인증기간동안 제한없이 쿠폰 인증 허용
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 쿠폰 제한 -->
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'쿠폰 제한'"
+                [description]="'쿠폰 제한에 관련된 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title">
+                        사용제한
+                    </div>
+                    <div class="content">
+                        <div>
+                            <input type="radio" id="coupon_same_time_y" [value]="'Y'" name="coupon_same_time"
+                                formControlName="coupon_same_time"/>
+                            <label for="coupon_same_time_y" class="check-label">동시사용가능 - 이 쿠폰은 동일한 주문건에 다른 쿠폰과 동시에 사용할 수 있습니다.</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="coupon_same_time_n" [value]="'N'" name="coupon_same_time"
+                                formControlName="coupon_same_time" />
+                            <label for="coupon_same_time_n" class="check-label">단독사용 -  이 쿠폰은 동일한 주문건에 다른 쿠폰과 동시에 사용할 수 없습니다. </label>
+                            <br><div class="coupon-info">* 동일주문에 이쿠폰을 사용하게 되면 다른 쿠폰은 사용 불가능합니다.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        사용금액<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content">
+                        <!-- {상품 할인가 (판매가)} x 수량 } +{좌동} + {좌동} ...이  -->
+                            <bs-input [name]="'limit_goods_price'" [formGroup]="bsForm" [placeholder]="''" [style]="'small-input'" [required]="true"></bs-input>
+                            원 이상이면 사용가능
+
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        사용환경
+                    </div>
+                    <div class="content content-top-line">
+                        <input type="radio" id="sale_agent_all" value="a" name="sale_agent" formControlName="sale_agent" [checked]="true"/>
+                        <label for="sale_agent_all" class="check-label">모든 환경</label>
+                        <!-- <input type="radio" id="sale_agent_m" value="m" name="sale_agent" formControlName="sale_agent" />
+                        <label for="sale_agent_m" class="check-label">모바일</label> -->
+
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        결제수단
+                    </div>
+                    <div class="content content-top-line">
+                        <input type="radio" id="sale_payment_all" value="a" name="sale_payment" formControlName="sale_payment" [checked]="true"/>
+                        <label for="sale_payment_all" class="check-label">모든 결제수단</label>
+                        <!-- <input type="radio" id="sale_payment_b" value="b" name="sale_payment" formControlName="sale_payment" />
+                        <label for="sale_payment_b" class="check-label">무통장</label> -->
+
+                    </div>
+                </div>
+                <!-- <div class="content-box">
+                        <div class="content-title">
+                            사용제한 - 유입경로 :
+                        </div>
+                        <div class="content">
+                            <input type="radio" id="sale_referer_a" value="'a'" name="sale_referer" formControlName="sale_referer" />
+                            <label for="sale_referer_a" class="check-label">유입경로와 무관하게 쿠폰 사용 가능</label>
+                            <input type="radio" id="sale_referer_n" value="'N'" name="sale_referer" formControlName="sale_referer" />
+                            <label for="sale_referer_n" class="check-label">유입경로 할인이 없을 때 쿠폰 사용 가능</label>
+                            <input type="radio" id="sale_referer_y" value="'y'" name="sale_referer" formControlName="sale_referer" />
+                            <label for="sale_referer_y" class="check-label">유입경로 할인이 있을 때 쿠폰 사용 가능</label>
+                        </div>
+                </div> -->
+
+
+
+
+    <!--        <div class="content-box">
+                <div class="content-title">
+                    다운로드 요일 제한
+                </div>
+                <div class="content content-large">
+                <div class="square-checkbox content-checkbox" *ngFor="let week of week_list; let i=index">
+                    <input type="checkbox" [formGroup]="bsForm" name="day_{{i}}" id="day_{{i}}"
+                        [checked]="week.checked==true" [value]="week.value"
+                        (change)="onWeekChecked(i)" />
+                    <label for="day_{{i}}" class="background-checkbox">
+                        {{week.label}}
+                    </label>
+                </div>
+                </div>
+            </div> -->
+            </div>
+        </div>
+
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'혜택'"
+                [description]="'쿠폰 혜택에 관련된 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box" [hidden]="couponType == 'shipping' || couponType == 'member_shipping' || couponType == 'admin_shipping'">
+                    <div class="content-title">
+                        금액<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content">
+                        <input type="radio" id="sale_type_per" [value]="'percent'"
+                            name="sale_type" formControlName="sale_type"/>
+                        <label for="sale_type_per" class="check-label">
+                            <div class="label-to-radio">
+                                상품 할인가 (판매가) x 수량 1개의
+                                <bs-input [name]="'percent_goods_sale'" [formGroup]="bsForm" [placeholder]="'　'"
+                                    [style]="'small-input'"  ></bs-input>
+                                % 할인 , 최대
+                                <bs-input [name]="'max_percent_goods_sale'" [formGroup]="bsForm" [placeholder]="'　'"
+                                [style]="'small-input'"  ></bs-input>
+                                원
+                            </div>
+                        </label>
+                        <br>
+                        <input type="radio" id="sale_type_won" [value]="'won'" name="sale_type" formControlName="sale_type" />
+                        <label for="sale_type_won" class="check-label">
+                            <div class="label-to-radio">
+                                <bs-input [name]="'won_goods_sale'" [formGroup]="bsForm" [placeholder]="'　'"
+                                    [style]="'small-input'" ></bs-input>
+                                원 할인
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <!-- 배송비 쿠폰 -->
+                <div class="content-box" [hidden]="couponType != 'shipping' && couponType != 'member_shipping' && couponType != 'admin_shipping'">
+                    <div class="content-title">
+                        금액<img class="required-img" src="assets/img/must_txt.png" />
+                    </div>
+                    <div class="content">
+                        <input type="radio" id="shipping_type_fr" value="free" name="shipping_type"
+                        formControlName="shipping_type" [checked]="true"/>
+                        <label for="shipping_type_fr" class="check-label">
+                            <div class="label-to-radio">
+                                기본 배송비 무료, 최대
+                                <bs-input [name]="'max_percent_shipping_sale'" [formGroup]="bsForm" [placeholder]="'　'"
+                                    [style]="'small-input'" ></bs-input>
+                                원(개별 배송 상품 제외)
+                            </div>
+                        </label>
+
+                        <input type="radio" id="shipping_type_nofr" value="won" name="shipping_type"
+                        formControlName="shipping_type" />
+                        <label for="shipping_type_nofr" class="check-label">
+                            <div class="label-to-radio">
+                                기본 배송비
+                                <bs-input [name]="'won_shipping_sale'" [formGroup]="bsForm" [placeholder]="'　'"
+                                    [style]="'small-input'"  ></bs-input>
+                                원 할인(개별 배송 상품 제외)
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="content-title">
+                        유효기간<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content">
+                        <div *ngIf="bsForm.get('download_enddate').value">
+                            <!-- * 다운로드 가능기간이 ~ {{bsForm.get('download_enddate').value | date:'yyyy-MM-dd'}}이므로 쿠폰 유효기간 종료일은 {{bsForm.get('download_enddate').value | date:'yyyy-MM-dd'}} 이후로 설정해야 합니다. -->
+                            * <strong>유효기간 만료일</strong>은 쿠폰 다운로드 종료일(<strong>~{{bsForm.get('download_enddate').value | date:'yyyy-MM-dd'}}</strong>) 이후로 설정되야 합니다.
+                        </div>
+                        <br>
+                        <div *ngIf="couponType != 'admin_shipping' && couponType != 'member_shipping' && couponType != 'member'">
+                            <input type="radio" id="issue_priod_type_date" value="date" name="issue_priod_type" formControlName="issue_priod_type" [checked]="true"/>
+                            <label for="issue_priod_type_date" class="check-label">
+                                <div class="label-to-radio">
+                                    <bo-period-input
+                                        [formGroup]="bsForm"
+                                        [name]="'issue_startdate'"
+                                        [endDateName] = "'issue_enddate'">
+                                    </bo-period-input>
+                                </div>
+                            </label>
+                        </div>
+                        <div>
+                            <input type="radio" id="issue_priod_type_day" value="day" name="issue_priod_type" formControlName="issue_priod_type" />
+                            <label for="issue_priod_type_day" class="check-label">
+                                <div class="label-to-radio">
+                                    발급일로부터
+                                    <bs-input [name]="'after_issue_day'" [formGroup]="bsForm" [placeholder]="''" [style]="'small-input'" ></bs-input>
+                                    일 동안 사용가능
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-box" *ngIf="!isPrintCoupon && couponType != 'admin_shipping' && couponType != 'member_shipping' && use_type != 'offline'">
+                    <div class="content-title">
+                        <span>중복여부</span>
+                    </div>
+                    <div class="content">
+                        <bs-checkbox [formGroup]="bsForm" [name]="'duplication_use'" [label]="duplDownSaleText"  [value]="1">
+                        </bs-checkbox>
+                        <br><div class="coupon-info" *ngIf="couponType == 'download' || couponType == 'shipping'">- 여러 번 다운로드 하여 사용 가능</div>
+                        <div class="coupon-info" *ngIf="couponType == 'download' || couponType == 'admin' || couponType == 'member'">- 상품 수량에 중복할인 : A상품10,000원x10개 - (10%할인쿠폰x10개) = 90,000원</div>
+                        <div class="coupon-info" *ngIf="couponType == 'download' || couponType == 'admin' || couponType == 'member'">- 상품 종류에 중복할인 : A상품10,000원x10개 - (10%할인쿠폰x10개) + B상품10,000원x10개 - (10%할인쿠폰x10개) = 180,000원</div>
+                        <!-- <div class="square-checkbox content-checkbox">
+                            <input type="checkbox" id="duplication_use" value="duplication_use" name="duplication_use"
+                                formControlName="duplication_use"/>
+                            <label for="duplication_use" class="background-checkbox">
+                        </label>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="content-box" *ngIf="isPrintCoupon">
+                    <div class="content-title">
+                        중복 할인
+                    </div>
+                    <div class="content">
+                        <bs-checkbox [formGroup]="bsForm" [name]="'duplication_use'" [label]="'중복 사용 가능'"  [value]="1">
+                        </bs-checkbox>
+                        <br><div class="coupon-info">- 상품 수량에 중복할인 : A상품10,000원x10개 - (10%할인쿠폰x10개) = 90,000원</div>
+                        <div class="coupon-info">- 상품 종류에 중복할인 : A상품10,000원x10개 - (10%할인쿠폰x10개) + B상품10,000원x10개 - (10%할인쿠폰x10개) = 180,000원</div>
+                        <!-- <br>- 상품 수량에 중복할인 : A상품10,000원x10개 - (10%할인쿠폰x10개) = 90,000원
+                        <br>- 상품 종류에 중복할인 : A상품10,000원x10개 - (10%할인쿠폰x10개) + B상품10,000원x10개 - (10%할인쿠폰x10개) = 180,000원 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrap" [hidden]="use_type=='offline' || couponType =='shipping' || couponType =='admin_shipping' "  >
+                <bs-title-label-ctrl
+                    [title]="'대상 상품 선택'"
+                    [description]="'대상상품 정보를 입력하세요'">
+                </bs-title-label-ctrl>
+                <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title">
+                        할인 대상
+                    </div>
+                    <div class="content content-top-line red" *ngIf="providers && providers.length > 0">
+                        선정된 <strong>입점판매자</strong>의 상품만 할인이 적용됩니다.
+                    </div>
+                    <div class="content content-top-line red" *ngIf="!providers || providers.length == 0">
+                        <strong>본사 및 입점사</strong> 상품만 할인이 적용됩니다.
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        대상 상품<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content content-top-line">
+                        <div class="content-inline">
+                            <input type="radio" id="issue_type_all" value="all" [name]="'issue_type'" (change)="onClickSelectItem($event)" formControlName="issue_type"  [checked]="issueType === 'all' "/>
+                            <label for="issue_type_all" class="check-label">전체상품</label>
+                        </div>
+                        <div class="content-inline">
+                            <input type="radio" id="issue_type_cate" value="issue" [name]="'issue_type'" (change)="onClickSelectItem($event)" formControlName="issue_type"  />
+                            <label for="issue_type_cate" class="check-label">특정 상품/카테고리에서만 쿠폰사용 가능</label>
+                        </div>
+                            <div class="content-inline">
+                            <input type="radio" id="issue_type_view" value="except" [name]="'issue_type'" (change)="onClickSelectItem($event)" formControlName="issue_type"  />
+                            <label for="issue_type_view" class="check-label">특정 상품/카테고리에서는 쿠폰사용 불가</label>
+                        </div>
+
+                    </div>
+
+                    <div class="content">
+                        <div *ngIf="issueType == 'issue'">
+
+                            * 적용 상품
+                            <bo-page-padding></bo-page-padding>
+                            <bo-goods-multi-select-view
+                                #goodsSelectView1
+                                [providers]="providers"
+                                [(selectedGoodsList)]="targetGoods.issue_goods_include">
+                            </bo-goods-multi-select-view>
+
+                            <bo-page-padding></bo-page-padding>
+
+                            * 적용 카테고리
+                            <bo-category-multi-select-view [(selectedCategories)]="targetGoods.issue_category_include">
+                            </bo-category-multi-select-view>
+                            <bo-page-padding></bo-page-padding>
+                        </div>
+
+                        <div *ngIf="issueType == 'except'">
+                            * 제외 상품
+                            <bo-page-padding></bo-page-padding>
+                            <bo-goods-multi-select-view
+                                #goodsSelectView2
+                                [providers]="providers"
+                                [(selectedGoodsList)]="targetGoods.issue_goods_exclude">
+                            </bo-goods-multi-select-view>
+
+                            <bo-page-padding></bo-page-padding>
+
+                            * 제외 카테고리
+                            <bo-category-multi-select-view
+                                [(selectedCategories)]="targetGoods.issue_category_exclude">
+                            </bo-category-multi-select-view>
+                            <bo-page-padding></bo-page-padding>
+
+
+                            <!-- <button type="button" (click)="onClickGoodsNumber()">상품 선택</button>
+                            <div class="content-table">
+                                <table>
+                                    <colgroup>
+                                        <col width="10%" />
+                                        <col width="40%" />
+                                        <col width="10%" />
+                                    </colgroup>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>상품명</th>
+                                        <th>관리</th>
+                                    </tr>
+                                    <tr *ngFor="let item of goodsItems">
+                                        <td>{{item?.goods_seq}}</td>
+                                        <td>
+                                            <div class="thumb-image-box" [style.background-image]="'url('+item.image+')'"></div>
+                                            {{item?.goods_name}}
+                                        </td>
+                                        <td><button type="button" (click)="onClickDelGoods(item)">삭제</button></td>
+                                    </tr>
+
+                                </table>
+                            </div> -->
+                        </div>
+                    </div>
+
+                </div>
+                <!-- <div class="content-box">
+                        <div class="content-title">
+                            <img class="required-img" src="assets/img/must_txt.png"/>제외 상품 :
+
+                        </div>
+                        <div class="content content-top-line">
+                                <div class="content-inline">
+                                    <bs-checkbox [formGroup]="bsForm"
+                                        [name]="'except_goods'"
+                                        [label]="'특정 카테고리'"
+
+                                        [value]="'y'">
+                                    </bs-checkbox>
+
+                                </div>
+                                <div class="content content-inline" >
+                                    <bs-checkbox [formGroup]="bsForm"
+                                        [disabled]="issueType == 'except'"
+                                        [name]="'except'"
+                                        [label]="'특정 상품'"
+
+                                        [value]="'y'">
+                                    </bs-checkbox>
+                                </div>
+                        </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- <div class="content-wrap">
+          <bo-submit-button-form                 [hasCancelBtn]="true"                 (clickCancel)="gotoListPage()">             </bo-submit-button-form>
+        </div> -->
+        <bo-submit-button-form
+            [hasCancelBtn]="true"
+            (clickCancel)="gotoListPage()">
+        </bo-submit-button-form>
+    </div>
+</form>
+
+<!-- 쿠폰 코드 리스트 팝업  *ngFor="let item of couponCodeList" {{item.offline_number}} -->
+<ng-template #templateCouponCodeList>
+
+    <div class="section">
+        <div class="content-wrap two-line-content" style="min-width: 540px;">
+                <input type="text" [(ngModel)]="keyword" class="search-small-input"/>
+                <div class="button-area" style="padding: 0; display: inline-block;">
+                    <button type="submit" class="btn new-search-btn" style="width: 85px;" (click)="onClickSearch(keyword)" >
+                        <img src="../assets/img/board/board-search-icon.svg"/>
+                        검색
+                    </button>
+                </div>
+            <div class="content-block">
+                <div class="content-table">
+                    <div class="order-table left">
+                        <table>
+                            <colgroup>
+                                <col width="20%" />
+                                <col width="80%" />
+                            </colgroup>
+                            <tr>
+                                <th>
+                                    번호
+                                </th>
+                                <th>
+                                    인증번호
+                                </th>
+                            </tr>
+                            <tr *ngFor="let item of couponCodeList">
+                                <td style="padding: 10px 18px;">
+                                    {{item.offline_seq}}
+                                </td>
+                                <td style="padding: 10px 18px;">
+                                    {{item.offline_serialnumber}}
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+

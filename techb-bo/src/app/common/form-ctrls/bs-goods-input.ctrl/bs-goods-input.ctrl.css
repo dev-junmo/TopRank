@@ -1,0 +1,24 @@
+.alert-danger {
+    color: #ff0000;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    max-width: 425px;
+    margin: 5px 0 0 0;
+    position: absolute;
+    left: 0;
+    padding: 10px;
+    z-index: 10;
+}
+:host{
+    position: relative;
+}
+
+/* .square-s-red{
+    background-color: #901b1b;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    min-width: 46px;
+    height: 28px;
+    padding: 4px 17px 4px 17px;
+} */

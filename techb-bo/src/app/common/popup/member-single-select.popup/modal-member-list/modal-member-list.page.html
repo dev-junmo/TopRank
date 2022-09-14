@@ -1,0 +1,218 @@
+<div class="wrap-modal section">
+    <modal-member-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></modal-member-query-form>
+    <bo-page-padding></bo-page-padding>
+    <div class="content-wrap">
+
+        <data-table #bsDatatable
+            headerTitle="datatable"
+            [header]="true"
+            [items]="items"
+            [itemCount]="itemCount"
+            [indexColumn]="false"
+            [selectColumn]="multiSelect"
+            [sortBy] = "'member_seq'"
+            (reload)="reloadItems($event)"
+             >
+
+
+            <!-- 선택삭제 버튼-->
+            <!-- <bs-header-button-config id = "id-board-content-list-deleteall-btn2"
+                [title] = "'선택한선택'"
+                [styleType] = "'s-darkblue'"
+                (click) = "onClickDTHeaderBtn($event)">
+            </bs-header-button-config> -->
+
+            <!-- <data-table-column
+                [property]="'group_seq'"
+                [header]="'번호'"
+                [width]="53">
+            </data-table-column> -->
+    <!--
+            <data-table-column
+                [property]="'rute'"
+                [header]="'유입'"
+                [width]="35">
+            </data-table-column>
+
+            <data-table-column
+                [property]="'status_nm'"
+                [header]="'승인'"
+                [width]="32">
+            </data-table-column> -->
+
+            <data-table-column
+                [property]="'member_group'"
+                [header]="'등급'"
+                [width]="">
+                <ng-template #dataTableCell let-item="item.member_group">
+                    <span>{{item?.group_name}}</span>
+                </ng-template>
+
+            </data-table-column>
+
+            <data-table-column
+                [property]="'member_seq'"
+                [sortable]="true"
+                [header]="'아이디/고유번호'"
+                [width]="105">
+                <ng-template #dataTableCell let-item="item">
+                    <div>{{item.userid}} / {{item.member_seq}}</div>
+                    <!-- <a class="order-num"></a> -->
+                </ng-template>
+            </data-table-column>
+    <!--
+            <data-table-column
+            [property]="'category'"
+            [header]="'게시판명'"
+            [sortable]="true"
+            [width]="200">
+        </data-table-column>
+            <data-table-column
+                [property]="'category'"
+                [header]="'게시판명'"
+                [sortable]="true"
+                [width]="200">
+            </data-table-column> -->
+            <data-table-column
+                [property]="'user_name'"
+                [header]="'이름(닉네임)'"
+                [sortable]="true"
+                [width]="120">
+                <ng-template #dataTableCell let-item="item">
+                    <div>{{item.user_name}}<span *ngIf="item.nickname">({{item.nickname}})</span></div>
+                    <!-- <a class="order-num">{{item.user_name}}<span *ngIf="item.nickname">({{item.nickname}})</span> </a> -->
+                </ng-template>
+            </data-table-column>
+
+            <data-table-column
+                [property]="'email'"
+                [header]="'이메일주소'"
+
+                [width]="">
+            </data-table-column>
+
+            <data-table-column
+                [property]="'cellphone'"
+                [header]="'핸드폰'"
+                [width]="127">
+            </data-table-column>
+
+            <data-table-column
+                [property]="'phone'"
+                [header]="'전화번호'"
+
+                [width]="127">
+            </data-table-column>
+
+
+        <!--   <data-table-column
+                [property]="'re_contents'"
+                [header]="'상태'"
+
+                [width]="150">
+                <ng-template #dataTableHeader let-item="item">
+                    상태
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <span *ngIf="item">답변완료</span>
+                    <span *ngIf="!item">답변대기</span>
+                </ng-template>
+            </data-table-column> -->
+            <data-table-column
+                [property]="'birthday'"
+                [header]="'생일'"
+                [sortable]="true"
+                [width]="90">
+                <ng-template #dataTableCell let-item="item">
+                    <span>{{item.birthday}}</span>
+                </ng-template>
+
+            </data-table-column>
+            <data-table-column
+                [property]="'regist_date'"
+                [header]="'가입일자'"
+                [sortable]="true"
+                [width]="72">
+                <ng-template #dataTableCell let-item="item">
+                    <span>{{item.regist_date | date:'yy-MM-dd HH:mm'}}</span>
+                </ng-template>
+
+            </data-table-column>
+
+            <data-table-column
+            [property]="'lastlogin_date'"
+            [header]="'최종방문'"
+            [sortable]="true"
+            [width]="72">
+            <ng-template #dataTableCell let-item="item">
+                <span>{{item.lastlogin_date | date:'yy-MM-dd HH:mm'}}</span>
+            </ng-template>
+        </data-table-column>
+
+            <data-table-column
+                [property]="'emoney'"
+                [header]="'적립금'"
+
+                [width]="58">
+            </data-table-column>
+
+            <data-table-column
+                [property]="'point'"
+                [header]="'포인트'"
+
+                [width]="58">
+            </data-table-column>
+
+            <data-table-column
+                [property]="'cash'"
+                [header]="'이머니'"
+
+                [width]="58">
+            </data-table-column>
+
+            <data-table-column
+                [property]="'sms'"
+                [header]="'SMS수신'"
+
+                [width]="48">
+                <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.sms == 'y'">동의</span>
+                        <span *ngIf="item.sms == 'n'">거부</span>
+                </ng-template>
+            </data-table-column>
+
+            <data-table-column
+                [property]="'mailing'"
+                [header]="'이메일수신'"
+
+                [width]="60">
+                <ng-template #dataTableCell let-item="item">
+                    <span *ngIf="item.mailing == 'y'">동의</span>
+                    <span *ngIf="item.mailing == 'n'">거부</span>
+                </ng-template>
+            </data-table-column>
+
+            <data-table-column
+                [property]="'status'"
+                [header]="'가입승인'"
+
+                [width]="50">
+                <ng-template #dataTableCell let-item="item">
+                    <span *ngIf="item.status == 'done'">승인</span>
+                    <span *ngIf="item.status == 'hold'">미승인</span>
+                    <span *ngIf="item.status == 'dormancy'">휴면</span>
+                    <span *ngIf="item.status == 'widthdrawal'">탈퇴</span>
+                </ng-template>
+            </data-table-column>
+
+            <data-table-column *ngIf="!multiSelect"
+                [header]="'선택'"
+                [width]="70">
+                <ng-template #dataTableCell let-item="item">
+                <bo-page-button  class="margin-class" [title]="'선택'" (click)="onClickMember(item)" [type]="'s-darkgrey'"  ></bo-page-button>
+                </ng-template>
+            </data-table-column>
+
+        </data-table>
+    </div>
+</div>

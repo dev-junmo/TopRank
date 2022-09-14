@@ -1,0 +1,154 @@
+<bo-page-header [imgUrl]="'assets/img/03-5-board-2.svg'" [title]="'게시판 리스트'">
+  <bo-page-button-config id = "id-board-create-btn-"
+      [title] = "'게시판등록'"
+      [styleType] = "'square-m-white-btn'"
+      (click) = "createItem()">
+  </bo-page-button-config>
+</bo-page-header>
+
+
+<div class="list-section">
+    <board-list-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></board-list-query-form>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap">
+        게시판
+        <div style="margin: auto; max-width: 100%; margin-bottom: 50px;">
+        <data-table #bsDatatable
+            headerTitle="datatable"
+            [header]="true"
+            [items]="items"
+            [itemCount]="itemCount"
+            [indexColumn]="true"
+            [selectColumn]="true"
+            (reload)="reloadItems($event)">
+            <bs-header-button-config id = "id-board-list-selected-btn"
+            [title] = "'선택삭제'"
+            [styleType] = "'square-s-greyborder-btn'"
+            (click) = "onClickSelectedBoard($event)">
+            </bs-header-button-config>
+
+            <!-- <data-table-column
+                [property]="'seq'"
+                [header]="'번호'"
+                [sortable]="true"
+                [width]="80">
+            </data-table-column> -->
+            <!-- <data-table-column
+                [property]="'type'"
+                [header]="'구분'"
+                [sortable]="true"
+                [width]="100">
+            </data-table-column> -->
+            <data-table-column
+                [property]="'name'"
+                [header]="'게시판명'"
+                [align]="'left'"
+                [sortable]="true"
+                [width]="200">
+            </data-table-column>
+            <data-table-column
+                [property]="'id'"
+                [header]="'게시판아이디'"
+                [align]="'left'"
+                [sortable]="true"
+                [width]="200">
+            </data-table-column>
+            <data-table-column
+                [property]="'auth_read'"
+                [header]="'읽기권한'"
+                [width]="100">
+                <ng-template #dataTableCell let-item="item">
+                    <span>{{item.auth_read | ahthToString}}</span>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                property="auth_write"
+                header="작성권한"
+                width="100px">
+                <ng-template #dataTableCell let-item="item">
+                    <span>{{item.auth_write | ahthToString}}</span>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'auth_reply'"
+                [header]="'답글'"
+
+                [width]="65">
+                <ng-template #dataTableCell let-item="item">
+                    <span>{{item.auth_reply | ahthToString}}</span>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'auth_cmt'"
+                [header]="'댓글'"
+
+                [width]="65">
+                <ng-template #dataTableCell let-item="item">
+                    <span>{{item.auth_cmt | ahthToString}}</span>
+                </ng-template>
+                <!-- <ng-template #dataTableHeader let-item="item">
+                    <span style="color: rgb(232, 0, 0)">등록일시</span>
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <span style="color: grey">
+                    <span class="glyphicon glyphicon-ok" *ngIf="item.active"></span>
+                    <span class="glyphicon glyphicon-remove" *ngIf="!item.active"></span>
+                    </span>
+                </ng-template> -->
+            </data-table-column>
+            <data-table-column
+                [property]="'skin'"
+                [header]="'스킨'"
+                [align]="'center'"
+                [width]="102">
+            </data-table-column>
+            <data-table-column
+                [property]="'totalnum'"
+                [header]="'게시글수'"
+                [align]="'center'">
+                <!-- <ng-template #dataTableHeader let-item="item">
+                    노출
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <bo-button-collection [id]="'toggle'"></bo-button-collection>
+                </ng-template> -->
+            </data-table-column>
+            <data-table-column
+                [header]="'화면보기'">
+                <ng-template #dataTableHeader let-item="item">
+                    화면보기
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <bo-page-button *ngIf="item.id !== 'goods_qna'" [type]="'s-lightnavy'" [title]="'사용자화면'" (click)="onClickFrontBoardView(item.id)"></bo-page-button>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [header]="'게시글'">
+                <ng-template #dataTableHeader let-item="item">
+                    게시글
+                </ng-template>
+                <ng-template #dataTableCell let-item="item" >
+                    <bo-page-button [type]="'s-darkblue'" [title]="'게시글관리'" (click)="onClickContentManager(item.id)"></bo-page-button>
+                </ng-template>
+            </data-table-column>
+
+
+            <!-- <data-table-column
+                [header]="manage"
+                width="200px">
+                <ng-template #dataTableHeader let-item="item">
+                    관리
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <bo-button-collection
+                        class="margin-class" [id]="'edit'"
+                        (click)="updateItem(item.id)">
+                    </bo-button-collection>
+                </ng-template>
+            </data-table-column> -->
+
+        </data-table>
+        </div>
+    </div>
+</div>

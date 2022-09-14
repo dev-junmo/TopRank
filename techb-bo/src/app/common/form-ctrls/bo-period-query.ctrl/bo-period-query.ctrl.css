@@ -1,0 +1,17 @@
+.click-date {
+    /* border: 1px solid rgb(234,0,61);
+    color: rgb(234,0,61); */
+    /* color: #fff; */
+    /* font-weight: 500; */
+    /* border-right: 1px solid rgb(225,225,225);
+    border-radius: 0 8px 8px 0; */
+    color: #fff;
+    background-color: #4c65bf;
+    font-weight: 300;
+}
+:host{
+    width: 100%;
+}
+.item-horizontal {
+    margin-right: 20px;
+}

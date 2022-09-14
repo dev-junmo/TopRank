@@ -1,0 +1,94 @@
+<form [formGroup]="bsForm" (ngSubmit)="submitOnly()" class="form-area" >
+  <!-- <div class="sub-title-bar">
+    <img src="/assets/img/03-3-order.svg" />
+        인기 검색어
+  </div> -->
+
+  <!-- <div class="content-box font13 padding">
+    <div class="content">
+        <input type="radio" name="popular_search" formControlName="popular_search" id="auto" value="y" (click)="onClickRadio()" />
+        <label for="auto" class="table-check-label">자동</label>
+        최근
+        <bs-select [name] = "'popular_search_limit_day'" [formGroup] = "bsForm" [disabled] = "false">
+          <bs-option-config *ngFor="let item of options" [value] = "item" [label] = "item"></bs-option-config>
+        </bs-select>
+        동안 가장 많이 검색된 검색어
+    </div>
+    <div class="content" style="padding-top:20px;">
+      <input type="radio" name="popular_search" formControlName="popular_search" id="passive" value="n" (click)="onClickRadio()" />
+      <label for="passive" class="table-check-label passive">수동</label>
+      <ul class="word-ul" formArrayName="search_word">
+        <li>
+          <div class="left">검색어</div>
+          <div class="right">연결페이지 URL</div>
+        </li>
+        <li *ngFor = "let item of searchWordsFormArray.controls;let idx = index" [formGroupName]="idx">
+          <div class="left">
+            <span>{{idx + 1}}.</span>
+            <bs-input [name]="'keyword'" [formGroup]="searchWordsFromGroup(idx)"></bs-input>
+          </div>
+          <div class="right">
+            <bs-input [name]="'search_result_link'" [formGroup]="searchWordsFromGroup(idx)" ></bs-input>
+          </div>
+        </li>
+      </ul>
+
+
+
+
+      <div class="con-btn">
+          <bo-page-padding></bo-page-padding>
+          <bo-submit-button-form></bo-submit-button-form>
+      </div>
+    </div>
+  </div> -->
+  <div class="section">
+    <div class="content-wrap">
+        <bs-title-label-ctrl
+            [title]="'인기 검색어'"
+            [description]="'인기 검색어에 관련된 정보를 입력하세요'">
+        </bs-title-label-ctrl>
+    <!-- </div> -->
+        <div class="sub-title-box">
+            <!-- <div class="content-title">
+                <img src="/assets/img/group-6.svg"/><img class="required-img" src="assets/img/must_txt.png"/>노출 :
+            </div> -->
+            <div class="content">
+                <input type="radio" name="popular_search" formControlName="popular_search" id="auto" [value]="'y'" (change)="onClickRadio()" />
+                <label for="auto" class="table-check-label">자동</label>
+                최근
+
+                <bs-select [name] = "'popular_search_limit_day'" [formGroup] = "bsForm" [disabled]="disable">
+                  <bs-option-config *ngFor="let item of options" [value]="item" [label] = "item"></bs-option-config>
+                </bs-select>
+                일 동안 가장 많이 검색된 검색어
+
+                <input type="radio" name="popular_search" formControlName="popular_search" id="passive" [value]="'n'" (change)="onClickRadio()" />
+                <label for="passive" class="table-check-label radio-top" style="margin-left: 15px;">수동</label>
+            </div>
+        </div>
+        <div class="content-block">
+            <!-- <div class="content-box"> -->
+                <div class="content">
+                    <div formArrayName="search_word">
+                    <div class="search-box-span" *ngFor = "let item of searchWordsFormArray.controls;let idx = index" [formGroupName]="idx">
+                        <div class="number">{{idx + 1}}.</div>
+                        <bs-input  [name]="'keyword'"
+                            [disabled]="!disable"
+                            [placeholder] = "'키워드를 입력하세요.'"
+                            [formGroup]="searchWordsFromGroup(idx)" [style]="'big-input input-wrap '" ></bs-input>
+                        <!-- <bs-input [name]="'search_result_link'"
+                            [disabled]="!disable"
+                            [placeholder] = "'연결URL를 입력하세요.'"
+                            [formGroup]="searchWordsFromGroup(idx)" [style]="'big-input'"></bs-input> -->
+
+                    </div>
+                </div>
+                </div>
+            <!-- </div> -->
+        </div>
+            <bo-submit-button-form ></bo-submit-button-form>
+    </div>
+
+  </div>
+</form>

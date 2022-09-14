@@ -1,0 +1,100 @@
+<!-- <bo-page-header [imgUrl]="'assets/img/03-5-board-2.svg'" [title]="'입점사 공지사항 관리'">
+    <bo-page-button-config *ngIf="!appConfig.isProvider"
+        id = "id-board-content-list-btn-create"
+        [title]="'게시글등록'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "createItem()">
+    </bo-page-button-config>
+
+</bo-page-header>
+
+<div class="list-section">
+
+    <provider-notice-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></provider-notice-query-form>
+
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap-se">
+        <div style="margin: auto; max-width: 100%; margin-bottom: 50px;">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="true"
+                [sortBy] = "'seq'"
+                [sortAsc] = "false"
+                (reload)="reloadItems($event)">
+
+            <bs-header-button-config id = "id-board-list-selected-btn"
+                    [title] = "'선택삭제'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    (click) = "deleteSelectedItem($event, 'seq')">
+                </bs-header-button-config>
+
+                <data-table-column
+                    [property]="'seq'"
+                    [header]="'번호'"
+                    [sortable]="true"
+                    [width]="100">
+                </data-table-column>
+                <data-table-column
+                    property="name"
+                    header="작성자"
+                    [width]="100">
+                </data-table-column>
+                <data-table-column
+                    [property]="'category'"
+                    [header]="'유형'"
+                    [align]="'left'"
+                    [sortable]="true"
+                    [width]="100">
+                </data-table-column>
+                <data-table-column
+                    [property]="'subject'"
+                    [header]="'제목'"
+                    [align]="'left'"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                        <div (click)="onClickViewItem(item , template , 'notice')">{{item?.subject}}</div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'notice'"
+                    [header]="'공지여부'"
+                    [sortable]="true"
+                    [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                    <span *ngIf="item.notice==1" style="color: red">공지</span>
+                    <span *ngIf="item.notice!=1">일반</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column *ngIf="!appConfig.isProvider"
+                    [property]="'hidden'"
+                    [header]="'노출'"
+                    [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                        <ui-switch [(ngModel)]="!item.hidden" (change)="onClickChangeHiddenStatus($event, item)" [checked]="item.hidden == 1" size="small" color="#e7e7e7" switchColor="rgb(234,0,61)" switchOffColor="rgb(150,150,150)" defaultBgColor="#dadada" defaultBoColor="#dadada"></ui-switch>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column *ngIf="!appConfig.isProvider"
+                    header="manage"
+                    [width]="300">
+                    <ng-template #dataTableHeader let-item="item">
+                        관리
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <bo-button-collection class="margin-class" [id]="'edit'" (click)="updateItem(item.seq)" ></bo-button-collection>
+                        <bo-button-collection [id]="'copy'" (click)="onClickCopy(item.boardid , item.seq)"></bo-button-collection>
+                        <bo-button-collection class="margin-class" [id]="'delete'" (click)="deleteItem(item.seq)"></bo-button-collection>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+</div>
+ -->

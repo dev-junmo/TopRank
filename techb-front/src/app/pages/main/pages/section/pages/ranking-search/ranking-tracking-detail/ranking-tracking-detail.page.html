@@ -1,0 +1,226 @@
+<div class="web" *ifDesktop>
+    <!-- 컨텐츠 타이틀 영역 start -->
+    <div class="title-area">
+        <div class="title-wrap">
+        <h2 class="title">랭킹 추적</h2>
+        <!-- <span class="sub-title">내가 궁금한 상품 순위, 실시간으로 확인해보세요.</span> -->
+        </div>
+        <nav>
+        <ol class="location-history">
+            <li [routerLink]="['/main/home']">HOME</li>
+            <li>상품순위 검색</li>
+            <li>랭킹 추적</li>
+        </ol>
+        </nav>
+    </div>
+    <!-- //컨텐츠 타이틀 영역 end -->
+
+    <!-- 검색 결과 start -->
+    <div class="search-result">
+        <tb-goods-infobox-view
+            [data]="goodsData"
+            [isShowTrackingBtn]="true"
+            [alignTackingBtn]="'right'">
+        </tb-goods-infobox-view>
+    </div>
+    <!-- 검색 결과 end -->
+
+    <!-- 추적 결과 start -->
+    <div class="tracking-teb">
+        <ul>
+            <li (click)="onClickMenuTab('keyword')" [ngClass]="{active: isMenuTabName == 'keyword'}">키워드 추적</li>
+            <li (click)="onClickMenuTab('review')" [ngClass]="{active: isMenuTabName == 'review'}">리뷰 추적</li>
+            <li (click)="onClickMenuTab('price')" [ngClass]="{active: isMenuTabName == 'price'}">가격 추적</li>
+        </ul>
+    </div>
+    <div class="tracking-con-wrap">
+        <div class="tracking-con active" *ngIf="isMenuTabName == 'keyword'">
+        <button class="keyword-add" (click)="onClickAddKeyword()">+키워드 추가</button>
+            <div class="keyword-tracking-graph box">
+                <div class="contents-title">
+                    <span>키워드 추적 비교</span>
+                    <div class="help-tool-tip keyword-tracking-comparison">
+                        <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">
+                    </div>
+                    <div class="time-tab">
+                        <ul>
+                        <li class="active">시간별</li>
+                        <li>일별</li>
+                        <li>주별</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <span class="data-reset">2022-05-13 19:59에 데이터가 초기화되었습니다.</span> -->
+                <div class="graph">
+                    <!-- <bs-chart #chart 
+                        [datasets]="chartDatasetsParkState['test']" 
+                        [labels]="" 
+                        [colors]="chartConfig.colors"
+                        [chartType]="'doughnut'"
+                        [options]="chartOptions" 
+                        [width]="500" [height]="500">
+                    </bs-chart> -->
+                </div>
+                <div class="keyword-wrap">
+                    <span class="first-keyword">{{activeKeyword}}</span>
+                    <div class="other-keyword">
+                        <span *ngFor="let keyword of goodsData?.otherKeywords" class="clickable" (click)="onClickKeyword(keyword)">{{keyword}}</span>
+                    </div>
+                </div>
+                <span class="description">키워드를 추가로 등록하시면 그래프를 비교해서 확인할 수 있습니다.</span>
+                <button class="apply">적용</button>
+            </div>
+        </div>
+        <div class="tracking-con" *ngIf="isMenuTabName == 'review'">
+            <div class="keyword-tracking-graph box">
+                <div class="contents-title">
+                    <span>리뷰 추적</span>
+                    <div class="help-tool-tip tracking-reviews">
+                        <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">
+                    </div>
+                    <div class="time-tab">
+                        <ul>
+                            <li class="active">일별</li>
+                            <li>주별</li>
+                            <li>월별</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <span class="data-reset">2022-05-13 19:59에 데이터가 초기화되었습니다.</span> -->
+                <div class="graph"></div>
+            </div>
+        </div>
+        <div class="tracking-con" *ngIf="isMenuTabName == 'price'">
+        <div class="keyword-tracking-graph box">
+            <div class="contents-title">
+                <span>가격 추적</span>
+                <div class="help-tool-tip price-reviews">
+                    <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">
+                </div>
+                <div class="time-tab">
+                    <ul>
+                        <li class="active">일별</li>
+                        <li>주별</li>
+                        <li>월별</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- <span class="data-reset">2022-05-13 19:59에 데이터가 초기화되었습니다.</span> -->
+            <div class="graph"></div>
+        </div>
+        </div>
+    </div>
+    <!-- //추적 결과 end -->
+</div>
+
+<div class="mobile" *ifMobile>
+    <!-- contents start -->
+    <div id="contents">
+        <!-- 헤더 영역 start -->
+        <div class="contents-header">
+            <div class="contents-title">
+                <img src="assets/images/svg/ic_ranking_color_30.svg" alt="">
+                <h2>랭킹 추적</h2>
+                <!-- <p>내가 궁금한 상품을 확인해보세요.</p> -->
+            </div>
+        </div>
+        <!-- //헤더 영역 end -->
+        <!-- 랭킹 추적 대시보드 start -->
+        <!-- <div class="search-result-area"> -->
+            <tb-goods-infobox-view
+                [data]="goodsData"
+                [isShowTrackingBtn]="true"
+                [alignTackingBtn]="'right'">
+            </tb-goods-infobox-view>
+        <!-- </div> -->
+        <!-- //랭킹 추적 대시보드 end -->
+
+        <div class="line"></div>
+
+        <!-- 탭 메뉴 start -->
+        <ul class="tracking-tab">
+            <li (click)="onClickMenuTab('keyword')" [ngClass]="{active: isMenuTabName == 'keyword'}">키워드 추적</li>
+            <li (click)="onClickMenuTab('review')" [ngClass]="{active: isMenuTabName == 'review'}">리뷰 추적</li>
+            <li (click)="onClickMenuTab('price')" [ngClass]="{active: isMenuTabName == 'price'}">가격 추적</li>
+        </ul>
+        <!-- //탭 메뉴 end -->
+
+        <!-- 추적 결과 영역 start -->
+        <div class="tracking-result-area">
+            <div class="tracking-result keyword-tracking-result" *ngIf="isMenuTabName == 'keyword'">
+                <button class="add-keyword" (click)="onClickAddKeyword()">+키워드 추가</button>
+                <div class="keyword-tracking box">
+                    <div class="keyword-tracking-inner">
+                        <div class="data-title">
+                            키워드 추적 비교 
+                            <div class="help-tool-tip keyword-tracking-tip">
+                                <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말">
+                            </div>
+                        </div>
+                        <!-- <p class="init-description">2022-05-13 19:59에 데이터가 초기화되었습니다.</p> -->
+                    </div>
+                    <div class="keyword-tracking-inner">
+                        <ul class="data-times">
+                            <li class="active">시간별</li>
+                            <li>일별</li>
+                            <li>주별</li>
+                        </ul>
+                    </div>
+                    <div class="graph-scroll-wrap">
+                        <div class="graph-scroll">
+                        <div class="graph">이 친구를 일단 그래프라고 할게요!  ....... Lorem Ipsum is simply dummy text of the printing and typesetting industry.</div>
+                        </div>
+                    </div>
+                    <div class="keyword-tracking-inner">
+                        <div class="registered-keywords">
+                            <span class="first-keyword">{{activeKeyword}}</span>
+                            <div class="other-keyword">
+                                <span *ngFor="let keyword of goodsData?.otherKeywords">{{keyword}}</span>
+                            </div>
+                            <p class="keyword-description" *ngIf="!goodsData?.otherKeywords">
+                                키워드를 추가로 등록하시면 <br>
+                                그래프를 비교해서 확인할 수 있습니다.
+                            </p>
+                        </div>
+                        <button class="apply-btn">적용</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tracking-result" *ngIf="isMenuTabName == 'review'">
+                <div class="tracking-result-box keyword-tracking box">
+                    <div class="data-title">
+                        리뷰 추적
+                        <div class="help-tool-tip review-tracking-tip">
+                            <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말">
+                        </div>
+                    </div>
+                    <ul class="data-times">
+                        <li class="active">일별</li>
+                        <li>주별</li>
+                        <li>월별</li>
+                    </ul>
+                    <div class="graph"></div>
+                </div>
+            </div>
+            <div class="tracking-result" *ngIf="isMenuTabName == 'price'">
+                <div class="tracking-result-box keyword-tracking box">
+                    <div class="data-title">
+                        가격 추적
+                        <div class="help-tool-tip price-tracking-tip">
+                            <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말">
+                        </div>
+                    </div>
+                    <ul class="data-times">
+                        <li class="active">일별</li>
+                        <li>주별</li>
+                        <li>월별</li>
+                    </ul>
+                    <div class="graph"></div>
+                </div>
+            </div>
+        </div>
+        <!-- //추적 결과 영역 end -->
+
+    </div>
+    <!--// contents end -->
+</div>

@@ -1,0 +1,207 @@
+<div class="outlet-section">
+ <div class="query-wrap">
+
+    <!-- formGroup : bsForm -->
+    <form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+            <!-- 첫번째 form block -->
+            <div class="form-block">
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">검색어2 :</div>
+                        <select class="form-selectbox item-horizontal" name="board" formControlName="board">
+                            <option *ngFor="let option of options" >{{option}}</option>
+                        </select>
+                        <input type="text" class="form-control search-input big-input item-horizontal" formControlName="search_text" placeholder="상품명, 상품코드, 상품번호, 태그, 간략설명, 수출입 상품코드">
+                    </div>
+                </div>
+                <!--날짜 폼 title 변경 -->
+                <bo-period-form [formGroup]="bsForm"></bo-period-form>
+                <!-- 노출 -->
+                <div class="form-item">
+                        <div class="form-title">출고전:</div>
+                        <div class="item-horizontal">
+                            <label>
+                                <div class="round-checkbox first-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label>전체
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco orange1">입금대기</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco orange2">결제완료</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco orange3">상품준비</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco orange5">부분출고준비</div>
+                        </div>
+                        <div class="item-horizontal">
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco purple">결제취소</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco purple">주문무효</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco purple">결제실패</div>
+                        </div>
+                </div>
+                <div class="form-item">
+                        <div class="form-title">출고후:</div>
+                        <div class="item-horizontal">
+                            <label>
+                                <div class="round-checkbox first-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label>전체
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco red1">부분출고완료</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco red2">출고완료</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco red3">부분배송중</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco red4">배송중</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco red5">부분배송완료</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco red6">배송완료</div>
+                        </div>
+                </div>
+                <div class="form-item">
+                        <div class="form-title">결제수단:</div>
+                        <div class="item-horizontal">
+                            <label>
+                                <div class="round-checkbox first-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label>전체
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco default">무통장입금</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco default">카드결제</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco default">휴대폰결제</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco default">계좌이체</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco default">가상계좌</div>
+                        </div>
+                </div>
+                <!-- <div class="form-item">
+                     <div class="form-item">
+                        <div class="form-title">출고전:</div>
+                        <div class="item-horizontal">
+                            <label>
+                                <div class="round-checkbox first-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label>전체
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco orange1">주문접수</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco orange2">결제완료</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco orange3">상품준비</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco orange4">부분출고준비</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco purple">결제취소</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco purple">주문무효</div>
+                            <label>
+                                <div class="round-checkbox"><input type="checkbox" id="all"/>
+                                    <label for="all" class="background-checkbox"></label>
+                                </div>
+                            </label><div class="text-deco purple">결제실패</div>
+                        </div>
+                    </div>
+                    <div class="form-title">출고전 : </div>
+                    <bo-page-button [type]="'s-red'" [title]="'상세'"></bo-page-button>
+                    <bo-group-checkbox [formGroup]="bsForm" [name]="'sms'">
+                        <bo-checkbox-config [title]="'동의'" [value]="'y'"></bo-checkbox-config>
+                        <bo-checkbox-config [title]="'거부'" [value]="'n'"></bo-checkbox-config>
+                    </bo-group-checkbox>
+
+                    <div class="form-item">
+                        <div class="form-title">이메일 수신 : </div>
+                        <bo-group-checkbox [formGroup]="bsForm" [name]="'mailing'">
+                            <bo-checkbox-config [title]="'동의'" [value]="'y'"></bo-checkbox-config>
+                            <bo-checkbox-config [title]="'거부'" [value]="'n'"></bo-checkbox-config>
+                        </bo-group-checkbox>
+                    </div>
+                </div> -->
+            </div>
+    <bo-search-button-form></bo-search-button-form>
+    </form>
+</div>
+</div>

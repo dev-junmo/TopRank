@@ -1,0 +1,72 @@
+<div class="modal-dialog modal-lg custom" style="margin: 140px -60px auto; width: auto;">
+
+
+    <div class="modal-content">
+
+            <div class="modal-header ns-regular custom">
+                    SMS 수동발송
+                    <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+                        <span aria-hidden="true"><img src="/assets/img/LP_X.png" /></span>
+                    </button>
+            </div>
+            <div class="modal-body ns-regular" style="padding: 20px 90px;">
+                <ng-container *ngTemplateOutlet="templateSMS"></ng-container>
+                <div class="my-horizontal normal">
+                    <div class="my-horizontal normal-btn" >
+                        <button class="square-m-white-btn" type="button" (click)="onCancel()">취소</button>
+                    </div>
+                    <div class="my-horizontal normal-btn">
+                        <button class="black-btn" type="submit" (click)="onOk()">발송</button>
+                    </div>
+                    <!-- <div class="my-horizontal normal-btn">
+                        <button class="white-btn" type="button" (click)="onCancel()"></button>
+                    </div> -->
+                </div>
+            </div>
+    </div>
+
+</div>
+
+<ng-template #templateSMS >
+        <form [formGroup]="smsForm" novalidate>
+            <div class="popup-section">
+                <div class="content-wrap">
+
+                        <div class="content-box">
+                                <div class="content-title">
+                                    핸드폰번호<img class="required-img" src="assets/img/must_txt.png"/>
+                                </div>
+                                <div class="content">
+                                    <bs-input [name]="'PHONE'" [formGroup]="smsForm" [placeholder]="' 핸드폰번호를 입력하세요.'" [style]="'big-input'" [required]="true"></bs-input>
+                                </div>
+                            </div>
+                            <div >
+                                <div class="content-title">
+                                    메세지 <img class="required-img" src="assets/img/must_txt.png"/>
+                                </div>
+                                <div class="content">
+                                    <!-- <bs-input [name]="'MSG'" [formGroup]="smsForm" [placeholder]="' 메세지를 입력하세요.'" [style]="'big-input'" [required]="true"></bs-input> -->
+                                    
+                                </div>
+                            </div>
+                            <textarea formControlName="MSG" style="width: 603px;height: 150px;">
+
+                            </textarea>
+                                <!-- <bs-checkbox [formGroup]="smsForm"
+                                    [name]="'status'"
+                                    [label]="'SMS 전송(보유 SMM건수 : 0통, 90bytes 이상 시 LMS로 발송이 되며 3건이 차감됩니다.)'"
+                                    [value]="'0'">
+                                </bs-checkbox> -->
+                    <!-- <div class="content">
+                        <bs-input [name]="'phone'" [formGroup]="smsForm" [placeholder]="' 핸드폰번호'" [style]="'midium-input'" [required]="true"></bs-input>
+                        <bs-input [name]="'msg'" [formGroup]="smsForm" [placeholder]="' 메세지'" [style]="'big-input'" [required]="true"></bs-input>
+                    </div>   -->
+                        <!-- <div class="content-wrap">
+                        <div class="content-box">
+
+                            <bo-editor [name]="'contents'" [formGroup]="emailForm" ([content])= "contents"  #editor1 ></bo-editor>
+                        </div> -->
+                </div>
+            </div>
+        </form>
+</ng-template>

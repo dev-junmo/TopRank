@@ -1,0 +1,74 @@
+<div class="pagination-box">
+    <div class="pagination-range" *ngIf="isShowItemCount">
+        {{dataTable.translations.paginationRange}}
+        <span [textContent]="dataTable.offset + 1"></span>
+        -
+        <span [textContent]="[dataTable.offset + dataTable.limit , dataTable.itemCount] | min"></span>
+        /
+        <span [textContent]="dataTable.itemCount"></span>
+    </div>
+    <div class="pagination-controllers">
+
+        <div class=" pagination-pages">
+            <!-- 원래 datatable의 페이지내이샨 -->
+            <!-- <button [disabled]="dataTable.offset <= 0" (click)="firstOffset()" class="btn btn-default pagination-firstpage"></button>
+            <button [disabled]="dataTable.offset <= 0" (click)="pageBack()" class="btn btn-default pagination-prevpage"></button>
+            <div class="pagination-page">
+                <div class="input-group">
+                    <input #pageInput type="number" class="form-control" min="1" step="1" max="{{maxPage}}"
+                        [ngModel]="page" (blur)="page = pageInput.value"
+                        (keyup.enter)="page = pageInput.value" (keyup.esc)="pageInput.value = page"/>
+                    <div class="input-group-addon">
+                        <span>/</span>
+                        <span [textContent]="dataTable.lastPage"></span>
+                    </div>
+                </div>
+            </div>
+            <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount" (click)="pageForward()" class="btn btn-default pagination-nextpage"></button>
+            <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount" (click)="lastOffset()" class="btn btn-default pagination-lastpage"></button> -->
+            <!-- 새로운 스타일의 페이지네이션 -->
+            <div class="bottom-controller">
+                <div class="paging-wrap">
+                    <button [disabled]="dataTable.offset <= 0" (click)="firstOffset()" class="btn btn-default pagination-firstpage"></button>
+                    <button [disabled]="dataTable.offset <= 0" (click)="prevPageGroup()" class="btn btn-default pagination-prevpage"></button>
+                    <!-- <button class="prev-second" [ngClass]="{dis: !isUsingProduct}"></button>
+                    <button class="prev" [ngClass]="{dis: !isUsingProduct}"></button> -->
+                    <ol>
+                        <!-- <li>s:{{startPage}} curr:{{page}}</li> -->
+                        <li [ngClass]="{active: startPage + pageNum == page, 'disabled': startPage + pageNum > maxPage}" 
+                            *ngFor="let pageNum of [0,1,2,3,4,5,6,7,8,9]" 
+                            (click)="onClickPage(startPage + pageNum)">
+                            {{startPage + pageNum}}
+                            <!-- {{startPage + pageNum > maxPage? '(disabled)': ''}} -->
+                            <!-- <span *ngIf="startPage + pageNum == page">bold</span> -->
+                        </li>
+                    </ol>
+                    <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount" (click)="nextPageGroup()" class="btn btn-default pagination-nextpage"></button>
+                    <button [disabled]="(dataTable.offset + dataTable.limit) >= dataTable.itemCount" (click)="lastOffset()" class="btn btn-default pagination-lastpage"></button>
+                    <!-- <button class="next" [ngClass]="{dis: !isUsingProduct}"></button>
+                    <button class="next-second" [ngClass]="{dis: !isUsingProduct}"></button> -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- 
+            하단 limit 설정 부분 
+
+            <div class="pagination-limit">
+            <div class="input-group input-group-set"> -->
+                <!-- <span class="input-group-addon input-group-number">{{dataTable.translations.paginationLimit}}</span>
+                <select #limitInput class="form-control form-selectbox" [ngModel]="limit" (change)="limit = limitInput.value">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select> -->
+
+                <!-- <input #limitInput type="number" class="form-control" min="1" step="1"
+                       [ngModel]="limit" (blur)="limit = limitInput.value"
+                       (keyup.enter)="limit = limitInput.value" (keyup.esc)="limitInput.value = limit"/> -->
+            <!-- </div>
+        </div> -->
+    </div>
+</div>

@@ -1,0 +1,174 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/member-list.svg'" [title]="'세금계산서 발행'">
+    <bo-page-button-config id = "id-board-create-btn-"
+        [title] = "'엑셀 다운로드'"
+        [styleType] = "'square-m-white-btn'"
+        [imgUrl]="'assets/img/excel-icon.svg'"
+        (click) = "onClickDownloadExcel(query)">
+    </bo-page-button-config>
+</bo-page-header>
+
+<div class="list-section" style="min-height: none;">
+
+    <div class="content-wrap ">
+
+        <div class="content-basic-block" style="font-size: 13px; padding: 15px 0 5px 0;">
+            <div class="content-box">
+                <div class="content">
+                    <ul>
+                        <li>
+                            세금계산서 발행일은 정산 당월 말일로 지정됩니다
+                        </li>
+                        <li>
+                            입점사 담당자님의 확인 여부와 관계없이 매월 국세청에 자동으로 신고가 이루어지며 "전송상태"로 발행 여부 확인이 가능합니다
+                        </li>
+                        <li>본 자료는 세금계산서 발행 내역 확인 자료로 실 발행확인은 정산 담당자 메일로 발송됩니다</li>
+                        <li>2020년 4월 이전 내역의 경우 원단위 차이가 날 수 있으니 기 발행 세금계산서 및 수기 정산서 기준으로 확인 바랍니다</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <bo-page-padding></bo-page-padding>
+
+    <!-- query form -->
+    <taxstatus-query-form [setQuery]="query"(query)="reloadWithQuery($event)" [initialQuery]="false"></taxstatus-query-form>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap-se">
+        <!-- list -->
+        <div style="margin: auto; max-width: 150%; margin-bottom: 50px;">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="true"
+                [hasScrollBarX]="true"
+                [tableWidth]="'1600px'"
+                [pagination]="false"
+                [textEllipsis]="true"
+                (reload)="reloadItems($event)"
+                [sortBy] = "'deposit_date'"
+                [sortAsc] = "false">
+
+                <!-- 선택저장 버튼-->
+
+                <bs-header-button-config id = "id-board-list-selected-btn"
+                    [title] = "'선택저장'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    (click) = "onClickSaveSelectedItem($event)">
+                </bs-header-button-config>
+
+                <data-table-column
+                    [property]="'provider_name'"
+                    [header]="'판매자'">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'info_num'"
+                    [header]="'공급받는 자'">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'calcu_email'"
+                    [header]="'수신메일'">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="''"
+                    [header]="'발급일(예정)'">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>익월 +5일 (영업일 기준)</span>
+                     </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="''"
+                    [header]="'품목'">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>서비스이용료</span>
+                     </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'publication_date'"
+                    [header]="'발행일자'">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'deadline'"
+                    [header]="'마감일자'">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_commission_sales_supply'"
+                    [header]="'공급가액'">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.provider_commission_sales_supply | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_commission_sales_vat'"
+                    [header]="'부가세'">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.provider_commission_sales_vat | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_commission_sales'"
+                    [header]="'총금액'">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item?.provider_commission_sales | number }}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'tax_status'"
+                    [header]="'전송상태'"
+                    [width]="100">
+                    <ng-template #dataTableHeader>
+                        전송상태<br/>
+                        <select class="small-input stock-input"
+                        *ngIf="!appConfig.isProvider" [(ngModel)]="taxStatus.tax_status_temp"
+                        (change)="onChangedAllTaxStatus(taxStatus, taxStatus.tax_status_temp)">
+                            <option value="complete">전송완료</option>
+                            <option value="standby">대기</option>
+                            <option value="reject">반려</option>
+                        </select>
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <select class="small-input stock-input"
+                        *ngIf="!appConfig.isProvider"
+                        [(ngModel)]="item.tax_status">
+                            <option value="complete">전송완료</option>
+                            <option value="standby">대기</option>
+                            <option value="reject">반려</option>
+                        </select>
+                        <span *ngIf="appConfig.isProvider">
+                            <span *ngIf="item.tax_status == 'complete'">전송완료</span>
+                            <span *ngIf="item.tax_status == 'standby'">대기</span>
+                            <span *ngIf="item.tax_status == 'reject'">반려</span>
+                        </span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'tax_status'"
+                    [header]="'저장'"
+                    [width]="100"
+                    *ngIf="!appConfig.isProvider">
+                    <ng-template #dataTableHeader>
+                        <bo-page-button [type]="'square-s-navy-btn'" (click)="onClickInputAllTaxStatus($event, taxStatus)" [title]="'일괄적용'"></bo-page-button>
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <bo-page-button [type]="'square-s-navy-btn'" (click)="onClickSaveTaxStatus(item)" [title]="'저장'"></bo-page-button>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+    <defs>
+        <linearGradient id="a" x1="50%" x2="50%" y1="-6.329%" y2="146.931%">
+            <stop offset="0%" stop-color="#CFCFCF"/>
+            <stop offset="100%" stop-color="#C0C0C0"/>
+        </linearGradient>
+        <linearGradient id="b" x1="50%" x2="50%" y1="-275.779%" y2="189.638%">
+            <stop offset="0%" stop-color="#CFCFCF"/>
+            <stop offset="100%" stop-color="#C0C0C0"/>
+        </linearGradient>
+        <linearGradient id="c" x1="50%" x2="50%" y1="-96.575%" y2="626.359%">
+            <stop offset="0%" stop-color="#CFCFCF"/>
+            <stop offset="100%" stop-color="#C0C0C0"/>
+        </linearGradient>
+        <linearGradient id="d" x1="50%" x2="50%" y1="-9.289%" y2="103.379%">
+            <stop offset="0%" stop-color="#CFCFCF"/>
+            <stop offset="100%" stop-color="#C0C0C0"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd" stroke-width="2">
+        <path stroke="url(#a)" stroke-linecap="round" d="M13.816.953C14.642-.113 16.179-.315 17.23.5c1.051.815 1.236 2.355.412 3.42L9.824 14.053 6 11.087 13.816.953z" transform="translate(2 1)"/>
+        <path stroke="url(#b)" stroke-linecap="round" d="M5.246 12L4.5 16.59l4.576-1.619" transform="translate(2 1)"/>
+        <path stroke="url(#c)" stroke-linecap="round" d="M16.824 4.966L13 2" transform="translate(2 1)"/>
+        <path stroke="url(#d)" stroke-linecap="square" d="M17.123 9.394V20H0V1h9.917" transform="translate(2 1)"/>
+    </g>
+</svg>

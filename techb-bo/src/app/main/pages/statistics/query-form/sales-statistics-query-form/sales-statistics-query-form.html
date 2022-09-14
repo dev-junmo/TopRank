@@ -1,0 +1,123 @@
+<div class="outlet-section">
+    <!-- <div class="query-title">검색</div> -->
+
+    <!-- formGroup : bsForm -->
+    <form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+        <div class="query-wrap">
+            <div class="form-block">
+                <!-- 취급고/매출액/취소액/반품액/할인쿠폰금액-->
+                <div *ngIf="hasDataType" class="form-box">
+                    <div class="form-item">
+                        <input type="radio" id="search_type_settleprice" value="settleprice" name="search_type" 
+                            formControlName="search_type" checked />
+                        <label for="search_type_settleprice" class="check-label">취급고</label>
+                        
+                        <input type="radio" id="search_type_sales_price" value="sales_price" name="search_type" 
+                            formControlName="search_type" />
+                        <label for="search_type_sales_price" class="check-label">매출액</label>
+                        
+                        <input type="radio" id="search_type_cancel_price" 
+                            value="cancel_price" name="search_type" formControlName="search_type" />
+                        <label for="search_type_cancel_price" class="check-label">취소액</label>
+
+                        <input type="radio" id="search_type_refund_price " 
+                            value="refund_price" name="search_type" formControlName="search_type" />
+                        <label for="search_type_refund_price " class="check-label">반품액</label>
+
+                        <input type="radio" id="search_type_coupon_sale" 
+                            value="coupon_sale" name="search_type" formControlName="search_type" />
+                        <label for="search_type_coupon_sale" class="check-label">할인쿠폰금액</label>
+                    </div>
+                </div>
+
+                <!-- 입점사 -->
+                <div *ngIf="hasProvider" class="form-box" style="min-height: 50px; height: auto; padding-top: 5px;">
+                    <div class="form-item" style="height: auto; line-height: 25px;">
+                        <div class="form-title">입점사</div>
+                        <bo-provider-query-view [formGroup]="bsForm"></bo-provider-query-view>
+                    </div>
+                </div>
+
+                <!-- 카테고리 -->
+                <div *ngIf="hasCategoryType" class="form-box">
+                    <div class="form-item">
+                        <input type="radio" id="category_type_C" value="C" name="category_type" 
+                            formControlName="category_type" checked />
+                        <label for="category_type_C" class="check-label">카테고리</label>
+                        
+                        <input type="radio" id="category_type_B" value="B" name="category_type" 
+                            formControlName="category_type" />
+                        <label for="category_type_B" class="check-label">브랜드</label>
+                        
+                        <input type="radio" id="category_type_P" 
+                            value="P" name="category_type" formControlName="category_type" />
+                        <label for="category_type_P" class="check-label">프로그램</label>
+                    </div>
+                </div>
+
+                <!-- 결제수단 -->
+                <div *ngIf="hasPayment" class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">판매환경</div>
+                        <bo-group-checkbox [formGroup]="bsForm" [name]="'sitetype'">
+                            <bo-checkbox-config [title]="'PC'" [value]="'P'"></bo-checkbox-config>
+                            <bo-checkbox-config [title]="'모바일'" [value]="'M'"></bo-checkbox-config>
+                        </bo-group-checkbox>
+                    </div>
+                </div>
+
+                <!-- 월별/일별/시간대별 -->
+                <div *ngIf="hasPeriodType" class="form-box">
+                    <div class="form-item">
+                        <input type="radio" id="date_type_month" value="month" name="date_type" formControlName="date_type" checked
+                            (click)="onDateTypeChanged($event.target.value)" />
+                        <label for="date_type_month" class="check-label">월별</label>
+                        <input type="radio" id="date_type_day" value="day" name="date_type" formControlName="date_type" 
+                            (click)="onDateTypeChanged($event.target.value)" />
+                        <label for="date_type_day" class="check-label">일별</label>
+                        <input type="radio" id="date_type_hour" value="hour" name="date_type" formControlName="date_type" 
+                            (click)="onDateTypeChanged($event.target.value)"/>
+                        <label for="date_type_hour" class="check-label">시간대별</label>
+                    </div>
+                </div>
+
+                <div [hidden]="dateType == 'month'" class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">기간조회 :</div>
+                        <bo-period-query [formGroup]="bsForm" [name]="'period'"
+                            [initialIndexOfPeriodType]="0"
+                            [selectedIndexPeriod]="1"
+                            [has3MonthBtn]="true">
+                            <bo-period-query-option-config [value]="'search_date'" [label]="''">
+                            </bo-period-query-option-config>
+                        </bo-period-query>
+                    </div>
+                </div>
+                <div [hidden]="dateType != 'month'" class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">기간조회 :</div>
+                        <select class="form-selectbox default small-input" name="period_s_y" formControlName="period_s_y" >
+                            <option *ngFor="let item of years" [value]="item.value">{{item.title}}</option>
+                        </select>
+                        <select class="form-selectbox default small-input" name="period_s_m" formControlName="period_s_m" >
+                            <option *ngFor="let item of month" [value]="item.value">{{item.title}}</option>
+                        </select>
+                        <div class="dash-bar" style="margin-right: 10px;">-</div>
+                        <select class="form-selectbox default small-input"  name="period_e_y" formControlName="period_e_y" >
+                            <option *ngFor="let item of years" [value]="item.value">{{item.title}}</option>
+                        </select>
+                        <select class="form-selectbox default small-input" name="period_e_m" formControlName="period_e_m" >
+                            <option *ngFor="let item of month" [value]="item.value">{{item.title}}</option>
+                        </select>
+                        <div class="date-button-area" style="padding-left: 0;">
+                            <button class="btn btn-sm btn-light" type="button" (click)="onClickAll()" style="border: 1px solid rgb(225,225,225);">전체</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <bo-search-button-form></bo-search-button-form>
+    </form>
+</div>
+
+

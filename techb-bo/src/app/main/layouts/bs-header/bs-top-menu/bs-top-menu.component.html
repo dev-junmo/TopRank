@@ -1,0 +1,36 @@
+<ul class="top-menu">
+
+<!-- <li *ngFor="let menu of topMenu" [routerLink]='menu.url' routerLinkActive ="active" routerLinkActiveOptions="{ exact: true }">
+    <div *ngIf="menu.notiCount && menu.notiCount!=0" class="top-menu-alarm" >
+    <div class="top-menu-number">{{menu.notiCount}}</div>
+    </div> 
+    {{menu.title}}            
+</li> -->
+<ng-template ngFor let-menu [ngForOf]="topMenu">
+    <li *ngIf="hasAuth(menu) || appConfig.isProvider" (click)="onClickMenuItem(menu)" 
+        [ngClass]="{'active' : menu.show}">
+        <div *ngIf="menu.notiCount && menu.notiCount!=0" class="top-menu-alarm" >
+            <div class="top-menu-number">{{menu.notiCount}}</div>
+        </div> 
+        {{menu.title}}
+        <div class="gray-bar"></div>
+    </li>
+</ng-template>
+
+<!-- <li *ngFor="let menu of topMenu" (click)="onClickMenuItem(menu)" [ngClass]="{'active' : menu.show}"
+    [hidden]="!hasAuth(menu)">
+    <div *ngIf="menu.notiCount && menu.notiCount!=0" class="top-menu-alarm" >
+        <div class="top-menu-number">{{menu.notiCount}}</div>
+    </div> 
+    {{menu.title}}
+    <div class="gray-bar"></div>
+</li> -->
+</ul>
+
+
+<!-- 
+<li *ngFor="let menu of topMenu" [routerLink]='menu.url'>{{menu.title}}
+    <div class="top-menu-alarm" *ngIf="true">
+      <div class="top-menu-number">{{menu.notiCount}}</div>
+    </div>
+  </li> -->

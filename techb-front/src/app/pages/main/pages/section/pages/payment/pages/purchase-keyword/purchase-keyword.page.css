@@ -1,0 +1,1182 @@
+
+/* 박스 스타일 */
+.box {
+    background: #fafbff;
+    padding: 32px 40px 65px;
+    border-radius: 24px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+/* 타이틀 영역 */
+.title-area .title {
+    background: url('assets/images/payment/ic_payment_keyword_color_40.png') left center no-repeat;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 판매자 상품 */
+.seller-product {
+    width: 1240px;
+    padding-top: 72px;
+}
+.payment-sub-title {
+    display: flex;
+    align-items: end;
+    margin-bottom: 25px;
+}
+.payment-sub-title h3 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #3e4259;
+    margin-right: 8px;
+    padding-left: 32px;
+    background: url('assets/images/payment/ic_check_black_24.png') left center no-repeat;
+}
+.payment-sub-title .description {
+    font-size: 14px;
+    font-weight: normal;
+    color: #b8b6c4;
+}
+.product-box {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    margin-bottom: 32px;
+    padding: 40px 40px 40px 48px;
+}
+.product-box > div {
+    height: 184px;
+}
+.product-box .result-info-1 {
+    width: 432px;
+}
+.product-box .result-info-2,
+.product-box .result-info-3 {
+    width: 239px;
+}
+.product-box .result-info:not(:nth-child(3)) {
+    position: relative;
+    margin-right: 96px;
+}
+.product-box .result-info:not(:nth-child(3))::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: -43px;
+    top: 0;
+    width: 1px;
+    height: 184px;
+    background: #dcdee8;
+}
+.product-box .result-info .ad {
+    width: 46px;
+    height: 23px;
+}
+.product-box .result-info .ad span {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #3f37c9;
+    text-align: center;
+    padding: 4px 0;
+    border: 1px solid #3f37c9;
+    border-radius: 10px;
+    background: #fff;
+}
+.product-box .result-info .category {
+    display: flex;
+    align-items: center;
+    padding-left: 80px;
+    padding-top: 23px;
+}
+.product-box .result-info .category li {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.product-box .result-info .category li img {
+    vertical-align: middle;
+}
+.product-box .result-info .store {
+    /* background: url('assets/images/svg/thum_navershoping_32@2x.png') left center no-repeat;
+    background-size: contain;
+    padding-left: 80px; */
+    display: flex;
+    margin-top: 22px;
+}
+.product-box .result-info .store img {
+    width: 56px;
+    height: 56px;
+    margin-right: 24px;
+}
+.product-box .result-info .store .store-title {
+    font-size: 22px;
+    font-weight: 500;
+    color: #b8b6c4;
+}
+.product-box .result-info .store p {
+    font-size: 22px;
+    font-weight: 500;
+    color: #04021f;
+    margin-top: 11px;
+    line-height: 1.41;
+}
+.product-box .result-info .result-info-title {
+    height: 32px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #3e4259;
+    line-height: 1.41;
+    background: url('assets/images/payment/ic_ranking_32.png') left center no-repeat;
+    padding-left: 48px;
+    margin-top: 20px;
+    margin-bottom: 32px;
+}
+.product-box .result-info-3 .result-info-title {
+    background: url('assets/images/payment/ic_review_32.png') left center no-repeat;
+}
+.product-box .result-info .sale-num,
+.product-box .result-info .review-num {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.44;
+}
+.product-box .result-info .sale-num > strong,
+.product-box .result-info .review-num > strong {
+    display: inline-block;
+    font-family: 'GmarketSansBold';
+    font-size: 40px;
+    color: #04021f;
+    margin-top: -10px;
+}
+.product-box .result-info .sale-num span,
+.product-box .result-info .review-num span {
+    font-size: 18px;
+    font-weight: 500;
+    color: #b8b6c4;
+    margin-left: 16px;
+}
+.product-box .result-info .sale-num .all-count strong {
+    font-weight: 500;
+}
+
+/* .product-box .result-info .sale-num span::before,
+.product-box .result-info .review-num span::before {
+    content: "/";
+} */
+.product-box .result-info .pageing {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    color: #3f37c9;
+    margin-top: 14px;
+}
+.product-box .result-info .review-num span {
+    color: #3f37c9;
+}
+.product-box .result-info .review-num span strong {
+    font-weight: 500;
+}
+.product-box .result-info .purchase-count {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+    color: #b8b6c4;
+    margin-top: 14px;
+}
+.product-box .result-info .purchase-count span {
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 키워드 선택 */
+.keyword-choice {
+    width: 1240px;
+    margin-top: 102px;
+}
+.keyword-choice-box {
+    width: 100%;
+    /* height: 263px; */
+    padding: 56px 48px;
+    border-radius: 24px;
+    background: #f2f2fc;
+}
+/* .keyword-choice-box .keyword-area {
+    margin-bottom: 56px;
+} */
+.keyword-choice-box .keyword-area .chosen-keyword {
+    display: inline-block;
+    position: relative;
+    font-size: 22px;
+    font-weight: bold;
+    color: #3f37c9;
+    background: #fafbff;
+    border: 1px solid #3f37c9;
+    border-radius: 24px;
+    padding: 10px 56px 10px 24px;
+}
+.keyword-choice-box .keyword-area .chosen-keyword.null {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #b8b6c4;
+    padding: 10px 24px;
+    border: 1px dashed #b8b6c4;
+    border-radius: 24px;
+}
+.keyword-choice-box .keyword-area .chosen-keyword button {
+    position: absolute;
+    right: 11px;
+    top: 5px;
+    background: none;
+    padding: 0;
+}
+.keyword-choice-box .keyword-input {
+    margin-top: 56px;
+}
+.keyword-choice-box .keyword-input input {
+    width: 943px;
+    height: 48px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 20px;
+    font-weight: normal;
+    color: #04021f;
+    line-height: 48px;
+    border: 0;
+    outline: 0;
+    background: #fff;
+    padding: 10px 32px 11px;
+    border-radius: 16px;
+    box-shadow: 0 6px 6px 0 rgba(36, 51, 179, 0.1);
+    box-sizing: border-box;
+}
+.keyword-choice-box .keyword-input input::placeholder {
+    color: #b8b6c4;
+}
+.keyword-choice-box .keyword-input .keyword-add {
+    width: 161px;
+    height: 48px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 47px;
+    background: #3f37c9;
+    border-radius: 16px;
+    margin-left: 34px;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 상품 옵션 선택 */
+.option-choice {
+    width: 1240px;
+    margin-top: 104px;
+}
+.option-choice-box {
+    width: 100%;
+    height: 476px;
+    background: #f2f2fc;
+    border-radius: 24px;
+    padding: 56px 48px 48px;
+}
+.option-choice-box > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+.option-choice-box > div:nth-child(3) {
+    margin-bottom: 0;
+}
+.option-choice-box > div span {
+    font-size: 20px;
+    font-weight: 500;
+    color: #04021f;
+}
+.option-choice-box .selectbox {
+    position: relative;
+    width: 848px;
+}
+.option-choice-box .selectbox select {
+    width: 100%;
+    height: 60px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 20px;
+    font-weight: 500;
+    color: #04021f;
+    text-align: left;
+    /* line-height: 60px; */
+    background: #fff url('assets/images/payment/ic_unfold_black_32.png') 790px center no-repeat;
+    border: 1px solid #dcdee8;
+    outline: 0;
+    border-radius: 16px;
+    padding: 0 32px;
+    box-sizing: border-box;
+}
+/* .option-choice-box .selectbox.active .label {
+    background: #fff url('assets/images/payment/ic_fold_black_32.png') 790px center no-repeat;
+} */
+.option-choice-box .selectbox .label span {
+    margin-left: 24px;
+    color: #b8b6c4;
+}
+.option-choice-box .selectbox ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 59px;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    border-radius: 16px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+    z-index: 10;
+}
+.option-choice-box .selectbox ul li {
+    height: 60px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #04021f;
+    line-height: 60px;
+    padding: 0 32px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.option-choice-box .selectbox.active ul {
+    display: block;
+}
+.option-choice-box .selectbox ul li span {
+    margin-left: 24px;
+    color: #b8b6c4;
+}
+.option-choice-box .auto-extend-check {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+.option-choice-box .auto-extend-check label {
+    display: flex;
+    align-items: center;
+    margin-left: 132px;
+    cursor: pointer;
+}
+.option-choice-box .auto-extend-check label input {
+    display: none;
+}
+.option-choice-box .auto-extend-check label span {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url('assets/images/payment/ic_checkbox_off_32.png') center no-repeat;
+    margin-right: 12px;
+    cursor: pointer;
+}
+.option-choice-box .auto-extend-check label input:checked + span {
+    background: url('assets/images/payment/ic_checkbox_on_32.png') center no-repeat;
+}
+.option-choice-box .auto-extend-check label p {
+    font-size: 18px;
+    color: #3e4259;
+}
+.option-choice-box .choice-btn {
+    display: block;
+    width: 101px;
+    height: 48px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 48px;
+    border-radius: 16px;
+    margin: 43px auto 0;
+    background: #3f37c9;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 상품 옵션 선택 */
+.final-order {
+    width: 1240px;
+    margin-top: 104px;
+}
+.web .final-order-info ul {
+    width: 100%;
+    border-top: 1px solid #3e4259;
+    padding: 48px;
+}
+.final-order-info ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: #04021f;
+    margin-bottom: 43px;
+}
+.final-order-info ul li .order-value {
+    font-weight: bold;
+}
+
+.final-order-info ul li:last-child {
+    margin-bottom: 0;
+}
+.final-order-info .total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    font-weight: 500;
+    color: #04021f;
+    padding: 25px 48px;
+    border-top: 1px solid #dcdee8;
+}
+.final-order-info .total .order-value {
+    color: #e6458e;
+    font-weight: bold;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 결제 방법 */
+.pay-way {
+    width: 1240px;
+    margin-top: 104px;
+}
+.pay-way-box {
+    width: 100%;
+    height: 342px;
+    background: #f2f2fc;
+    border-radius: 24px;
+    padding: 56px 48px;
+}
+.pay-way-box > div {
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    margin-bottom: 35px;
+}
+.pay-way-box .point-title {
+    font-size: 20px;
+    font-weight: 500;
+    color: #04021f;
+    background: url('assets/images/payment/ic_free-point_purple_24.png') left 21px no-repeat;
+    padding-left: 32px;
+    padding-top: 22px;
+}
+.pay-way-box .point-title span {
+    font-size: 14px;
+    font-weight: normal;
+    color: #b8b6c4;
+}
+.pay-way-box .my-point input {
+    width: 562px;
+    height: 60px;
+    font-size: 20px;
+    font-weight: normal;
+    color: #04021f;
+    line-height: 60px;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    border-radius: 16px;
+    padding: 0 32px;
+    margin-right: 40px;
+    box-sizing: border-box;
+}
+.pay-way-box .my-point button {
+    width: 142px;
+    height: 60px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 60px;
+    border-radius: 16px;
+    background: #e6458e;
+}
+.pay-way-box .my-point span {
+    display: block;
+    font-size: 18px;
+    font-weight: normal;
+    padding: 16px 0 0 32px;
+}
+.pay-way-box .my-point span strong {
+    font-weight: 500;
+}
+.pay-way-box > div.dis .my-point input {
+    background: #f2f3fa;
+    color: #b8b6c4;
+}
+.pay-way-box > div.dis .my-point button {
+    background: #dcdee8;
+    color: #b8b6c4;
+    cursor: default;
+}
+.pay-way-box > div.dis .my-point span {
+    color: #b8b6c4;
+}
+.agree-check {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+}
+.agree-check label {
+    display: flex;
+    align-items: center;
+    margin-left: 32px;
+    cursor: pointer;
+}
+.agree-check label input {
+    display: none;
+}
+.agree-check label span {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url('assets/images/payment/ic_checkbox_off_32.png') center no-repeat;
+    margin-right: 12px;
+    cursor: pointer;
+}
+.agree-check label input:checked + span {
+    background: url('assets/images/payment/ic_checkbox_on_32.png') center no-repeat;
+}
+.agree-check label p {
+    font-size: 18px;
+    font-weight: normal;
+    color: #3e4259;
+}
+.web .purchase-btn {
+    display: block;
+    width: 280px;
+    height: 62px;
+    border-radius: 16px;
+    background: #e6458e;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 62px;
+    color: #fff;
+    margin: 80px auto 0;
+}
+
+/* =============================================================================== */
+/* Mobile CSS */
+/* 판매자 상품 영역 */
+.mobile .seller-product-area {
+    padding: 0 2.4rem;
+}
+.mobile .pay-contents-title {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 1.8rem;
+}
+.mobile .pay-contents-title h3 {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #3e4259;
+    margin-right: 0.4rem;
+}
+.mobile .pay-contents-title h3::before {
+    content: "";
+    display: inline-block;
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url('assets/images/svg/ic_check_black_24.svg') center no-repeat;
+    background-size: 1.6rem;
+    margin-right: 0.4rem;
+    vertical-align: middle;
+    margin-top: -0.2rem;
+}
+.mobile .pay-contents-title span {
+    font-size: 1.2rem;
+    color: #b8b6c4;
+    font-weight: normal;
+}
+.mobile .seller-product {
+    padding: 1.0rem 2.0rem 2.4rem;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.mobile .seller-product .ad-area {
+    width: 100%;
+    height: 1.4rem;
+}
+.mobile .seller-product .ad-area span {
+    float: right;
+    display: inline-block;
+    width: 3.4rem;
+    height: 100%;
+    font-size: 1.0rem;
+    font-weight: 500;
+    color: #3f37c9;
+    line-height: 1.2rem;
+    text-align: center;
+    border: 1px solid #3f37c9;
+    border-radius: 1.0rem;
+}
+.mobile .seller-product .ad-area::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.mobile .seller-product .store-name {
+    display: flex;
+    align-items: center;
+}
+.mobile .seller-product .store-name span {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #b8b6c4;
+    margin-left: 8px;
+}
+.mobile .seller-product .store-product {
+    display: -webkit-box;
+    height: 4.6rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #04021f;
+    line-height: 1.44;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin-top: 7px;
+    margin-bottom: 17px;
+}
+.mobile .seller-product .keyword-category {
+    display: flex;
+    align-items: center;
+}
+.mobile .seller-product .keyword-category li {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-right: 0.8rem;
+    color: #3e4259;
+}
+.mobile .seller-product .keyword-category li::after {
+    content: ">";
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #b8b6c4;
+    margin-left: 0.8rem;
+}
+.mobile .seller-product .keyword-category li:last-child {
+    margin-right: 0;
+}
+.mobile .seller-product .keyword-category li:last-child::after {
+    display: none;
+}
+.mobile .seller-product .middle-line {
+    width: 100%;
+    height: 1px;
+    background: #dcdee8;
+    margin: 2.4rem 0 2.0rem;
+}
+.mobile .seller-product .salse-header,
+.mobile .seller-product .review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.1rem;
+}
+.mobile .seller-product .review-header {
+    margin-top: 1.1rem;
+}
+.mobile .seller-product .salse-header img,
+.mobile .seller-product .review-header img {
+    width: 2.0rem;
+    height: 2.0rem;
+    margin-right: 0.8rem;
+}
+.mobile .seller-product .salse-header span,
+.mobile .seller-product .review-header span {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #3e4259;
+}
+.mobile .seller-product .sales-ranking-num,
+.mobile .seller-product .review-count-num {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+}
+.mobile .seller-product .sales-ranking-num .g-num,
+.mobile .seller-product .review-count-num .g-num {
+    vertical-align: middle;
+}
+.mobile .seller-product .sales-ranking-num .page-ranking,
+.mobile .seller-product .review-count-num .score {
+    color: #3f37c9;
+    font-weight: normal;
+    vertical-align: middle;
+}
+.mobile .seller-product .sales-ranking-num .page-ranking b,
+.mobile .seller-product .review-count-num .score b {
+    font-weight: 500;
+}
+.mobile .seller-product .all-count,
+.mobile .seller-product .purchases-number {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #b8b6c4;
+    text-align: center;
+    margin-top: 8px;
+}
+.mobile .seller-product .all-count b,
+.mobile .seller-product .purchases-number b {
+    font-weight: 500;
+    vertical-align: middle;
+}
+.mobile .seller-product .track-ranking-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 3.4rem;
+    background: #e6458e;
+    border-radius: 24px;
+    box-shadow: 0 3px 13px 0 rgba(230, 69, 142, 0.1);
+    margin-top: 1.6rem;
+    padding: 0;
+}
+.mobile .seller-product .track-ranking-btn img {
+    width: 3.2rem;
+    height: 3.2rem;
+}
+.mobile .seller-product .track-ranking-btn span {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 0.8rem;
+}
+.mobile .seller-product .track-ranking-btn.tracking {
+    background: #f2f3fa;
+    border: 1px solid #dcdee8;
+    box-shadow: none;
+}
+.mobile .seller-product .track-ranking-btn.tracking span {
+    color: #3e4259;
+}
+
+.mobile .line {
+    width: 100%;
+    height: 1px;
+    background: #dcdee8;
+    margin-top: 2.4rem;
+    margin-bottom: 4.0rem;
+}
+
+/* 키워드 선택 */
+.mobile .keyword-select-area {
+    padding: 0 2.4rem;
+    margin-bottom: 4.0rem;
+}
+.mobile .add-keywords-box {
+    padding: 2.4rem 1.6rem;
+    background: #f2f2fc;
+    border-radius: 16px;
+}
+.mobile .added-keywords-area {
+    display: flex;
+    justify-content: center;
+    margin: 2.0rem 0 2.0rem;
+}
+.mobile .added-keywords-area .added-keywords {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.8rem;
+    border: 1px solid #3f37c9;
+    border-radius: 24px;
+    background: #fafbff;
+    padding: 0 0.8rem 0 1.2rem;
+}
+.mobile .added-keywords-area .added-keywords span {
+    font-size: 1.6rem;
+    font-weight: bold;
+    line-height: 2.8rem;
+    color: #3f37c9;
+    max-width: 20rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.mobile .added-keywords-area .added-keywords button {
+    width: 2.2rem;
+    height: 2.2rem;
+    background: none;
+    padding: 0;
+    outline: 0;
+    margin-left: 0.4rem;
+}
+.mobile .added-keywords-area .added-keywords button img {
+    width: 100%;
+    height: auto;
+}
+/* 키워드 없을 때 */
+.mobile .added-keywords-area .added-keywords-null {
+    height: 2.8rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #b8b6c4;
+    line-height: 2.8rem;
+    padding: 0 1.2rem;
+    border: 1px dashed #b8b6c4;
+    background: #f2f3fa;
+    border-radius: 24px;
+    margin-bottom: 2.4rem;
+}
+.mobile .add-keywords-box form .keyword-search {
+    width: 100%;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #04021f;
+    line-height: 4.0rem;
+    background: #fff;
+    padding: 0 1.6rem;
+    border: 0;
+    outline: 0;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px 0 rgba(36, 51, 179, 0.1);
+    box-sizing: border-box;
+}
+.mobile .add-keywords-box form .keyword-search::placeholder {
+    color: #b8b6c4;
+}
+.mobile .add-keywords-box form button {
+    width: 100%;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 4.0rem;
+    border-radius: 8px;
+    background: #3f37c9;
+    text-align: center;
+    margin-top: 1.6rem;
+}
+
+/* 상품 옵션 선택 */
+.mobile .product-options-area {
+    padding: 0 2.4rem;
+}
+.mobile .product-options-box {
+    padding: 2.4rem 1.6rem;
+    border-radius: 16px;
+    background: #f2f2fc;
+}
+.mobile .product-options-box > div {
+    margin-bottom: 1.6rem;
+}
+.mobile .product-options-box > div:nth-child(3) {
+    margin-bottom: 0;
+}
+.mobile .product-options-box > div span {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+}
+.mobile .product-options-box .selectbox {
+    position: relative;
+    margin-top: 1.0rem;
+}
+.mobile .product-options-box .selectbox .label {
+    width: 100%;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+    text-align: left;
+    line-height: 4.0rem;
+    background: #fff url('assets/images/svg/ic_unfold_black_24.svg') 97.4% center no-repeat;
+    border: 1px solid #dcdee8;
+    outline: 0;
+    border-radius: 8px;
+    padding: 0 1.6rem;
+    box-sizing: border-box;
+}
+.mobile .product-options-box .selectbox.active .label {
+    background: #fff url('assets/images/svg/ic_fold_black_24.svg') 97.4% center no-repeat;
+}
+.mobile .product-options-box .selectbox .label span {
+    color: #b8b6c4;
+}
+.mobile .product-options-box .selectbox select {
+    display: block;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    height: 4.0rem;
+    background: #fff;
+    border-radius: 8px;
+    z-index: 10;
+    padding-left: 1rem;
+}
+/* .mobile .product-options-box .selectbox ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 3.9rem;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px 0 rgba(36, 51, 179, 0.1);
+    z-index: 10;
+}
+.mobile .product-options-box .selectbox ul li {
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+    line-height: 4.0rem;
+    padding: 0 1.6rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.mobile .product-options-box .selectbox.active ul {
+    display: block;
+} */
+/* .mobile .product-options-box .selectbox ul li span {
+    color: #b8b6c4;
+} */
+.mobile .product-options-box .auto-extend-check {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0.8rem;
+    /* margin-bottom: 3.2rem; */
+}
+.mobile .product-options-box .auto-extend-check.none {
+    display: none;
+}
+.mobile .product-options-box .auto-extend-check label,
+.mobile .consent-check label {
+    padding: 0 0.3rem;
+    cursor: pointer;
+}
+.mobile .product-options-box .auto-extend-check label::after,
+.mobile .consent-check label::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.mobile .product-options-box .auto-extend-check label input,
+.mobile .consent-check label input {
+    display: none;
+}
+.mobile .product-options-box .auto-extend-check label span,
+.mobile .consent-check label span {
+    float: left;
+    display: block;
+    width: 2.0rem;
+    height: 2.0rem;
+    margin: 0 .4rem 0 0;
+    background: url('assets/images/svg/ic_checkbox_off_32.svg') center no-repeat;
+    background-size: 2.0rem;
+    cursor: pointer;
+}
+.mobile .product-options-box .auto-extend-check label input:checked + span,
+.mobile .consent-check label input:checked + span {
+    background: url('assets/images/svg/ic_checkbox_on_32.svg') center no-repeat;
+    background-size: 2.0rem;
+}
+.mobile .product-options-box .auto-extend-check label p,
+.mobile .consent-check label p {
+    /* float: left; */
+    width: 100%;
+    font-size: 1.2rem;
+    color: #3e4259;
+    font-weight: normal;
+    line-height: 1.25;
+    margin-left: 1.5rem;
+}
+.mobile .product-options-box .choice-btn {
+    display: block;
+    width: 100%;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 4.0rem;
+    border-radius: 8px;
+    background: #3f37c9;
+    margin-top: 3.2rem;
+}
+
+/* 최종 주문 정보  */
+.mobile .final-order-info-area {
+    padding: 0 2.4rem;
+}
+.mobile .final-order-info {
+    padding-top: 2.8rem;
+    border-top: 1px solid #3e4259;
+}
+.mobile .final-order-info ul {
+
+}
+.mobile .final-order-info ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.3rem;
+}
+.mobile .final-order-info ul li > span {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+}
+.mobile .final-order-info ul li > b {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #04021f;
+}
+.mobile .final-order-info ul li:nth-child(3) {
+    margin-bottom: 2.0rem;
+}
+.mobile .final-order-info ul li:last-child {
+    border-top: 1px solid #dcdee8;
+    padding-top: 1.6rem;
+}
+.mobile .final-order-info ul li:last-child b {
+    color: #e6458e;
+}
+
+/* 결제 방법 */
+.mobile .pay-method-area {
+    padding: 0 2.4rem;
+    margin-top: 5.4rem;
+}
+.mobile .pay-method-box {
+    padding: 3.3rem 1.6rem;
+    background: #f2f2fc;
+    border-radius: 16px;
+}
+.mobile .point-area {
+    
+}
+.mobile .charging-point-area {
+    margin-top: 3.5rem;
+}
+.mobile .point-area .point-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+    background: url('assets/images/svg/ic_free-point_purple_24.svg') left center no-repeat;
+    background-size: 1.6rem;
+    padding-left: 2.0rem;
+}
+.mobile .point-area .point-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.9rem 0;
+}
+.mobile .point-area .point-input input {
+    /* width: 20.0rem; */
+    width: 70%;
+    height: 4.0rem;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 3px 6px 0 rgba(36, 51, 179, 0.1);
+    outline: 0;
+    border: 0;
+    padding: 1.1rem 1.6rem;
+    box-sizing: border-box;
+}
+.mobile .charging-point-area p {
+    font-size: 1.2rem;
+    color: #b8b6c4;
+}
+.mobile .point-area .point-input input:disabled {
+    color: #b8b6c4;
+    background: #f2f3fa;
+    border: 1px solid #dcdee8;
+}
+.mobile .point-area .point-input .all-enabled-btn {
+    /* width: 6.4rem; */
+    width: 25%;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 8px;
+    background: #e6458e;
+    padding: 0;
+}
+.mobile .point-area .point-input .all-enabled-btn:disabled {
+    background: #dcdee8;
+    color: #b8b6c4;
+}
+.mobile .point-area .retention-points {
+    font-size: 1.2rem;
+    /* color: #04021f; */
+    color: #b8b6c4;
+    padding-left: 1.6rem;
+}
+.mobile .point-area .retention-points b {
+    font-weight: 500;
+}
+.mobile .charging-point-area .point-title {
+    background: url('assets/images/svg/ic_payment-point_purple_24.svg') left center no-repeat;
+    background-size: 1.6rem;
+}
+.mobile .point-description {
+    margin-top: 0.5rem;
+    padding-left: 2.0rem;
+}
+/* .mobile .charging-point-area.dis .point-input input {
+    color: #b8b6c4;
+    background: #f2f3fa;
+    border: 1px solid #dcdee8;
+}
+.mobile .charging-point-area.dis .point-input .all-enabled-btn {
+    background: #dcdee8;
+    color: #b8b6c4;
+} */
+.mobile .pay-method-area .consent-check {
+    margin-top: 1.6rem;
+}
+.mobile .pay-method-area .consent-check label {
+    padding: 0;
+}
+.mobile .pay-method-area .consent-check p {
+    width: 100%;
+    font-size: 1.4rem;
+    font-weight: normal;
+    line-height: 1.29;
+    margin-left: 1.5rem;
+}
+
+/* 구매하기 버튼 */
+.mobile .purchase-area {
+    padding: 0 2.4rem;
+    margin: 4.0rem 0 6.4rem;
+}
+.mobile .purchase-btn {
+    width: 100%;
+    height: 4.4rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 4.4rem;
+    text-align: center;
+    padding: 0;
+    border-radius: 8px;
+    background: #e6458e;
+}
+
+/* 650px 이상 767px 이하 */
+@media screen and (min-width: 650px) and (max-width: 767px) {
+    .mobile .keyword-seller-product {
+        margin-top: 15rem;
+    }
+}
+
+/* 768px 이상 */
+@media screen and (min-width: 768px) {
+    .keyword-seller-product {
+        margin-top: 15rem;
+    }
+}

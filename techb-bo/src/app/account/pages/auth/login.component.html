@@ -1,0 +1,124 @@
+
+<div class="logo-wrap"><img src="/assets/img/logo_gray_130@2x.png" /></div>
+<form  [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)" class="form-wrap"
+    autocomplete="off">
+    <div class="form-title">{{loginTypeText}} <span>로그인</span></div>
+    <div class="login-form">
+        <div class="form-group">
+            <input *ngIf="!appConfig.isProvider" type="text" class="form-control" id="manager_id"
+                name="manager_id" formControlName="manager_id" placeholder="아이디"
+                autocomplete="nofill"
+                required/>
+            <input *ngIf="appConfig.isProvider" type="text" class="form-control" id="main_id"
+                name="main_id" formControlName="main_id" placeholder="아이디"
+                autocomplete="nofill"
+                 required/>
+        </div>
+        <div class="form-group password">
+            <input *ngIf="!appConfig.isProvider" type="password"  class="form-control" id="mpasswd"
+                name="mpasswd"  formControlName="mpasswd" placeholder="비밀번호"
+                autocomplete="new-password" required/>
+            <input type="password" class="hidden" />
+            <input *ngIf="appConfig.isProvider" type="password"  class="form-control" id="main_pwd"
+                name="main_pwd"  formControlName="main_pwd" placeholder="비밀번호"
+                autocomplete="new-password" required/>
+        </div>
+        <div class="login-button">
+        <button type="submit">로그인</button>
+        </div>
+    </div>
+
+    <div style="color: #babbbf;">
+        <ul style="padding-left: 25px; margin-top: -36px; list-style: none;">
+            <li>본 시스템은 TopRank 임직원 및 제한된 협력사에 한해서 사용하실 수 있습니다.</li>
+            <li class="notice-text">불법적인 접근 및 사용시 관련법규에 의해 처벌될 수 있습니다.</li>
+            <li class="notice-text">문의 <b style="color: #babbbf;"><span>crefestudio@gmail.com</span></b></li>
+        </ul>
+
+    </div>
+
+
+    <!-- <div class="check-wrap">
+        <div class="login-check">
+        <bs-checkbox [formGroup]="loginForm"
+        [name]="'notice'"
+        [label]="'아이디 저장하기'"
+
+        [value]="'yes'">
+        </bs-checkbox>
+        </div>
+    </div> -->
+</form>
+
+<!-- 비밀번호 변경 -->
+<ng-template #templateChangePW>
+    <div class="section">
+        <div class="content-wrap two-line-content" style="min-width: 354px;">
+            <div class="content-box" style="border-bottom: none; padding: 10px 0 0px 45px;">
+                <div class="content-title">
+                    비밀번호 변경
+                </div>
+                <div class="content" style="max-width:0;">
+                    <input type="password" autocomplete="new-password" [(ngModel)]="password" style="padding-left: 5px; width: 170px;"/>
+                </div>
+            </div>
+            <div class="content-box" style="border-bottom: none; padding: 10px 0 10px 45px;">
+                <div class="content-title">
+                    비밀번호 확인
+                </div>
+                <div class="content" style="max-width:0;">
+                    <input type="password" autocomplete="new-password" [(ngModel)]="passwordConfirm" style="padding-left: 5px; width: 170px;" />
+                </div>
+            </div>
+            <div style="text-align: center;padding: 5px 0 15px 0px;">
+                <span class="password-notice">* 10~20자, 영문 대소문자 또는 숫자, 특수문자 중 2가지 이상 조합</span> <br/>
+                <span class="password-notice">* 사용가능 특수문자 &#33;&#35;&#36;&#37;&#38;&#40;&#41;&#42;&#43;&#45;&#47;&#58;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#123;&#124;&#125; </span>
+            </div>
+
+        </div>
+    </div>
+</ng-template>
+
+<!-- 인증번호 팝업 -->
+<ng-template #templateSendingCode>
+    <div class="section">
+        <div class="content-wrap two-line-content" style="min-width: 354px; padding: 15px;">
+            <div style="text-align: center;">
+                <span style="font-size: 14px;">남은 시간 : {{leftTime}}</span>
+
+            </div>
+
+            <div class="content-box" style="border-bottom: none; padding-left: 40px;">
+                <div class="content-title" style="min-width: 80px; text-align: center;font-size: 14px;">
+                    인증번호
+                </div>
+                <div class="content" style="max-width:0;">
+                    <input type="text" style="width: 160px;" [(ngModel)]="certificationNumber" />
+
+                </div>
+            </div>
+
+            <div style="text-align: center;font-size: 13px;">인증번호를 받지 못하셨나요? &nbsp;
+                <a style="text-decoration: underline; color: #337ab7;" (click)="onClickResendCertificationNumber()" class="clickable">재전송</a>
+            </div>
+
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #templateSendingCodeNumber>
+    <div class="section">
+        <div class="content-wrap two-line-content" style="min-width: 354px; padding-top: 20px !important;">
+            <div style="text-align: center;">
+                <span style="font-size: 14px;">인증번호를 발송할 휴대폰번호를 선택해주세요.</span>
+            </div>
+            <div class="content-box" style="padding-left: 80px;">
+                <div class="content-title" *ngFor="let number of phoneNumbers;let idx=index" style="min-width: 80px; text-align: center;font-size: 14px;">
+                    <input type="radio" id="phonenumbers-{{idx}}" [value]="number" name="number" [(ngModel)]="selectedNumber" />
+                    <label for="phonenumbers-{{idx}}" class="check-label" style="min-width: 150px;">{{number}}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+

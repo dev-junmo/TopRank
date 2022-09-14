@@ -1,0 +1,62 @@
+<div class="account-wrap">
+    <div class="header_info_box">
+
+        <div class="header_info_notice">
+
+            <!-- <div class="all_search_box">
+                <img class="all_search_image" src="/assets/img/ic_search_grey_32.png">
+            </div> -->
+
+            <div class="all_notice_box">
+                <img class="all_notice_image" src="/assets/img/ic_top_notice_56.png">
+                <span class="all_notice_text">전체공지가 나오는 영역입니다. 최대 텍스트는 이 정도로 들어갑니다.</span>
+                <span class="all_notice_list">더보기</span>
+
+            </div>
+
+        </div>
+
+        <div class="header_info_account" *ngIf="isLogin == true" (click)="onClickShowbox()">
+            <div class="account_box">
+                <!-- <span class="profile_box"></span> -->
+                <span class="user_name" *ngIf="name">{{name}} 님</span>
+                <span class="user_name" *ngIf="!name">{{id}} 님</span>
+                <img [hidden]="!isShowBox" class="arrow-img" src="/assets/img/arrow.png"/>
+                
+            </div>
+            <span class="clickable" (click)="onClickLogout()">로그아웃</span>
+        </div>
+        <div class="header_info_account" *ngIf="isLogin == false">
+            <span class="clickable" (click)="onClickLogin()">로그인</span>
+        </div>
+        
+    </div>
+    
+
+    <!-- <div class="account" *ngIf="isLogin == true" (click)="onClickShowbox()">
+       {{name}}<img [hidden]="!isShowBox" class="arrow-img" src="/assets/img/arrow.png"/>
+       <span *ngIf="!name">{{id}} 님</span>
+       <span *ngIf="email">({{email}})</span>
+       <div class="header-bar"></div>
+       <div class="logout-btn" (click)="onClickLogout()">
+           로그아웃
+       </div>
+    </div>   -->
+</div>
+
+
+<div class="account-block" [hidden]="!isShowBox">
+    <!-- <img class="arrow-img" src="/assets/img/arrow.png"> -->
+    <div class="account-list-box">
+        <div class="user-info">
+            <!-- <div class="user-img"><img src="/assets/img/admin-img.svg" /></div> -->
+            <div class="user-name" (click)="onClickSetting(seq)">내 정보수정</div>
+            <div class="user-set" (click)="onClickSetting(seq)">
+                <img src="/assets/img/small-set.svg">
+            </div>
+        </div>
+        <div class="logout-btn" (click)="onClickLogout()">
+            <bo-button-collection [title]="'로그아웃'"></bo-button-collection>
+        </div>
+    </div>
+</div>

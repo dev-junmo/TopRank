@@ -1,0 +1,79 @@
+<form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+  <div class="sub-title-bar">
+    <img src="/assets/img/03-3-order.svg" />
+        페이지별 검색창 기본 검색어
+  </div>
+
+  <div class="content-box padding">
+      <div>
+        <bs-checkbox [formGroup]="bsForm"
+            [name]="'search_word[0][page_yn]'"
+            [label]="'메인페이지 및 그 외'"
+            [value]="'y'"
+            >
+        </bs-checkbox>
+      </div>
+        <ul class="word-ul" style="padding-top:10px" formArrayName="search_word">
+            <li>
+                <div class="left">검색창 표기</div>
+                <div class="right">연결페이지 URL</div>
+            </li>
+            <li *ngFor = "let item of searchWordsFormArray.controls;let idx = index" [formGroupName]="idx" >
+                <div class="left">
+                    <span>{{idx + 1}}.</span>
+                    <bs-input [name]="'word'" [formGroup]="searchWordsFromGroup(idx)" ></bs-input>
+                </div>
+                <div class="right">
+                    <select class="form-selectbox medium-input item-horizontal" name="search_result" formControlName="search_result">
+                        <option value="direct">직접입력</option>
+                        <option value="search">검색결과페이지 </option>
+                    </select>
+                    <bs-input [name]="'search_result_link'" [formGroup]="searchWordsFromGroup(idx)" ></bs-input>
+                    <select class="form-selectbox medium-input item-horizontal" name="search_result_target" formControlName="search_result_target">
+                        <option value="_self">현재창</option>
+                        <option value="_blank">새창</option>
+                    </select>
+                    <img *ngIf="idx == searchWordsFormArray.controls.length - 1" src="/assets/img/group-3.svg" (click)="onClickAddBtn()" />
+                    <img *ngIf="idx != searchWordsFormArray.controls.length - 1" src="/assets/img/group-3-copy.svg" (click)="onClickRemoveBtn(idx)"  />
+                </div>
+            </li>
+        </ul>
+    </div>
+    <bo-page-padding></bo-page-padding>
+    <!-- <div class="content-box padding">
+        <bs-checkbox [formGroup]="bsForm"
+            [name]="'page_yn'"
+            [label]="'상품상세 페이지'"
+            [value]="'y'"
+            >
+        </bs-checkbox>
+        <ul class="word-ul" style="padding-top:10px" formArrayName="search_word">
+            <li>
+            <div class="left">검색창 표기</div>
+            <div class="right">연결페이지 URL</div>
+            </li>
+            <li *ngFor = "let item of searchWordsFormArray.controls;let idx = index" [formGroupName]="idx" >
+            <div class="left">
+                <span>{{idx + 1}}.</span>
+                <bs-input [name]="'word'" [formGroup]="searchWordsFromGroup(idx)" ></bs-input>
+            </div>
+            <div class="right">
+                <select class="form-selectbox medium-input item-horizontal" name="search_result" formControlName="search_result">
+                    <option value="direct">직접입력</option>
+                    <option value="search">검색결과페이지 </option>
+                </select>
+                <bs-input [name]="'search_result_link'" [formGroup]="searchWordsFromGroup(idx)" ></bs-input>
+                <select class="form-selectbox medium-input item-horizontal" name="search_result_target" formControlName="search_result_target">
+                    <option value="_self">현재창</option>
+                    <option value="_blank">새창</option>
+                </select>
+                <img src="/assets/img/group-3.svg" />
+            </div>
+            </li>
+        </ul>  -->
+        <div class="con-btn">
+            <bo-page-padding></bo-page-padding>
+            <bo-submit-button-form></bo-submit-button-form>
+        </div>
+    <!-- </div>  -->
+</form>

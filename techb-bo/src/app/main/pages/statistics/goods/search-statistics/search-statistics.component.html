@@ -1,0 +1,41 @@
+<bo-page-header [title]="'상품통계 - 검색어'">
+  <bo-page-button-config id = "id-statics-excel-download"
+    [title] = "'엑셀 다운로드'"
+    [styleType] = "'square-m-white-btn'"
+    [imgUrl]="'assets/img/excel-icon.svg'"
+    (click) = "onClickDownloadExcel(query)">
+  </bo-page-button-config>
+</bo-page-header>
+<div class="list-section section">
+  <keyword-query-form [initialQuery]="true" [setQuery]="query"(query)="reloadWithQuery($event)"></keyword-query-form>
+  <bo-page-padding></bo-page-padding>
+    <div class="list-wrap">
+      <div class="graph-table">
+        <div class="graph-title">검색어 통계</div>
+        <bo-page-padding></bo-page-padding>
+        <bo-page-padding></bo-page-padding>
+
+        <table class="statistics-table">
+          <colgroup>
+            <col width="10%">
+            <col width="60%">
+            <col width="15%">
+            <col width="15%">
+          </colgroup>
+          <tr>
+            <th>순위</th>
+            <th>검색어</th>
+            <th>검색횟수</th>
+            <th>구매전환율</th>
+          </tr>
+          <tr *ngFor="let item of list;let idx=index">
+            <td>{{idx+1}}</td>
+            <td>{{item.keyword}}</td>
+            <td>{{item.cnt  | number}}</td>
+            <td>{{item.cvr}}%</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <bo-page-padding></bo-page-padding>
+</div>

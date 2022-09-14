@@ -1,0 +1,128 @@
+
+<form [formGroup]="bsForm" class="form-area" >
+  <div class="section">
+    <div class="content-wrap">
+        <div class="content-inline-box">
+            <div class="content-box">
+                <div class="content-title">사용설정</div>
+                <div class="content">
+                    <input type="radio" id="use_y" name="use_yn" value="y" formControlName="use_yn"/>
+                    <label for="use_y" class="check-label">사용</label>
+
+                    <input type="radio" id="use_n" name="use_yn" value="n" formControlName="use_yn"/>
+                    <label for="use_n" class="check-label">미사용</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-inline-box">
+            <div class="content-box">
+                <div class="content-title">설명</div>
+                <div class="content">
+                        <bs-input [name]="'summary'" [formGroup]="bsForm" [style]="'big-input'" ></bs-input>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-inline-box">
+            <div class="content-box">
+                <div class="content-title">사용택배사</div>
+                <div class="content">
+                    <div style="height: 200px; width: 302px; overflow: scroll; display: inline-block; border: 1px solid #dfdfdf;">
+                        <div *ngFor="let key of deliveryCompanyCodeList" (click)="onClickSelectDeli(key)">
+                            {{deliveryCompanyList[key].company}}
+                        </div>
+                    </div>
+                    <div style="display: inline-block; width: 302px; height: 200px; overflow: scroll; border: 1px solid #dfdfdf;" >
+                        <div *ngFor="let key of deliveryCodes">
+                            {{deliveryCompanyList[key]?.company}}
+                            <button type="button" style="background: none; border: none;"(click)="onClickDelDelivery(key)"><img src="/assets/img/mi.svg" /></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-inline-box">
+            <div class="content-box">
+                <div class="content-title">구매상품 <br/>조건기준 <br/> 배송비 무료화</div>
+                <div class="content">
+
+                    <div>
+                        <bs-checkbox [formGroup]="bsForm"
+                            [name]="'order_delivery_free'"
+                            [label]="'아래의 조건을 만족하는 상품 구매 시 해당 주문의 배송비 무료'"
+                            [value]="'free'">
+                        </bs-checkbox>
+                    </div>
+                    <bo-page-padding></bo-page-padding>
+                    * 적용 카테고리
+                    <bo-category-multi-select-view [(selectedCategories)]="data.issue_categories">
+                    </bo-category-multi-select-view>
+                    <bo-page-padding></bo-page-padding>
+
+                    * 적용 상품
+                    <bo-goods-multi-select-view
+                        [providerSeqs]="[providerId]"
+                        [selectedGoodsSeqs]="_data.issue_goods">
+                    </bo-goods-multi-select-view>
+                    <bo-page-padding></bo-page-padding>
+                    * 제외 상품
+                    <bo-goods-multi-select-view
+                        [providerSeqs]="[providerId]"
+                        [selectedGoodsSeqs]="_data.except_issue_goods">
+                    </bo-goods-multi-select-view>
+
+                </div>
+            </div>
+        </div>
+        <div class="content-inline-box">
+            <div class="content-box">
+                <div class="content-title">실 결제금액 <br/>기준 배송비</div>
+                <div class="content">
+                    <input type="radio" id="cost_free" name="delivery_cost_policy" value="free" formControlName="delivery_cost_policy"/>
+                    <label for="cost_free" class="check-label">무료</label>
+                    <br/>
+                    <!-- ////////////////////////////////////////////////////////////////////-->
+                    <input type="radio" id="cost_pay" name="delivery_cost_policy" value="pay" formControlName="delivery_cost_policy"/>
+                    <label for="cost_pay" class="check-label">유료</label>
+                    <br/>
+                    선불 → 유료
+                    <bs-input [name]="'pay_delivery_cost'" [formGroup]="bsForm" [style]="'small-input'" ></bs-input>
+                    <br/>
+
+                    <!-- 조건부  -->
+                    <input type="radio" id="cost_ifpay" name="delivery_cost_policy" value="ifpay" formControlName="delivery_cost_policy"/>
+                    <label for="cost_ifpay" class="check-label">주문금액 기준 조건부 무료</label>
+                    <br/>
+                    할인 적용가의 합이 <bs-input [name]="'ifpay_free_price'" [formGroup]="bsForm" [style]="'small-input'">
+                    </bs-input>원 이상이면 무료,
+                    미만이면 선불 → 유료 <bs-input [name]="'ifpay_delivery_cost'" [formGroup]="bsForm" [style]="'small-input'"></bs-input>원
+
+                    <p style="font-size: 11px;">할인 적용가란? 상품 판매가에서 각종 할인혜택(이벤트,복수구매,모바일,회원등급,좋아요,쿠폰,프로모션코드이 적용된 금액입니다.</p>
+                    <!-- ////////////////////////////////////////////////////////////////////-->
+
+                </div>
+            </div>
+        </div>
+        <div class="content-inline-box">
+            <div class="content-box">
+                <div class="content-title">반품배송비</div><img class="required-img" src="assets/img/must_txt.png"/>
+                <div class="content">
+                    반품 배송비(편도)<bs-input [name]="'return_delivery_cost'"
+                        [formGroup]="bsForm"
+                        [style]="'small-input'" [required]="true"></bs-input>원
+                </div>
+            </div>
+        </div>
+        <div class="content-inline-box">
+            <div class="content-box">
+                <div class="content">
+                    <li>해당 설정은 기본 배송비 정책으로 적용되며, 별도의 상품별 배송정책은 상품상세페이지에서 설정 가능합니다.</li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</form>

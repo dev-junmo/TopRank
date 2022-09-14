@@ -1,0 +1,17 @@
+{
+	"folders": [
+        {
+            "name": "techb-front",
+            "path": "."
+        },
+        {
+            "name": "techb-bo",
+            "path": "../../techb-bo"
+        },
+        {
+            "name": "techb-api",
+            "path": "../../techb-api"
+        }
+    ],
+  "settings": {}
+}

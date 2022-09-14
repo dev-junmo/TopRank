@@ -1,0 +1,71 @@
+
+<!-- useRowSpan 가 아닐꼉우  tr을 씀 : 이게 없어도 되나 다른데 작성한 코드가 많으니 안전하게 둘다 유지함  -->
+<tr	*ngIf="!useRowSpan" class="data-table-row"
+    [title]="getTooltip()"
+    [style.background-color]="dataTable.getRowColor(item, index, _this)"
+    [class.row-odd]="index % 2 === 0"
+    [class.row-even]="index % 2 === 1"
+    [class.row-sub]="item.sub"
+    [class.selected]="selected"
+    [class.clickable]="dataTable.selectOnRowClick || dataTable.useRowClick"
+    (dblclick)="dataTable.rowDoubleClicked(_this, $event)"
+    (click)="dataTable.rowClicked(_this, $event)"
+    [ngTemplateOutlet]="trbody">
+</tr>
+
+<tr *ngIf="dataTable.expandableRows && !useRowSpan" [hide]="!expanded" class="row-expansion">
+    <td [attr.colspan]="dataTable.columnCount">
+        <div [ngTemplateOutlet]="dataTable.expandTemplate" [ngTemplateOutletContext]="{row: _this, item: item}"></div>
+    </td>
+</tr>
+
+<!-- useRowSpan 일경우 tr을 안씀  -->
+<ng-container *ngIf="useRowSpan" [ngTemplateOutlet]="trbody">
+  
+</ng-container>
+
+<!-- tr내부를 따로 뗌 -->  
+<ng-template #trbody>
+      <!-- expand -->
+      <td [hide]="!dataTable.expandColumnVisible"
+      [attr.width]="dataTable.freezeTableHeader? '50px' : null"
+      (click)="expanded = !expanded; $event.stopPropagation()" class="row-expand-button">
+      <span class="glyphicon glyphicon-triangle-right" [hide]="expanded"></span>
+      <span class="glyphicon glyphicon-triangle-bottom" [hide]="!expanded"></span>
+      </td>
+  
+      <!-- checkbox -->
+      <td [hide]="!dataTable.selectColumnVisible" class="select-column"
+      [attr.width]="dataTable.freezeTableHeader? '50px' : null">
+      <div class="checks" [hide]="item?.noCheckbox" >
+          <input id="checks-select{{id}}" type="checkbox" [(ngModel)]="selected" [disabled]="disabled" />
+          <label for="checks-select{{id}}"></label>
+      </div>
+      </td>
+  
+      <!-- index -->
+      <td [attr.width]="dataTable.freezeTableHeader? '50px' : null" [hide]="!dataTable.indexColumnVisible" class="index-column">
+      <span [hide]="item?.sub">{{displayIndex}}</span>
+      </td>
+  
+      <!-- columes : [ngStyle] = "{'width' : dataTable.textEllipsis? column.width -10 : null }"-->
+      <td *ngFor="let column of columes" [hide]="!column.visible"
+      [ngClass]="column.styleClassObject" class="data-column"
+      [style.background-color]="column.getCellColor(_this, index)"
+      [style.text-align]="column.align"
+      [style.cursor]="column.clickable?'pointer':''"
+      [attr.width]="dataTable.freezeTableHeader? column.width : column.width"
+      [attr.height]="column.height? column.height : null"
+      [attr.rowspan]="column.isRowSpan?item.rowspan:1">
+      <div *ngIf="!column.cellTemplate" 
+          [ngStyle] = "{'width' : dataTable.textEllipsis? column.width -10 + 'px' : null }" 
+          [ngClass]="{'text-ellipsis' : dataTable.textEllipsis}" 
+          [routerLink]="column.link? column.link : null"
+          [textContent]="item[column.property]">
+      </div>
+      <div *ngIf="column.cellTemplate" 
+          [ngTemplateOutlet]="column.cellTemplate" 
+          [ngTemplateOutletContext]="{column: column, row: _this, item: item}">        
+      </div>
+      </td>
+</ng-template>

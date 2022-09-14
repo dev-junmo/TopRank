@@ -1,0 +1,22 @@
+<form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+  <div class="sub-title-bar">
+    <img src="/assets/img/03-3-order.svg" />
+        검색어 자동완성
+  </div>
+  <div class="content-box padding">
+    <div class="content">
+      <bs-checkbox [formGroup]="bsForm"
+          [name]="'auto_search'"
+          [label]="'사용'"
+          [value]="'y'"
+          >
+      </bs-checkbox>
+      누적되어 저장된 검색 데이터로 검색어 자동 완성
+      <bo-page-padding></bo-page-padding>
+      <div class="con-btn">
+          <bo-page-padding></bo-page-padding>
+          <bo-submit-button-form></bo-submit-button-form>
+      </div>
+    </div>
+  </div>
+</form>

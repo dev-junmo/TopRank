@@ -1,0 +1,18 @@
+:host {
+    width: 100%;
+}
+
+.order-num{
+    color: #7c0000;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+
+.waiting-red-text{
+    color: rgb(234,0,61);
+}
+
+.userid_bold{
+    font-weight: bold;
+}

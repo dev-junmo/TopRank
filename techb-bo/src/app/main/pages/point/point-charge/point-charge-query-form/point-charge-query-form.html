@@ -1,0 +1,48 @@
+<div class="outlet-section">
+    <!-- <div class="query-title">검색</div> -->
+
+
+        <!-- formGroup : formNotice -->
+        <form [formGroup]="bsForm" (ngSubmit)="onSubmit()" class="form-area">
+            <div class="query-wrap">
+
+                <div class="form-block">
+
+                    <div class="form-box">
+                        <div class="form-item">
+                            <div class="form-title">검색어</div>
+                            <bs-input [name]="'keyword'" [formGroup]="bsForm"
+                                placeholder="입금자명, 회원아이디, 회원프로필, 입금은행, 계좌번호" [style]="'big-input'"></bs-input>
+                        </div>
+                    </div>
+                    <div class="form-box">
+                        <div class="form-item">
+                            <div class="form-title">결제상태</div>
+                            <bo-group-checkbox [formGroup]="bsForm" [name]="'state'">
+                                <bo-checkbox-config [title]="'입금대기'" [value]="'request'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'입금완료'" [value]="'complete'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'입금취소'" [value]="'cancel'"></bo-checkbox-config>
+                            </bo-group-checkbox>
+                        </div>
+                    </div>
+                    <div class="form-box">
+                        <div class="form-item">                     
+                            <div class="form-title">충전신청일자</div>
+                            <div class="item-horizontal">
+                                <bo-period-query [formGroup]="bsForm" [name]="'period'">
+                                    <bo-period-query-option-config [value]="'regist_date'" [label]="'충전신청일자'">
+                                    </bo-period-query-option-config>                                                                  
+                                </bo-period-query>
+                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="button-area">
+                <button type="submit" class="btn new-search-btn">
+                    검색
+                </button>
+            </div>
+         </form>
+</div>

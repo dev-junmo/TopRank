@@ -1,0 +1,11 @@
+.modal-dialog.custom {
+    width: 800px;
+}
+
+
+@media screen and (max-width: 1767px) {
+    .modal-dialog.custom.mobile {
+        width: 100%;
+        margin: 0;
+    }
+}

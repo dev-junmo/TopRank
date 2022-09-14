@@ -1,0 +1,117 @@
+<div class="wrap-modal section">
+    <modal-goods-query-form [setQuery]="query" (query)="reloadWithQuery($event)"></modal-goods-query-form>
+    <bo-page-padding></bo-page-padding>
+    <div class="content-wrap">
+        <data-table #bsDatatable
+            headerTitle="datatable"
+            [header]="true"
+            [items]="items"
+            [itemCount]="itemCount"
+            [indexColumn]="false"
+            [selectColumn]="false"
+            [sortBy] = "'goods_seq'"
+            [sortAsc] = "false"
+            (reload)="reloadItems($event)">
+
+            <data-table-column
+                [property]="'goods_seq'"
+                [header]="'번호'"
+                [sortable]="true"
+                [width]="40">
+            </data-table-column>
+            <data-table-column
+                [property]="'provider_name'"
+                [header]="'입점'"
+                [sortable]="true"
+                [width]="90">
+            </data-table-column>
+            <data-table-column
+                [property]="'goods_name'"
+                [header]="'이미지'"
+                [width]="80">
+                <ng-template #dataTableCell let-item="item" >
+                    <img (click)="updateItem(item.goods_seq)" [src] = "item.image"  style="width: 44px; height: 44px;">
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'goods_name'"
+                [header]="'상품명'"
+                [sortable]="true"
+                [align]="'left'">
+                <ng-template #dataTableCell let-item="item" >
+                    <span (click)="updateItem(item.goods_seq)">{{item.goods_name}}</span>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'consumer_price'"
+                [sortable]="true"
+                [width]="90">
+                <ng-template #dataTableHeader let-item="item">
+                    정가
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    {{item.default_option?.consumer_price | number }}
+                </ng-template>
+            </data-table-column>
+
+            <data-table-column
+                property="auth_write"
+                header="재고/가용"
+                [width]="80">
+                <ng-template #dataTableHeader let-item="item">
+                        재고/가용
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    {{item.stock}} / {{item.rstock}}
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'totalnum'"
+                [header]="'등록일/수정일'"
+                [width]="120">
+                <ng-template #dataTableHeader let-item="item">
+                        등록일/수정일
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    {{item.regist_date | date: 'yy-MM-dd HH:mm'}}<br/>
+                    {{item.update_date | date: 'yy-MM-dd HH:mm'}}
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'goods_status'"
+                [header]="'상태'"
+                [width]="100">
+                <ng-template #dataTableHeader let-item="item">
+                    상태
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <span class="fc-skyblue" *ngIf="item.goods_status == 'normal'">정상</span>
+                    <span class="fc-skyblue" *ngIf="item.goods_status == 'runout '">품절</span>
+                    <span class="fc-skyblue" *ngIf="item.goods_status == 'purchasing '">재고확보중</span>
+                    <span class="fc-skyblue" *ngIf="item.goods_status != 'purchasing ' && item.goods_status != 'runout '&& item.goods_status != 'normal'">판매종료</span><br/>
+                    <span *ngIf="item.provider_status == '1'">승인</span>
+                    <span *ngIf="item.provider_status != '1'">미승인</span><br/>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'goods_view'"
+                [header]="'노출'"
+                [width]="70">
+                <ng-template #dataTableHeader let-item="item">
+                        노출
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                <span *ngIf="item.goods_view == 'look'">노출</span>
+                <span *ngIf="item.goods_view != 'look'" class="red">미노출</span>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [header]="'선택'"
+                [width]="70">
+                <ng-template #dataTableCell let-item="item">
+                <bo-page-button  class="margin-class" [title]="'선택'" (click)="onClickGoodsNumber(item)" [type]="'s-darkgrey'"  ></bo-page-button>
+                </ng-template>
+            </data-table-column>
+        </data-table>
+    </div>
+</div>

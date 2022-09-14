@@ -1,0 +1,464 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/03-5-board-2.svg'" [title]="'통합게시글 관리'">
+
+    <!-- 사용자화면 버튼-->
+    <!-- <bo-page-button-config id = "id-board-content-list-btn-userview"
+        [title] = "'사용자화면'"
+        [styleType] = "'round-m-white'"
+        (click) = "onClickHeaderBtn($event)">
+    </bo-page-button-config> -->
+
+     <!-- 게시글등록 버튼-->
+    <!-- <bo-page-button-config id = "id-board-content-list-btn-create"
+        [title]="'게시글등록'"
+        [styleType] = "'m-darkgrey'"
+        (click) = "onClickHeaderBtn($event)">
+    </bo-page-button-config> -->
+</bo-page-header>
+
+<div class="list-section">
+
+<!-- <board-content-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></board-content-query-form> -->
+
+    <!-- <bo-page-padding></bo-page-padding> -->
+
+    <!-- 입점사문의/상품문의/1:1문의/상품후기/공지사항/입점사공지/입고예정리스트/온라인프로모션 -->
+
+    <div class="list-wrap">
+        입점사문의
+        <div class="detail-btn" (click)="gotoBoardList('gs_seller_qna')">
+            자세히 <img src="assets/img/detail-btn.svg">
+        </div>
+        <board-content-list-view [data]="list['gs_seller_qna']" [boardId]="'gs_seller_qna'" [hasReply]="true"
+            (onSelectedItem)="onSelectedItem($event, template)">
+        </board-content-list-view>
+    </div>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap">
+        상품문의
+        <div class="detail-btn" (click)="gotoBoardList('goods_qna')">
+            자세히 <img src="assets/img/detail-btn.svg">
+        </div>
+        <board-content-list-view [data]="goodsQnaList" [boardId]="'goods_qna'" [hasReply]="true"
+            (onSelectedItem)="onSelectedItem($event, template)">
+        </board-content-list-view>
+    </div>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap" *ngIf="!appConfig.isProvider">
+        1:1문의
+        <div class="detail-btn" (click)="gotoBoardList('mbqna')">
+            자세히 <img src="assets/img/detail-btn.svg">
+        </div>
+        <board-content-list-view [data]="qnaList" [boardId]="'mbqna'" [hasReply]="true"
+            (onSelectedItem)="onSelectedItem($event, template)">
+        </board-content-list-view>
+    </div>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap">
+        상품후기
+        <div class="detail-btn" (click)="gotoBoardList('goods_review')">
+            자세히 <img src="assets/img/detail-btn.svg">
+        </div>
+        <board-content-list-view [data]="reviewList" [boardId]="'goods_review'"
+            (onSelectedItem)="onSelectedItem($event, template)">
+        </board-content-list-view>
+    </div>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap" *ngIf="!appConfig.isProvider">
+        공지사항
+        <div class="detail-btn" (click)="gotoBoardList('notice')">
+            자세히 <img src="assets/img/detail-btn.svg">
+        </div>
+        <board-content-list-view [data]="list['notice']" [boardId]="'notice'"
+            (onSelectedItem)="onSelectedItem($event, template)">
+        </board-content-list-view>
+    </div>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap">
+        입점사공지
+        <div class="detail-btn" (click)="gotoBoardList('gs_seller_notice')">
+            자세히 <img src="assets/img/detail-btn.svg">
+        </div>
+        <board-content-list-view [data]="list['gs_seller_notice']" [boardId]="'gs_seller_notice'"
+            (onSelectedItem)="onSelectedItem($event, template)">
+        </board-content-list-view>
+    </div>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap" *ngIf="!appConfig.isProvider">
+        입고예정리스트
+        <div class="detail-btn" (click)="gotoBoardList('incominglist')">
+            자세히 <img src="assets/img/detail-btn.svg">
+        </div>
+        <board-content-list-view [data]="list['incominglist']" [boardId]="'incominglist'"
+            (onSelectedItem)="onSelectedItem($event, template)">
+        </board-content-list-view>
+    </div>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap" *ngIf="!appConfig.isProvider">
+        온라인프로모션
+        <div class="detail-btn" (click)="gotoBoardList('onlinepromotion')">
+            자세히 <img src="assets/img/detail-btn.svg">
+        </div>
+        <board-content-list-view [data]="list['onlinepromotion']" [boardId]="'onlinepromotion'"
+            (onSelectedItem)="onSelectedItem($event, template)">
+        </board-content-list-view>
+    </div>
+    <bo-page-padding></bo-page-padding>
+</div>
+
+<ng-template #template>
+    <board-view [boardItem]="selectedItem" [boardConfig]="boardConfig" [boardId]="selectedBoardId"
+        (onClickButton)="onClickButton($event)">
+    </board-view>
+</ng-template>
+
+<!-- list -->
+  <!-- <div class="table-block">
+    <div class="table-wrap">
+        <div class="table-header">
+            <img class="header-img" src="assets/img/table-title-img.svg">
+            상품문의
+            <div class="detail-btn" (click)="onClickAllList('goods_')">
+                자세히 <img src="assets/img/detail-btn.svg">
+            </div>
+        </div>
+        <div style="margin: auto; max-width: 100%; margin-top: 13px">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="false"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="false"
+                [pagination]="false"
+                (reload)="reloadItems($event)"
+
+                (rowClick)="rowClick($event)"
+                (rowDoubleClick)="rowDoubleClick($event)"
+                 >
+
+                <data-table-column
+                    [property]="'seq'"
+                    [header]="'번호'"
+                    [sortable]="true"
+                    [width]="80">
+                </data-table-column>
+                <data-table-column
+                    property="name"
+                    header="작성자"
+                    [width]="100">
+                </data-table-column>
+                <data-table-column
+                    [property]="'subject'"
+                    [header]="'내용'"
+                    >
+                </data-table-column>
+                <data-table-column
+                    [property]="'re_contents'"
+                    [header]="'상태'"
+
+                    [width]="100">
+                    <ng-template #dataTableHeader let-item="item">
+                        상태
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item">답변완료</span>
+                        <span *ngIf="!item">답변대기</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'r_date'"
+                    [header]="'등록일시'"
+                    [width]="120">
+                    <ng-template #dataTableHeader let-item="item">
+                        등록일시
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.m_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+
+    <div class="table-wrap">
+        <div class="table-header">
+            <img class="header-img" src="assets/img/table-title-img.svg">
+            1:1문의
+            <div class="detail-btn" (click)="onClickAllList('mbqna')">
+                자세히 <img src="assets/img/detail-btn.svg">
+            </div>
+        </div>
+        <div style="margin: auto; max-width: 100%; margin-top: 13px">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="false"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="false"
+                [pagination]="false"
+                (reload)="reloadItems($event)"
+
+                (rowClick)="rowClick($event)"
+                (rowDoubleClick)="rowDoubleClick($event)"
+                 >
+
+                <data-table-column
+                    [property]="'seq'"
+                    [header]="'번호'"
+                    [sortable]="true"
+                    [width]="80">
+                </data-table-column>
+                <data-table-column
+                    property="name"
+                    header="작성자"
+                    [width]="100">
+                </data-table-column>
+                <data-table-column
+                    [property]="'subject'"
+                    [header]="'내용'"
+                    >
+                </data-table-column>
+                <data-table-column
+                    [property]="'re_contents'"
+                    [header]="'상태'"
+
+                    [width]="100">
+                    <ng-template #dataTableHeader let-item="item">
+                        상태
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item">답변완료</span>
+                        <span *ngIf="!item">답변대기</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'r_date'"
+                    [header]="'등록일시'"
+                    [width]="120">
+                    <ng-template #dataTableHeader let-item="item">
+                        등록일시
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.m_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <div class="table-header">
+            <img class="header-img" src="assets/img/table-title-img.svg">
+            상품후기
+            <div class="detail-btn" (click)="onClickAllList('good_review')">
+                자세히 <img src="assets/img/detail-btn.svg">
+            </div>
+        </div>
+        <div style="margin: auto; max-width: 100%; margin-top: 13px">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="false"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="false"
+                [pagination]="false"
+                (reload)="reloadItems($event)"
+
+                (rowClick)="rowClick($event)"
+                (rowDoubleClick)="rowDoubleClick($event)"
+                 >
+
+                <data-table-column
+                    [property]="'seq'"
+                    [header]="'번호'"
+                    [sortable]="true"
+                    [width]="80">
+                </data-table-column>
+                <data-table-column
+                    property="name"
+                    header="작성자"
+                    [width]="100">
+                </data-table-column>
+                <data-table-column
+                    [property]="'subject'"
+                    [header]="'내용'"
+                    >
+                </data-table-column>
+                <data-table-column
+                    [property]="'re_contents'"
+                    [header]="'상태'"
+
+                    [width]="100">
+                    <ng-template #dataTableHeader let-item="item">
+                        상태
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item">답변완료</span>
+                        <span *ngIf="!item">답변대기</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'r_date'"
+                    [header]="'등록일시'"
+                    [width]="120">
+                    <ng-template #dataTableHeader let-item="item">
+                        등록일시
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.m_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <div class="table-header">
+            <img class="header-img" src="assets/img/table-title-img.svg">
+            공지사항
+            <div class="detail-btn" (click)="onClickAllList('notice')">
+                자세히 <img src="assets/img/detail-btn.svg">
+            </div>
+        </div>
+        <div style="margin: auto; max-width: 100%; margin-top: 13px">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="false"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="false"
+                [pagination]="false"
+                (reload)="reloadItems($event)"
+
+                (rowClick)="rowClick($event)"
+                (rowDoubleClick)="rowDoubleClick($event)"
+                 >
+
+                <data-table-column
+                    [property]="'seq'"
+                    [header]="'번호'"
+                    [sortable]="true"
+                    [width]="80">
+                </data-table-column>
+                <data-table-column
+                    property="name"
+                    header="작성자"
+                    [width]="100">
+                </data-table-column>
+                <data-table-column
+                    [property]="'subject'"
+                    [header]="'내용'"
+                    >
+                </data-table-column>
+                <data-table-column
+                    [property]="'re_contents'"
+                    [header]="'상태'"
+
+                    [width]="100">
+                    <ng-template #dataTableHeader let-item="item">
+                        상태
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item">답변완료</span>
+                        <span *ngIf="!item">답변대기</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'r_date'"
+                    [header]="'등록일시'"
+                    [width]="120">
+                    <ng-template #dataTableHeader let-item="item">
+                        등록일시
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.m_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+</div> -->
+<!-- <div style="margin: auto; max-width: 100%; margin-bottom: 50px;">
+    <data-table #bsDatatable
+        headerTitle="datatable"
+        [header]="true"
+        [items]="items"
+        [itemCount]="itemCount"
+        [indexColumn]="false"
+        [selectColumn]="false"
+        (reload)="reloadItems($event)"
+
+        (rowClick)="rowClick($event)"
+        (rowDoubleClick)="rowDoubleClick($event)"
+         >
+
+        선택삭제 버튼
+        <bs-header-button-config id = "id-board-content-list-deleteall-btn1"
+        [title] = "'선택삭제'"
+        [styleType] = "'round-m-white'"
+        (click) = "onClickDTHeaderBtn($event)">
+        </bs-header-button-config>
+
+         선택삭제 버튼
+         <bs-header-button-config id = "id-board-content-list-deleteall-btn2"
+         [title] = "'버튼2'"
+         [styleType] = "'round-m-white'"
+         (click) = "onClickDTHeaderBtn($event)">
+         </bs-header-button-config>
+
+        <data-table-column
+            [property]="'seq'"
+            [header]="'번호'"
+            [sortable]="true"
+            [width]="100">
+        </data-table-column><data-table-column
+            [property]="'category'"
+            [header]="'게시판명'"
+            [sortable]="true"
+            [width]="200">
+        </data-table-column>
+        <data-table-column
+            property="name"
+            header="작성자"
+            [width]="150">
+        </data-table-column>
+        <data-table-column
+            [property]="'subject'"
+            [header]="'제목'"
+            >
+        </data-table-column>
+        <data-table-column
+            [property]="'re_contents'"
+            [header]="'상태'"
+
+            [width]="150">
+            <ng-template #dataTableHeader let-item="item">
+                상태
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span *ngIf="item">답변완료</span>
+                <span *ngIf="!item">답변대기</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column
+            [property]="'r_date'"
+            [header]="'등록일시'"
+            [width]="250">
+            <ng-template #dataTableHeader let-item="item">
+                등록일시
+            </ng-template>
+            <ng-template #dataTableCell let-item="item">
+                <span>{{item.m_date | date:'yyyy-MM-dd'}}</span>
+            </ng-template>
+        </data-table-column>
+    </data-table>
+</div> -->

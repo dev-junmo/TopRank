@@ -1,0 +1,8 @@
+
+<!-- 모바일 전용 페이지 -->
+<div class="new-tabs mypage-tabs" [ngStyle]="{'padding' : padding }">
+  <li *ngFor="let tab of tabs;let idx=index" (click)="onClickTab(tab, idx)" class="tab-item"
+    [class.active]="selectedTab == tab"
+    [ngStyle]="{'width': tabWidth[idx], 'font-size' : fontSize}"
+    ><div>{{tab}}</div></li>
+</div>

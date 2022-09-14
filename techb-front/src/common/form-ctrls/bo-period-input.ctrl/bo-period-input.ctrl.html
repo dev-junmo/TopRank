@@ -1,0 +1,70 @@
+<div [formGroup]="subForm" class="item-horizontal">
+
+    <div class="item-horizontal">
+        <div class="input-group">
+            <input class="form-control date-picker-input"
+                placeholder="YYYY-MM-DD"
+                #dp1="bsDatepicker"
+                formControlName="sdate"
+                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                bsDatepicker/>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="dp1.toggle()" type="button">
+                    <img class="date-img" src="../assets/img/board/datebox-side-top.svg"  />
+                </button>
+            </div>
+            <!-- <input class="form-control date-picker-input" placeholder="yyyy-mm-dd"
+                [(ngModel)]="modelStart"
+                ngbDatepicker #sdate="ngbDatepicker"
+                formControlName="sdate">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="sdate.toggle()" type="button">
+                    <img src="../assets/img/board/datebox-side-top.svg"  />
+                </button>
+            </div> -->
+        </div>
+    </div>
+
+    <div class="bar">-</div>
+
+    <div class="item-horizontal">
+        <div class="input-group">
+            <input class="form-control date-picker-input"
+                placeholder="YYYY-MM-DD"
+                #dp2="bsDatepicker"
+                formControlName="edate"
+                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                bsDatepicker/>
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="dp2.toggle()" type="button">
+                    <img class="date-img" src="../assets/img/board/datebox-side-top.svg"  />
+                </button>
+            </div>
+            <!-- <input class="form-control date-picker-input" placeholder="yyyy-mm-dd"
+                [(ngModel)]="modelEnd" ngbDatepicker
+                #edate="ngbDatepicker"
+                formControlName="edate">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="edate.toggle()" type="button">
+                    <img src="../assets/img/board/datebox-side-bottom.svg"  />
+                </button>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- validator-->
+    <div *ngIf="ctrl?.invalid && (ctrl.dirty || ctrl.touched)"
+    class="alert alert-danger">
+        <div *ngIf="ctrl.errors.required">
+                이 항목은 필수입니다.
+        </div>
+    </div>
+
+    <div *ngIf="endDateCtrl?.invalid && (endDateCtrl.dirty || endDateCtrl.touched)"
+    class="alert alert-danger">
+        <div *ngIf="endDateCtrl.errors.required">
+                {{endDateName}}은 필수항목입니다.
+        </div>
+    </div>
+
+</div>

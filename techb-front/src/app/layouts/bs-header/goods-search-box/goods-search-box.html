@@ -1,0 +1,180 @@
+<div *ifDesktop class="web">
+
+</div>
+<div *ifMobile class="mobile">
+    <div class="search-bar">
+        <div class="search">
+            <label for="">검색</label>
+            <input type="search" id="" name="" 
+                placeholder="검색어를 입력하세요." 
+                [(ngModel)]="searchText" 
+                (input)="onSearchChange($event.target.value)" 
+                (focus)="onFocus($event, true)"
+                (focusout)="onFocus($event, false)"
+                (keyup.enter)="onClickWord($event.target.value, 0)">
+            <button type="submit" (click)="onClickWord($event.target.value, 0)">검색</button>
+            <!--(focusout)="onFocus($event, false)"-->
+        </div>
+    </div>
+    
+    <!-- mobile 모바일 검색 팝업창  -->
+    <div class="search-wrapper ns-regular" *ngIf="showSearchPopup">
+        <div class="close-btn" (click)="onClickClosePopup()">
+            <img style="width: 15px;height: 15px;" src="/assets/img/X_bold.png"/>
+        </div>
+        <div class="ns-regular" *ngIf="showWord">
+            <div class="popular-searches showword" >
+                <ul class="popular-word ns-regular">
+                    <li *ngFor="let item of autoList">
+                        <div class="word" [innerHTML]= "item.keyword | highlightKeyword : searchText" (click)="onClickKeyword($event)"></div>
+                        <div class="conut">{{item.cnt}}</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="ns-regular" *ngIf="showPopularPopup">
+            <div class="tab">
+                <div class="left" (click)="onClickTab();" *ngIf="showPopular || showLatest" [ngClass] = "{'active' : showPopular}">인기검색어</div>
+                <div class="right" (click)="onClickTab();" *ngIf="showPopular || showLatest" [ngClass] = "{'active' : showLatest}">최근검색어</div>
+            </div>
+            <!-- <div class="popular-searches showword" *ngIf="showWord">
+                <ul class="popular-word ns-regular">
+                    <li *ngFor="let item of autoList">
+                        <div class="word" [innerHTML]= "item.keyword | highlightKeyword : searchText" (click)="onClickKeyword($event)"></div>
+                        <div class="conut">{{item.cnt}}</div>
+                    </li>
+                </ul>
+            </div> -->
+    
+            <div class="list" *ngIf="showPopular">
+                <ul>
+                    <!-- 인기검색어 1위 -->
+                    <li *ngIf="popularList[0] && popularList[0].search_result_link">
+                        <div class="left ns-bold" 
+                            (click)="appService.navigate(popularList[0]?.search_result_link)">
+                            <span><img src="/assets/img/goods/m_search_icon.png" *ngIf="isDisplayRecommend"/></span>
+                            <span class="sp" *ngIf="!isDisplayRecommend">1</span>
+                            <span style="font-weight:400;">{{popularList[0]?.keyword}}</span>
+                        </div>
+                        <a href="#" (click)="appService.navigate(popularList[0]?.search_result_link)">
+                            <div class="right"><img src="/assets/img/sarrow_right.png" *ngIf="isDisplayRecommend"/></div>
+                        </a>
+                    </li>
+    
+                    <li *ngIf="!popularList[0] || !popularList[0].search_result_link" (click)="onClickWord(popularList[0]?.keyword, 1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">1</span>{{popularList[0]?.keyword}}
+                    </li>
+    
+                    <!-- 인기검색어 2위 -->
+                    <li *ngIf="popularList[1] && popularList[1].search_result_link">
+                        <div class="left ns-bold" (click)="appService.navigate(popularList[1]?.search_result_link)">
+                            <span><img src="/assets/img/goods/m_search_icon.png" *ngIf="isDisplayRecommend"/></span>
+                            <span class="sp" *ngIf="!isDisplayRecommend">2</span>
+                            <span style="font-weight:400;">{{popularList[1]?.keyword}}</span>
+                        </div>
+                        <a href="#" (click)="appService.navigate(popularList[1]?.search_result_link)">
+                            <div class="right">
+                                <img src="/assets/img/sarrow_right.png" *ngIf="isDisplayRecommend"/>
+                            </div>
+                        </a>
+                    </li>
+    
+                    <li *ngIf="!popularList[1] || !popularList[1].search_result_link" (click)="onClickWord(popularList[1]?.keyword, 1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">2</span>{{popularList[1]?.keyword}}
+                    </li>
+    
+                    <!-- 인기검색어 3위 -->
+                    <li *ngIf="popularList[2] && popularList[2].search_result_link">
+                        <div class="left ns-bold"(click)="appService.navigate(popularList[2]?.search_result_link)">
+                            <img src="/assets/img/goods/m_search_icon.png" *ngIf="isDisplayRecommend"/>
+                            <span class="sp ns-bold" *ngIf="!isDisplayRecommend">3</span>
+                            <span style="font-weight:400;">{{popularList[2]?.keyword}}</span>
+                        </div>
+                        <a href="#" (click)="appService.navigate(popularList[2]?.search_result_link)">
+                            <div class="right">
+                                <img src="/assets/img/sarrow_right.png" *ngIf="isDisplayRecommend"/>
+                            </div>
+                        </a>
+                    </li>
+    
+                    <li *ngIf="!popularList[2] || !popularList[2].search_result_link" (click)="onClickWord(popularList[2]?.keyword,1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">3</span>{{popularList[2]?.keyword}}
+                    </li>
+    
+    
+                    <li (click)="onClickWord(popularList[3]?.keyword,1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="isDisplayRecommend">1</span>
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">4</span>{{popularList[3]?.keyword}}
+                    </li>
+    
+                    <li (click)="onClickWord(popularList[4]?.keyword,1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="isDisplayRecommend">2</span>
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">5</span>{{popularList[4]?.keyword}}
+    
+                    </li>
+    
+                    <li (click)="onClickWord(popularList[5]?.keyword,1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="isDisplayRecommend">3</span>
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">6</span>{{popularList[5]?.keyword}}
+                    </li>
+    
+                    <li (click)="onClickWord(popularList[6]?.keyword,1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="isDisplayRecommend">4</span>
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">7</span>{{popularList[6]?.keyword}}
+                    </li>
+    
+                    <li (click)="onClickWord(popularList[7]?.keyword,1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="isDisplayRecommend">5</span>
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">8</span>{{popularList[7]?.keyword}}
+                    </li>
+    
+                    <li (click)="onClickWord(popularList[8]?.keyword,1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="isDisplayRecommend">6</span>
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">9</span>{{popularList[8]?.keyword}}
+                    </li>
+    
+                    <li (click)="onClickWord(popularList[9]?.keyword,1)" class="font-color">
+                        <span class="sp ns-bold" *ngIf="isDisplayRecommend">7</span>
+                        <span class="sp ns-bold" *ngIf="!isDisplayRecommend">10</span>{{popularList[9]?.keyword}}
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="list recent" *ngIf="showLatest && auth.isLogined()">
+    
+                <div *ngIf="recentList?.length != 0">
+                    <ul>
+                        <li class="font-color" *ngFor="let item of recentList">
+                            <div class="left" (click)="onClickWord(item.keyword,2)">
+                                <span>{{item.keyword}}</span>
+                            </div>
+                            <div class="right" (click)="onClickRecentSearchWord(item.search_recent_seq)">
+                                <img src="/assets/img/x.png"/>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="all-clear-btn">
+                        <button (click)="onClickAllRecentSearch()">전체삭제</button>
+                    </div>
+                </div>
+    
+                <div *ngIf="recentList?.length == 0">
+                    <div class="empty-box">
+                        <div class="img-box"><img style="width:90px;height:90px" class="notice-img" src="/assets/img/main/1.4.03.02.!.png" /></div>
+                        <div class="txt-box">최근 검색한 기록이 없습니다.</div>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="list recent" *ngIf="showLatest && !auth.isLogined()">
+                <div class="empty-box">
+                    <div class="img-box"><img class="notice-img" src="/assets/img/main/1.4.03.02.!.png" /></div>
+                    <div class="txt-box">로그인을 해주세요.</div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    
+</div>

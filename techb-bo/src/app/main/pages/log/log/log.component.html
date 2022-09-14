@@ -1,0 +1,153 @@
+<bo-page-header [imgUrl]="'assets/img/03-5-board-2(2).svg'" [title]="'로그 조회'">
+    <!-- <bo-page-button-config id = "id-board-create-btn-"
+        [title] = "'관리자 등록'"
+        [styleType] = "'square-m-white-btn'"
+        (click)="createItem()"
+        *ngIf="auth.isManager && auth.vdi"
+        >
+    </bo-page-button-config> -->
+</bo-page-header>
+<div class="list-section">
+    <log-list-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></log-list-query-form>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-section-box">
+        <div class="list-wrap-se">
+            <div style="margin: auto; max-width: 100%; margin-bottom: 50px;;">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="true"
+                (reload)="reloadItems($event)"
+                [sortBy] = "'manager_seq'"
+                [sortAsc] = "false"
+                >
+
+                <!-- 선택삭제 버튼-->
+                <!-- <bs-header-button-config id = "id-board-list-selected-btn"
+                    [title] = "'선택삭제'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    (click) = "deleteSelectedItem($event, 'manager_seq')">
+                </bs-header-button-config> -->
+
+                <data-table-column
+                    [property]="'manager_yn'"
+                    [header]="'관리자 구분'"
+                    [sortable]="true">
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.manager_yn == 'Y'">관리자</span>
+                        <span *ngIf="item.manager_yn == 'N'">부관리자</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'manager_id'"
+                    [header]="'관리자 ID'">
+                    <!-- <ng-template #dataTableHeader let-item="item">
+                        관리자 ID (접속허용 IP)
+                    </ng-template> -->
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.manager_id}}</span>
+                        <!-- <span *ngIf="item.limit_ip">({{item.limit_ip}})</span>
+                        <span *ngIf="!item.limit_ip">(미지정)</span> -->
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'mname'"
+                    [header]="'관리자명'"
+                    [sortable]="true">
+                </data-table-column>
+                <data-table-column
+                    [property]="'mcellphone'"
+                    [header]="'휴대폰'">
+                    <ng-template #dataTableHeader let-item="item">
+                        휴대폰
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.mcellphone">{{item.mcellphone}}</span>
+                        <span *ngIf="!item.mcellphone">-</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'memail'"
+                    [header]="'이메일'">
+                </data-table-column>
+                <data-table-column
+                    [property]="'lastlogin_date'"
+                    [header]="'최근 접속일'"
+                    >
+                    <ng-template #dataTableHeader let-item="item">
+                        최근 접속일
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.lastlogin_date">{{item.lastlogin_date | date:'yyyy-MM-dd HH:mm'}}</span>
+                        <span *ngIf="!item.lastlogin_date">-</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'is_account_lock'"
+                    [header]="'잠금 정보'">
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.is_account_lock == 'Y'">
+                            <span *ngIf="item.account_lock_start_date">{{item.account_lock_start_date  | date:'yyyy-MM-dd HH:mm'}}</span>
+                            <span *ngIf="item.account_lock_end_date"> ~ </span>
+                            <span *ngIf="item.account_lock_end_date">{{item.account_lock_end_date  | date:'yyyy-MM-dd HH:mm'}}</span>
+                        </span>
+                        <span *ngIf="item.is_account_lock == 'N'">-</span>
+                    </ng-template>
+                </data-table-column>
+
+                <!-- <data-table-column
+                    [property]="''"
+                    [header]="'잠금 날짜'"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.account_lock_start_date">{{item.account_lock_start_date  | date:'yyyy-MM-dd HH:mm'}}</span>
+                        <span *ngIf="item.account_lock_end_date"> ~ </span>
+                        <span *ngIf="item.account_lock_end_date">{{item.account_lock_end_date  | date:'yyyy-MM-dd HH:mm'}}</span>
+                    </ng-template>
+                </data-table-column> -->
+                <data-table-column
+                    [property]="'account_lock_date'"
+                    [header]="'잠금처리일자'"
+                    >
+                    <ng-template #dataTableHeader let-item="item">
+                        잠금처리일자
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.account_lock_date">{{item.account_lock_date | date:'yyyy-MM-dd HH:mm'}}</span>
+                        <span *ngIf="!item.account_lock_date">-</span>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'mregdate'"
+                    [header]="'등록일'"
+                    >
+                    <ng-template #dataTableHeader let-item="item">
+                        등록일
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.mregdate">{{item.mregdate | date:'yyyy-MM-dd HH:mm'}}</span>
+                        <span *ngIf="!item.mregdate">-</span>
+                    </ng-template>
+                </data-table-column>
+                <!-- <data-table-column
+                    header="manage"
+                    >
+                    <ng-template #dataTableHeader let-item="item">
+                        수정/삭제
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <bo-button-collection [id]="'edit'" (click)="updateItem(item.manager_seq)"></bo-button-collection>
+                        <bo-button-collection [id]="'delete'" (click)="deleteItem(item.manager_seq)"></bo-button-collection>
+                    </ng-template>
+                </data-table-column> -->
+            </data-table>
+            </div>
+        </div>
+    </div>  
+
+</div>

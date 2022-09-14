@@ -1,0 +1,228 @@
+:host {
+    height: 100vh;
+}
+#back{
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    position: absolute;
+    z-index: 999;
+    top:5px;
+    background: rgba(0,0,0,0.5);
+}
+.back .layer{
+    width: 100%;
+    background: #fff;
+    position: relative;
+}
+.back .layer .search-box-layer{
+    top: 10px;
+    width: 1240px;
+    margin: 0 auto;
+    height: 540px;
+    padding: 0px 250px;
+    position: relative;
+}
+.back .layer .search-box-layer input{
+    width: 700px;
+  border: none;
+  border-bottom: 3px solid #000;
+  padding: 17px 19px 13px;
+  font-size: 19px;
+  color: rgb(153,153,153);
+  /* background: url(/assets/img/1.3.01.01_search.png) no-repeat 96% 75%; */
+}
+.popular-searches .box{
+    padding-top: 39px;
+    font-size: 0;
+}
+.popular-searches .box .basic.click{
+    display: inline-block;
+    width: 50%;
+    font-size: 16px;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    border: 1px solid #000;
+    border-bottom: none;
+    color: #000;
+}
+.popular-searches .box .basic{
+    display: inline-block;
+    width: 50%;
+    font-size: 16px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    border: 1px solid rgb(225,225,225);
+    border-bottom: 1px solid #000;
+    color: rgb(160,160,160);
+    cursor: pointer;
+}
+.popular-searches ul{
+    padding: 0;
+    font-size: 0;
+}
+.popular-searches ul li.none{
+    width: 100%;
+    height: 245px;
+}
+.popular-searches ul li .img-box{
+    margin: 0 auto;
+  text-align: center;
+  padding: 59px 0px 0px;
+  height: 149px;
+}
+.popular-searches ul li .txt-box{
+    text-align: center;
+    font-size: 16px;
+    color: rgb(160,160,160);
+    cursor: default;
+}
+.popular-searches ul li{
+    width: 50%;
+    font-size: 15px;
+    display: inline-block;
+    height: 59px;
+    line-height: 59px;
+    border-top: 1px solid rgb(225,225,225);
+    padding-left: 13px;
+    cursor: pointer;
+
+    /*hyeon*/
+    overflow: hidden;
+    _max-height: 55px;
+    white-space: nowrap;
+    /* text-overflow: ellipsis;  */
+}
+.popular-searches ul li:first-child,.popular-searches ul li:nth-child(2){
+    border-top: none;
+}
+.popular-searches ul li:nth-child(even){
+    /* border-top: 1px solid rgba(225,225,225,0); */
+    /* border-bottom: 1px solid rgb(225,225,225); */
+}
+.popular-searches ul li img{
+    margin-right: 5px;
+    cursor: pointer;
+}
+.popular-searches ul li .num{
+    padding-right: 20px;
+}
+.popular-searches .latest-word li:last-child{
+    border-bottom: none;
+}
+.popular-searches .latest-word .full{
+    font-size: 15px;
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    text-align: right;
+    background-color: rgb(247,247,247);
+    padding-right: 8px;
+    border-top: 1px solid rgb(225,225,225);
+}
+.popular-searches.showword{
+    border: 1px solid #000;
+    top: -68px;
+    left: 290px;
+    /* border-top:none; */
+    padding: 5px 20px 0;
+    position: absolute;
+    width: 700px;
+    background: #fff;
+    min-height: 311px;
+}
+.word {
+    display: inline-block;
+    width: calc(100% - 64px);
+    font-size: 16px;
+    color: rgb(82,82,82);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+}
+.word span{
+    color: #ea003d;
+}
+.conut {
+    display: inline-block;
+    width: 60px;
+    text-align: right;
+    font-size: 16px;
+    color: rgb(169,169,169);
+    padding-right: 15px;
+}
+.popular-searches.showword ul li.none-bottom{
+    border-bottom: none;
+}
+.popular-searches .popular-word li .left{
+    width: calc(100% - 50px);
+    display: inline-block;
+   
+}
+.popular-searches .popular-word li .right{
+    width: 45px;
+    display: inline-block;
+    text-align: right;
+}
+
+.txt{
+
+    overflow: hidden;
+    max-height: 40px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+li .txt,.full .txt{
+    display: inline-block;
+    width: calc(100% - 54px);
+}
+li .img{
+    width: 50px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 15px;
+    vertical-align: super;
+
+}
+.full .img{
+    width: 50px;
+    display: inline-block;
+    text-align: right;
+    padding-right: 15px;
+    cursor: pointer;
+    vertical-align: top;
+
+}
+.search-box-layer .clean{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    top: 55px;
+    right: 305px;
+    cursor: pointer;
+}
+.search-box-layer .search-img{
+    width: 50px;
+    height: 35px;
+    position: absolute;
+    top: 52px;
+    right: 245px;
+    cursor: pointer;
+}
+.search-box-layer .close-btn{
+    position: absolute;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+.search-box-layer .close-btn img{
+    width:100%;
+}
+.popular-searches ul li img.notice-img{
+    cursor: default;
+}
+

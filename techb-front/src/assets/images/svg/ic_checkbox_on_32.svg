@@ -1,0 +1,20 @@
+<svg id="ic_checkbox_on_32" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #5049ce;
+      }
+
+      .cls-3 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <rect id="영역" class="cls-1" width="32" height="32"/>
+  <path id="배경" class="cls-2" d="M8,0h8a8,8,0,0,1,8,8v8a8,8,0,0,1-8,8H8a8,8,0,0,1-8-8V8A8,8,0,0,1,8,0Z" transform="translate(4 4)"/>
+  <path id="패스_431" data-name="패스 431" class="cls-3" d="M2044.5-4803a1.5,1.5,0,0,1-1.5-1.5v-5a1.5,1.5,0,0,1,1.5-1.5,1.5,1.5,0,0,1,1.5,1.5v3.5h9.5a1.5,1.5,0,0,1,1.5,1.5,1.5,1.5,0,0,1-1.5,1.5Z" transform="translate(1965.493 4863.631) rotate(-45)"/>
+</svg>

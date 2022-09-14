@@ -1,0 +1,331 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="'확장형 기획전 등록/수정'">
+    <bo-page-button-config
+        [title] = "'기획전 리스트'"
+        [styleType] = "'square-m-black-btn'"
+        (click) = "gotoListPage()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="!isUpdateMode" id = "id-board-content-list-btn-userview"
+        [title] = "'저장하기'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "onSubmit()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+    [title] = "'저장 후 리스트'"
+    [styleType] = "'square-m-white-btn'"
+    (click) = "submitAndBack()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+        [title] = "'저장 후 화면유지'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config>
+</bo-page-header>
+
+<form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+    <div class="section">
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'기본 정보'"
+                [description]="'게시판 기본적인 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box" *ngIf="auth?.managerName && isUpdateMode">
+                    <div class="content-title">
+                        작성자
+                    </div>
+                    <div class="content">
+                        <div class="content-top-line" >
+                            <!-- {{auth?.managerName}}({{auth?.managerName}}) -->
+                            {{data?.name}}({{data?.name}})
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="content-title">
+                        제목<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'subject'" [formGroup]="bsForm"
+                            [placeholder]="'기획전 제목을 입력하세요.'" [style]="'big-input'" [required]="true"></bs-input>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        보이기/숨기기
+                    </div>
+                    <div class="content content-top-line">
+                        <div class="content">
+                            <div class="content-inline">
+                                <input type="radio" id="plan_hidden_y" [value]="0" name="hidden" formControlName="hidden" />
+                                <label for="plan_hidden_y" class="check-label">보이기</label>
+                            </div>
+                            <div class="content-inline">
+                                <input type="radio" id="plan_hidden_n" [value]="1" name="hidden" formControlName="hidden" />
+                                <label for="plan_hidden_n" class="check-label">숨기기 - 사용자의 이벤트 페이지 접속이 제한됩니다.</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrap">
+
+            <bs-title-label-ctrl
+                [title]="'기간'"
+                [description]="'기간을 입력하세요.'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                        <div class="content-title">
+                            이벤트 기간<img class="required-img" src="assets/img/must_txt.png"/>
+                        </div>
+                        <div class="content">
+                            <!-- <bo-period-input
+                                [formGroup]="bsForm"
+                                [name] = "'m_date'"
+                                [endDateName] = "'d_date'"
+                                [required]="true">
+                            </bo-period-input> -->
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'m_date'"
+                                [isTime] = "true">
+                            </bo-date-time-input>
+                            ~
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'d_date'"
+                                [isTime] = "true">
+                            </bo-date-time-input>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'댓글관리'"
+                [description]="''">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title">
+                        사용여부/위치
+                    </div>
+                    <div class="content">
+                        <div class="content-inline">
+                            <input type="radio" id="plan_comment_pos_none" [value]="'none'" name="cmt_position" formControlName="cmt_position" />
+                            <label for="plan_comment_pos_none" class="check-label">미사용</label>
+                        </div>
+                        <div class="content-inline">
+                            <input type="radio" id="plan_comment_pos_top" [value]="'top'" name="cmt_position" formControlName="cmt_position" />
+                            <label for="plan_comment_pos_top" class="check-label">사용 - 배너 밑 노출</label>
+                        </div>
+                        <div class="content-inline">
+                            <input type="radio" id="plan_comment_pos_bottom" [value]="'bottom'" name="cmt_position" formControlName="cmt_position" />
+                            <label for="plan_comment_pos_bottom" class="check-label">사용 - 상품리스트 밑 노출</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        페이지당 항목개수
+                    </div>
+                    <div class="content">
+                        <bs-select [name]="'cmt_per_page'"
+                            [formGroup]="bsForm"
+                            [allowUnselected]="false"
+                            [data]="['5', '10', '15', '20', '25', '30']">
+                        </bs-select>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        비밀댓글 사용여부
+                    </div>
+                    <div class="content">
+                        <bs-checkbox [formGroup]="bsForm"
+                            [name]="'hidden_cmt_use'"
+                            [label]="'사용'"
+                            [value]="'use'"
+                            [uncheckedValue]="'unuse'">
+                        </bs-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'기획전 상세 배너'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title content-title-large">
+                        상세(PC) 이미지<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div >
+                    <div class="content">
+                        <bo-image-input
+                            [formGroup]="bsForm"
+                            [imageTypeDesc]="'JPG,PNG'"
+                            [imageSizeDesc]="'1900X제한없음'"
+                            [name] = "'banner_url'"
+                            [required]="true">
+                        </bo-image-input>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="content-title content-title-large">
+                        상세(모바일) 이미지(OLD)<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div >
+                    <div class="content content-large">
+                        <br>
+                        * 사용하지 않는 항목입니다. 아래 '배너(모바일) 이미지(NEW)'를 이용하세요.<br><br>
+                        <bo-image-input
+                            [formGroup]="bsForm"
+                            [imageTypeDesc]="'JPG,PNG'"
+                            [imageSizeDesc]="'750X제한없음'"
+                            [name] = "'mobile_banner'"
+                            [required]="false">
+                        </bo-image-input>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title content-title-large">
+                        상세(모바일) 이미지(NEW)<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div >
+                    <div class="content content-large" formArrayName='_mobile_image_arr'>
+                        <div *ngFor="let item of getImageFormGroupArrayMobile();let i = index"
+                        [formGroupName]="i">
+                            <bo-image-input
+                                [formGroup]="imageGroupFromFormArrayMobile(i)"
+                                [imageTypeDesc]="'JPG,PNG'"
+                                [imageSizeDesc]="'?????'"
+                                [name] = "'image'"
+                                [required]="false">
+                            </bo-image-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'리스트 썸네일'"
+                [description]="'리스트에 노출될 썸네일 이미지입니다.'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title">
+                        썸네일(PC) 이미지<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div >
+                    <div class="content">
+                        <bo-image-input
+                            [formGroup]="bsForm"
+                            [imageTypeDesc]="'JPG,PNG'"
+                            [imageSizeDesc]="'452X452'"
+                            [name] = "'thumbnail_url'"
+                            [required]="true">
+                        </bo-image-input>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title content-title-large"> <!-- style="width:200px" -->
+                        썸네일(모바일) 이미지<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div >
+                    <div class="content content-large">
+                        <bo-image-input
+                            [formGroup]="bsForm"
+                            [imageTypeDesc]="'JPG,PNG'"
+                            [imageSizeDesc]="'992X552'"
+                            [name] = "'mobile_thumbnail'"
+                            [required]="true">
+                        </bo-image-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'대상상품선택'"
+                [description]="'기획전 대상상품을 선택하세요.'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <bo-goods-multi-select-view
+                        [(selectedGoodsList)]="selectedGoods">
+                    </bo-goods-multi-select-view>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [title]="'대상 상품 선택'"
+                [description]="'그룹은 12개까지만 추가가 가능합니다.'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <bo-page-button  class="margin-class" [title]="'그룹 추가'"[type]="'square-s-black-btn'" (click)="onClickAddGroup()">
+                    </bo-page-button>
+                    <div *ngFor="let goods of goodGroups;let idx = index" style="padding: 15px 0px 15px 0px;" >
+                        
+                        <div class="content-title" style="vertical-align: inherit; padding-bottom: 15px;">
+
+                          &nbsp;  제목<img class="required-img" src="assets/img/must_txt.png"/>
+
+                        </div>
+                        <div class="content" style="width:175px; vertical-align: inherit;">
+                            <input type="text" [(ngModel)]="goods.category_name"  [ngModelOptions]="{standalone: true}"/>
+                            <!-- <bs-input [name]="'subject'" [formGroup]="bsForm"
+                                [placeholder]="'그룹 제목을 입력하세요.'" [style]="'big-input'" [required]="true"></bs-input> -->
+                        </div>
+
+                        <bs-button
+                            [id]= "'remove-btn'"
+                            [title]= "'x'"
+                            [type]= "'image-s-x-btn'"
+                            (click)= "onClickDeleteGroupBtn(idx)">
+                        </bs-button>
+                        
+                        <bs-button
+                            [id]= "'up-btn'"
+                            [title]= "'up'"
+                            [type]= "'image-s-up-btn'"
+                            [disabled]= "idx==0"
+                            (click)= "onClickUpPositionBtn(goods, idx)">
+                        </bs-button>
+
+                        <bs-button
+                            [id]= "'down-btn'"
+                            [title]= "'down'"
+                            [type]= "'image-s-down-btn'"
+                            [disabled]= "idx==goodGroups.length-1"
+                            (click)= "onClickDownPositionBtn(goods, idx)">
+                        </bs-button>                     
+                        
+                        <style> bs-button{
+                            float: right;
+                            
+                        }
+                        </style>
+
+                        <bo-goods-multi-select-view
+                            [selectedGoodsList]="goods.goods">
+                        </bo-goods-multi-select-view>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <bo-submit-button-form
+            [hasCancelBtn]="true"
+            (clickCancel)="gotoListPage()">
+        </bo-submit-button-form>
+    </div>
+  </form>

@@ -1,0 +1,33 @@
+<ul class="board-side">
+  <div class="crm-info-box">
+    <div class="crm-info-data text-width title-area">{{userName}}</div>
+    <span class="crm-info-data">|</span>
+    <div class="crm-info-data text-width">{{groupName}}</div>
+  </div>
+  <div  class="sub-menu-area" >
+    <ul class="board-subside">
+      <li class="subside-area" *ngFor="let subitem of CRMSideMenu; " [routerLink]='subitem.url' routerLinkActive ="subitem.selected == active"  [ngClass]="subitem.topLine == 'Y' ? 'sidemenu-border' : 'done' ">{{subitem.title}}</li>
+    </ul>
+  </div>
+  <!-- <li  class="crm-sidemenu" *ngFor="let item of CRMSideMenu" [ngClass]="item.topLine == 'Y' ? 'sidemenu-border' : 'done' ">
+    <div class="side-menu-box" [routerLink]='item.url' routerLinkActive="item.selected == active " >
+      {{item.title}}
+    </div>
+  </li> -->
+  <div class="crm-button-box">
+      <!-- <bo-page-button [type]="'m-darkgrey'" [title]="'회원정보수정'"></bo-page-button> -->
+
+    <div class="crm-side-btn">
+      <button>SMS 발송</button>
+    </div>
+    <div class="crm-side-btn2 crm-side-btn">
+      <button>이메일 발송</button>
+    </div>
+    <div class="crm-side-btn2 crm-side-btn">
+      <button>회원정보수정</button>
+    </div>
+    <div class="crm-side-btn2 crm-side-btn">
+      <button>회원탈퇴처리</button>
+    </div>
+  </div>
+</ul>

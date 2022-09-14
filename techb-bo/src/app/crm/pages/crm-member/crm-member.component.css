@@ -1,0 +1,56 @@
+/* app-crm-sidemenu {
+    width: 212px;
+    height: 100%;
+    background-color: #5f5f5f;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.5);
+    display: inline-flex;
+    float: left;
+} */
+:host {
+    width: calc( 100% - 368px);
+}
+.section {
+    display: flow-root;
+}
+.basic-table{
+    width: 100%;
+}
+.basic-table table{
+    width: 100%;
+}
+.basic-table th, .basic-table td{
+    border: 1px solid #979797;
+    border-collapse: collapse;
+    padding: 10px;
+}
+.basic-table th:first-child{
+    border-left: none;
+}
+.basic-table td:last-child{
+    border-right: none;
+}
+.basic-table th{
+    background: #e1e1e1;
+    text-align: center;
+}
+.content-info {
+    display: inline-block;
+    padding: 0 0 10px 24px;
+}
+.content-info .crm-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    padding: 0 37px 0 15px;
+}
+.content-info .content-item {
+    font-size: 14px;
+    color: #717171;
+    display: inline-block;
+}
+.content-info .crm-subtitle {
+    font-size: 15px;
+    color: #000;
+    padding: 0 32px 0 15px;
+
+}

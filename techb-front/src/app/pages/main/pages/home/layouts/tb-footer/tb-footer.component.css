@@ -1,0 +1,86 @@
+
+.footer-wrap {
+    color: #B8B6C4;
+    width: 1920px;
+}
+
+.footer-banner {
+    height: 308px;
+    background: url('assets/images/home/img_main_banner.png') no-repeat;
+    background-size: 1816px 100%;
+    padding: 0 520px 0 506px;
+}
+
+.footer-banner .zigzag-figure {
+    margin: 46px 0 15px;
+}
+
+.footer-banner .circle-figure {
+    float: right;
+    margin: 68px 0;
+}
+
+.footer-banner .footer-banner-text {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 1.47;
+    color: #fff;
+}
+
+.footer-banner .footer-banner-text button {
+    margin: 14px 0 0;
+}
+
+.footer-banner .footer-banner-text button {
+    border: 1px solid #fff;
+    font-size: 18px;
+    line-height: 1.22;
+    font-weight: normal;
+    background: none;
+    border-radius: 24px;
+    padding: 8px 17px;
+}
+
+.footer-nav {
+    width: 1160px;
+    height: 56px;
+    line-height: 56px;
+    margin: 137px 0 41px 327px;
+}
+
+.footer-nav a {
+    color: #3E4259;
+    margin-right: 74px;
+}
+
+.company {
+    height: 247px;
+    padding-left: 328px;
+    background: url('assets/images/home/img_main_footer.png')  no-repeat;
+    background-size: 1816px 100%;
+}
+
+.company-info {
+    display: flex;
+    margin-top: 17.2px;
+}
+
+.company-info p {
+    margin: 0 24px 8px 24px;
+}
+
+.company-info p:first-child {
+    margin-left: 0;
+}
+
+.company-info > span {
+    color: #DCDEE8;
+}
+
+.company-txt {
+    height: 22px;
+    line-height: 1.22;
+    letter-spacing: normal;
+    margin-bottom: 8px;
+}

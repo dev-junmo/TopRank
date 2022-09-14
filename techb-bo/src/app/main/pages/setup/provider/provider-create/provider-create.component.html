@@ -1,0 +1,1209 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="pageTitle">
+
+    <bo-page-button-config *ngIf="isUpdateMode && !appConfig.isProvider"
+        [title]="'입점사관리자 로그인'"
+        [styleType] = "'square-m-grey-btn'"
+        (click) = "loginProviderByManager()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="!appConfig.isProvider"
+        [title] = "'입점사 리스트'"
+        [styleType] = "'square-m-black-btn'"
+        (click) = "gotoListPage()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="!isUpdateMode || appConfig.isProvider" id = "id-board-content-list-btn-userview"
+        [title] = "'저장하기'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submit()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="isUpdateMode && !appConfig.isProvider" id = "id-board-content-list-btn-userview"
+    [title] = "'저장 후 리스트'"
+    [styleType] = "'square-m-white-btn'"
+    (click) = "submitAndBack()">
+    </bo-page-button-config>
+    <bo-page-button-config *ngIf="isUpdateMode && !appConfig.isProvider" id = "id-board-content-list-btn-userview"
+        [title] = "'저장 후 화면유지'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config>
+</bo-page-header>
+
+<form [formGroup]="bsForm" (ngSubmit)="submit()"  class="form-area" >
+    <div class="section">
+
+        <div class="content-wrap" *ngIf="id">
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title">
+                        <span style="padding-right:25px;">입점사 상태</span>
+                    </div>
+                    <div class="content"  *ngIf="appConfig.isProvider">
+                        <span *ngIf="data?.provider_status == 'Y'">정상</span>
+                        <span *ngIf="data?.provider_status == 'N'">종료</span>
+                    </div>
+                    <div class="content"  *ngIf="!appConfig.isProvider">
+                        <select class="form-selectbox medium-input" name="provider_status" formControlName="provider_status" >
+                                <option value="N">종료</option>
+                                <option value="Y">정상</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrap two-line-content">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'기본 정보'"
+                [description]="'기본 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+
+            <div class="content-block">
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span>최초 입점일 </span>
+                        </div>
+                        <div class="content">
+                            {{data?.regdate | date:'yyyy-MM-dd HH:mm:ss'}}
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span>최근 변경(정상/종료)일 </span>
+                        </div>
+                        <div class="content" style="padding-left: 15px;">
+                            {{data?.update_date | date:'yyyy-MM-dd HH:mm:ss'}}
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                            <div class="content-title">
+                                <span>최근 접속일 </span>
+                            </div>
+                            <div class="content">
+                                {{data?.lastlogin_date | date:'yyyy-MM-dd HH:mm:ss'}}
+                            </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span>구분 </span><img class="required-img" src="assets/img/must_txt.png"/>
+                        </div>
+                        <div class="content" *ngIf="appConfig.isProvider">
+                           <span *ngIf="data?.provider_gb =='company'">입점(본사)</span>
+                           <span *ngIf="data?.provider_gb =='provider'">입점(업체)</span>
+
+                        </div>
+                        <div class="content" *ngIf="!appConfig.isProvider">
+                            <select class="form-selectbox medium-input" name="provider_gb" formControlName="provider_gb">
+                                <option value="null">선택</option>
+                                <option [value]="'company'">입점(본사)</option>
+                                <option [value]="'provider'">입점(업체)</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span>업체명</span><img class="required-img" src="assets/img/must_txt.png"/>
+                        </div>
+                        <div class="content square-checkbox"  *ngIf="appConfig.isProvider">
+                           <span>{{data?.provider_name}}</span>
+                        </div>
+                        <div class="content square-checkbox"  *ngIf="!appConfig.isProvider">
+                            <bs-input [name]="'provider_name'" [formGroup]="bsForm" [style]="'medium-input'" [required]="true"></bs-input>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span>입점사 ID</span><img class="required-img" src="assets/img/must_txt.png"/>
+                        </div>
+                        <div class="content">
+                            <bs-input *ngIf="!id" [name]="'provider_id'" [formGroup]="bsForm" [style]="'medium-input'"
+                                [required]="true" [maxlength]="16" [minlength]="4"></bs-input>
+                            <bo-page-button *ngIf="!id" [type]="'square-s-red'" (click)="onClickDuplication(bsForm.value.provider_id)" [title]="'중복확인'"></bo-page-button>
+                            <div class="two-notice" *ngIf="!id">최소 4자 이상, 최대 16자 이하</div>
+                            <span *ngIf="id">{{bsForm.value.provider_id}}</span>
+                        </div>
+                    </div>
+                    <div class="content-box inline-content" *ngIf="!id">
+                        <div class="content-title">
+                            <span>입점사 비밀번호</span><img class="required-img" src="assets/img/must_txt.png"/>
+                        </div>
+                        <div class="content" *ngIf="!id">
+                            <div class="block-addr">
+                                <div class="two-content-title">비밀번호</div>
+                                <bs-input [name]="'provider_passwd'" [type]="'password'" [formGroup]="bsForm" [style]="'medium-input'" ></bs-input>
+                                <div class="two-notice">*10~20자, 영문 대소문자 또는 숫자, 특수문자 중 2가지 이상 조합</div>
+                            </div>
+                            <div class="block-addr">
+                                <div class="two-content-title">비밀번호 확인</div>
+                                <bs-input [name]="'provider_confirm_passwd'" [type]="'password'" [formGroup]="bsForm" [style]="'medium-input'" ></bs-input>
+                                <div class="two-notice">*사용가능 특수문자 &#33;&#35;&#36;&#37;&#38;&#40;&#41;&#42;&#43;&#45;&#47;&#58;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#123;&#124;&#125; </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-box inline-content" *ngIf="id">
+                        <div class="content-title">
+                            비밀번호<img class="required-img" src="assets/img/must_txt.png"/>
+                        </div>
+                        <div class="content">
+                            <bs-checkbox [formGroup]="bsForm"
+                                [name]="'change_pw'"
+                                [label]="'변경'"
+                                [style]="'square-new'"
+                                [value]="'Y'"
+                                class="padd-btm10">
+                            </bs-checkbox>
+
+                            <div class="block-addr">
+                                <div class="two-content-title">현재 비밀번호</div>
+                                <bs-input [name]="'manager_passwd'" [type]="'password'" [formGroup]="bsForm" [style]="'medium-input'"
+                                    [disabled]="bsForm.value.change_pw != 'Y'"></bs-input>
+                                <div class="two-notice" *ngIf="!appConfig.isProvider">해당 입점사의 현재 비밀번호 대신 현재 로그인된 관리자 비밀번호를 입력하세요</div>
+                                <div class="two-notice" *ngIf="appConfig.isProvider">입점사의 현재 비밀번호를 입력하세요</div>
+                            </div>
+                            <div class="block-addr">
+                                <div class="two-content-title">비밀번호 변경</div>
+                                <bs-input [name]="'provider_passwd'" [type]="'password'" [formGroup]="bsForm" [style]="'medium-input'"
+                                    [disabled]="bsForm.value.change_pw != 'Y'"></bs-input>
+                                <div class="two-notice">*10~20자, 영문 대소문자 또는 숫자, 특수문자 중 2가지 이상 조합</div>
+                            </div>
+                            <div class="block-addr">
+                                <div class="two-content-title">비밀번호 변경 확인</div>
+                                <bs-input [name]="'provider_confirm_passwd'" [type]="'password'" [formGroup]="bsForm" [style]="'medium-input'"
+                                    [disabled]="bsForm.value.change_pw != 'Y'"></bs-input>
+                                <div class="two-notice">*사용가능 특수문자 &#33;&#35;&#36;&#37;&#38;&#40;&#41;&#42;&#43;&#45;&#47;&#58;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#123;&#124;&#125; </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- 다중 계정 관리 -->
+        <div class="content-wrap" *ngIf="id && (!appConfig.isProvider || !pmember)">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'다중 계정 관리'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title">
+                        <span>계정목록 </span>
+                    </div>
+                    <div class="content">
+                        <span *ngFor="let item of providerMembers;let i = index">
+                            {{item.pmember_name}}
+                            <bo-page-button [title]="'수정'" [type]="'square-s-red'" (click)="onClickUpdateProviderMember(templateAccount, item.pmember_seq)"></bo-page-button>
+                            <img class="clickable" src="/assets/img/mi.svg" style="padding: 0 10px 0px 2px" (click)="onClickDeleteProviderMember(item.pmember_seq)"/>
+                        </span>                    
+                    </div>
+                </div>
+                
+                <div class="content-box">
+                    <div class="content-title">
+                        <span>관리</span>
+                    </div>
+                    <div class="content">
+                        <bo-page-button 
+                            [title]="'계정 추가'" [type]="'s-darkblue'"
+                            (click)="onClickUpdateProviderMember(templateAccount)"
+                        ></bo-page-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 입점사 -->
+        <div class="content-wrap two-line-content" *ngIf="id && !appConfig.isProvider">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'입점판매자의 미니샵'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title">
+                        <span>단골미니샵 </span>
+                    </div>
+                    <div class="content">
+                        누적 {{data?.mshop_cnt}} 명
+                    </div>
+                </div>
+                <div class="content-box" *ngIf="!appConfig.isProvider">
+                    <div class="content-title">
+                        <span>미니샵 이미지</span>
+                    </div>
+                    <div class="content">
+                        <bo-image-input
+                            [formGroup]="bsForm"
+                            [name] = "'main_visual'"
+                            [type] ="'small'"
+                            [inputWidth] = "250"
+                            [folderName]="'main_visual'">
+                        </bo-image-input>
+                    </div>
+                </div>
+                <div class="content-box" *ngIf="appConfig.isProvider">
+                    <div class="content-title">
+                        <span>미니샵 이미지</span>
+                    </div>
+                    <div class="content">
+                        <div>
+                            <div class="image-box" [style.background-image]="'url('+ data?.main_visual +')'" style="width: 40px; height: 40px; margin: 0;" ></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        <span>사용여부</span>
+                    </div>
+                    <div class="content " *ngIf="appConfig.isProvider">
+                       <span *ngIf="data?.minishop_use_status == 'use'">사용</span>
+                       <span *ngIf="data?.minishop_use_status == 'unuse'">미사용</span>
+                    </div>
+                    <div class="content " *ngIf="!appConfig.isProvider">
+                        <div class="content-inline">
+                            <input type="radio" id="use" [value]="'use'" name="minishop_use_status" formControlName="minishop_use_status" />
+                            <label for="use" class="check-label">사용</label>
+                        </div>
+                        <div class="content-inline">
+                            <input type="radio" id="unuse" [value]="'unuse'" name="minishop_use_status" formControlName="minishop_use_status" />
+                            <label for="unuse" class="check-label">미사용</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 로그인 보안 -->
+        <div class="content-wrap two-line-content">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'관리자 로그인 보안'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                    <div class="content-box">
+                        <div class="content-title">
+                                <span style="padding-right:25px;">비밀번호 변경</span>
+                        </div>
+                        <div class="content">
+                            <div class="content-info">
+                                비밀번호 변경 후 90일 경과 시 비밀번호 변경 자동 안내
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                                <span style="padding-right:25px;">자동 로그아웃</span>
+                        </div>
+                        <div class="content">
+                            <div class="content-info">
+                                1시간 동안 액션이 없으면 자동 로그아웃
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-box inline-content" >
+                        <div class="content-title large-title" style="width: 125px;">
+                            관리환경 관리페이지 접속허용 IP
+                        </div>
+                        <div class="content large-content">
+                            <bs-checkbox [formGroup]="bsForm"
+                                [name]="'ip_chk'"
+                                [label]="'해당 관리자는 아래의 IP에서만 관리페이지 접속 허용'"
+                                [style]="'square-new'"
+                                (changeValue)="changeIP($event)"
+                                [value]="'Y'"
+                                [uncheckedValue]="'N'"
+                                class="padd-btm10">
+                            </bs-checkbox>
+                            <div  formArrayName="limit_ip">
+                                <div *ngFor = "let item of limitIPFormArray.controls;let i = index" [formGroupName]="i" style="padding-bottom: 5px; display: inline-block;" >
+                                    <bs-input [name]="'ip1'" [formGroup]="limitIPFromGroup(i)" [style]="'small-input'" [disabled]="!ipYN"></bs-input>
+                                    <bs-input [name]="'ip2'" [formGroup]="limitIPFromGroup(i)" [style]="'small-input'" [disabled]="!ipYN"></bs-input>
+                                    <bs-input [name]="'ip3'" [formGroup]="limitIPFromGroup(i)" [style]="'small-input'" [disabled]="!ipYN"></bs-input>
+                                    <bs-input [name]="'ip4'" [formGroup]="limitIPFromGroup(i)" [style]="'small-input'" [disabled]="!ipYN"></bs-input>
+
+                                    <img src="/assets/img/pl.svg" style="padding: 0 20px 0 5px;" class ="clickable" *ngIf="i == 0" (click)="onClickAddIP()" />
+                                    <img src="/assets/img/mi.svg" style="padding: 0 20px 0 5px;" class ="clickable" *ngIf="i != 0" (click)="onClickRemoveIP()" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="content large-content" *ngIf="appConfig.isProvider && data?.ip_chk == 'Y'">
+                            <span>해당 관리자는 아래의 IP에서만 관리페이지 접속 허용</span>
+                            <div formArrayName="limit_ip">
+                                <div *ngFor = "let item of limitIPFormArray.controls;let i = index" [formGroupName]="i" style="padding-bottom: 5px; display: inline-block;" >
+                                    <bs-input [name]="'ip1'" [formGroup]="limitIPFromGroup(i)" [style]="'small-input'" [disabled]="true"></bs-input>
+                                    <bs-input [name]="'ip2'" [formGroup]="limitIPFromGroup(i)" [style]="'small-input'" [disabled]="true"></bs-input>
+                                    <bs-input [name]="'ip3'" [formGroup]="limitIPFromGroup(i)" [style]="'small-input'" [disabled]="true"></bs-input>
+                                    <bs-input [name]="'ip4'" [formGroup]="limitIPFromGroup(i)" [style]="'small-input'" [disabled]="true"></bs-input>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="content-box inline-content">
+                        <div class="content-title large-title" style="width: 125px;">
+                            관리환경 관리페이지 접속허용 휴대폰인증
+                        </div>
+                        <div class="content large-content">
+                            <bs-checkbox [formGroup]="bsForm"
+                                [name]="'hp_chk'"
+                                [label]="'해당 관리자는 아래의 휴대폰번호로 인증 시 관리 페이지 접속 허용'"
+                                [style]="'square-new'"
+                                (changeValue)="changeHP($event)"
+                                [value]="'Y'"
+                                [uncheckedValue]="'N'"
+                                class="padd-btm10">
+                            </bs-checkbox>
+                            <div formArrayName="auth_hp">
+                                <div *ngFor = "let item of authHPFormArray.controls;let i = index" [formGroupName]="i" style="padding: 5px 20px 0px 0; display: inline-block;" >
+                                    <bs-group-input [name]="'hp'" [formGroup]="authHPFromGroup(i)" [style]="'small-input'" [disabled]="!hpYN">
+                                        <bs-input-config></bs-input-config>
+                                        <bs-input-config></bs-input-config>
+                                        <bs-input-config></bs-input-config>
+                                    </bs-group-input>
+                                    <img src="/assets/img/pl.svg" style="padding: 0 20px 0 5px;" class ="clickable" *ngIf="i == 0" (click)="onClickAddAuthHP()" />
+                                    <img src="/assets/img/mi.svg" style="padding: 0 20px 0 5px;" class ="clickable" *ngIf="i != 0" (click)="onClickRemoveAuthHP(i)" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="content large-content" *ngIf="appConfig.isProvider && data?.hp_chk == 'Y'">
+                            <span>해당 관리자는 아래의 휴대폰번호로 인증 시 관리 페이지 접속 허용</span><br/>
+                            <div formArrayName="auth_hp">
+                                <div *ngFor = "let item of authHPFormArray.controls;let i = index" [formGroupName]="i" style="padding: 5px 20px 0px 0; display: inline-block;" >
+                                    <bs-group-input [name]="'hp'" [formGroup]="authHPFromGroup(i)" [style]="'small-input'">
+                                        <bs-input-config></bs-input-config>
+                                        <bs-input-config></bs-input-config>
+                                        <bs-input-config></bs-input-config>
+                                    </bs-group-input>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                    <div class="content-box inline-content" >
+                        <div class="content-title">
+                            계정잠김설정
+                        </div>
+                        <div class="content" style="padding-left:15px;">
+                            <div>
+                                <bs-checkbox [formGroup]="bsForm"
+                                    [name]="'is_account_lock'"
+                                    [value]="'Y'"
+                                    [style]="'square-new'"
+                                    [label]="'잠금'"
+                                    [uncheckedValue]="'N'">
+                                </bs-checkbox>
+                                <br/>
+                                    <bo-date-time-input
+                                        [formGroup]="bsForm"
+                                        [name] = "'account_lock_start_date'"
+                                        [isTime] = "true">
+                                    </bo-date-time-input>
+                                    ~
+                                    <bo-date-time-input
+                                        [formGroup]="bsForm"
+                                        [name] = "'account_lock_end_date'"
+                                        [isTime] = "true">
+                                    </bo-date-time-input>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <!-- 정산 -->
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'정산'"
+                [description]="'정산 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-inline-box" *ngIf="!appConfig.isProvider">
+                    <div class="content-box">
+                        <div class="content-title">정산포함여부</div>
+                            <div class="content">
+                            <select class="form-selectbox medium-input" name="calcu_include" formControlName="calcu_include" >
+                                    <option value="Y">포함</option>
+                                    <option value="N">제외</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-inline-box">
+                    <div class="content-box"  *ngIf="!appConfig.isProvider">
+                        <div class="content-title">정산기준<img class="required-img" src="assets/img/must_txt.png"/></div>
+                        <div class="content">
+                            수수료방식: 정산기준금액 = 판매가격 X (100 - <bs-input [name]="'charge'" [formGroup]="bsForm" [style]="'small-input'" [required]="true" ></bs-input>)%<br/>
+                            1.판매가격을 기준으로 수수료를 공제한후 판매자께 정산해 드리는 방식입니다. 2.입력된 값은 상품등록시 기본값으로 적용되며 상품의 옵션별로 수정 가능합니다.
+                        </div>
+                    </div>
+                    <div class="content-box"  *ngIf="appConfig.isProvider">
+                        <div class="content-title">정산기준<img class="required-img" src="assets/img/must_txt.png"/></div>
+                        <div class="content">
+                            수수료방식: 정산기준금액 = 판매가격 X (100 - <span *ngIf="data?.charge">{{data?.charge}}</span>)%<br/>
+                            1.판매가격을 기준으로 수수료를 공제한후 판매자께 정산해 드리는 방식입니다. 2.입력된 값은 상품등록시 기본값으로 적용되며 상품의 옵션별로 수정 가능합니다.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-inline-box">
+                    <div class="content-box"  *ngIf="!appConfig.isProvider">
+                        <div class="content-title">입금계좌 정보</div>
+                        <div class="content">
+                            <span style="padding-right: 10px;">은행</span><bs-input [name]="'calcu_bank'" [formGroup]="bsForm" [style]="'small-input'"></bs-input>
+                            <span style="padding: 0px 10px 0px 10px;">예금주</span><bs-input [name]="'calcu_name'" [formGroup]="bsForm" [style]="'small-input'"></bs-input>
+                            <span style="padding: 0px 10px 0px 10px;">계좌번호</span><bs-input [name]="'calcu_num'" [formGroup]="bsForm" [style]="'big-input'"></bs-input>
+
+                        </div>
+                    </div>
+                    <div class="content-box"  *ngIf="appConfig.isProvider">
+                        <div class="content-title">입금계좌 정보</div>
+                        <div class="content">
+                            <span>은행 : {{data?.calcu_bank}}</span><br/>
+                            <span>예금주 : {{data?.calcu_name}}</span><br/>
+                            <span>계좌번호 : {{data?.calcu_num}}</span>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="content-inline-box">
+                    <div class="content-box" *ngIf="!appConfig.isProvider">
+                        <div class="content-title">입금계좌 사본</div>
+                        <div class="content">
+                            <bo-image-input
+                                [formGroup]="bsForm"
+                                [type] ="'large'"
+                                [width]="'440px'"
+                                [name] = "'calcu_file'"
+                                [imageTypeDesc] = "'jpg, jpen, png, bmp, gif, pdf'"
+                                [onlyImageFile] = "false"
+                                [folderName]="'provider_calcu_file'">
+                            </bo-image-input>
+                        </div>
+                    </div>
+                    <div class="content-box" *ngIf="appConfig.isProvider">
+                        <div class="content-title">입금계좌 사본</div>
+                        <div class="content">
+                            <bo-page-button
+                                *ngIf="data?.calcu_file"
+                                [title]="'다운로드'"
+                                [type]="'s-darkblue'"
+                                (click) = "onFileDownload(data?.calcu_file)">
+                            </bo-page-button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-inline-box content-no-border">
+
+                    <div class="content-box" *ngIf="!appConfig.isProvider">
+                        <div class="content-title">
+                            <span>정산기간</span><img class="required-img" src="assets/img/must_txt.png"/>
+                        </div>
+                        <div class="content square-checkbox">
+                            <select class="form-selectbox medium-input" name="calcu_count" formControlName="calcu_count" disabled>
+                                <option value="1" checked="true">월 1회</option>
+                            </select>
+                            1일 - 말일 사이의 매출(배송완료 기준) 및 환불에 대한 정산금액을
+                            <bs-input [name]="'calcu_day'" [formGroup]="bsForm" [style]="'small-input'" [required]="true" ></bs-input>
+                            일에 지급합니다.
+                        </div>
+                    </div>
+                    <div class="content-box" *ngIf="appConfig.isProvider">
+                        <div class="content-title">
+                            <span>정산기간</span><img class="required-img" src="assets/img/must_txt.png"/>
+                        </div>
+                        <div class="content square-checkbox">
+                            <select class="form-selectbox medium-input" name="calcu_count" formControlName="calcu_count" disabled>
+                                <option value="1" checked="true">월 1회</option>
+                            </select>
+                            1일 - 말일 사이의 매출(배송완료 기준) 및 환불에 대한 정산금액을
+                            <span>{{data?.calcu_day}}</span>
+                            일에 지급합니다.
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="content-box">
+                        <div class="content-title">
+                            <span>수수료 방식 </span>
+                        </div>
+                        <div class="content">
+                            <bs-input [name]="'commission_type'" [formGroup]="bsForm" [style]="'small-input'" ></bs-input>
+                        </div>
+                </div> -->
+            </div>
+        </div>
+
+        <!-- 회원등급별 구매혜택 -->
+        <div class="content-wrap" *ngIf="!appConfig.isProvider">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'회원등급별 구매혜택'">
+            </bs-title-label-ctrl>
+            <div class="content-block" style="padding-bottom: 30px;">
+                <div class="content-box content-no-border">
+                    <div class="content-title">
+                        설정값 종류 : 
+                        <bs-select [name]="'default_sale_seq'"
+                            [formGroup]="bsForm"
+                            [data]="memberGroupSales"
+                            [optionValueField]="'sale_seq'"
+                            [optionLabelField]="'sale_title'"
+                            [allowUnselected]="true"
+                            (valueChangedwithValue)="onChangeSalesSet($event)">
+                        </bs-select><br><br>아래의 비율로 추가적립됩니다. 
+                    </div>
+                </div>               
+                <div class="content-table">
+                    <table>
+                        <tr>
+                            <th rowspan="2">비회원</th>
+                            <th [attr.colspan]="memberGroupSales[0]?.member_group_sale_details.length">회원등급</th>
+                        </tr>
+                        <tr style="height: 35px;">
+                            <td style="background: #F0F0F0; border-top: solid 1px #DFDFDF;"
+                                *ngFor="let item of memberGroupSaleMap[saleSeq]?.member_group_sale_details2" >
+                                {{item.group_name}}
+                            </td>                             
+                        </tr>
+                        <tr  class="white-background" >
+                            <td *ngFor="let item of memberGroupSaleMap[saleSeq]?.member_group_sale_details">{{item.point_price}}% 적립</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+
+
+        <div class="content-wrap" *ngIf="id">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'국내 - 기본 배송정책'">
+            </bs-title-label-ctrl>
+            <div class="content-block" style="padding-bottom: 30px;">
+                <div class="content-box content-no-border" *ngIf="!appConfig.isProvider">
+                    <div class="content-title">
+                        본 입점사는
+                        <select class="form-selectbox medium-input" name="deli_group" formControlName="deli_group">
+                            <option value="company">본사 배송</option>
+                            <option value="provider">입점사 배송</option>
+                        </select>
+                        으로 입점사의 상품을 입점사에서 배송합니다.
+                    </div>
+                </div>
+                <div class="content-box content-no-border" *ngIf="appConfig.isProvider">
+                    <div class="content-title">
+                        본 입점사는 <span *ngIf="data?.deli_group == 'company'">본사 배송</span><span *ngIf="data?.deli_group == 'provider'">입점사 배송</span>
+                        으로 입점사의 상품을 입점사에서 배송합니다.
+                    </div>
+                </div>
+                <div class="content-table">
+                    <table>
+                        <tr>
+                            <th rowspan="2">실물 배송 정책</th>
+                            <th rowspan="2">배송방법</th>
+                            <th rowspan="2">사용여부</th>
+                            <th colspan="4">배송비계산<br></th>
+                        </tr>
+                        <tr style="height: 35px;">
+                                <td style="background: #F0F0F0; border-top: solid 1px #DFDFDF;">택배사</td>
+                                <td style="background: #F0F0F0;">지정 카테고리 기준<br></td>
+                                <td style="background: #F0F0F0;">실 결제금액 기준</td>
+                                <td style="background: #F0F0F0;" >추가 배송비(지번 주소 기준)
+                                    <bo-page-button [title]="'세팅'" [type]="'s-darkblue'" (click)="onClickDeliverySetting(templateExcelExportPopup)"></bo-page-button>
+                                </td>
+                                <!-- <td style="background: #F0F0F0;"  *ngIf="appConfig.isProvider">추가 배송비(지번 주소 기준)</td> -->
+                        </tr>
+                        <tr  class="white-background" >
+                            <td>기본 배송 상품</td>
+                            <td>택배(선불)</td>
+                            <td  style="padding-bottom: 10px;">{{ (data?.provider_shipping?.use_yn == 'y') ? "사용" : "미사용"}}<br/>
+                                <bo-page-button *ngIf="bsForm.get('deli_group').value == 'provider'"
+                                    [title]="'세팅'" [type]="'s-darkblue'"
+                                    (click)="onClickDeliveryItems(item, template)"
+                                ></bo-page-button>
+
+                            </td>
+                            <!-- <td *ngIf="appConfig.isProvider">{{ (data?.provider_shipping?.use_yn == 'y') ? "사용" : "미사용"}}</td> -->
+                            <td>
+                                <div *ngIf="deliveryCompanyList">
+                                    <div *ngFor="let code of data?.provider_shipping?.company_code">
+                                        {{deliveryCompanyList[code].company}}
+                                    </div>
+                                </div>
+                            </td>
+                            <td><strong>{{(data?.provider_shipping?.order_delivery_free == 'free') ? "설정상품 구매 시 해당 주문의 배송비 무료" : "미설정"}}</strong><br>
+                                <div *ngIf="data?.provider_shipping?.order_delivery_free == 'free'">
+                                    <div *ngFor="let cate of data?.provider_shipping?.issue_categories">
+                                        {{cate.category_name}}
+                                    </div>
+                                </div>
+                             </td>
+                            <td><strong>{{shippingCostTitleText}}</strong><br>{{shippingCostDescText}}</td>
+                            <td>
+                                <div *ngFor="let ship of data?.provider_shipping?.add_delivery_cost">
+                                    {{ship.sigungu}} {{ship.addDeliveryCost}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="white-background" style="border-top: solid 1px #DFDFDF;">
+                            <td>개별배송 정책</td>
+                            <td>택배(선불)</td>
+                            <td style="padding-bottom: 10px;">상품별로 세팅<br/>
+                                <bo-page-button
+                                    [title]="'바로가기'"
+                                    [type]="'s-darkblue'"
+                                    (click)="onClickGotoGoodsList()">
+                                </bo-page-button>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrap" *ngIf="isUpdateMode">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'보내는 곳 주소 및 반송 주소'">
+                <!-- [description]="'↑ 상단의 주소는 구매자가 MY페이지에서 반품 할 때 반송 주소로 안내 되어집니다.'" -->
+            </bs-title-label-ctrl>
+            <div class="content-block" formGroupName="provider_shipping">
+                <div class="content-inline-box">
+                    <div class="content-box" *ngIf="!appConfig.isProvider">
+                        <div class="content-title">보내는 곳 주소</div>
+                        <div class="content">
+                            <bs-input [name]="'sendding_zipcode'" [formGroup]="bsForm.get('provider_shipping')"
+                                [style]="'small-input no-margin'"></bs-input>
+
+                            <btn-daum-address (result)="onChangeSendAddr($event)" [options]="daumAddressOptions"></btn-daum-address>
+                            <div class="block-addr">
+                                <bs-input [name]="'sendding_address'" [formGroup]="bsForm.get('provider_shipping')" [style]="'big-input'"></bs-input>
+                                <bs-input [name]="'sendding_address_detail'" [formGroup]="bsForm.get('provider_shipping')" [style]="'big-input'"></bs-input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-box" *ngIf="appConfig.isProvider">
+                        <div class="content-title">보내는 곳 주소</div>
+                        <!-- <div class="content">
+                            <span *ngIf="data?.provider_shipping.sendding_zipcode">{{data?.provider_shipping.sendding_zipcode}}</span><br/>
+                            <div class="block-addr">
+                                <span>{{data?.provider_shipping.sendding_address}}</span>
+                                <span>{{data?.provider_shipping.sendding_address_detail}}</span>
+                            </div>
+                        </div> -->
+                        <div class="content">
+                            <bs-input [name]="'sendding_zipcode'" [formGroup]="bsForm.get('provider_shipping')"
+                                [style]="'small-input no-margin'"></bs-input>
+
+                            <btn-daum-address (result)="onChangeSendAddr($event)" [options]="daumAddressOptions"></btn-daum-address>
+                            <div class="block-addr">
+                                <bs-input [name]="'sendding_address'" [formGroup]="bsForm.get('provider_shipping')" [style]="'big-input'"></bs-input>
+                                <bs-input [name]="'sendding_address_detail'" [formGroup]="bsForm.get('provider_shipping')" [style]="'big-input'"></bs-input>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <div class="content-title">반송 주소</div>
+                    <div class="content" *ngIf="!appConfig.isProvider">
+                            <bs-input [name]="'return_zipcode'" [formGroup]="bsForm.get('provider_shipping')" [style]="'small-input no-margin'"></bs-input>
+                            <!-- <bo-page-button [type]="'square-s-red'" [title]="'주소검색'"></bo-page-button> -->
+                            <btn-daum-address (result)="onChangeReturnAddr($event)" [options]="daumAddressOptions"></btn-daum-address>
+                            <div class="block-addr">
+                                <bs-input [name]="'return_address'" [formGroup]="bsForm.get('provider_shipping')" [style]="'big-input'"></bs-input>
+                                <bs-input [name]="'return_address_detail'" [formGroup]="bsForm.get('provider_shipping')" [style]="'big-input'"></bs-input>
+                            </div>
+                            <div class="content">
+                            ↑ 상단의 주소는 구매자가 MY페이지에서 반품 할 때 반송 주소로 안내 되어집니다.
+                            </div>
+                    </div>
+                    <div class="content" *ngIf="appConfig.isProvider">
+                            <!-- <span *ngIf="data?.provider_shipping.return_zipcode">{{data?.provider_shipping.return_zipcode}}</span><br/>
+                            <div class="block-addr">
+                                <span>{{data?.provider_shipping.return_address}}</span>
+                                <span>{{data?.provider_shipping.return_address_detail}}</span>
+                            </div><br/>
+                            <div class="content">
+                            ↑ 상단의 주소는 구매자가 MY페이지에서 반품 할 때 반송 주소로 안내 되어집니다.
+                            </div> -->
+                            <bs-input [name]="'return_zipcode'" [formGroup]="bsForm.get('provider_shipping')" [style]="'small-input no-margin'"></bs-input>
+                            <!-- <bo-page-button [type]="'square-s-red'" [title]="'주소검색'"></bo-page-button> -->
+                            <btn-daum-address (result)="onChangeReturnAddr($event)" [options]="daumAddressOptions"></btn-daum-address>
+                            <div class="block-addr">
+                                <bs-input [name]="'return_address'" [formGroup]="bsForm.get('provider_shipping')" [style]="'big-input'"></bs-input>
+                                <bs-input [name]="'return_address_detail'" [formGroup]="bsForm.get('provider_shipping')" [style]="'big-input'"></bs-input>
+                            </div>
+                            <div class="content">
+                            ↑ 상단의 주소는 구매자가 MY페이지에서 반품 할 때 반송 주소로 안내 되어집니다.
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrap two-line-content">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'사업자정보'"
+                [description]="'사업자정보를 입력하세요'">
+            </bs-title-label-ctrl>
+
+            <!-- 프로바이더가 아닌 경우 -->
+            <div class="content-block" *ngIf="!appConfig.isProvider">
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span>상호(회사명)</span>
+                        </div>
+                        <div class="content">
+                            <bs-input [name]="'info_name'" [formGroup]="bsForm"  [style]="'big-input'"></bs-input>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span>사업자번호</span>
+                        </div>
+                        <div class="content">
+                            <!-- <bs-input [name]="'info_num'" [formGroup]="bsForm"  [style]="'big-input'"></bs-input> -->
+                            <bs-group-input [name]="'info_num'" [formGroup]="bsForm" [style]="'medium-input'">
+                                <bs-input-config [required]="true" [placeholder]="'000'" [maxlength]="3" [number]="true"></bs-input-config>
+                                <bs-input-config [required]="true" [placeholder]="'00'" [maxlength]="2" [number]="true"></bs-input-config>
+                                <bs-input-config [required]="true" [placeholder]="'00000'" [maxlength]="5" [number]="true"></bs-input-config>
+                            </bs-group-input>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                            <div class="content-title">
+                                    <span>대표자</span>
+                            </div>
+                            <div class="content">
+                                <input type="text" class="form-control search-input medium-input" name="info_ceo" formControlName="info_ceo" />
+                            </div>
+                    </div>
+                    <div class="content-box">
+                            <div class="content-title">
+                                    <span>주민(법인)번호</span>
+                            </div>
+                            <div class="content">
+                                <input type="radio" id="type_personal" value="개인" name="info_type" formControlName="info_type"/>
+                                <label for="type_personal" class="check-label">개인</label>
+
+                                <input type="radio" id="type_company" value="법인" name="info_type" formControlName="info_type"/>
+                                <label for="type_company" class="check-label">법인</label>
+
+                                <input type="text" class="form-control search-input medium-input" name="info_type_num" formControlName="info_type_num"  [style]="'medium-input'" />
+                            </div>
+                    </div>
+
+                    <div class="content-box">
+                            <div class="content-title">
+                                    <span>업태/업종</span>
+                            </div>
+                            <div class="content">
+                                <input type="text" class="form-control search-input medium-input" name="info_item" formControlName="info_item" />/
+                                <input type="text" class="form-control search-input medium-input" name="info_status" formControlName="info_status" />
+                            </div>
+                    </div>
+
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span style="padding-right:25px;">사업자등록증 사본 </span>
+                        </div>
+                        <div class="content">
+                            <bo-image-input
+                                [formGroup]="bsForm"
+                                [width]="'400px'"
+                                [type] ="'small'"
+                                [name] = "'info_file'"
+                                [inputWidth] = "250"
+                                [onlyImageFile] = "false"
+                                [imageTypeDesc] = "'jpg, jpen, png, bmp, gif, pdf'"
+                                [folderName]="'provider_info_file'">
+                            </bo-image-input>
+                            <!-- <bo-page-button [type]="'square-s-red'" [title]="'등록하기'"></bo-page-button> -->
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                            <div class="content-title">
+                                <span style="padding-right:25px;">전화</span>
+                            </div>
+                            <div class="content">
+                                    <bs-input [name]="'info_phone'" [formGroup]="bsForm"  [style]="'big-input'"></bs-input>
+                            </div>
+                    </div>
+                    <div class="content-box">
+                            <div class="content-title">
+                                <span style="padding-right:25px;">통신판매업 신고번호</span>
+                            </div>
+                            <div class="content">
+                                    <bs-input [name]="'info_selling_license'" [formGroup]="bsForm"  [style]="'big-input'"></bs-input>
+                            </div>
+                    </div>
+
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span style="padding-right:25px;">메일</span>
+                        </div>
+                        <div class="content">
+                            <bs-input [name]="'info_email'" [formGroup]="bsForm"  [style]="'big-input'"></bs-input>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span style="padding-right:25px;">팩스</span>
+                        </div>
+                        <div class="content">
+                                <bs-input [name]="'info_fax'" [formGroup]="bsForm"  [style]="'big-input'"></bs-input>
+                        </div>
+                    </div>
+
+                    <div class="content-box inline-content">
+                        <div class="content-title">
+                                <span>사업장 주소</span>
+                        </div>
+                        <div class="content">
+                                <bs-input [name]="'info_zipcode'" [formGroup]="bsForm" [style]="'small-input no-margin'"></bs-input>
+                                <!-- <bo-page-button [type]="'square-s-red'" [title]="'주소검색'"></bo-page-button> -->
+                                <btn-daum-address (result)=" onChangeAddress($event)" [options]="daumAddressOptions"></btn-daum-address>
+                                <div class="block-addr">
+                                    <bs-input [name]="'info_address1'" [formGroup]="bsForm" [style]="'big-input'"></bs-input>
+                                    <bs-input [name]="'info_address2'" [formGroup]="bsForm" [style]="'big-input'"></bs-input>
+                                </div>
+                        </div>
+
+                    </div>
+            </div>
+
+            <!-- 프로바이더인 경우 -->
+            <div class="content-block" *ngIf="appConfig.isProvider">
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span>상호(회사명)</span>
+                        </div>
+                        <div class="content">
+                            <span>{{data?.info_name}}</span>
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span>사업자 번호</span>
+                        </div>
+                        <div class="content">
+                                <span>{{data?.info_num}}</span>
+                            </div>
+                    </div>
+
+
+                    <div class="content-box">
+                            <div class="content-title">
+                                    <span>대표자</span>
+                            </div>
+                            <div class="content">
+                                <span>{{data?.info_ceo}}</span>
+                            </div>
+                    </div>
+                    <div class="content-box">
+                            <div class="content-title">
+                                    <span>주민(법인)번호</span>
+                            </div>
+                            <div class="content">
+                                <span *ngIf="data?.info_type =='개인'">개인 - </span>
+                                <span *ngIf="data?.info_type =='법인'">법인 - </span>
+                                <span>{{data?.info_type_num}}</span>
+                            </div>
+                    </div>
+
+                    <div class="content-box">
+                            <div class="content-title">
+                                    <span>업태/업종</span>
+                            </div>
+                            <div class="content">
+                                <span *ngIf="data?.info_item">{{data?.info_item}}</span> / <span *ngIf="data?.info_status">{{data?.info_status}}</span>
+                            </div>
+                    </div>
+
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span style="padding-right:25px;">사업자등록증 사본 </span>
+                        </div>
+                        <div class="content" style="font-size: 13px;">
+                            <bo-page-button
+                                *ngIf="data?.info_file"
+                                [title]="'다운로드'"
+                                [type]="'s-darkblue'"
+                                (click) = "onFileDownload(data?.info_file)">
+                            </bo-page-button>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                            <div class="content-title">
+                                <span style="padding-right:25px;">전화</span>
+                            </div>
+                            <div class="content">
+                                {{data?.info_phone}}
+                            </div>
+                    </div>
+                    <div class="content-box">
+                            <div class="content-title">
+                                <span style="padding-right:25px;">통신판매업 신고번호</span>
+                            </div>
+                            <div class="content">
+                                {{data?.info_selling_license}}
+                            </div>
+                    </div>
+
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span style="padding-right:25px;">메일</span>
+                        </div>
+                        <div class="content">
+                            {{data?.info_email}}
+                        </div>
+                    </div>
+                    <div class="content-box">
+                        <div class="content-title">
+                            <span style="padding-right:25px;">팩스</span>
+                        </div>
+                        <div class="content">
+                            {{data?.info_fax}}
+                        </div>
+                    </div>
+
+                    <div class="content-box inline-content">
+                        <div class="content-title">
+                                <span>사업장 주소</span>
+                        </div>
+                        <div class="content">
+                                <span>{{data?.info_zipcode}}</span>
+                                <div class="block-addr">
+                                    <span>{{data?.info_address1}}</span>
+                                    <span>{{data?.info_address2}}</span>
+                                </div>
+                        </div>
+
+                    </div>
+            </div>
+        </div>
+
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'담당자'"
+                [description]="'판매자(입점사)는 자신의 실물상품이 판매되면 그 사실을 카카오알림톡으로 알 수 있습니다. 수신여부는 TopRank관리자와 협의 해 주십시오.'">
+            </bs-title-label-ctrl>
+            <div class="sub-content-box">
+                    <div class="content">
+                        <li class="content-info">
+                            <div class="two-content-title">결제확인</div>
+                            <div class="two-content-title">ㆍ담당자: 물류</div>
+                            <span class="red">ㆍ실물상품:</span> 입점사의 실물 상품이 판매되면 → 입점사에게 카카오알림톡 발송   <div style="padding-right:76px; display: inline-block;"></div>
+                            <!-- <span class="red">ㆍ쿠폰상품:</span> 입점사의 쿠폰 상품이 판매되면 → 입점사에게 카카오알림톡 발송 -->
+                        </li>
+                        <li class="content-info">
+                                <div class="two-content-title">배송완료</div>
+                                <div class="two-content-title">ㆍ담당자: 물류</div>
+                                <span class="red">ㆍ실물상품:</span> 입점사의 실물 상품이 배송완료 처리되면 → 입점사에게 카카오알림톡 발송 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <!-- <span class="red">ㆍ쿠폰상품:</span> 입점사의 쿠폰 상품이 배송완료 처리되면 → 입점사에게 카카오알림톡 발송 -->
+                        </li>
+                        <!-- <li class="content-info">
+                                <div class="two-content-title">상품문의등록</div>
+                                <div class="two-content-title">ㆍ담당자: CS </div>
+                                <span class="red">ㆍ실물상품/쿠폰상품:</span> 실물상품 OR쿠폰 상품의 상품문의가 등록되면 → 입점사에게도 SMS통보
+                        </li> -->
+                    </div>
+                </div>
+            <div class="content-block">
+                    <div class="content-box" >
+                            <div class="content-title">
+                                    물류담당자(1)
+                            </div>
+                        <div class="content" formGroupName="ds1" >
+                            담당자명
+                            <bs-input [name]="'name'" [formGroup]="bsForm.get('ds1')" [style]="'small-input'" ></bs-input>
+                            이메일
+                            <bs-input [name]="'email'" [formGroup]="bsForm.get('ds1')"  [style]="'medium-input'" ></bs-input>
+                            휴대폰
+                            <bs-input [name]="'mobile'" [formGroup]="bsForm.get('ds1')" [style]="'medium-input'"></bs-input>
+                            전화
+                            <bs-input [name]="'phone'" [formGroup]="bsForm.get('ds1')" [style]="'medium-input'"></bs-input>
+                        </div>
+                    </div>
+                    <div class="content-box" >
+                        <div class="content-title">
+                                물류담당자(2)
+                        </div>
+                        <div class="content"  formGroupName="ds2">
+                            담당자명
+                            <bs-input [name]="'name'" [formGroup]="bsForm.get('ds2')" [style]="'small-input'" ></bs-input>
+                            이메일
+                            <bs-input [name]="'email'" [formGroup]="bsForm.get('ds2')"  [style]="'medium-input'" ></bs-input>
+                            휴대폰
+                            <bs-input [name]="'mobile'" [formGroup]="bsForm.get('ds2')" [style]="'medium-input'"></bs-input>
+                            전화
+                            <bs-input [name]="'phone'" [formGroup]="bsForm.get('ds2')" [style]="'medium-input'"></bs-input>
+                        </div>
+                    </div>
+
+                    <div class="content-box" >
+                            <div class="content-title">
+                                    CS담당자
+                            </div>
+                        <div class="content"  formGroupName="cs" >
+                            담당자명
+                            <bs-input [name]="'name'" [formGroup]="bsForm.get('cs')" [style]="'small-input'" ></bs-input>
+                            이메일
+                            <bs-input [name]="'email'" [formGroup]="bsForm.get('cs')"  [style]="'medium-input'" ></bs-input>
+                            휴대폰
+                            <bs-input [name]="'mobile'" [formGroup]="bsForm.get('cs')" [style]="'medium-input'"></bs-input>
+                            전화
+                            <bs-input [name]="'phone'" [formGroup]="bsForm.get('cs')" [style]="'medium-input'"></bs-input>
+                        </div>
+                    </div>
+
+                    <div class="content-box">
+                            <div class="content-title">
+                                    담당MD
+                            </div>
+                            <div class="content"  formGroupName="md" >
+                                담당자명
+                                <bs-input [name]="'name'" [formGroup]="bsForm.get('md')" [style]="'small-input'" ></bs-input>
+                                이메일
+                                <bs-input [name]="'email'" [formGroup]="bsForm.get('md')"  [style]="'medium-input'" ></bs-input>
+                                휴대폰
+                                <bs-input [name]="'mobile'" [formGroup]="bsForm.get('md')" [style]="'medium-input'"></bs-input>
+                                전화
+                                <bs-input [name]="'phone'" [formGroup]="bsForm.get('md')" [style]="'medium-input'"></bs-input>
+                            </div>
+                    </div>
+
+                    <div class="content-box">
+                            <div class="content-title">
+                                    정산담당자
+                            </div>
+                            <div class="content" formGroupName="calcu" >
+                            담당자명
+                            <bs-input [name]="'name'" [formGroup]="bsForm.get('calcu')" [style]="'small-input'" ></bs-input>
+                            이메일
+                            <bs-input [name]="'email'" [formGroup]="bsForm.get('calcu')"  [style]="'medium-input'" ></bs-input>
+                            휴대폰
+                            <bs-input [name]="'mobile'" [formGroup]="bsForm.get('calcu')" [style]="'medium-input'"></bs-input>
+                            전화
+                            <bs-input [name]="'phone'" [formGroup]="bsForm.get('calcu')" [style]="'medium-input'"></bs-input>
+                        </div>
+                    </div>
+            </div>
+
+        </div>
+
+        <!-- <div class="content-wrap two-line-content" *ngIf="!appConfig.isProvider">
+            <bs-title-label-ctrl
+                [title]="'관리'"
+                [description]="'관리할 메모를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+
+                <div class="content-box" >
+                        <div class="content-title">
+                                관리메모(본사용)
+                        </div>
+                        <div class="content">
+                            <textarea name="admin_memo" formControlName="admin_memo"></textarea>
+                        </div>
+                </div>
+                <div class="content-box" >
+                    <div class="content-title">
+                            처리내역
+                    </div>
+                    <div class="content" [innerHTML]="data?.provider_log">
+                        <textarea disabled="true" [innerHTML]="data.provider_log">
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="content-wrap two-line-content">
+            <bs-title-label-ctrl
+                [title]="'관리'"
+                [description]="'관리할 메모를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+
+                    <div class="content-box content-no-border" *ngIf="!appConfig.isProvider" >
+                        <div class="content-title">
+                            관리메모
+                        </div>
+                        <div class="content">
+                            <div class="textarea-wrap">
+                                <textarea class="textarea" formControlName="admin_memo"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content-box" style="border-bottom: none;">
+                        <div class="content-title">
+                            처리내역
+                        </div>
+                        <div class="content">
+                            <div class="textarea-wrap">
+                                <div class="textarea" [innerHTML]="data?.provider_log"></div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+
+        <div class="btn-area">
+            <bo-submit-button-form></bo-submit-button-form>
+        </div>
+
+    </div>
+
+    <!--section -->
+</form>
+
+<ng-template #template>
+    <app-provider-delivery-create #providerDeliveryCreate [providerId]="id" [data]="data.provider_shipping" [deliveryCompanyData]="deliveryCompanyList" (onSubmit)="onDeliverySubmit(value)"></app-provider-delivery-create>
+</ng-template>
+
+<ng-template #templateAccount>
+    <app-provider-member-create #providerAccountCreate [providerId]="id" [id]="memberSeq" [isMaster]="!pmember" [data]="data" (afterAccountASubmit)="afterAccountASubmit(value)"></app-provider-member-create>
+</ng-template>
+
+<!-- 엑셀파일 팝업 -->
+<ng-template #templateExcelExportPopup>
+    <div class="small-popup-wrap">
+        <div clas="popup-wrap">
+            <div class="content" style="text-align: left; padding:20px; background: white; ">
+                <div>
+                    <input type="file" accept="image/*;capture=camera" id="file-upload" (change)="onFileUpload($event)" />
+                    <span style="font-size:15px; font-weight: bold; padding-right:12px;">파일 업로드 </span>
+                    <label for="file-upload" class="custom-file-upload">파일선택</label>
+                    <input type="text"  id="filePC" class="file-text-area" style= width:260px; readonly="readonly" />
+                </div>
+                <div style="padding-top: 15px;">
+                    <span style="font-size:15px; font-weight: bold;">샘플 다운로드</span>
+                    <button type="button" class="square-m-white" (click)="onClickDownGoodsSample()" >샘플파일 다운</button>
+                    <!-- <span style="font-size:15px; font-weight: bold;">샘플 다운로드</span> <button type="button">샘플파일 다운</button> -->
+                    <!-- <div [hidden]="!file">
+                        <div class="image-box" [style.background-image]="'url('+file+')'" ></div>
+                        <div class="check square-checkbox display-checkbox">
+                            <input type="checkbox" id="pcdel" name="pcdel"  /><label for="pcdel">삭제</label>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+

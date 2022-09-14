@@ -1,0 +1,196 @@
+<!-- <bo-page-header [imgUrl]="'assets/img/member-list.svg'" [title]="'자동 등급 조정(갱신) 설정'"></bo-page-header>
+
+<div class="section">
+  <div class="content-wrap">
+      <div class="sub-title-bar">
+          <img src="/assets/img/03-3-order.svg" />
+              자동 등급 조정(갱신) 설정
+      </div>
+  </div>
+</div>
+
+<div class="content-box">
+  <div class="content">
+      <span>현재 등급 조정(갱신) 정책 : 다음등급 조정일은 2018년 06월 01일입니다. 수동 관리되어지는 등급에 속한 회원은 자동으로 등급이 조정 되지 않습니다!</span>
+  </div>
+  <div class="content-table three-line-table">
+    <table>
+      <colgroup>
+          <col width="33%" />
+          <col width="33%" />
+          <col width="33%" />
+      </colgroup>
+      <tr>
+          <th>등급 조정(갱신)일</th>
+
+          <th>산출기간</th>
+          <th>등급 유지 보장기간</th>
+      </tr>
+      <tr>
+          <th>등급 기준 월은 {{grade.start_month.value}}월이며, {{grade.chg_term.value}}개월마다 해당 월 {{grade.chg_day.value}}일에</th>
+          <th>최근(직전) {{grade.chk_term.value}}개월간의  <br/>선정 기준(구매금액, 구매건수, 구매횟수)을 회원마다 계산</th>
+          <th>등급 조정일부터 {{grade.keep_term.value}}개월간의 등급 유지</th>
+      </tr>
+      <tr>
+        <td class="inner-two-line-table">
+          <div class="inner-two-line-content">
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+          </div>
+          <div class="inner-two-line-content">
+              새벽 2시에
+          </div>
+        </td>
+        <td class="inner-two-line-table">
+          <div class="inner-two-line-content">
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+          </div>
+          <div class="inner-two-line-content">
+              사이의 선정기준 계산
+          </div>
+        </td>
+        <td class="inner-two-line-table">
+          <div class="inner-two-line-content">
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+          </div>
+          <div class="inner-two-line-content">
+              동안 유지
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="content-box">
+  <div class="content">
+      <span>현재 등급 조정(갱신) 정책 : 다음등급 조정일은 2018년 06월 01일입니다. 수동 관리되어지는 등급에 속한 회원은 자동으로 등급이 조정 되지 않습니다!</span>
+  </div>
+  <div class="content-table three-line-table">
+    <table>
+      <colgroup>
+          <col width="33%" />
+          <col width="33%" />
+          <col width="33%" />
+      </colgroup>
+      <tr>
+          <th>등급 조정(갱신)일</th>
+
+          <th>산출기간</th>
+          <th>등급 유지 보장기간</th>
+      </tr>
+      <tr>
+          <th>등급 기준 월은
+            <select  (change)="monthChange($event)" >
+              <option *ngFor="let item of month" [ngValue]="item">{{item}}월</option>
+            </select>이며,
+            <select (change)="monthTermChange($event)">
+                <option *ngFor="let item of termMonth" [ngValue]="item">{{item}}개월마다</option>
+            </select>해당 월
+            <select (change)="dayChange($event)">
+                <option *ngFor="let item of day" [ngValue]="item">{{item}}일</option>
+            </select>에
+          </th>
+          <th>최근(직전)
+            <select>
+              <option *ngFor="let item of termMonth" [ngValue]="item">{{item}}개월간</option>
+          </select>의 <br/>선정 기준(구매금액, 구매건수, 구매횟수)을 회원마다 계산</th>
+          <th>등급 조정일부터
+          <select>
+              <option *ngFor="let item of termMonth" [ngValue]="item">{{item}}개월간</option>
+          </select> 등급 유지</th>
+      </tr>
+      <tr>
+        <td class="inner-two-line-table">
+          <div class="inner-two-line-content">
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+          </div>
+          <div class="inner-two-line-content">
+              새벽 2시에
+          </div>
+        </td>
+        <td class="inner-two-line-table">
+          <div class="inner-two-line-content">
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+          </div>
+          <div class="inner-two-line-content">
+              사이의 선정기준 계산
+          </div>
+        </td>
+        <td class="inner-two-line-table">
+          <div class="inner-two-line-content">
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+            <div>2018년 01월 01일</div>
+          </div>
+          <div class="inner-two-line-content">
+              동안 유지
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <bo-submit-button-form></bo-submit-button-form>
+</div> -->

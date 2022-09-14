@@ -1,0 +1,268 @@
+<!-- <div style="width: 100%">
+<bo-page-header [imgUrl]="'assets/img/member-list.svg'" [title]="'등급별 구매혜택'">
+</bo-page-header>
+<div class="section">
+    <div class="content-wrap">
+        <div class="sub-title-bar">
+            <img src="/assets/img/03-3-order.svg" /> 회원등급별 구매혜택
+        </div>
+        <div class="content-table">
+            <table  *ngFor="let item of items; let i = index;" >
+                <colgroup>
+                </colgroup>
+                <tr  style="background: #f0f0f0; text-align: center;">
+                    <th colspan="8">{{i+1}}</th>
+                </tr>
+                <tr>
+                    <th colspan="2" rowspan="3">세트종류</th>
+                    <th colspan="6">{{item.sale_title}}
+                        <bo-page-button [type]="'s-white'" routerLink="/main/member/grade-benefit/{{item.sale_seq}}" [title]="'수정'" ></bo-page-button>
+                        <bo-page-button [type]="'s-red'" [title]="'삭제'" *ngIf="i+1 != 1"></bo-page-button>
+                    </th>
+                </tr>
+                <tr>
+                    <td colspan="3">추가할인</td>
+                    <td colspan="3">추가적립</td>
+                </tr>
+                <tr>
+                    <td>조건</td>
+                    <td>할인</td>
+                    <td>추가옵션</td>
+                    <td>조건</td>
+                    <td>포인트</td>
+                    <td>적립금</td>
+                </tr>
+                <tr *ngFor="let grade of item.grade;">
+                    <td *ngIf="grade.group_name == '비회원'" [attr.rowspan]="item.grade.length">등급</td>
+                    <td>
+                        <div>{{grade.group_name}}</div>
+                    </td>
+                    <td>
+                        <div *ngIf="grade.sale_use == Y">{{grade.sale_limit_price}}원이상구매</div>
+                        <div *ngIf="grade.sale_use != Y">조건없음</div>
+                    </td>
+                    <td>
+                        <div *ngIf="grade.sale_price_type == 'PER'">{{grade.sale_price}}% 할인</div>
+                        <div *ngIf="grade.sale_price_type == 'WON'">{{grade.sale_price}}원 할인</div>
+                    </td>
+                    <td>
+                        <div *ngIf="grade.sale_option_price_type == 'PER'">{{grade.sale_option_price}}% 할인</div>
+                        <div *ngIf="grade.sale_option_price_type == 'WON'">{{grade.sale_option_price}}원 할인</div>
+                    </td>
+                    <td>
+                        <div *ngIf="grade.point_use == Y">{{grade.point_limit_price}}원이상구매</div>
+                        <div *ngIf="grade.point_use != Y">조건없음</div>
+                    </td>
+                    <td>
+                        <div *ngIf="grade.point_price_type == 'PER'">{{grade.point_price}}% 할인</div>
+                        <div *ngIf="grade.point_price_type == 'WON'">{{grade.point_price}}원 할인</div>
+                    </td>
+                    <td>
+                        <div *ngIf="grade.reserve_price_type == 'PER'">{{grade.reserve_price}}% 할인</div>
+                        <div *ngIf="grade.reserve_price_type == 'WON'">{{grade.reserve_price}}원 할인</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">예외</td>
+                    <td colspan="3"></td>
+                    <td colspan="3"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="content-wrap">
+        <div class="sub-title-bar">
+            <img src="/assets/img/03-3-order.svg" /> 혜택세트 만들기
+        </div>
+        <form [formGroup]="formGdBenefit">
+            <div class="form-title">세트명: </div>
+            <bs-input [name]="'sale_title'" [formGroup]="formGdBenefit" ></bs-input>
+            <div class="content-table">
+                <table>
+                    <colgroup>
+                    </colgroup>
+                    <tr>
+                        <th colspan="2" rowspan="3">세트종류</th>
+                        <th colspan="6">기본</th>
+                    </tr>
+                    <tr>
+                        <td colspan="3">추가할인</td>
+                        <td colspan="3">추가적립</td>
+                    </tr>
+                    <tr>
+                        <td>조건</td>
+                        <td>할인</td>
+                        <td>추가옵션</td>
+                        <td>조건</td>
+                        <td>할인</td>
+                        <td>추가옵션</td>
+                    </tr>
+                    <tr>
+                        <td [attr.rowspan]="gradeTotal+ 1">등급</td>
+                        <td>
+                            <div>비회원</div>
+                        </td>
+                        <td style="width: 25%">
+                            <div class="content-inline">
+                                <input type="radio" id="sale_use" value="n" name="sale_use" formControlName="sale_use" />
+                                <label for="sale_use" class="check-label">조건없음</label>
+                            </div>
+                            <div class="content-inline">
+                                <input type="radio" id="write_admin_type_T" value="y" name="sale_use"  formControlName="sale_use"/>
+                                <label for="write_admin_type_T" class="check-label check-position"></label>
+                                <bs-input [name]="'sale_limit_price'" [formGroup]="formGdBenefit" [style]="'small-input'"></bs-input>원 이상구매
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="content-inline">
+                                    <bs-input [name]="'sale_price'" [formGroup]="formGdBenefit"  [style]="'small-input'"></bs-input>
+                                    <input type="number" style="width: 33px;">할인
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="content-inline">
+                                    <bs-input [name]="'sale_option_price'"  [formGroup]="formGdBenefit"  [style]="'mini-input'"></bs-input>
+                                    <input type="number" style="width: 33px;">할인
+
+                            </div>
+                        </td>
+                        <td>
+                            <div class="content-inline">
+                                <input type="radio" id="point_use" value="n" name="point_use" formControlName="point_use" />
+                                <label for="point_use" class="check-label ">조건없음</label>
+                            </div>
+                            <div class="content-inline">
+                                <input type="radio" id="write_admin_type_T" value="TXT" />
+                                <label for="write_admin_type_T" class="check-label check-position"></label>
+                                <bs-input [name]="'point_limit_price'" [formGroup]="formGdBenefit" [style]="'small-input'"></bs-input>원 이상 구매
+                            </div>
+                        </td>
+                        <td>
+                            <div class="content-inline">
+                                    <bs-input [name]="'point_price'" [style]="'mini-input'"[formGroup]="formGdBenefit"></bs-input>%
+                            </div>
+                        </td>
+                        <td>
+                            <div class="content-inline">
+                                    <bs-input [name]="'reserve_price'" [style]="'mini-input'"[formGroup]="formGdBenefit"></bs-input>%
+                            </div>
+                        </td>
+
+                    </tr>
+
+
+
+                    <tr *ngFor="let grade of gradeItems; let i = index;">
+                            <td>
+                                <div>{{grade.group_name}}</div>
+                            </td>
+                            <td style="width: 25%">
+                                <div class="content-inline">
+                                        <input type="radio" id="sale_use" value="n" name="sale_use" formControlName="sale_use" />
+                                        <label for="sale_use" class="check-label ">조건없음</label>
+                                </div>
+                                <div class="content-inline">
+                                        <input type="radio" id="write_admin_type_T" value="y" name="sale_use"  formControlName="sale_use"/>
+                                        <label for="write_admin_type_T" class="check-label check-position"></label>
+                                        <bs-input [name]="'sale_limit_price'" [formGroup]="formGdBenefit" [style]="'small-input'"></bs-input>원 이상구매
+                                </div>
+                            </td>
+                            <td>
+                                <div class="content-inline">
+                                        <bs-input [name]="'sale_price'" [formGroup]="formGdBenefit" [style]="'mini-input'"></bs-input>
+                                        <input type="number" style="width: 33px;">할인
+                                 </div>
+                            </td>
+                            <td>
+                                <div class="content-inline">
+                                        <bs-input [name]="'sale_option_price'" [style]="'mini-input'" [formGroup]="formGdBenefit"></bs-input>
+                                        <input type="number" style="width: 33px;">할인
+                                </div>
+                            </td>
+                            <td>
+                                <div class="content-inline">
+                                        <input type="radio" id="point_use" value="n" name="point_use" formControlName="point_use" />
+                                        <label for="point_use" class="check-label">조건없음</label>
+                                </div>
+                                <div class="content-inline">
+                                        <input type="radio" id="write_admin_type_T" value="TXT" />
+                                        <label for="write_admin_type_T" class="check-label check-position"></label>
+                                        <bs-input [name]="'point_limit_price'" [formGroup]="formGdBenefit" [style]="'small-input'"></bs-input>원 이상 구매
+                                </div>
+                            </td>
+                            <td>
+                                <div class="content-inline">
+                                        <bs-input [name]="'point_price'" [style]="'mini-input'" [formGroup]="formGdBenefit"></bs-input>%
+                                </div>
+                            </td>
+                            <td>
+                                <div class="content-inline">
+                                        <bs-input [name]="'reserve_price'" [style]="'mini-input'" [formGroup]="formGdBenefit"></bs-input>%
+                                </div>
+                            </td>
+
+                        </tr>
+                    <tr>
+                        <td colspan="2">예외</td>
+                        <td colspan="3" style="padding-left: 10px;">
+                            <div style="display: block; text-align: left; padding-bottom:10px;">
+                                <bo-page-button [type]="'square-s-red'" [title]="'제외상품등록'"></bo-page-button>
+                            </div>
+                            <div class="item-block">
+                                <select class="form-selectbox grade-input" name="category">
+                                    <option *ngFor="let item of status" >{{item}}</option>
+                                </select>
+                                <select class="form-selectbox grade-input" name="category" >
+                                    <option *ngFor="let item of status" >{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="item-block">
+                                <select class="form-selectbox grade-input" name="category">
+                                    <option *ngFor="let item of status" >{{item}}</option>
+                                </select>
+                                <select class="form-selectbox grade-input" name="category">
+                                    <option *ngFor="let item of status" >{{item}}</option>
+                                </select>
+                                <bo-page-button [type]="'square-s-red'" [title]="'제외카테고리등록'"></bo-page-button>
+                            </div>
+                        </td>
+                        <td colspan="3" style="padding-left: 10px;">
+                            <div style="display: block; text-align: left; padding-bottom:10px;">
+                                <bo-page-button [type]="'square-s-red'" [title]="'제외상품등록'"></bo-page-button>
+                            </div>
+                            <div class="item-block">
+                                <select class="form-selectbox grade-input" name="category">
+                                    <option *ngFor="let item of status" >{{item}}</option>
+                                </select>
+                                <select class="form-selectbox grade-input" name="category">
+                                    <option *ngFor="let item of status" >{{item}}</option>
+                                </select>
+                            </div>
+                            <div class="item-block">
+                                <select class="form-selectbox grade-input" name="category">
+                                    <option *ngFor="let item of status" >{{item}}</option>
+                                </select>
+                                <select class="form-selectbox grade-input" name="category">
+                                    <option *ngFor="let item of status" >{{item}}</option>
+                                </select>
+                                <div class="grade-btn-postition">
+                                    <bo-page-button [type]="'square-s-red'" [title]="'제외카테고리등록'"></bo-page-button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <bo-submit-button-form></bo-submit-button-form>
+        </form>
+    </div>
+</div> -->

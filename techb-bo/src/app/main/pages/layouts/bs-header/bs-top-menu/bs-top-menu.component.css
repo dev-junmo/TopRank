@@ -1,0 +1,24 @@
+.top-menu li{    
+    list-style: none;
+    display: inline-block;
+    cursor: pointer;
+    padding: 0 18px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.top-menu li:focus{
+    outline: none;
+}
+.top-menu {
+    /* line-height: 66px; */
+    margin: 0;
+    padding-left: 15px;
+    min-width: 1330px;
+}
+.top-menu li.active{
+    background-image: url(/assets/img/menu-active.svg);
+    background-repeat: no-repeat;
+    background-size: 22px 10px;
+    background-position: bottom;
+}

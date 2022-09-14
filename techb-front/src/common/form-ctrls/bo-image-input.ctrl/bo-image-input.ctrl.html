@@ -1,0 +1,81 @@
+<!-- large style-->
+<div [formGroup]="formGroup" class="item-horizontal image-content" *ngIf="type == 'large'">
+
+    <!-- 찾아보기 -->
+    <input type="file" accept="image/*;capture=camera" id="{{name}}-{{seq}}" (change)="onFileUpload($event)"  [attr.disabled]="disabled? '' : null"/>
+
+    <!-- 파일명 -->
+    <input type="text"  class="file-text-area" formControlName="{{name}}" [attr.disabled]="disabled? '' : null"/>
+    <label for="{{name}}-{{seq}}" class="custom-file-upload"  [attr.disabled]="disabled? '' : null">파일선택</label>
+
+    <!--부가 정보 -->
+    <div *ngIf="imageTypeDesc || imageSizeDesc">
+        <div *ngIf="imageTypeDesc" class="image-title-bold">확장자 : </div>{{imageTypeDesc}}&nbsp;&nbsp;
+        <div *ngIf="imageSizeDesc" class="image-title-bold">사이즈 : </div>{{imageSizeDesc}}&nbsp;&nbsp;
+        <div *ngIf="width && height" class="image-title-bold">저장사이즈 : {{width}} x {{height}}</div>
+        <div *ngIf="quality" class="image-title-bold">품질 : {{quality}}%</div>
+        <div *ngIf="noticeDesc">
+            <div class="image-title-bold">가이드 : </div>
+            {{noticeDesc}}
+        </div>
+    </div>
+
+    <!-- 미리보기 -->
+    <div class="clickable" [hidden]='!_file || (!_file && !cacheFile) || !ablePreview' (click)='onClickPreviewImage(_file)'>
+        <div class="image-box" [style.background-image]="'url('+_file+')'"></div>
+    </div>
+
+    <!-- 삭제버튼  -->
+    <div [hidden]="!hasDeleteBtn || (!_file && !cacheFile)">
+        <div class="check square-checkbox display-checkbox" [formGroup]="subForm">
+            <input type="checkbox" id="remove-file-{{seq}}" name="remove-file" formControlName="isRemoveFile" [attr.disabled]="disabled? '' : null"/>
+            <label style="padding-top:5px;" for="remove-file-{{seq}}" [attr.disabled]="disabled? '' : null">삭제</label>
+        </div>
+    </div>
+
+    <!-- validation 표시 -->
+    <div *ngIf="ctrl?.invalid && (ctrl.dirty || ctrl.touched)" class="alert alert-danger">
+        <div *ngIf="ctrl.errors.required">
+                <img class="required-img" src="assets/img/must_txt.png">
+                이 항목은 필수입니다.
+        </div>
+    </div>
+
+</div>
+
+<!-- small style-->
+<div [formGroup]="formGroup" class="item-horizontal image-content middle-vertical" *ngIf="type == 'small'">
+    <label for="{{name}}-{{seq}}" class="custom-file-upload" [attr.disabled]="disabled? '' : null">등록하기</label>
+    <input type="file" accept="image/*;capture=camera" id="{{name}}-{{seq}}" (change)="onFileUpload($event)" [attr.disabled]="disabled? '' : null"/>
+    <input type="text"  class="file-text-area" formControlName="{{name}}" readonly="readonly" [ngStyle]="{'width': inputWidth + 'px'}" [attr.disabled]="disabled? '' : null"/>
+
+    <!-- 미리보기 -->
+    <div class="clickable" class="item-horizontal middle-vertical" [hidden]='!_file || (!_file && !cacheFile) || !ablePreview' (click)='onClickPreviewImage(_file)'>
+        <div class="clickable" [hidden]='!_file'>
+            <div class="small-image-box" [style.background-image]="'url('+_file+')'" ></div>
+        </div>
+    </div>
+
+    <div [hidden]="!hasDeleteBtn || (!_file && !cacheFile)" class="item-horizontal">
+        <div class="check square-checkbox display-checkbox" [formGroup]="subForm" >
+            <input type="checkbox" id="remove-file-{{seq}}" name="remove-file" formControlName="isRemoveFile" [attr.disabled]="disabled? '' : null"/>
+            <label for="remove-file-{{seq}}" [attr.disabled]="disabled? '' : null">삭제</label>
+        </div>
+    </div>
+    <div *ngIf="imageTypeDesc || imageSizeDesc">
+            <div class="image-title-bold">확장자 :</div> {{imageTypeDesc}}&nbsp;&nbsp;<div class="image-title-bold">사이즈 : </div>{{imageSizeDesc}}
+            <div *ngIf="noticeDesc">
+                <div class="image-title-bold">주의사항 : </div>
+                {{noticeDesc}}
+            </div>
+    </div>
+    <div *ngIf="ctrl?.invalid && (ctrl.dirty || ctrl.touched)"
+        class="alert alert-danger">
+        <div *ngIf="ctrl.errors.required">
+                <img class="required-img" src="assets/img/must_txt.png"/>
+                이 항목은 필수입니다.
+        </div>
+    </div>
+
+</div>
+

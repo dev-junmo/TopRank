@@ -1,0 +1,12 @@
+
+<div #tube1 class="progressbar" (click)="onClickProgress($event)" [ngClass]="{'clickable' : _readOnly == false}" *isDesktop>
+    <div class="container">
+            <div class="tube" [style.width]="tubePercent+'%'" ></div>
+    </div>
+</div>
+
+<div #tube2 class="progressbar" (click)="onClickProgress($event)" [ngClass]="{'clickable' : _readOnly == false}" *isMobile>
+    <div class="container">
+        <div class="tube" [style.left]="tubePercent+'%'"></div>
+    </div>
+</div>

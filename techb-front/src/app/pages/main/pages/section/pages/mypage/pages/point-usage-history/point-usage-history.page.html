@@ -1,0 +1,247 @@
+<div class="web" *ifDesktop>
+    <!-- 컨텐츠 타이틀 영역 start -->
+    <div class="title-area">
+        <div class="title-wrap">
+        <h2 class="title">포인트 사용 내역</h2>
+        </div>
+        <nav>
+        <ol class="location-history">
+            <li routerLink="/main/home">HOME</li>
+            <li routerLink="/main/section/mypage/home/point">마이페이지</li>
+            <li>포인트 사용 내역</li>
+        </ol>
+        </nav>
+    </div>
+
+
+    <!-- 포인트 사용 내역 start -->
+    <div class="point-usage">
+        <div class="point-usage-content">
+            <div class="point-usage-box box">
+                <point-usage-query-form
+                [itemCount]="itemCount"
+                (query)="reloadWithQuery($event)">
+                </point-usage-query-form>
+                <data-table #bsDatatable
+                    headerTitle="datatable"
+                    [header]="false"
+                    [items]="items"
+                    [itemCount]="itemCount"
+                    [isShowItemCount]="false" 
+                    [indexColumn]="false"
+                    [selectColumn]="false"
+                    [tableWidth]="'1160px'"
+                    [sortBy] = "'regist_date'"
+                    [limit]="10"
+                    [isShowEmptyContent]="true"
+                    (reload)="reloadItems($event)"
+                    >
+                    <data-table-column
+                        [property]="'regist_date'"
+                        [header]="'구매일'"
+                        [sortable]="false"
+                        [width]="168">
+                        <ng-template #dataTableCell let-item="item">
+                            <div class="table-td">
+                                {{item.regist_date | date: 'yyyy-MM-dd'}}
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                        
+                    <data-table-column
+                        [property]="'product_mid'"
+                        [header]="'상품고유번호'"
+                        [sortable]="false"
+                        [align]="'left'"
+                        [width]="168">
+                        <ng-template #dataTableCell let-item="item">
+                            <div class="table-td">
+                                {{item.product?.product_mid}}
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        [property]="'goods_contents'"
+                        [header]="'상품 정보'"
+                        [sortable]="false"
+                        [width]="640">
+                        <ng-template #dataTableCell let-item="item">
+                            <div class="table-td product-info-wrap">
+                                <div class="product-info">
+                                    <!-- A -->
+                                    <img *ngIf="item.product.product_type == 'A' && item.product.product_period == 7" src="assets/images/subscription/ic_product_a_d7_24.png" alt="">
+                                    <img *ngIf="item.product.product_type == 'A' && item.product.product_period == 15" src="assets/images/subscription/ic_product_a_d15_24.png" alt="">
+                                    <img *ngIf="item.product.product_type == 'A' && item.product.product_period == 30" src="assets/images/subscription/ic_product_a_d30_24.png" alt="">
+                                    <img *ngIf="item.product.product_type == 'A' && item.product.product_period == 90" src="assets/images/subscription/ic_product_a_d90_24.png" alt="">
+                                    <!-- B -->
+                                    <img *ngIf="item.product.product_type == 'B' && item.product.product_period == 7" src="assets/images/subscription/ic_product_b_d7_24.png" alt="">
+                                    <img *ngIf="item.product.product_type == 'B' && item.product.product_period == 15" src="assets/images/subscription/ic_product_b_d15_24.png" alt="">
+                                    <img *ngIf="item.product.product_type == 'B' && item.product.product_period == 30" src="assets/images/subscription/ic_product_b_d30_24.png" alt="">
+                                    <img *ngIf="item.product.product_type == 'B' && item.product.product_period == 90" src="assets/images/subscription/ic_product_b_d90_24.png" alt="">
+                                    <!-- C -->
+                                    <img *ngIf="item.product.product_type == 'C' && item.product.product_period == 7" src="assets/images/subscription/ic_product_c_d7_24.png" alt="">
+                                    <img *ngIf="item.product.product_type == 'C' && item.product.product_period == 15" src="assets/images/subscription/ic_product_c_d15_24.png" alt="">
+                                    <img *ngIf="item.product.product_type == 'C' && item.product.product_period == 30" src="assets/images/subscription/ic_product_c_d30_24.png" alt="">
+                                    <img *ngIf="item.product.product_type == 'C' && item.product.product_period == 90" src="assets/images/subscription/ic_product_c_d90_24.png" alt="">
+        
+                                    <div class="product-txt">
+                                        <span>
+                                            <strong>상품 {{item.product.product_type}}</strong> {{item.product.product_period}}일권
+                                        </span>
+                                        <span class="date">
+                                            {{item.product.start_date | date: 'yyyy-MM-dd'}}~{{item.product.end_date | date: 'yyyy-MM-dd'}}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="keyword-info">
+                                    <span>키워드 <strong>{{item.product.keyword}}</strong></span>
+                                    <span class="auto-extension">
+                                        자동 연장 여부: 
+                                        <span *ngIf="item.product.auto_extension == 'Y'">신청</span>
+                                        <span *ngIf="item.product.auto_extension == 'N'">미신청</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        [property]="'point'"
+                        [header]="'금액'"
+                        [sortable]="false"
+                        [width]="184">
+                        <ng-template #dataTableCell let-item="item.product.order">
+                            <div class="table-td">
+                                <span class="amount">{{item.product_total_point | number}}</span> P
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                    <ng-template #emptyContentTemplate>
+                        <div class="point-usage-empty">
+                            <img src="assets/images/mypage/img_attention_gray_64.png" alt="">
+                            <p>포인트 사용 내역이 없습니다.</p>
+                        </div>
+                    </ng-template>
+                </data-table>   
+            </div>
+        </div>
+    </div>
+    <!-- //포인트 사용 내역 end -->   
+</div>
+
+<div class="mobile" *ifMobile>
+    <form [formGroup]="bsForm" (submit)="reloadWithQuery(bsForm.value)">
+        <!-- contents header start -->
+        <div class="contents-header">
+            <div class="contents-title">
+                <img src="assets/images/svg/ic_point-payment_purple_24.svg" alt="">
+                <h2>포인트 사용 내역</h2>
+            </div>
+        </div>
+        <!-- //contents header end -->
+        <!-- 포인트 옵션 start -->
+        <div class="point-history-option">
+            <div class="selectbox">
+                <select class="label" formControlName="product_type" (change)="reloadWithQuery(bsForm.value)">
+                    <option value="">전체</option>
+                    <option value="C">상품 C</option>
+                    <option value="B">상품 B</option>
+                    <option value="A">상품 A</option>
+                </select>
+            </div>
+            <button type="button" class="filter-btn" (click)="onClickSearchFilter()">
+                <img src="assets/images/svg/ic_sorting_purple_32.svg" alt="필터">
+            </button>
+        </div>
+        <!-- 포인트 옵션 end -->
+
+        <div class="line"></div>
+
+        <!-- 포인트 내역 start -->
+        <div class="point-usage-history-wrap">
+            <div class="all-count">
+                총 <span>{{itemCount}}</span>개
+            </div>
+            <div class="point-history-contents">
+                <div class="point-usage-history-empty" *ngIf="!isQueryFormRequest && isEmpty">
+                    <img src="assets/images/svg/img_attention_gray_64.svg" alt="!">
+                    <p>포인트 사용 내역이 없습니다</p>
+                </div>
+                <div *ngIf="items && items.length > 0">
+                    <div class="point-history-card" *ngFor="let item of items">
+                        <div class="point-card-header">
+                            <span class="card-date"> {{item.regist_date | date: 'yyyy-MM-dd'}}</span>
+                            <span class="product-num">{{item.product?.product_mid}}</span>
+                        </div>
+                        <ul class="point-card-contents">
+                            <li>
+                                <span class="point-card-title">상품 정보</span>
+                                <div class="product-info">
+                                <p class="product-name">
+                                    상품 
+                                        <!-- A -->
+                                        <img *ngIf="item.product.product_type == 'A' && item.product.product_period == 7" src="assets/images/subscription/ic_product_a_d7_24.png" alt="">
+                                        <img *ngIf="item.product.product_type == 'A' && item.product.product_period == 15" src="assets/images/subscription/ic_product_a_d15_24.png" alt=""> 
+                                        <img *ngIf="item.product.product_type == 'A' && item.product.product_period == 30" src="assets/images/subscription/ic_product_a_d30_24.png" alt="">
+                                        <img *ngIf="item.product.product_type == 'A' && item.product.product_period == 90" src="assets/images/subscription/ic_product_a_d90_24.png" alt="">
+                                        <!-- B -->
+                                        <img *ngIf="item.product.product_type == 'B' && item.product.product_period == 7" src="assets/images/subscription/ic_product_b_d7_24.png" alt=""> 
+                                        <img *ngIf="item.product.product_type == 'B' && item.product.product_period == 15" src="assets/images/subscription/ic_product_b_d15_24.png" alt="">
+                                        <img *ngIf="item.product.product_type == 'B' && item.product.product_period == 30" src="assets/images/subscription/ic_product_b_d30_24.png" alt="">
+                                        <img *ngIf="item.product.product_type == 'B' && item.product.product_period == 90" src="assets/images/subscription/ic_product_b_d90_24.png" alt="">
+                                        <!-- C -->
+                                        <img *ngIf="item.product.product_type == 'C' && item.product.product_period == 7" src="assets/images/subscription/ic_product_c_d7_24.png" alt=""> 
+                                        <img *ngIf="item.product.product_type == 'C' && item.product.product_period == 15" src="assets/images/subscription/ic_product_c_d15_24.png" alt="">
+                                        <img *ngIf="item.product.product_type == 'C' && item.product.product_period == 30" src="assets/images/subscription/ic_product_c_d30_24.png" alt="">
+                                        <img *ngIf="item.product.product_type == 'C' && item.product.product_period == 90" src="assets/images/subscription/ic_product_c_d90_24.png" alt="">
+                                    {{item.product.product_period}}일권
+                                </p>    
+                                <span class="product-date"> {{item.product.start_date | date: 'yy-MM-dd'}}~{{item.product.end_date | date: 'yy-MM-dd'}}</span>
+                                <span class="product-point">
+                                    <strong>{{item.product.order.product_total_point | number}}</strong> P
+                                </span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="point-card-title">키워드</span>
+                                <span class="point-card-text">{{item.product.keyword}}</span>
+                            </li>
+                            <li>
+                                <span class="point-card-title">자동 연장 여부</span>
+                                <span class="point-card-text" *ngIf="item.product.auto_extension == 'Y'">신청</span>
+                                <span class="point-card-text" *ngIf="item.product.auto_extension == 'N'">미신청</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="point-more-btn" (click)="onClickLoad10MoreItems()"  *ngIf="itemCount > items.length">
+                        <span>10개 더 보기</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 포인트 내역 end -->
+
+        <!-- 필터 팝업 start -->
+        <div class="m-popup filter-popup" [ngClass]="{active: isShowSearchFilter}">
+            <div class="m-popup-box">
+                <div class="popup-header">
+                    <h3>필터</h3>
+                    <button class="close-btn" (click)="isShowSearchFilter = false">
+                    <img src="assets/images/svg/ic_close_bold_purple_40.svg" alt="닫기 버튼">
+                    </button>
+                </div>
+                <div class="filter-calendar-wrap">
+                    <h3>조회 기간</h3>
+                    <bo-period-query [formGroup]="bsForm" [name]="'period'" [hasButtons]="true" [hasTodayBtn]="false" [has3DaysBtn]="false" [has3MonthBtn]="true">
+                        <bo-period-query-option-config [value]="'regist_date'" [label]="'유효기간'">
+                        </bo-period-query-option-config>
+                    </bo-period-query>
+                </div>
+                <div class="filter-btn-wrap">
+                    <button type="button"  class="filter-reset-btn" >초기화</button>
+                    <button class="filter-application-btn" (click)="onSubmit(bsForm.value)">적용</button>
+                </div>
+            </div>
+        </div>
+        <!-- //필터 팝업 end -->
+    </form>
+</div>

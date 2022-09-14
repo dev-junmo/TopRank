@@ -1,0 +1,51 @@
+<!-- <div class="outlet-section">
+    <!-- <div class="query-title">검색</div> -->
+
+
+       <form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+            <div class="query-wrap">
+                <div class="form-block">
+
+                    <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">검색어</div>
+                                <input type="text" class="form-control search-input item-horizontal" formControlName="search_text" >
+                            </div>
+                        </div>
+                    <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">등록일</div>
+                                <bo-period-query [formGroup]="bsForm" [name]="'period'">
+                                    <bo-period-query-option-config [value]="'regist_date'" [label]="'등록일'">
+                                    </bo-period-query-option-config>
+                                </bo-period-query>
+                            </div>
+                        </div>
+
+                    <div class="form-box">
+                        <div class="form-item">
+                            <div class="form-title">분류</div>
+
+                                <bs-select [name]="'category'"
+                                    [formGroup]="bsForm"
+                                    [optionApiUrl]="'admin/board/boardmanager/gs_seller_notice'"
+                                    [optionRoot]="'category'">
+                                </bs-select>
+                        </div>
+                    </div>
+
+                    <div class="form-box" *ngIf="!appConfig.isProvider">
+                        <div class="form-item">
+                            <div class="form-title">노출</div>
+                            <bo-group-checkbox [formGroup]="bsForm" [name]="'hidden'">
+                                <bo-checkbox-config [title]="'노출'" [value]="'0'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'미노출'" [value]="'1'"></bo-checkbox-config>
+                            </bo-group-checkbox>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+       <bo-search-button-form></bo-search-button-form>
+       </form>
+</div> -->

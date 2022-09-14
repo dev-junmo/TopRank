@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="22px" viewBox="0 0 22 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>C38963B1-2DB1-4421-BBA9-F4CCFAD95AF7</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="-4.7835727%" x2="50%" y2="104.725005%" id="linearGradient-1">
+            <stop stop-color="#CFCFCF" offset="0%"></stop>
+            <stop stop-color="#C0C0C0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="-1113.80513%" x2="50%" y2="1105.52038%" id="linearGradient-2">
+            <stop stop-color="#CFCFCF" offset="0%"></stop>
+            <stop stop-color="#C0C0C0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="-12.2734627%" x2="50%" y2="103.724465%" id="linearGradient-3">
+            <stop stop-color="#CFCFCF" offset="0%"></stop>
+            <stop stop-color="#C0C0C0" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="이벤트-혜택" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="쿠폰조회" transform="translate(-219.000000, -94.000000)">
+            <g id="Group-8" transform="translate(219.000000, 94.000000)">
+                <g id="Group-10" transform="translate(1.000000, 1.000000)">
+                    <path d="M9.20571429,0 C9.20571429,1.62190476 7.89047619,2.93619048 6.26857143,2.93619048 C4.64666667,2.93619048 3.33238095,1.62190476 3.33238095,0 L0,0 L0,19.5228571 L3.33238095,19.5228571 C3.33238095,17.9009524 4.64666667,16.5866667 6.26857143,16.5866667 C7.89047619,16.5866667 9.20571429,17.9009524 9.20571429,19.5228571 L12.5371429,19.5228571 L12.5371429,0 L9.20571429,0 Z" id="Stroke-1" stroke="url(#linearGradient-1)" stroke-width="2"></path>
+                    <path d="M1.50619048,9.76095238 L3.65952381,9.76095238" id="Stroke-3" stroke="url(#linearGradient-2)"></path>
+                    <path d="M5.15019048,9.76095238 L7.30352381,9.76095238" id="Stroke-5" stroke="url(#linearGradient-2)"></path>
+                    <path d="M8.79466667,9.76095238 L10.948,9.76095238" id="Stroke-7" stroke="url(#linearGradient-2)"></path>
+                    <path d="M12.6120952,19.7860952 L19.5025714,2.57847619 L16.4092381,1.33942857 C15.8368571,2.76990476 14.1530476,3.43847619 12.646381,2.83561905" id="Stroke-9" stroke="url(#linearGradient-3)" stroke-width="2"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

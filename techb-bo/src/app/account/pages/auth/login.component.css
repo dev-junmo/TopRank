@@ -1,0 +1,94 @@
+:host {
+    width: 100%;
+    display: inline-block;
+}
+
+.logo-wrap{
+    text-align: center;
+    width: 100%;
+    margin-top: 226px;
+}
+.form-wrap{
+    width: 576px;
+    height: 420px;
+    margin: 40px auto;
+    /* border: 1px solid rgb(153,153,153); */
+    background-color: #ededed;
+    border-radius: 8px;
+}
+.form-wrap .form-title{
+    font-size: 30px;
+    color: #414141;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 45px;
+    width: 100%;
+    background: none;
+    margin-top: 40px;}
+.form-wrap .form-title span{
+    font-weight: Medium;
+}
+.login-form{
+    width: 335px;
+    height: 367px;
+    /* background-color: #ededed; */
+    /* border: 1px solid #c4c4c4; */
+    margin: 0 80px;
+    margin-top: 36px;
+    /* padding: 11px 14px; */
+    position: relative;
+}
+.login-form div{
+    display: inline-block;
+    /* position: absolute; */
+    margin: 0;
+}
+.login-form .form-group input{
+    width: 415px;
+    height: 56px;
+    border: 1px solid #dcdcde;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    color: #babbbf;
+    font-size: 22px;
+    padding-left: 16px;
+    background-color: #ffffff;
+}
+.login-form .form-group.password{
+    /* bottom: 11px; */
+}
+.login-form .login-button{
+    /* right: 14px; */
+}
+.login-form .login-button button{
+    width: 416px;
+    height: 64px;
+    background-color: #6683cc;
+    color: #fff;
+    border: none;
+    margin-top:24px;
+    font-size: 22px;
+    border-radius: 32px;
+}
+.check-wrap {
+    width: 100%;
+    text-align: center;
+}
+.login-check {
+    display: inline-block;
+    padding: 0px 30px;
+    border-radius: 17px;
+    margin-top: 25px;
+    background-color: #ededed;
+    border: 1px solid #c4c4c4;
+}
+.password-notice{
+    letter-spacing: -0.5px;
+    font-size: 13px;
+}
+
+.notice-text {
+   margin-top: 8px; 
+}
+
+

@@ -1,0 +1,327 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="'카카오 자동발송 템플릿 관리'">
+    <bo-page-button-config id = "id-board-create-btn-"
+      [title] = "'저장하기'"
+      [styleType] = "'square-m-white-btn'"
+      (click) = "onSubmit()">
+    </bo-page-button-config>
+
+</bo-page-header>
+<form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+    <div class="section list-section">
+        <div class="list-wrap">
+            <div class="list-top">
+                <div class="left">
+                    카카오 자동발송
+                    <span class="label">카카오 자동발송 정보를 입력하세요</span>
+                </div>
+            </div>
+            <!-- <bs-title-label-ctrl
+                [title]="'카카오 자동발송'"
+                [description]="'카카오 자동발송 정보를 입력하세요'">
+            </bs-title-label-ctrl> -->
+
+
+            <!-- <div class="content-wrap">
+                <div class="sub-title-bar">
+                    <img src="/assets/img/03-3-order.svg" />
+                    배송 정보
+                </div> -->
+                <div class="content-block">
+                    <div class="content-table">
+                        <table  formArrayName="config_kko" class="no-border">
+                            <colgroup>
+                                <col width="10%" />
+                                <col width="45%" />
+                                <col width="45%" />
+                            </colgroup>
+                            <tr>
+                                <th>발송항목</th>
+                                <th>회원</th>
+                                <th>관리자/입점사</th>
+                            </tr>
+                            <tr class="white-background" *ngFor = "let item of kakaoFormArray.controls;let idx = index" [formGroupName]="idx" >
+                                <td class="align-center">
+                                    <div>{{item.value.kko_desc}}</div>
+                                </td>
+                                <td class="align-left">
+                                    <bs-checkbox [formGroup]="kakaoFromGroup(idx)"
+                                        [name]="'user_yn'"
+                                        [label]="'자동발송'"
+                                        [style]="'square-new'"
+                                        [value]="'Y'"
+                                        [uncheckedValue]="'N'">
+                                    </bs-checkbox>
+                                    <textarea class="textarea middle-vertical" formControlName="kko_msg" style="background: #EDEDED; cursor: default;" readonly></textarea>
+                                </td>
+                                <td class="align-left">
+                                    <bs-checkbox [formGroup]="kakaoFromGroup(idx)"
+                                        [name]="'admin_yn'"
+                                        [label]="'관리자'"
+                                        [style]="'square-new'"
+                                        [value]="'Y'"
+                                        [uncheckedValue]="'N'"
+                                        class="padd-btm10">
+                                    </bs-checkbox>
+                                    <bs-checkbox [formGroup]="kakaoFromGroup(idx)"
+                                        [name]="'provider_yn'"
+                                        [label]="'입점사'"
+                                        [style]="'square-new'"
+                                        [value]="'Y'"
+                                        [uncheckedValue]="'N'"
+                                        class="padd-btm10">
+                                    </bs-checkbox>
+                                    <textarea class="textarea middle-vertical" formControlName="kko_msg_admin" style="background: #EDEDED; cursor: default;" readonly></textarea>
+                                </td>
+                            </tr>
+                            <!--
+                            <tr>
+                                <td class="align-center">
+                                        입금확인<br/>
+                                        (무통장 입금 주문 건의 입금확인 및 카드결제 시)
+                                </td>
+                                <td class="align-center">
+                                        <bs-checkbox [formGroup]="bsForm"
+                                            [name]="'auto_yn'"
+                                            [label]="'자동발송'"
+
+                                            [value]="'y'">
+                                        </bs-checkbox>
+                                        <textarea class="middle-vertical"></textarea>
+                                </td>
+                                <td class="align-left">
+                                    <bs-checkbox [formGroup]="bsForm"
+                                        [name]="'auto_yn'"
+                                        [label]="'자동발송'"
+
+                                        [value]="'y'">
+                                    </bs-checkbox>
+                                    <textarea class="middle-vertical"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">
+                                        입금요청<br/>
+                                        (무통장 입금 주문 건의 주문접수시)
+                                </td>
+                                <td class="align-left">
+                                        <bs-checkbox [formGroup]="bsForm"
+                                            [name]="'auto_yn'"
+                                            [label]="'자동발송'"
+
+                                            [value]="'y'">
+                                        </bs-checkbox>
+                                        <textarea class="middle-vertical"></textarea>
+                                </td>
+                                <td class="align-left">
+                                    회원 전용
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">
+                                        상품배송 안내<br/>
+                                        (배송중으로 배송상태 변경 시)
+                                </td>
+                                <td class="align-left">
+                                        <bs-checkbox [formGroup]="bsForm"
+                                            [name]="'auto_yn'"
+                                            [label]="'자동발송'"
+
+                                            [value]="'y'">
+                                        </bs-checkbox>
+                                        <textarea class="middle-vertical"></textarea>
+                                </td>
+                                <td class="align-left">
+                                    <bs-checkbox [formGroup]="bsForm"
+                                        [name]="'auto_yn'"
+                                        [label]="'자동발송'"
+
+                                        [value]="'y'">
+                                    </bs-checkbox>
+                                    <textarea class="middle-vertical"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">
+                                        송장번호 안내<br/>
+                                        (배송중으로 배송상태 변경시)
+                                </td>
+                                <td class="align-left">
+                                        <bs-checkbox [formGroup]="bsForm"
+                                            [name]="'auto_yn'"
+                                            [label]="'자동발송'"
+
+                                            [value]="'y'">
+                                        </bs-checkbox>
+                                        <textarea class="middle-vertical"></textarea>
+                                </td>
+                                <td class="align-left">
+                                    <bs-checkbox [formGroup]="bsForm"
+                                        [name]="'auto_yn'"
+                                        [label]="'자동발송'"
+
+                                        [value]="'y'">
+                                    </bs-checkbox>
+                                    <textarea class="middle-vertical"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">
+                                        배송완료<br/>
+                                        (배송완료로 배송상태 변경 시)
+                                </td>
+                                <td class="align-left">
+                                        <bs-checkbox [formGroup]="bsForm"
+                                            [name]="'auto_yn'"
+                                            [label]="'자동발송'"
+
+                                            [value]="'y'">
+                                        </bs-checkbox>
+                                        <textarea class="middle-vertical"></textarea>
+                                </td>
+                                <td class="align-left">
+                                    <bs-checkbox [formGroup]="bsForm"
+                                        [name]="'auto_yn'"
+                                        [label]="'자동발송'"
+
+                                        [value]="'y'">
+                                    </bs-checkbox>
+                                    <textarea class="middle-vertical"></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">
+                                        주문접수<br/>
+                                        (무통장 입금 주문 건의 주문접수시)
+                                </td>
+                                <td class="align-left">
+                                        <bs-checkbox [formGroup]="bsForm"
+                                            [name]="'auto_yn'"
+                                            [label]="'자동발송'"
+
+                                            [value]="'y'">
+                                        </bs-checkbox>
+                                        <textarea class="middle-vertical"></textarea>
+                                </td>
+                                <td class="align-left">
+                                    <bs-checkbox [formGroup]="bsForm"
+                                        [name]="'auto_yn'"
+                                        [label]="'자동발송'"
+
+                                        [value]="'y'">
+                                    </bs-checkbox>
+                                    <textarea class="middle-vertical"></textarea>
+                                </td>
+                            </tr>                  -->
+                            <!-- <tr>
+                                <td class="align-left">택배 (착불)</td>
+                                <td class="align-left">미사용 - 택배사 상동</td>
+                            </tr> -->
+                            <!-- <tr>
+                                <td class="align-left">퀵서비스 (착불)</td>
+                                <td class="align-left">미사용</td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">직접수령</td>
+                                <td class="align-left">미사용</td>
+                            </tr>
+                            <tr>
+                                <td class="align-left" rowspan="4">
+
+                                    <input type="radio" id="shipping_policy_goods" value="goods" name="shipping_policy" formControlName="shipping_policy" />
+                                    <label for="shipping_policy_goods" class="check-label">
+                                            개별 배송비 정책 (부피, 무게 등으로 개별 포장으로 보내는 상품들)
+                                    </label>
+                                </td>
+                                <td class="align-left">택배 (선불)</td>
+                                <td class="align-left">
+                                    <input type="radio" id="goods_shipping_policy_unlimit" value="unlimit" name="goods_shipping_policy" formControlName="goods_shipping_policy" />
+                                    <label for="goods_shipping_policy_unlimit" class="check-label">
+                                        개수와 상관없이 배송비 <input type="number" class="small-input" name="unlimit_shipping_price" formControlName="unlimit_shipping_price">
+                                    </label>
+                                    <input type="radio" id="goods_shipping_policy_limit" value="limit" name="goods_shipping_policy" formControlName="goods_shipping_policy" />
+                                    <label for="goods_shipping_policy_limit" class="check-label">
+                                        포장단위는 상품
+                                        <input type="text" class="small-input" name="limit_shipping_ea" formControlName="limit_shipping_ea">
+                                        개이며, 배송비
+                                        <input type="text" class="small-input" name="limit_shipping_price" formControlName="limit_shipping_price">
+                                        입니다.<br/>
+                                        또한 포장 단위별 추가 배송비
+                                        <input type="text" class="small-input" name="limit_shipping_subprice" formControlName="limit_shipping_subprice">
+                                        입니다.
+                                    </label>
+                                </td>
+                            </tr> -->
+                            <!-- <tr>
+                                <td class="align-left">택배 (착불)</td>
+                                <td class="align-left">미사용 - 택배사 상동</td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">퀵서비스 (착불)</td>
+                                <td class="align-left">미사용</td>
+                            </tr>
+                            <tr>
+                                <td class="align-left">직접수령</td>
+                                <td class="align-left">미사용</td>
+                            </tr> -->
+                        </table>
+                    </div>
+                </div>
+            <!-- </div> -->
+            <!-- <div class="content-box">
+                <div class="content-title">
+                    <img src="/assets/img/group-6.svg"/>템플릿 종류 :
+                </div>
+                <div class="content">
+                <bs-select [name]="'email_code'" [formGroup]="bsForm" [defaultValue]="'주문접수'">
+                        <bs-option-config [value]= "'order'" [label] = "'주문>주문접수'"></bs-option-config>
+                        <bs-option-config [value]= "'settle'" [label] = "'주문>결제완료'"></bs-option-config>
+                        <bs-option-config [value]= "'released'" [label] = "'주문>출고완료'"></bs-option-config>
+                        <bs-option-config [value]= "'delivery'" [label] = "'주문>배송완료'"></bs-option-config>
+                        <bs-option-config [value]= "'cancel'" [label] = "'주문>결제취소'"></bs-option-config>
+                        <bs-option-config [value]= "'refund'" [label] = "'주문>환불완료'"></bs-option-config>
+                        <bs-option-config [value]= "'cs'" [label] = "'고객센터>1:1문의'"></bs-option-config>
+                </bs-select>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="content-title">
+                    <img src="/assets/img/group-6.svg"/>보내는 메일 :
+                </div>
+                <div class="content">
+
+                </div>
+            </div>
+            <div class="content-box">
+                    <div class="content-title">
+                        <img src="/assets/img/group-6.svg"/>발송 대상 :
+                    </div>
+                    <div class="content">
+
+                    </div>
+            </div>
+            <div class="content-box">
+                    <div class="content-title">
+                        <img src="/assets/img/group-6.svg"/>제목 :
+                    </div>
+                    <div class="content">
+                            <bs-input [name]="'title'" [formGroup]="bsForm" [placeholder]="' 제목을 입력하세요.'" [style]="'big-input'" [required]="true"></bs-input>
+
+                    </div>
+            </div>
+            <div class="content-box">
+                <div class="content-title">
+                    <img src="/assets/img/group-6.svg"/>내용 :
+                </div>
+                <div class="content">
+                    <bo-editor [name]="'contents'" [formGroup]="bsForm" ([content])= "contents"  #editor1 ></bo-editor>
+                </div>
+            </div>
+        </div> -->
+            <bo-submit-button-form
+                [hasCancelBtn]="true"
+                (clickCancel)="gotoListPage()">
+            </bo-submit-button-form>
+        </div>
+    </div>
+</form>

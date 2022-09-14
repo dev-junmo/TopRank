@@ -1,0 +1,634 @@
+<div class="web" *ifDesktop>
+    <div class="title-area">
+        <div class="title-wrap">
+            <h2 class="title">이용 중인 상품</h2>
+        </div>
+        <nav>
+            <ol class="location-history">
+                <li routerLink="/main/home">HOME</li>
+                <li>이용 중인 상품</li>
+            </ol>
+        </nav>
+    </div>
+    <!-- //컨텐츠 타이틀 영역 end -->
+
+    <div class="subscription-box box">
+        <product-query-form (query)="reloadWithQuery($event)"></product-query-form>
+        <data-table #bsDatatable
+            class="subscription-table"
+            headerTitle="datatable"
+            [header]="true"
+            [items]="items"
+            [itemCount]="itemCount"
+            [indexColumn]="false"
+            [selectColumn]="true"
+            [isShowEmptyContent]="true"
+            [tableWidth]="'1160px'"
+            [sortBy] = "'product_seq'"
+            [limit]="20"
+            (reload)="reloadItems($event)"
+            >
+            <!-- 선택삭제 버튼-->
+            <bs-header-button-config id = "id-board-content-list-deleteall-btn1"
+                [title] = "'선택 연장신청'"
+                [styleType] = "'tb-choice-btn'"
+                [enabled]="true"
+                (click) = "onClickRequstExtendBtn($event)">
+            </bs-header-button-config>
+            <bs-header-button-config id = "id-board-content-list-deleteall-btn2"
+                [title] = "'선택 초기화'"
+                [styleType] = "'tb-choice-btn'"
+                [enabled]="true"
+                (click) = "onClickResetProductsBtn($event)">
+            </bs-header-button-config>
+            <bs-header-button-config id = "id-board-content-list-deleteall-btn3"
+                [title] = "'선택 삭제'"
+                [styleType] = "'tb-choice-btn'"
+                [enabled]="true"
+                (click) = "onClickRemoveProductsBtn($event)">
+            </bs-header-button-config>
+            <data-table-column
+                [property]="'productMidText'"
+                [header]="'상품 고유번호'"
+                [sortable]="false"
+                [width]="80">
+                <ng-template #dataTableHeader let-item="item">
+                    <span>상품<br>고유번호</span>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'goods_platform'"
+                [header]="'플랫폼'"
+                [sortable]="false"
+                [width]="52">
+                <ng-template #dataTableHeader let-item="item">
+                    <div class="table-th">플랫폼</div>
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <div>
+                        <img *ngIf="item.goods.goods_platform == '네이버'" (click)="onClickPlatform(item)" class="clickable" src="assets/images/subscription/thum_navershoping_24.png" alt="네이버">
+                        <img *ngIf="item.goods.goods_platform == '네이버쇼핑'" (click)="onClickPlatform(item)" class="clickable" src="assets/images/subscription/thum_navershoping_24.png" alt="네이버쇼핑">
+                        <img *ngIf="item.goods.goods_platform == '쿠팡'" (click)="onClickPlatform(item)" class="clickable" src="assets/images/subscription/thum_coupang_24.png" alt="쿠팡">
+                    </div>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'goods_name'"
+                [header]="'판매자 상품명'"
+                [sortable]="true"
+                [width]="360"
+                [align]="'left'">
+                <ng-template #dataTableCell let-item="item">
+                    <div style="padding-left: 10px;"><span>{{item.goods.goods_name}}</span></div>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'keyword'"
+                [header]="'순위 측정 키워드'"
+                [sortable]="false"
+                [width]="144">
+            </data-table-column>
+            <data-table-column
+                [property]="'product_type'"
+                [header]="'상품 종류'"
+                [sortable]="false"
+                [width]="64">
+                <ng-template #dataTableCell let-item="item">
+                    <div class="kinds">
+                        <!-- A -->
+                        <img *ngIf="item.product_type == 'A' && item.product_period == 7" src="assets/images/subscription/ic_product_a_d7_24.png" alt="">
+                        <img *ngIf="item.product_type == 'A' && item.product_period == 15" src="assets/images/subscription/ic_product_a_d15_24.png" alt="">
+                        <img *ngIf="item.product_type == 'A' && item.product_period == 30" src="assets/images/subscription/ic_product_a_d30_24.png" alt="">
+                        <img *ngIf="item.product_type == 'A' && item.product_period == 90" src="assets/images/subscription/ic_product_a_d90_24.png" alt="">
+                        <!-- B -->
+                        <img *ngIf="item.product_type == 'B' && item.product_period == 7" src="assets/images/subscription/ic_product_b_d7_24.png" alt="">
+                        <img *ngIf="item.product_type == 'B' && item.product_period == 15" src="assets/images/subscription/ic_product_b_d15_24.png" alt="">
+                        <img *ngIf="item.product_type == 'B' && item.product_period == 30" src="assets/images/subscription/ic_product_b_d30_24.png" alt="">
+                        <img *ngIf="item.product_type == 'B' && item.product_period == 90" src="assets/images/subscription/ic_product_b_d90_24.png" alt="">
+                        <!-- C -->
+                        <img *ngIf="item.product_type == 'C' && item.product_period == 7" src="assets/images/subscription/ic_product_c_d7_24.png" alt="">
+                        <img *ngIf="item.product_type == 'C' && item.product_period == 15" src="assets/images/subscription/ic_product_c_d15_24.png" alt="">
+                        <img *ngIf="item.product_type == 'C' && item.product_period == 30" src="assets/images/subscription/ic_product_c_d30_24.png" alt="">
+                        <img *ngIf="item.product_type == 'C' && item.product_period == 90" src="assets/images/subscription/ic_product_c_d90_24.png" alt="">
+                        <div class="kinds-description">
+                            <span>기간 <strong>{{item.product_period}}일</strong></span>
+                            <span>혜택
+                                <strong *ngIf="item.product_type == 'C'">매일 10분마다 순위를 확인하실 수 있습니다.</strong>
+                                <strong *ngIf="item.product_type == 'B'">매일 30분마다 순위를 확인하실 수 있습니다.</strong>
+                                <strong *ngIf="item.product_type == 'A'">1일 1회 순위를 확인하실 수 있습니다.</strong>
+                            </span>
+                        </div>
+                    </div>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'product_rank'"
+                [header]="'순위'"
+                [sortable]="false"
+                [width]="88">
+                <ng-template #dataTableCell let-item="item">
+                    <div class="no-comfirm-rank" *ngIf="item.state !== 'confirm' || !item.product_rank">-</div>
+                    <div [class]="item.ranking_change >= 0 ? 'trend uptrend' : 'trend downtrend'"  *ngIf="item.state == 'confirm' && item.product_rank" (click)="onClickPopup('ranking', item.product_seq)">
+                        {{item.product_rank}}
+                        <span class="ic-ranking"></span>
+                    </div>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'product_period'"
+                [header]="'잔여일'"
+                [sortable]="true"
+                [width]="80">
+                <ng-template #dataTableCell let-item="item">
+                    <div class="period-wrap" *ngIf="item.state == 'ready'">
+                        <span class="not-approved">승인대기</span>
+                    </div>      
+                    <div class="period-wrap" *ngIf="item.state == 'cancel'">
+                        <span class="not-approved">미승인</span>
+                    </div>                 
+                    <div class="period-wrap" *ngIf="item.state == 'confirm'">
+                        <span [ngClass]="{'week': item?.remainingDays <= 3}" *ngIf="item?.remainingDays > 0">{{item.remainingDays}}일</span>
+                        <span class="expiration" *ngIf="item?.remainingDays <= 0">기간만료</span>
+                        <div class="expiration-description">
+                            <span>~{{item.end_date | date: 'yy-MM-dd'}}</span>
+                            <span *ngIf="item?.remainingDays > 0">({{item.remainingDays}}일)</span>
+                            <span *ngIf="item?.remainingDays <= 0">(기간만료)</span>
+                        </div>
+                    </div>                 
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'product_mid'"
+                [header]="'가격비교MID 콘텐츠MID'"
+                [sortable]="false"
+                [width]="132">
+                <ng-template #dataTableHeader let-item="item">
+                    <span>가격비교MID<br>콘텐츠MID</span>
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <div><p>{{item.price_mid}}</p><p>{{item.content_mid}}</p></div>
+                </ng-template>
+            </data-table-column>
+            <data-table-column
+                [property]="'product_detail'"
+                [header]="'상세 분석 보기'"
+                [sortable]="false"
+                [width]="86">
+                <ng-template #dataTableHeader let-item="item">
+                    <span>상세<br>분석 보기</span>
+                </ng-template>
+                <ng-template #dataTableCell let-item="item">
+                    <button
+                        class="detail-btn"
+                        [disabled]="item.state !== 'confirm'"
+                        routerLink="/main/section/subscription/products/product-detail/{{item.product_seq}}">
+                    </button>
+                    <!-- <a class="order-num">{{item.user_name}}<span *ngIf="item.nickname">({{item.nickname}})</span> </a> -->
+                </ng-template>
+            </data-table-column>
+            <ng-template #emptyContentTemplate *ngIf="isQueryFormRequest == false && isEmpty">
+                <div class="product-empty">
+                    <img src="assets/images/subscription/img_subscription_empty.png" alt="">
+                    <p>
+                    현재 이용 중인 상품이 없습니다. <br>
+                    다양하고 강력한 TOPRANK의 분석을 이용해보세요.
+                    </p>
+                    <a href="" routerLink="/main/section/ranking-search">
+                        상품순위 분석 하러 가기 
+                        <img src="assets/images/dashboard/ic_arrow_right_purple_24.png" alt="">
+                    </a>
+                </div>
+            </ng-template>
+            <ng-template #emptyContentTemplate *ngIf="isQueryFormRequest == true">
+                <div class="search-null">
+                    <img src="assets/images/subscription/img_question_gray_64.png" alt="">
+                    <p>
+                    해당 키워드의 검색 결과가 없습니다. <br>
+                    입력하신 검색어를 확인해 주세요.
+                    </p>
+                </div>
+            </ng-template>
+        </data-table>
+    </div>
+</div>
+
+<!-- mobile -->
+
+<div class="mobile" id="wrap" *ifMobile>
+    <form  [formGroup]="bsForm" (submit)="reloadWithQuery(bsForm.value)">
+        <div id="contents">
+            <!-- contents header start -->
+            <div class="contents-header">
+                <div class="contents-title">
+                    <img src="assets/images/svg/ic_subscription_color_40.svg" alt="">
+                    <h2>이용 중인 상품</h2>
+                </div>
+            </div>
+            <!-- //contents header end -->
+
+                <!-- 상품 검색 start -->
+                <div class="product-search">
+                    <div class="filter-search-box">
+                        <input type="search" formControlName="keyword" placeholder="찾고 싶은 상품을 검색해보세요.">
+                        <button type="submit" class="search-btn">
+                            <img src="assets/images/svg/ic_search_purple_40.svg" alt="검색">
+                        </button>
+                    </div>
+                    <button class="filter-btn" type="button" (click)="onClickSearchFilterBtn()">
+                        <img src="assets/images/svg/ic_sorting_purple_32.svg" alt="필터">
+                    </button>
+                </div>
+                <!-- //상품 검색 end -->
+
+                <div class="boundary-line"></div>
+
+                <!-- 셀렉터 박스 옵션 start -->
+                <div class="select-option-wrap">
+                    <div class="selectbox select-option">
+                        <div class="use-whether">
+                            <div class="label">사용 여부<span>{{getFormValueAsText('enabled', bsForm.value)}}</span><img src="assets/images/svg/ic_unfold_black_24.svg" alt="">
+                                <select name="use-whether" formControlName="enabled" class="use-whether-box" (change)="reloadWithQuery(bsForm.value)">
+                                    <option value="" selected>전체</option>
+                                    <option value="Y">사용</option>
+                                    <option value="N">미사용</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="auto-extension">
+                            <div class="label">자동 연장 여부<span>{{getFormValueAsText('auto_extension', bsForm.value)}}</span><img src="assets/images/svg/ic_unfold_black_24.svg" alt="">
+                                <select name="auto-extension" formControlName="auto_extension" class="auto-extension-box" (change)="reloadWithQuery(bsForm.value)">
+                                    <option value="" selected>전체</option>
+                                    <option value="Y">자동</option>
+                                    <option value="N">수동</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="product-name">
+                            <div class="label">판매자 상품명<span>{{getFormValueAsText('goods_seq', bsForm.value)}}</span><img src="assets/images/svg/ic_unfold_black_24.svg" alt="">
+                                <select name="product-name" formControlName="goods_seq" class="product-name-box" (change)="reloadWithQuery(bsForm.value)">
+                                    <option value="" selected>전체</option>
+                                    <option *ngFor="let data of goodsSelectData;" [value]="data.goods_seq">{{data.goods_name}}</option>
+                                    <!-- <option value="제주농부 산지직송..">제주농부 산지직송</option> -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- //셀렉터 박스 옵션 end -->
+            <!-- 이용중인 상품 목록 start -->
+            <div class="using-product-list-wrap">
+                <div class="product-all-count">
+                    전체 <span>{{itemCount}}</span>개
+                </div>
+                <span class="precautions">기간 만료된 상품은 3일 뒤 자동으로 삭제됩니다.</span>
+                <!-- 폼쿼리 검색 결과가 없을 경우 -->
+                <div class="using-product-list result-null" *ngIf="isQueryFormRequest && isEmpty">
+                    <img src="assets/images/svg/img_question_gray_64.svg" alt="">
+                    <p>해당 키워드의 검색 결과가 없습니다. <br>
+                        입력하신 검색어를 확인해 주세요.</p>
+                </div>
+
+                <!-- 이용중인 상품이 없는 경우 -->
+                <div class="using-product-list null" *ngIf="!isQueryFormRequest && isEmpty">
+                    <img src="assets/images/svg/img_subscription_empty.svg" alt="">
+                    <p>현재 이용 중인 상품이 없습니다. <br>
+                        다양하고 강력한 TOPRANK의 분석을 이용해보세요.</p>
+                    <a href="" routerLink="/main/seciotn/ranking-search">
+                        상품순위 분석 하러 가기
+                        <img src="assets/images/svg/ic_arrow_right_purple_24.svg" alt="">
+                    </a>
+                </div>
+
+                <!-- 상품 리스트  -->
+                <div class="using-product-list" *ngIf="items && items.length > 0">
+                    <!-- 리스트 아이템 { -->  
+                    <div class="using-product-box box" *ngFor="let item of items">
+                        <ul>
+                            <li>
+                                <b class="product-subject">상품 고유번호</b>
+                                <div class="product-contents"
+                                    (click)="onClickProductDetail(item)"
+                                >
+                                    <span>{{item.product_mid}}</span>
+                                    <img src="assets/images/svg/ic_arrow_right_black_32.svg" alt="">
+                                </div>
+                            </li>
+                            <li>
+                                <b class="product-subject">키워드</b>
+                                <div class="product-contents">
+                                    <img *ngIf="item.goods.goods_platform == '네이버'" (click)="onClickPlatform(item)" class="clickable" src="assets/images/subscription/thum_navershoping_24.png" alt="네이버">
+                                    <img *ngIf="item.goods.goods_platform == '네이버쇼핑'" (click)="onClickPlatform(item)" class="clickable" src="assets/images/subscription/thum_navershoping_24.png" alt="네이버쇼핑">
+                                    <img *ngIf="item.goods.goods_platform == '쿠팡'" (click)="onClickPlatform(item)" class="clickable" src="assets/images/subscription/thum_coupang_24.png" alt="쿠팡">
+                                    <p>{{item.keyword}}</p>
+                                </div>
+                            </li>
+                            <li>
+                                <b class="product-subject">상품/순위</b>
+                                <div class="product-contents">
+                                    <div class="left-contents">
+                                        <!-- A -->
+                                        <img *ngIf="item.product_type == 'A' && item.product_period == 7" src="assets/images/svg/ic_product_a_d7_24.svg" alt="">
+                                        <img *ngIf="item.product_type == 'A' && item.product_period == 15" src="assets/images/svg/ic_product_a_d15_24.svg" alt="">
+                                        <img *ngIf="item.product_type == 'A' && item.product_period == 30" src="assets/images/svg/ic_product_a_d30_24.svg" alt="">
+                                        <img *ngIf="item.product_type == 'A' && item.product_period == 90" src="assets/images/svg/ic_product_a_d90_24.svg" alt="">
+                                        <!-- B -->
+                                        <img *ngIf="item.product_type == 'B' && item.product_period == 7" src="assets/images/svg/ic_product_b_d7_24.svg" alt="">
+                                        <img *ngIf="item.product_type == 'B' && item.product_period == 15" src="assets/images/svg/ic_product_b_d15_24.svg" alt="">
+                                        <img *ngIf="item.product_type == 'B' && item.product_period == 30" src="assets/images/svg/ic_product_b_d30_24.svg" alt="">
+                                        <img *ngIf="item.product_type == 'B' && item.product_period == 90" src="assets/images/svg/ic_product_b_d90_24.svg" alt="">
+                                        <!-- C -->
+                                        <img *ngIf="item.product_type == 'C' && item.product_period == 7" src="assets/images/svg/ic_product_c_d7_24.svg" alt="">
+                                        <img *ngIf="item.product_type == 'C' && item.product_period == 15" src="assets/images/svg/ic_product_c_d15_24.svg" alt="">
+                                        <img *ngIf="item.product_type == 'C' && item.product_period == 30" src="assets/images/svg/ic_product_c_d30_24.svg" alt="">
+                                        <img *ngIf="item.product_type == 'C' && item.product_period == 90" src="assets/images/svg/ic_product_c_d90_24.svg" alt="">
+                                        <span class="ranking-num up" *ngIf="item?.state == 'confirm'">{{item.product_rank}}위 <img src="assets/images/svg/ic_ascending_red_18.svg" alt=""></span>
+                                        <!-- <span class="ranking-num down">{{item.product_rank}}위 <img src="assets/images/svg/ic_ascending_blue_18.svg" alt=""></span> -->
+                                        <span class="ranking-num" *ngIf="item?.state !== 'confirm'">-</span>
+                                    </div>
+                                    <button class="product-rank-btn" (click)="onClickRankingPopup()" [disabled]="item?.state == 'cancel' || item?.state == 'ready'">
+                                        <img src="assets/images/svg/ic_log_gray_24.svg" alt="">
+                                    </button>
+                                </div>
+                            </li>
+                            <li>
+                                <b class="product-subject">잔여일</b>
+                                <div class="product-contents">
+                                    <span class="no-period" *ngIf="item?.state == 'ready'">승인대기</span>
+                                    <span class="no-period" *ngIf="item?.state == 'cancel'">미승인</span>
+
+                                    <span [ngClass]="{weeks: item?.remainingDays <= 3}" *ngIf="item?.remainingDays > 0 && item?.state == 'confirm'">{{item.remainingDays}}일</span>
+                                    <span class="no-period" *ngIf="item?.remainingDays <= 0 && item?.state == 'confirm'">기간만료</span>
+                                </div>
+                            </li>
+                            <li>
+                                <b class="product-subject">상품 코드</b>
+                                <div class="product-contents">
+                                    <img *ngIf="item.price_mid" src="assets/images/svg/chip_comparison-shopping_naver_42.svg" alt="가격비교">
+                                    <img *ngIf="!item.price_mid" src="assets/images/svg/chip_comparison-shopping_naver_null_42.svg" alt="가격비교">
+                                    <span>{{item.content_mid}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- } list item -->
+                </div>
+                <button class="five-more box" (click)="onClickLoad5MoreItems()" *ngIf="itemCount > items.length">5개 더 보기</button>
+            </div>
+            <!-- //이용중인 상품 목록 end -->
+        </div>
+        <!-- 필터 팝업 start -->
+        <div class="m-popup filter-popup" [ngClass]="{active: isShowSearchFilter}" >
+            <div class="m-popup-box" >
+                <div class="popup-header">
+                    <h3>필터</h3>
+                    <button class="close-btn" (click)="isShowSearchFilter = false">
+                        <img src="assets/images/svg/ic_close_bold_purple_40.svg" alt="닫기 버튼">
+                    </button>
+                </div>
+                <div class="filter-calendar-wrap">
+                    <h3>조회 기간</h3>
+                    <div class="filter-calendar">
+                        <bo-period-query [formGroup]="bsForm" [name]="'period'" [hasButtons]="false">
+                            <bo-period-query-option-config [value]="'start_date'" [label]="'유효기간'">
+                            </bo-period-query-option-config>
+                        </bo-period-query>
+                    </div>
+                </div>
+                <!-- <div class="sort-wrap">
+                    <h3>정렬</h3>
+                    <ul>
+                        <li>
+                            <label for="check1">
+                                <input type="radio" value="period" fromControlName="sort_by_position" id="check1" name="check" checked>
+                                <span class="checkbox"></span>
+                                <p>잔여일 만료 임박 순</p>
+                            </label>
+                        </li>
+                        <li>
+                            <label for="check2">
+                                <input type="radio" id="check2" fromControlName="sort_by_position" value="keyword" name="check">
+                                <span class="checkbox"></span>
+                                <p>키워드 가나다순</p>
+                            </label>
+                        </li>
+                        <li>
+                            <label for="check3">
+                                <input type="radio" id="check3" fromControlName="sort_by_position" value="ranking_rise" name="check">
+                                <span class="checkbox"></span>
+                                <p>순위 상승 폭이 높은 순</p>
+                            </label>
+                        </li>
+                        <li>
+                            <label for="check4">
+                                <input type="radio" id="check4" fromControlName="sort_by_position" value="ranking_fall" name="check">
+                                <span class="checkbox"></span>
+                                <p>순위 하락 폭이 높은 순</p>
+                            </label>
+                        </li>
+                        <li>
+                            <label for="check5">
+                                <input type="radio" id="check5" fromControlName="sort_by_position" value="update" name="check">
+                                <span class="checkbox"></span>
+                                <p>최신순</p>
+                            </label>
+                        </li>
+                    </ul>
+                </div>  -->
+                <div class="filter-btn-wrap">
+                    <button type="button" class="filter-reset-btn" (click)="onClickResetFilter()">초기화</button>
+                    <button class="filter-application-btn" (click)="onSubmit(bsForm.value)">적용</button>
+                </div> 
+            </div>
+        </div>
+        <!-- 필터 팝업 end -->
+    
+    <!-- 순위 변동 팝업 start -->
+    <div class="m-popup change-rank-popup" [ngClass]="{active: isShowRankingPopup}">
+        <div class="m-popup-box">
+            <div class="popup-header">
+                <h3>순위 변동 내역</h3>
+                <button class="close-btn" (click)="isShowRankingPopup = false">
+                    <img src="assets/images/svg/ic_close_bold_purple_40.svg" alt="닫기 버튼">
+                </button>
+            </div>
+            <div class="init-registration">
+                <h3>최초 등록</h3>
+                <span class="rank-date">[2022-02-01 12:59]</span>
+                <b>167위</b>
+            </div>
+            <div class="registered-ranking">
+                <div class="registered-ranking-inner">
+                    <ul>
+                        <li>
+                            <div class="ranking-info">
+                                <span class="rank-date">[2022-04-13 12:59]</span>
+                                <b>100위</b>
+                            </div>
+                            <div class="change-rank up">
+                                50위
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ranking-info">
+                                <span class="rank-date">[2022-04-12 23:59]</span>
+                                <b>150위</b>
+                            </div>
+                            <div class="change-rank up">
+                                197위
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ranking-info">
+                                <span class="rank-date">[2022-04-11 12:59]</span>
+                                <b>347위</b>
+                            </div>
+                            <div class="change-rank down">
+                                147위
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ranking-info">
+                                <span class="rank-date">[2022-04-10 23:59]</span>
+                                <b>200위</b>
+                            </div>
+                            <div class="change-rank up">
+                                300위
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ranking-info">
+                                <span class="rank-date">[2022-04-09 12:59]</span>
+                                <b>500위</b>
+                            </div>
+                            <div class="change-rank up">
+                                47위
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ranking-info">
+                                <span class="rank-date">[2022-04-08 12:59]</span>
+                                <b>547위</b>
+                            </div>
+                            <div class="change-rank up">
+                                452위
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ranking-info">
+                                <span class="rank-date">[2022-04-07 12:59]</span>
+                                <b>999위</b>
+                            </div>
+                            <div class="change-rank up">
+                                51위
+                            </div>
+                        </li>
+                        <li>
+                            <div class="ranking-info">
+                                <span class="rank-date">[2022-04-07 12:59]</span>
+                                <b>999위</b>
+                            </div>
+                            <div class="change-rank up">
+                                51위
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        <button class="rank-copy-btn">복사</button>
+        </div>
+    </div>
+    <!-- 순위 변동 팝업 end -->
+    </form>
+</div>
+
+<!-- 순위 변동 팝업 start --> 
+<div class="cm-popup ranking-popup" [ngClass]="{active: isShowPopup}">
+    <div class="popup-box box">
+    <div class="popup-header">
+        <h3>순위 변동 내역</h3>
+        <button class="close" (click)="isShowPopup = false">
+            <img src="assets/images/dashboard/ic_close_black_40.png" alt="닫기 버튼">
+        </button>
+    </div>
+    <div class="first-registration">
+        <span>최초 등록</span>
+        <span class="date">[2022-02-01 12:59]</span>
+        <strong>167위</strong>
+    </div>
+    <div class="popup-contents">
+        <ul *ngIf="rankPopupType == 'ranking'">
+            <li>
+                <div class="date">[2022-04-13 12:59]</div>
+                <div class="variance">150위 <span>→</span> <strong>100위</strong></div>
+                <div class="trend uptrend"><strong>50위 상승</strong><img src="assets/images/subscription/ic_ascending_red_18.png" alt=""></div>
+                <div class="trend uptrend"><strong>50위 상승</strong><img src="assets/images/subscription/ic_ascending_red_18.png" alt=""></div>
+                <!-- [class]="item.ranking_change >= 0 ? 'pill up' : 'pill down'" -->
+            </li>
+            <li>
+                <div class="date">[2022-04-12 23:59]</div>
+                <div class="variance">347위 <span>→</span> <strong>150위</strong></div>
+                <div class="trend uptrend"><strong>197위 상승</strong><img src="assets/images/subscription/ic_ascending_red_18.png" alt=""></div>
+            </li>
+            <li>
+                <div class="date">[2022-04-11 12:59]</div>
+                <div class="variance">200위 <span>→</span> <strong>347위</strong></div>
+                <div class="trend downtrend"><strong>147위 하락</strong><img src="assets/images/subscription/ic_decending_blue_18.png" alt=""></div>
+            </li>
+            <li>
+                <div class="date">[2022-04-10 23:59]</div>
+                <div class="variance">500위 <span>→</span> <strong>200위</strong></div>
+                <div class="trend uptrend"><strong>300위 상승</strong><img src="assets/images/subscription/ic_ascending_red_18.png" alt=""></div>
+            </li>
+            <li>
+                <div class="date">[2022-04-09 12:59]</div>
+                <div class="variance">547위 <span>→</span> <strong>500위</strong></div>
+                <div class="trend uptrend"><strong>47위 상승</strong><img src="assets/images/subscription/ic_ascending_red_18.png" alt=""></div>
+            </li>
+            <li>
+                <div class="date">[2022-04-08 23:59]</div>
+                <div class="variance">999위 <span>→</span> <strong>547위</strong></div>
+                <div class="trend uptrend"><strong>452위 상승</strong><img src="assets/images/subscription/ic_ascending_red_18.png" alt=""></div>
+            </li>
+            <li>
+                <div class="date">[2022-04-07 12:59]</div>
+                <div class="variance">1050위 <span>→</span> <strong>999위</strong></div>
+                <div class="trend uptrend"><strong>51위 상승</strong><img src="assets/images/subscription/ic_ascending_red_18.png" alt=""></div>
+            </li>
+        </ul>
+        <ul *ngIf="rankPopupType == 'reset'">
+            <li>
+                <div class="date">[2022-05-13 19:59]</div>
+                <p class="data-reset">데이터가 초기화되었습니다.</p>
+            </li>
+        </ul>
+    </div>
+    <div class="copy-btn">복사</div>
+    </div>
+</div>
+<!-- //순위 변동 팝업 end --> 
+<!-- 선택 초기화 팝업 start -->
+<div class="cm-popup reset-popup">
+    <div class="popup-box box">
+    <div class="popup-header">
+        <h3>순위 변동 내역</h3>
+        <button class="close">
+        <img src="assets/images/dashboard/ic_close_black_40.png" alt="닫기 버튼">
+        </button>
+    </div>
+    <div class="first-registration">
+        <span>최초 등록</span>
+        <span class="date">[2022-02-01 12:59]</span>
+        <strong>167위</strong>
+    </div>
+    <div class="popup-contents">
+        <ul>
+        <li>
+            <div class="date">[2022-05-13 19:59]</div>
+            <p class="data-reset">데이터가 초기화되었습니다.</p>
+        </li>
+        </ul>
+    </div>
+    <div class="copy-btn">복사</div>
+    </div>
+</div>
+<!-- //선택 초기화 팝업 end -->

@@ -1,0 +1,24 @@
+<ul class="board-side">
+  <li *ngFor="let item of sideMenu">
+    <div class="side-menu-box" (click)="showContent(item)" [routerLink]='item.url'>
+      {{item.title}}
+      <div class="menu-btn" [hidden]="!item.show || !item.items">
+          <button [ngClass]="{'sub-menu-area' : isOpen}"><img src="/assets/img/side-menu-btn2.svg"></button>
+      </div>
+      <div class="menu-btn"[hidden]="item.show || !item.items">
+          <button [ngClass]="{'sub-menu-area' : !item.show}"><img src="/assets/img/side-menu-btn1.svg"></button>
+      </div>
+      <div class="top-menu-alarm" *ngIf="item.notiCount && item.notiCount !=0">
+          <div class="top-menu-number">{{item.notiCount}}</div>
+      </div>
+    </div>
+
+    <div *ngIf="item.items" class="sub-menu-area" [hidden]="!item.show">
+      <ul class="board-subside">
+        <li class="subside-area" *ngFor="let subitem of item.items; " [routerLink]='subitem.url' routerLinkActive ="subitem.selected == active">{{subitem.title}}</li>
+      </ul>
+    </div>
+  </li>
+  
+</ul>
+

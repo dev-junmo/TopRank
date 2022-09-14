@@ -1,0 +1,118 @@
+<div class="web" *ifDesktop>
+    <!-- 컨텐츠 타이틀 영역 start -->
+    <div class="title-area">
+        <div class="title-wrap">
+        <h2 class="title">포인트 충전하기</h2>
+        <!-- <span class="sub-title">내가 궁금한 상품 순위, 실시간으로 확인해보세요.</span> -->
+        </div>
+    </div>
+    <!-- //컨텐츠 타이틀 영역 end -->
+    
+    <!-- 구매 완료 start -->
+    <div class="purchase-complete">
+        <img src="assets/images/payment/img_check_pink_64.png" alt="완료">
+        <strong>결제 요청이 완료되었습니다.</strong>
+        <p>
+            결제 완료를 위해 <span>{{expiredDate}}</span>까지 <span>{{queryParams.totalPrice | number}}원</span>을 입금해주세요.<br>
+            미입금 시 자동 취소됩니다.
+        </p>
+        <div class="purchase-complete-box">
+            <ul>
+                    <li>
+                    <span>결제 수단</span>
+                    <span class="value">무통장 입금</span>
+                    </li>
+                <li>
+                    <span>입금 은행</span>
+                    <span class="value">
+                        {{queryParams.bankAccount}}
+                        <input #copytoclipboardInput type="text" [value]="queryParams.bankAccount" hidden>
+                        <button class="copy-btn" (click)="appService.copyToClipboard(copytoclipboardInput, queryParams.bankAccount)">
+                            <img src="assets/images/payment/ic_copy_gray_24.png" alt="복사 버튼">
+                        </button>
+                    </span>
+                </li>
+                <li>
+                    <span>예금주</span>
+                    <span class="value">{{queryParams.bankAccountName}}</span>
+                    </li>
+                <li>
+                    <span>최종 결제 금액</span>
+                    <span class="value">
+                        {{queryParams.totalPrice | number}}원
+                        <button routerLink="/main/section/mypage/point-charge-history">충전내역 보기</button>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <button class="check-btn" routerLink="/main">확인</button>
+    </div>
+    <!-- //구매 완료 end -->
+    <!-- copy-toast-popup start -->
+    <div class="copy-toast-popup">
+        복사되었습니다.
+    </div>
+    <!-- copy-toast-popup end -->
+</div>
+
+<div class="mobile" *ifMobile>
+    <!-- contents start -->
+    <div id="contents">
+        <!-- 헤더 영역 start -->
+        <div class="contents-header">
+            <div class="contents-title">
+                <img src="assets/images/svg/ic_point_payment_color_40.svg" alt="">
+                <h2>포인트 충전하기</h2>
+            </div>
+        </div>
+        <!-- //헤더 영역 end -->
+        <!-- 키워드 구매 완료 start -->
+        <div class="keyword-purchase-completed-area">
+            <img src="assets/images/svg/img_check_pink_64.svg" alt="">
+            <p class="completion-phrase">결제 요청이 완료되었습니다.</p>
+
+            <p class="pay-information">
+                결제 완료를 위해 <span>{{expiredDate}}</span>까지 <br>
+                <span>{{queryParams.totalPrice | number}}원</span>을 입금해주세요.
+            </p>
+
+            <div class="keyword-purchase-completed-info">
+                <div class="keyword-purchase-completed-box">
+                    <ul>
+                        <li>
+                            <span>결제 수단</span>
+                            <b>무통장 입금</b>
+                        </li>
+                        <li>
+                            <span>입금 은행</span>
+                            <b>
+                                <!-- <span>{{queryParams.bankAccount}}</span> -->
+                                <input #copytoclipboardInput type="text" value={{queryParams.bankAccount}} >
+                                <button class="copy-btn" (click)="copyToBankAccount(copytoclipboardInput, queryParams.bankAccount)">
+                                    <img src="assets/images/svg/ic_copy_gray_24.svg" alt="복사버튼">
+                                </button>
+                            </b>
+                        </li>
+                        <li>
+                            <span>예금주</span>
+                            <b>{{queryParams.bankAccountName}}</b>
+                        </li>
+                        <li>
+                            <span>최종 결제 금액</span>
+                            <b>
+                                <span>{{queryParams.totalPrice | number}}</span>원
+                            </b>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="btn-wrap">
+                <button class="using-product-btn" routerLink="/main/section/mypage/point-charge-history">충전내역 보기</button>
+                <button class="confirm-btn" routerLink="/main">확인</button>
+            </div>
+        </div>
+        <!-- //키워드 구매 완료 end -->
+
+    </div>
+</div>

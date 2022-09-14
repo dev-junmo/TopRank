@@ -1,0 +1,633 @@
+<div class="web" *ifDesktop>
+    <!-- user info start -->
+    <div class="card-dashboard box">
+        <div class="user-info">
+            <div class="user-name">
+                <strong>{{userSummary.nickname}}</strong>님
+                <div class="setting" routerLink="/main/section/mypage/edit-profile"></div>
+            </div>
+            <div class="user-using">
+                <div class="using">
+                    <div class="using-product">
+                        <span>이용중인 상품</span>
+                        <span class="count num">
+                            {{userSummary?.goods?.current_goods}}/{{userSummary?.goods?.total_goods}}
+                            <span>개</span></span>
+                    </div>
+                    <div class="using-keyword">
+                        <span>이용중인 키워드</span>
+                        <span class="count num">
+                            {{userSummary?.keyword?.current_keyword}}/{{userSummary?.keyword?.total_keyword}}
+                            <span>개</span></span>
+                    </div>
+                </div>
+                <button class="product-registration" (click)="onClickUploadFileBtn()">
+                    <img src="assets/images/dashboard/ic_excel_white_32.png" alt="">
+                    <span>상품 일괄등록</span>
+                </button>
+            </div>
+        </div>
+            <div class="rating-info">
+            <strong>회원 등급</strong>
+                <img *ngIf="userSummary?.member_grade?.grade == '화이트'" src="assets/images/dashboard/ic_user-rating_white_88.png" alt="회원 등급 화이트">
+                <img *ngIf="userSummary?.member_grade?.grade == '브론즈'" src="assets/images/dashboard/ic_user-rating_bronze_88.png" alt="회원 등급 브론즈">
+                <img *ngIf="userSummary?.member_grade?.grade == '실버'" src="assets/images/dashboard/ic_user-rating_silver_88.png" alt="회원 등급 실버">
+                <img *ngIf="userSummary?.member_grade?.grade == '골드'" src="assets/images/dashboard/ic_user-rating_gold_88.png" alt="회원 등급 골드">
+                <img *ngIf="userSummary?.member_grade?.grade == '다이아'" src="assets/images/dashboard/ic_user-rating_diamond_88.png" alt="회원 등급 다이아">
+            <div class="next-rating">
+                <span>다음 등급까지</span>
+                <strong>{{userSummary?.member_grade?.upgrade_score | number}}점</strong>
+            </div>
+            <div class="process-bar">
+                <span class="percent" [style.width]="userSummary?.member_grade?.upgrade_percent * 100 + '%'"></span>
+            </div>
+            </div>
+            <div class="point-info">
+                <div class="charging">
+                    <span>충전 포인트</span>
+                    <strong class="score">{{userSummary?.points?.charge_point | number}}<span>P</span></strong>
+                </div>
+                <div class="free">
+                    <span>무료 포인트</span>
+                    <strong class="score">{{userSummary?.points?.free_point | number}}<span>P</span></strong>
+                </div>
+                <div class="reward">
+                    <span>리워드 포인트</span>
+                    <strong class="score">{{userSummary?.points?.reward_point | number}}<span>P</span></strong>
+                </div>
+                <div class="coupon">
+                    <span>쿠폰</span>
+                    <strong class="score">{{userSummary.coupon_count}}<span>장</span></strong>
+                </div>
+            </div>
+    </div>
+    <!-- //user info end -->
+
+    <!-- 이용 중인 상품 start -->
+    <div class="using-product">
+        <!-- 컨텐츠 타이틀 영역 start -->
+        <div class="title-area">
+            <div class="title-wrap">
+                <h2 class="title">이용 중인 상품</h2>
+            </div>
+            <a href="" routerLink="/main/section/subscription/products" class="all-btn" [ngClass]="{dis:!isUsingGoods}">전체보기</a>
+        </div>
+        <!-- //컨텐츠 타이틀 영역 end -->
+
+        <!-- 이용 중인 상품 슬라이드 start  -->
+        <div class="contents-wrap">
+
+            <!-- 이용 중인 상품 없을 때 -->
+            <div class="data-empty" *ngIf="!isUsingGoods">
+                <img src="assets/images/dashboard/img_dashboard_empty.png" alt="">
+                <p>
+                현재 이용 중인 상품이 없습니다. <br>
+                다양하고 강력한 TOPRANK의 분석을 이용해보세요.
+                </p>
+                <a href="" routerLink="/main/section/ranking-search">
+                    상품순위 분석 하러 가기
+                    <img src="assets/images/dashboard/ic_arrow_right_purple_24.png" alt="">
+                </a>
+            </div>
+
+            <!-- 이용 중인 상품 있을 때 -->
+            <div class="contents-slide" *ngIf="isUsingGoods">
+                <div class="slide-wrap">
+                    <swiper #swiper class="swiper-container list slide-wrap" [config]="slideConfig" fxFlex="auto">
+                        <div class="slide-item-wrap swiper-slide" 
+                            *ngFor="let item of usingGoods; let idx = index"
+                            (click)="onClickGoodsItem(idx, item)"    
+                        >
+                            <div class="slide-item box" [ngClass]="{active:selectedGoodsItemIndex == idx}">
+                                <div class="item-header">
+                                    <span>대표 키워드</span>
+                                    <div class="keyword-pill">{{item.keyword}}</div>
+                                </div>
+                                <div class="item-store">
+                                    <img *ngIf="item?.goods_platform == '네이버'" (click)="onClickPlatform(item)" class="clickable" src="assets/images/svg/thum_navershoping_56.svg" alt="네이버">
+                                    <img *ngIf="item?.goods_platform == '네이버쇼핑'" (click)="onClickPlatform(item)" class="clickable" src="assets/images/svg/thum_navershoping_56.svg" alt="네이버쇼핑">
+                                    <img *ngIf="item?.goods_platform == '쿠팡'" (click)="onClickPlatform(item)" class="clickable" src="assets/images/svg/thum_coupang_24.svg" alt="쿠팡">
+                                    <div class="store-txt">
+                                        <span>{{item.store_name}}</span>
+                                        <p>{{item.goods_name}}</p>
+                                    </div>
+                                </div>
+                                <div class="sale-ranking">
+                                    <span>판매 순위</span>
+                                    <div class="ranking-num">
+                                        <strong>{{item.sales_rank_current_rank}}</strong>위
+                                        <div *ngIf="item.ranking_change !== undefined" [class]="item.ranking_change >= 0 ? 'pill up' : 'pill down'">{{math?.abs(item.ranking_change)}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper>
+                </div>
+            </div>
+            <button class="prev" [ngClass]="{dis:!isUsingGoods}" (click)="onClickPrevSlide()">prev</button>
+            <button class="next" [ngClass]="{dis:!isUsingGoods}" (click)="onClickNextSlide()">next</button>
+        </div>
+        <!-- //이용 중인 상품 슬라이드 end  -->
+
+        <!-- 이용 중인 상품 디테일 start -->
+        
+        <div [class]="isUsingGoods ? 'product-detail detail-not-empty' : 'product-detail detail-empty'">
+            <div *ngIf="!isUsingGoods" class="data-mask">상품을 담으면 보여지는 대시보드 데이터 샘플입니다.</div>
+            <ng-container *ngFor="let widget of currWidgetData?.widgets">
+                <!-- type: rank_widget -->
+                <div class="detail-item box" *ngIf="widget.type == 'rank_widget'">
+                    <div class="item-header">
+                        <div class="item-title">
+                            <span>판매 순위</span>
+                            <div class="help-tool-tip sales-ranking">
+                                <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">
+                            </div>
+                        </div>
+                        <div [class]="widget.widget_ranking_change >= 0 ? 'pill up' : 'pill down'">{{math?.abs(widget.widget_ranking_change)}}</div>
+                    </div>
+                    <div class="item-contents">
+                        <div class="keyword-pill">{{widget.rank_keyword}}</div>
+                        <div class="ranking-num">
+                            <strong class="num">{{widget.sales_ranking}}</strong>위
+                            <div class="paging">
+                                <span class="num">{{widget.page_count}}</span>
+                                페이지
+                                <span class="num">{{widget.page_ranking}}</span>
+                                위
+                            </div>
+                        </div>
+                        <div class="all-count">/ <span class="num">{{widget.sales_total | number}}</span>개</div>
+                    </div>
+                    <button class="detail-view"
+                            routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                            [queryParams]="{keyword: currWidgetData.keyword}"
+                    >자세히 보기<img src="assets/images/dashboard/ic_arrow_right_black_24.png" alt=""></button>
+                </div>
+                <!-- type: sales_rank_chart_widget -->
+                <div class="detail-item box" *ngIf="widget.type == 'sales_rank_chart_widget'">
+                    <div class="item-header">
+                    <div class="item-title">
+                        <span>판매 순위 추적</span>
+                        <div class="help-tool-tip sales-ranking-tracking">
+                            <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">  
+                        </div>
+                    </div>
+                    </div>
+                    <div class="graph"></div>
+                    <button class="detail-view" 
+                    routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                    [queryParams]="{keyword: currWidgetData.keyword}"
+                    >자세히 보기 <img src="assets/images/dashboard/ic_arrow_right_black_24.png" alt=""></button>
+                </div>
+                <div class="detail-item box" *ngIf="widget.type == 'keyword_tracking_chart_widget'">
+                    <div class="item-header">
+                    <div class="item-title">
+                        <span>키워드 추적</span>
+                        <div class="help-tool-tip keyword-tracking">
+                            <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">
+                        </div>
+                    </div>
+                    <div class="keyword-pill">{{widget.tracking_keyword}}</div>
+                    </div>
+                    <div class="graph"></div>
+                    <button class="detail-view"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword}"
+                    >자세히 보기 <img src="assets/images/dashboard/ic_arrow_right_black_24.png" alt=""></button>
+                </div>
+                <div class="detail-item box" *ngIf="widget.type == 'review_widget'">
+                    <div class="item-header">
+                    <div class="item-title">
+                        <span>리뷰 수</span>
+                        <div class="help-tool-tip reviews-count">
+                            <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">
+                        </div>
+                    </div>
+                    <div [class]="widget.widget_review_change >= 0 ? 'pill up' : 'pill down'">{{math?.abs(widget.widget_review_change)}}</div>
+                    </div>
+                    <div class="item-contents review">
+                    <div class="reivew-count">
+                        <strong class="num">{{widget.review_total | number}}</strong>개
+                        <div class="score">
+                        <span class="num">{{widget.review_avg_score}}</span>점
+                        </div>
+                    </div>
+                    <div class="all-count">구매건수 <span class="num">{{widget.purchase_count | number}}</span>건</div>
+                    </div>
+                    <button class="detail-view"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword}"
+                    >자세히 보기 <img src="assets/images/dashboard/ic_arrow_right_black_24.png" alt=""></button>
+                </div>
+                <div class="detail-item box" *ngIf="widget.type == 'review_tracking_chart_widget'">
+                    <div class="item-header">
+                    <div class="item-title">
+                        <span>리뷰 추적</span>
+                        <div class="help-tool-tip reviews-tracking">
+                            <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="graph"></div>
+                    <button class="detail-view"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword, type: 'review'}"
+                    >자세히 보기 <img src="assets/images/dashboard/ic_arrow_right_black_24.png" alt=""></button>
+                </div>
+                <div class="detail-item box" *ngIf="widget.type == 'price_tarcking_chart_widget'">
+                    <div class="item-header">
+                    <div class="item-title">
+                        <span>가격 추적</span>
+                        <div class="help-tool-tip price-tracking">
+                            <img src="assets/images/home/ic_help_gray_32.png" alt="도움말">
+                        </div>
+                    </div>
+                    </div>
+                    <div class="graph"></div>
+                    <button class="detail-view"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword, type: 'price'}"
+                    >자세히 보기 <img src="assets/images/dashboard/ic_arrow_right_black_24.png" alt=""></button>
+                </div>  
+                <div class="detail-item box" *ngIf="widget.type == 'category_search_total_widget'">
+                    <div class="item-header">
+                    <div class="item-title">
+                        <span>카테고리</span>
+                    </div>
+                    </div>
+                    <div class="item-contents">
+                    <div class="category">
+                        <ul>
+                            <li *ngFor="let item of widget.categories">{{item}}</li>
+                        </ul>
+                    </div>
+                    <div class="month-search">
+                        <span>한 달 검색 수</span>
+                        <div class="search-num">
+                        <strong class="num">{{widget.amonth_search_count | number}}</strong>회
+                        </div>
+                    </div>
+                    </div>
+                    <button class="detail-view"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword}"
+                    >자세히 보기 <img src="assets/images/dashboard/ic_arrow_right_black_24.png" alt=""></button>
+                </div>
+                <div class="detail-item box" *ngIf="widget.type == 'device_search_chart_widget'">
+                    <div class="item-header">
+                    <div class="item-title">
+                        <span>기기별 검색 비율</span>
+                    </div>
+                    </div>
+                    <div class="graph"></div>
+                </div>
+            </ng-container>
+        </div>
+        <!-- //이용 중인 상품 디테일 end -->
+    </div>
+    <!-- //이용 중인 상품 end -->
+</div>
+
+<!-- 모바일 -->
+<div class="mobile" id="wrap" *ifMobile>   
+    <!-- contents start -->
+    <div id="contents">
+        <!-- 유저 정보 start -->
+        <div class="card-dashboard-wrap">
+            <div class="card-dashboard">
+                <div class="user-info">
+                    <div class="name-ranking">
+                        <div class="name-area">
+                            <strong>{{userSummary.nickname}}</strong>
+                            <span>님</span>
+                            <button class="setting-btn" routerLink="/main/section/mypage/edit-profile">
+                                <img src="assets/images/svg/ic_setting_white_20.svg" alt="설정">
+                            </button>
+                        </div>
+                        <div class="ranking-tier" (click)="onClickUserTier()">
+                            <img *ngIf="userSummary?.member_grade?.grade == '화이트'" src="assets/images/svg/ic_user-rating_white_88.svg" alt="회원 등급 화이트">
+                            <img *ngIf="userSummary?.member_grade?.grade == '브론즈'" src="assets/images/svg/ic_user-rating_bronze_88.svg" alt="회원 등급 브론즈">
+                            <img *ngIf="userSummary?.member_grade?.grade == '실버'" src="assets/images/svg/ic_user-rating_silver_88.svg" alt="회원 등급 실버">
+                            <img *ngIf="userSummary?.member_grade?.grade == '골드'" src="assets/images/svg/ic_user-rating_gold_88.svg" alt="회원 등급 골드">
+                            <img *ngIf="userSummary?.member_grade?.grade == '다이아'" src="assets/images/svg/ic_user-rating_diamond_88.svg" alt="회원 등급 다이아">
+                        </div>
+                        <div class="ranking-tier-detail box" [ngClass]="{'active': isShowUserTier}">
+                            <div class="next-ranking">
+                            <span>다음 등급까지</span>
+                            <span class="next-ranking-num">{{userSummary?.member_grade?.upgrade_score | number}}점</span>
+                            </div>
+                            <div class="ranking-process">
+                                <span [style.width]="userSummary?.member_grade?.upgrade_percent * 100 + '%'"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="using-info">
+                        <!-- <div class="using"> -->
+                            <div class="using-product">
+                                <strong>이용중인 상품</strong>
+                                <p>
+                                    <b class="count num">{{userSummary?.goods?.current_goods}}/{{userSummary?.goods?.total_goods}}</b>
+                                    <span>개</span>
+                                </p>
+                            </div>
+                            <div class="using-keyword">
+                                <strong>이용중인 키워드</strong>
+                                <p>
+                                    <b class="count num">{{userSummary?.keyword?.current_keyword}}/{{userSummary?.keyword?.total_keyword}}</b>
+                                    <span>개</span>
+                                </p>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div class="bottom-point-area" [ngClass]="{'active': isShowBottomPointArea}">
+                    <ul>
+                        <li>
+                            <b>충전 포인트</b>
+                            <div class="point-num">
+                                <span class="g-num">{{userSummary?.points?.charge_point | number}}</span>
+                                P
+                            </div>
+                        </li>
+                        <li>
+                            <b>무료 포인트</b>
+                            <div class="point-num">
+                                <span class="g-num">{{userSummary?.points?.free_point | number}}</span>
+                                P
+                            </div>
+                        </li>
+                        <li>
+                            <b>리워드 포인트</b>
+                            <div class="point-num">
+                                <span class="g-num">{{userSummary?.points?.reward_point | number}}</span>
+                                P
+                            </div>
+                        </li>
+                        <li>
+                            <b>쿠폰</b>
+                            <div class="point-num">
+                                <span class="g-num">{{userSummary.coupon_count}}</span>
+                                장
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <button type="button" class="unfold-btn" (click)="onClickBottomPoint()" [ngClass]="{'on': isShowBottomPointArea}"></button>
+            </div>
+        </div>
+        <!-- //유저 정보 end -->
+        <!-- 이용 중인 상품 영역 start -->
+        <div class="contents-header">
+            <div class="contents-title">
+                <img src="assets/images/svg/ic_subscription_color_40.svg" alt="">
+                <h2>이용 중인 상품</h2>
+            </div>
+            <button class="all-view" routerLink="/main/section/subscription/products" [disabled]="!isUsingGoods">전체보기</button>
+        </div>
+        <!-- //이용 중인 상품 영역 end -->
+        <div class="product-slide-wrap" [ngClass]="{'null': !isUsingGoods}">
+            <!-- 이용 중인 상품이 없을 때 start -->
+            <div class="product-using-null" *ngIf="!isUsingGoods">
+                <img src="assets/images/svg/img_subscription_empty.svg" alt="">
+                <p>현재 이용 중인 상품이 없습니다. <br>
+                    다양하고 강력한 TOPRANK의 분석을 이용해보세요.</p>
+                <a href="" class="product-analysis" routerLink="/main/section/ranking-search">상품순위 분석 하러 가기 <img src="assets/images/svg/ic_arrow_right_purple_24.svg" alt=""></a>
+            </div>
+            <!-- 이용 중인 상품이 없을 때 end -->
+
+            <!-- 이용 중인 상품이 있을 때 start -->
+            <div class="product-slide" *ngIf="isUsingGoods">
+                <swiper #swiper class="swiper-container list slide-wrap" [config]="mobileSlideConfig" fxFlex="auto">
+                    <div class="product-slide-item product-slide-item01 box" 
+                        *ngFor="let item of usingGoods; let idx = index"
+                        (click)="onClickGoodsItem(idx, item)">
+                        <div class="rep-keyword">
+                            <span>대표 키워드</span>
+                            <span class="keyword-area">{{item.keyword}}</span>
+                        </div>
+                        <div class="store-name">
+                            <img src="assets/images/svg/thum_navershoping_24.svg" alt="네이버쇼핑">
+                            <span>{{item.store_name}}</span>
+                        </div>
+                        <p class="store-product">{{item.goods_name}}</p>
+                        <div class="sales-ranking">
+                            <span>판매 순위</span>
+                            <div class="ranking-num">
+                                <b class="g-num">{{item.sales_ranking}}</b> <span>위</span>
+                                <div [class]="item.ranking_change >= 0 ? 'pill rise' : 'pill fall'">
+                                    <b class="g-num">{{math?.abs(item.ranking_change)}}</b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </swiper>
+            </div>
+        </div>
+        <!-- 대시보드 데이터 영역 start -->
+        <div class="dashboard-data-area" [ngClass]="{'null': !isUsingGoods}">
+            <div class="dashboard-data-mask" *ngIf="!isUsingGoods">
+                <div class="sample-text">대시보드 데이터 샘플입니다.</div>
+                <div class="sample-text">대시보드 데이터 샘플입니다.</div>
+            </div>
+            <div class="dashboard-data">
+                <ng-container  *ngFor="let widget of currWidgetData.widgets">
+                <div class="data-box box" *ngIf="widget.type == 'rank_widget'">
+                    <div class="data-box-header">
+                        <h3>판매 순위
+                            <div class="help-tool-tip sales-ranking-tip">
+                                <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말">
+                            </div>
+                        </h3>
+                        <div  [class]="widget.widget_ranking_change >= 0 ? 'pill rise' : 'pill fall'">
+                            <b class="g-num">{{math?.abs(widget.widget_ranking_change)}}</b>
+                        </div>
+                    </div>
+                    <div class="searched-keyword">
+                        <span>{{widget.rank_keyword}}</span>
+                    </div>
+                    <div class="sales-ranking-num">
+                        <b class="g-num">{{widget.sales_ranking}}</b>위
+                        <span class="page-ranking"><b class="g-num">{{widget.page_count}}</b>페이지 <b class="g-num">{{widget.page_ranking}}</b>위</span>
+                    </div>
+                    <div class="all-count">
+                        / <b class="g-num">{{widget.sales_total | number}}</b>개
+                    </div>
+                    <a href="" class="detail-btn"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword}">
+                        자세히 보기
+                        <img src="assets/images/svg/ic_arrow_right_black_24.svg" alt="">
+                    </a>
+                </div>
+                <div class="data-box box" *ngIf="widget.type == 'sales_rank_chart_widget'">
+                    <div class="data-box-header">
+                        <h3>판매 순위 추적
+                            <div class="help-tool-tip sales-ranking-tracking-tip">
+                                <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말">
+                            </div>
+                        </h3>
+                    </div>
+                    <div class="graph"></div>
+                    <a href="" class="detail-btn"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword}">
+                    자세히 보기
+                    <img src="assets/images/svg/ic_arrow_right_black_24.svg" alt="">
+                    </a>
+                </div>
+                <div class="data-box box" *ngIf="widget.type == 'keyword_tracking_chart_widget'">
+                    <div class="data-box-header">
+                    <h3>키워드 추적 
+                        <div class="help-tool-tip keyword-tracking-tip">
+                            <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말">
+                        </div>
+                    </h3>
+                    <div class="searched-keyword">
+                        <span>{{widget.tracking_keyword}}</span>
+                    </div>
+                    </div>
+                    <div class="graph"></div>
+                    <a href="" class="detail-btn"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword}">
+                    자세히 보기
+                    <img src="assets/images/svg/ic_arrow_right_black_24.svg" alt="">
+                    </a>
+                </div>
+                <div class="data-box box" *ngIf="widget.type == 'review_widget'">
+                    <div class="data-box-header">
+                        <h3>리뷰 수
+                            <div class="help-tool-tip review-count-tip">
+                                <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말">
+                            </div>
+                        </h3>
+                        <div [class]="widget.widget_review_change >= 0 ? 'pill rise' : 'pill fall'">
+                            <b class="g-num">{{math?.abs(widget.widget_review_change)}}</b>
+                        </div>
+                    </div>
+                    <div class="review-count">
+                        <b class="g-num">{{widget.review_total | number}}</b>개
+                        <span class="review-score"> / <b class="g-num">{{widget.review_avg_score}}</b> 점</span>
+                    </div>
+                    <div class="purchases-num">
+                        구매 건수 <b class="g-num">{{widget.purchase_count | number}}</b>건
+                    </div>
+                    <a href="" class="detail-btn"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword}">
+                        자세히 보기
+                        <img src="assets/images/svg/ic_arrow_right_black_24.svg" alt="">
+                    </a>
+                </div>
+                <div class="data-box box" *ngIf="widget.type == 'review_tracking_chart_widget'">
+                    <div class="data-box-header">
+                        <h3>리뷰 추적
+                            <div class="help-tool-tip review-count-tip">
+                                <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말">
+                            </div>
+                        </h3>
+                    </div>
+                    <div class="graph"></div>
+                    <a href="" class="detail-btn"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword, type: 'review'}">
+                        자세히 보기
+                        <img src="assets/images/svg/ic_arrow_right_black_24.svg" alt="">
+                    </a>
+                </div>
+                <div class="data-box box"  *ngIf="widget.type == 'price_tarcking_chart_widget'">
+                    <div class="data-box-header">
+                        <h3>가격 추적
+                            <div class="help-tool-tip price-tracking-tip">
+                                <img src="assets/images/svg/ic_help_gray_24.svg" alt="도움말">
+                            </div>
+                        </h3>
+                    </div>
+                    <div class="graph"></div>
+                    <a href="" class="detail-btn"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword, type: 'price'}">
+                        자세히 보기
+                        <img src="assets/images/svg/ic_arrow_right_black_24.svg" alt="">
+                    </a>
+                </div>
+                <div class="data-box box"  *ngIf="widget.type == 'category_search_total_widget'">
+                    <div class="data-box-header">
+                        <h3>카테고리</h3>
+                    </div>
+                    <div class="searched-category">
+                        <ul>
+                            <li *ngFor="let item of widget.categories">{{item}}</li>
+                        </ul>
+                    </div>
+                    <div class="data-box-header">
+                        <h3>한 달 검색 수</h3>
+                    </div>
+                    <div class="searches-count">
+                        <b class="g-num">{{widget.amonth_search_count | number}}</b> 회
+                    </div>
+                    <a href="" class="detail-btn"
+                        routerLink="/main/section/ranking-tracking-detail/{{currWidgetData.goods_seq}}"
+                        [queryParams]="{keyword: currWidgetData.keyword}">
+                        자세히 보기
+                        <img src="assets/images/svg/ic_arrow_right_black_24.svg" alt="">
+                    </a>
+                </div>
+                <div class="data-box box" *ngIf="widget.type == 'device_search_chart_widget'">
+                    <div class="data-box-header">
+                        <h3>기기별 검색 비율</h3>
+                    </div>
+                    <div class="graph"></div>
+                </div>
+                </ng-container> 
+            </div>
+        </div>
+        <!-- 대시보드 데이터 영역 end -->
+    </div>
+</div>
+
+<!-- 상품일괄 등록 팝업 start -->
+<div class="registration-popup" [ngClass]="{active: isShowBatchProductRegist}">
+    <div class="popup-box box">
+    <div class="popup-header">
+        <h3>엑셀 파일로 상품 일괄등록</h3>
+        <button class="close" (click)="isShowBatchProductRegist = false">
+        <img src="assets/images/dashboard/ic_close_black_40.png" alt="닫기 버튼" >
+        </button>
+    </div>
+    <div class="popup-contents">
+        <div class="step">
+        <b>STEP 1</b>
+        <p>일괄등록을 위해 먼저 엑셀 양식을 내려받아 주세요.</p>
+        <!-- 서버가 아닌 로컬에서 클릭하면 다운로드 X, 서버 환경에서 클릭해야 다운로드 O -->
+        <a href="file/smaple.html" download class="excel-download">양식 다운로드</a>
+        </div>
+        <div class="step">
+        <b>STEP 1</b>
+        <p>일괄등록을 위해 먼저 엑셀 양식을 내려받아 주세요.</p>
+        <div class="file-box">
+            <input class="upload-name filname-normal" placeholder="선택된 파일이 없습니다." readonly>
+            <label for="file">파일 선택</label>
+            <input type="file" id="file">
+            <div class="filname-detail-box">
+            <input class="upload-name filname-detail" placeholder="선택된 파일이 없습니다." readonly>
+            <span class="upload-success">결제 금액 <strong>20,000</strong> P</span>
+            <span class="upload-failed">상품 기간이 누락되었습니다.</span>
+            </div>
+        </div>
+        </div>
+        <div class="caution-wrap">
+        <strong class="caution-title">엑셀 파일 작성 시 주의사항</strong>
+        <ul>
+            <li>양식 파일 내려받으신 후 양식에 맞게 입력하여 업로드 해주세요.</li>
+            <li>파일은 한 파일씩만 업로드 가능합니다. 새로운 파일을 업로드하면 기존 파일은 삭제됩니다.</li>
+            <li>양식 중 노란색으로 표시된 3번째 행까지는 유지하고 4번째 행부터 데이터를 입력해주세요.</li>
+            <li>CSV 형식인 경우 반드시 UFT-8 형식으로 저장해야 합니다.</li>
+            <li>내려받으신 파일 형식(XLS) 그대로 업로드하길 권장해 드리며, CSV 형식으로 업로드 하실 경우 HTML 및 특수문자(콤마 등) 사용 시 업로드 오류가 날 수 있습니다.</li>
+        </ul>
+        </div>
+        <button class="purchase-btn">구매하기</button>
+    </div>
+    </div>
+</div>
+<!-- 상품일괄 등록 팝업 end -->

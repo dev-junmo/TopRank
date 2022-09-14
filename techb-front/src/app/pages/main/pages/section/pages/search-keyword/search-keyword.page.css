@@ -1,0 +1,1667 @@
+@charset "utf-8";
+
+
+/* 박스 스타일 */
+.box {
+    background: #fafbff;
+    padding: 32px 40px 48px;
+    border-radius: 24px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+
+/* 컨텐츠 타이틀 영역 */
+.title-area .title {
+    background: url('assets/images/home/ic_keyword_color_40.png') left center no-repeat;
+}
+/* //////////////////////////////////////////////////// */
+/* 도움말 툴팁 */
+.web .help-tool-tip {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+.web .help-tool-tip::after {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 40px;
+    width: max-content;
+    padding: 16px;
+    background: #3e4259a9;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    color: #fff;
+    line-height: 1.29;
+    white-space:pre;
+    transform: translateX(-46%);
+    border-radius: 16px;
+}
+.web .help-tool-tip:hover::after {
+    display: block;
+}
+
+/* 도움말 툴팁 */
+.web .help-tool-tip.popular-search-tip::after {
+    content: "네이버쇼핑에서 많이 검색하고 상품을 많이 본\A 키워드 중 최근 급상승한 키워드를 뽑아서\A 나타낸 순위입니다.";
+} 
+
+.web .help-tool-tip.six-month-average::after {
+    content: "해당 키워드로 네이버쇼핑 검색 시\A 상위 40위/80위 상품의 예상 매출액 정보입니다.\A 판매량 및 매출은 과거 6개월로 집계된 정보이며,\A 판매처가 여러 곳인 상품이나 구매 수가 감춰진 상품이\A 포함될 수 있으니 참고용으로만 보시기 바랍니다.";
+}
+.web .help-tool-tip.daily-search::after {
+    content: "하루에 네이버 검색 시 조회되는 전체 결과 수입니다.";
+}
+.web .help-tool-tip.search-preferences::after {
+    content: "순위는 해당 키워드를 네이버에 검색했을 시\A 보여지는 결과 페이지의 내용 순서입니다.\A 각 기기별 내용 순서는 사용자의\A 검색 선호도를 기준으로 노출하고 있어,\A 해당 키워드와 연관성이 높은 상단 지면에\A 노출할수록 홍보 효과를 극대화할 수 있습니다.";
+    transform: translateX(-45%);
+}
+.web .help-tool-tip.ad-keyword::after {
+    content: "해당 키워드의 네이버 파워링크\A 과거 데이터를 나타냅니다.";
+    transform: translateX(-45%);
+}
+.web .help-tool-tip.shopping-association::after {
+    content: "해당 키워드의 네이버쇼핑\A 연관검색어의 데이터를 나타냅니다.";
+    transform: translateX(-45%);
+}
+.web .help-tool-tip.auto-completion::after {
+    content: "네이버 통합검색 검색창에서\A 해당 키워드를 입력했을 때\A 자동으로 완성되는 키워드의 데이터를 나타냅니다.";
+    transform: translateX(-45%);
+}
+.web .help-tool-tip.trend-change::after {
+    content: "기간에 따른 클릭량과 검색량의 추이입니다.\A 값은 클릭과 검색 빈도가 가장 높을수록 n,\A 해당 키워드에 대한 데이터가 충분하지 않은 경우\A 0으로 설정하여 상대적인 변화를 나타냅니다.";
+    transform: translateX(-45%);
+}
+.web .help-tool-tip.result-popular-search::after {
+    content: "해당 키워드를 네이버 쇼핑 검색 시 상위 n위\A 결과 내에서 1순위로 매칭된 분류의 인기 검색어를\A 나타낸 순위입니다.";
+    transform: translateX(-45%);
+}
+.web .help-tool-tip.age-click-rate::after {
+    content: "조회 기간 동안 연령별 클릭량 합계의\A 비율을 나타냅니다. 값이 높을 경우 절대적인\A 검색 수가 높은 것이 아니라 전체 검색량 중에서\A 해당 연령이 차지하는 비율이 높은 것입니다.";
+    transform: translateX(-45%);
+}
+.web .help-tool-tip.gender-click-rate::after {
+    content: "조회 기간 동안 성별 클릭량\A 합계의 비율을 나타냅니다.";
+    transform: translateX(-43%);
+}
+
+
+/* ===========================================*/
+/* =========================================== */
+/* 키워드 검색 박스 */
+
+.search-box {
+    width: 1240px;
+    /* height: 264px; */
+    /* height: 224px; */
+    border-radius: 48px;
+    margin: 50px 0 56px 0;
+    background: #f2f2fc;
+    padding: 80px 164px;
+}
+
+.trendList {
+    padding-bottom: 56px;
+}
+
+.search-box .search-input {
+    width: 912px;
+    height: 64px;
+    border-radius: 16px;
+    background: #fff;
+    padding: 10px 32px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.search-box .search-input input {
+    width: 768px;
+    line-height: 1.4;
+    top:19px;
+}
+
+.search-box .search-input input::placeholder {
+    color: #b8b6c4;
+}
+
+.search-input .search-btn {
+    height: 45px;
+}
+
+.tb-realtime-trend {
+    display: flex;
+    text-align: left;
+    align-items: center;
+    padding: 20px 0 19px 32px;
+}
+
+.tb-realtime-trend p {
+    color:#3e4259;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-right: 32px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.tb-realtime-trend p:first-child {
+    color: #3f37c9;
+    font-size: 16px;
+    line-height: 1.44;
+    margin-right: 38px;
+    font-weight: 500;
+    cursor: auto;
+}
+
+
+/* ===========================================*/
+/* =========================================== */
+/* 검색 기록 */
+.search-record {
+    width: 1240px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+/* .lately-search .box-header {
+    margin: 16px 0 31px 16px;
+} */
+
+.lately-search .record-table table {
+    border-collapse: collapse;
+}
+
+.search-record .lately-search .record-table th {
+    font-weight: 500;
+    color: #3e4259;
+    line-height: 1.44;
+    border-bottom: 1px solid #dcdee8;
+    padding: 17px 0 16px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.search-record .lately-search .record-table th:nth-child(1),
+.search-record .lately-search .record-table th:nth-child(2) {
+    width: 214px;
+    text-align: left;
+    padding-left:24px;
+}
+.search-record .lately-search .record-table th:nth-child(3) {
+    width: 154px;
+
+}   
+.search-record .lately-search .record-table th:nth-child(4) {
+    width: 90px;
+}
+
+.search-record .lately-search .record-table td {
+    font-size: 18px;
+    line-height: 1.22;
+    color: #3e4259;
+    padding: 17px 0;
+    padding-left: 24px;
+    box-sizing: border-box;
+}
+
+.search-record .lately-search .record-table td img {
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+.search-record .lately-search .record-table td:nth-child(1) {
+    font-weight: bold;
+    color: #3f37c9;
+    cursor: pointer;
+}
+
+.search-record .lately-search .record-table td:nth-child(3) {
+    text-align: center;
+    padding: 17px 0;
+    /* cursor: pointer; */
+}
+.search-record .lately-search .record-table td:nth-child(4) {
+    padding: 8px 25px;
+    cursor: pointer;
+}
+
+.search-record .lately-search .record-empty {
+    width: 100%;
+    height: 504px;
+    background: #f2f3fa;
+}
+.search-record .lately-search .record-empty p {
+    font-size: 18px;
+    text-align: center;
+    color: #b8b6c4;
+    line-height: 1.44;
+    padding: 90px 200px 0;
+    font-weight: 500;
+}
+.search-record .popular-ranking {
+    width: 368px;
+    margin-top: 39px;
+}
+.search-record .popular-ranking ol {
+    counter-reset: number 0;
+}
+.search-record .popular-ranking ol li {
+    padding: 17px 0;
+    border-bottom: 1px solid #dcdee8;
+}
+.search-record .popular-ranking ol li a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #04021f;
+}
+.search-record .popular-ranking ol li::before {
+    counter-increment: number 1;
+    content: counter(number);
+    font-size: 20px;
+    font-family: 'GmarketSans';
+    color: #3f37c9;
+    margin-right: 25px;
+}
+
+.search-record .popular-ranking ol li:last-child {
+    margin-left: -3px;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 키워드 분석 컨텐츠 */
+.keyword-contents {
+    position: relative;
+    width: 1240px;
+}
+
+.keyword-contents .box {
+    padding: 16px 24px;
+}
+.keyword-contents .keyword-title {
+    position: relative;
+    font-size: 30px;
+    font-weight: bold;
+    padding-bottom: 14px;
+}
+.keyword-contents .keyword-title::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 55px;
+    height: 1px;
+    background: #dcdee8;
+}
+
+.keyword-contents .keyword-category {
+    display: inline-block;
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 18px;
+    line-height: 1.22;
+    color: #3E4259;
+    margin: 28px 0 24px;
+    border: solid 1px #dcdee8;
+    border-radius: 24px;
+    background: #fafbff;
+    font-weight: bold;
+}
+
+.keyword-contents .keyword-category span > span {
+    width: 9px;
+    height: 26px;
+    margin: 0 8px;  
+    font-weight: 300;
+    line-height: 1.44;
+    text-align: left;
+    color: #b8b6c4;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 키워드 분석 영역1 */
+.keyword-contents .keyword-section {
+    display: flex;
+    justify-content: space-between;
+}
+.keyword-contents .keyword-section .shopping {
+    display: flex;
+    margin-bottom: 71px;
+}
+.keyword-contents .keyword-section .shopping li:not(:last-child) {
+    margin-right: 16px;
+}
+.keyword-contents .keyword-section .shopping li a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.22;
+    padding: 5px 24px;
+    background: #fafbff;
+    border: 1px solid #dcdee8;
+    border-radius: 24px;
+    color: #3e4259;
+}
+.keyword-contents .keyword-section .shopping li a img {
+    margin-right: 24px;
+}
+
+.keyword-contents .search-length {
+    display: flex;
+    justify-content: space-between;
+}
+.keyword-contents .search-length .box {
+    width: 386px;
+    height: 160px;
+    margin-right: 41px;
+    padding: 16px 24px;
+}
+
+.keyword-contents .search-length .box .contents-title {
+    font-size: 18px;
+    color: #04021f;
+}
+.keyword-contents .search-length .box .search-count {
+    text-align: center;
+    padding: 28px 0 40px;
+}
+.keyword-contents .search-length .box .search-count strong {
+    font-size: 40px;
+    color: #04021f;
+    font-family: 'GmarketSansBold';
+}
+.keyword-contents .search-length .box .search-count span {
+    font-size: 18px;
+    font-weight: 500;
+}
+.keyword-contents .ratio {
+    width: 386px;
+    height: 274px;
+    padding: 16px 24px;
+}
+.keyword-contents .age-group {
+    display: flex;
+    align-items: center;
+    margin: 32px 0 72px;
+}
+.keyword-contents .age-group ul {
+    display: flex;
+}
+.keyword-contents .age-group ul li {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 18px 16px;
+    margin-right: 24px;
+    background: #fafbff;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+    border-radius: 24px;
+}
+.keyword-contents .age-group span {
+    font-size: 20px;
+    color: #04021f;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 키워드 분석 영역2 */
+.keyword-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.keyword-section .box {
+    padding: 16px 24px;
+}
+
+.keyword-section .average {
+    width: 813px;
+    height: 210px;
+    margin-bottom: 32px;
+}
+.keyword-section .contents-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.keyword-section .contents-title span {
+    display: flex;
+    line-height: 33px;
+}
+.keyword-section .contents-title img {
+    vertical-align: bottom;
+    /* margin-left: -3px; */
+}
+.keyword-section .tab-menu {
+    display: flex;
+    background: #f2f3fa;
+    border-radius: 16px;
+}
+.keyword-section .tab-menu li {
+    font-size: 14px;
+    font-weight: bold;
+    color: #b8b6c4;
+    padding: 10px 16px;
+    border: 1px solid #f2f3fa;
+    border-radius: 16px;
+}
+.keyword-section .tab-menu li.active {
+    color: #3f37c9;
+    border: 1px solid #3f37c9;
+    background: #fafbff;
+}
+.keyword-section .box-contents {
+    display: flex;
+    margin-top: 30px;
+}
+.keyword-section .average .average-item {
+    width: 255px;
+    height: 140px;
+    text-align: center;
+}
+.keyword-section .box-item .contents-subtitle {
+    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    color: #3e4259;
+    margin: 10px 0 26px;
+}
+.keyword-section .box-item .contents-count strong {
+    font-size: 28px;
+    font-family: 'GmarketSansBold';
+    color: #04021f;
+    margin-top: 46px;
+}
+.keyword-section .box-item .contents-count span {
+    font-size: 18px;
+    font-weight: 500;
+}
+.keyword-section .preference {
+    width: 813px;
+    height: 210px;
+}
+.keyword-section .preference-item {
+    width: 191px;
+    height: 140px;
+    text-align: center;
+}
+.keyword-section .preference-item a {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 18px;
+    color: #3f37c9;
+    padding: 5px 24px;
+    border: 1px solid #3f37c9;
+    background: #fafbff;
+    border-radius: 24px;
+}
+.keyword-section .result-count {
+    width: 386px;
+    height: 444px;
+}
+
+.keyword-section .result-count .contents-title {
+    padding: 5px 0 0;
+}
+
+.keyword-section .result-contents {
+    margin-top: 28px;
+}
+.keyword-section .result-contents::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.keyword-section .result-contents .result-item {
+    float: left;
+    width: 169px;
+    height: 116px;
+    text-align: center;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 연관검색어 */
+.relation-search {
+    width: 100%;
+    height: 526px;
+    margin-top: 32px;
+    /* padding: 18px 24px; */
+}
+.relation-search .contents-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.relation-search .contents-title a {
+    width: 102px;
+    height: 34px;
+    font-size: 14px;
+    color: #3e4259;
+    text-align: center;
+    background: #fafbff;
+    border: 1px solid #dcdee8;
+    padding: 7px 0;
+    border-radius: 24px;
+    font-weight: bold;
+}
+.relation-search .table-wrap {
+    display: flex;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+.relation-search .ranking-table {
+    margin-left: 47px;
+}
+.relation-search .ranking-table:nth-child(1) {
+    margin-left: 24px;
+}
+.relation-search table {
+    border-collapse: collapse;
+}
+.relation-search table caption {
+    font-size: 18px;
+    color: #3f37c9;
+    text-align: left;
+    padding: 37px 0 15px 24px;
+}
+.relation-search table caption .help-tool-tip {
+    display: inline-block;
+}
+.relation-search table caption img {
+    vertical-align: middle;
+    margin-top: -5px;
+}
+.relation-search table th,
+.relation-search table td {
+    font-size: 14px;
+    color: #3e4259;
+    padding: 11px 0 10px;
+}
+.relation-search table th {
+    border-bottom: 1px solid #dcdee8;
+    font-weight: 500;
+    text-align: center;
+}
+.relation-search table td {
+    font-weight: normal;
+    text-align: center;
+    line-height: 1.25;
+}
+.relation-search table th:nth-child(1),
+.relation-search table td:nth-child(1) {
+    width: 152px;
+    text-align: left;
+    padding-left: 24px;
+    font-weight: 500;
+}
+.relation-search table th:nth-child(2) {
+    width: 98px;
+}
+.relation-search table th:nth-child(3) {
+    width: 100px;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 트렌드 */
+.trend {
+
+    margin-top: 72px;
+    margin-bottom: 32px;
+}
+.trend .calendar-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.trend .calendar-area .calendar-btn {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    width: 214px;
+    height: 42px;
+    background: #fafbff;
+    border: 1px solid #3f37c9;
+    padding: 5px 16px;
+    border-radius: 24px;
+}
+.trend .calendar-area .calendar-btn .line {
+    width: 1px;
+    height: 20px;
+    background: #3f37c9;
+    margin: 0 22px 0 16px;
+}
+.trend .calendar-area .calendar-btn .calendar-num {
+    font-size: 18px;
+    font-family: 'GmarketSans';
+    font-weight: 400;
+    color: #3e4259;
+    margin-top: 4px;
+}
+.trend .calendar-area > span {
+    margin: 0 16px;
+}
+.trend .calendar-area .apply {
+    width: 96px;
+    height: 42px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background: #3f37c9;
+    border-radius: 24px;
+    padding: 10px 30px;
+    margin-left: 24px;
+}
+.trend .trend-box {
+    width: 100%;
+    height: 432px;
+    padding: 22px 40px 32px 48px;
+}
+.trend .trend-box .contents-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  /* text-align: center; */
+}
+.trend .trend-box .trend-display {
+    position: absolute;
+    right: 48px;
+    top: 3px;
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+}
+.trend .trend-box .trend-display .click-trend {
+    display: flex;
+    align-items: center;
+    margin-right: 27px;
+}
+.trend .trend-box .trend-display .click-trend span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #2dd6e0;
+    border-radius: 50%;
+    margin-right: 11px;
+}
+.trend .trend-box .trend-display .search-trend {
+    display: flex;
+    align-items: center;
+}
+.trend .trend-box .trend-display .search-trend span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #480ca8;
+    border-radius: 50%;
+    margin-right: 11px;
+}
+
+/* ===========================================*/
+/* =========================================== */
+/* 키워드 영역3 */
+.keyword-section .date {
+    font-family: 'GmarketSans';
+    font-size: 16px;
+    font-weight: 500;
+    color: #3e4259;
+}
+
+.keyword-section .popular-search {
+    width: 386px;
+    height: 710px;
+}
+
+.keyword-section .popular-search .popular-ranking {
+    margin-top: 43px;
+    padding: 0 16px;
+}
+
+.keyword-section .popular-search .popular-ranking ol {
+    counter-reset: number 0;
+}
+.keyword-section .popular-search .popular-ranking ol li {
+    padding: 17px 0 16px;
+    border-bottom: 1px solid #dcdee8;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.22;
+    height: 56px;
+}
+
+.keyword-section .popular-search .popular-ranking ol li:last-child {
+    border-bottom: 0;
+    margin-left: -3px;
+}
+
+.keyword-section .popular-search .popular-ranking ol li::before {
+    counter-increment: number 1;
+    content: counter(number);
+    font-size: 20px;
+    font-weight: 500;
+    color: #3f37c9;
+    margin-right: 25px;
+    line-height: 1.25;
+    font-family: 'GmarketSans';
+}
+
+.right-wrap .box {
+    padding: 21px 24px 24px;
+}
+
+.right-wrap .age-click {
+    width: 813px;
+    height: 324px;
+    margin-bottom: 32px;
+}
+.right-wrap .gender-click {
+    width: 813px;
+    height: 354px;
+}
+
+/* =================================================================================================================== */
+/* =================================================================================================================== */
+
+/* Mobile css */
+
+/* G마켓 폰트 */
+.mobile .g-num {
+    font-family: 'GmarketSans';
+}
+/* 툴팁 스타일 */
+.mobile .help-tool-tip {
+    position: relative;
+    width: 2.0rem;
+    height: 2.0rem;
+}
+.mobile .help-tool-tip::before {
+    content: "";
+    display: none;
+    position: absolute;
+    left: -7rem;
+    top: 2.7rem;
+    width: 0px;
+    height: 0px;
+    border-bottom: 0.8rem solid #3e4259d5;
+    border-left: 0.7rem solid transparent;
+    border-right: 0.7rem solid transparent;
+}
+.mobile .help-tool-tip::after {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 3.5rem;
+    width: max-content;
+    padding: 1.0rem 1.6rem;
+    background: #3e4259d5;
+    font-size: 1.2rem;
+    text-align: left;
+    font-weight: normal;
+    color: #fff;
+    line-height: 1.29;
+    white-space:pre;
+    transform: translateX(-71%);
+    border-radius: 12px;
+    z-index: 10;
+}
+.mobile .help-tool-tip:hover::before,
+.mobile .help-tool-tip:hover::after {
+    display: block;
+}
+.mobile .help-tool-tip.popular-search-tip::before {
+    left: -13.1rem
+}
+.mobile .help-tool-tip.popular-search-tip::after {
+    content: "네이버쇼핑에서 많이 검색하고 \A 상품을 많이 본 키워드 중 최근 급상승한 \A 키워드를 뽑아서 나타낸 순위입니다.";
+    transform: translateX(-69%);
+}
+.mobile .help-tool-tip.six-month-average-tip::after {
+    content: "해당 키워드로 네이버쇼핑 검색 시 상위 40위/80위 \A 상품의 예상 매출액 정보입니다. 판매량 및 매출은 과거 \A 6개월로 집계된 정보이며, 판매처가 여러 곳인 상품이나 \A 구매 수가 감춰진 상품이 포함될 수 있으니 \A 참고용으로만 보시기 바랍니다.";
+}
+.mobile .help-tool-tip.daily-search-tip::after {
+    content: "하루에 네이버 검색 시 \A 조회되는 전체 결과 수입니다.";
+    transform: translateX(-75%);
+}
+.mobile .help-tool-tip.daily-search-tip::before {
+    left: -4.5rem;
+}
+.mobile .help-tool-tip.search-preference-tip::after {
+    content: "순위는 해당 키워드를 네이버에 검색했을 시 \A 보여지는 결과 페이지의 내용 순서입니다. \A 각 기기별 내용 순서는 사용자의 검색 선호도를 \A 기준으로 노출하고 있어, 해당 키워드와 \A 연관성이 높은 상단 지면에 노출할수록 \A 홍보 효과를 극대화할 수 있습니다.";
+    transform: translateX(-60%);
+}
+.mobile .help-tool-tip.search-preference-tip::before {
+    left: -3rem;
+}
+.mobile .help-tool-tip.ad-keyword-tip::after {
+    content: "해당 키워드의 네이버 파워링크 \A 과거 데이터를 나타냅니다.";
+    transform: translateX(-34%);
+}
+.mobile .help-tool-tip.ad-keyword-tip::before {
+    left: -3.9rem;
+}
+.mobile .help-tool-tip.shopping-related-tip::after {
+    content: "해당 키워드의 네이버쇼핑 연관검색어의 \A 데이터를 나타냅니다.";
+    transform: translateX(-23%);
+}
+.mobile .help-tool-tip.shopping-related-tip::before {
+    left: -3.2rem;
+}
+.mobile .help-tool-tip.auto-completion-tip::after {
+    content: "네이버 통합검색 검색창에서 해당 키워드를 \A 입력했을 때 자동으로 완성되는 \A 키워드의 데이터를 나타냅니다.";
+    transform: translateX(-22%);
+}
+.mobile .help-tool-tip.auto-completion-tip::before {
+    left: -3.2rem;
+}
+.mobile .help-tool-tip.search-trend-tip::after {
+    content: "기간에 따른 클릭량과 검색량의 추이입니다. \A 값은 클릭과 검색 빈도가 가장 높을수록 n, \A 해당 키워드에 대한 데이터가 충분하지 않은 경우 \A 0으로 설정하여 상대적인 변화를 나타냅니다.";
+    transform: translateX(-70%);
+}
+.mobile .help-tool-tip.search-trend-tip::before {
+    left: -6.3rem;
+}
+.mobile .help-tool-tip.age-rate-tip::after {
+    content: "조회 기간 동안 연령별 클릭량 합계의 \A 비율을 나타냅니다. 값이 높을 경우 절대적인 \A 검색 수가 높은 것이 아니라 전체 검색량 중에서 \A 해당 연령이 차지하는 비율이 높은 것입니다.";
+    transform: translateX(-64%);
+}
+.mobile .help-tool-tip.age-rate-tip::before {
+    left: -4.5rem;
+}
+.mobile .help-tool-tip.gender-rate-tip::after {
+    content: "조회 기간 동안 성별 클릭량 \A 합계의 비율을 나타냅니다.";
+    transform: translateX(-70%);
+}
+.mobile .help-tool-tip.gender-rate-tip::before {
+    left: -3.8rem;
+}
+/* box header에 도움말 이미지가 있을 때 */
+.mobile .box {
+    padding: 14px 0 20px 16px;
+    border-radius: 16px;
+    background: #fafbff;
+    box-shadow: 0 3px 10px 0 rgba(36, 51, 179, 0.1);
+    margin-bottom: 24px;
+}
+.mobile .box-header.help-center {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+.mobile .box-header.help-center img {
+    width: 2.0rem;
+    height: 2.0rem;
+    margin-left: 2px;
+}
+/* 순위 관련 알약 모양 스타일 */
+.mobile .pill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    border-radius: 24px;
+    color: #fff;
+    padding: 0.2rem 1.2rem 0 2.4rem;
+    margin-left: 8px;
+    padding-top: 0.4rem;
+}
+.mobile .pill.rise {
+    background: #fc6075 url('assets/images/svg/ic_fold_white_24.svg') 2px center no-repeat;
+    /* background-size: 1.6rem; */
+}
+.mobile .pill.fall {
+    background: #2fbaed url('assets/images/svg/ic_unfold_white_24.svg') left center no-repeat;
+    /* background-size: 1.6rem; */
+}
+
+/* 검색한 키워드 스타일 */
+.mobile .searched-keyword {
+    display: flex;
+    justify-content: center;
+}
+.mobile .searched-keyword span {
+    display: inline-block;
+    height: 2.6rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #3f37c9;
+    line-height: 2.4rem;
+    padding: 0 1.2rem;
+    border: 1px solid #3f37c9;
+    border-radius: 24px;
+}
+
+/* 탑/다운 버튼 */
+.mobile .flirting-btn-wrap {
+    position: fixed;
+    left: auto;
+    right: 0.8rem;
+    bottom: 24px;
+    visibility: hidden;
+    opacity: 0;
+    margin-left: 0;
+    transition: all 0.7s;
+    z-index: 999;
+}
+.mobile .flirting-btn-wrap.active {
+    visibility: visible;
+    opacity: 1;
+}
+.mobile .flirting-btn {
+    display: block;
+    width: 4.0rem;
+    height: 4.0rem;
+    background: rgba(255, 255, 255, 0.5) url('assets/images/svg/ic_top_black_24.svg') center no-repeat;
+    border-radius: 50%;
+    border: 1px solid #dcdee8;
+    box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.1);
+    text-indent: -999999em;
+}
+.mobile .flirting-btn.down-btn {
+    background: rgba(255, 255, 255, 0.5) url('assets/images/svg/ic_down_black_24.svg') center no-repeat;
+    margin-top: 4px;
+}
+
+/* ================================== */
+/* ================================== */
+/* 키워드 검색 창 */
+.mobile .keyword-search-input {
+    position: relative;
+    margin-top: 2.4rem;
+    padding: 0 1.6rem;
+}
+.mobile .keyword-search-input .search-input-box > input {
+    width: 100%;
+    height: 4.8rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+    background: #fff;
+    color: #04021f;
+    border: 0;
+    outline: 0;
+    border-radius: 8px;
+    padding: 1.5rem 5.4rem 1.5rem 1.6rem;
+    box-shadow: 0 6px 8px 0 rgba(36, 51, 179, 0.15);
+}
+.mobile .keyword-search-input .search-input-box > input::placeholder {
+    color: #b8b6c4;
+}
+.mobile .keyword-search-input .keyword-search-btn {
+    position: absolute;
+    right: 3.4rem;
+    top: 0.7rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    background: url('assets/images/svg/ic_search_purple_48.svg') center no-repeat;
+    background-size: 3.2rem;
+    text-indent: -9999em;
+}
+.mobile .keyword-search-input .real-time-trends {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.0rem;
+}
+.mobile .keyword-search-input .real-time-trends span {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #3e4259;
+    margin-right: 2.0rem;
+}
+.mobile .keyword-search-input .real-time-trends ul {
+    display: flex;
+    align-items: center;
+}
+.mobile .keyword-search-input .real-time-trends ul li {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #3f37c9;
+    margin-right: 1.6rem;
+}
+.mobile .keyword-search-input .real-time-trends ul li:last-child {
+    margin-right: 0;
+}
+.mobile .line {
+    width: 100%;
+    height: 1px;
+    background: #dcdee8;
+    margin-top: 2.4rem;
+    margin-bottom: 3.2rem;
+}
+
+/* ================================== */
+/* 검색 기록이 없을 때 */
+.mobile .search-result-area .null {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #b8b6c4;
+    text-align: center;
+    line-height: 1.36;
+    margin-top: 4.4rem;
+    margin-bottom: 3.0rem;
+}
+
+/* ================================== */
+/* 검색한 결과 영역 */
+.mobile .six-month-average {
+    margin: 3.2rem 2.4rem 2.4rem;
+    padding: 2.0rem 1.6rem 3.0rem;
+    text-align: center;
+}
+.mobile .search-result-area {
+    padding: 0 2.4rem;
+}
+.mobile .search-history {
+    padding: 2.0rem 1.6rem 3.2rem;
+}
+.mobile .search-history .search-history-title {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #04021f;
+    margin-bottom: 2.3rem;
+}
+.mobile .search-history ul li {
+    position: relative;
+    margin-bottom: 2.2rem;
+}
+.mobile .search-history ul li .searching-keyword {
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #3f37c9;
+    margin-bottom: 0.6rem;
+}
+.mobile .search-history ul li p {
+    font-size: 1.2rem;
+    color: #3e4259;
+}
+.mobile .search-history ul li .delete-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: none;
+}
+.mobile .popular-search {
+    padding: 2.0rem 1.6rem 3.5rem;
+}
+.mobile .popular-search .popular-search-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.7rem;
+}
+.mobile .popular-search .popular-search-title span {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #04021f;
+    margin-left: 0.8rem;
+    margin-right: 0.3rem;
+}
+.mobile .popular-search .popular-search-title .help-img {
+    width: 2.0rem;
+    height: 2.0rem;
+}
+.mobile .popular-search ol {
+    counter-reset: number 0;
+}
+.mobile .popular-search ol li {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #04021f;
+    margin-left: 1.6rem;
+    margin-bottom: 3.0rem;
+}
+.mobile .popular-search ol li > a{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #04021f;
+}
+.mobile .popular-search ol li::before {
+    counter-increment: number 1;
+    content: counter(number);
+    font-family: 'GmarketSans';
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #3f37c9;
+    margin-right: 2.0rem;
+}
+.mobile .popular-search ol li:last-child {
+    margin-left: 1.4rem;
+}
+.mobile .popular-search ol li:last-child::before {
+    margin-right: 1.4rem;
+}
+
+/* ================================== */
+/* 키워드 검색 결과 */
+/* .mobile .keyword-search-result {
+    padding: 0 2.4rem;
+} */
+.mobile .keyword-search-result h3 {
+    display: inline-block;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #3e4259;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid #dcdee8;
+    margin-bottom: 3.2rem;
+    margin-left: 2.4rem;
+}
+.mobile .keyword-search-result .keyword-category {
+    display: block;
+    margin-left: 2.4rem;
+}
+.mobile .keyword-search-result .keyword-category ul {
+    display: inline-flex;
+    align-items: center;
+    background: #fafbff;
+    border: 1px solid #dcdee8;
+    padding: 0 0.8rem;
+    border-radius: 24px;
+}
+.mobile .keyword-search-result .keyword-category ul li {
+    height: 2.7rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #3e4259;
+    line-height: 2.7rem;
+    margin-right: 0.4rem;
+}
+.mobile .keyword-search-result .keyword-category ul li::before {
+    content: ">";
+    display: inline-block;
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #b8b6c4;
+    margin-right: 0.4rem;
+}
+.mobile .keyword-search-result .keyword-category ul li:first-child::before {
+    display: none;
+}
+.mobile .keyword-search-result .searching-store {
+    display: flex;
+    align-items: center;
+    margin-top: 1.6rem;
+    margin-bottom: 3.2rem;
+    margin-left: 2.4rem;
+}
+.mobile .keyword-search-result .searching-store li {
+    display: flex;
+    align-items: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #3e4259;
+    background: #fafbff;
+    border: 1px solid #dcdee8;
+    border-radius: 24px;
+    padding: 0.4rem 0.8rem;
+    margin-right: 0.8rem;
+}
+.mobile .keyword-search-result .searching-store li > a {
+    display: flex;
+    align-items: center;
+    color: #3e4259;
+}
+.mobile .keyword-search-result .searching-store li img {
+    width: 2.0rem;
+    height: 2.0rem;
+    margin-right: 0.8rem;
+}
+.mobile .keyword-search-result .goods-count,
+.mobile .keyword-search-result .month-search {
+    margin: 0 2.4rem 2.4rem;
+}
+.mobile .keyword-search-result .goods-count .goods-count-num,
+.mobile .keyword-search-result .month-search .month-search-num {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+    text-align: center;
+    margin-top: 0.8rem;
+}
+.mobile .keyword-search-result .goods-count .goods-count-num b,
+.mobile .keyword-search-result .month-search .month-search-num b {
+    font-size: 2.4rem;
+    font-weight: bold;
+    color: #04021f;
+}
+.mobile .keyword-search-result .device-search {
+    margin: 0 2.4rem 2.4rem;
+}
+.mobile .keyword-search-result .device-search .graph {
+    height: 10.4rem;
+}
+
+/* ================================== */
+/* 연령별 키워드 검색 */
+.mobile .age-keyword {
+    margin: 0 2.4rem 2.4rem;
+    padding: 0 1.4rem;
+    margin-top: -0.8rem;
+}
+.mobile .age-keyword ul {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.mobile .age-keyword ul li {
+    height: 4.7rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+    line-height: 4.7rem;
+    background: #fafbff;
+    padding: 0 0.8rem;
+    border-radius: 16px;
+    box-shadow: 0 3px 10px 0 rgba(36, 51, 179, 0.1);
+    margin-right: 1.6rem;
+    margin-top: 1.6rem;
+}
+.mobile .age-keyword ul li:first-child {
+    margin-left: 0.8rem;
+}
+.mobile .age-keyword ul li:nth-child(3) {
+    margin-right: 0;
+}
+.mobile .age-keyword span {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #04021f;
+}
+.mobile .age-keyword ul li:last-child {
+    background: none;
+    box-shadow: none;
+    margin-right: 0;
+    padding: 0;
+}
+
+.mobile .age-group-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 2rem;
+}
+.mobile .age-group-wrap .age-group {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+    margin-left: 16px;
+    padding: 14px 8px;
+    margin-bottom: 16px;
+    margin-top: 0;
+}
+.mobile .age-group-wrap .age-group:first-child {
+    margin-left: 2.5rem;
+}
+/* .age-group-wrap .age-group:last-of-type {
+    margin-bottom: 0;
+    margin-right: 8px;
+} */
+.mobile .age-group-wrap > span {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #04021f;
+}
+/* 시간별 탭 메뉴 */
+.mobile .data-times {
+    display: inline-block;
+    background: #f2f3fa;
+    border-radius: 8px;
+    margin-top: 1.1rem;
+    margin-bottom: 3.4rem;
+}
+.mobile .data-times li {
+    float: left;
+    /* width: 5.5rem; */
+    height: 2.6rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #b8b6c4;
+    line-height: 2.6rem;
+    text-align: center;
+    background: #f2f3fa;
+    padding: 0 0.8rem;
+}
+.mobile .data-times li:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.mobile .data-times li:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.mobile .data-times li.active {
+    color: #3f37c9;
+    background-color: #fff;
+    border: 1px solid #3f37c9;
+    border-radius: 8px;
+}
+.mobile .data-times::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.mobile .six-month-average .average-sales-contents li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #3e4259;
+    margin-bottom: 3.7rem;
+}
+.mobile .six-month-average .average-sales-contents li:last-child {
+    margin-bottom: 0;
+}
+.mobile .six-month-average .average-sales-contents li b {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #04021f;
+}
+.mobile .daily-search {
+    margin: 0 2.4rem 2.4rem;
+    padding: 2.0rem 1.6rem;
+    text-align: center;
+}
+.mobile .daily-search .daily-search-contents {
+    margin-top: 0.6rem;
+}
+.mobile .daily-search .daily-search-contents li {
+    float: left;
+    width: 13.2rem;
+    margin-right: 1.6rem;
+    margin-top: 1.8rem;
+}
+.mobile .daily-search .daily-search-contents li:nth-child(2n) {
+    margin-right: 0;
+}
+.mobile .daily-search .daily-search-contents::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.mobile .daily-search .daily-search-contents li .search-where {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #3e4259;
+    margin-bottom: 0.8rem;
+}
+.mobile .daily-search .daily-search-contents li b {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #04021f;
+}
+.mobile .search-preferences {
+    margin: 0 2.4rem 2.4rem;
+    padding: 2.0rem 1.6rem 3.0rem;
+    text-align: center;
+}
+.mobile .search-preferences .search-preferences-contents li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    margin-bottom: 2.0rem;
+}
+.mobile .search-preferences .search-preferences-contents li:last-child {
+    margin-bottom: 0;
+}
+.mobile .search-preferences .search-preferences-contents li .preferences-subject {
+    font-weight: 500;
+    color: #3e4259;
+}
+.mobile .search-preferences .search-preferences-contents li .preferences-where {
+    height: 2.6rem;
+    font-weight: bold;
+    color: #3f37c9;
+    line-height: 2.6rem;
+    padding: 0 1.2rem;
+    border: 1px solid #3f37c9;
+    border-radius: 24px;
+}
+.mobile .related-search {
+    /* width: 130%; */
+    padding: 2.0rem 1.6rem;
+    /* margin: 0 2.4rem 2.4rem; */
+    margin-left: 2.4rem;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.mobile .related-table-scroll {
+    overflow-x: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    margin-top: 2.3rem;
+}
+.mobile .related-table-scroll::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+.mobile .related-table {
+    width: 310%;
+}
+.mobile .related-table::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.mobile .related-table table {
+    border-collapse: collapse;
+    float: left;
+    margin-right: 3.2rem;
+}
+.mobile .related-table table:last-child {
+    margin-right: 0;
+}
+.mobile .related-table table caption {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #3f37c9;
+    text-align: left;
+    padding-left: 0.8rem;
+    margin-bottom: 1.4rem;
+}
+.mobile .related-table table caption > div {
+    display: flex;
+    align-items: center;
+}
+.mobile .related-table table caption img {
+    width: 2.0rem;
+    height: 2.0rem;
+    vertical-align: middle;
+    /* margin-top: -0.3rem; */
+    margin-left: 0.2rem;    
+}
+.mobile .related-table table th {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #3e4259;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #DCDEE8;
+}
+.mobile .related-table table th:nth-child(1) {
+    width: 10.4rem;
+    text-align: left;
+    padding-left: 0.8rem;
+}
+.mobile .related-table table th:nth-child(2) {
+    width: 8.2rem;
+}
+.mobile .related-table table th:nth-child(3) {
+    width: 10.0rem;
+}
+.mobile .related-table table td {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #3e4259;
+    text-align: center;
+    padding: 0.8rem 0;
+}
+.mobile .related-table table td:first-child {
+    font-weight: 500;
+    color: #04021f;
+    text-align: left;
+    padding-left: 0.8rem;
+}
+.mobile .select-date-area {
+    margin: 3.4rem 2.4rem 2.4rem;
+}
+.mobile .select-date-area .calendar-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.6rem;
+}
+.mobile .select-date-area .calendar-area .calendar-btn {
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    width: 12.0rem;
+    height: 2.8rem;
+    background: #fafbff;
+    border: 1px solid #3f37c9;
+    padding: 0 0.8rem;
+    border-radius: 24px;
+}
+.mobile .select-date-area .calendar-area .calendar-btn img {
+    width: 2.0rem;
+    height: 2.0rem;
+}
+.mobile .select-date-area .calendar-area .calendar-btn .line {
+    display: block;
+    width: 1px;
+    height: 1.4rem;
+    background: #3f37c9;
+    margin: 0 0.7rem 0 0.6rem;
+}
+.mobile .select-date-area .calendar-area .calendar-btn .calendar-num {
+    font-size: 1.2rem;
+    font-weight: 500;
+    font-family: 'GmarketSans';
+    color: #3e4259;
+    margin-top: 0.2rem;
+}
+.mobile .select-date-area .calendar-area > span {
+    margin: 0 0.4rem;
+}
+.mobile .select-date-area .calendar-area .apply {
+    width: 5.0rem;
+    height: 2.8rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #fff;
+    line-height: 2.8rem;
+    background: #3f37c9;
+    border-radius: 24px;
+    margin-left: 1.2rem;
+}
+.mobile .trend-change {
+    padding: 2.0rem 1.6rem;
+}
+.mobile .trend-change .trend-class {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.8rem;
+}
+.mobile .trend-change .trend-class li {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #04021f;
+    margin-right: 2.3rem;
+}
+.mobile .trend-change .trend-class li:last-child {
+    margin-right: 0;
+}
+.mobile .trend-change .trend-class li::before {
+    content: "";
+    display: block;
+    width: 0.63rem;
+    height: 0.63rem;
+    border-radius: 50%;
+    background: #2dd6e0;
+    margin-right: 0.7rem;
+}
+.mobile .trend-change .trend-class li:nth-child(2)::before {
+    background: #480ca8;
+}
+.mobile .trend-change .graph {
+    height: 19.5rem;
+}
+.mobile .age-click,
+.mobile .gender-click {
+    padding: 2.0rem 1.6rem;
+}
+.mobile .age-click .selected-date,
+.mobile .gender-click .selected-date {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #3e4259;
+    margin-top: 1.5rem;
+}
+.mobile .age-click .selected-date span,
+.mobile .gender-click .selected-date span {
+    margin: 0 0.4rem;
+    font-family: 'GmarketSans';
+}
+.mobile .age-click .graph {
+    height: 19.5rem;
+    margin-top: 2.2rem;
+}
+.mobile .gender-click .graph {
+    height: 10.4rem;
+    margin-top: 2.2rem;
+}
+
+
+/* 반응형 브레이크 포인트 */
+@media screen and (max-width: 361px) {}
+
+@media screen and (max-width: 375px) {
+    .mobile .age-group-wrap .age-group:last-of-type {
+        margin-bottom: 0;
+        margin-right: 8px;
+    }
+}
+
+/* 650px 이상 767px 이하 */
+@media screen and (min-width: 650px) and (max-width: 767px) {
+    /* .keyword-search-result {
+    margin-top: 15rem;
+    } */
+    .mobile .main-tab-area {
+    margin-top: 10.0rem;
+    }
+    .mobile .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+    }
+}
+
+/* 768px 이상 */
+@media screen and (min-width: 768px) {
+    /* .keyword-search-result {
+    margin-top: 15rem;
+    } */
+    .mobile .main-tab-area {
+    margin-top: 10.0rem;
+    }
+    .mobile .main-tab-area .main-tab li:nth-child(2)::before {
+    left: 5.8rem;
+    top: -2.3rem;
+    }
+    .mobile .flirting-btn-wrap {
+        left: 50%;
+        right: auto;
+        transform: translate(-50%, -50%);
+        margin-left: 335px;
+    }
+}

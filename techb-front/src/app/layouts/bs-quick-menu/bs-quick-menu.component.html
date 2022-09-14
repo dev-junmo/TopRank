@@ -1,0 +1,84 @@
+<div class="quick-wrap ns-bold"   *ifDesktop  [ngClass]="{'quick-width': isShowText}">
+    <div class="quick-menu" [ngClass]="{'showtext' : !isShowText}">
+      <div (click)="isHistoryBox();" [attr.aria-expanded]="!isHistory" aria-controls="collapseExample" class="history clickable" [ngClass]="{'pick' : !isHistory , 'showtext' : !isShowText}"
+      ga-listener [attr.ga-category]="'MALL_PC_NAVI'" [attr.ga-action]="'CLICK_1'" [attr.ga-label]="'히스토리'">
+        <div class="circle" *ngIf="!isShowText">{{recentData?.total}}</div>
+        <div class="text" *ngIf="!isShowText">히스토리</div>
+      </div>
+      <div (click)="isRegularShopBox();"[attr.aria-expanded]="!isRegularShop" aria-controls="collapseExample" class="shop clickable" [ngClass]="{'pick' : !isRegularShop , 'showtext' : !isShowText}"
+      ga-listener [attr.ga-category]="'MALL_PC_NAVI'" [attr.ga-action]="'CLICK_2'" [attr.ga-label]="'단골샵'" >
+        <div class="circle" *ngIf="!isShowText">{{liketotal}}</div>
+        <div class="text" *ngIf="!isShowText">브랜드샵</div>
+      </div>
+      <div class="top clickable" (click)="onClickTop()" [ngClass]="{'showtext' : !isShowText}"
+      ga-listener [attr.ga-category]="'MALL_PC_NAVI'" [attr.ga-action]="'GOTOP'" [attr.ga-label]="'위로'">
+        <div class="text top" *ngIf="!isShowText">TOP</div>
+      </div>
+    </div>
+    <div id="collapseExample" [ngbCollapse]="isHistory" class="quick-box history ns-regular">
+        <div class="quick-box-title">
+          <div class="title">최근 본 상품</div>
+          <div (click)="HistoryBoxClose();" class="x-img clickable"><img src="/assets/img/x.png" /></div>
+        </div>
+        <div class="quick-box-body" *ngIf="!isHistory && recentData?.total > 0">
+          <ul class="content" *ngFor="let key of listKey">
+            <div class="con-tlt ns-bold" id="con-tlt" [ngClass]= "{'today' : key == 'TODAY'}">{{key}}</div>
+            <li class="clickable" *ngFor="let item of recentlist[key]">
+                <div class="con-img" (click)="onClickGoods()" [routerLink]="['/goods/view/' + item?.goods?.goods_seq]">
+                    <img [src]="item?.goods?.image" />
+                </div>
+                <div class="con-txt" (click)="onClickGoods()" [routerLink]="['/goods/view/' + item?.goods?.goods_seq]">
+                    <div class="top" *ngIf="item?.goods?.default_brand?.title">{{item?.goods?.default_brand?.title}}</div>
+                    <div class="middle ns-regular">{{item?.goods?.goods_name | stringLimit : 28}}</div>
+                    <div class="bottom ns-bold"><span class="">{{item?.goods?.default_option?.price | number}}</span>원</div>
+                </div>
+                <div class="x-btn" (click)="onClickDelete(item.history_seq)">
+                    <img src="/assets/img/X_bold.png"/>
+                </div>
+            </li>
+          </ul>
+        </div>
+        <div class="quick-box-body" *ngIf="recentData?.total < 1">
+          <div class="empty-img">
+            <img src="/assets/img/main/1.4.03.02.!.png"/>
+          </div>
+          <div class="empty-text">
+            최근 본 상품이 없습니다.
+          </div>
+        </div>
+    </div>
+
+    <div id="collapseExample" [ngbCollapse]="isRegularShop" class="quick-box regular-shop ns-regular">
+        <div class="quick-box-title">
+          <div class="title">브랜드샵</div>
+          <div (click)="RegularShopBoxClose();" class="x-img clickable"><img src="/assets/img/x.png" /></div>
+        </div>
+        <div class="quick-box-body ns-regular" *ngIf="!auth.isLogined()">
+            <div class="login">
+                <div class="nt ns-bold">로그인이 필요합니다.</div>
+                <div class="nt-gr">나의 브랜드샵 등록 후<br/>다양한 굿즈 소식을 확인해 보세요.</div>
+                <div class="bt"><button type="button" (click)="onClickLoginBtn()">로그인</button></div>
+            </div>
+        </div>
+        <div class="quick-box-body ns-regular" *ngIf="auth.isLogined() && likeBrandData?.total < 1">
+            <div class="empty-img">
+                <img src="/assets/img/main/1.4.03.02.!.png"/>
+            </div>
+            <div class="empty-text">
+                등록된 브랜드샵이 없습니다.
+            </div>
+        </div>
+        <div class="quick-box-body ns-regular" *ngIf="auth.isLogined() && likeBrandData?.total > 0">
+            <ul class="content brand" *ngFor="let brands of likeBrandData.list;let idx = index">
+                <div class="con-tlt ns-regular clickable" [routerLink]="['/goods/brand/view/' + brands.brand.category_code]">{{brands.brand.title}}</div>
+                <div class="slide-swiper">
+                    <regular-shop-swiper #regularShopSwipers (isclick)="onClickGoods($event)" [data]="brands"></regular-shop-swiper>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="mobile mobile-quick clickable" (click)="onClickTop()"  *ifMobile>
+    <img src="/assets/img/m_up.png" />
+</div>

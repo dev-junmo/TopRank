@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+    <defs>
+        <linearGradient id="a" x1="50%" x2="50%" y1="-96.473%" y2="175.313%">
+            <stop offset="0%" stop-color="#CFCFCF"/>
+            <stop offset="100%" stop-color="#C0C0C0"/>
+        </linearGradient>
+        <linearGradient id="b" x1="50%" x2="50%" y1="-973.293%" y2="926.016%">
+            <stop offset="0%" stop-color="#CFCFCF"/>
+            <stop offset="100%" stop-color="#C0C0C0"/>
+        </linearGradient>
+        <linearGradient id="c" x1="50%" x2="50%" y1="0%" y2="100%">
+            <stop offset="0%" stop-color="#CFCFCF"/>
+            <stop offset="100%" stop-color="#C0C0C0"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd" stroke-linejoin="round">
+        <path stroke="url(#a)" d="M14.516 6.667l-2.624 7.884L9.48 7.087 7.067 14.55 4.444 6.667" transform="translate(1 1)"/>
+        <path stroke="url(#b)" d="M13.333 10h2.605M3.333 10h2.58" transform="translate(1 1)"/>
+        <path stroke="url(#c)" stroke-width="2" d="M19.679 9.839c0 5.434-4.406 9.839-9.839 9.839-5.434 0-9.84-4.405-9.84-9.84C0 4.405 4.406 0 9.84 0c5.433 0 9.839 4.404 9.839 9.839z" transform="translate(1 1)"/>
+    </g>
+</svg>

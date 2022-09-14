@@ -1,0 +1,46 @@
+/*모바일 전용 페이지 tabs*/
+:host() {
+    width: 100%;
+}
+
+@media screen and (max-width: 1767px) {
+     :host{
+        max-width: unset;
+    }
+     .new-tabs {
+        font-size: 0;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+        background: #fff;
+    }
+     .mypage-tabs {
+        height: 46px;
+        padding: 13px 0;
+        border-bottom: 1px solid #eeeeee;
+    }
+     .new-tabs .tab-item {
+        padding: 0;
+        color: #999999;
+        font-size: 13px;
+        display: inline-block;
+        border-right: 1px solid #eeeeee;
+        cursor: pointer;
+        border: none;
+    }
+     .active {
+        background: #000000;
+        color: #ffffff;
+        cursor: pointer;
+    }
+     .new-tabs li:last-child {
+        border-right: none;
+    }
+     .new-tabs li.active {
+        background: #fff;
+        color: #212121;
+        font-weight: bold;
+        border: none;
+    }
+
+}

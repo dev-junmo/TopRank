@@ -1,0 +1,467 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="'관리자 등록/수정'">
+    <bo-page-button-config  *ngIf="!isUpdateMode" id = "id-board-content-list-btn-create"
+        [title]="'저장하기'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "onSubmit()">
+    </bo-page-button-config>
+    <bo-page-button-config  *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+    [title] = "'저장 후 리스트'"
+    [styleType] = "'square-m-white-btn'"
+    (click) = "submitAndBack()">
+    </bo-page-button-config>
+    <bo-page-button-config  *ngIf="isUpdateMode" id = "id-board-content-list-btn-userview"
+        [title] = "'저장 후 화면유지'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config>
+</bo-page-header>
+<form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+    <div class="section">
+        <div class="content-wrap two-line-content">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'관리자 정보'"
+                [description]="'관리자 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+
+                <div class="content-box">
+                    <div class="content-title">
+                        최근 접속일
+                    </div>
+                    <!-- 아래 원래 class="content-top-line" 추가 되어있었음 -->
+                    <div class="content">
+                        {{data?.lastlogin_date | date: 'yyyy-MM-dd HH:mm'}}
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                    등록일
+                    </div>
+                    <!-- 아래 원래 class="content-top-line" 추가 되어있었음 -->
+                    <div class="content">
+                        {{data?.mregdate | date: 'yyyy-MM-dd'}}
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                    관리자 구분
+                    </div>
+                    <div class="item-horizontal" style="font-size: 14px;">
+                        <bs-select [name]="'manager_yn'" [formGroup]="bsForm" [disabled]="true">
+                            <bs-option-config [value]= "'Y'" [label] = "'관리자'"></bs-option-config>
+                            <bs-option-config [value]= "'N'" [label] = "'부관리자'"></bs-option-config>
+                        </bs-select>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        관리자 ID<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <!-- 아래 원래 class="content-top-line" 추가 되어있었음 -->
+                    <div class="content">
+                        <bs-input [name]="'manager_id'" [formGroup]="bsForm" [style]="'medium-input'" 
+                            [required]="true" [value]="'Y'" [disabled]="!auth.isManager"></bs-input>
+                        <div class="two-notice">4~16자, 첫 글자 영문, 영문 대소문자 또는 숫자</div>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                    관리자명<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'mname'" [formGroup]="bsForm" [style]="'medium-input'" [required]="true" [value]="'Y'"  [disabled]="!auth.isManager"></bs-input>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        이메일
+                    </div>
+                    <div class="content">
+                        <bs-group-input [name]="'memail'" [separator]="'@'" [formGroup]="bsForm" [style]="'medium-input'">
+                            <bs-input-config ></bs-input-config>
+                            <bs-input-config ></bs-input-config>
+                        </bs-group-input>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        휴대폰
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'mcellphone'" [formGroup]="bsForm" [style]="'medium-input'" ></bs-input>
+                    </div>
+                </div>
+                <div class="content-box">
+                    <div class="content-title">
+                        전화번호
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'mphone'" [formGroup]="bsForm" [style]="'medium-input'" ></bs-input>
+                    </div>
+                </div>
+                <div class="content-box inline-content">
+                    <div class="content-title">
+                        비밀번호<img class="required-img" src="assets/img/must_txt.png"/>
+                    </div>
+                    <div class="content">
+                        <div *ngIf="id">
+                            <bs-checkbox [formGroup]="bsForm"
+                                [name]="'password_change'"
+                                [value]="'Y'"
+
+                                (click)="onClickPassWord()"
+                                [label]="'변경'">
+                            </bs-checkbox>
+                            <!-- <span>변경</span> -->
+                        </div>
+                        <!-- <input type="checkbox" id="a3" name="passwordChange" formControlName="passwordChange" value="Y" /><label for="a3" class="table-check-label">변경</label> -->
+                        <div class="item-horizontal">
+                            <div class="block-addr">
+                                <div class="two-content-title" *ngIf="id">현재 비밀번호</div>
+                                <div class="two-content-title" *ngIf="!id">비밀번호</div>
+                                <bs-input [name]="'mpasswd'" [type]="'password'"[formGroup]="bsForm" [style]="'medium-input'"  [disabled]="disabledPasswordInput"></bs-input>
+                                <div *ngIf="!id" class="two-notice">*10~20자, 영문 대소문자 또는 숫자, 특수문자 중 2가지 이상 조합</div>
+                                <div *ngIf="id" class="two-notice">보안을 위하여 현재 로그인 된 관리자의 비밀번호를 입력하세요.</div>
+
+                            </div>
+                            <div class="block-addr" *ngIf="id">
+                                <div class="two-content-title">변경 비밀번호</div>
+                                <bs-input [name]="'mpasswd_new'" [type]="'password'"[formGroup]="bsForm" [style]="'medium-input'"  [disabled]="disabledPasswordInput"></bs-input>
+                                <div class="two-notice">*10~20자, 영문 대소문자 또는 숫자, 특수문자 중 2가지 이상 조합</div>
+                            </div>
+                            <div class="block-addr">
+                                <div class="two-content-title">비밀번호 확인</div>
+                                <bs-input [name]="'confirm_password'" [type]="'password'" [formGroup]="bsForm" [style]="'medium-input'" [disabled]="disabledPasswordInput"></bs-input>
+                                <div class="two-notice">*사용가능 특수문자 &#33;&#35;&#36;&#37;&#38;&#40;&#41;&#42;&#43;&#45;&#47;&#58;&#60;&#61;&#62;&#63;&#64;&#91;&#92;&#93;&#94;&#95;&#123;&#124;&#125; </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- <div class="content-wrap ">
+            <bs-title-label-ctrl
+                [title]="'관리자 이미지 등록'"
+                [description]="'관리자 이미지 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+
+                <div class="content-box">
+                        <div class="content-title">
+                            이미지
+                        </div>
+                        <div class="content">
+                            <bo-image-input
+                            [formGroup]="bsForm"
+                            [name]="'mphoto'">
+                            </bo-image-input>
+                            <bo-page-button [type]="'square-s-red'" [title]="'등록하기'"></bo-page-button>
+                        </div>
+                </div>
+            </div>
+    </div> -->
+    <!-- <div class="content-wrap two-line-content" >
+        <bs-title-label-ctrl
+            [title]="'관리자 로그인 보안'"
+            [description]="'관리자 로그인 보안 정보를 입력하세요'">
+        </bs-title-label-ctrl>
+        <div class="content-block">
+            <div class="content-box">
+                <div class="content-title">
+                        <span style="padding-right:25px;">비밀번호 변경</span>
+                </div>
+                <div class="content">
+                    <div class="content-info">
+                        비밀번호 변경 후 90일 경과 시 비밀번호 변경 자동 안내
+                    </div>
+                </div>
+            </div>
+            <div class="content-box content-box-last">
+                <div class="content-title">
+                        <span style="padding-right:25px;">자동 로그아웃</span>
+                </div>
+                <div class="content">
+                    <div class="content-info">
+                        1시간 동안 액션이 없으면 자동 로그아웃
+                    </div>
+                </div>
+            </div> -->
+
+            <!-- <div class="content-box inline-content">
+                <div class="content-title large-title" style="width: 125px;">
+                    관리자 접속허용 IP
+                </div>
+                <div class="content ">
+                    <bs-checkbox [formGroup]="bsForm"
+                        [name]="'ip_chk'"
+                        [label]="'해당 IP에서만 접속 허용'"
+                        [value]="'Y'"
+                        [uncheckedValue]="'N'"
+                        [disabled]="!auth.isManager">
+                    </bs-checkbox>
+                    <div  formArrayName="accessIP">
+                        <div *ngFor = "let item of accessIPFormArray.controls;let i = index" [formGroupName]="i" style="padding-bottom: 5px; display: inline-block;" >
+                            <bs-input [name]="'ip1'" [formGroup]="accessIPFromGroup(i)" [style]="'small-input'" [disabled]="!auth.isManager" ></bs-input>
+                            <bs-input [name]="'ip2'" [formGroup]="accessIPFromGroup(i)" [style]="'small-input'" [disabled]="!auth.isManager"></bs-input>
+                            <bs-input [name]="'ip3'" [formGroup]="accessIPFromGroup(i)" [style]="'small-input'" [disabled]="!auth.isManager"></bs-input>
+                            <bs-input [name]="'ip4'" [formGroup]="accessIPFromGroup(i)" [style]="'small-input'" [disabled]="!auth.isManager"></bs-input>
+                            <img src="/assets/img/pl.svg" style="padding: 0 20px 0 5px;" class ="clickable" *ngIf="i == 0" (click)="onClickAddIP()" />
+                            <img src="/assets/img/mi.svg" style="padding: 0 20px 0 5px;" class ="clickable" *ngIf="i != 0" (click)="onClickRemoveIP(i)" />
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- <div class="content-box inline-content">
+                    <div class="content-title">
+                        관리환경 관리페이지<br/>
+                        접속허용 휴대폰인증
+                    </div>
+                    <div class="content">
+                        <bs-checkbox [formGroup]="bsForm"
+                            [name]="'hp_chk'"
+                            [label]="'해당 관리자는 아래의 휴대폰번호로 인증 시 관리페이지 접속 허용 / 매 로그인시 인증이 필요함'"
+                            [value]="'Y'"
+                            [uncheckedValue]="'N'"
+                            [disabled]="!auth.isManager">
+                        </bs-checkbox>
+
+                        <div formArrayName="auth_hp">
+                            <div *ngFor = "let item of authHPFormArray.controls;let i = index" [formGroupName]="i" style="padding-bottom: 5px; display: inline-block;" >
+                                <bs-input [name]="'hp'"  [formGroup]="authHPFromGroup(i)" [style]="'medium-input'" [disabled]="!auth.isManager" placeholder="010-0000-0000">
+                                </bs-input>
+                                <img src="/assets/img/pl.svg" style="padding: 0 20px 0 5px;" class ="clickable" *ngIf="i == 0" (click)="onClickAddAuthHP()" />
+                                <img src="/assets/img/mi.svg" style="padding: 0 20px 0 5px;" class ="clickable" *ngIf="i != 0" (click)="onClickRemoveAuthHP(i)" />
+                            </div>
+                        </div>
+                        <br/>
+                    </div>
+            </div> -->
+            <!-- <div class="content-box inline-content" >
+                <div class="content-title">
+                    계정잠김설정
+                </div>
+                <div class="content">
+                    <div>
+                        <bs-checkbox [formGroup]="bsForm"
+                            [name]="'is_account_lock'"
+                            [value]="'Y'"
+
+                            [label]="'잠금'"
+                            [uncheckedValue]="'N'"
+                            [disabled]="!auth.isManager">
+                        </bs-checkbox>
+                        <br/>
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'account_lock_start_date'"
+                                [isTime] = "true"
+                                [disabled]="!auth.isManager">
+                            </bo-date-time-input>
+                            ~
+                            <bo-date-time-input
+                                [formGroup]="bsForm"
+                                [name] = "'account_lock_end_date'"
+                                [isTime] = "true"
+                                [disabled]="!auth.isManager">
+                            </bo-date-time-input>
+                    </div>
+                </div>
+            </div> -->
+        <!-- </div>
+    </div> -->
+<!--   
+    <div class="content-wrap" *ngIf="data?.manager_yn !== 'Y'">
+        <bs-title-label-ctrl
+            [title]="'관리자 권한'"
+            [description]="'관리자권한 정보를 입력하세요'"
+            >
+        </bs-title-label-ctrl>
+        <div class="content-block" formGroupName="manager_auth">
+            <div class="content-box">
+                <div class="content-title">
+                    상점관리
+                </div>
+                <div class="content">
+                        <span>상점관리 메뉴는 숨길 수 없습니다.</span><br>
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'setting_manager_view'"
+                        [label]="'관리자 보기'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>→
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'setting_manager_act'"
+                        [label]="'관리자 등록 및 수정'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox><br />
+
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'setting_shipping_view'"
+                        [label]="'택배/배송비 보기'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>→
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'setting_shipping_act'"
+                        [label]="'택배/배송비 설정 권한(개발중)'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox><br />
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'setting_basic_view'"
+                        [label]="'쇼핑몰정보 보기'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>→
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'setting_basic_act'"
+                        [label]="'쇼핑몰정보 설정'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox><br />
+
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'provider_view'"
+                        [label]="'입점사 보기'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>→
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'provider_act'"
+                        [label]="'입점사 등록 및 수정'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="content-title">
+                    상품관리
+                </div>
+                <div class="content">
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'goods_ui'"
+                    [label]="'상품관리 메뉴 보이기'"[value]="'Y'"  [uncheckedValue]="'N'" style="font-weight: bold;" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')"[name]="'goods_view'"
+                        [label]="'판매상품 보기(엑셀다운로드 포함)'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                    <br>→
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')"[name]="'goods_act'"
+                        [label]="'일반상품 정보 등록/수정/삭제'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                   </div>
+            </div>
+
+            <div class="content-box">
+                <div class="content-title">
+                    주문관리
+                </div>
+                <div class="content">
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'order_ui'"
+                        [label]="'주문관리 메뉴 보이기'"[value]="'Y'"  [uncheckedValue]="'N'" style="font-weight: bold;" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'order_view'"[label]="'주문보기'"[value]="'Y'"  [uncheckedValue]="'N'"  (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        →
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'order_deposit'"[label]="'입금확인처리'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        →
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'order_goods_export'"[label]="'출고/배송처리'" [value]="'Y'"  [uncheckedValue]="'N'"  (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        <br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'refund_view'"[label]="'반품/교환/환불 보기'"[value]="'Y'" [uncheckedValue]="'N'"  (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        →
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'refund_act'"[label]="'반품/교환/환불 처리 (주문 개인정보 전체 보기 필수)'"[value]="'Y'" [uncheckedValue]="'N'"  (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        <br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'personal_act'"[label]="'개인결제 만들기(개인결제 리스트 조회) 및 관리자 주문 넣기 (주문 개인정보 전체 보기 필수)'"[value]="'Y'" [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        <br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'sales_view'"[label]="'매출증빙자료(카드매출전표, 현금영수증, 세금계산서)보기'"[value]="'Y'" [uncheckedValue]="'N'"  [disabled]="!auth.isManager" ></bs-checkbox>
+                        <br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'order_privacy_view'"[label]="'주문 개인정보 전체 보기(마스킹 제거)'"[value]="'Y'" [uncheckedValue]="'N'"  (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                </div>
+            </div>
+
+            <div class="content-box">
+                <div class="content-title">
+                    전시관리
+                </div>
+                <div class="content">
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'design_ui'"
+                    [label]="'전시관리 메뉴 보이기'"[value]="'Y'"  [uncheckedValue]="'N'" style="font-weight: bold;" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'design_act'"[label]="'전시관리 권한'"[value]="'Y'" [uncheckedValue]="'N'" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                </div>
+            </div>
+
+          
+            <div class="content-box">
+                <div class="content-title">
+                    게시판관리
+                </div>
+                <div class="content square-checkbox">
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'board_ui'"
+                    [label]="'게시판관리 메뉴 보이기'"[value]="'Y'"  [uncheckedValue]="'N'" style="font-weight: bold;" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                    <bs-checkbox [formGroup]="bsForm.get('manager_auth')"
+                        [name]="'board_manger'"
+                        [label]="'게시판 관리 (생성, 수정, 삭제)'"
+                        [value]="'Y'"
+                        [uncheckedValue]="'N'"
+                        [disabled]="!auth.isManager" >
+                    </bs-checkbox><br>
+                    <div *ngFor="let board of boardAuth;let idx=index" style="margin: 5px 0 5px 0;">
+                        <input type="checkbox" id="{{board.boardid}}-board_view" name="{{board.boardid}}-board_view" 
+                            [(ngModel)]="board.view" [ngModelOptions]="{standalone: true}"
+                            (change)="onChangedBoardAuth('view', board, $event.target.checked)"
+                            style="margin-right:3px">
+                        <label for="{{board.boardid}}-board_view" class="background-checkbox">&nbsp;{{board.name}} 보기</label>(
+    
+                        <input type="checkbox" id="{{board.boardid}}-board_secret" name="{{board.boardid}}-board_secret" 
+                            [(ngModel)]="board.scret" [ngModelOptions]="{standalone: true}"
+                            (change)="onChangedBoardAuth('secret', board, $event.target.checked)">
+                        <label for="{{board.boardid}}-board_secret">&nbsp;비밀글 포함)</label>
+                        →
+                        <input type="checkbox" id="{{board.boardid}}-board_write" name="{{board.boardid}}-board_write" 
+                            [(ngModel)]="board.write" [ngModelOptions]="{standalone: true}"
+                            (change)="onChangedBoardAuth('write', board, $event.target.checked)">
+                        <label for="{{board.boardid}}-board_write">&nbsp;게시물 등록/답변/삭제</label>
+
+                      
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-box">
+                    <div class="content-title">
+                        발송관리
+                    </div>
+                    <div class="content">
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'member_ui'"
+                        [label]="'발송관리 메뉴 보이기'"[value]="'Y'"  [uncheckedValue]="'N'" style="font-weight: bold;" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'member_view'"[label]="'발송 보기'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        <br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'member_send'"[label]="'카카오톡 및 메일발송 (자동 발송 외 수동 발송)'"[value]="'Y'" [uncheckedValue]="'N'" [disabled]="!auth.isManager" ></bs-checkbox>
+                     </div>
+            </div>
+
+            <div class="content-box">
+                    <div class="content-title">
+                            이벤트관리
+                    </div>
+                    <div class="content">
+                       <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'event_ui'"
+                        [label]="'이벤트관리 메뉴 보이기'"[value]="'Y'"  [uncheckedValue]="'N'" style="font-weight: bold;" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'event_view'"[label]="'할인이벤트 보기 '"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>→
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'event_act'"[label]="'할인이벤트 등록 및 수정'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        <br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'gift_view'"[label]="'사은품 이벤트 보기 '"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>→
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'gift_act'"[label]="'사은품 이벤트 등록 및 수정'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        <br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'event_auction_view'"[label]="'스타옥션 보기'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>→
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'event_auction_act'"[label]="'스타옥션 이벤트 등록 및 수정'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+                        <br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'coupon_view'"[label]="'쿠폰 보기'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>→
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'coupon_act'"[label]="'쿠폰 등록 및 발급'"[value]="'Y'"  [uncheckedValue]="'N'" (change)="onChangeAuth($event)" [disabled]="!auth.isManager" ></bs-checkbox>
+
+                    </div>
+            </div>
+
+          
+
+            <div class="content-box">
+                    <div class="content-title">
+                            정산관리
+                    </div>
+                    <div class="content">
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'account_ui'"
+                        [label]="'정산관리 메뉴 보이기'"[value]="'Y'"  [uncheckedValue]="'N'" style="font-weight: bold;" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'sale_view'"[label]="'판매현황 보기'" [value]="'Y'" [uncheckedValue]="'N'" [disabled]="!auth.isManager" ></bs-checkbox>
+                        <br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'account_view'"[label]="'정산현황 보기'" [value]="'Y'" [uncheckedValue]="'N'" [disabled]="!auth.isManager" ></bs-checkbox>
+                        
+                    </div>
+            </div>
+
+            <div class="content-box">
+                    <div class="content-title">
+                            통계관리
+                    </div>
+                    <div class="content">
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'sale_ui'"
+                        [label]="'통계관리 메뉴 보이기'"[value]="'Y'"  [uncheckedValue]="'N'" style="font-weight: bold;" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'statistic_sales'"[label]="'매출'"[value]="'Y'" [uncheckedValue]="'N'" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'statistic_goods'"[label]="'상품'"[value]="'Y'" [uncheckedValue]="'N'" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                        <bs-checkbox [formGroup]="bsForm.get('manager_auth')" [name]="'statistic_member'"[label]="'고객'"[value]="'Y'" [uncheckedValue]="'N'" [disabled]="!auth.isManager" ></bs-checkbox><br>
+                    
+                    </div>
+            </div>
+
+
+
+        </div>
+        </div> -->
+            <bo-submit-button-form></bo-submit-button-form>
+    </div>
+</form>

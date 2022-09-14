@@ -1,0 +1,7 @@
+<!-- <div class="board-head">
+    <div class="board-basic board-user">작성자</div>
+    <div class="board-basic board-content">내용</div>
+    <div class="board-basic board-date">작성일</div>
+</div> -->
+<bs-list [countPerPage]="10" [data]="list"></bs-list>
+<bs-pagination #pagiNation [countPerPage]="10" [totalItemsCount]="listLength" [currentPage]="1" (changedPage)="changedPage($event)"></bs-pagination>

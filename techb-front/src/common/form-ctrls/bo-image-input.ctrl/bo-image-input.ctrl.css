@@ -1,0 +1,21 @@
+input[type="file"] {
+    display: none;
+}
+
+.image-content {
+    position: relative;
+    top: 0;
+    right: 0;
+    _height: 39px;
+    /* hyeon */
+}
+.image-content .alert-danger {
+    display: inline-block;
+    position: absolute;
+    top: 4px;
+    right: -137px;
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 4px 0 4px 4px;
+}

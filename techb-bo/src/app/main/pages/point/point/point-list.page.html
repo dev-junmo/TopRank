@@ -1,0 +1,231 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/member-list.svg'" [title]="'포인트 내역관리'">
+    <bo-page-button-config id = "id-board-content-list-btn-smsview"
+        [title] = "'일괄만료처리'"
+        [styleType] = "'square-m-white-btn'" 
+        (click) = "onClickExpirationProcess()">
+    </bo-page-button-config>
+</bo-page-header>
+
+<div class="list-section">
+
+    <!-- query form -->
+    <point-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></point-query-form>
+   
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap-se">
+        <!-- list -->
+        <div style="margin: auto; max-width: 100%; margin-bottom: 50px;">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="false"
+                [sortBy] = "'point_seq'"
+                (reload)="reloadItems($event)">
+
+<!-- 
+                <bs-header-button-config
+                    id = "id-btn-2"
+                    [title] = "'선택 다운로드'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    [enabled]="false"
+                    (click) = "onClickSelectDownloadExcel($event)">
+                </bs-header-button-config>
+
+                <bs-header-button-config
+                    id = "id-btn-3"
+                    [title] = "'검색 다운로드'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    [enabled]="true"
+                    (click) = "onClickSearchDownloadExcel()">
+                </bs-header-button-config> -->
+
+<!-- 
+                <data-table-column
+                    [property]="'point_charge_seq'"
+                    [header]="'고유번호'"
+                    [width]="50">
+                </data-table-column> -->
+
+                <data-table-column
+                    [property]="'point_type'"
+                    [header]="'포인트유형'"
+                    [width]="60">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item.point_type == 'free'">무료 </div>
+                        <div *ngIf="item.point_type == 'charge'" class="charge_point_green">유료</div>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'state'"
+                    [header]="'상태'"
+                    [width]="60">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item.state == 'charge'">충전 </div>
+                        <div *ngIf="item.state == 'use'">사용</div>
+                        <div *ngIf="item.state == 'cancel'">사용취소</div>
+                        <div *ngIf="item.state == 'expired'">만료</div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'action'"
+                    [header]="'증감'"
+                    [width]="60">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item.action == 'plus'"  class="action_plus_red">적립</div>
+                        <div *ngIf="item.action == 'minus'" class="action_minus_blue">차감</div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                [property]="'member_seq'"
+                [header]="'회원'"
+                [width]="82">
+                    <ng-template #dataTableCell let-item="item.member">
+                        <div><span class="userid_bold">{{item?.userid}}</span>({{item?.member_seq}}/{{item?.nickname}})</div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'point'"
+                    [header]="'금액'"
+                    [width]="70"
+                    [align]="'right'"
+                    [sortable]="false">                    
+                    <ng-template #dataTableCell let-item="item">
+                        <div>{{item.point| number}}</div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'remains'"
+                    [header]="'잔액'"
+                    [width]="70"
+                    [align]="'right'"
+                    [sortable]="true">               
+                <ng-template #dataTableCell let-item="item">
+                    <div>{{item.remains | number}}</div>
+                 </ng-template>
+                </data-table-column>
+
+            <data-table-column
+                    [property]="'regist_date'"
+                    [header]="'등록일'"
+                    [sortable]="true"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.regist_date | date:'yyyy-MM-dd HH:mm'}}</span>
+                    </ng-template>
+                </data-table-column>
+    
+                <data-table-column
+                    [property]="'expire_date'"
+                    [header]="'만료일'"
+                    [sortable]="true"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.expire_date | date:'yyyy-MM-dd HH:mm'}}</span>
+                        <span *ngIf="!item.expire_date">-</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'memo'"
+                    [header]="'내역'"
+                    [width]="82">
+               </data-table-column> 
+               <data-table-column
+                    [property]="'memo'"
+                    [header]="'무료포인트 총잔액'"
+                    [align]="'right'"
+                    [width]="60">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item.point_type == 'free'">{{item.total_remain | number}} </div>
+                        <span *ngIf="item.point_type !== 'free'">-</span>
+                    </ng-template>
+               </data-table-column>               
+               <data-table-column
+               [property]="'memo'"
+               [header]="'유료포인트 총잔액'"
+               [align]="'right'"
+               [width]="60">
+               <ng-template #dataTableCell let-item="item">
+                <div *ngIf="item.point_type == 'charge'">{{item.total_remain | number}} </div>
+                <span *ngIf="item.point_type !== 'charge'">-</span>                       
+            </ng-template>
+          </data-table-column> 
+              
+            </data-table>
+        </div>
+    </div>
+</div>
+
+
+<!-- 포인트관리 팝업 -->
+
+
+<ng-template #templatePointPopup>
+    <form [formGroup]="form" >
+        <div class="section">
+            <div class="content-wrap">
+                <div class="content-box">
+                    <div class="content">
+                        <span class="two-line-span">타입 : </span>              
+                        <div class="text-center" style="min-width:auto;padding:0">
+                            <bs-select 
+                                [name]="'point_type'" 
+                                [formGroup]="form"
+                                [allowUnselected]="false">
+                                <bs-option-config [value]="'charge'" [label]= "'유료'"></bs-option-config>
+                                <bs-option-config [value]="'free'" [label]= "'무료'"></bs-option-config>
+                            </bs-select> 
+                        </div>         
+                    </div>                      
+                </div>
+                <div class="content-box">
+                    <div class="content">
+                        <span class="two-line-span">증감 :</span>                    
+                        <div class="content-inline">
+                            <input type="radio" id="hidden1" [value]="0" name="hidden" formControlName="hidden" />
+                            <label for="hidden1" class="check-label">증감1</label>
+                        </div>
+                        <div class="content-inline">
+                            <input type="radio" id="hidden2" [value]="1" name="hidden" formControlName="hidden" />
+                            <label for="hidden2" class="check-label">증감2</label>
+                        </div>
+                   
+                    </div>                      
+                </div>
+                <div class="content-box">
+                    <div class="content">
+                        <span class="two-line-span">금액 :</span>                    
+                        <bs-input [name]="'point'" [formGroup]="form" [style]="'medium-input'" [required]="true"></bs-input>                       
+                    </div>                      
+                </div>
+                <div class="content-box">
+                    <div class="content">
+                        <span class="two-line-span">만료일 :</span>                    
+                        <bs-input [name]="'expire_date'" [formGroup]="form" [style]="'medium-input'" [required]="true"></bs-input>                       
+                    </div>                      
+                </div>
+                <div class="content-box">
+                    <div class="content">
+                        <span class="two-line-span">회원ID :</span>                    
+                        <bs-input [name]="'member_seq'" [formGroup]="form" [style]="'medium-input'" [required]="true"></bs-input>
+                    </div>                      
+                </div>
+                <div class="content-box">
+                    <div class="content">
+                        <span class="two-line-span">메모 :</span>                    
+                        <bs-input [name]="'memo'" [formGroup]="form" [style]="'medium-input'" ></bs-input>
+                    </div>                      
+                </div>  
+            </div>
+        </div>
+    </form>
+    </ng-template> 

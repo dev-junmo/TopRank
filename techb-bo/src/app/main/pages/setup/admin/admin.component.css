@@ -1,0 +1,6 @@
+:host {
+    width: 100%;
+    min-width: calc(1440px - 212px);
+    height: 100%;
+}
+

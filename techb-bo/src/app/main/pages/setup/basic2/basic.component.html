@@ -1,0 +1,58 @@
+<bo-page-header [imgUrl]="'assets/img/borad-header.svg'" [title]="'업체 관리'" [requireText]="true">
+    <bo-page-button-config id = "id-board-content-list-btn-create"
+        [title]="'관리자 등록'"
+        [styleType] = "'square-m-black-btn'"
+        (click) = "submitOnly()">
+    </bo-page-button-config>
+</bo-page-header>
+<form [formGroup]="bsForm" (ngSubmit)="submitOnly()"  class="form-area" >
+    <div class="section">
+        <div class="content-wrap">
+            <bs-title-label-ctrl
+                [formGroup]="bsForm"
+                [title]="'기본정보'"
+                [description]="'쇼핑몰의 기본적인 정보를 입력하세요'">
+            </bs-title-label-ctrl>
+            <div class="content-block">
+                <div class="content-box">
+                    <div class="content-title content-title-s">
+                        인풋레이블 <img class="required-img" src="assets/img/must_txt.png">
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'domain'" [formGroup]="bsForm"
+                            [placeholder]="'플레이스 홀더입니다. 포커스 했을때까지는 없어지지 않지만, 텍스트를 쓰면 없어집니다.'" [style]="'search-input'" [required]="true"></bs-input>
+                    </div>
+                </div>
+                <div class="content-box content-no-border">
+                    <div class="content-title content-title-s">
+                        인풋레이블 <img class="required-img" src="assets/img/must_txt.png">
+                    </div>
+                    <div class="content">
+                        <bs-input [name]="'shopName'" [formGroup]="bsForm" [style]="'large-input'" [required]="true"
+                            [placeholder]="'내용을 입력할 경우에 이렇습니다. 내용이 많아져서 최대로 입력할 경우 이렇게 길어집니다. 내용이 많아져서 최대로 입력할 경우 이렇게 길어집니다. 내용이 많아져서 최대로 입력할 경우 이렇게 길어집니다. '" [style]="'search-input'" [required]="true"></bs-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="btn-area">
+            <bo-submit-button-form></bo-submit-button-form>
+        </div>
+  </div>
+</form>
+
+<button #playBtn id="playBtn" (click)="onClickBtn()">
+    Start!
+</button>
+
+<audio #audioBeep id="audioBeep">
+    <source src='assets/wav/beep.wav' type="audio/wav">
+</audio>
+
+<audio #audioPang>
+    <source src='assets/wav/pang.mp3' type="audio/mp3">
+</audio>
+
+<audio #audioZero>
+    <source src='assets/wav/zero.mp3' type="audio/mp3">
+</audio>

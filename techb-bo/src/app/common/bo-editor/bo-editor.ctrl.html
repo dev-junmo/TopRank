@@ -1,0 +1,15 @@
+<div [formGroup]="formGroup">
+    <editor baseEditor #baseEditor apiKey="a1hc1fooazhxedjgq44tblc5ubi1ccsgoervczqwe4nr367s"
+        [init]="tinymceConfig"
+        [disabled]="disabled"
+        formControlName="{{name}}">
+    </editor>
+    <div *ngIf="ctrl?.invalid && (ctrl.dirty || ctrl.touched)"
+        class="alert alert-danger">
+        <div *ngIf="ctrl.errors.required">
+                이 항목은 필수입니다.
+        </div>
+    </div>
+</div>
+
+

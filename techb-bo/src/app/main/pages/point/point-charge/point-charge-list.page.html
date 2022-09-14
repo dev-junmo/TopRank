@@ -1,0 +1,210 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/member-list.svg'" [title]="'포인트 충전관리'">
+    <bo-page-button-config id = "id-board-content-list-btn-smsview"
+        [title] = "'일괄만료처리'"
+        [styleType] = "'square-m-white-btn'" 
+        (click) = "onClickExpireAll()">
+    </bo-page-button-config>
+</bo-page-header>
+
+<div class="list-section">
+
+    <!-- query form -->
+    <point-charge-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></point-charge-query-form>
+   
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap-se">
+        <!-- list -->
+        <div style="margin: auto; max-width: 100%; margin-bottom: 50px;">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="true"
+                [sortBy] = "'point_charge_seq'"
+                (reload)="reloadItems($event)">
+
+<!-- 
+                <bs-header-button-config
+                    id = "id-btn-2"
+                    [title] = "'선택 다운로드'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    [enabled]="false"
+                    (click) = "onClickSelectDownloadExcel($event)">
+                </bs-header-button-config>
+
+                <bs-header-button-config
+                    id = "id-btn-3"
+                    [title] = "'검색 다운로드'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    [enabled]="true"
+                    (click) = "onClickSearchDownloadExcel()">
+                </bs-header-button-config> -->
+
+                
+                <data-table-column
+                    [property]="'point_charge_seq'"
+                    [header]="'고유번호'"
+                    [width]="50">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'charge_point'"
+                    [header]="'충전포인트'"
+                    [sortable]="true"
+                    [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                            <div>{{item.charge_point | number}}</div>
+                    </ng-template>
+                </data-table-column>
+
+
+                <data-table-column
+                    [property]="'charge_free_point'"
+                    [header]="'무료포인트'"
+                    [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                        <div>{{item.charge_free_point | number}}</div>
+                </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'member_seq'"
+                    [header]="'회원'"
+                    [width]="82">
+                    <ng-template #dataTableCell let-item="item.member">
+                        <div><span class="userid_bold">{{item.userid}}</span>({{item.member_seq}}/{{item.nickname}})</div>
+                    </ng-template>
+                </data-table-column>
+    
+                <data-table-column
+                    [property]="'regist_date'"
+                    [header]="'충전신청일자'"
+                    [sortable]="true"
+                    [width]="113">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.regist_date | date:'yyyy-MM-dd HH:mm'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'account_seq'"
+                    [header]="'은행'"
+                    [width]="82">        
+                    <ng-template #dataTableCell let-item="item.bank">
+                        <span>{{item.bank_name}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                  [property]="'account_num'"
+                  [header]="'계좌번호'"
+                  [width]="120">        
+                  <ng-template #dataTableCell let-item="item.bank">
+                      <span>{{item.account_num}}</span>
+                  </ng-template>
+              </data-table-column>
+
+                <data-table-column
+                    [property]="'cash_receipt_is_apply_receipt'"
+                    [header]="'현금영수증 신청 여부'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item.cash_receipt_is_apply_receipt == 'Y'"> 신청 </div>
+                        <div *ngIf="item.cash_receipt_is_apply_receipt == 'N'"> 미신청 </div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'cash_receipt_receipts_type'"
+                    [header]="'개인 / 사업자'"
+                    [width]="82">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item.cash_receipt_receipts_type == 'personal'"> 개인 </div>
+                        <div *ngIf="item.cash_receipt_receipts_type == 'business'"> 사업자 </div>
+                        <span *ngIf="!item.cash_receipt_receipts_type">-</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'cash_receipt_company_number'"
+                    [header]="'사업자등록번호'"
+                    [width]="82">
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.cash_receipt_company_number">{{item.cash_receipt_company_number}}</span>
+                        <span *ngIf="!item.cash_receipt_company_number">-</span>
+                    </ng-template>
+                    
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'cash_receipt_phone_number'"
+                    [header]="'핸드폰번호'"
+                    [width]="82">
+                    <ng-template #dataTableCell let-item="item">
+                        <span *ngIf="item.cash_receipt_phone_number">{{item.cash_receipt_phone_number}}</span>
+                        <span *ngIf="!item.cash_receipt_phone_number">-</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'depositor'"
+                    [header]="'입금자명'"
+                    [width]="82">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'nobankbook_expired_date'"
+                    [header]="'입금대기만료일'"
+                    [width]="82">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.nobankbook_expired_date | date:'yyyy-MM-dd HH:mm'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'payment_total_price'"
+                    [header]="'최종결제금액'"
+                    [width]="100">
+                    <ng-template #dataTableCell let-item="item">
+                        <div>{{item.payment_total_price | number}}</div>
+                </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'state'"
+                    [header]="'결제상태'"
+                    [width]="86">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item.state == 'request'" class="waiting-red-text"> 입금대기 </div>
+                        <div *ngIf="item.state == 'cancel'"> 취소 </div>
+                        <div *ngIf="item.state == 'complete'"> 입금완료 </div>
+                    </ng-template>
+                </data-table-column>        
+                
+                <data-table-column 
+                    [width]="100">
+                    <ng-template #dataTableHeader let-item="item">
+                        관리
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <bo-button-collection *ngIf="item.state =='request'" class="margin-class" 
+                            [title] ="'승인'"
+                            [id]="'complete'" 
+                            (click)="onClickComplete(item)">
+                        </bo-button-collection>
+                        <bo-button-collection *ngIf="item.state =='request'" class="margin-class" 
+                            [title] ="'취소'"
+                            [id]="'cancel'" 
+                            (click)="onClickCancel(item.point_charge_seq)">
+                        </bo-button-collection> 
+                    </ng-template>
+                </data-table-column>
+
+            </data-table>
+        </div>
+    </div>
+</div>

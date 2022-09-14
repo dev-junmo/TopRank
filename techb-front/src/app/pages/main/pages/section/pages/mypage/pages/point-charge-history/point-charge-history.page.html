@@ -1,0 +1,314 @@
+<div class="web" *ifDesktop>
+    <!-- 컨텐츠 타이틀 영역 start -->
+    <div class="title-area">
+        <div class="title-wrap">
+            <h2 class="title">포인트 충전 내역</h2>
+        </div>
+        <nav>
+            <ol class="location-history">
+                <li routerLink="/main">HOME</li>
+                <li routerLink="/main/section/mypage/home/point">마이페이지</li>
+                <li>포인트 충전 내역</li>
+            </ol>   
+        </nav>
+    </div>
+    <!-- //컨텐츠 타이틀 영역 end -->
+
+    <!-- 포인트 충전 내역 start -->
+    <div class="point-payment">
+        <div class="point-payment-content">
+            <div class="point-payment-box box">
+                <point-charge-query-form
+                    [itemCount]="itemCount"
+                    (query)="reloadWithQuery($event)">
+                </point-charge-query-form>
+                <!-- 충전내역리스트 { -->
+                <data-table #bsDatatable
+                    *ngIf="isPointChargeHistory"
+                    class="subscription-table"
+                    headerTitle="datatable"
+                    [header]="false"
+                    [items]="items"
+                    [itemCount]="itemCount"
+                    [isShowItemCount]="false" 
+                    [indexColumn]="false"
+                    [selectColumn]="false"
+                    [tableWidth]="'1160px'"
+                    [sortBy] = "'point_charge_seq'"
+                        [limit]="10"
+                    (reload)="reloadItems($event)"
+                    >
+                    <data-table-column
+                        [property]="'regist_date'"
+                        [header]="'충전일'"
+                        [sortable]="false"
+                        [width]="192">
+                        <ng-template #dataTableCell let-item="item">
+                            <div class="regist_date table-td">
+                                {{item.regist_date | date: 'yyyy-MM-dd'}}
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                        
+                    <data-table-column
+                        [property]="'point'"
+                        [header]="'전환 포인트'"
+                        [sortable]="false"
+                        [align]="'left'"
+                        [width]="648">
+                        <ng-template #dataTableCell let-item="item">
+                            <div class="charge-point-wrap table-td">
+                                <div class="charging-point">
+                                    충전 포인트<strong>{{item.charge_point | number}}</strong><b>P</b>
+                                    <span>+</span>
+                                    무료 포인트<strong>{{item.charge_free_point | number}}</strong><b>P</b>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        [property]="'goods_name'"
+                        [header]="'최종 결제 금액'"
+                        [sortable]="false"
+                        [width]="160">
+                        <ng-template #dataTableCell let-item="item">
+                            <div class="total-price table-td">
+                                <strong>{{item.payment_total_price | number}}원</strong>
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                    <data-table-column
+                        [property]="'keyword'"
+                        [header]="'상태'"
+                        [sortable]="false"
+                        [width]="160">
+                        <ng-template #dataTableCell let-item="item">
+                            <div class="table-td">
+                                <span class="waiting-deposit state-request" 
+                                *ngIf="item.state == 'request'"
+                                (click)="onClickPopup(item)">
+                                입금 대기
+                                </span>
+                                <span class="waiting-deposit" 
+                                    *ngIf="item.state == 'complete'">
+                                결제 완료</span>
+                                <span class="waiting-deposit" 
+                                    *ngIf="item.state == 'cancel'">
+                                결제 취소</span>
+                            </div>
+                        </ng-template>
+                    </data-table-column>
+                </data-table>
+                <!--  충전내역리스트 -->
+                <div class="point-table">
+                    <div class="point-payment-empty" *ngIf="!isPointChargeHistory">
+                        <img src="assets/images/mypage/img_attention_gray_64.png" alt="">
+                        <p>포인트 충전 내역이 없습니다.</p>
+                    </div>
+                </div>
+                <!-- 결제 안내 팝업 start -->
+                <div class="cm-popup payment-instructions-popup" *ngIf="isShowPaymentInfo">
+                    <div class="popup-box box">
+                        <div class="popup-header">
+                            <h3>결제 안내</h3>
+                            <button class="close">
+                            <img src="assets/images/mypage/ic_close_black_40.png" alt="닫기 버튼" (click)="isShowPaymentInfo = false">
+                            </button>
+                        </div>
+                        <div class="popup-contents">
+                            <strong>현재 <span>입금 대기</span> 상태입니다.</strong>
+                            <p>
+                                결제 완료를 위해 <span>{{selItem?.nobankbook_expired_date_text}}</span>까지 <span>{{selItem?.payment_total_price | number}}원</span>을 입금해주세요. 
+                                <br>
+                                미입금 시 자동 취소됩니다.
+                            </p>
+                            <div class="popup-contents-box">
+                                <ul>
+                                    <li>
+                                        <span>결제 수단</span>
+                                        <strong>무통장 입금</strong>
+                                    </li>
+                                    <li>
+                                        <span>입금 은행</span>
+                                        <strong>{{selItem?.bank?.bank_name}} {{selItem?.bank?.account_num}}</strong>
+                                        <input #copytoclipboardInput type="text" [value]="selItem?.bank?.bank_name + ' ' +selItem?.bank?.account_num" hidden>
+                                    </li>
+                                    <li>
+                                        <span>예금주</span>
+                                        <strong>{{selItem?.bank?.account_name}}</strong>
+                                    </li>
+                                    <li>
+                                        <span>최종 결제 금액</span>
+                                        <strong>{{selItem?.payment_total_price | number}}원</strong>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- <input #copytoclipboardInput type="text" [value]="queryParams.bankAccount" hidden>
+                            <button class="copy-btn" (click)="appService.copyToClipboard(copytoclipboardInput, queryParams.bankAccount)">
+                                <img src="assets/images/payment/ic_copy_gray_24.png" alt="복사 버튼">
+                            </button> -->
+                            <button class="account-copy" (click)="onClickCopyBankInfo(copytoclipboardInput, selItem?.bank)">입금 계좌번호 복사</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //포인트 충전 내역 end -->
+</div>
+<div class="mobile" id="wrap" *ifMobile>
+    <form [formGroup]="bsForm" (submit)="reloadWithQuery(bsForm.value)">
+        <!-- contents header start -->
+        <div class="contents-header">
+            <div class="contents-title">
+                <img src="assets/images/svg/ic_point-payment_purple_24.svg" alt="">
+                <h2>포인트 충전 내역</h2>
+            </div>
+        </div>
+        <!-- //contents header end -->
+        <!-- 포인트 옵션 start -->
+        <div class="point-history-option">
+            <div class="selectbox">
+                <select class="label" formControlName="state" (change)="reloadWithQuery(bsForm.value)">
+                    <option value="">전체</option>
+                    <option value="request">입금 대기</option>
+                    <option value="complete">결제 완료</option>
+                </select>
+            </div>
+            <button tpye="button" class="filter-btn" (click)="onClickSearchFilter()">
+                <img src="assets/images/svg/ic_sorting_purple_32.svg" alt="필터">
+            </button>
+        </div>
+        <!-- 포인트 옵션 end -->
+
+        <div class="line"></div>
+
+        <!-- 포인트 내역 start -->
+        <div class="point-charging-history-wrap">
+            <div class="all-count">
+                총 <span>{{itemCount}}</span>개
+            </div>
+            <div class="point-history-contents">
+                <div class="point-charging-history-empty"  *ngIf="!isQueryFormRequest && isEmpty">
+                    <img src="assets/images/svg/img_attention_gray_64.svg" alt="!">
+                    <p>포인트 충전 내역이 없습니다.</p>
+                </div>
+                <div *ngIf="items && items.length > 0">
+                    <div class="point-history-card" *ngFor="let item of items">
+                        <div class="point-card-header">
+                            <span class="card-date">{{item.regist_date | date: 'yyyy-MM-dd'}}</span>
+                            <button class="waiting-deposit-btn"
+                                *ngIf="item.state == 'request'"
+                                (click)="onClickPopup(item)">
+                                입금 대기
+                            </button>
+                            <span class="pay-done" *ngIf="item.state == 'complete'">결제 완료</span>
+                        </div>
+                        <ul class="point-card-contents">
+                            <li>
+                                <span class="point-card-title">전환 포인트</span>
+                                <ul class="transition-point-list">
+                                    <li>
+                                        <div class="space-between">
+                                            <span>충전 포인트</span>
+                                            <span class="point-number">
+                                            <strong>{{item.charge_point | number}}</strong> P
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="space-between">
+                                            <span>무료 포인트</span>
+                                            <span class="point-number">
+                                            <strong>{{item.charge_free_point | number}}</strong> P
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="space-between">
+                                    <span class="point-card-title">최종 결제 금액</span>
+                                    <span class="point-number">
+                                        <strong>{{item.payment_total_price | number}}</strong>원
+                                    </span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="point-more-btn"  *ngIf="itemCount > items.length" (click)="onClickLoad10MoreItems()">
+                        <span>10개 더 보기</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 포인트 내역 end -->
+
+        <!-- 입금 대기 팝업 start -->
+        <div class="m-popup waiting-deposit-popup" [ngClass]="{active: isShowPaymentInfo}">
+            <div class="m-popup-box">
+                <div class="popup-header">
+                    <h3>결제 안내</h3>
+                    <button class="close-btn" (click)="isShowPaymentInfo = false">
+                        <img src="assets/images/svg/ic_close_bold_black_40.svg" alt="닫기 버튼">
+                    </button>
+                </div>
+                <div class="popup-contents">
+                    <p class="deposit-title">현재 <span>입금 대기</span> 상태입니다.</p>
+                    <p class="deposit-text">
+                        결제 완료를 위해 <span>{{selItem?.nobankbook_expired_date}}</span> 까지 <br>
+                        <span>{{selItem?.payment_total_price | number}}원</span>을 입금해주세요. <br>
+                        미입금 시 자동 취소됩니다.
+                    </p>
+                    <div class="deposit-info-box">
+                        <ul class="deposit-info">
+                        <li>
+                            <span>결제 수단</span>
+                            <span>무통장 입금</span>
+                        </li>
+                        <li>
+                            <span>입금 은행</span>
+                            <span>{{selItem?.bank?.bank_name}} {{selItem?.bank?.account_num}}</span>
+                            <input #copytoclipboardInput type="text" [value]="selItem?.bank?.bank_name + ' ' +selItem?.bank?.account_num" hidden>
+                        </li>
+                        <li>
+                            <span>예금주</span>
+                            <span>{{selItem?.bank?.account_name}}</span>
+                        </li>
+                        <li>
+                            <span>최종 결제 금액</span>
+                            <span>{{selItem?.payment_total_price | number}}원</span>
+                        </li>
+                        </ul>
+                    </div>
+                    <button class="account-number-copy" (click)="onClickCopyBankInfo(copytoclipboardInput, selItem?.bank)">입금 계좌번호 복사</button>
+                </div>
+            </div>
+        </div>
+        <!-- 입금 대기 팝업 end -->
+
+        <!-- 필터 팝업 start -->
+        <div class="m-popup filter-popup" [ngClass]="{active: isShowSearchFilter}">
+            <div class="m-popup-box">
+                <div class="popup-header">
+                    <h3>필터</h3>
+                    <button class="close-btn" (click)="isShowSearchFilter = false">
+                        <img src="assets/images/svg/ic_close_bold_purple_40.svg" alt="닫기 버튼">
+                    </button>
+                </div>
+                <div class="filter-calendar-wrap">
+                    <h3>조회 기간</h3>
+                    <bo-period-query [formGroup]="bsForm" [name]="'period'" [hasButtons]="true" [hasTodayBtn]="false" [has3DaysBtn]="false" [has3MonthBtn]="true">
+                        <bo-period-query-option-config [value]="'regist_date'" [label]="'유효기간'">
+                        </bo-period-query-option-config>
+                    </bo-period-query>
+                </div>
+                <div class="filter-btn-wrap">
+                    <button class="filter-reset-btn"  (click)="onClickResetFilter()">초기화</button>
+                    <button type="submit" class="filter-application-btn" (click)="onSubmit(bsForm.value)">적용</button>
+                </div>
+            </div>
+        </div>
+        <!-- //필터 팝업 end -->
+    </form>
+</div>

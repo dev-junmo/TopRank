@@ -1,0 +1,17 @@
+<!-- <div class="form-item" [formGroup]="formGroup">
+    <div class="form-title">{{title}}:</div> -->
+    <div [formGroup]="formGroup" class="item-horizontal " *ngFor="let item of checkboxs;let i = index">
+        <label class="group-check-label">
+            <div class="square-new-checkbox" [class.first-checkbox]="i == 0">
+                <input type="checkbox" id="{{name}}[{{i}}]" name="{{name}}[{{i}}]"
+                    formControlName="{{name}}[{{i}}]" (change)="onCheckboxChange($event, i)"/>
+                <label for="{{name}}[{{i}}]" class="background-checkbox" ></label>
+            </div>
+        </label>
+        <div *ngIf="!item.bgColor" class="group-check-title">{{item.title}}</div>
+        <div *ngIf="item.bgColor" class="group-check-title check-has-bg" [style.background-color]="item.bgColor">{{item.title}}</div>
+    </div>
+    &nbsp;&nbsp;
+    <bo-page-button [type]="'new-all'" [title]="'전체'" class="mar-r-15" (click)="onClickAllBtn()" ></bo-page-button>
+  
+<!-- </div> -->

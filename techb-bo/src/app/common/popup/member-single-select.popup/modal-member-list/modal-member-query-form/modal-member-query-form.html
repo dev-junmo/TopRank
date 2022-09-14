@@ -1,0 +1,177 @@
+<div class="outlet-section"  >
+<!-- <div class="query-title">검색</div> -->
+
+    <!-- formGroup : formNotice -->
+    <form [formGroup]="bsForm" (ngSubmit)="onSubmit()" class="form-area">
+        <div class="query-wrap">
+
+            <div class="form-block">
+
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">검색어</div>
+                        <bs-input [name]="'keyword'" [formGroup]="bsForm"
+                        placeholder="이름, 아이디, 전화번호, 휴대폰, 이메일" [style]="'big-input'"></bs-input>
+                    </div>
+                </div>
+                <!-- <bo-period-form [formGroup]="bsForm"></bo-period-form> -->
+                <!-- <bo-period-form [formGroup]="bsForm"></bo-period-form>
+                <bo-period-form [formGroup]="bsForm"></bo-period-form> -->
+
+                <!-- <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">기념일:</div>
+                        <select class="form-selectbox">
+                            <option *ngFor="let option of options">{{option}}</option>
+                        </select>
+                        <span>월</span>
+                        <select class="form-selectbox">
+                            <option *ngFor="let option of options">{{option}}</option>
+                        </select>
+                        <span>일</span>
+                        <span>-</span>
+                        <select class="form-selectbox">
+                            <option *ngFor="let option of options">{{option}}</option>
+                        </select>
+                        <span>월</span>
+                        <select class="form-selectbox">
+                            <option *ngFor="let option of options">{{option}}</option>
+                        </select>
+                        <span>일</span>
+                    </div>
+                </div> -->
+
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">등급</div>
+                        <!-- <select class="form-selectbox">
+                            <option *ngFor="let item of reply">{{item}}</option>
+                        </select> -->
+                        <bs-select [name]="'group_seq'"
+                            [formGroup]="bsForm"
+                            [optionApiUrl]="'admin/member/membergroup'"
+                            [optionLabelField]="'group_name'"
+                            [optionValueField]="'group_seq'">
+                        </bs-select>
+                    </div>
+
+                    <!-- <div class="form-item">
+                        <div class="form-title">주문횟수:</div>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="member_order_cnt[min]" placeholder="">
+                        <span>-</span>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="member_order_cnt[max]" placeholder="">
+                    </div> -->
+
+                    <!-- <div class="form-item">
+                        <div class="form-title">주문금액:</div>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="member_order_price[min]" placeholder="">
+                        <span>-</span>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="member_order_price[max]" placeholder="">
+                    </div> -->
+                </div>
+
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">생일</div>
+                        <div class="item-horizontal">
+                            <bo-period-query [formGroup]="bsForm" [name]="'period'">
+                                <bo-period-query-option-config [value]="'birthday'" [label]="'생일'">
+                                </bo-period-query-option-config>
+                            </bo-period-query>
+                            <bs-checkbox [formGroup]="bsForm"
+                                [name]="'birthmonthday'"
+                                [label]="'연도 검색 제외'"
+                                [style]="'square-new-checkbox'"
+                                [value]="'Y'">
+                            </bs-checkbox>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">가입일자</div>
+                        <input type="text" class="form-control search-input small-input item-horizontal small-margin" formControlName="regist_date[min]" placeholder="">
+                        <span>-</span>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="regist_date[max]" placeholder="">
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- 두번째 form-block -->
+
+            <div class="form-block  more-form-block" [hidden]="!isShowMoreForm">
+                <div class="form-box">
+                        <div class="form-item">
+                            <div class="form-title">SMS 수신</div>
+                            <bo-group-checkbox [formGroup]="bsForm" [name]="'sms'">
+                                <bo-checkbox-config [title]="'동의'" [value]="'y'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'거부'" [value]="'n'"></bo-checkbox-config>
+                            </bo-group-checkbox>
+                        </div>
+                        <div class="form-item">
+                            <div class="form-title">이메일 수신</div>
+                            <bo-group-checkbox [formGroup]="bsForm" [name]="'mailing'">
+                                <bo-checkbox-config [title]="'동의'" [value]="'y'"></bo-checkbox-config>
+                                <bo-checkbox-config [title]="'거부'" [value]="'n'"></bo-checkbox-config>
+                            </bo-group-checkbox>
+                        </div>
+
+                </div>
+
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title"  style="vertical-align: middle;">가입승인/휴면</div>
+                        <bo-group-checkbox [formGroup]="bsForm" [name]="'status'">
+                            <bo-checkbox-config [title]="'승인'" [value]="'done'"></bo-checkbox-config>
+                            <bo-checkbox-config  [title]="'미승인'" [value]="'hold'"></bo-checkbox-config >
+                            <bo-checkbox-config  [title]="'휴면'" [value]="'dormancy'"></bo-checkbox-config >
+                            <bo-checkbox-config  [title]="'탈퇴'" [value]="'withdrawal'"></bo-checkbox-config >
+                        </bo-group-checkbox>
+                    </div>
+                </div>
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">가입일자</div>
+                        <div class="item-horizontal">
+                            <bo-period-query [formGroup]="bsForm" [name]="'period'">
+                                <bo-period-query-option-config [value]="'regist_date'" [label]="'가입일'">
+                                </bo-period-query-option-config>
+                            </bo-period-query>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-box">
+
+                    <div class="form-item">
+                        <div class="form-title">리뷰횟수</div>
+                        <input type="text" class="form-control search-input small-input item-horizontal small-margin" formControlName="review_cnt[min]" placeholder="">
+                        <span>-</span>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="review_cnt[max]" placeholder="">
+                    </div>
+
+                    <div class="form-item">
+                        <div class="form-title">방문횟수</div>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="login_cnt[min]" placeholder="">
+                        <span>-</span>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="login_cnt[max]" placeholder="">
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div class="more-form">
+                <div class="more-form-btn" (click)="onClickShowMoreForm()">
+                    상세검색 <span *ngIf="!isShowMoreForm">열기</span><span *ngIf="isShowMoreForm">닫기</span>
+                    <div class="more-btn-img" [class.hide-form]="isShowMoreForm"></div>
+                </div>
+            </div>
+        </div>
+        <div class="button-area">
+            <button type="submit" class="btn new-search-btn">
+                검색
+            </button>
+        </div>
+    </form>
+</div>

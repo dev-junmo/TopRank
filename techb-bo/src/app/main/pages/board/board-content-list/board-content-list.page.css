@@ -1,0 +1,71 @@
+:host() {
+    width: 100%;
+}
+.table-block{
+    font-size: 0;
+}
+.table-wrap{
+    font-size: 13px;
+    width: calc((100% - 16px) / 2);
+    display: inline-block;
+    margin-bottom: 50px;
+}
+.table-wrap:nth-child(2n+1){
+    padding-right: 8px;
+    border-right: solid 3px #ededed;
+}
+.table-wrap:nth-child(2n){
+    padding-left: 8px;   
+}
+.table-header{
+    font-size: 25px;
+}
+.header-img{
+    padding-bottom: 5px;
+    margin-left: 30px;
+    margin-right: 15px;
+}
+.detail-btn{
+    float: right;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-right: 30px;
+    cursor: pointer;
+}
+.detail-btn img{
+    padding-bottom: 2px;
+    margin-left: 7px;
+}
+
+
+/* 
+
+    <div class="table-wrap">
+        <div class="table-header">
+            <img src="assets/img/table-title-img.svg">
+            1:1문의
+            <div class="detail-btn">
+                자세히 <img src="assets/img/detail-btn.svg">
+            </div>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <div class="table-header">
+            <img src="assets/img/table-title-img.svg">
+            상품후기
+            <div class="detail-btn">
+                자세히 <img src="assets/img/detail-btn.svg">
+            </div>
+        </div>
+    </div>
+    <div class="table-wrap">
+        <div class="table-header">
+            <img src="assets/img/table-title-img.svg">
+            공지사항
+            <div class="detail-btn">
+                자세히 <img src="assets/img/detail-btn.svg">
+            </div>
+        </div>
+    </div>
+
+*/

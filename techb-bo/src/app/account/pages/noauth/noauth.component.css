@@ -1,0 +1,82 @@
+:host {
+    width: 100%;
+    display: inline-block;
+}
+
+.logo-wrap{
+    text-align: center;
+    width: 100%;
+    margin-top: 172px;
+}
+.form-wrap{
+    width: 500px;
+    height: 245px;
+    margin: 52px auto;
+    border: 1px solid rgb(153,153,153);
+    background-color: rgb(239,239,239);
+    border-left: 0;
+    border-right: 0;
+}
+.form-wrap .form-title{
+    font-size: 20px;
+    color: #414141;
+    text-align: center;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 45px;
+    width: 100%;
+    background: none;
+    padding-top: 15px;
+}
+.form-wrap .form-title span{
+    font-weight: bold;
+}
+.login-form{
+    width: 335px;
+    height: 200px;
+    /* background-color: #ededed; */
+    /* border: 1px solid #c4c4c4; */
+    margin: 0 auto;
+    padding: 11px 14px;
+    position: relative;
+}
+.login-form div{
+    display: inline-block;
+    /* position: absolute; */
+    margin: 0;
+}
+.login-form .form-group input{
+    width: 300px;
+    height: 40px;
+    border: 1px solid #bfbfbf;
+    border-radius: 0px;
+    margin-bottom: 5px;
+    color: rgb(153,153,153);
+    font-size: 13px;
+}
+.login-form .form-group.password{
+    /* bottom: 11px; */
+}
+.login-form .login-button{
+    /* right: 14px; */
+}
+.login-form .login-button button{
+    width: 300px;
+    height: 40px;
+    background-color: rgb(234,0,61);
+    color: #fff;
+    border: none;
+    margin-top:10px;
+    font-size: 13px;
+}
+.check-wrap {
+    width: 100%;
+    text-align: center;
+}
+.login-check {
+    display: inline-block;
+    padding: 0px 30px;
+    border-radius: 17px;
+    margin-top: 25px;
+    background-color: #ededed;
+    border: 1px solid #c4c4c4;
+}

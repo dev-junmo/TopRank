@@ -1,0 +1,15 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/crm/crm-title.svg'" [title]="'주문'">
+
+
+     <!-- 게시글등록 버튼-->
+    <!-- <bo-page-button-config id = "id-board-content-list-btn-create"
+        [title]="'게시글등록'"
+        [styleType] = "'m-darkgrey'"
+        (click) = "onClickHeaderBtn($event)">
+    </bo-page-button-config> -->
+</bo-page-header>
+
+<!-- query form -->
+<order-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></order-query-form>
+

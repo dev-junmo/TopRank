@@ -1,0 +1,167 @@
+
+<!-- 포인트 내역 -->
+<div class="point-history-wrap" *ifDesktop>
+    <div class="point-history-box box">
+        <reward-point-query-form
+            [itemCount]="itemCount"
+            (query)="reloadWithQuery($event)">
+        </reward-point-query-form>
+        <!-- 충전내역리스트 { -->
+        <div class="point-table">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="false"
+                [items]="items"
+                [itemCount]="itemCount"
+                [isShowItemCount]="false" 
+                [indexColumn]="false"
+                [selectColumn]="false"
+                [isShowEmptyContent]="true"
+                [tableWidth]="'1160px'"
+                [sortBy] = "'reward_point_seq'"
+                [limit]="10"
+                (reload)="reloadItems($event)"
+                >
+                <data-table-column
+                    [property]="'regist_date'"
+                    [header]="'적용일'"
+                    [sortable]="false"
+                    [width]="218">
+                    <ng-template #dataTableCell let-item="item">
+                        <div class="table-td">
+                            {{item.regist_date | date: 'yyyy-MM-dd'}}
+                        </div>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'point_type'"
+                    [header]="'내용'"
+                    [sortable]="false"
+                    [align]="'left'"
+                    [width]="652">
+                    <ng-template #dataTableCell let-item="item">
+                        <div class="table-td">
+                            <p class="buy-reward">
+                                <span>{{item.memo}}</span>
+                                <!-- <span class="reward">Bssd1***</span> 구매 리워드 -->
+                            </p>
+                        </div>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'status'"
+                    [header]="'상태'"
+                    [sortable]="false"
+                    [width]="74">
+                    <ng-template #dataTableCell let-item="item">
+                        <div class="table-td">
+                            <strong *ngIf="item.reward_state == 'charge'">적립</strong>
+                            <strong *ngIf="item.reward_state == 'exchange'">전환</strong>
+                            <strong *ngIf="item.reward_state == 'withdrawal'">인출</strong>
+                        </div>
+                    </ng-template>
+                </data-table-column>
+                <data-table-column
+                    [property]="'point'"
+                    [header]="'금액'"
+                    [sortable]="false"
+                    [width]="216">
+                    <ng-template #dataTableCell let-item="item">
+                        <div class="table-td">
+                            <span class="down" *ngIf="item.action == 'minus'">-{{item.reward_point | number}} P</span>
+                            <span class="up" *ngIf="item.action == 'plus'">+{{item.reward_point | number}} P</span>
+                        </div>
+                    </ng-template>
+                </data-table-column>
+                <ng-template #emptyContentTemplate>
+                    <div class="point-history-empty">
+                        <img src="assets/images/mypage/img_attention_gray_64.png" alt="">
+                        <p>포인트 사용 내역이 없습니다.</p>
+                    </div>
+                </ng-template>
+            </data-table>   
+        </div>
+    </div>
+</div>
+<!-- 포인트 내역 end -->
+
+<div class="mobile" *ifMobile>
+    <form [formGroup]="bsForm" (submit)="reloadWithQuery(bsForm.value)">
+        <div class="point-history-contents">
+            <div class="point-history-option">
+                <div class="selectbox">
+                    <select class="label" formControlName="reward_state" (change)="reloadWithQuery(bsForm.value)">
+                        <option value="">전체</option>
+                        <option value="charge">적립</option>
+                        <option value="exchange">전환</option>
+                        <option value="withdrawal">인출</option>
+                    </select>
+                </div>
+                <button  type="button" class="filter-btn" (click)="onClickSearchFilter()">
+                    <img src="assets/images/svg/ic_sorting_purple_32.svg" alt="필터">
+                </button>
+            </div>
+            <div class="point-history-empty" *ngIf="isEmpty">
+                <img src="assets/images/svg/img_attention_gray_64.svg" alt="!">
+                <p>포인트 내역이 없습니다.</p>
+            </div>
+            <div *ngIf="items && items.length > 0">
+                <div class="point-history-card" *ngFor="let item of items">
+                    <div class="point-card-header">
+                        <span class="card-date">{{item.regist_date | date: 'yyyy-MM-dd'}}</span>
+                        <span class="point-type" *ngIf="item.reward_state == 'charge'">적립</span>
+                        <span class="point-type" *ngIf="item.reward_state == 'exchange'">전환</span>
+                        <span class="point-type" *ngIf="item.reward_state == 'withdrawal'">인출</span>
+                    </div>
+                    <div class="point-card-contents">
+                        <div class="point-card-con-list rewards" *ngIf="item.reward_state == 'charge'">
+                            <span class="point-card-title">구매 리워드</span>
+                            <div class="rewards-purchase">
+                                <span class="user-id-info" *ngIf="item.reward_state == 'charge'">crefe***@gmail.com</span>
+                                <strong class="point-increase" *ngIf="item.action == 'plus'">
+                                    <span>+{{item.reward_point | number}}</span> P
+                                </strong>
+                            </div>
+                        </div>
+                        <div class="point-card-con-list rewards" *ngIf="item.reward_state !== 'charge'">
+                            <span class="point-card-title" *ngIf="item.reward_state == 'withdrawal'">포인트 인출</span>
+                            <span class="point-card-title" *ngIf="item.reward_state == 'exchange'">포인트 전환</span>
+                            <div class="rewards-purchase">
+                                <strong class="point-reduction" *ngIf="item.action == 'minus'">
+                                    <span>-{{item.reward_point | number}}</span> P
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="point-more-btn" (click)="onClickLoad10MoreItems()" *ngIf="itemCount > items.length">
+                    <span>10개 더 보기</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 필터 팝업 start -->
+        <div class="m-popup filter-popup" [ngClass]="{active: isShowSearchFilter}">
+            <div class="m-popup-box">
+                <div class="popup-header">
+                    <h3>필터</h3>
+                    <button class="close-btn" (click)="isShowSearchFilter = false">
+                        <img src="assets/images/svg/ic_close_bold_purple_40.svg" alt="닫기 버튼">
+                    </button>
+                </div>
+                <div class="filter-calendar-wrap">
+                    <h3>조회 기간</h3>
+                    <bo-period-query [formGroup]="bsForm" [name]="'period'" [hasButtons]="true" [hasTodayBtn]="false" [has3DaysBtn]="false" [has3MonthBtn]="true">
+                        <bo-period-query-option-config [value]="'regist_date'" [label]="'유효기간'">
+                        </bo-period-query-option-config>
+                    </bo-period-query>
+                </div>
+                <div class="filter-btn-wrap">
+                    <button  type="button" class="filter-reset-btn" (click)="onClickResetFilter()">초기화</button>
+                    <button class="filter-application-btn" (click)="onSubmit(bsForm.value)">적용</button>
+                </div>
+            </div>
+        </div>
+        <!-- //필터 팝업 end -->
+    </form>
+</div>

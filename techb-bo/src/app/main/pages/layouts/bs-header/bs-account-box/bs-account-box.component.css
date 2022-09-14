@@ -1,0 +1,18 @@
+.account-wrap div{
+    display: inline-block;
+    vertical-align: middle;
+    color: #616266;
+    font-size: 16px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.account-wrap .section-bar{
+    width: 1px;
+    height: 18px;
+    background-color: #616266;
+}
+.account-wrap .account{
+    padding: 0 25px;
+}
+.account-wrap .account img{
+    padding: 5px;
+}

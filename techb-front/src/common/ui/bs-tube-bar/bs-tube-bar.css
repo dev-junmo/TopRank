@@ -1,0 +1,69 @@
+:host{
+    width: 100%;
+}
+/* .progress {
+    height: 9px;
+    margin-bottom: 5px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    background: rgb(238, 238, 238);
+
+}
+progressbar{
+   margin: 10px 0;
+   height: 7px;
+}
+ */
+.progressbar{
+    height: 9px;
+    margin-bottom: 5px;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+.container {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    background: rgb(238, 238, 238);
+    border-radius: 8px;
+}
+.dummy-bar {
+    padding-bottom: 38px;
+}
+.tube{
+   background: url('/assets/img/goods/Rounded-Rectangle-3.png') no-repeat 100%;
+   -webkit-box-shadow: none;
+   box-shadow: none;
+   height: 7px;
+}
+
+@media screen and (max-width: 1767px) {
+    .mobile :host{
+        max-width: unset;
+    }
+    .mobile .container {
+        height: 5px;
+        background: rgb(238, 238, 238);
+        border-radius: 8px;
+        position: relative;
+        left: 0;
+        top: 0;
+    }
+    /* .progressbar{
+        height: 5px;
+    } */
+     /* .tube {
+        background: url('/assets/img/mobile/goods/m_rv.png') no-repeat 100%;
+        background-size: 100% 100%;
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        top: -2px;        
+    }  */
+    .mobile .tube {
+        background: url('/assets/img/goods/Rounded-Rectangle-3.png') no-repeat 100%;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        height: 7px;       
+    }
+}

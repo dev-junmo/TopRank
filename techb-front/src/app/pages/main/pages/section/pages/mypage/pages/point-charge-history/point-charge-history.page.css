@@ -1,0 +1,1150 @@
+
+.box {
+    padding: 32px 40px 56px 40px;
+}
+
+/* 셀렉트 박스 스타일 */
+.selectbox {
+    position: relative;
+}
+.selectbox .label {
+    width: 131px;
+    height: 40px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    color: #3e4259;
+    background: #fff url('assets/images/mypage/ic_unfold_black_24.png') 100px center no-repeat;
+    border-radius: 8px;
+    border: 1px solid #dcdee8;
+    padding-left: 16px;
+}
+.selectbox.active .label {
+    background: #fff url('assets/images/mypage/ic_fold_black_24.png') 100px center no-repeat;
+}
+.selectbox ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 39px;
+    width: 131px;
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+    background: #fff;
+    z-index: 10;
+}
+.selectbox.active ul {
+    display: block;
+}
+.selectbox ul li {
+    width: 100%;
+    height: 40px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 16px;
+    font-weight: normal;
+    text-align: left;
+    color: #3e4259;
+    line-height: 40px;
+    padding-left: 16px;
+    cursor: pointer;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 컨텐츠 타이틀 영역 */
+.title-area {
+    align-items: center;
+    margin-top: 172px;
+}
+.title-area .title {
+    background: url('assets/images/mypage/ic_point_purple_40.png') left center no-repeat;
+}
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 포인트 박스 */
+.point-box {
+    display: flex;
+    width: 1240px;
+    height: 203px;
+    border-radius: 24px;
+    padding: 48px 49px 44px;
+    margin-top: 40px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+}
+.point-box > div {
+    width: 380px;
+    height: 111px;
+    padding: 0 40px 14px 48px;
+    text-align: center;
+}
+.point-box > div:not(:last-child) {
+    border-right: 1px solid #dcdee8;
+}
+.point-box > div > strong {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: bold;
+    color: #3e4259;
+    padding-left: 38px;
+    background: url('assets/images/mypage/ic_payment-point_purple_24.png') left center no-repeat;
+    margin-bottom: 43px;
+    margin-right: 30px;
+}
+.point-box .free-point > strong {
+    background: url('assets/images/mypage/ic_free-point_purple_24.png') left center no-repeat;
+}
+.point-box .reward-point > strong {
+    background: url('assets/images/mypage/ic_reward-point_purple_24.png') left center no-repeat;
+}
+.point-box .point-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+.point-box .point-content span {
+    width: 164px;
+    font-size: 22px;
+    font-weight: 500;
+    color: #e6458e;
+    vertical-align: middle;
+    text-align: center;
+}
+.point-box .point-content span strong {
+    font-family: 'Gmarket Sans';
+    font-weight: bold;
+    /* line-height: 1.18; */
+}
+.point-box .point-content span b {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px;
+    vertical-align: bottom;
+}
+.point-box .point-content .charging-btn {
+    height: 26px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 26px;
+    padding: 0 16px;
+    border-radius: 8px;
+    background: #e6458e;
+}
+.point-box .free-point .point-content {
+    justify-content: center;
+}
+.point-box .reward-point {
+    padding: 0 40px 14px 71px;
+}
+.point-box .reward-point strong {
+    margin-bottom: 24px;
+}
+.point-box .reward-point .point-content button {
+    display: block;
+    height: 26px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 26px;
+    padding: 0 16px;
+    border-radius: 8px;
+    background: #3f37c9;
+    margin-bottom: 8px;
+}
+.point-box .reward-point .point-content button.draw-btn {
+    background-color: #e6458e;
+    margin-bottom: 0;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 팝업 스타일 */
+.cm-popup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+.cm-popup .popup-box {
+    position: relative;
+    width: 848px;
+    height: 604px;
+    border-radius: 16px;
+}
+.cm-popup .popup-box .popup-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 72px;
+    border-bottom: 1px solid #dcdee8;
+}
+.cm-popup .popup-box .popup-header h3 {
+    font-family: 'Spoqa Han Sans Neo';
+    color: #3e4259;
+    font-size: 20px;
+    font-weight: 500;
+}
+.cm-popup .popup-box .popup-header button {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    background: none;
+}
+.cm-popup .popup-box .first-registration {
+    padding: 56px 0 16px 24px;
+    color: #3e4259;
+}
+.cm-popup .popup-box .first-registration .date {
+    margin-left: 16px;
+    margin-right: 8px;
+}
+.cm-popup .popup-box .popup-contents {
+    width: 100%;
+    padding: 83px 8px 0;
+    margin-top: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.cm-popup .popup-box .popup-contents .point-exchange > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 35px;
+}
+.cm-popup .popup-box .popup-contents .point-exchange > div:last-child {
+    margin-bottom: 0;
+}
+.cm-popup .popup-box .popup-contents .reward-point-now span {
+    font-size: 18px;
+    font-weight: normal;
+    color: #3e4259;
+}
+.cm-popup .popup-box .popup-contents .reward-point-now strong {
+    width: 539px;
+    /* height: 28px; */
+    font-size: 20px;
+    font-weight: 500;
+    color: #04021f;
+    /* line-height: 28px; */
+}
+.cm-popup .popup-box .popup-contents .exchange-point span {
+    font-size: 18px;
+    font-weight: normal;
+    color: #3e4259;
+}
+.cm-popup .popup-box .popup-contents .input-area {
+    width: 574px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.cm-popup .popup-box .popup-contents .input-area input {
+    width: 431px;
+    height: 60px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 60px;
+    color: #04021f;
+    padding: 0 32px;
+    background: #fff;
+    outline: 0;
+    border: 1px solid #dcdee8;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+.cm-popup .popup-box .popup-contents .input-area input::placeholder {
+    color: #b8b6c4;
+}
+.cm-popup .popup-box .popup-contents .exchange-point .all-in-btn {
+    width: 100px;
+    height: 60px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 40px;
+    border-radius: 16px;
+    background: #e6458e;
+    box-sizing: border-box;
+}
+.cm-popup .popup-box .popup-contents .precautions {
+    margin-top: 72px;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li {
+    position: relative;
+    font-size: 18px;
+    font-weight: normal;
+    color: #3e4259;
+    word-break: keep-all;
+    line-height: 1.22;
+    margin-bottom: 20px;
+    padding-left: 22px;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li:last-child {
+    margin-bottom: 0;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li:nth-child(1) {
+    color: #e62e6b;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li::before {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 5px;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    background: #3e4259;
+    border-radius: 50%;
+}
+.cm-popup .popup-box .popup-contents .precautions ul li:nth-child(1)::before {
+    background: #e62e6b;
+}
+.cm-popup .popup-box .popup-contents .exchange-btn {
+    display: block;
+    width: 272px;
+    height: 58px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 22px;
+    font-weight: bold;
+    color: #b8b6c4;
+    border-radius: 16px;
+    background: #dcdee8;
+    margin: 50px auto 0;
+}
+.cm-popup .popup-box .popup-contents .exchange-btn.active {
+    background: #e6458e;
+    color: #fff;
+}
+
+/* 결제 안내 팝업 */
+.payment-instructions-popup .popup-box {
+    height: 671px;
+}
+.payment-instructions-popup .popup-box .popup-contents {
+    text-align: center;
+    padding: 55px 8px 0;
+}
+.payment-instructions-popup .popup-contents strong {
+    font-size: 22px;
+    color: #04021f;
+}
+.payment-instructions-popup .popup-contents strong span {
+    color: #e6458e;
+}
+.payment-instructions-popup .popup-contents p {
+    font-size: 22px;
+    font-weight: normal;
+    color: #3e4259;
+    line-height: 1.31;
+    margin-top: 24px;
+    margin-bottom: 73px;
+}
+.payment-instructions-popup .popup-contents p span {  
+    color: #e6458e;
+    font-weight: bold;
+}
+.popup-contents-box {
+    width: 100%;
+    background: #f2f2fc;
+    border-radius: 24px;
+}
+.popup-contents-box {
+    padding: 34px 115px;
+}
+.popup-contents-box ul li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.popup-contents-box ul li:last-child {
+    margin-bottom: 0;
+}
+.popup-contents-box ul li span {
+    font-size: 18px;
+    font-weight: normal;
+    color: #3e4259;
+}
+.popup-contents-box ul li strong {
+    font-size: 20px;
+    font-weight: normal;
+    color: #04021f;
+}
+.account-copy {
+    width: 364px;
+    height: 58px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+    background: #e6458e;
+    border-radius: 16px;
+    margin-top: 32px;
+    margin-bottom: 56px;
+}
+
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 포인트 충전 내역 */
+.point-payment {
+    width: 1240px;
+    margin-top: 40px;
+}
+.point-payment .point-payment-box {
+    padding: 48px 40px 65px;
+}
+.point-payment .point-payment-tab {
+    display: flex;
+    margin-bottom: 56px;
+}
+.point-payment .point-payment-tab li {
+    width: 620px;
+    height: 44px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #3e4259;
+    line-height: 44px;
+    text-align: center;
+    cursor: pointer;
+}
+.point-payment .point-payment-tab li.active {
+    color: #3f37c9;
+    border-bottom: 2px solid #3f37c9;
+}
+/* top option */
+.top-option {
+    display: flex;
+    padding: 0 142px;
+}
+.top-option .date-tab {
+    display: flex;
+    margin-right: 56px;
+}
+.top-option .date-tab li {
+    width: 87px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #b8b6c4;
+    text-align: center;
+    line-height: 40px;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    border-left: 0;
+}
+.top-option .date-tab li:first-child {
+    border-left: 1px solid #dcdee8;
+    border-bottom-left-radius: 8px;
+    border-top-left-radius: 8px;
+}
+.top-option .date-tab li:last-child {
+    border-bottom-right-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.top-option .date-tab li.active {
+    color: #fff;
+    background: #5049ce;
+}
+.top-option form {
+    display: flex;
+    position: relative;
+}
+.top-option label {
+    display: none;
+}
+.top-option input[type="date"] {
+    position: relative;
+    width: 176px;
+    height: 40px;
+    font-family: 'Spoqa Han Sans Neo';
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    background: #fff;
+    padding: 4px 0 4px 14px;
+    box-sizing: border-box;
+    padding-left: 46px;
+}
+.top-option input[type="date"]::-webkit-calendar-picker-indicator { 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background: url('assets/images/mypage/ic_calendar_black_32.png') 6px center no-repeat;
+}
+.top-option input[type="date"]::before {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 20px;
+    background: #dcdee8;
+}
+.top-option input[type="date"]::after {
+    content: attr(placeholder);
+    position: absolute;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 18px;
+    font-weight: 500;
+    color: #b8b6c4;
+    padding-left: 15px;
+}
+.top-option input[type="date"]:focus::before {
+    content: "";
+}
+.top-option .check-btn {
+    height: 40px;
+    padding: 0 16px;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 40px;
+    background: #3f37c9;
+    border-radius: 8px;
+    margin-left: 16px;
+}
+.top-option span {
+    display: inline-block;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.44;
+    margin: 7px 16px;
+    vertical-align: top;
+}
+.bottom-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 56px;
+}
+.bottom-option .total {
+    font-size: 18px;
+    font-weight: normal;
+    color: #3e4259;
+}
+
+/* 테이블 스타일 */
+.point-table {
+    margin-top: 24px;
+}
+.point-table table {
+    border-collapse: collapse;
+}
+.point-table table th {
+    height: 48px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #3e4259;
+    text-align: center;
+    line-height: 48px;
+    background: #f5f5fa;
+    border-bottom: 1px solid #dcdee8;
+}
+.point-table table th:nth-child(1) {
+    width: 192px;
+}
+.point-table table th:nth-child(2) {
+    width: 648px;
+}
+.point-table table th:nth-child(3) {
+    width: 160px;
+}
+.point-table table th:nth-child(4) {
+    width: 160px;
+}
+.point-table table td {
+    position: relative;
+    height: 82px;
+    font-size: 16px;
+    font-weight: normal;
+    color: #3e4259;
+    text-align: center;
+    line-height: 82px;
+    vertical-align: middle;
+    border-bottom: 1px solid #dcdee8;
+    background: #f7f8ff;
+}
+.point-table table td .change-point-wrap {
+    display: flex;
+    padding-left: 48px;
+}
+.point-table table td .change-point-wrap > span {
+    margin: 0 16px;
+}
+.point-table table td .change-point-wrap strong {
+    margin-left: 5px;
+}
+.point-table table td .change-point-wrap strong,
+.point-table table td .change-point-wrap b {
+    font-weight: 500;
+}
+.point-table table td .waiting-deposit {
+    font-weight: bold;
+    color: #e62e6b;
+    text-decoration: underline;
+    text-underline-position: from-font;
+}
+
+/* 포인트 내역 비어있을 때 */
+.point-table .point-payment-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 384px;
+    background: #f7f8ff;
+    border-bottom: 1px solid #dcdee8;
+}
+.point-table .point-payment-empty p {
+    font-size: 16px;
+    font-weight: 500;
+    color: #b8b6c4;
+    margin-top: 10px;
+}
+
+/* 하단 페이징 */
+.point-payment-box .bottom-controller {
+    display: flex;
+    justify-content: center;
+    margin-top: 64px;
+    margin-bottom: 30px;
+}
+.point-payment-box .paging-wrap {
+    display: flex;
+    align-items: center;
+}
+.point-payment-box .paging-wrap ol {
+    display: flex;
+    align-items: center;
+}
+.point-payment-box .paging-wrap ol li {
+    width: 43px;
+    height: 38px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #04021f;
+    line-height: 37px;
+    text-align: center;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.point-payment-box .paging-wrap ol li.disabled {
+    color: #dcdee8;
+}
+.point-payment-box .paging-wrap ol li.active {
+    color: #3f37c9;
+    border: 1px solid #3f37c9;
+    border-radius: 24px;
+    background: #fafbff;
+}
+.point-payment-box .paging-wrap > button {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+}
+.point-payment-box .paging-wrap .prev-second.dis {
+    background: url('assets/images/mypage/ic_first_gray_40.png') center no-repeat;
+}
+.point-payment-box .paging-wrap .prev.dis {
+    background: url('assets/images/mypage/ic_arrow_left_gray_40.png') center no-repeat;
+}
+.point-payment-box .paging-wrap .prev-second {
+    background: url('assets/images/mypage/ic_first_gray_40.png') center no-repeat;
+}
+.point-payment-box .paging-wrap .prev {
+    background: url('assets/images/mypage/ic_arrow_left_black_40.png') center no-repeat;
+    margin-right: 16px;
+}
+.point-payment-box .paging-wrap .next-second.dis {
+    background: url('assets/images/mypage/ic_last_gray_40.png') center no-repeat;
+}
+.point-payment-box .paging-wrap .next.dis {
+    background: url('assets/images/mypage/ic_arrow_right_gray_40.png') center no-repeat;
+}
+.point-payment-box .paging-wrap .next-second {
+    background: url('assets/images/mypage/ic_last_black_40.png') center no-repeat;
+}
+.point-payment-box .paging-wrap .next {
+    background: url('assets/images/mypage/ic_arrow_right_black_40.png') center no-repeat;
+    margin-left: 16px;
+}
+
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/* 리워드 포인트 내역 테이블 스타일 */
+.reward-point-table table th:nth-child(1) {
+    width: 218px;
+}
+.reward-point-table table th:nth-child(2) {
+    width: 652px;
+}
+.reward-point-table table th:nth-child(3) {
+    width: 74px;
+}
+.reward-point-table table th:nth-child(4) {
+    width: 216px;
+}
+.reward-point-table table td .buy-reward {
+    text-align: left;
+    margin-left: 32px;
+}
+.reward-point-table table td .buy-reward .reward {
+    font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------- */
+/* data-table column */
+.table-td {
+    position: relative;
+    height: 82px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 82px;
+    vertical-align: middle;
+}
+
+.charge-point-wrap {
+    display: flex;
+    font-size: 16px;
+    padding-left: 48px;
+}
+
+.charge-point-wrap .charging-point strong {
+    margin-left: 5px;
+    font-weight: 500;
+}
+
+.charge-point-wrap .charging-point p {
+    font-weight: 500;
+}
+
+.charge-point-wrap .charging-point > span {
+    margin: 0 16px;
+}
+
+.total-price strong {
+    font-weight: 700;
+}
+
+.waiting-deposit.state-request {
+    font-weight: bold;
+    color: #e62e6b;
+    text-decoration: underline;
+    text-underline-position: under;
+    cursor: pointer;
+}
+
+/* ====================================================== */
+/* ====================================================== */
+/* Mobile CSS */
+.mobile .line {
+    width: 100%;
+    height: 1px;
+    background: #dcdee8;
+    margin: 1.6rem 0 2.1rem;
+}
+
+/* 포인트 내역 스타일 */
+.mobile .point-charging-history-wrap {
+    padding: 1rem 2.4rem;
+}
+.mobile .all-count {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #3e4259;
+    margin-bottom: 2.4rem; 
+}
+.mobile .all-count span {
+    font-weight: 500;
+}
+.mobile .point-history-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.4rem;
+    margin-top: 2.4rem;
+}
+.mobile .point-history-option .selectbox {
+    position: relative;
+    /* margin-top: 1.0rem; */
+}
+.mobile .point-history-option .selectbox .label {
+    width: 12.0rem;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #3e4259;
+    text-align: left;
+    line-height: 4.0rem;
+    background: #fff url('assets/images/svg/ic_unfold_black_24.svg') 92.4% center no-repeat;
+    border: 1px solid #dcdee8;
+    outline: 0;
+    border-radius: 8px;
+    padding: 0 1.2rem;
+    box-sizing: border-box;
+}
+.mobile .point-history-option .selectbox.active .label {
+    background: #fff url('assets/images/svg/ic_fold_black_24.svg') 92.4% center no-repeat;
+}
+.mobile .point-history-option .selectbox .label span {
+    color: #b8b6c4;
+}
+.mobile .point-history-option .selectbox ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 3.9rem;
+    width: 12.0rem;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    box-shadow: 0 3px 6px 0 rgba(36, 51, 179, 0.1);
+    z-index: 10;
+}
+.mobile .point-history-option .selectbox ul li {
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #3e4259;
+    line-height: 4.0rem;
+    padding: 0 1.2rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.mobile .point-history-option .selectbox.active ul {
+    display: block;
+}
+.mobile .point-history-option .selectbox ul li span {
+    color: #b8b6c4;
+}
+.mobile .point-history-option .filter-btn {
+    width: 4.0rem;
+    height: 4.0rem;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    padding: 0;
+}
+.mobile .point-history-option .filter-btn img {
+    vertical-align: middle;
+}
+
+/* 포인트 내역 없을 때 스타일 */
+.mobile .point-charging-history-empty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 23.6rem;
+    background: #f2f2fc;
+    border-radius: 16px;
+    margin-top: 2.4rem;
+}
+.mobile .point-charging-history-empty p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #b8b6c4;
+    margin-top: 0.8rem;
+}
+
+/* 포인트 내역 리스트 */
+.mobile .point-history-card {
+    width: 100%;
+    /* height: 14.4rem; */
+    background: #fafbff;
+    padding: 1.3rem 1.6rem 2.4rem;
+    border-radius: 16px;
+    box-shadow: 0 3px 13px 0 rgba(36, 51, 179, 0.1);
+    margin-top: 0.8rem;
+}
+.mobile .point-history-card .point-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.0rem;
+    border-bottom: 1px solid #dcdee8;
+    margin-bottom: 1.6rem;
+}
+.mobile .point-history-card .point-card-header span {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+.mobile .point-history-card .point-card-header .waiting-deposit-btn {
+    background: none;
+    padding: 0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #e6458e;
+}
+.mobile .point-history-card .point-card-header .pay-done {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #b8b6c4;
+}
+
+.mobile .point-card-contents .space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.mobile .point-card-contents .point-card-title {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #04021f;
+}
+.mobile .point-card-contents .transition-point-list {
+    margin: 0.6rem 0 1.4rem;
+}
+.mobile .point-card-contents .transition-point-list li {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #b8b6c4;
+    margin-bottom: 0.6rem;
+}
+.mobile .point-card-contents .transition-point-list li:last-child {
+    margin-bottom: 0;
+}
+.mobile .point-card-contents .point-number {
+    font-size: 1.4rem;
+    font-weight: normal;
+    color: #3e4259;
+}
+.mobile .point-card-contents .point-number strong {
+    font-weight: normal;
+}
+.mobile .point-history-contents .point-more-btn {
+    width: 100%;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #04021f;
+    line-height: 4.0rem;
+    background: #fafbff;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px 0 rgba(36, 51, 179, 0.1);
+    margin-top: 3.2rem;
+}
+/* ------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+h3 {
+    font-weight: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* 필터 팝업 */
+.filter-popup .m-popup-box .popup-header {
+    color: #3f37c9;
+    border-bottom: 1px solid #dcdee8;
+}
+.filter-popup .m-popup-box .filter-calendar-wrap {
+    padding: 2.4rem 1.6rem;
+    border-bottom: 1px solid #dcdee8;
+}
+.filter-popup .m-popup-box .filter-calendar-wrap h3 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #3e4259;
+    margin-bottom: 1.6rem;
+}
+.filter-calendar-wrap .date-tab {
+    display: flex;
+    align-items: center;
+    /* border: 1px solid #dcdee8; */
+    margin-bottom: 1.6rem;
+    border-radius: 8px;
+}
+.filter-calendar-wrap .date-tab li {
+    width: 8.3rem;
+    height: 4.0rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #b8b6c4;
+    text-align: center;
+    line-height: 4.0rem;
+    background: #fff;
+    border: 1px solid #dcdee8;
+    /* border-right: 1px solid #dcdee8; */
+}
+.filter-calendar-wrap .date-tab li:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.filter-calendar-wrap .date-tab li:last-child {
+    /* border-right: 0; */
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.filter-calendar-wrap .date-tab li.active {
+    color: #fff;
+    border: 1px solid #5049ce;
+    background: #5049ce;
+}
+.filter-calendar-wrap .date-tab li:not(:first-child) {
+    border-left: 0;
+}
+
+.filter-calendar-wrap .filter-calendar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.filter-calendar-wrap .filter-calendar label {
+    display: none;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"] {
+    position: relative;
+    width: 15.3rem;
+    height: 4.0rem;
+    border: 1px solid #dcdee8;
+    border-radius: 8px;
+    background: #fff;
+    padding: 0.8rem 0;
+    box-sizing: border-box;
+    padding-left: 4.4rem;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"]::-webkit-calendar-picker-indicator { 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: url('assets/images/svg/ic_calendar_black_32.svg') 0.8rem 0.7rem no-repeat;
+    background-size: 2.4rem;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"]::after {
+    content: attr(value);
+    position: absolute;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #3e4259;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"]::before {
+    content: attr(data-placeholder);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #b8b6c4;
+}
+.filter-calendar-wrap .filter-calendar input[type="date"]:focus::before {
+    content: "";
+}
+.filter-calendar-wrap .filter-calendar span {
+    display: inline-block;
+    font-family: 'Spoqa Han Sans Neo';
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.44;
+    margin: 7px 16px;
+    vertical-align: top;
+}
+.filter-btn-wrap {
+    display: flex;
+    border-top: 1px solid #dcdee8;
+    margin-top: 2.0rem;
+}
+.filter-btn-wrap button {
+    height: 4.8rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background: none;
+}
+.filter-btn-wrap .filter-reset-btn {
+    width: 10.5rem;
+    color: #b8b6c4;
+    border-right: 1px solid #dcdee8;
+}
+.filter-btn-wrap .filter-application-btn {
+    width: 25.4rem;
+    color: #3f37c9;
+}
+/* 입금 대기 팝업 스타일 */
+.waiting-deposit-popup .m-popup-box {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 2.4rem 1.6rem 3.2rem;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+.popup-contents p {
+    text-align: center;
+}
+.popup-contents .deposit-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #04021f;
+    margin-bottom: 2.4rem;
+    margin-top: 3.2rem;
+}
+.popup-contents .deposit-title span {
+    color: #e6458e;
+}
+.popup-contents .deposit-text {
+    font-size: 1.6rem;
+    font-weight: normal;
+    color: #3e4259;
+    line-height: 1.36;
+    margin-bottom: 5.6rem;
+}
+.popup-contents .deposit-text span {
+    font-weight: bold;
+    color: #e6458e;
+}
+.popup-contents .deposit-info-box {
+    width: 100%;
+    background: #f2f2fc;
+    border-radius: 16px;
+    padding: 1.6rem;
+}
+.popup-contents .deposit-info li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.4rem;
+    font-weight: normal;
+    margin-bottom: 1.0rem;
+}
+.popup-contents .deposit-info li:last-child {
+    margin-bottom: 0; 
+}
+.popup-contents .deposit-info li span:first-child {
+    color: #3e4259;
+}
+.popup-contents .deposit-info li span:last-child {
+    color: #04021f;
+}
+.popup-contents .account-number-copy {
+    width: 100%;
+    height: 4.4rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: 4.4rem;
+    background: #e6458e;
+    border-radius: 8px;
+    margin-top: 3.2rem;
+}
+  

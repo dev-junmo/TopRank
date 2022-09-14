@@ -1,0 +1,38 @@
+.small-margin {
+    margin-left: 0;
+}
+
+.query-wrap .form-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.query-wrap .form-block .form-item {
+    position: relative;
+}
+
+.query-wrap .more-form-block .form-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 39px;
+}
+
+.query-wrap .more-form-block .form-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 56px;
+}
+
+.item-option .total {
+    font-size: 18px;
+}

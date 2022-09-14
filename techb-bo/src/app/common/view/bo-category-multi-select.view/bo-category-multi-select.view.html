@@ -1,0 +1,75 @@
+<form [formGroup]="bsForm" class="form-area" >
+    <!-- 카테고리 선택 박스 -->
+    <div class="none-padding-td-table content-table">
+        <table>
+            <colgroup>
+                <col width="20%" />
+                <col width="20%" />
+                <col width="20%" />
+                <col width="20%" />
+                <col width="20%" />
+            </colgroup>
+            <tr>
+                <th>1차 카테고리</th>
+                <th>2차 카테고리</th>
+                <th>3차 카테고리</th>
+                <th>4차 카테고리</th>
+                <th>등록</th>
+            </tr>
+            <tr class="white-background">
+                <td>
+                    <div class="category-con">
+                        <li class="clickable" *ngFor="let item of category[0]" (click)="onClickCategory(0, item)" [ngClass]="{'active' : selectCategory[0]?.category_code == item.category_code}">{{item.title}}</li>
+                    </div>
+                </td>
+                <td>
+                    <div class="category-con">
+                        <li class="clickable" *ngFor="let item of category[1]" (click)="onClickCategory(1, item)" [ngClass]="{'active' : selectCategory[1]?.category_code == item.category_code}">{{item.title}}</li>
+                    </div>
+                </td>
+                <td>
+                    <div class="category-con">
+                        <li class="clickable" *ngFor="let item of category[2]" (click)="onClickCategory(2, item)" [ngClass]="{'active' : selectCategory[2]?.category_code == item.category_code}">{{item.title}}</li>
+                    </div>
+                </td>
+                <td>
+                    <div class="category-con">
+                        <li class="clickable" *ngFor="let item of category[3]" (click)="onClickCategory(3, item)" [ngClass]="{'active' : selectCategory[3]?.category_code == item.category_code}">{{item.title}}</li>
+                    </div>
+                </td>
+                <td>
+                    <div class="category-con con-center">
+                        <div class="btn-pos">
+                            <bo-page-button *ngIf="activeCateBtn" [title]="'등록'" [type]="'square-s-black-btn'" (click)="onClickSelectCategory()"></bo-page-button>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="content-table sec-content-table">
+        <table formArrayName='categories'>
+            <colgroup>
+                <col width="10%" />
+                <col width="90%" />
+            </colgroup>
+            <tr>
+                <th class="inner-two-line-table" style="font-size: 13px;">선택 카테고리</th>
+            </tr>
+            <tr class="white-background" *ngFor="let item of categoriesFormArray.controls;let i = index" [formGroupName]="i">
+                <!-- <td style="font-size: 13px;">
+                    <div class="table-radio">
+                        <input type="radio" name="category_link" id="categories-{{i}}" [value]="1" formControlName="category_link" />
+                        <label for="categories-{{i}}" class="check-label"></label>
+                    </div>
+                </td> -->
+                <td class="inner-two-line-table align-left" style="font-size: 13px;">
+                    <span>{{item.value.category_name}}</span>
+                    <img src="/assets/img/mi.svg" class="clickable" style="float: right; padding-right: 15px;" (click)="onClickRemoveCategory(i)" />
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</form>

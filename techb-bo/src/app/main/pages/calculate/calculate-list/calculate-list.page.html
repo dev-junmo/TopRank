@@ -1,0 +1,561 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/member-list.svg'" [title]="'(구)정산현황'">
+    <bo-page-button-config id = "id-board-create-btn-"
+        [title] = "'엑셀 다운로드'"
+        [styleType] = "'square-m-white-btn'"
+        [imgUrl]="'assets/img/excel-icon.svg'"
+        (click) = "onClickDownloadExcel(query)">
+    </bo-page-button-config>
+</bo-page-header>
+
+<div class="list-section" style="min-height: none;">
+
+    <!-- query form -->
+    <calculate-query-form [setQuery]="query"(query)="reloadWithQuery($event)" [initialQuery]="false"></calculate-query-form>
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap-se">
+        <!-- list -->
+        <div style="margin: auto; max-width: 150%; margin-bottom: 50px;">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="false"
+                [selectColumn]="false"
+                [hasScrollBarX]="true"
+                [tableWidth]="'8500px'"
+                (reload)="reloadItems($event)"
+                [sortBy] = "'deposit_date'"
+                [sortAsc] = "false">
+
+
+                <!-- 선택삭제 버튼-->
+                <!-- <bs-header-button-config id = "id-board-content-list-deleteall-btn2"
+                    [title] = "'선택탈퇴'"
+                    [styleType] = "'s-darkblue'"
+                    (click) = "onClickDTHeaderBtn($event)">
+                </bs-header-button-config>-->
+
+                <data-table-column
+                    [property]="'channel'"
+                    [header]="'채널'"
+                    [sortable]="true"
+                    [width]="60">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'account_ym'"
+                    [header]="'정산년월'"
+                    [sortable]="true"
+                    [width]="65">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.account_ym}}</span>
+                    </ng-template>
+                </data-table-column>
+
+
+                <data-table-column
+                    [property]="'order_date'"
+                    [header]="'주문일'"
+                    [sortable]="true"
+                    [width]="90">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.order_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'order_type_name'"
+                    [header]="'주문유형명'"
+                    [width]="100">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'order_seq'"
+                    [header]="'주문번호'"
+                    [sortable]="true"
+                    [width]="205">
+                    <ng-template #dataTableCell let-item="item">
+                            <!-- <span class="order-num" routerLink="/main/order/order/view/{{item.order_seq}}">{{item.order_seq}}</span>
+                            <a target="_blank" href="/main/order/order/view/{{item.order_seq}}">
+                                <bo-page-button [type]="'square-ss-white'" [title]="'새창'"></bo-page-button>
+                            </a> -->
+                            <span class="order-num" routerLink="../../../order/order/view/{{item.order_seq}}">{{item.order_seq}}</span>
+                            <bo-page-button (click)="onClickOrderNewWindow(item.order_seq)" [type]="'square-ss-white'" [title]="'새창'"></bo-page-button>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'goods_name'"
+                    [header]="'상품명'"
+                    [sortable]="true">
+                    <ng-template #dataTableCell let-item="item">
+                            <!-- <span class="goods_name" routerLink="/main/goods/goods/update/{{item.goods_seq}}">{{item.goods_name}}</span> -->
+                            <span class="goods_name"  routerLink="../../../goods/goods/update/{{item.goods_seq}}">{{item.goods_name}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'export_status'"
+                    [header]="'출고상태'"
+                    [sortable]="true"
+                    [width]="65">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'recipient_name'"
+                    [header]="'수령인'"
+                    [sortable]="true">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'order_name'"
+                    [header]="'주문자명'"
+                    [sortable]="true">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'order_id'"
+                    [header]="'주문자 아이디'"
+                    [width]="85">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'user_group_name'"
+                    [header]="'회원등급'"
+                    [width]="60">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'shipping_type'"
+                    [header]="'배송구분'"
+                    [width]="85">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'payment_method'"
+                    [header]="'결제방법'"
+                    [sortable]="true"
+                    [width]="75">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'goods_seq'"
+                    [header]="'상품고유값'"
+                    [width]="70">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'deposit_date'"
+                    [header]="'결제일'"
+                    [sortable]="true"
+                    [width]="90">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.deposit_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'complete_date'"
+                    [header]="'출고완료일'"
+                    [sortable]="true"
+                    [width]="90">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.complete_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'shipping_date'"
+                    [header]="'배송완료일'"
+
+                    [sortable]="true"
+                    [width]="90">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.shipping_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'buy_confirm_date'"
+                    [header]="'구매확정일'"
+
+                    [sortable]="true"
+                    [width]="90">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.buy_confirm_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'account_reserve_date'"
+                    [header]="'정산예정일'"
+
+                    [sortable]="true"
+                    [width]="90">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.account_reserve_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'account_date'"
+                    [header]="'정산완료일'"
+
+                    [sortable]="true"
+                    [width]="90">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.account_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'refund_date'"
+                    [header]="'환불일'"
+
+                    [width]="90"
+                    [sortable]="true"
+                >
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.refund_date | date:'yyyy-MM-dd'}}</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'export_code'"
+                    [header]="'출고번호'"
+                    [width]="55">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'order_goods_code'"
+                    [sortable]="true"
+                    [header]="'옵션별상세코드'"
+                    [width]="110">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'brand_name'"
+                    [header]="'거래처(거래처)'"
+                    [width]="100">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'brand_comp_no01'"
+                    [header]="'거래처 사업자번호'"
+                    [width]="110">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'req_options'"
+                    [header]="'필수옵션'"
+                    [width]="150">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'add_options'"
+                    [header]="'추가옵션'"
+                    [width]="200">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'add_input_options'"
+                    [header]="'추가입력옵션'"
+                    [width]="240">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'order_ea'"
+                    [header]="'주문수량/환불수량'"
+                    [width]="110">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'return_ea'"
+                    [header]="'반품수량'"
+                    [width]="55">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'price'"
+                    [header]="'상품별할인가'"
+                    [width]="150">
+                </data-table-column>
+
+                <!-- 판매-->
+                <data-table-column
+                    [property]="'provider_name'"
+                    [header]="'판매자'"
+                    [width]="100">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'commission_rate'"
+                    [header]="'수수료율'"
+                    [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                        <span>{{item.commission_rate}}%</span>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'total_price'"
+                    [header]="'할인가x출고수량'"
+                    [width]="100">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'commission'"
+                    [header]="'수수료[통신판매/중계자]'"
+                    [width]="140">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_commission'"
+                    [header]="'판매[입점사]'"
+                    [width]="130">
+                </data-table-column>
+
+                <!--사은품-->
+
+                <data-table-column
+                    [property]="'brand_comp_no02'"
+                    [header]="'거래처 사업자번호(사은품)'"
+                    [width]="120">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'gift_price'"
+                    [header]="'사은품'"
+                    [width]="80">
+                </data-table-column>
+
+                <!-- 할인공제-->
+                <data-table-column
+                    [property]="'unit_enuri'"
+                    [header]="'에누리'"
+                    [width]="80">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'coupon'"
+                    [header]="'쿠폰[통신판매/중계자]'"
+                    [width]="130">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'unit_emoney'"
+                    [header]="'적립금[통신판매/중계자]'"
+                    [width]="140">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'unit_point'"
+                    [header]="'CJ ONE 포인트[통신판매/중계자]'"
+                    [width]="107">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_coupon'"
+                    [header]="'쿠폰[입점사]'"
+                    [width]="90">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_unit_emoney'"
+                    [header]="'적립금[입점사]'"
+                    [width]="100">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_unit_point'"
+                    [header]="'CJ ONE 포인트[입점사]'"
+                    [width]="100">
+                </data-table-column>
+                <!--장신-->
+                <data-table-column
+                    [property]="'sales'"
+                    [header]="'본사매출(상품)'"
+                    [width]="90">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_commission_sales'"
+                    [header]="'입점수수료매출(상품)'"
+                    [width]="130">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_sales'"
+                    [header]="'입점사 취급고'"
+                    [width]="85">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_account_amount'"
+                    [header]="'입점사 정산금(지급액)'"
+                    [width]="150">
+                </data-table-column>
+
+                <!-- 배송비/배송비 쿠폰(할인공제)-->
+
+                <data-table-column
+                    [property]="'agency_shipping_cost'"
+                    [header]="'위탁배송비'"
+                    [width]="80">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'shipping_cost'"
+                    [header]="'배송비[통신판매/중계자]'"
+                    [width]="150">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'refund_shipping_cost'"
+                    [header]="'환불배송비'"
+                    [width]="90">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_shipping_cost'"
+                    [header]="'배송비[입점사]'"
+                    [width]="90">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'shipping_coupon_sale'"
+                    [header]="'배송비쿠폰[통신판매/중계자]'"
+                    [width]="165">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_shipping_coupon_sale'"
+                    [header]="'배송비쿠폰[입점사]'"
+                    [width]="115">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'provider_comp_no'"
+                    [header]="'입점사 사업자번호'"
+                    [width]="110">
+                </data-table-column>
+
+                <!-- 비고-->
+                <data-table-column
+                    [property]="'total_sales'"
+                    [header]="'판매(-)합계 (배송비포함)'"
+                    [width]="80">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'pg_settleprice'"
+                    [header]="'PG 결제금액'"
+                    [width]="80">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'account_status'"
+                    [header]="'상품별 정산확인'"
+                    [width]="95">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'pg_deposit_reserve_date'"
+                    [header]="'PG 입금 예정일'"
+                    [sortable]="true"
+                    [width]="110">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'pg_deposit_date'"
+                    [header]="'PG 입금 확인일'"
+                    [sortable]="true"
+                    [width]="110">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'typereceipt'"
+                    [header]="'세금계산서 유무'"
+                    [width]="100">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'supply_price'"
+                    [header]="'상품별 매입가'"
+                    [width]="100">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'total_supply_price'"
+                    [header]="'총 매입가(매입가 X 수량)'"
+                    [width]="150">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'margin'"
+                    [header]="'마진금액'"
+                    [width]="80">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'sale_origin_rate'"
+                    [header]="'판매vs원가율'"
+                    [width]="90">
+                </data-table-column>
+
+                <!-- <data-table-column
+                    [property]="'type'"
+                    [header]="'유형'"
+                    [width]="34">
+                </data-table-column> -->
+
+                <data-table-column
+                    [property]="'consumer_price'"
+                    [header]="'상품별 정가'"
+                    [width]="80">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'total_consumer_price'"
+                    [header]="'정가총액(정가 X수량)'"
+                    [width]="140">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'total_emoney'"
+                    [header]="'적립금'"
+                    [width]="80">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'total_point'"
+                    [header]="'ONE포인트'"
+
+                    [width]="80">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'total_coupon'"
+                    [header]="'(쿠폰1) 상품별쿠폰'"
+                    [width]="113">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'coupon02'"
+                    [header]="'(쿠폰2) 카테고리별 쿠폰'"
+                    [width]="137">
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'coupon03'"
+                    [header]="'(쿠폰3)'"
+
+                    [width]="58">
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+</div>

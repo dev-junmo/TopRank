@@ -1,0 +1,12 @@
+:host-context(hold-list-page){
+    display: inline-block;
+    width: calc(100% - 225px);
+}
+
+.content-table td{
+    border: 1px solid #dfdfdf;
+}
+
+.content-table tr th{
+    border: 1px solid #dfdfdf;
+}

@@ -1,0 +1,50 @@
+<div class="outlet-section">
+        <!-- <div class="query-title">검색</div> -->
+
+            <form [formGroup]="bsForm" (ngSubmit)="onSubmit()" class="form-area">
+                <div class="query-wrap">
+                    <div class="form-block">
+                        <div class="form-box">
+                            <div class="form-item">
+                                <div class="form-title">정산기간</div>
+                                <select class="form-selectbox default small-input" name="account_s_y" formControlName="account_s_y" >
+                                    <option *ngFor="let item of years" [value]="item.value">{{item.title}}</option>
+                                </select>
+                                <select class="form-selectbox default small-input" name="account_s_m" formControlName="account_s_m" >
+                                    <option *ngFor="let item of month" [value]="item.value">{{item.title}}</option>
+                                </select>
+                                <div class="dash-bar" style="margin-right: 10px;">-</div>
+                                <select class="form-selectbox default small-input"  name="account_e_y" formControlName="account_e_y" >
+                                    <option *ngFor="let item of years" [value]="item.value">{{item.title}}</option>
+                                </select>
+                                <select class="form-selectbox default small-input" name="account_e_m" formControlName="account_e_m" >
+                                    <option *ngFor="let item of month" [value]="item.value">{{item.title}}</option>
+                                </select>
+                                <div class="date-button-area" style="padding-left: 0;">
+                                    <button class="btn btn-sm btn-light" type="button" (click)="onClickAll()" style="border: 1px solid rgb(225,225,225);">전체</button>
+                                </div>
+                            </div>
+                            <div class="form-item">
+                                    <div class="form-title">전송 상태</div>
+                                    <bo-group-checkbox [formGroup]="bsForm" [name]="'tax_status'">
+                                        <bo-checkbox-config [title]="'전송완료'" [value]="'complete'"></bo-checkbox-config>
+                                        <bo-checkbox-config [title]="'대기'" [value]="'standby'"></bo-checkbox-config>
+                                        <bo-checkbox-config [title]="'반려'" [value]="'reject'"></bo-checkbox-config>
+                                    </bo-group-checkbox>
+                            </div>
+                        </div>
+                        <div class="form-box" *ngIf="!appConfig.isProvider"  style="min-height: 50px; height: auto; padding-top: 5px;">
+                            <div class="form-item" style="height: auto; line-height: 25px;">
+                                <div class="form-title">입점사</div>
+                                <bo-provider-query-view [formGroup]="bsForm"></bo-provider-query-view>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="button-area">
+                    <button type="submit" class="btn new-search-btn">
+                        검색
+                    </button>
+                </div>
+             </form>
+    </div>

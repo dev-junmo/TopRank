@@ -1,0 +1,147 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/member-list.svg'" [title]="'등급 관리'"></bo-page-header>
+
+<bo-page-padding></bo-page-padding>
+
+<div class="list-section">
+    <div class="list-wrap">
+        스타옥션 구성 리스트
+        <!-- <bo-page-padding></bo-page-padding> -->      
+            <!-- list -->
+            <div style="margin: auto; max-width: 100%; margin-bottom: 50px;">
+                <data-table #bsDatatable
+                    headerTitle="datatable"
+                    [header]="true"
+                    [items]="items"
+                    [itemCount]="itemCount"
+                    [indexColumn]="false"
+                    [selectColumn]="true"
+                    [sortBy] = "'group_seq'"
+                    (reload)="reloadItems($event)"
+
+                    >
+
+                    <!-- 선택삭제 버튼 -->
+                    <bs-header-button-config id = "id-board-content-list-deleteall-btn1"
+                    [title] = "'선택삭제'"
+                    [styleType] = "'square-s-greyborder-btn'"
+                    (click) = "deleteSelectedItem($event, 'group_seq')">
+                    </bs-header-button-config>
+
+                    <!-- 선택삭제 버튼-->
+                    <!-- <bs-header-button-config id = "id-board-content-list-deleteall-btn2"
+                    [title] = "'버튼2'"
+                    [styleType] = "'round-m-white'"
+                    (click) = "onClickDTHeaderBtn($event)">
+                    </bs-header-button-config> -->
+
+                    <!-- <data-table-column
+                        [header]="'자동관리'"
+                        [width]="150">
+                        <ng-template #dataTableCell let-item="item">
+                                <span *ngIf="item.use_type == 'AUTO' || item.use_type == 'AUTOPART'">자동</span>
+                                <span *ngIf="item.use_type == 'MANUAL'">수동</span>
+                        </ng-template>
+                        <ng-template #dataTableCell let-item="item">
+                            <bo-page-button [type]="'square-s-red'" [title]="item.use_type"></bo-page-button>
+                        </ng-template>
+                    </data-table-column> -->
+
+                    <data-table-column
+                        [property]="'group_seq'"
+                        [header]="'등급번호'"
+                        [sortable]="true"
+                        [width]="150">
+                    </data-table-column>
+
+                    <data-table-column
+                        [property]="'group_name'"
+                        [header]="'등급'"
+                        [sortable]="true"
+                        [width]="150">
+                    </data-table-column>
+
+                    
+                    <data-table-column
+                        [property]="'point_price'"
+                        [header]="'포인트'"
+                        [sortable]="true"
+                        [width]="150">
+                    </data-table-column>
+
+                    
+                    <data-table-column
+                        [property]="'point_use'"
+                        [header]="'포인트 사용 여부'"
+                        [sortable]="true"
+                        [width]="150">
+                        <ng-template #dataTableCell let-item="item">
+                            <span *ngIf="item.point_use == 'Y'">사용</span>
+                            <span *ngIf="item.point_use == 'N'">미사용</span>
+                        </ng-template>
+                    </data-table-column>
+
+                    <!-- <data-table-column
+                        [header]="'총 구매금액'"
+                        [width]="200">
+                        <ng-template #dataTableCell let-item="item">
+                            <span *ngIf="item">{{item.order_sum_price}}원 이상</span>
+                            <span *ngIf="!item">-</span>
+                        </ng-template>
+                    </data-table-column> -->
+
+                    <!-- <data-table-column
+                        [header]="'상품구매개수'"
+
+                        [width]="150">
+                        <ng-template #dataTableCell let-item="item">
+                            <span *ngIf="item">{{item.order_sum_ea}}원 이상</span>
+                            <span *ngIf="!item">-</span>
+                        </ng-template>
+                    </data-table-column> -->
+
+                    <!-- <data-table-column
+                        [header]="'주문횟수'"
+                        [width]="250">
+                        <ng-template #dataTableCell let-item="item">
+                                <span *ngIf="item.use_type == 'AUTO' || item.use_type == 'AUTOPART'">{{item.order_sum_cnt ? item.order_sum_cnt : '-'}}</span>
+                                <span *ngIf="item.use_type == 'MANUAL'">수동으로 관리</span>
+                            </ng-template>
+                    </data-table-column> -->
+
+                    <!-- <data-table-column
+                        [property]="'order_sum_cnt'"
+                        [header]="'현재통계'"
+                        [width]="150">
+                    </data-table-column> -->
+
+                    <data-table-column
+                        [header]="'생성일시'"
+                        [width]="150">
+                        <ng-template #dataTableCell let-item="item">
+                            <span>{{item.regist_date | date:'yyyy-MM-dd mm:ss'}}</span>
+                        </ng-template>
+                    </data-table-column>
+
+                    <data-table-column
+                        [header]="'업데이트일시'"
+                        [width]="150">
+                        <ng-template #dataTableCell let-item="item">
+                            <span>{{item.update_date | date:'yyyy-MM-dd mm:ss'}}</span>
+                        </ng-template>
+                    </data-table-column>
+
+                    <data-table-column
+                        [header]="'관리'"[width]="100">
+                        <ng-template #dataTableCell let-item="item">
+                            <bo-page-button (click)="updateItem(item.group_seq)" [type]="'s-white'" [title]="'수정'"></bo-page-button>
+                        </ng-template>
+                    </data-table-column>
+                </data-table>
+            </div>
+        </div>
+    </div>
+
+<bo-page-padding></bo-page-padding>
+
+<!-- <grade-create (submited)="onCreatedGrade()"></grade-create> -->

@@ -1,0 +1,298 @@
+.modal-dialog.custom{
+    width: 800px;
+    /* margin: auto; */
+    margin: 5% auto;
+    position: absolute;
+    /* top: 0; */
+    left: 0;
+    right: 0;
+    /* bottom: 0; */
+    height: fit-content;
+}
+.my-horizontal {
+    display: inline-block;
+}
+.modal-dialog{
+    width:max-content;
+}
+.modal{
+    overflow: hidden;
+}
+.custom .modal-content{
+    border-radius: 0;
+}
+.custom .modal-header{
+    height: 67px;
+    line-height: 67px;
+    background-color: rgb(051,051,051);
+    font-size: 22px;
+    color: #fff;
+    padding: 0 15px;
+    text-align: center;
+}
+.custom .modal-header .modal-title ,.custom .modal-header .sub-title{
+    font-family: "Noto Sans KR",sans-serif;;
+    line-height: 22px;
+}
+.custom .modal-header .modal-title{
+    color: #fff;
+    font-size: 23px;
+    padding-left: 15px;
+}
+.custom .modal-header .sub-title{
+    font-size: 20px;
+    padding-left: 20px;
+    color: #c3c3c3;
+}
+.custom .modal-header .close{
+    text-shadow: none;
+    opacity: 1;
+    font-size: 44px;
+    font-weight: 100;
+    line-height: 28px;
+}
+.custom .modal-header .close span{
+    color: #fff;
+}
+
+.custom2{
+    width: 800px;
+}
+.modal-header .review-close {
+    top: -65px;
+    position: relative;
+}
+.modal-content {
+    width: 800px;
+    display: inline-block !important;
+    height: auto;
+}
+
+.custom.modal-popup .modal-content{
+    height: 630px;
+}
+.modal-title-custom{
+    width: 100%;
+    display: inline-block;
+}
+.modal-body{
+    background: #fff;
+    padding: 20px;
+}
+.modal-body-grade .grade-box {
+    padding: 10px;
+}
+.modal-body-grade .item-box {
+    border: 1px solid #e1e1e1;
+    border-right: none;
+    border-left: none;
+    padding: 10px 0;
+    margin: 0;
+}
+.modal-body-grade .img-box {
+    display: inline-block;
+}
+.modal-body-grade .img-itembox {
+    display: inline-block;
+    /* vertical-align: middle; */
+}
+.modal-body-grade .img-itembox ul{
+    padding-left: 15px;
+}
+.modal-body-grade .img-itembox .bold {
+    font-size: 18px;
+    color: #202020;
+    padding-bottom: 4px;
+}
+.modal-body-grade .img-itembox .grey {
+    font-size: 15px;
+    color: #999999;
+}
+
+.modal-body-grade .my-info-box .my-input-wrap {
+    position: relative;
+    width: 100%;
+    font-size: 0;
+}
+.modal-body-grade .my-info-box .my-item-title {
+    width: 160px;
+    position: absolute;
+    height: 100%;
+    margin-right: 20px;
+    padding: 21px 16px;
+    display: inline-block;
+    background: #f3f2ee;
+    font-size: 16px;
+    color: #212121;
+}
+.modal-body-grade  .my-info-box .my-item-con {
+    margin-left: 180px;
+    width: calc(100% - 180px);
+    padding: 10px 10px 10px 0;
+   display: inline-block;
+}
+.modal-body-grade .my-info-box .input-center {
+    display: inline-block;
+    padding: 0 27px;
+}
+
+.modal-body-grade .my-info-box .input-unit {
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 8px 30px 8px 8px;
+}
+.modal-body-grade .my-info-box .unit{
+    position: absolute;
+    top: 19px;
+    left: 294px;
+    font-size: 15px;
+    color: #999;
+}
+.modal-body-grade .my-info-box .kg{
+    left: 495px;
+}
+.modal-body-grade .my-normal-input {
+    width: 310px;
+}
+.modal-body-grade .my-input-wrap span {
+    padding: 0 7px;
+    font-size: 15px;
+}
+.modal-body-grade .my-notice-lightgrey .noti-text {
+    padding-top: 5px;
+    margin: 0;
+    color: #999999;
+}
+.modal-body-grade .private-box {
+    border: 1px solid #e1e1e1;
+    padding: 15px;
+    color: #999999;
+}
+.modal-body-grade .private-box .inner-notice{
+    overflow-y: scroll;
+    height: 168px;
+}
+.modal-body-grade .checkbox-wrap {
+    padding-bottom: 15px;
+}
+.modal-body-grade .review-box {
+    padding: 30px 40px 25px 40px !important;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e1e1e1;
+}
+.modal-body-grade .review-box p{
+    font-size: 16px !important;
+    padding: 10px 0 8px;
+    margin: 0;
+}
+.modal-body-grade  .my-info-box .textarea-cover {
+    height: 120px;
+    border: 1px solid #e1e1e1;
+}
+.modal-body-grade  .my-info-box .limit-text-cover {
+    position: relative;
+    top: 0;
+    right: 0;
+    font-size: 16px;
+    float: right;
+}
+.modal-body-grade  .my-info-box .my-item-con textarea{
+    width: 100%;
+    height: 87px;
+    border: none;
+    resize: none;
+    font-size: 16px;
+    padding: 10px;
+}
+.modal-body-grade .my-img-box {
+    display: inline-block;
+    margin-right: 10px;
+}
+.modal-body-grade .my-img-box .dummy {
+    border: none;
+    background-position: 50% 50%;
+    background-size: contain;
+}
+.modal-body-grade .my-img-box .top-float-cover {
+    position: absolute;
+    top: 35%;
+    left: 35%;
+    z-index: 999;
+}
+.modal-body-grade .my-img-box .img-float-btn {
+    background: url('assets/img/goods/img_del.png') no-repeat;
+    width: 30px;
+    height: 30px;
+    background-position: 50% 50%;
+    background-size: cover;
+    border: none;
+}
+.modal-body-grade .gd-btm-margin {
+    margin-top: 20px;
+    padding: 15px;
+}
+.type-btn-area{
+    text-align: center;
+}
+.modal-review .type-btn-area {
+    width: 100%;
+    padding-top: 20px;
+    font-size: 15px;
+}
+.modal-btn button{
+    width: 180px;
+    padding: 14px;
+}
+/* .normal-btn button {
+    width: 180px;
+    padding: 13px 15px;
+} */
+.modal-btn {
+    background: #333333;
+    border: none;
+    color: #fff;
+}
+.black-btn {
+    background: #333333;
+    border: 1px solid #333333;
+    color: #fff;
+}
+.white-btn {
+    background: #fff;
+    color: #000;
+    border: 1px solid #e1e1e1;
+}
+
+
+button.white-s-btn {
+    width: 135px;
+    height: 35px;
+    line-height: 32px;
+    border: solid 1px rgb(153,153,153);
+    color: rgb(33,33,33);
+    background-color: #ffffff;
+    border-radius: 0;
+}
+@media screen and (max-width: 500px) {
+    .modal-dialog.modal-lg.custom{
+        width:100%;
+        position: absolute;
+        margin-top: 50%;
+    }
+}
+
+@media print {
+    .modal-dialog.custom , .modal-content , table{
+        width: 100%;
+        height: 100%;
+    }
+    .modal-body {
+        page-break-after:auto;
+        margin-top: 50px;
+        height: 100%;
+    }
+    .modal-header, .type-btn-area {
+        display: none;
+    }
+}

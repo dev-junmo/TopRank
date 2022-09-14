@@ -1,0 +1,27 @@
+<!-- <div class="modal-dialog modal-lg custom ns-regular">
+    <div class="modal-content"> -->
+<div class="dialog">
+    <div class="modal-header ns-regular custom">
+        {{title}}
+        <button type="button" class="close pull-right" aria-label="Close" (click)="onCancel()">
+            <span aria-hidden="true"><img src="/assets/img/LP_X.png" /></span>
+        </button>
+    </div>
+    <div class="modal-body ns-regular">
+        <ng-container *ngTemplateOutlet="template"></ng-container>
+        <div class="type-btn-area" *ngIf="btnCancelText != null">
+            <div class="my-horizontal">
+                <button class="square-m-white-btn" type="button" (click)="onCancel()">{{btnCancelText}}</button>
+                <button class="square-m-black-btn" type="submit" (click)="onOk()">{{btnOkText}}</button>
+            </div>
+        </div>
+        <div class="type-btn-area" *ngIf="btnCancelText == null">
+            <div class="my-horizontal modal-btn">
+                <button class="square-m-black-btn" type="submit" (click)="onOk()">{{btnOkText}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- </div>
+</div> -->

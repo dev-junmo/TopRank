@@ -1,0 +1,136 @@
+
+.spinner {
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    height: 30px;
+    width: 30px;
+    margin-left: -15px;
+    margin-top: -40px;
+
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+    position: relative;
+}
+.spinner span {
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    display: block;
+    position: absolute;
+    opacity: 0.7;
+}
+.spinner .ball-1 {
+    z-index: 4;
+    background-color: #ff0000;
+    left: -20px;
+    -webkit-transform: translate(50%, 50%) scale(0.5);
+    -webkit-animation: animateSway 2s infinite ease-in-out, animateScale 2s infinite ease-in-out;
+    animation: animateSway 2s infinite ease-in-out, animateScale 2s infinite ease-in-out;
+}
+.spinner .ball-2 {
+    z-index: 3;
+    background-color: #ff0000;
+    left: -20px;
+    -webkit-transform: translate(50%, 50%) scale(0.5);
+    -webkit-animation: animateSway 2s infinite ease-in-out 500ms, animateScale 2s infinite ease-in-out 500ms;
+    animation: animateSway 2s infinite ease-in-out 500ms, animateScale 2s infinite ease-in-out 500ms;
+}
+.spinner .ball-3 {
+    z-index: 2;
+    background-color: #ff0000;
+    left: -20px;
+    -webkit-transform: translate(50%, 50%) scale(0.5);
+    -webkit-animation: animateSway 2s infinite ease-in-out 1s, animateScale 2s infinite ease-in-out 1s;
+    animation: animateSway 2s infinite ease-in-out 1s, animateScale 2s infinite ease-in-out 1s;
+}
+.spinner .ball-4 {
+    z-index: 1;
+    background-color: #ff0000;
+    left: -20px;
+    -webkit-transform: translate(50%, 50%) scale(0.5);
+    -webkit-animation: animateSway 2s infinite ease-in-out 1.5s, animateScale 2s infinite ease-in-out 1.5s;
+    animation: animateSway 2s infinite ease-in-out 1.5s, animateScale 2s infinite ease-in-out 1.5s;
+}
+.monthly {
+    display: inline-block;
+}
+.daily {
+    display: inline-block;
+}
+.hourly {
+    display: inline-block;
+}
+  @-webkit-keyframes animateSway {
+    0% { left: -20px }
+    50% { left: 20px }
+    100% { left: -20px }
+  }
+
+  @keyframes animateSway {
+    0% { left: -20px }
+    50% { left: 20px }
+    100% { left: -20px }
+  }
+
+  @-webkit-keyframes animateScale {
+    0% { -webkit-transform: translate(50%, 50%) scale(0.5); z-index: -1 }
+    25% { -webkit-transform: translate(50%, 50%) scale(1); z-index: +1 }
+    50% { -webkit-transform: translate(50%, 50%) scale(0.5); z-index: -1 }
+    75% { -webkit-transform: translate(50%, 50%) scale(0.25); z-index: -2 }
+    100% { -webkit-transform: translate(50%, 50%) scale(0.5); z-index: -1 }
+  }
+
+  @keyframes animateScale {
+    0% { transform: translate(50%, 50%) scale(0.5); z-index: -1 }
+    25% { transform: translate(50%, 50%) scale(1); z-index: +1 }
+    50% { transform: translate(50%, 50%) scale(0.5); z-index: -1 }
+    75% { transform: translate(50%, 50%) scale(0.25); z-index: -2 }
+    100% { transform: translate(50%, 50%) scale(0.5); z-index: -1 }
+  }
+
+
+
+
+
+:host-context(app-login) {
+    width: 100%;
+    display: inline-block;
+}
+.sub-items {
+    display: inline-block;
+    padding-right: 25px;
+}
+.board-view .title {
+    display: inline-block;
+    vertical-align: middle;
+    padding-bottom: 15px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.board-view .content-sub-header {
+    border-top: 1px solid #979797;
+    padding: 12px 0;
+    border-bottom: 1px solid #979797;
+    _margin-bottom: 10px;
+}
+.board-view .content-body .product {
+    border: 1px solid #e1e1e1;
+    background-color: rgb(249, 249, 249);
+    padding: 10px;
+    min-height: 72px;
+}
+.board-view .content-body .product .item-info {
+    display: inline-block;
+    vertical-align: middle;
+}
+.board-view .item-contents {
+    padding: 30px 0;
+    min-height: 150px;
+    margin: 0 auto;
+    _text-align: center;
+    /* white-space: pre-wrap; */
+}

@@ -1,0 +1,63 @@
+<div class="outlet-section">
+    <!-- <div class="query-title">검색</div> -->
+
+        <!-- formGroup : bsForm -->
+    <form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+        <div class="query-wrap">
+
+            <div class="form-block" *ngIf="style != 'time'">
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">기간조회 :</div>
+
+                        <input type="radio" id="month" value="month" name="search_type" formControlName="search_type" (change)="onChangeSearchType()"/>
+                        <label for="month" class="check-label">월별</label>
+                        <input type="radio" id="day" value="day" name="search_type" formControlName="search_type" (change)="onChangeSearchType()"/>
+                        <label for="day" class="check-label">일별</label>
+                        <input type="radio" id="time" value="time" name="search_type" formControlName="search_type" (change)="onChangeSearchType()" *ngIf="timeUse == true"/>
+                        <label for="time" class="check-label" *ngIf="timeUse == true">시간별</label>
+
+                        <select class="form-selectbox item-horizontal medium-input" [(ngModel)]="selectYear" [ngModelOptions]="{standalone: true}" (change)="onChageDate('month')">
+                            <option *ngFor="let item of yearList" [value]="item">{{item}}년</option>
+                        </select>
+
+                        <select class="form-selectbox item-horizontal medium-input" [(ngModel)]="selectMonth" [ngModelOptions]="{standalone: true}" *ngIf="showType == 'day' || showType == 'time'" (change)="onChageDate('day')">
+                            <option value = "">선택</option>
+                            <option *ngFor="let item of monthList" [value]="item">{{item}}월</option>
+                        </select>
+
+                        <select class="form-selectbox item-horizontal medium-input" [(ngModel)]="selectDay" [ngModelOptions]="{standalone: true}" *ngIf="showType == 'time' && timeUse == true" (change)="onChageDate('time')">
+                            <option value = "">선택</option>
+                            <option *ngFor="let item of dayList" [value]="item">{{item}}일</option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-block" *ngIf="style == 'time'">
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">기간조회 :</div>
+
+                        <select class="form-selectbox item-horizontal medium-input" [(ngModel)]="selectYear" [ngModelOptions]="{standalone: true}" (change)="onChageDate('month')">
+                            <option *ngFor="let item of yearList" [value]="item">{{item}}년</option>
+                        </select>
+
+                        <select class="form-selectbox item-horizontal medium-input" [(ngModel)]="selectMonth" [ngModelOptions]="{standalone: true}" *ngIf="showType == 'day' || showType == 'time'" (change)="onChageDate('day')">
+                            <option value = "">선택</option>
+                            <option *ngFor="let item of monthList" [value]="item">{{item}}월</option>
+                        </select>
+
+                        <select class="form-selectbox item-horizontal medium-input" [(ngModel)]="selectDay" [ngModelOptions]="{standalone: true}" *ngIf="showType == 'time' && timeUse == true" (change)="onChageDate('time')">
+                            <option value = "">선택</option>
+                            <option *ngFor="let item of dayList" [value]="item">{{item}}일</option>
+                        </select>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <bo-search-button-form></bo-search-button-form>
+    </form>
+</div>

@@ -1,0 +1,14 @@
+
+<div [formGroup]="subForm"  *ngFor="let item of inputs;let i = index" class="content-inline">
+    <bs-input [formGroup]="subForm" [name]="name + '[' + i + ']'"
+        (change)="onChange($event, i)" [style]="style"
+        [disabled]="item.disabled"
+        [required]="item.required"
+        [minlength]="item.minlength"
+        [placeholder]="item.placeholder"
+        [maxlength]="item.maxlength"
+        [email]="item.email"
+        [number]="item.number">
+    </bs-input>
+    <div class="input-seperator" *ngIf="inputs.length-1!=i">{{separator}}&nbsp;&nbsp;&nbsp;</div>
+</div>

@@ -1,0 +1,32 @@
+.ads-btn{
+    width: 125px;
+    height: 40px;
+    font-size: 16px;
+    color: #fff;
+    background: rgb(153,153,153);
+    border: none;
+    /* margin-left: 25px; */
+    float: right;
+    border-radius: 0;
+}
+.ads-btn:focus,.ads-btn:hover{
+    color: #fff;
+}
+@media screen and (max-width: 1767px) {
+
+    .mobile :host {
+        width: 100%;
+    }
+    .mobile .ads-btn  {
+        margin-left:0;
+        width: 103px;
+        font-size: 14px;
+        height: 40px;
+    }
+    .mobile btn-daum-address.height .ads-btn {
+        height: 40px;
+    }
+    .mobile btn-daum-address.height32 .ads-btn {
+        height: 32px;
+    }
+}

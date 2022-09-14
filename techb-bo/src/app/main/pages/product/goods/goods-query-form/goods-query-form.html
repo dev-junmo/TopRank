@@ -1,0 +1,180 @@
+<div class="outlet-section">
+    <!-- <div class="query-title">검색</div> -->
+
+        <!-- formGroup : bsForm -->
+    <form [formGroup]="bsForm" (ngSubmit)="onSubmit()"  class="form-area" >
+        <div class="query-wrap">
+
+            <!-- 첫번째 form block -->
+            <div class="form-block">
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">검색어</div>
+                        <bs-input [name]="'member_seq'" [formGroup]="bsForm"
+                            placeholder="멤버아이디,내역" [style]="'big-input'"></bs-input>
+                    </div>
+                </div>
+<!-- 
+                <div *ngIf="_hasIcon" class="form-box" style="margin: 10px 0 10px;">
+                    <div class="form-item">
+                        <div class="form-title">아이콘</div>
+                        <div class="item-horizontal">
+                            <div class="check square-checkbox display-checkbox" *ngFor="let item of iconList" style="padding-right:10px;">
+                                <input type="checkbox" id="icon-{{item.icon_seq}}" name="icon-{{item.icon_seq}}" (change)="onClickicon($event,item.icon_seq)" />
+                                <label for="icon-{{item.icon_seq}}"><img [src]="item.icon_image" style="margin-right:5px;" /><img [src]="item.m_icon_image" style="width:50px; margin-right:10px;"/></label>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="form-box" style="width: 1337px;">
+                    <!-- <div class="form-item" >
+                        <div class="form-title">그룹</div>
+                        <cf-group-query [formGroup]="bsForm"></cf-group-query>
+                    </div> -->
+                    <!-- <div class="form-item" >
+                        <div class="form-title">앱그룹</div>
+                        <bs-select [formGroup]="bsForm" [name]="'group'" [allowUnselected]="false" >
+                            <bs-option-config [value]= "'all'" [label] = "'전체'"></bs-option-config>
+                            <bs-option-config [value]= "'sleepy radio'" [label] = "'슬리피 라디오'"></bs-option-config>
+                            <bs-option-config [value]= "'sleepy baby'" [label] = "'슬리피 베이비'"></bs-option-config>
+                        </bs-select>
+                    </div>
+
+                    <div class="form-item" >
+                        <div class="form-title">유형</div>
+                        <bs-select [formGroup]="bsForm" [name]="'content_type'" [allowUnselected]="false">
+                            <bs-option-config [value]= "'all'" [label] = "'전체'"></bs-option-config>
+                            <bs-option-config [value]= "'album'" [label] = "'앨범'"></bs-option-config>
+                            <bs-option-config [value]= "'track'" [label] = "'음악'"></bs-option-config>
+                            <bs-option-config [value]= "'sound'" [label] = "'소리'"></bs-option-config>
+                            <bs-option-config [value]= "'channel'" [label] = "'채널'"></bs-option-config>
+                            <bs-option-config [value]= "'mixed_sound'" [label] = "'조합된 소리'"></bs-option-config>
+                        </bs-select>
+                    </div>                    
+
+                    <div class="form-item" >
+                        <div class="form-title">태그</div>
+                        <cf-tag-query [formGroup]="bsForm"></cf-tag-query>
+                    </div> -->
+
+                    <!-- <div class="form-item">
+                        <div class="form-title">페이지뷰</div>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="page_view[min]" placeholder="">
+                        <span>-</span>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="page_view[max]" placeholder="" style="margin-right:20px;">
+                    </div>
+                    <div class="form-item">
+                        <div class="form-title">재고</div>
+                        <bs-checkbox [formGroup]="bsForm"
+                            [name]="'optstock'"
+                            [label]="'옵션별'"
+                            [value]="'y'">
+                        </bs-checkbox>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="tot_stock[min]" placeholder="">
+                        <span>-</span>
+                        <input type="text" class="form-control search-input small-input item-horizontal" formControlName="tot_stock[max]" placeholder="">
+                    </div> -->
+
+                </div>
+
+
+                <!-- 기간 -->
+                <!-- <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">기간조회</div>
+                        <bo-period-query [formGroup]="bsForm" [name]="'period'"
+                            [initialIndexOfPeriodType]="0"
+                            [selectedIndexPeriod]="initialIndexOfPeriod" [has3MonthBtn]="true">
+                            <bo-period-query-option-config [value]="'regist_date'" [label]="'등록일'">
+                            </bo-period-query-option-config>
+                            <bo-period-query-option-config [value]="'update_date'" [label]="'수정일'">
+                            </bo-period-query-option-config>
+                        </bo-period-query>
+                    </div>
+                </div> -->
+
+                <!-- <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">승인여부</div>
+                        <bo-group-checkbox [formGroup]="bsForm" [name]="'provider_status'">
+                            <bo-checkbox-config [title]="'승인'" [value]="'1'"></bo-checkbox-config>
+                            <bo-checkbox-config [title]="'미승인'" [value]="'0'"></bo-checkbox-config>
+                        </bo-group-checkbox>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-title">상태</div>
+                        <bo-group-checkbox [formGroup]="bsForm" [name]="'goods_status'">
+                            <bo-checkbox-config [title]="'정상'" [value]="'normal'"></bo-checkbox-config>
+                            <bo-checkbox-config [title]="'품절'" [value]="'runout'"></bo-checkbox-config>
+                            <bo-checkbox-config [title]="'재고확보중'" [value]="'purchasing'"></bo-checkbox-config>
+                            <bo-checkbox-config [title]="'판매종료'" [value]="'unsold'"></bo-checkbox-config>
+                        </bo-group-checkbox>
+                    </div>
+                    <div class="form-item">
+                        <div class="form-title">노출여부</div>
+                        <bo-group-checkbox [formGroup]="bsForm" [name]="'goods_view'">
+                            <bo-checkbox-config [title]="'노출'" [value]="'look'"></bo-checkbox-config>
+                            <bo-checkbox-config [title]="'미노출'" [value]="'notLook'"></bo-checkbox-config>
+                        </bo-group-checkbox>
+                    </div>
+                </div> -->
+            </div>
+            <!-- 두번째 form-block -->
+            <div class="form-block  more-form-block" [hidden]="!isShowMore">
+                <!--카테고리-->
+                <!-- <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">카테고리</div>
+                        <select class="form-selectbox item-horizontal medium-input" (change)="onClickCategory('0',$event.target.value)">
+                            <option value="">1차 카테고리</option>
+                            <option *ngFor="let item of category[0]" [value]="item.category_code">{{item.title}}</option>
+                        </select>
+                        <select class="form-selectbox item-horizontal medium-input" (change)="onClickCategory('1',$event.target.value)">
+                            <option value="">2차 카테고리</option>
+                            <option *ngFor="let item of category[1]" [value]="item.category_code">{{item.title}}</option>
+                        </select>
+                        <select class="form-selectbox item-horizontal medium-input" (change)="onClickCategory('2',$event.target.value)">
+                            <option value="">3차 카테고리</option>
+                            <option *ngFor="let item of category[2]" [value]="item.category_code">{{item.title}}</option>
+                        </select>
+                        <select class="form-selectbox item-horizontal medium-input" (change)="onClickCategory('3',$event.target.value)">
+                            <option value="">4차 카테고리</option>
+                            <option *ngFor="let item of category[3]" [value]="item.category_code">{{item.title}}</option>
+                        </select>
+                    </div>
+                </div>
+                -->
+               
+<!--                 
+                <div class="form-box">
+                    <div class="form-item">
+                        <div class="form-title">공용정보</div>
+                        <bs-select [name]="'info_seq'"
+                                    [formGroup]="bsForm"
+                                    [data]="goodsInfoList"
+                                    [optionValueField]="'info_seq'"
+                                    [optionLabelField]="'info_name'" >
+                        </bs-select>
+                    </div>
+                </div> -->
+
+            </div>
+            <!-- <div class="more-form">
+                <div class="more-form-btn" (click)="onClickShowMore()">
+                    상세검색<span *ngIf="!isShowMore">열기</span><span *ngIf="isShowMore">닫기</span>
+                    <div class="more-btn-img" [class.hide-form]="isShowMore"></div>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- 검색 버튼 -->
+        <div class="button-area">
+            <button type="submit" class="btn new-search-btn">
+                <!-- <img src="../assets/img/board/board-search-icon.svg"/> -->
+                검색
+            </button>
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,366 @@
+<!-- header-->
+<bo-page-header [imgUrl]="'assets/img/coupon-title-img.svg'" [title]="'쿠폰 리스트 '">
+
+     <bo-page-button-config id = "id-board-content-list-btn-create"
+        [title]="'온라인 배포용 쿠폰 등록'"
+        [styleType] = "'square-m-white-btn'"
+        (click) = "createItem()">
+    </bo-page-button-config>
+
+    <bo-page-button-config id="id-board-content-list-btn-create"
+        [title]="'인쇄 배포용 쿠폰 등록'" [styleType]="'square-m-white-btn'"
+        [routerLink]="['/main/event/coupon-print/create/print']">
+    </bo-page-button-config>
+</bo-page-header>
+
+<div class="list-section">
+
+    <!-- query form -->
+    <coupon-query-form [setQuery]="query"(query)="reloadWithQuery($event)"></coupon-query-form>
+    <!-- <goods-query-form></goods-query-form> -->
+    <!-- <app-board-list-query-form></app-board-list-query-form> -->
+    <!-- space -->
+    <bo-page-padding></bo-page-padding>
+
+    <div class="list-wrap-se">
+        <!-- list -->
+        <div style="margin: auto; max-width: 100%; margin-bottom: 50px;">
+            <data-table #bsDatatable
+                headerTitle="datatable"
+                [header]="true"
+                [items]="items"
+                [itemCount]="itemCount"
+                [indexColumn]="true"
+                [selectColumn]="false"
+                (reload)="reloadItems($event)"
+                [sortBy] = "'coupon_seq'"
+                [sortAsc] = "false">
+
+                <!-- 선택삭제 버튼-->
+                <!-- <bs-header-button-config
+                id = "id-btn-1"
+                [title] = "'선택삭제'"
+                [styleType] = "'square-s-greyborder-btn'"
+                (click) = "deleteSelectedItem($event, 'coupon_seq')">
+                </bs-header-button-config> -->
+
+                <!-- 선택삭제 버튼-->
+                <!-- 오른쪽정렬은 버튼순서 역순입니다 -->
+                <!-- <bs-header-button-config id = "id-board-content-list-deleteall-btn2"
+                [title] = "'버튼2'"
+                [styleType] = "'round-m-white'"
+                [align]="'right'"
+                (click) = "onClickDTHeaderBtn($event)">
+                </bs-header-button-config>
+                <bs-header-button-config id = "id-board-content-list-deleteall-btn2"
+                [title] = "'버튼3'"
+                [styleType] = "'round-m-white'"
+                [align]="'right'"
+                (click) = "onClickDTHeaderBtn($event)">
+                </bs-header-button-config> -->
+
+                <!-- <data-table-column
+                    [property]="'coupon_seq'"
+                    [header]="'번호'"
+                    [width]="50">
+                </data-table-column> -->
+
+                <data-table-column
+                    [property]="'regist_date'"
+                    [header]="'생성일'"
+                    [width]="113">
+                    <ng-template #dataTableCell let-item="item">
+                            {{item.regist_date | date: 'yyyy-MM-dd HH:mm'}}
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [header]="'쿠폰종류'"
+                    [width]="60">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item?.type == 'download'">상품</div>
+                        <div *ngIf="item?.type == 'shipping'">배송비</div>
+                        <div *ngIf="item?.type == 'admin'">직접발급</div>
+                        <div *ngIf="item?.type == 'admin_shipping'">직접발급(배송비)</div>
+                        <div *ngIf="item?.type == 'member'">신규가입</div>
+                        <div *ngIf="item?.type == 'member_shipping'">신규가입(배송비)</div>
+
+                        <div *ngIf="item?.type == 'offline_coupon'">상품(인증번호)</div>
+
+                        <!-- 미사용 쿠폰 -->
+                        <div *ngIf="item?.type == 'mobile'">모바일</div>
+                        <div *ngIf="item?.type == 'birthday'">생일자</div>
+                        <div *ngIf="item?.type == 'Anniversary'">기념일</div>
+                        <div *ngIf="item?.type == 'memberGroup'">회원등급조정</div>
+                        <div *ngIf="item?.type == 'memberGroup_shipping'">회원등급조정(배송비)</div>
+                        <div *ngIf="item?.type == 'point'">포인트 전환</div>
+                        <div *ngIf="item?.type == 'memberlogin'">이달의 컴백회원</div>
+                        <div *ngIf="item?.type == 'memberlogin_shipping'">이달의 이달의 백회원(배송비)</div>
+                        <div *ngIf="item?.type == 'membermonths'">이달의 등급</div>
+                        <div *ngIf="item?.type == 'membermonths_shipping'">이달의 등급(배송비)</div>
+                        <div *ngIf="item?.type == 'order'">첫구매</div>
+                        <div *ngIf="item?.type == 'offline_emoney'">적립금(인증번호)</div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'issue_stop'"
+                    [header]="'발급여부'"
+                    [width]="54">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item?.issue_stop == 0">발급</div>
+                        <div *ngIf="item?.issue_stop == 1" style="color:red;">중지</div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'coupon_name'"
+                    [header]="'쿠폰명'"
+                    >
+                    <ng-template #dataTableCell let-item="item">
+                        <div style="display: inline-block;min-width: 250px;
+                        text-align: left;">{{item?.coupon_name}}</div>
+                        <bo-page-button
+                        [title]="'조회'" [type]="'s-whitegray'" (click)="onClickInfoCoupon(templateInfoCoupon, item)" >
+                        </bo-page-button>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [header]="'혜택'"
+
+                    [width]="121">
+                    <ng-template #dataTableCell let-item="item">
+                        <benefits-list-item-view [item]="item"></benefits-list-item-view>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="''"
+                    [header]="'다운로드 기간'"
+                    [width]="87">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="!item?.download_startdate || !item?.download_enddate">기간제한없음</div>
+                        <div *ngIf="item?.download_startdate && item?.download_enddate">
+                            {{item?.download_startdate | date: 'yyyy-MM-dd'}} ~ {{item?.download_enddate | date: 'yyyy-MM-dd'}}
+                        </div>
+                    </ng-template>
+
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'after_issue_day'"
+                    [header]="'유효기간'"
+                    [width]="87">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="!item?.after_issue_day || item?.after_issue_day  == ''">{{item?.issue_startdate | date: 'yyyy-MM-dd'}}<br>{{item?.issue_enddate | date: 'yyyy-MM-dd'}} </div>
+                        <div *ngIf="item?.after_issue_day">발급일 ~ {{item?.after_issue_day}}일</div>
+                    </ng-template>
+
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'coupon_same_time'"
+                    [header]="'단독'"
+                    [width]="35">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item?.coupon_same_time">
+                            <span *ngIf="item?.coupon_same_time=='Y'">동시</span>
+                            <span *ngIf="item?.coupon_same_time=='N'">단독</span>
+                        </div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'limit_goods_price'"
+                    [header]="'금액'"
+                    [width]="100">
+                    <ng-template #dataTableCell let-item="item">
+                    {{item?.limit_goods_price| number}}
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'sale_agent'"
+                    [header]="'사용환경'"
+                    [width]="55">
+                    <ng-template #dataTableCell let-item="item">
+                            <div *ngIf="item?.sale_agent == 'a'">X</div>
+                            <div *ngIf="item?.sale_agent == 'm'">모바일</div>
+                        </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [property]="'sale_payment'"
+                    [header]="'결제수단'"
+                    [width]="55">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item?.sale_payment == 'a'">X</div>
+                        <div *ngIf="item?.sale_payment == 'b'">무통장</div>
+                    </ng-template>
+                </data-table-column>
+
+                <!-- <data-table-column
+                    [property]="'sale_referer'"
+                    [header]="'유입경로'"
+                    [sortable]="true"
+                    [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                            <div *ngIf="item?.sale_referer == 'a'">무관</div>
+                            <div *ngIf="item?.sale_referer == 'n' || item?.sale_referer == 'y'">제한</div>
+                        </ng-template>
+                </data-table-column> -->
+
+                <data-table-column
+                    [property]="'issue_type'"
+                    [header]="'상품'"
+                    [width]="80">
+                    <ng-template #dataTableCell let-item="item">
+                        <div *ngIf="item?.issue_type == 'all'">전체</div>
+                        <div *ngIf="item?.issue_type == 'issue' || item?.issue_type == 'except'">제한</div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    [header]="'사용내역'"
+                    [width]="120">
+                    <ng-template #dataTableCell let-item="item">
+
+                            <!-- class="margin-class" -->
+                        <bo-page-button class="margin-class" *ngIf="item.type == 'admin' || item.type == 'admin_shipping'"
+                            [title]="'발급하기'" [type]="'s-darkgrey'" (click)="onClickIssueCoupon(templateIssueCoupon, item)" >
+                        </bo-page-button>
+
+                        <!-- s-darkgrey -->
+                        <!-- <bo-page-button  class="margin-class" [title]="'사용내역'" (click)="onClickIssueListCoupon(template , item)" [type]="'s-darkgrey'"  ></bo-page-button>
+                        <div>
+                            {{item.type=='offline_coupon'?'인증':'발급'}}-{{item.download_total_count}} /
+                            사용-<div class="item-horizontal" *ngIf="item?.use_total_count">{{item?.use_total_count}}</div>
+                                <div class="item-horizontal" *ngIf="!item?.use_total_count">0</div>
+                        </div> -->
+                        <div>
+                            <button type="submit" (click)="onClickIssueListCoupon(template , item)" class="green"
+                                [ngClass]="item.download_total_count == 0 ? 'grey' : 'green'">
+                                {{item.type=='offline_coupon'?'인증':'발급'}}-{{item.download_total_count}} /
+                                사용-<div class="item-horizontal" *ngIf="item?.use_total_count">{{item?.use_total_count}}</div>
+                                    <div class="item-horizontal" *ngIf="!item?.use_total_count">0</div>
+                            </button>
+                        </div>
+                    </ng-template>
+                </data-table-column>
+
+                <data-table-column
+                    header="manage"
+                    [width]="230">
+                    <ng-template #dataTableHeader let-item="item">
+                        수정
+                    </ng-template>
+                    <ng-template #dataTableCell let-item="item">
+                        <bo-button-collection class="margin-class" [id]="'edit'" (click)="updateItem(item.coupon_seq)" ></bo-button-collection>
+                        <bo-button-collection *ngIf="item.type != 'offline_coupon'" [id]="'copy'" (click)="onClickCopy(item.coupon_seq)"></bo-button-collection>
+                        <bo-button-collection *ngIf="item.download_total_count == 0" class="margin-class" [id]="'delete'" (click)="deleteItem(item.coupon_seq)"></bo-button-collection>
+                    </ng-template>
+                </data-table-column>
+            </data-table>
+        </div>
+    </div>
+</div>
+
+<!-- 쿠폰 발급 내역 -->
+<ng-template #template>
+    <coupon-issue-list [couponSeq]="couponData.coupon_seq" [data]="couponData" ></coupon-issue-list>
+</ng-template>
+
+<!-- 쿠폰 발급하기 -->
+<ng-template #templateIssueCoupon>
+    <coupon-issue #couponIssue [data]="couponData"></coupon-issue>
+</ng-template>
+
+<!-- 쿠폰명 조회 팝업 -->
+<ng-template #templateInfoCoupon >
+    <div class="section">
+        <div class="content-wrap two-line-content" style="min-width: 354px; padding: 15px;">
+            <div style="text-align: center;">
+                <div class="content-block">
+                    <div class="content-table">
+                        <div class="order-table left">
+                            <table class="trans-table border">
+                                <colgroup>
+                                    <col width="20%" />
+                                    <col width="80%" />
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>쿠폰명</th>
+                                        <td class="align-left">
+                                            <span>{{couponSummaryData?.coupon_name}}</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>혜택</th>
+                                        <td class="align-left">
+                                            <benefits-list-item-view [item]="couponSummaryData"></benefits-list-item-view>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>유효기간</th>
+                                        <td class="align-left">
+                                            <div *ngIf="!couponSummaryData?.after_issue_day || couponSummaryData?.after_issue_day  == ''">
+                                                {{couponSummaryData?.issue_startdate | date: 'yyyy-MM-dd'}} &nbsp;~&nbsp;
+                                                {{couponSummaryData?.issue_enddate | date: 'yyyy-MM-dd'}}
+                                            </div>
+                                            <div *ngIf="couponSummaryData?.after_issue_day">발급일로부터 {{couponSummaryData?.after_issue_day}}일 동안 사용 가능</div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="trans-table border" style="border-top: none;">
+                                <tbody>
+                                    <tr>
+                                        <th style="padding: 10px 30px;text-align: left;">사용제한</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="align-left" *ngIf="couponSummaryData.type != 'shipping' && couponSummaryData.type != 'admin_shipping'">
+                                            <div>
+                                               <ul>
+                                                    <li *ngIf="couponSummaryData.coupon_same_time == 'Y'">다른 쿠폰과 동시 사용 가능</li>
+                                                    <li *ngIf="couponSummaryData.coupon_same_time == 'N'">다른 쿠폰과 동시 사용 불가</li>
+                                                    <li>{{couponSummaryData?.limit_goods_price}}원 이상 구매 시</li>
+                                                    <li>모든 환경에서 사용 가능</li>
+                                                    <li>모든 결제수단에서 사용 가능</li>
+                                                    <li *ngIf="couponSummaryData.issue_type == 'all'">모든 상품에 사용 가능</li>
+                                                    <li *ngIf="couponSummaryData.issue_type == 'issue'">특정 상품/카테고리에서 사용 가능</li>
+                                                    <li *ngIf="couponSummaryData.issue_type == 'except'">특정 상품/카테고리에서는 사용 불가</li>
+                                               </ul>
+                                            </div>
+                                        </td>
+                                        <td class="align-left" *ngIf="couponSummaryData.type == 'shipping' || couponSummaryData.type == 'admin_shipping'">
+                                            <div>
+                                               <ul>
+                                                    <li *ngIf="couponSummaryData.coupon_same_time == 'Y'">다른 쿠폰과 동시 사용 가능</li>
+                                                    <li *ngIf="couponSummaryData.coupon_same_time == 'N'">다른 쿠폰과 동시 사용 불가</li>
+                                                    <li>{{couponSummaryData?.limit_goods_price}}원 이상 구매 시</li>
+                                                    <li>모든 환경에서 사용 가능</li>
+                                                    <li>모든 결제수단에서 사용 가능</li>
+                                               </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="content-box" style="border-bottom: none; padding-left: 40px;">
+                <div class="content-title" style="min-width: 80px; text-align: center;font-size: 14px;">
+                    인증번호
+                </div>
+                <div class="content" style="max-width:0;">
+                </div>
+            </div> -->
+
+        </div>
+    </div>
+</ng-template>

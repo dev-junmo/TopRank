@@ -1,0 +1,58 @@
+            
+<div class="lately-search box" *ifDesktop>
+    <div class="box-header">
+    <span>최근 검색 기록</span>
+    </div>
+    <div class="record-table">
+        <table>
+            <thead>
+            <tr>
+                <th>{{searchType}}</th>
+                <th>키워드</th>
+                <th>상품 수</th>
+                <th>삭제</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of _searchHistory.reverse()">
+                    <td><div>{{item.name}}</div></td>
+                    <td (click)="onClickKeyword(item.name, item.keyword)">{{item.keyword}}</td>
+                    <td>{{item.count | number}}개</td>
+                    <td class="del" (click)="onClickDelete(item.name, item.keyword)">
+                        <img src="assets/images/search-keyword/ic_delete_red_40.png" alt="삭제">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="record-empty" *ngIf="!_searchHistory || _searchHistory.length == 0">
+            <p>
+            최근 검색 기록이 없습니다.<br>
+            순위가 궁금한 상품을 검색해보세요.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="mobile" *ifMobile>
+    <div class="search-history-area" [ngClass]="{null:!!_searchHistory || _searchHistory.length == 0}">
+        <div class="search-history box" [ngClass]="{null:!!_searchHistory || _searchHistory.length == 0}"> 
+            <div class="search-history-title">최근 검색 기록</div>
+            <p class="empty-text" *ngIf="!_searchHistory || _searchHistory.length == 0">최근 검색 기록이 없습니다. <br>
+            순위가 궁금한 키워드를 검색해보세요.</p>
+            <ul>
+                <li *ngFor="let item of _searchHistory.reverse()">
+                    <b class="searching-keyword">
+                        <span class="search-product">{{item.name}}</span> 
+                        <span class="search-keyword" (click)="onClickKeyword(item.name, item.keyword)">{{item.keyword}}</span>
+                    </b>
+                    <p>
+                        상품 수 <span>{{item.count | number}}</span>개
+                    </p>
+                    <button class="delete-btn" (click)="onClickDelete(item.name, item.keyword)">
+                        <img src="assets/images/svg/ic_delete_red_32.svg" alt="삭제">
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
