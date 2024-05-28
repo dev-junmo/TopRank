@@ -1,6 +1,0 @@
-:host{
-    width:100%;
-    min-width: calc(100% - 245px);
-    height: 100%;
-    display: inline-flex;
-}

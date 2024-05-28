@@ -1,6 +1,0 @@
-<!-- <div class="header-btn">
-  <button [ngClass]="addButtonClass()">{{buttonTitle}}</button>
-</div> -->
-<button type="button" [ngClass]="addButtonClass()" (click)="onClick()" [attr.disabled]="disabled ? '' : null">
-  <span *ngIf="imgUrl"><img src="{{imgUrl}}" style="margin-right: 5px;"></span>{{title}}
-</button>
